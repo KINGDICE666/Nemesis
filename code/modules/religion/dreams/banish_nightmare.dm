@@ -1,17 +1,17 @@
 /datum/religion_rites/banish_nightmare
-	name = "Banish Nightmare"
-	desc = "Banish the corpse of a Nightmare or its heart back from whence it came, protecting the dreams of \
-		the station and earning favor. If a heart is present, you will be rewarded with a special blessing."
+	name = "Изгнать Кошмар"
+	desc = "Изгоните тело Кошмара или его сердце обратно туда, откуда оно пришло, защитив сны \
+		станции и заслужив благосклонность. Если присутствует сердце, вы получите особое благословение."
 	favor_cost = 0
 	ritual_length = 20 SECONDS
 
 /datum/religion_rites/banish_nightmare/New()
 	. = ..()
 	ritual_invocations = list(
-		"We have bested a terrible Nightmare that plagued our station!..",
-		"With the power of [GLOB.deity], we cast it out!..",
-		"This invader of dreams has no place here...",
-		"May it trouble our flock no longer.",
+		"Мы одолели ужасный Кошмар, терзавший нашу станцию!..",
+		"Силой [GLOB.deity] мы изгоняем его!..",
+		"Этому захватчику снов здесь не место...",
+		"Пусть он больше не тревожит нашу паству.",
 	)
 
 /datum/religion_rites/banish_nightmare/perform_rite(mob/living/user, atom/religious_tool)
@@ -27,7 +27,7 @@
 			break
 
 	if(!has_nightmare)
-		to_chat(user, span_warning("There is no corpse or heart of a Nightmare to banish!"))
+		to_chat(user, span_warning("Здесь нет тела или сердца Кошмара, которое можно изгнать!"))
 		return FALSE
 
 	return ..()
@@ -63,19 +63,19 @@
 		for(var/i in 1 to give_heart)
 			new /obj/item/organ/heart/evolved/sacred/dreamer(get_turf(religious_tool))
 		playsound(religious_tool, 'sound/effects/pray.ogg', 50, TRUE, frequency = 0.5)
-		to_chat(user, span_hypnophrase("[GLOB.deity] blesses you."))
+		to_chat(user, span_hypnophrase("[GLOB.deity] благословляет вас."))
 	else
-		to_chat(user, span_hypnophrase("[GLOB.deity] smiles upon you."))
+		to_chat(user, span_hypnophrase("[GLOB.deity] улыбается вам."))
 	user.add_mood_event("banish_nightmare", /datum/mood_event/banish_nightmare)
 
 /datum/mood_event/banish_nightmare
 	mood_change = 4
-	description = "I banished a nightmare and protected our dreams!"
+	description = "Я изгнал Кошмар и защитил наши сны!"
 	timeout = 10 MINUTES
 
 /obj/item/organ/heart/evolved/sacred/dreamer
-	name = "blessed sacred heart"
-	desc = "Banish the shadows!"
+	name = "благословенное священное сердце"
+	desc = "Изгоните тени!"
 	maxHealth = STANDARD_ORGAN_THRESHOLD * 1.5
 	/// Magic charges we block
 	var/charges = 3

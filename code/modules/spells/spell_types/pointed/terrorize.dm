@@ -1,8 +1,8 @@
 /datum/action/cooldown/spell/pointed/terrorize
-	name = "Terrorize"
-	desc = "Project yourself into a victim's mind, inflicting them with terror buildup. \
-		Prey will become increasingly terrified. Swatting terrified prey with an open hand will \
-		scare and disorient them."
+	name = "Ужаснуть"
+	desc = "Проникните в разум жертвы, накапливая в ней ужас. \
+		Добыча будет бояться всё сильнее. Удар открытой рукой по испуганной добыче \
+		напугает и дезориентирует её."
 	button_icon_state = "terrify"
 	background_icon_state = "bg_alien"
 	overlay_icon_state = "bg_alien_border"
@@ -10,13 +10,13 @@
 	spell_requirements = NONE
 	cooldown_time = 25 SECONDS
 	cast_range = 9
-	active_msg = "You prepare to stare down a target..."
-	deactive_msg = "You refocus your eyes..."
+	active_msg = "Вы готовитесь впиться взглядом в цель..."
+	deactive_msg = "Вы снова фокусируете взгляд..."
 
 /datum/action/cooldown/spell/pointed/terrorize/is_valid_target(atom/cast_on)
 	. = ..()
 	if(!ishuman(cast_on))
-		cast_on.balloon_alert(owner, "cannot be terrorized!")
+		cast_on.balloon_alert(owner, "нельзя ужаснуть!")
 		return FALSE
 
 	var/lit_tiles = 0
@@ -30,7 +30,7 @@
 			unlit_tiles++
 
 	if(lit_tiles > unlit_tiles)
-		cast_on.balloon_alert(owner, "must be in the dark!")
+		cast_on.balloon_alert(owner, "цель должна быть во тьме!")
 		return FALSE //Having a light on you will usually block this, meaning you'll probably need to get an initial hit on the victim with the light eater
 
 /datum/action/cooldown/spell/pointed/terrorize/cast(mob/living/carbon/human/cast_on)

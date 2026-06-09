@@ -7,6 +7,7 @@ import {
 } from 'tgui-core/components';
 
 import { useBackend } from '../backend';
+import { localizeRadioChannel } from '../constants';
 import { Window } from '../layouts';
 
 export const BorgPanel = (props) => {
@@ -79,12 +80,12 @@ export const BorgPanel = (props) => {
                 onClick={() => act('remove_cell')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Radio Channels">
+            <LabeledList.Item label="Радиоканалы">
               {channels.map((channel) => (
                 <Button
                   key={channel.name}
                   icon={channel.installed ? 'check-square-o' : 'square-o'}
-                  content={channel.name}
+                  content={localizeRadioChannel(channel.name)}
                   selected={channel.installed}
                   onClick={() =>
                     act('toggle_radio', {

@@ -39,6 +39,15 @@ type DropdownEntry = {
   value: string | number;
 };
 
+const localizedFallbacks: Record<string, string> = {
+  None: 'Нет',
+  'Use gender': 'По полу',
+};
+
+function localizeChoice(choice: string): string {
+  return localizedFallbacks[choice] || capitalizeFirst(choice);
+}
+
 export function generateOptions(
   serverData: FeatureChoicedServerData,
 ): DropdownEntry[] {
@@ -47,9 +56,8 @@ export function generateOptions(
   const newOptions: DropdownEntry[] = [];
 
   for (const choice of choices) {
-    const displayText: ReactNode = serverData.display_names
-      ? serverData.display_names[choice]
-      : capitalizeFirst(choice);
+    const displayText: ReactNode =
+      serverData.display_names?.[choice] || localizeChoice(choice);
 
     newOptions.push({
       displayText,
@@ -63,7 +71,7 @@ export function generateOptions(
 export function FeatureDropdownInput(props: DropdownInputProps) {
   const { serverData, disabled, buttons, handleSetValue, value } = props;
   const dropdownOptions = serverData ? generateOptions(serverData) : [];
-  const displayText = serverData?.display_names?.[value] || String(value);
+  const displayText = serverData?.display_names?.[value] || localizeChoice(value);
   return (
     <Dropdown
       buttons={buttons}
@@ -84,7 +92,7 @@ export type FeatureDropdownInputCoreProps = DropdownInputProps & {
 export function FeatureDropdownInputCore(props: FeatureDropdownInputCoreProps) {
   const { serverData, disabled, buttons, handleSetValue, value, populateOptions } = props;
   const dropdownOptions = serverData ? populateOptions(serverData) : [];
-  const displayText = serverData?.display_names?.[value] || String(value);
+  const displayText = serverData?.display_names?.[value] || localizeChoice(value);
 
   return (
     <Dropdown
@@ -112,9 +120,8 @@ export function FeatureIconnedDropdownInput(props: IconnedDropdownInputProps) {
     const newOptions: DropdownOptions = [];
 
     for (const choice of choices) {
-      let displayText: ReactNode = serverData.display_names?.[choice]
-        ? serverData.display_names?.[choice]
-        : capitalizeFirst(choice);
+      let displayText: ReactNode =
+        serverData.display_names?.[choice] || localizeChoice(choice);
 
       if (serverData.icons?.[choice]) {
         displayText = (
@@ -145,7 +152,7 @@ export function FeatureIconnedDropdownInput(props: IconnedDropdownInputProps) {
     }
   }, [serverData]);
 
-  const displayText = serverData?.display_names?.[value] || String(value);
+  const displayText = serverData?.display_names?.[value] || localizeChoice(value);
 
   return (
     <Dropdown

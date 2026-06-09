@@ -2,7 +2,7 @@
  * An armblade that instantly snuffs out lights
  */
 /obj/item/light_eater
-	name = "light eater" //as opposed to heavy eater
+	name = "пожиратель света" //as opposed to heavy eater
 	icon = 'icons/obj/weapons/nightmare_items.dmi'
 	icon_state = "light_eater"
 	inhand_icon_state = "light_eater"
@@ -54,12 +54,12 @@
 		return
 	playsound(target, 'sound/effects/wounds/crackandbleed.ogg', 100, TRUE)
 	if(target.stat == DEAD)
-		user.visible_message(span_warning("[user] gores [target] with [src]!"), span_warning("You gore [target] with [src], which doesn't accomplish much, but it does make you feel a little better."))
+		user.visible_message(span_warning("[user] пронзает [target] с помощью [src]!"), span_warning("Вы пронзаете [target] с помощью [src]. Это мало что даёт, но вам становится немного лучше."))
 	else if(!HAS_TRAIT(target, TRAIT_HULK) && (iscarbon(target) || issilicon(target)))
-		user.visible_message(span_boldwarning("[user] gores [target] with [src], bringing them to a halt!"), span_userdanger("You gore [target] with [src], bringing them to a halt!"))
+		user.visible_message(span_boldwarning("[user] пронзает [target] с помощью [src], останавливая жертву!"), span_userdanger("Вы пронзаете [target] с помощью [src], останавливая жертву!"))
 		target.Paralyze(issilicon(target) ? 2 SECONDS : 1 SECONDS)
 	else
-		user.visible_message(span_boldwarning("[user] gores [target] with [src], ripping into them!"), span_userdanger("You gore [target] with [src], ripping into them!"))
+		user.visible_message(span_boldwarning("[user] пронзает [target] с помощью [src], разрывая плоть!"), span_userdanger("Вы пронзаете [target] с помощью [src], разрывая плоть!"))
 		target.apply_damage(damage = force, forced = TRUE)
 	remove_crit()
 
@@ -75,7 +75,7 @@
 	has_crit = TRUE
 	add_filter("crit_glow", 3, list("type" = "outline", "color" = COLOR_CARP_RIFT_RED, "size" = 5))
 	if(ismob(loc))
-		loc.balloon_alert(loc, "critical strike ready")
+		loc.balloon_alert(loc, "критический удар готов")
 
 /obj/item/light_eater/proc/remove_crit()
 	if(!has_crit)

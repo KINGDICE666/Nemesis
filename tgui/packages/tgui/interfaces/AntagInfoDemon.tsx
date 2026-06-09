@@ -43,7 +43,7 @@ export const AntagInfoDemon = (props) => {
                     </Stack.Item>
                     <Stack.Item>
                       <ObjectivePrintout
-                        titleMessage="It is in your nature to accomplish these goals:"
+                        titleMessage="Исполнение этих целей заложено в вашей природе"
                         objectiveTextSize="20px"
                         objectives={objectives}
                       />
@@ -53,23 +53,22 @@ export const AntagInfoDemon = (props) => {
               </Stack.Item>
               {!!explain_attack && (
                 <Stack.Item>
-                  <Section fill title="Demonic Powers">
+                  <Section fill title="Демонические способности">
                     <Stack vertical>
                       <Stack.Item>
-                        <span style={jauntstyle}>Blood Jaunt:</span> You can
-                        dive in and out of blood to travel anywhere you need to
-                        be. You will gain a speed boost upon leaving the jaunt
-                        for surprise attacks. You can drag victims you have
-                        disabled through the blood, consuming them and restoring
-                        health.
+                        <span style={jauntstyle}>Кровавый рывок:</span> вы
+                        можете нырять в кровь и выходить из неё, перемещаясь
+                        туда, где нужно оказаться. При выходе из рывка вы
+                        получаете ускорение для внезапной атаки. Обезвреженных
+                        жертв можно протаскивать через кровь, поглощая их и
+                        восстанавливая здоровье.
                       </Stack.Item>
                       <Stack.Divider />
                       <Stack.Item>
-                        <span style={injurestyle}>Monstrous strike:</span> You
-                        can launch a devastating slam attack by right-clicking,
-                        capable of smashing bones in one strike. Great for
-                        preventing the escape of your victims, as their wounds
-                        will slow them.
+                        <span style={injurestyle}>Чудовищный удар:</span>{' '}
+                        правым кликом можно выполнить сокрушительную атаку,
+                        способную ломать кости одним ударом. Отлично мешает
+                        жертвам сбежать, ведь раны будут замедлять их.
                       </Stack.Item>
                     </Stack>
                   </Section>

@@ -18,54 +18,55 @@ export const AntagInfoNightmare = (props) => {
           <Stack.Item width="46.2%">
             <Section fill>
               <Stack vertical fill>
-                <Stack.Item fontSize="25px">You are a Nightmare.</Stack.Item>
+                <Stack.Item fontSize="25px">Вы - Кошмар.</Stack.Item>
                 <Stack.Item>
                   <BlockQuote>
-                    You are a creature from beyond the stars that has incredibly
-                    strong powers in the darkness, becoming nigh unbeatable.
-                    Unfortunately, you wither and burn away in the light. You
-                    must use your
-                    <span style={noticestyle}>&ensp;light eater</span> to dim
-                    the station, making hunting easier.
+                    Вы - существо из-за пределов звёзд, обладающее невероятной
+                    силой во тьме и почти непобедимое в ней. К несчастью, на
+                    свету вы увядаете и сгораете. Используйте свой
+                    <span style={noticestyle}>&ensp;пожиратель света</span>,
+                    чтобы погрузить станцию во мрак и облегчить охоту.
                   </BlockQuote>
                 </Stack.Item>
                 <Stack.Divider />
                 <Stack.Item textColor="label">
-                  <span style={tipstyle}>Tip #1:&ensp;</span>
-                  Move often. The station will be hunting you after you are
-                  discovered, so don&apos;t stay in one area for long.
+                  <span style={tipstyle}>Совет #1:&ensp;</span>
+                  Чаще перемещайтесь. После обнаружения станция начнёт охоту,
+                  поэтому не задерживайтесь в одном районе.
                   <br />
-                  <span style={tipstyle}>Tip #2:&ensp;</span>
-                  Pick unfair fights. You are incredibly strong in one versus
-                  one situations, use it. The more you fight, the harder it will
-                  be to keep it dark.
+                  <span style={tipstyle}>Совет #2:&ensp;</span>
+                  Выбирайте нечестные схватки. В дуэлях вы невероятно сильны,
+                  пользуйтесь этим. Чем больше вы дерётесь, тем труднее
+                  сохранять темноту.
                   <br />
-                  <span style={tipstyle}>Tip #3:&ensp;</span>
-                  Fully destroy APCs when possible. Instead of hunting lights
-                  that can be fixed, hunt the APCs which are harder to repair.
+                  <span style={tipstyle}>Совет #3:&ensp;</span>
+                  По возможности полностью уничтожайте ЛКП. Вместо ламп,
+                  которые легко починить, охотьтесь на ЛКП, их сложнее
+                  восстановить.
                 </Stack.Item>
               </Stack>
             </Section>
           </Stack.Item>
           <Stack.Item width="53%">
-            <Section fill title="Powers">
+            <Section fill title="Способности">
               <LabeledList>
-                <LabeledList.Item label="Shadow Dance">
-                  Whilst in the shadows, you are immune to all ranged attacks,
-                  whilst also rapidly regenerating health.
+                <LabeledList.Item label="Танец теней">
+                  В тени вы невосприимчивы ко всем дальнобойным атакам и быстро
+                  восстанавливаете здоровье.
                 </LabeledList.Item>
-                <LabeledList.Item label="Shadow Walk">
-                  You are allowed unlimited, unrestricted movement in the dark.
-                  Light will pull you out of this.
+                <LabeledList.Item label="Ходьба в тенях">
+                  В темноте вы можете свободно и без ограничений перемещаться.
+                  Свет вытащит вас из этого состояния.
                 </LabeledList.Item>
-                <LabeledList.Item label="Heart of Darkness">
-                  Your heart invites the shadows. If you die in the darkness,
-                  you will eventually revive if left alone.
+                <LabeledList.Item label="Сердце тьмы">
+                  Ваше сердце зовёт тени. Если вы умрёте во тьме и вас оставят
+                  в покое, со временем вы воскреснете.
                 </LabeledList.Item>
-                <LabeledList.Item label="Light Eater">
-                  Your twisted appendage. It will consume the light of what it
-                  touches, be it victim or object. After 7 seconds of being in
-                  jaunt, stabbing a foe will stun them or do extra damage.
+                <LabeledList.Item label="Пожиратель света">
+                  Ваш искажённый отросток. Он пожирает свет всего, к чему
+                  прикасается, будь то жертва или объект. После 7 секунд в
+                  рывке удар по врагу оглушит его или нанесёт дополнительный
+                  урон.
                 </LabeledList.Item>
               </LabeledList>
             </Section>

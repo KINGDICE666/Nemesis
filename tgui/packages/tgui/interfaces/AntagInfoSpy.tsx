@@ -37,33 +37,34 @@ export const AntagInfoSpy = () => {
           backgroundImage: 'none',
         }}
       >
-        <Section title={`You are the ${antag_name || 'Spy'}.`}>
+        <Section title={`Вы - ${antag_name || 'Шпион'}.`}>
           <Stack vertical fill ml={1} mr={1}>
             <Stack.Item fontSize={1.2}>
-              You have been equipped with a special uplink device disguised as{' '}
-              {uplink_location || 'something'} that will allow you to steal from
-              the station.
+              Вам выдали специальное устройство аплинка, замаскированное под{' '}
+              {uplink_location || 'какой-то предмет'}, с его помощью можно
+              красть со станции.
             </Stack.Item>
             <Stack.Item>
               <span style={greenText}>
-                <b>Use it in hand</b> to access your uplink, and{' '}
-                <b>right click</b> on bounty targets to steal them.
+                <b>Используйте его в руке</b>, чтобы открыть аплинк, и{' '}
+                <b>кликайте правой кнопкой</b> по целям заказов, чтобы украсть
+                их.
               </span>
             </Stack.Item>
             <Stack.Divider />
             <Stack.Item>
-              You may not be alone: There may be other spies on the station.
+              Вы можете быть не один: на станции могут быть другие шпионы.
             </Stack.Item>
             <Stack.Item>
-              Work together or work against them: The choice is yours, but{' '}
+              Работать вместе или против них - решать вам, но{' '}
               <span style={redText}>
-                the same bounty cannot be claimed twice.
+                один и тот же заказ нельзя сдать дважды.
               </span>
             </Stack.Item>
             <Stack.Divider />
             <Stack.Item>
               <ObjectivePrintout
-                titleMessage={'Your mission, should you choose to accept it'}
+                titleMessage={'Ваша миссия, если вы решите её принять'}
                 objectives={objectives}
               />
             </Stack.Item>
@@ -72,7 +73,7 @@ export const AntagInfoSpy = () => {
               {
                 <ReplaceObjectivesButton
                   can_change_objective={can_change_objective}
-                  button_title={'Make Your Own Plan'}
+                  button_title={'Составить свой план'}
                   button_colour={'green'}
                 />
               }

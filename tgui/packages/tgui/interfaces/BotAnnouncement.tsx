@@ -12,8 +12,10 @@ import {
 import { createSearch } from 'tgui-core/string';
 
 import { useBackend } from '../backend';
-import { RADIO_CHANNELS } from '../constants';
+import { localizeRadioChannel, RADIO_CHANNELS } from '../constants';
 import { Window } from '../layouts';
+
+const NO_RADIO_CHANNEL = 'No radio channel';
 
 type ButtonData = {
   name: string;
@@ -89,7 +91,7 @@ export const BotAnnouncement = (props) => {
                 setTab(TAB.Announcements);
               }}
             >
-              Announcements
+              Объявления
             </Tabs.Tab>
             <Tabs.Tab
               selected={tab === TAB.Shortcuts}
@@ -98,7 +100,7 @@ export const BotAnnouncement = (props) => {
                 setTab(TAB.Shortcuts);
               }}
             >
-              Shortcuts
+              Кнопки
             </Tabs.Tab>
           </Tabs>
         </Section>
@@ -154,7 +156,9 @@ export const BotAnnouncement = (props) => {
                                 )?.color
                           }
                         >
-                          {val.button.channel || 'No radio channel'}
+                          {val.button.channel
+                            ? localizeRadioChannel(val.button.channel)
+                            : 'Без радиоканала'}
                         </Box>
                       </Stack.Item>
                     </Stack>
@@ -171,7 +175,7 @@ export const BotAnnouncement = (props) => {
                 onChange={setSearch}
                 fluid
                 autoFocus
-                placeholder="Search..."
+                placeholder="Поиск..."
               />
             </Stack.Item>
             <Stack.Item>
@@ -179,16 +183,16 @@ export const BotAnnouncement = (props) => {
                 {tab === TAB.Announcements ? (
                   <Stack.Item grow>
                     <Dropdown
-                      options={['No radio channel', ...channels]}
+                      options={[NO_RADIO_CHANNEL, ...channels]}
                       displayText={
                         selectedChannel === null
-                          ? 'No radio channel'
-                          : selectedChannel
+                          ? 'Без радиоканала'
+                          : localizeRadioChannel(selectedChannel)
                       }
                       width="100%"
                       selected={selectedChannel}
                       onSelected={(value) => {
-                        if (value === 'No radio channel') {
+                        if (value === NO_RADIO_CHANNEL) {
                           setSelectedChannel(null);
                         } else {
                           setSelectedChannel(value);
@@ -224,8 +228,8 @@ export const BotAnnouncement = (props) => {
                     minWidth="96px"
                   >
                     {tab === TAB.Announcements
-                      ? 'Make Shortcut'
-                      : 'Delete Shortcut'}
+                      ? 'Создать кнопку'
+                      : 'Удалить кнопку'}
                   </Button>
                 </Stack.Item>
                 <Stack.Item>
@@ -254,7 +258,7 @@ export const BotAnnouncement = (props) => {
                     disabled={cooldown_left > 0}
                     minWidth="96px"
                   >
-                    Play{' '}
+                    Воспроизвести{' '}
                     {cooldown_left > 0
                       ? `(${Math.round(cooldown_left / 10)}s)`
                       : ''}

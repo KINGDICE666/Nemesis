@@ -259,3 +259,7 @@ rust_g64.dll
 
 # Rust output.
 /rust/target/*
+
+# Config Ignore
+/config/*
+!config/**/*/

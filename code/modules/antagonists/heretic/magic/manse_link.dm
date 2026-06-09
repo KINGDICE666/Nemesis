@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/pointed/manse_link
-	name = "Manse Link"
-	desc = "This spell allows you to pierce through reality and connect minds to one another \
+	name = "Связь Обители"
+	desc = "Это заклинание позволяет пронзить реальность и соединить разумы друг с другом \
 		via your Mansus Link. All minds connected to your Mansus Link will be able to communicate discreetly across great distances."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"

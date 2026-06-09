@@ -18,71 +18,71 @@ export const AntagInfoVoidwalker = (props) => {
           <Stack.Item width="50%">
             <Section fill>
               <Stack vertical fill>
-                <Stack.Item fontSize="25px">You are the Voidwalker</Stack.Item>
+                <Stack.Item fontSize="25px">Вы - Пустотник</Stack.Item>
                 <Stack.Item>
                   <BlockQuote>
-                    You are a creature from the void between stars. You were
-                    attracted to the radio signals being broadcasted by this
-                    station.
+                    Вы - существо из пустоты между звёздами. Вас привлекли
+                    радиосигналы, передаваемые этой станцией.
                   </BlockQuote>
                 </Stack.Item>
                 <Stack.Divider />
                 <Stack.Item textColor="label">
-                  <span style={tipstyle}>Survive:&ensp;</span>
-                  You have unrivaled freedom. Remain in space and no one can
-                  stop you. You can move through windows, so stay near them to
-                  always have a way out.
+                  <span style={tipstyle}>Выживайте:&ensp;</span>
+                  У вас непревзойдённая свобода. Оставайтесь в космосе, и никто
+                  не сможет вас остановить. Вы можете проходить сквозь окна,
+                  держитесь рядом с ними, чтобы всегда иметь путь отхода.
                   <br />
                   <br />
-                  <span style={tipstyle}>Hunt:&ensp;</span>
-                  Pick unfair fights. Look for inattentive targets and strike at
-                  them when they don&apos;t expect you.
+                  <span style={tipstyle}>Охотьтесь:&ensp;</span>
+                  Выбирайте нечестные схватки. Ищите невнимательные цели и
+                  бейте, когда они не ждут.
                   <br />
                   <br />
-                  <span style={tipstyle}>Abduct:&ensp;</span>
-                  Your Unsettle ability stuns and drains your targets. Knock
-                  them out with your draining slash, take them to space (or
-                  nebula vomit) and enlighten them.
+                  <span style={tipstyle}>Похищайте:&ensp;</span>
+                  Ваша способность Unsettle оглушает и истощает цели. Вырубите
+                  их истощающим ударом, утащите в космос или в туманность и
+                  просветите.
                   <br />
                   <br />
-                  <span style={tipstyle}>Reap:&ensp;</span>
-                  Our students expell our essence regularly. We can use this to
-                  go where we could otherwise not, but we reabsorb this when we
-                  use it to leave. (You can dive in space vomit.)
+                  <span style={tipstyle}>Пожинайте:&ensp;</span>
+                  Наши ученики регулярно исторгают нашу сущность. Мы можем
+                  использовать её, чтобы попасть туда, куда иначе не смогли бы,
+                  но поглощаем её обратно при уходе. (Вы можете нырять в
+                  космическую рвоту.)
                 </Stack.Item>
               </Stack>
             </Section>
           </Stack.Item>
           <Stack.Item width="50%">
-            <Section fill title="Powers">
+            <Section fill title="Способности">
               <LabeledList>
-                <LabeledList.Item label="Space Dive">
-                  You can move under the station from space, use this to hunt
-                  and get to isolated sections of space.
+                <LabeledList.Item label="Космическое погружение">
+                  Вы можете перемещаться под станцией из космоса. Используйте
+                  это для охоты и выхода к изолированным участкам космоса.
                 </LabeledList.Item>
-                <LabeledList.Item label="Draining Slash">
-                  You take the breath right from their lungs and quickly take
-                  down even the strongest opponents. Should they resist,
-                  right-click allows you to do some raw damage. Your arms are
-                  otherwise not very sophisticated, and are not good for much
-                  more than just grabbing things.
+                <LabeledList.Item label="Истощающий удар">
+                  Вы вырываете дыхание прямо из лёгких жертвы и быстро валите
+                  даже сильных противников. Если они сопротивляются, правый клик
+                  позволяет нанести прямой урон. В остальном ваши руки грубы и
+                  годятся в основном для хватания.
                 </LabeledList.Item>
-                <LabeledList.Item label="Cosmic Physiology">
-                  Your natural camouflage makes you invisible in space, as well
-                  as mending any wounds your body might have sustained. You can
-                  move through glass freely, but are slowed in gravity.
+                <LabeledList.Item label="Космическая физиология">
+                  Природная маскировка делает вас невидимым в космосе и
+                  залечивает полученные раны. Вы свободно проходите сквозь
+                  стекло, но замедляетесь при гравитации.
                 </LabeledList.Item>
                 <LabeledList.Item label="Unsettle">
-                  Target a victim while remaining only partially in their view
-                  to stun and weaken them, but also announce them your presence.
+                  Выберите жертву, оставаясь лишь частично в её поле зрения,
+                  чтобы оглушить и ослабить её, но при этом выдать своё
+                  присутствие.
                 </LabeledList.Item>
-                <LabeledList.Item label="Cosmic Dash">
-                  With a short range and negligible damage, it makes for a poor
-                  offensive tool, but great for quick escapes and repositions.
+                <LabeledList.Item label="Космический рывок">
+                  Небольшая дальность и слабый урон делают его плохой атакой,
+                  зато он отлично подходит для быстрого отхода и смены позиции.
                 </LabeledList.Item>
-                <LabeledList.Item label="Expand">
-                  For every lesson we teach, we grow in power. We can convert
-                  walls into glass to allow us to reach even further.
+                <LabeledList.Item label="Расширение">
+                  С каждым преподанным уроком мы становимся сильнее. Мы можем
+                  превращать стены в стекло, чтобы добираться ещё дальше.
                 </LabeledList.Item>
               </LabeledList>
             </Section>

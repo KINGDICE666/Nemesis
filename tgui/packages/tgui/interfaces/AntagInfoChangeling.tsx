@@ -111,13 +111,13 @@ const IntroductionSection = (props) => {
   return (
     <Section
       fill
-      title="Intro"
+      title="Вводная"
       style={{ overflowY: 'auto' }}
       buttons={
         <Button
           icon="dna"
           tooltipPosition="left"
-          tooltip={`Absorbed DNA`}
+          tooltip={`Поглощённая ДНК`}
           color="purple"
         >
           {absorbed_dna}
@@ -126,7 +126,7 @@ const IntroductionSection = (props) => {
     >
       <Stack vertical fill>
         <Stack.Item fontSize="25px">
-          You are {true_name} from the
+          Вы - {true_name} из
           <span style={hivestyle}> {hive_name}</span>.
         </Stack.Item>
         <Stack.Item>
@@ -135,7 +135,7 @@ const IntroductionSection = (props) => {
             objectiveFollowup={
               <ReplaceObjectivesButton
                 can_change_objective={can_change_objective}
-                button_title={'Evolve New Directives'}
+                button_title={'Эволюционировать новые директивы'}
                 button_colour={'green'}
               />
             }
@@ -150,25 +150,25 @@ const AbilitiesSection = () => {
   const { act, data } = useBackend<Info>();
   const { true_name } = data;
   return (
-    <Section fill title="Abilities">
+    <Section fill title="Способности">
       <Stack fill>
         <Stack.Item grow>
           <Stack fill vertical>
             <Stack.Item textColor="label" grow>
-              Your
-              <span style={absorbstyle}>&ensp;Absorb DNA</span> ability allows
-              you to steal the DNA and memories of a victim. The
-              <span style={absorbstyle}>&ensp;Extract DNA Sting</span> ability
-              also steals the DNA of a victim, and is undetectable, but does not
-              grant you their memories or speech patterns.
+              Ваша способность
+              <span style={absorbstyle}>&ensp;Поглотить ДНК</span> позволяет
+              украсть ДНК и воспоминания жертвы. Способность
+              <span style={absorbstyle}>&ensp;Жало извлечения ДНК</span> тоже
+              крадёт ДНК жертвы и остаётся незаметной, но не даёт её
+              воспоминаний или речевых шаблонов.
             </Stack.Item>
             <Stack.Divider />
             <Stack.Item textColor="label" grow>
-              Your
-              <span style={revivestyle}>&ensp;Reviving Stasis</span> ability
-              allows you to revive. It means nothing short of a complete body
-              destruction can stop you! Obviously, this is loud and so should
-              not be done in front of people you are not planning on silencing.
+              Ваша способность
+              <span style={revivestyle}>&ensp;Оживляющий стазис</span>
+              позволяет воскреснуть. Это значит, что остановить вас может
+              только полное уничтожение тела! Разумеется, это шумно, так что не
+              делайте этого перед теми, кого не собираетесь заставить замолчать.
             </Stack.Item>
           </Stack>
         </Stack.Item>
@@ -176,19 +176,18 @@ const AbilitiesSection = () => {
         <Stack.Item grow>
           <Stack fill vertical>
             <Stack.Item textColor="label" grow>
-              Your
-              <span style={transformstyle}>&ensp;Transform</span> ability allows
-              you to change into the form of those you have collected DNA from,
-              lethally and nonlethally. It will also mimic (NOT REAL CLOTHING)
-              the clothing they were wearing for every slot you have open.
+              Ваша способность
+              <span style={transformstyle}>&ensp;Трансформация</span> позволяет
+              принять облик тех, чью ДНК вы собрали, смертельно или
+              несмертельно. Она также имитирует (ЭТО НЕ НАСТОЯЩАЯ ОДЕЖДА)
+              одежду цели во всех свободных слотах.
             </Stack.Item>
             <Stack.Divider />
             <Stack.Item textColor="label" grow>
-              The
-              <span style={storestyle}>&ensp;Cellular Emporium</span> is where
-              you purchase more abilities beyond your starting kit. You have 10
-              genetic points to spend on abilities and you are able to readapt
-              after absorbing a body, refunding your points for different kits.
+              <span style={storestyle}>Клеточный эмпориум</span> позволяет
+              покупать дополнительные способности сверх стартового набора. У
+              вас есть 10 генетических очков на способности, а после поглощения
+              тела можно переадаптироваться, вернув очки для другого набора.
             </Stack.Item>
           </Stack>
         </Stack.Item>
@@ -196,22 +195,21 @@ const AbilitiesSection = () => {
         <Stack.Item grow>
           <Stack fill vertical>
             <Stack.Item textColor="label" grow>
-              All abilities require using{' '}
-              <span style={hivemindstyle}>chemicals</span>, you can see how much
-              you have with the HUD on the left side of the screen. You may also
-              hover your cursor over it to see the maximum amount of chemicals
-              you can hold. This number can increase by
-              <span style={absorbstyle}>&ensp;absorbing</span> other
-              Changelings.
+              Все способности расходуют{' '}
+              <span style={hivemindstyle}>химикаты</span>. Их количество видно
+              на HUD слева. Можно навести курсор, чтобы увидеть максимальный
+              запас химикатов. Этот максимум растёт при
+              <span style={absorbstyle}>&ensp;поглощении</span> других
+              генокрадов.
             </Stack.Item>
             <Stack.Divider />
             <Stack.Item textColor="label" grow>
-              All Changelings, regardless of origin, are linked together by the{' '}
-              <span style={hivemindstyle}>hivemind</span>. You may communicate
-              to other Changelings under your mental alias,{' '}
-              <span style={hivemindstyle}>{true_name}</span>, by starting a
-              message with <span style={hivemindstyle}>:g</span>. Work together,
-              and you will bring the station to new heights of terror.
+              Все генокрады, независимо от происхождения, связаны{' '}
+              <span style={hivemindstyle}>ульем разума</span>. Вы можете
+              общаться с другими генокрадами под своим ментальным псевдонимом{' '}
+              <span style={hivemindstyle}>{true_name}</span>, начиная сообщение
+              с <span style={hivemindstyle}>:g</span>. Работайте вместе, и вы
+              поднимете ужас станции на новый уровень.
             </Stack.Item>
           </Stack>
         </Stack.Item>
@@ -223,11 +221,10 @@ const AbilitiesSection = () => {
 const BetrayalWarning = (props) => {
   return (
     <NoticeBox danger>
-      Other Changelings are strong allies, but some Changelings may betray you.
-      Changelings grow in power greatly by absorbing their kind, and getting
-      absorbed by another Changeling will leave you as a{' '}
-      <span style={fallenstyle}>Fallen Changeling</span>. There is no greater
-      humiliation.
+      Другие генокрады - сильные союзники, но некоторые могут предать вас.
+      Генокрады значительно усиливаются, поглощая себе подобных, а поглощение
+      другим генокрадом оставит вас как{' '}
+      <span style={fallenstyle}>падшего генокрада</span>. Нет унижения сильнее.
     </NoticeBox>
   );
 };
@@ -248,21 +245,21 @@ const MemoriesSection = (props) => {
     <Section
       fill
       scrollable={!!memories && !!memories.length}
-      title="Stolen Memories"
+      title="Украденные воспоминания"
       buttons={
         <Button
           icon="info"
           tooltipPosition="left"
           tooltip={`
-            Absorbing targets allows
-            you to collect their memories. They should
-            help you impersonate your target!
+            Поглощение целей позволяет
+            собирать их воспоминания. Они помогут
+            выдавать себя за жертву!
           `}
         />
       }
     >
       {(!!memories && !memories.length && (
-        <Dimmer fontSize="20px">Absorb a victim first!</Dimmer>
+        <Dimmer fontSize="20px">Сначала поглотите жертву!</Dimmer>
       )) || (
         <Stack vertical>
           <Stack.Item>
@@ -289,10 +286,10 @@ const VictimPatternsSection = (props) => {
     <Section
       fill
       scrollable={!!stolen_antag_info}
-      title="Additional Stolen Information"
+      title="Дополнительная украденная информация"
     >
       {(!!stolen_antag_info && stolen_antag_info) || (
-        <Dimmer fontSize="20px">Absorb a victim first!</Dimmer>
+        <Dimmer fontSize="20px">Сначала поглотите жертву!</Dimmer>
       )}
     </Section>
   );

@@ -1,6 +1,6 @@
 /obj/item/storage/belt
-	name = "not actually a toolbelt"
-	desc = "Can hold various things. This is the base type of /belt, are you sure you should have this?"
+	name = "не совсем пояс"
+	desc = "Может хранить разные вещи. Это базовый тип /belt, вы уверены, что должны его видеть?"
 	icon = 'icons/obj/clothing/belts.dmi'
 	icon_state = "utility"
 	inhand_icon_state = "utility"
@@ -9,15 +9,15 @@
 	righthand_file = 'icons/mob/inhands/equipment/belt_righthand.dmi'
 	abstract_type = /obj/item/storage/belt
 	slot_flags = ITEM_SLOT_BELT
-	attack_verb_continuous = list("whips", "lashes", "disciplines")
-	attack_verb_simple = list("whip", "lash", "discipline")
+	attack_verb_continuous = list("хлещет", "стегает", "воспитывает")
+	attack_verb_simple = list("хлестнуть", "стегнуть", "воспитать")
 	max_integrity = 300
 	equip_sound = 'sound/items/equip/toolbelt_equip.ogg'
 	w_class = WEIGHT_CLASS_BULKY
 	var/content_overlays = FALSE //If this is true, the belt will gain overlays based on what it's holding
 
 /obj/item/storage/belt/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] begins belting [user.p_them()]self with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user] начинает избивать себя предметом [src]! Похоже, [user.p_theyre()] пытается совершить самоубийство!"))
 	return BRUTELOSS
 
 /obj/item/storage/belt/update_overlays()
@@ -33,8 +33,8 @@
 	update_appearance()
 
 /obj/item/storage/belt/utility
-	name = "toolbelt" //Carn: utility belt is nicer, but it bamboozles the text parsing.
-	desc = "Holds tools."
+	name = "пояс инструментов" //Carn: utility belt is nicer, but it bamboozles the text parsing.
+	desc = "Вмещает инструменты."
 	icon_state = "utility"
 	inhand_icon_state = "utility"
 	worn_icon_state = "utility"
@@ -45,8 +45,8 @@
 	storage_type = /datum/storage/utility_belt
 
 /obj/item/storage/belt/utility/chief
-	name = "chief engineer's toolbelt"
-	desc = "Holds tools, looks snazzy."
+	name = "пояс инструментов старшего инженера"
+	desc = "Вмещает инструменты и выглядит стильно."
 	icon_state = "utility_ce"
 	inhand_icon_state = "utility_ce"
 	worn_icon_state = "utility_ce"
@@ -189,8 +189,8 @@
 	new /obj/item/inducer/syndicate(src)
 
 /obj/item/storage/belt/medical
-	name = "medical belt"
-	desc = "Can hold various medical equipment."
+	name = "медицинский пояс"
+	desc = "Может хранить различное медицинское снаряжение."
 	icon_state = "medical"
 	inhand_icon_state = "medical"
 	worn_icon_state = "medical"
@@ -199,7 +199,7 @@
 	storage_type = /datum/storage/medical_belt
 
 /obj/item/storage/belt/medical/paramedic
-	name = "EMT belt"
+	name = "пояс парамедика"
 	icon_state = "emt"
 	inhand_icon_state = "security"
 	worn_icon_state = "emt"
@@ -254,8 +254,8 @@
 	return to_preload
 
 /obj/item/storage/belt/security
-	name = "security belt"
-	desc = "Can hold security gear like handcuffs and flashes."
+	name = "пояс службы безопасности"
+	desc = "Может хранить снаряжение службы безопасности, например наручники и вспышки."
 	icon_state = "security"
 	inhand_icon_state = "security"//Could likely use a better one.
 	worn_icon_state = "security"
@@ -271,8 +271,8 @@
 	update_appearance()
 
 /obj/item/storage/belt/security/webbing
-	name = "security webbing"
-	desc = "Unique and versatile chest rig, can hold security gear."
+	name = "разгрузка службы безопасности"
+	desc = "Уникальная и универсальная нагрудная разгрузка для снаряжения службы безопасности."
 	icon_state = "securitywebbing"
 	inhand_icon_state = "securitywebbing"
 	worn_icon_state = "securitywebbing"
@@ -281,8 +281,8 @@
 	storage_type = /datum/storage/security_belt/webbing
 
 /obj/item/storage/belt/mining
-	name = "explorer's webbing"
-	desc = "A versatile chest rig, cherished by miners and hunters alike."
+	name = "разгрузка исследователя"
+	desc = "Универсальная нагрудная разгрузка, любимая шахтёрами и охотниками."
 	icon_state = "explorer1"
 	inhand_icon_state = "explorer1"
 	worn_icon_state = "explorer1"
@@ -307,16 +307,16 @@
 		core.preserve()
 
 /obj/item/storage/belt/mining/primitive
-	name = "hunter's belt"
-	desc = "A versatile belt, woven from sinew."
+	name = "пояс охотника"
+	desc = "Универсальный пояс, сплетённый из сухожилий."
 	icon_state = "ebelt"
 	inhand_icon_state = "ebelt"
 	worn_icon_state = "ebelt"
 	storage_type = /datum/storage/mining_belt/primitive
 
 /obj/item/storage/belt/soulstone
-	name = "soul stone belt"
-	desc = "Designed for ease of access to the shards during a fight, as to not let a single enemy spirit slip away."
+	name = "пояс камней душ"
+	desc = "Сделан для быстрого доступа к осколкам в бою, чтобы ни один вражеский дух не ускользнул."
 	icon_state = "soulstonebelt"
 	inhand_icon_state = "soulstonebelt"
 	worn_icon_state = "soulstonebelt"
@@ -333,8 +333,8 @@
 		new /obj/item/soulstone/anybody/chaplain(src)
 
 /obj/item/storage/belt/champion
-	name = "championship belt"
-	desc = "Proves to the world that you are the strongest!"
+	name = "чемпионский пояс"
+	desc = "Доказывает миру, что вы сильнейший!"
 	icon_state = "championbelt"
 	inhand_icon_state = "championbelt"
 	worn_icon_state = "championbelt"
@@ -347,8 +347,8 @@
 	AddElement(/datum/element/adjust_fishing_difficulty, -2)
 
 /obj/item/storage/belt/military
-	name = "chest rig"
-	desc = "A set of tactical webbing worn by Syndicate boarding parties."
+	name = "нагрудная разгрузка"
+	desc = "Тактическая разгрузка, которую носят абордажные группы Синдиката."
 	icon_state = "militarywebbing"
 	inhand_icon_state = "militarywebbing"
 	worn_icon_state = "militarywebbing"
@@ -356,13 +356,13 @@
 	storage_type = /datum/storage/military_belt
 
 /obj/item/storage/belt/military/snack
-	name = "tactical snack rig"
+	name = "тактическая снек-разгрузка"
 	storage_type = /datum/storage/military_belt/snack
 
 /obj/item/storage/belt/military/snack/Initialize(mapload)
 	. = ..()
 	var/sponsor = pick("Donk Co.", "Waffle Corp.", "Roffle Co.", "Gorlex Marauders", "Tiger Cooperative")
-	desc = "A set of snack-tical webbing worn by athletes of the [sponsor] VR sports division."
+	desc = "Снек-тактическая разгрузка, которую носят спортсмены VR-подразделения [sponsor]."
 
 /obj/item/storage/belt/military/snack/full/Initialize(mapload)
 	. = ..()
@@ -396,8 +396,8 @@
 		new rig_snacks(src)
 
 /obj/item/storage/belt/military/abductor
-	name = "agent belt"
-	desc = "A belt used by abductor agents."
+	name = "пояс агента"
+	desc = "Пояс, которым пользуются агенты абдукторов."
 	icon = 'icons/obj/antags/abductor.dmi'
 	icon_state = "belt"
 	inhand_icon_state = "security"
@@ -414,15 +414,15 @@
 	new /obj/item/stack/cable_coil(src)
 
 /obj/item/storage/belt/military/army
-	name = "army belt"
-	desc = "A belt used by military forces."
+	name = "армейский пояс"
+	desc = "Пояс, используемый военными силами."
 	icon_state = "military"
 	inhand_icon_state = "security"
 	worn_icon_state = "military"
 
 /obj/item/storage/belt/military/assault
-	name = "assault belt"
-	desc = "A tactical assault belt."
+	name = "штурмовой пояс"
+	desc = "Тактический штурмовой пояс."
 	icon_state = "assault"
 	inhand_icon_state = "security"
 	worn_icon_state = "assault"
@@ -435,8 +435,8 @@
 	), src)
 
 /obj/item/storage/belt/grenade
-	name = "grenadier belt"
-	desc = "A belt for holding grenades."
+	name = "пояс гренадёра"
+	desc = "Пояс для хранения гранат."
 	icon_state = "grenadebeltnew"
 	inhand_icon_state = "security"
 	worn_icon_state = "grenadebeltnew"
@@ -459,8 +459,8 @@
 
 
 /obj/item/storage/belt/wands
-	name = "wand belt"
-	desc = "A belt designed to hold various rods of power. A veritable fanny pack of exotic magic."
+	name = "пояс жезлов"
+	desc = "Пояс для хранения различных жезлов силы. Настоящая поясная сумка экзотической магии."
 	icon_state = "soulstonebelt"
 	inhand_icon_state = "soulstonebelt"
 	worn_icon_state = "soulstonebelt"
@@ -516,8 +516,8 @@
 
 /// Not a subtype of bandolier because it acts pretty differently
 /obj/item/storage/belt/wand_bandolier
-	name = "wand bandolier"
-	desc = "A bandolier for holding a whole lot of wands. If worn on your suit, swaps expended wands for fresh ones on the fly."
+	name = "патронташ жезлов"
+	desc = "Патронташ для множества жезлов. Если носить его на костюме, он на ходу меняет разряженные жезлы на свежие."
 	icon_state = "bandolier"
 	inhand_icon_state = "bandolier"
 	worn_icon_state = "bandolier"
@@ -560,15 +560,15 @@
 	wizard.temporarilyRemoveItemFromInventory(old_wand)
 	if (!wizard.put_in_hands(fresh_wand))
 		return
-	to_chat(wizard, span_notice("You quickly draw [fresh_wand]."))
+	to_chat(wizard, span_notice("Вы быстро вытаскиваете [fresh_wand]."))
 	if (atom_storage.attempt_insert(old_wand, wizard))
 		return
 	old_wand.forceMove(wizard.drop_location())
-	to_chat(wizard, span_warning("...and drop [old_wand] on the ground."))
+	to_chat(wizard, span_warning("...и роняете [old_wand] на землю."))
 
 /obj/item/storage/belt/janitor
-	name = "janibelt"
-	desc = "A belt used to hold most janitorial supplies."
+	name = "пояс уборщика"
+	desc = "Пояс для большинства уборочных принадлежностей."
 	icon_state = "janibelt"
 	inhand_icon_state = "janibelt"
 	worn_icon_state = "janibelt"
@@ -584,8 +584,8 @@
 	new /obj/item/melee/flyswatter(src)
 
 /obj/item/storage/belt/bandolier
-	name = "bandolier"
-	desc = "A bandolier for holding rifle shotgun, and bigger revolver caliber ammunition."
+	name = "патронташ"
+	desc = "Патронташ для винтовочных, дробовых и крупных револьверных боеприпасов."
 	icon_state = "bandolier"
 	inhand_icon_state = "bandolier"
 	worn_icon_state = "bandolier"
@@ -597,8 +597,8 @@
 	), src)
 
 /obj/item/storage/belt/fannypack
-	name = "fannypack"
-	desc = "A dorky fannypack for keeping small items in. Concealed enough, or ugly enough to avert their eyes, that others won't see what you put in or take out easily."
+	name = "поясная сумка"
+	desc = "Нелепая поясная сумка для мелких предметов. Достаточно скрытная или достаточно уродливая, чтобы окружающие не заметили, что вы кладёте туда или достаёте."
 	icon_state = "fannypack_leather"
 	inhand_icon_state = null
 	worn_icon_state = "fannypack_leather"
@@ -607,58 +607,58 @@
 	storage_type = /datum/storage/fanny_pack
 
 /obj/item/storage/belt/fannypack/black
-	name = "black fannypack"
+	name = "чёрная поясная сумка"
 	icon_state = "fannypack_black"
 	worn_icon_state = "fannypack_black"
 
 /obj/item/storage/belt/fannypack/red
-	name = "red fannypack"
+	name = "красная поясная сумка"
 	icon_state = "fannypack_red"
 	worn_icon_state = "fannypack_red"
 
 /obj/item/storage/belt/fannypack/purple
-	name = "purple fannypack"
+	name = "фиолетовая поясная сумка"
 	icon_state = "fannypack_purple"
 	worn_icon_state = "fannypack_purple"
 
 /obj/item/storage/belt/fannypack/blue
-	name = "blue fannypack"
+	name = "синяя поясная сумка"
 	icon_state = "fannypack_blue"
 	worn_icon_state = "fannypack_blue"
 
 /obj/item/storage/belt/fannypack/orange
-	name = "orange fannypack"
+	name = "оранжевая поясная сумка"
 	icon_state = "fannypack_orange"
 	worn_icon_state = "fannypack_orange"
 
 /obj/item/storage/belt/fannypack/white
-	name = "white fannypack"
+	name = "белая поясная сумка"
 	icon_state = "fannypack_white"
 	worn_icon_state = "fannypack_white"
 
 /obj/item/storage/belt/fannypack/green
-	name = "green fannypack"
+	name = "зелёная поясная сумка"
 	icon_state = "fannypack_green"
 	worn_icon_state = "fannypack_green"
 
 /obj/item/storage/belt/fannypack/pink
-	name = "pink fannypack"
+	name = "розовая поясная сумка"
 	icon_state = "fannypack_pink"
 	worn_icon_state = "fannypack_pink"
 
 /obj/item/storage/belt/fannypack/cyan
-	name = "cyan fannypack"
+	name = "голубая поясная сумка"
 	icon_state = "fannypack_cyan"
 	worn_icon_state = "fannypack_cyan"
 
 /obj/item/storage/belt/fannypack/yellow
-	name = "yellow fannypack"
+	name = "жёлтая поясная сумка"
 	icon_state = "fannypack_yellow"
 	worn_icon_state = "fannypack_yellow"
 
 /obj/item/storage/belt/fannypack/cummerbund
-	name = "cummerbund"
-	desc = "A pleated sash that pairs well with a suit jacket."
+	name = "камербанд"
+	desc = "Складчатый пояс, хорошо сочетающийся с пиджаком."
 	icon_state = "cummerbund"
 	inhand_icon_state = null
 	worn_icon_state = "cummerbund"
@@ -669,7 +669,7 @@
 	new /obj/item/grenade/chem_grenade/facid(src)
 
 /obj/item/storage/belt/fannypack/black/rogue
-	name = "fannypack of ULTIMATE DESPAIR"
+	name = "поясная сумка АБСОЛЮТНОГО ОТЧАЯНИЯ"
 
 /obj/item/storage/belt/fannypack/black/rogue/PopulateContents()
 	new /obj/item/food/drug/saturnx(src)
@@ -677,7 +677,7 @@
 	new /obj/item/reagent_containers/hypospray/medipen/methamphetamine(src)
 
 /obj/item/storage/belt/sheath
-	desc = "holds like, blades and stuff. You should not be seeing this."
+	desc = "Хранит клинки и всё такое. Вы не должны это видеть."
 	w_class = WEIGHT_CLASS_BULKY
 	interaction_flags_click = parent_type::interaction_flags_click | NEED_DEXTERITY | NEED_HANDS
 	var/stored_blade
@@ -698,14 +698,14 @@
 /obj/item/storage/belt/sheath/examine(mob/user)
 	. = ..()
 	if(length(contents))
-		. += span_notice("Alt-click it to quickly draw the blade.")
+		. += span_notice("Alt-клик по нему быстро вытащит клинок.")
 
 /obj/item/storage/belt/sheath/click_alt(mob/user)
 	if(!length(contents))
-		balloon_alert(user, "it's empty!")
+		balloon_alert(user, "пусто!")
 		return CLICK_ACTION_BLOCKING
 	var/obj/item/stored_item = contents[1]
-	user.visible_message(span_notice("[user] takes [stored_item] out of [src]."), span_notice("You take [stored_item] out of [src]."))
+	user.visible_message(span_notice("[user] достаёт [stored_item] из [src]."), span_notice("Вы достаёте [stored_item] из [src]."))
 	user.put_in_hands(stored_item)
 	update_appearance()
 	return CLICK_ACTION_SUCCESS
@@ -730,8 +730,8 @@
 	COOLDOWN_START(src, resheath_cooldown, 10 SECONDS)
 
 /datum/action/innate/blade_counter
-	name = "Counterattack"
-	desc = "Anticipate an enemy's attack and strike back with your sheathed blade."
+	name = "Контратака"
+	desc = "Предугадайте атаку врага и ответьте ударом клинка из ножен."
 	button_icon = 'icons/mob/actions/actions_spells.dmi'
 	button_icon_state = "declaration"
 	ranged_mousepointer = 'icons/effects/mouse_pointers/honorbound.dmi'
@@ -749,15 +749,15 @@
 	var/obj/item/storage/belt/sheath/owners_sheath = target
 	if(!COOLDOWN_FINISHED(owners_sheath, full_ability_cooldown))
 		if(feedback)
-			to_chat(owner, span_warning("You failed a counterattack too recently!"))
+			to_chat(owner, span_warning("Вы слишком недавно провалили контратаку!"))
 		return FALSE
 	if(!length(owners_sheath.contents))
 		if(feedback)
-			to_chat(owner, span_warning("Your sheath is empty!"))
+			to_chat(owner, span_warning("Ваши ножны пусты!"))
 		return FALSE
 	if(!COOLDOWN_FINISHED(owners_sheath, resheath_cooldown))
 		if(feedback)
-			to_chat(owner, span_warning("You only just resheathed your blade!"))
+			to_chat(owner, span_warning("Вы только что убрали клинок в ножны!"))
 		return FALSE
 	return TRUE
 
@@ -765,11 +765,11 @@
 	if(!isliving(cast_on))
 		return FALSE
 	if(owner == cast_on)
-		to_chat(owner, span_warning("You can't counterattack yourself!"))
+		to_chat(owner, span_warning("Нельзя контратаковать самого себя!"))
 		return FALSE
 	var/mob/living/target = cast_on
 	if(!target.mind)
-		to_chat(owner, span_warning("They are too unpredictable to counterattack!"))
+		to_chat(owner, span_warning("Цель слишком непредсказуема для контратаки!"))
 		return FALSE
 	var/obj/item/storage/belt/sheath/oursheath = target
 	if(!length(oursheath.contents))
@@ -783,7 +783,7 @@
 	RegisterSignal(swordsman, COMSIG_LIVING_CHECK_BLOCK, PROC_REF(counter_attack))
 	swordsman.Immobilize(1 SECONDS)
 	eyed_fool = WEAKREF(cast_on)
-	swordsman.visible_message(span_danger("[swordsman] widens [swordsman.p_their()] stance, [swordsman.p_their()] hand hovering over \the [used_sheath]!"), span_notice("You prepare to counterattack [cast_on]!"))
+	swordsman.visible_message(span_danger("[swordsman] расширяет стойку, держа руку над [used_sheath]!"), span_notice("Вы готовитесь контратаковать [cast_on]!"))
 	addtimer(CALLBACK(src, PROC_REF(relax), swordsman, used_sheath), 1 SECONDS)
 	COOLDOWN_START(used_sheath, full_ability_cooldown, 60 SECONDS)
 	unset_ranged_ability(swordsman)
@@ -808,7 +808,7 @@
 
 /datum/action/innate/blade_counter/proc/do_strike(mob/living/fool, mob/living/forward_thinker, obj/item/justicetool)
 	var/obj/item/bodypart/offending_hand = fool.get_active_hand()
-	forward_thinker.visible_message(span_danger("[forward_thinker] swiftly draws \the [justicetool] and strikes [fool] during [fool.p_their()] attack!"), span_notice("You swiftly draw \the [justicetool] and counter-attack [fool]!"))
+	forward_thinker.visible_message(span_danger("[forward_thinker] быстро выхватывает [justicetool] и бьёт [fool] во время атаки!"), span_notice("Вы быстро выхватываете [justicetool] и контратакуете [fool]!"))
 	fool.apply_damage(
 		damage = justicetool.force * COUNTERMULTIPLIER,
 		damagetype = justicetool.damtype,
@@ -826,8 +826,8 @@
 	UnregisterSignal(holder, COMSIG_LIVING_CHECK_BLOCK)
 
 /datum/action/innate/blade_counter/gunpowered
-	name = "Powered Counterattack"
-	desc = "Anticipate an enemy's attack and attempt to strike back, at great risk to yourself. The firing angle requires it be held on your hip."
+	name = "Усиленная контратака"
+	desc = "Предугадайте атаку врага и попытайтесь ответить ударом с большим риском для себя. Угол выстрела требует носить ножны на бедре."
 
 	/// Whether the currently relevant counterattack succeeded.
 	var/succeeded_attempt = FALSE
@@ -844,8 +844,8 @@
 	var/obj/item/bodypart/offending_hand = fool.get_active_hand()
 	var/obj/item/bodypart/risked_hand = forward_thinker.get_active_hand()
 	if(iscarbon(fool) && offending_hand.dismember(BRUTE, FALSE, WOUND_SLASH))
-		forward_thinker.visible_message(span_danger("[forward_thinker] swiftly draws \the [justicetool] and strikes [fool] during [fool.p_their()] attack, sending [fool.p_their()] arm flying!"),
-										span_notice("You swiftly draw \the [justicetool] and cut off [fool]'s arm!"))
+		forward_thinker.visible_message(span_danger("[forward_thinker] быстро выхватывает [justicetool] и бьёт [fool] во время атаки, отрубая руку!"),
+										span_notice("Вы быстро выхватываете [justicetool] и отрубаете руку [fool]!"))
 	else
 		fool.apply_damage(
 			damage = justicetool.force * COUNTERMULTIPLIER,
@@ -858,11 +858,11 @@
 			attack_direction = get_dir(forward_thinker, fool),
 			attacking_item = justicetool,
 		)
-		forward_thinker.visible_message(span_danger("[forward_thinker] swiftly draws \the [justicetool] and strikes [fool] during [fool.p_their()] attack!"),
-										span_notice("You swiftly draw \the [justicetool] and strike them mid-attack!"))
+		forward_thinker.visible_message(span_danger("[forward_thinker] быстро выхватывает [justicetool] и бьёт [fool] во время атаки!"),
+										span_notice("Вы быстро выхватываете [justicetool] и бьёте цель прямо во время атаки!"))
 	if(!IS_ROBOTIC_LIMB(risked_hand))
-		forward_thinker.visible_message(span_danger("[forward_thinker]'s arm is unable to withstand the force of the attack!"),
-										span_danger("You feel a sharp pain as your arm is mutilated by the force of the attack!"))
+		forward_thinker.visible_message(span_danger("Рука [forward_thinker] не выдерживает силы атаки!"),
+										span_danger("Вы чувствуете резкую боль, когда вашу руку калечит силой атаки!"))
 		forward_thinker.apply_damage(
 		damage = 50,
 		damagetype = BRUTE,
@@ -887,13 +887,13 @@
 	if(!worthless_hand)
 		worthless_hand = holder.get_inactive_hand()
 		if(!worthless_hand)
-			holder.visible_message(span_danger("[holder]'s sheath misfires, sending their blade flying!"),
-									span_danger("Your sheath misfires, sending your blade flying!"))
+			holder.visible_message(span_danger("Ножны [holder] дают осечку, отправляя клинок в полёт!"),
+									span_danger("Ваши ножны дают осечку, отправляя клинок в полёт!"))
 			return
 
 	if(IS_ROBOTIC_LIMB(worthless_hand) || !worthless_hand.dismember(BRUTE, FALSE, WOUND_BLUNT))
-		holder.visible_message(span_danger("[holder]'s arm is mutilated as they misfire [holder.p_their()] sheathed blade!"),
-								span_danger("Your arm is mutilated as you fail to safely fire your blade!"))
+		holder.visible_message(span_danger("Рука [holder] искалечена из-за осечки клинка в ножнах!"),
+								span_danger("Ваша рука искалечена из-за неудачной попытки безопасно выстрелить клинком!"))
 		holder.apply_damage(
 			damage = 50,
 			damagetype = BRUTE,
@@ -903,14 +903,14 @@
 		)
 		return
 
-	holder.visible_message(span_danger("[holder]'s arm is violently torn off as they misfire [holder.p_their()] sheathed blade!"),
-							span_danger("Your arm is torn off as you fail to safely fire your blade!"))
+	holder.visible_message(span_danger("Руку [holder] жестоко отрывает из-за осечки клинка в ножнах!"),
+							span_danger("Вашу руку отрывает из-за неудачной попытки безопасно выстрелить клинком!"))
 
 #undef COUNTERMULTIPLIER
 
 /obj/item/storage/belt/sheath/sabre
-	name = "sabre sheath"
-	desc = "An ornate sheath designed to hold an officer's blade."
+	name = "ножны сабли"
+	desc = "Украшенные ножны для офицерского клинка."
 	icon_state = "sheath"
 	inhand_icon_state = "sheath"
 	worn_icon_state = "sheath"
@@ -918,16 +918,16 @@
 	stored_blade = /obj/item/melee/sabre
 
 /obj/item/storage/belt/sheath/grass_sabre
-	name = "sabre sheath"
-	desc = "A simple grass sheath designed to hold a sabre of... some sort. An actual metal one might be too sharp, though..."
+	name = "ножны сабли"
+	desc = "Простые травяные ножны для какой-то сабли. Настоящая металлическая, пожалуй, была бы слишком острой..."
 	icon_state = "grass_sheath"
 	inhand_icon_state = "grass_sheath"
 	worn_icon_state = "grass_sheath"
 	storage_type = /datum/storage/green_sabre_belt
 
 /obj/item/storage/belt/sheath/gladius
-	name = "gladius scabbard"
-	desc = "A fun-sized sheath for a fun-sized sword."
+	name = "ножны гладиуса"
+	desc = "Компактные ножны для компактного меча."
 	icon_state = "gladius_sheath"
 	inhand_icon_state = "gladius_sheath"
 	worn_icon_state = "gladius_sheath"
@@ -935,8 +935,8 @@
 	stored_blade = /obj/item/claymore/gladius
 
 /obj/item/storage/belt/sheath/katana
-	name = "katana sheath"
-	desc = "A sheath that houses the nimble katana."
+	name = "ножны катаны"
+	desc = "Ножны для стремительной катаны."
 	icon_state = "katana_sheath"
 	inhand_icon_state = "katana_sheath"
 	worn_icon_state = "katana_sheath"
@@ -956,8 +956,8 @@
 	stored_blade = NONE
 
 /obj/item/storage/belt/sheath/ninja
-	name = "energy katana sheath"
-	desc = "A high tech katana sheath that allows for quick blade movements."
+	name = "ножны энергетической катаны"
+	desc = "Высокотехнологичные ножны катаны для быстрых движений клинком."
 	icon_state = "ninja_sheath"
 	inhand_icon_state = "ninja_sheath"
 	worn_icon_state = "ninja_sheath"
@@ -965,8 +965,8 @@
 	stored_blade = /obj/item/energy_katana
 
 /obj/item/storage/belt/sheath/hanzo_katana
-	name = "hanzo katana sheath"
-	desc = "A normal black sheath meant to house the legendary hanzo steel."
+	name = "ножны катаны Хандзо"
+	desc = "Обычные чёрные ножны для легендарной стали Хандзо."
 	icon_state = "hanzo_sheath"
 	inhand_icon_state = "hanzo_sheath"
 	worn_icon_state = "hanzo_sheath"
@@ -978,8 +978,8 @@
 	stored_blade = NONE
 
 /obj/item/storage/belt/plant
-	name = "botanical belt"
-	desc = "A sturdy leather belt used to hold most hydroponics supplies."
+	name = "ботанический пояс"
+	desc = "Прочный кожаный пояс для большинства гидропонных принадлежностей."
 	icon_state = "plantbelt"
 	inhand_icon_state = "utility"
 	worn_icon_state = "plantbelt"
@@ -987,14 +987,14 @@
 	storage_type = /datum/storage/plant_belt
 
 /obj/item/storage/belt/sheath/sabre/gunpowered
-	name = "modified sabre sheath"
-	desc = "An imitation of a design made by the infamous Cold Space Wind. Has a trigger mechanism to more forcefully draw the blade."
+	name = "модифицированные ножны сабли"
+	desc = "Имитация конструкции печально известного Холодного Космического Ветра. Имеет спусковой механизм для более силового извлечения клинка."
 	icon_state = "gunsheath"
 	actions_types = list(/datum/action/innate/blade_counter/gunpowered)
 	stored_blade = null
 
 /obj/item/storage/belt/sheath/grass_sabre/gunpowered
-	name = "modified sabre sheath"
-	desc = "An imitation of a design grown by the infamous Tiziran Plasma Fire. Has a trigger mechanism to more forcefully draw the blade."
+	name = "модифицированные ножны сабли"
+	desc = "Имитация конструкции, выращенной печально известным Тизиранским Плазменным Огнём. Имеет спусковой механизм для более силового извлечения клинка."
 	icon_state = "grass_gunsheath"
 	actions_types = list(/datum/action/innate/blade_counter/gunpowered)

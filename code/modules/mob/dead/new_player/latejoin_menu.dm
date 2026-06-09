@@ -1,6 +1,6 @@
-#define JOB_CHOICE_YES "Yes"
-#define JOB_CHOICE_REROLL "Reroll"
-#define JOB_CHOICE_CANCEL "Cancel"
+#define JOB_CHOICE_YES "Выбрать"
+#define JOB_CHOICE_REROLL "Перебросить"
+#define JOB_CHOICE_CANCEL "Отмена"
 
 GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 
@@ -8,14 +8,14 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 /datum/latejoin_menu/proc/fallback_ui(mob/dead/new_player/user)
 	var/list/jobs = list()
 	for(var/datum/job/job as anything in SSjob.joinable_occupations)
-		jobs += job.title
+		jobs[job.get_display_title()] = job.title
 
-	var/input_contents = input(user, "Pick a job to join as:", "Latejoin Job Selection") as null|anything in jobs
+	var/input_contents = input(user, "Выберите профессию:", "Выбор профессии") as null|anything in jobs
 
 	if(!input_contents)
 		return
 
-	user.AttemptLateSpawn(input_contents)
+	user.AttemptLateSpawn(jobs[input_contents])
 
 /datum/latejoin_menu/ui_close(mob/dead/new_player/user)
 	. = ..()
@@ -31,12 +31,12 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 			user.jobs_menu_mounted = FALSE
 			addtimer(CALLBACK(src, PROC_REF(scream_at_player), user), 5 SECONDS)
 
-		ui = new(user, src, "JobSelection", "Latejoin Menu")
+		ui = new(user, src, "JobSelection", "Позднее подключение")
 		ui.open()
 
 /datum/latejoin_menu/proc/scream_at_player(mob/dead/new_player/player)
 	if(!player.jobs_menu_mounted)
-		to_chat(player, span_notice("If the late join menu isn't showing, hold CTRL while clicking the join button!"))
+		to_chat(player, span_notice("Если меню позднего входа не появилось, зажмите CTRL и нажмите кнопку входа!"))
 
 /datum/latejoin_menu/ui_data(mob/user)
 	var/mob/dead/new_player/owner = user
@@ -49,9 +49,9 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 	if(SSshuttle.emergency)
 		switch(SSshuttle.emergency.mode)
 			if(SHUTTLE_ESCAPE)
-				data["shuttle_status"] = "The station has been evacuated."
+				data["shuttle_status"] = "Станция эвакуирована."
 			if(SHUTTLE_CALL, SHUTTLE_DOCKED, SHUTTLE_IGNITING, SHUTTLE_ESCAPE)
-				data["shuttle_status"] = "The station is currently undergoing evacuation procedures."
+				data["shuttle_status"] = "На станции сейчас идет эвакуация."
 
 	for(var/datum/job/prioritized_job in SSjob.prioritized_jobs)
 		if(prioritized_job.current_positions >= prioritized_job.total_positions)
@@ -63,7 +63,7 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 			"jobs" = department_jobs,
 			"open_slots" = 0,
 		)
-		departments[department.department_name] = department_data
+		departments[department.get_display_name()] = department_data
 
 		for(var/datum/job/job_datum as anything in department.department_jobs)
 			//Jobs under multiple departments should only be displayed if this is their first department or the command department
@@ -73,6 +73,7 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 			var/job_availability = owner.IsJobUnavailable(job_datum.title, latejoin = TRUE)
 
 			var/list/job_data = list(
+				"display_name" = job_datum.get_display_title(),
 				"prioritized" = (job_datum in SSjob.prioritized_jobs),
 				"used_slots" = job_datum.current_positions,
 				"open_slots" = job_datum.total_positions < 0 ? "∞" : job_datum.total_positions,
@@ -104,7 +105,7 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 			"jobs" = department_jobs,
 			"color" = department.ui_color,
 		)
-		departments[department.department_name] = department_data
+		departments[department.get_display_name()] = department_data
 
 		for(var/datum/job/job_datum as anything in department.department_jobs)
 			//Jobs under multiple departments should only be displayed if this is their first department or the command department
@@ -114,8 +115,9 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 				continue
 
 			var/list/job_data = list(
+				"display_name" = job_datum.get_display_title(),
 				"command" = !!(job_datum.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND),
-				"description" = job_datum.description,
+				"description" = job_datum.get_display_description(),
 			)
 
 			department_jobs[job_datum.title] = job_data
@@ -145,11 +147,11 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 				params["job"] = job
 
 			if(!SSticker?.IsRoundInProgress())
-				tgui_alert(owner, "The round is either not ready, or has already finished...", "Oh No!")
+				tgui_alert(owner, "Раунд еще не готов или уже завершен.", "Вход невозможен")
 				return TRUE
 
 			if(SSlag_switch.measures[DISABLE_NON_OBSJOBS])
-				tgui_alert(owner, "There is an administrative lock on entering the game for non-observers!", "Oh No!")
+				tgui_alert(owner, "Администрация временно запретила вход в игру не-наблюдателям.", "Вход невозможен")
 				return TRUE
 
 			//Determines Relevent Population Cap
@@ -163,7 +165,7 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 
 			if(SSticker.queued_players.len && !(ckey(owner.key) in GLOB.admin_datums))
 				if((living_player_count() >= relevant_cap) || (owner != SSticker.queued_players[1]))
-					tgui_alert(owner, "The server is full!", "Oh No!")
+					tgui_alert(owner, "Сервер заполнен!", "Вход невозможен")
 					return TRUE
 
 			// SAFETY: AttemptLateSpawn has it's own sanity checks. This is perfectly safe.
@@ -196,20 +198,20 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 			dept_data += job_datum.title
 
 	if(dept_data.len <= 0) //Congratufuckinglations
-		tgui_alert(owner, "There are literally no random jobs available for you on this server, ahelp for assistance.", "Oh No!")
+		tgui_alert(owner, "На сервере нет доступных случайных профессий. Обратитесь в ahelp за помощью.", "Вход невозможен")
 		return
 
 	var/random_job
 
 	while(random_job != JOB_CHOICE_YES)
 		if(dept_data.len <= 0)
-			tgui_alert(owner, "It seems that there are no more random jobs available for you!", "Oh No!")
+			tgui_alert(owner, "Похоже, доступные случайные профессии закончились.", "Вход невозможен")
 			return
 
 		var/random = pick_n_take(dept_data)
 		var/list/random_job_options = list(JOB_CHOICE_YES, JOB_CHOICE_REROLL, JOB_CHOICE_CANCEL)
 
-		random_job = tgui_alert(owner, "[random]?", "Random Job", random_job_options)
+		random_job = tgui_alert(owner, "[SSjob.get_job(random)?.get_display_title() || random]?", "Случайная профессия", random_job_options)
 
 		if(random_job == JOB_CHOICE_CANCEL)
 			return

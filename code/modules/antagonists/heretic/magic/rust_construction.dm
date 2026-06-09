@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/pointed/rust_construction
-	name = "Rust Formation"
-	desc = "Transforms a rusted floor into a full wall of rust. Creating a wall underneath a mob will harm it."
+	name = "Ржавое формирование"
+	desc = "Превращает ржавый пол в полноценную стену ржавчины. Создание стены под мобом причинит ему вред."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon_state = "shield"

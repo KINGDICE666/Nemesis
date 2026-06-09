@@ -79,10 +79,10 @@
 
 	var/less_input_message
 	if(SSlag_switch.measures[DISABLE_DEAD_KEYLOOP])
-		less_input_message = " - Notice: Observer freelook is currently disabled."
+		less_input_message = " - Внимание: свободный обзор наблюдателя сейчас отключен."
 	// Don't convert this to tgui please, it's way too important
-	var/this_is_like_playing_right = alert(usr, "Are you sure you wish to observe? You will not be able to play this round![less_input_message]", "Observe", "Yes", "No")
-	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
+	var/this_is_like_playing_right = alert(usr, "Вы уверены, что хотите наблюдать? Вы не сможете играть в этом раунде![less_input_message]", "Наблюдение", "Да", "Нет")
+	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Да")
 		ready = PLAYER_NOT_READY
 		return FALSE
 
@@ -91,11 +91,11 @@
 
 	observer.started_as_observer = TRUE
 	var/obj/effect/landmark/observer_start/O = locate(/obj/effect/landmark/observer_start) in GLOB.landmarks_list
-	to_chat(src, span_notice("Now teleporting."))
+	to_chat(src, span_notice("Телепортация..."))
 	if (O)
 		observer.forceMove(O.loc)
 	else
-		to_chat(src, span_notice("Teleporting failed. Ahelp an admin please"))
+		to_chat(src, span_notice("Телепортация не удалась. Обратитесь к администрации через ahelp."))
 		stack_trace("There's no freaking observer landmark available on this map or you're making observers before the map is initialised")
 
 	observer.PossessByPlayer(key)
@@ -109,29 +109,31 @@
 
 	observer.update_appearance()
 	observer.stop_sound_channel(CHANNEL_LOBBYMUSIC)
-	deadchat_broadcast(" has observed.", "<b>[observer.real_name]</b>", follow_target = observer, turf_target = get_turf(observer), message_type = DEADCHAT_DEATHRATTLE)
+	deadchat_broadcast(" стал наблюдателем.", "<b>[observer.real_name]</b>", follow_target = observer, turf_target = get_turf(observer), message_type = DEADCHAT_DEATHRATTLE)
 	QDEL_NULL(mind)
 	qdel(src)
 	return TRUE
 
 /proc/get_job_unavailable_error_message(retval, jobtitle)
+	var/datum/job/job = SSjob?.get_job(jobtitle)
+	var/display_job = job?.get_display_title() || jobtitle || "этой должности"
 	switch(retval)
 		if(JOB_AVAILABLE)
-			return "[jobtitle] is available."
+			return "[display_job] доступен."
 		if(JOB_UNAVAILABLE_GENERIC)
-			return "[jobtitle] is unavailable."
+			return "[display_job] недоступен."
 		if(JOB_UNAVAILABLE_BANNED)
-			return "You are currently banned from [jobtitle]."
+			return "Вам запрещено играть за [display_job]."
 		if(JOB_UNAVAILABLE_PLAYTIME)
-			return "You do not have enough relevant playtime for [jobtitle]."
+			return "У вас недостаточно подходящего игрового времени для должности [display_job]."
 		if(JOB_UNAVAILABLE_ACCOUNTAGE)
-			return "Your account is not old enough for [jobtitle]."
+			return "Ваш аккаунт недостаточно старый для должности [display_job]."
 		if(JOB_UNAVAILABLE_SLOTFULL)
-			return "[jobtitle] is already filled to capacity."
+			return "Все места на должности [display_job] уже заняты."
 		if(JOB_UNAVAILABLE_ANTAG_INCOMPAT)
-			return "[jobtitle] is not compatible with some antagonist role assigned to you."
+			return "[display_job] несовместим с назначенной вам ролью антагониста."
 		if(JOB_UNAVAILABLE_AGE)
-			return "Your character is not old enough for [jobtitle]."
+			return "Ваш персонаж недостаточно взрослый для должности [display_job]."
 
 	return GENERIC_JOB_UNAVAILABLE_ERROR
 
@@ -161,7 +163,7 @@
 	// Check that they're picking someone new for new character respawning
 	if(CONFIG_GET(flag/allow_respawn) == RESPAWN_FLAG_NEW_CHARACTER)
 		if("[client.prefs.default_slot]" in persistent_client.joined_as_slots)
-			tgui_alert(usr, "You already have played this character in this round!")
+			tgui_alert(usr, "Вы уже играли этим персонажем в текущем раунде!")
 			return FALSE
 
 	var/error = IsJobUnavailable(rank)
@@ -171,7 +173,7 @@
 
 	if(SSshuttle.arrivals)
 		if(SSshuttle.arrivals.damaged && CONFIG_GET(flag/arrivals_shuttle_require_safe_latejoin))
-			tgui_alert(usr,"The arrivals shuttle is currently malfunctioning! You cannot join.")
+			tgui_alert(usr, "Шаттл прибытия сейчас неисправен! Вы не можете присоединиться.")
 			return FALSE
 
 		if(CONFIG_GET(flag/arrivals_shuttle_require_undocked))
@@ -184,7 +186,7 @@
 	var/datum/job/job = SSjob.get_job(rank)
 
 	if(!SSjob.assign_role(src, job, TRUE))
-		tgui_alert(usr, "There was an unexpected error putting you into your requested job. If you cannot join with any job, you should contact an admin.")
+		tgui_alert(usr, "При назначении выбранной профессии произошла непредвиденная ошибка. Если вы не можете войти ни за одну профессию, обратитесь к администратору.")
 		return FALSE
 
 	var/latejoin_period = CEILING(STATION_TIME_PASSED() / (5 MINUTES), 5)
@@ -323,8 +325,8 @@
 	var/has_antags = length(client.prefs.be_special) > 0
 	if(client.prefs.job_preferences.len == 0)
 		if(warn)
-			to_chat(src, span_danger("You have no jobs enabled, along with return to lobby if job is unavailable. \
-				This makes you ineligible for any round start role, please update your job preferences."))
+			to_chat(src, span_danger("У вас не включена ни одна профессия, а также включен возврат в лобби, если профессия недоступна. \
+				Из-за этого вы не можете получить роль на старте раунда. Обновите настройки профессий."))
 		ready = PLAYER_NOT_READY
 		if(has_antags)
 			log_admin("[src.ckey] has no jobs enabled, return to lobby if job is unavailable enabled and [client.prefs.be_special.len] \
@@ -363,18 +365,18 @@
 
 ///Resets the Lobby Menu HUD, recreating and reassigning it to the new player
 /mob/dead/new_player/proc/reset_menu_hud()
-	set name = "Reset Lobby Menu HUD"
+	set name = "Сбросить HUD меню лобби"
 	set category = "OOC"
 	var/mob/dead/new_player/new_player = usr
 	if(!COOLDOWN_FINISHED(new_player, reset_hud_cooldown))
-		to_chat(new_player, span_warning("You must wait <b>[DisplayTimeText(COOLDOWN_TIMELEFT(new_player, reset_hud_cooldown))]</b> before resetting the Lobby Menu HUD again!"))
+		to_chat(new_player, span_warning("Подождите <b>[DisplayTimeText(COOLDOWN_TIMELEFT(new_player, reset_hud_cooldown))]</b> перед повторным сбросом HUD меню лобби!"))
 		return
 	if(!new_player?.client)
 		return
 	COOLDOWN_START(new_player, reset_hud_cooldown, RESET_HUD_INTERVAL)
 	qdel(new_player.hud_used)
 	create_mob_hud()
-	to_chat(new_player, span_info("Lobby Menu HUD reset. You may reset the HUD again in <b>[DisplayTimeText(RESET_HUD_INTERVAL)]</b>."))
+	to_chat(new_player, span_info("HUD меню лобби сброшен. Повторный сброс будет доступен через <b>[DisplayTimeText(RESET_HUD_INTERVAL)]</b>."))
 	hud_used.show_hud(hud_used.hud_version)
 
 ///Auto deadmins an admin when they click to toggle the ready button or join game button in the menu

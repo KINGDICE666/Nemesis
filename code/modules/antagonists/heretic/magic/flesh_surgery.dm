@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/touch/flesh_surgery
-	name = "Knit Flesh"
-	desc = "A touch spell that allows you to either harvest or restore flesh of target. \
+	name = "Сшивание плоти"
+	desc = "Контактное заклинание, позволяющее извлекать или восстанавливать плоть цели. \
 		Left-clicking will extract the organs of a victim without needing to complete surgery or disembowel. \
 		You can also pick up a loose organ and insert it into your vitcim. \
 		Right-clicking, if done on summons or minions, will restore health. Can also be used to heal damaged organs."
@@ -390,8 +390,8 @@
 	return TRUE
 
 /obj/item/melee/touch_attack/flesh_surgery
-	name = "\improper knit flesh"
-	desc = "Let's go practice medicine."
+	name = "\improper сшивание плоти"
+	desc = "Пора попрактиковаться в медицине."
 	icon = 'icons/obj/weapons/hand.dmi'
 	icon_state = "disintegrate"
 	inhand_icon_state = "disintegrate"

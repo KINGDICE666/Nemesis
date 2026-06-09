@@ -4,11 +4,11 @@
 #define HEART_SPECIAL_SHADOWIFY 2
 
 /obj/item/organ/brain/shadow/nightmare
-	name = "tumorous mass"
-	desc = "A fleshy growth that was dug out of the skull of a Nightmare."
+	name = "опухолевая масса"
+	desc = "Мясистый нарост, извлечённый из черепа Кошмара."
 	icon = 'icons/obj/medical/organs/organs.dmi'
 	icon_state = "brain-x-d"
-	shade_color = "black, somehow"
+	shade_color = "чёрный, каким-то образом"
 
 	///Our associated shadow jaunt spell, for all nightmares
 	var/datum/action/cooldown/spell/jaunt/shadow_walk/our_jaunt
@@ -20,7 +20,7 @@
 
 	if(brain_owner.dna.species.id != SPECIES_NIGHTMARE)
 		brain_owner.set_species(/datum/species/shadow/nightmare, replace_missing = FALSE)
-		visible_message(span_warning("[brain_owner] thrashes as [src] takes root in [brain_owner.p_their()] body!"))
+		visible_message(span_warning("[brain_owner] бьётся в судорогах, пока [src] укореняется в [brain_owner.p_their()] теле!"))
 
 	our_jaunt = new(brain_owner)
 	our_jaunt.Grant(brain_owner)
@@ -63,26 +63,26 @@
 /datum/status_effect/shadow/nightmare/proc/dodge_bullets(mob/living/carbon/human/source, obj/projectile/hitting_projectile, def_zone)
 	SIGNAL_HANDLER
 	source.visible_message(
-		span_danger("[source] dances in the shadows, evading [hitting_projectile]!"),
-		span_danger("You evade [hitting_projectile] with the cover of darkness!"),
+		span_danger("[source] танцует в тенях, уклоняясь от [hitting_projectile]!"),
+		span_danger("Вы уклоняетесь от [hitting_projectile] под покровом тьмы!"),
 	)
 	playsound(source, SFX_BULLET_MISS, 75, TRUE)
 	return COMPONENT_BULLET_PIERCED
 
 /atom/movable/screen/alert/status_effect/shadow_regeneration/nightmare
-	name = "Lightless Domain"
-	desc = "Bathed in soothing darkness you will slowly regenerate, even past the point of death. \
-		Heightened reflexes will allow you to dodge projectile weapons."
+	name = "Владения без света"
+	desc = "Окутанные успокаивающей тьмой, вы медленно восстанавливаетесь, даже за гранью смерти. \
+		Обострённые рефлексы позволяют уклоняться от снарядов."
 
 /obj/item/organ/heart/nightmare
-	name = "heart of darkness"
-	desc = "An alien organ that twists and writhes when exposed to light."
+	name = "сердце тьмы"
+	desc = "Чужеродный орган, который скручивается и извивается на свету."
 	visual = TRUE
 	icon = 'icons/obj/medical/organs/shadow_organs.dmi'
 	icon_state = "dark_heart-on"
 	base_icon_state = "dark_heart"
 
-	beat_noise = "the writhing pulses of a fear given form" // evil schmeevil
+	beat_noise = "извивающиеся пульсации страха, обрётшего форму" // evil schmeevil
 	decay_factor = 0
 	// No love is to be found in a heart so twisted.
 	food_reagents = list(/datum/reagent/consumable/nutriment/organ_tissue = 5)
@@ -97,14 +97,14 @@
 	if(M != user)
 		return ..()
 	user.visible_message(
-		span_warning("[user] raises [src] to [user.p_their()] mouth and tears into it with [user.p_their()] teeth!"),
-		span_danger("[src] feels unnaturally cold in your hands. You raise [src] to your mouth and devour it!")
+		span_warning("[user] подносит [src] ко рту и вгрызается в него зубами!"),
+		span_danger("[src] неестественно холоден в ваших руках. Вы подносите [src] ко рту и пожираете его!")
 	)
 	playsound(user, 'sound/effects/magic/demon_consume.ogg', 50, TRUE)
 
 	user.visible_message(
-		span_warning("Blood erupts from [user]'s arm as it reforms into a weapon!"),
-		span_userdanger("Icy blood pumps through your veins as your arm reforms itself!")
+		span_warning("Кровь вырывается из руки [user], пока она превращается в оружие!"),
+		span_userdanger("Ледяная кровь пульсирует в ваших венах, пока рука перестраивается!")
 	)
 	user.temporarilyRemoveItemFromInventory(src, TRUE)
 	Insert(user)
@@ -119,7 +119,7 @@
 	. = ..()
 	respawn_progress = 0
 	if(blade && special != HEART_SPECIAL_SHADOWIFY)
-		heart_owner.visible_message(span_warning("\The [blade] disintegrates!"))
+		heart_owner.visible_message(span_warning("\The [blade] распадается!"))
 		QDEL_NULL(blade)
 
 /obj/item/organ/heart/nightmare/Stop()
@@ -143,9 +143,9 @@
 		Remove(owner, HEART_SPECIAL_SHADOWIFY)
 		old_owner.set_species(/datum/species/shadow)
 		Insert(old_owner, HEART_SPECIAL_SHADOWIFY)
-		to_chat(owner, span_userdanger("You feel the shadows invade your skin, leaping into the center of your chest! You're alive!"))
+		to_chat(owner, span_userdanger("Вы чувствуете, как тени вторгаются в кожу и бросаются к центру груди! Вы живы!"))
 		SEND_SOUND(owner, sound('sound/effects/ghost.ogg'))
-	owner.visible_message(span_warning("[owner] staggers to [owner.p_their()] feet!"))
+	owner.visible_message(span_warning("[owner] пошатываясь поднимается на ноги!"))
 	playsound(owner, 'sound/effects/hallucinations/far_noise.ogg', 50, TRUE)
 	respawn_progress = 0
 

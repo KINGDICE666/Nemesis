@@ -584,36 +584,36 @@
 /obj/item/card/id/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
 
-	context[SCREENTIP_CONTEXT_RMB] = "Project pay stand"
+	context[SCREENTIP_CONTEXT_RMB] = "Поставить платёжную стойку"
 
 	if(isnull(held_item) || (held_item == src))
-		context[SCREENTIP_CONTEXT_LMB] = "Show ID"
+		context[SCREENTIP_CONTEXT_LMB] = "Показать ID"
 	else if(iscash(held_item) || istype(held_item, /obj/item/storage/bag/money))
-		context[SCREENTIP_CONTEXT_LMB] = "Insert"
+		context[SCREENTIP_CONTEXT_LMB] = "Вставить"
 	else if(istype(held_item, /obj/item/rupee))
-		context[SCREENTIP_CONTEXT_LMB] = "Insert?"
+		context[SCREENTIP_CONTEXT_LMB] = "Вставить?"
 
 	if(isnull(registered_account) || registered_account.replaceable) //Same check we use when we check if we can assign an account
-		context[SCREENTIP_CONTEXT_ALT_RMB] = "Assign account"
+		context[SCREENTIP_CONTEXT_ALT_RMB] = "Назначить счёт"
 	else if(registered_account.account_balance > 0)
-		context[SCREENTIP_CONTEXT_ALT_LMB] = "Withdraw [MONEY_NAME]"
+		context[SCREENTIP_CONTEXT_ALT_LMB] = "Снять [MONEY_NAME]"
 	if(trim && length(trim.honorifics))
-		context[SCREENTIP_CONTEXT_CTRL_LMB] = "Toggle honorific"
+		context[SCREENTIP_CONTEXT_CTRL_LMB] = "Переключить обращение"
 	return CONTEXTUAL_SCREENTIP_SET
 
 /obj/item/card/id/add_item_context(obj/item/source, list/context, atom/target, mob/living/user)
 	. = ..()
 	if(iscash(target))
-		context[SCREENTIP_CONTEXT_LMB] = "Insert into card"
+		context[SCREENTIP_CONTEXT_LMB] = "Вставить в карту"
 		return CONTEXTUAL_SCREENTIP_SET
 
 /obj/item/card/id/proc/try_project_paystand(mob/user, turf/target)
 	if(!COOLDOWN_FINISHED(src, last_holopay_projection))
-		balloon_alert(user, "still recharging")
+		balloon_alert(user, "перезаряжается")
 		return
 	if(!can_be_used_in_payment(user))
-		balloon_alert(user, "no account!")
-		to_chat(user, span_warning("You need a valid bank account to do this."))
+		balloon_alert(user, "нет счёта!")
+		to_chat(user, span_warning("Для этого нужен действующий банковский счёт."))
 		return
 	/// Determines where the holopay will be placed based on tile contents
 	var/turf/projection
@@ -626,8 +626,8 @@
 	else if(can_proj_holopay(user_loc))
 		projection = user_loc
 	if(!projection)
-		balloon_alert(user, "no space")
-		to_chat(user, span_warning("You need to be standing on or near an open tile to do this."))
+		balloon_alert(user, "нет места")
+		to_chat(user, span_warning("Для этого нужно стоять на свободной клетке или рядом с ней."))
 		return
 	/// Success: Valid tile for holopay placement
 	if(my_store)
@@ -694,7 +694,7 @@
  */
 /obj/item/card/id/proc/set_holopay_name(name)
 	if(length(name) < 3 || length(name) > MAX_NAME_LEN)
-		to_chat(usr, span_warning("Must be between 3 - 42 characters."))
+		to_chat(usr, span_warning("Длина должна быть от 3 до 42 символов."))
 	else
 		holopay_name = html_encode(trim(name, MAX_NAME_LEN))
 
@@ -712,7 +712,7 @@
 
 /obj/item/card/id/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/rupee))
-		to_chat(user, span_warning("Your ID smartly rejects the strange shard of glass. Who knew, apparently it's not ACTUALLY valuable!"))
+		to_chat(user, span_warning("Ваша ID-карта благоразумно отвергает странный осколок стекла. Похоже, он не НАСТОЛЬКО ценный!"))
 		return ITEM_INTERACT_BLOCKING
 	else if(iscash(tool))
 		return insert_money(tool, user) ? ITEM_INTERACT_SUCCESS : ITEM_INTERACT_BLOCKING
@@ -722,7 +722,7 @@
 		var/money_added = mass_insert_money(money_contained, user)
 		if(!money_added)
 			return ITEM_INTERACT_BLOCKING
-		to_chat(user, span_notice("You stuff the contents into the card! They disappear in a puff of bluespace smoke, adding [money_added] worth of [MONEY_NAME] to the linked account."))
+		to_chat(user, span_notice("Вы запихиваете содержимое в карту! Оно исчезает в клубе блюспейс-дыма, добавляя [money_added] [MONEY_NAME] на привязанный счёт."))
 		return ITEM_INTERACT_SUCCESS
 	return NONE
 
@@ -741,21 +741,21 @@
 		physical_currency = TRUE
 
 	if(!registered_account)
-		to_chat(user, span_warning("[src] doesn't have a linked account to deposit [money] into!"))
+		to_chat(user, span_warning("К [src] не привязан счёт для внесения [money]!"))
 		return FALSE
 	var/cash_money = money.get_item_credit_value()
 	if(!cash_money)
-		to_chat(user, span_warning("[money] doesn't seem to be worth anything!"))
+		to_chat(user, span_warning("[money] ничего не стоит!"))
 		return FALSE
 	registered_account.adjust_money(cash_money, "System: Deposit")
 	SSblackbox.record_feedback("amount", "credits_inserted", cash_money)
 	log_econ("[cash_money] [MONEY_NAME] were inserted into [src] owned by [src.registered_name]")
 	if(physical_currency)
-		to_chat(user, span_notice("You stuff [money] into [src]. It disappears in a small puff of bluespace smoke, adding [cash_money] [MONEY_NAME] to the linked account."))
+		to_chat(user, span_notice("Вы запихиваете [money] в [src]. Оно исчезает в лёгком облачке блюспейс-дыма, добавляя [cash_money] [MONEY_NAME] на привязанный счёт."))
 	else
-		to_chat(user, span_notice("You insert [money] into [src], adding [cash_money] [MONEY_NAME] to the linked account."))
+		to_chat(user, span_notice("Вы вставляете [money] в [src], добавляя [cash_money] [MONEY_NAME] на привязанный счёт."))
 
-	to_chat(user, span_notice("The linked account now reports a balance of [registered_account.account_balance] [MONEY_SYMBOL]."))
+	to_chat(user, span_notice("Баланс привязанного счёта: [registered_account.account_balance] [MONEY_SYMBOL]."))
 	qdel(money)
 	return TRUE
 
@@ -768,7 +768,7 @@
  */
 /obj/item/card/id/proc/mass_insert_money(list/money, mob/user)
 	if(!registered_account)
-		to_chat(user, span_warning("[src] doesn't have a linked account to deposit into!"))
+		to_chat(user, span_warning("К [src] не привязан счёт для внесения средств!"))
 		return FALSE
 
 	if (!money || !length(money))
@@ -797,23 +797,23 @@
 /obj/item/card/id/proc/set_new_account(mob/living/user)
 	. = FALSE
 	if(loc != user)
-		to_chat(user, span_warning("You must be holding the ID to continue!"))
+		to_chat(user, span_warning("Чтобы продолжить, нужно держать ID-карту в руках!"))
 		return FALSE
 	var/list/user_memories = user.mind.memories
 	var/datum/memory/key/account/user_key = user_memories[/datum/memory/key/account]
 	var/default_account = (istype(user_key) && user_key.remembered_id) || 11111
-	var/new_bank_id = tgui_input_number(user, "Enter the account ID to associate with this card.", "Link Bank Account", default_account, 999999, 111111)
+	var/new_bank_id = tgui_input_number(user, "Введите ID банковского счёта для привязки к этой карте.", "Привязка банковского счёта", default_account, 999999, 111111)
 	if(!new_bank_id || QDELETED(user) || QDELETED(src) || issilicon(user) || !alt_click_can_use_id(user) || loc != user)
 		return FALSE
 	if(registered_account?.account_id == new_bank_id)
-		to_chat(user, span_warning("The account ID was already assigned to this card."))
+		to_chat(user, span_warning("Этот ID счёта уже привязан к карте."))
 		return FALSE
 	var/datum/bank_account/account = SSeconomy.bank_accounts_by_id["[new_bank_id]"]
 	if(isnull(account))
-		to_chat(user, span_warning("The account ID number provided is invalid."))
+		to_chat(user, span_warning("Указанный ID счёта недействителен."))
 		return FALSE
 	set_account(account, transfer_funds = TRUE)
-	to_chat(user, span_notice("The provided account has been linked to this ID card. It contains [account.account_balance] [MONEY_NAME]."))
+	to_chat(user, span_notice("Указанный счёт привязан к ID-карте. На нём [account.account_balance] [MONEY_NAME]."))
 	return TRUE
 
 /obj/item/card/id/click_alt(mob/living/user)
@@ -823,34 +823,34 @@
 		registered_account.bank_card_talk(span_warning("内部服务器错误"), TRUE)
 		return CLICK_ACTION_SUCCESS
 	if(registered_account.account_debt)
-		var/choice = tgui_alert(user, "Choose An Action", "Bank Account", list("Withdraw", "Pay Debt"))
+		var/choice = tgui_alert(user, "Выберите действие", "Банковский счёт", list("Снять", "Погасить долг"))
 		if(!choice || QDELETED(user) || QDELETED(src) || !alt_click_can_use_id(user) || loc != user)
 			return CLICK_ACTION_BLOCKING
-		if(choice == "Pay Debt")
+		if(choice == "Погасить долг")
 			pay_debt(user)
 			return CLICK_ACTION_SUCCESS
 	if(loc != user)
-		to_chat(user, span_warning("You must be holding the ID to continue!"))
+		to_chat(user, span_warning("Чтобы продолжить, нужно держать ID-карту в руках!"))
 		return CLICK_ACTION_BLOCKING
 	if(registered_account.replaceable && !registered_account.account_balance)
-		var/choice = tgui_alert(user, "This card's account is unassigned. Would you like to link a bank account?", "Bank Account", list("Link Account", "Leave Unassigned"))
+		var/choice = tgui_alert(user, "К этой карте не привязан счёт. Хотите привязать банковский счёт?", "Банковский счёт", list("Привязать счёт", "Оставить без счёта"))
 		if(!choice || QDELETED(user) || QDELETED(src) || !alt_click_can_use_id(user) || loc != user)
 			return CLICK_ACTION_BLOCKING
-		if(choice == "Link Account")
+		if(choice == "Привязать счёт")
 			set_new_account(user)
 			return CLICK_ACTION_SUCCESS
-	var/amount_to_remove = tgui_input_number(user, "How much do you want to withdraw? (Max: [registered_account.account_balance] [MONEY_SYMBOL])", "Withdraw Funds", max_value = registered_account.account_balance)
+	var/amount_to_remove = tgui_input_number(user, "Сколько вы хотите снять? (Макс.: [registered_account.account_balance] [MONEY_SYMBOL])", "Снятие средств", max_value = registered_account.account_balance)
 	if(!amount_to_remove || QDELETED(user) || QDELETED(src) || issilicon(user) || loc != user)
 		return CLICK_ACTION_BLOCKING
 	if(!alt_click_can_use_id(user))
 		return CLICK_ACTION_BLOCKING
 	if(!registered_account.adjust_money(-amount_to_remove, "System: Withdrawal"))
 		var/difference = amount_to_remove - registered_account.account_balance
-		registered_account.bank_card_talk(span_warning("ERROR: The linked account requires [difference] more [MONEY_NAME_AUTOPURAL(difference)] to perform that withdrawal."), TRUE)
+		registered_account.bank_card_talk(span_warning("ОШИБКА: на привязанном счёте не хватает ещё [difference] [MONEY_NAME_AUTOPURAL(difference)] для этого снятия."), TRUE)
 		return CLICK_ACTION_BLOCKING
 	var/obj/item/holochip/holochip = new (user.drop_location(), amount_to_remove)
 	user.put_in_hands(holochip)
-	to_chat(user, span_notice("You withdraw [amount_to_remove] [MONEY_NAME] into a holochip."))
+	to_chat(user, span_notice("Вы снимаете [amount_to_remove] [MONEY_NAME] в виде голочипа."))
 	SSblackbox.record_feedback("amount", "credits_removed", amount_to_remove)
 	log_econ("[amount_to_remove] [MONEY_NAME] were removed from [src] owned by [registered_name]")
 	return CLICK_ACTION_SUCCESS
@@ -863,15 +863,15 @@
 		set_new_account(user)
 
 /obj/item/card/id/proc/pay_debt(user)
-	var/amount_to_pay = tgui_input_number(user, "How much do you want to pay? (Max: [registered_account.account_balance] [MONEY_SYMBOL])", "Debt Payment", max_value = min(registered_account.account_balance, registered_account.account_debt))
+	var/amount_to_pay = tgui_input_number(user, "Сколько вы хотите заплатить? (Макс.: [registered_account.account_balance] [MONEY_SYMBOL])", "Погашение долга", max_value = min(registered_account.account_balance, registered_account.account_debt))
 	if(!amount_to_pay || QDELETED(src) || loc != user || !alt_click_can_use_id(user))
 		return
 	var/prev_debt = registered_account.account_debt
 	var/amount_paid = registered_account.pay_debt(amount_to_pay)
 	if(amount_paid)
-		var/message = span_notice("You pay [amount_to_pay] [MONEY_NAME] of a [prev_debt] [MONEY_SYMBOL] debt. [registered_account.account_debt] [MONEY_SYMBOL] to go.")
+		var/message = span_notice("Вы платите [amount_to_pay] [MONEY_NAME] из долга в [prev_debt] [MONEY_SYMBOL]. Осталось [registered_account.account_debt] [MONEY_SYMBOL].")
 		if(!registered_account.account_debt)
-			message = span_nicegreen("You pay the last [amount_to_pay] [MONEY_NAME] of your debt, extinguishing it. Congratulations!")
+			message = span_nicegreen("Вы выплачиваете последние [amount_to_pay] [MONEY_NAME] долга. Поздравляем!")
 		to_chat(user, message)
 
 /obj/item/card/id/examine(mob/user)
@@ -880,15 +880,15 @@
 		return
 
 	if(registered_account && !isnull(registered_account.account_id))
-		. += "The account linked to the ID belongs to '[registered_account.account_holder]' and reports a balance of [registered_account.account_balance] [MONEY_SYMBOL]."
+		. += "Привязанный к ID счёт принадлежит '[registered_account.account_holder]'. Баланс: [registered_account.account_balance] [MONEY_SYMBOL]."
 		if(ACCESS_COMMAND in access)
 			var/datum/bank_account/linked_dept = SSeconomy.get_dep_account(registered_account.account_job.paycheck_department)
-			. += "The [linked_dept.account_holder] linked to the ID reports a balance of [linked_dept.account_balance] [MONEY_SYMBOL]."
+			. += "Счёт [linked_dept.account_holder], связанный с ID, сообщает баланс [linked_dept.account_balance] [MONEY_SYMBOL]."
 	else
-		. += span_notice("Alt-Right-Click the ID to set the linked bank account.")
+		. += span_notice("Alt-ПКМ по ID-карте, чтобы указать привязанный банковский счёт.")
 
 	if(HAS_TRAIT(user, TRAIT_ID_APPRAISER))
-		. += HAS_TRAIT(src, TRAIT_JOB_FIRST_ID_CARD) ? span_boldnotice("Hmm... yes, this ID was issued from Central Command!") : span_boldnotice("This ID was created in this sector, not by Central Command.")
+		. += HAS_TRAIT(src, TRAIT_JOB_FIRST_ID_CARD) ? span_boldnotice("Хм... да, эта ID-карта выдана Центральным командованием!") : span_boldnotice("Эта ID-карта создана в этом секторе, не Центральным командованием.")
 		if(HAS_TRAIT(src, TRAIT_TASTEFULLY_THICK_ID_CARD) && (user.is_holding(src) || (IsReachableBy(user) && user.put_in_hands(src, ignore_animation = FALSE))))
 			ADD_TRAIT(src, TRAIT_NODROP, "psycho")
 			. += span_hypnophrase("Look at that subtle coloring... The tasteful thickness of it. Oh my God, it even has a watermark...")
@@ -898,7 +898,7 @@
 				var/mob/living/living_user = user
 				living_user.adjust_jitter(10 SECONDS)
 			addtimer(CALLBACK(src, PROC_REF(drop_card), user), 10 SECONDS)
-	. += span_notice("<i>There's more information below, you can look again to take a closer look...</i>")
+	. += span_notice("<i>Ниже есть дополнительная информация. Осмотрите ещё раз, чтобы взглянуть внимательнее...</i>")
 
 /obj/item/card/id/proc/drop_card(mob/user)
 	user.stop_sound_channel(CHANNEL_HEARTBEAT)
@@ -916,33 +916,33 @@
 	if(!user.can_read(src))
 		return
 
-	. += span_notice("<i>You examine [src] closer, and note the following...</i>")
+	. += span_notice("<i>Вы внимательнее осматриваете [src] и замечаете следующее...</i>")
 
 	if(registered_age)
-		. += "The card indicates that the holder is [registered_age] years old. [(registered_age < AGE_MINOR) ? "There's a holographic stripe that reads <b>[span_danger("'MINOR: DO NOT SERVE ALCOHOL OR TOBACCO'")]</b> along the bottom of the card." : ""]"
+		. += "На карте указано, что владельцу [registered_age] лет. [(registered_age < AGE_MINOR) ? "Внизу карты есть голографическая полоса с надписью <b>[span_danger("'НЕСОВЕРШЕННОЛЕТНИЙ: НЕ ПРОДАВАТЬ АЛКОГОЛЬ И ТАБАК'")]</b>." : ""]"
 	if(registered_account)
 		if(registered_account.mining_points)
-			. += "There's [registered_account.mining_points] mining point\s loaded onto the card's bank account."
-		. += "The account linked to the ID belongs to '[registered_account.account_holder]' and reports a balance of [registered_account.account_balance] [MONEY_SYMBOL]."
+			. += "На банковском счёте карты есть [registered_account.mining_points] шахтёрских очков."
+		. += "Привязанный к ID счёт принадлежит '[registered_account.account_holder]'. Баланс: [registered_account.account_balance] [MONEY_SYMBOL]."
 		if(registered_account.account_debt)
-			. += span_warning("The account is currently indebted for [registered_account.account_debt] [MONEY_SYMBOL]. [100*DEBT_COLLECTION_COEFF]% of all earnings will go towards extinguishing it.")
+			. += span_warning("На счёте есть долг [registered_account.account_debt] [MONEY_SYMBOL]. [100*DEBT_COLLECTION_COEFF]% всех доходов будет уходить на его погашение.")
 		if(registered_account.account_job)
 			var/datum/bank_account/D = SSeconomy.get_dep_account(registered_account.account_job.paycheck_department)
 			if(D)
-				. += "The [D.account_holder] reports a balance of [D.account_balance] [MONEY_SYMBOL]."
-		. += span_info("Alt-Click the ID to pull money from the linked account in the form of holochips.")
-		. += span_info("You can insert [MONEY_NAME] into the linked account by pressing holochips, cash, or coins against the ID.")
+				. += "Счёт [D.account_holder] сообщает баланс [D.account_balance] [MONEY_SYMBOL]."
+		. += span_info("Alt-клик по ID-карте снимает деньги с привязанного счёта в виде голочипов.")
+		. += span_info("[MONEY_NAME] можно внести на привязанный счёт, приложив к ID голочипы, наличные или монеты.")
 		if(registered_account.replaceable)
-			. += span_info("Alt-Right-Click the ID to change the linked bank account.")
+			. += span_info("Alt-ПКМ по ID-карте меняет привязанный банковский счёт.")
 		if(registered_account.civilian_bounty)
-			. += span_info("<b>There is an active civilian bounty.</b>")
+			. += span_info("<b>Есть активный гражданский заказ.</b>")
 			. += span_info("<i>[registered_account.bounty_text()]</i>")
-			. += span_info("Quantity: [registered_account.bounty_num()]")
-			. += span_info("Reward: [registered_account.bounty_value()]")
+			. += span_info("Количество: [registered_account.bounty_num()]")
+			. += span_info("Награда: [registered_account.bounty_value()]")
 		if(registered_account.account_holder == user.real_name)
-			. += span_boldnotice("If you lose this ID card, you can reclaim your account by Alt-Clicking a blank ID card while holding it and entering your account ID number.")
+			. += span_boldnotice("Если вы потеряете эту ID-карту, счёт можно восстановить: держите пустую ID-карту, нажмите Alt-клик и введите номер счёта.")
 	else
-		. += span_info("There is no registered account linked to this card. Alt-Click to add one.")
+		. += span_info("К этой карте не привязан зарегистрированный счёт. Alt-клик, чтобы добавить его.")
 
 	return .
 
@@ -1568,10 +1568,10 @@
 /obj/item/card/id/advanced/prisoner/proc/set_sentence_time(mob/living/user, obj/item/card/id/our_card)
 	var/list/id_access = our_card.GetAccess()
 	if(!(ACCESS_BRIG in id_access))
-		balloon_alert(user, "access denied!")
+		balloon_alert(user, "доступ запрещён!")
 		return ITEM_INTERACT_BLOCKING
 	if(!user.is_holding(src))
-		to_chat(user, span_warning("You must be holding the ID to continue!"))
+		to_chat(user, span_warning("Чтобы продолжить, нужно держать ID-карту в руках!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(timed) // If we already have a time set, reset the card
@@ -1684,17 +1684,17 @@
 /obj/item/card/id/advanced/plainclothes/examine(mob/user)
 	. = ..()
 	if(trim_assignment_override)
-		. += span_smallnotice("it's currently under plainclothes identity.")
+		. += span_smallnotice("Сейчас используется скрытая личность.")
 	else
-		. += span_smallnotice("flip it to switch to the plainclothes identity.")
+		. += span_smallnotice("Переверните карту, чтобы переключиться на скрытую личность.")
 
 /obj/item/card/id/advanced/plainclothes/attack_self(mob/user)
-	var/popup_input = tgui_input_list(user, "Choose Action", "Two-Sided ID", list("Show", "Flip"))
+	var/popup_input = tgui_input_list(user, "Выберите действие", "Двухсторонняя ID", list("Показать", "Перевернуть"))
 	if(!popup_input || !after_input_check(user))
 		return TRUE
-	if(popup_input == "Show")
+	if(popup_input == "Показать")
 		return ..()
-	balloon_alert(user, "flipped")
+	balloon_alert(user, "перевёрнуто")
 	if(trim_assignment_override)
 		SSid_access.remove_trim_override(src)
 	else
@@ -1755,17 +1755,17 @@
 	// to sneakily steal their accesses by swiping our agent ID card near them. As a result, we
 	// return ITEM_INTERACT_BLOCKING to cancel any part of the following the attack chain.
 	if(ishuman(interacting_with))
-		interacting_with.balloon_alert(user, "scanning ID card...")
+		interacting_with.balloon_alert(user, "сканирование ID...")
 
 		if(!do_after(user, 2 SECONDS, interacting_with, hidden = TRUE))
-			interacting_with.balloon_alert(user, "interrupted!")
+			interacting_with.balloon_alert(user, "прервано!")
 			return ITEM_INTERACT_BLOCKING
 
 		var/mob/living/carbon/human/human_target = interacting_with
 		var/list/target_id_cards = human_target.get_all_contents_type(/obj/item/card/id)
 
 		if(!length(target_id_cards))
-			interacting_with.balloon_alert(user, "no IDs!")
+			interacting_with.balloon_alert(user, "нет ID!")
 			return ITEM_INTERACT_BLOCKING
 
 		var/selected_id = pick(target_id_cards)
@@ -1777,7 +1777,7 @@
 	if(isitem(interacting_with))
 		var/obj/item/target_item = interacting_with
 
-		interacting_with.balloon_alert(user, "scanning ID card...")
+		interacting_with.balloon_alert(user, "сканирование ID...")
 
 		var/list/target_id_cards = target_item.get_all_contents_type(/obj/item/card/id)
 		var/target_item_id = target_item.GetID()
@@ -1786,7 +1786,7 @@
 			target_id_cards |= target_item_id
 
 		if(!length(target_id_cards))
-			interacting_with.balloon_alert(user, "no IDs!")
+			interacting_with.balloon_alert(user, "нет ID!")
 			return ITEM_INTERACT_BLOCKING
 
 		var/selected_id = pick(target_id_cards)
@@ -1867,7 +1867,7 @@
 
 	var/obj/item/card/id/target_card = theft_target?.resolve()
 	if(QDELETED(target_card))
-		to_chat(usr, span_notice("The ID card you were attempting to scan is no longer in range."))
+		to_chat(usr, span_notice("ID-карта, которую вы пытались сканировать, больше не в зоне действия."))
 		target_card = null
 		return TRUE
 
@@ -1875,7 +1875,7 @@
 	var/turf/our_turf = get_turf(src)
 	var/turf/target_turf = get_turf(target_card)
 	if(!our_turf.Adjacent(target_turf))
-		to_chat(usr, span_notice("The ID card you were attempting to scan is no longer in range."))
+		to_chat(usr, span_notice("ID-карта, которую вы пытались сканировать, больше не в зоне действия."))
 		target_card = null
 		return TRUE
 
@@ -1911,14 +1911,14 @@
 /obj/item/card/id/advanced/chameleon/attack_self(mob/user)
 	if(!user.can_perform_action(user, NEED_DEXTERITY| FORBID_TELEKINESIS_REACH))
 		return ..()
-	var/popup_input = tgui_input_list(user, "Choose Action", "Agent ID", list("Show", "Forge/Reset", "Change Account ID"))
+	var/popup_input = tgui_input_list(user, "Выберите действие", "Агентская ID", list("Показать", "Подделать/сбросить", "Изменить ID счёта"))
 	if(!popup_input || !after_input_check(user))
 		return TRUE
 	switch(popup_input)
-		if ("Change Account ID")
+		if ("Изменить ID счёта")
 			set_new_account(user)
 			return
-		if("Show")
+		if("Показать")
 			return ..()
 
 	///"Forge/Reset", kept outside the switch() statement to reduce indentation.
@@ -1931,11 +1931,11 @@
 		update_label()
 		update_appearance()
 		forged = FALSE
-		to_chat(user, span_notice("You successfully reset the ID card."))
+		to_chat(user, span_notice("Вы успешно сбросили ID-карту."))
 		return
 
 	///forge the ID if not forged.s
-	var/input_name = tgui_input_text(user, "What name would you like to put on this card? Leave blank to randomise.", "Agent card name", registered_name ? registered_name : (ishuman(user) ? user.real_name : user.name), max_length = MAX_NAME_LEN, encode = FALSE)
+	var/input_name = tgui_input_text(user, "Какое имя указать на карте? Оставьте пустым для случайного.", "Имя агентской карты", registered_name ? registered_name : (ishuman(user) ? user.real_name : user.name), max_length = MAX_NAME_LEN, encode = FALSE)
 
 	if(!after_input_check(user))
 		return TRUE
@@ -1950,18 +1950,18 @@
 		else
 			input_name = "[pick(GLOB.first_names)] [pick(GLOB.last_names)]"
 
-	var/target_occupation = tgui_input_text(user, "What occupation would you like to put on this card?\nNote: This will not grant any access levels.", "Agent card job assignment", assignment ? assignment : "Assistant", max_length = MAX_NAME_LEN)
+	var/target_occupation = tgui_input_text(user, "Какую должность указать на карте?\nВажно: это не выдаст доступы.", "Должность агентской карты", assignment ? assignment : "Ассистент", max_length = MAX_NAME_LEN)
 	if(!after_input_check(user))
 		return TRUE
 	var/default_age = AGE_MIN
 	if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 		default_age = human_user.age ? clamp(human_user.age, AGE_MIN, AGE_MAX) : AGE_MIN
-	var/new_age = tgui_input_number(user, "Choose the ID's age", "Agent card age", default_age, AGE_MAX, AGE_MIN)
+	var/new_age = tgui_input_number(user, "Выберите возраст на ID", "Возраст агентской карты", default_age, AGE_MAX, AGE_MIN)
 	if(!after_input_check(user))
 		return TRUE
 
-	var/wallet_spoofing = tgui_alert(user, "Activate wallet ID spoofing, allowing this card to force itself to occupy the visible ID slot in wallets?", "Wallet ID Spoofing", list("Yes", "No"))
+	var/wallet_spoofing = tgui_alert(user, "Активировать подмену ID в кошельке, чтобы карта принудительно занимала видимый слот ID?", "Подмена ID в кошельке", list("Да", "Нет"))
 	if(!after_input_check(user))
 		return
 
@@ -1970,13 +1970,13 @@
 		assignment = sanitize(target_occupation)
 	if(new_age)
 		registered_age = new_age
-	if(wallet_spoofing  == "Yes")
+	if(wallet_spoofing  == "Да")
 		ADD_TRAIT(src, TRAIT_MAGNETIC_ID_CARD, CHAMELEON_ITEM_TRAIT)
 
 	update_label()
 	update_appearance()
 	forged = TRUE
-	to_chat(user, span_notice("You successfully forge the ID card."))
+	to_chat(user, span_notice("Вы успешно подделали ID-карту."))
 	user.log_message("forged \the [initial(name)] with name \"[registered_name]\", occupation \"[assignment]\" and trim \"[trim?.assignment]\".", LOG_GAME)
 
 	if(!ishuman(user) || registered_account)
@@ -1986,7 +1986,7 @@
 	var/datum/bank_account/account = SSeconomy.bank_accounts_by_id["[owner.account_id]"]
 	if(account)
 		set_account(account)
-		to_chat(user, span_notice("Your account number has been automatically assigned."))
+		to_chat(user, span_notice("Номер вашего счёта назначен автоматически."))
 
 /obj/item/card/id/advanced/chameleon/add_item_context(obj/item/source, list/context, atom/target, mob/living/user,)
 	. = ..()
@@ -1994,13 +1994,13 @@
 	if(!in_range(user, target))
 		return .
 	if(isidcard(target))
-		context[SCREENTIP_CONTEXT_LMB] = "Copy access"
+		context[SCREENTIP_CONTEXT_LMB] = "Скопировать доступ"
 		return CONTEXTUAL_SCREENTIP_SET
 	if(ishuman(target))
-		context[SCREENTIP_CONTEXT_RMB] = "Copy access"
+		context[SCREENTIP_CONTEXT_RMB] = "Скопировать доступ"
 		return CONTEXTUAL_SCREENTIP_SET
 	if(isitem(target))
-		context[SCREENTIP_CONTEXT_RMB] = "Scan for access"
+		context[SCREENTIP_CONTEXT_RMB] = "Сканировать доступ"
 		return CONTEXTUAL_SCREENTIP_SET
 	return .
 
@@ -2098,12 +2098,12 @@
 /obj/item/card/cardboard/proc/modify_card(mob/living/user, obj/item/item)
 	if(!user.mind)
 		return
-	var/popup_input = tgui_input_list(user, "What To Change", "Cardboard ID", list("Name", "Assignment", "Trim", "Reset"))
+	var/popup_input = tgui_input_list(user, "Что изменить", "Картонная ID", list("Имя", "Должность", "Окантовка", "Сброс"))
 	if(!after_input_check(user, item, popup_input))
 		return
 	switch(popup_input)
-		if("Name")
-			var/raw_input = tgui_input_text(user, "What name would you like to put on this card?", "Cardboard card name", scribbled_name || (ishuman(user) ? user.real_name : user.name), max_length = MAX_NAME_LEN)
+		if("Имя")
+			var/raw_input = tgui_input_text(user, "Какое имя указать на карте?", "Имя картонной карты", scribbled_name || (ishuman(user) ? user.real_name : user.name), max_length = MAX_NAME_LEN)
 			var/input_name = sanitize_name(raw_input, allow_numbers = TRUE)
 			if(!after_input_check(user, item, input_name, scribbled_name))
 				return
@@ -2111,15 +2111,15 @@
 			scribbled_name = input_name
 			var/list/details = item.get_writing_implement_details()
 			details_colors[INDEX_NAME_COLOR] = details["color"] || COLOR_BLACK
-		if("Assignment")
-			var/input_assignment = tgui_input_text(user, "What assignment would you like to put on this card?", "Cardboard card job ssignment", scribbled_assignment || "Assistant", max_length = MAX_NAME_LEN)
+		if("Должность")
+			var/input_assignment = tgui_input_text(user, "Какую должность указать на карте?", "Должность картонной карты", scribbled_assignment || "Ассистент", max_length = MAX_NAME_LEN)
 			if(!after_input_check(user, item, input_assignment, scribbled_assignment))
 				return
 			playsound(src, SFX_WRITING_PEN, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, SOUND_FALLOFF_EXPONENT + 3, ignore_walls = FALSE)
 			scribbled_assignment = sanitize(input_assignment)
 			var/list/details = item.get_writing_implement_details()
 			details_colors[INDEX_ASSIGNMENT_COLOR] = details["color"] || COLOR_BLACK
-		if("Trim")
+		if("Окантовка")
 			var/static/list/possible_trims
 			if(!possible_trims)
 				possible_trims = list()
@@ -2128,14 +2128,14 @@
 					if(trim?.trim_state && trim.assignment)
 						possible_trims |= replacetext(trim.trim_state, "trim_", "")
 				sortTim(possible_trims, GLOBAL_PROC_REF(cmp_typepaths_asc))
-			var/input_trim = tgui_input_list(user, "Select trim to apply to your card.\nNote: This will not grant any trim accesses.", "Forge Trim", possible_trims)
+			var/input_trim = tgui_input_list(user, "Выберите окантовку для карты.\nВажно: это не выдаст доступы.", "Подделка окантовки", possible_trims)
 			if(!input_trim || !after_input_check(user, item, input_trim, scribbled_trim))
 				return
 			playsound(src, SFX_WRITING_PEN, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, SOUND_FALLOFF_EXPONENT + 3, ignore_walls = FALSE)
 			scribbled_trim = "cardboard_[input_trim]"
 			var/list/details = item.get_writing_implement_details()
 			details_colors[INDEX_TRIM_COLOR] = details["color"] || COLOR_BLACK
-		if("Reset")
+		if("Сброс")
 			scribbled_name = null
 			scribbled_assignment = null
 			scribbled_trim = null
@@ -2154,7 +2154,7 @@
 /obj/item/card/cardboard/attack_self(mob/user)
 	if(!Adjacent(user))
 		return
-	user.visible_message(span_notice("[user] shows you: [icon2html(src, viewers(user))] [name]."), span_notice("You show \the [name]."))
+	user.visible_message(span_notice("[user] показывает вам: [icon2html(src, viewers(user))] [name]."), span_notice("Вы показываете [name]."))
 	add_fingerprint(user)
 
 /obj/item/card/cardboard/update_name()
@@ -2191,12 +2191,12 @@
 
 /obj/item/card/cardboard/examine(mob/user)
 	. = ..()
-	. += span_notice("You could use a pen or crayon to forge a name, assignment or trim.")
+	. += span_notice("Можно использовать ручку или мелок, чтобы подделать имя, должность или окантовку.")
 
 /obj/item/card/cardboard/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
 	if(isnull(held_item) || (held_item == src))
-		context[SCREENTIP_CONTEXT_LMB] = "Show ID"
+		context[SCREENTIP_CONTEXT_LMB] = "Показать ID"
 		return CONTEXTUAL_SCREENTIP_SET
 	else if(IS_WRITING_UTENSIL(held_item))
 		context[SCREENTIP_CONTEXT_LMB] = "Modify"

@@ -94,13 +94,13 @@ function PriorityHeaders() {
     <Stack>
       <Stack.Item grow />
 
-      <Stack.Item className={className}>Off</Stack.Item>
+      <Stack.Item className={className}>Выкл.</Stack.Item>
 
-      <Stack.Item className={className}>Low</Stack.Item>
+      <Stack.Item className={className}>Низк.</Stack.Item>
 
-      <Stack.Item className={className}>Medium</Stack.Item>
+      <Stack.Item className={className}>Сред.</Stack.Item>
 
-      <Stack.Item className={className}>High</Stack.Item>
+      <Stack.Item className={className}>Выс.</Stack.Item>
     </Stack>
   );
 }
@@ -126,7 +126,7 @@ function PriorityButtons(props: PriorityButtonsProps) {
       {isOverflow ? (
         <>
           <PriorityButton
-            name="Off"
+            name="Выкл."
             modifier="off"
             color="light-grey"
             enabled={!priority}
@@ -134,7 +134,7 @@ function PriorityButtons(props: PriorityButtonsProps) {
           />
 
           <PriorityButton
-            name="On"
+            name="Вкл."
             color="green"
             enabled={!!priority}
             onClick={createSetPriority(JobPriority.High)}
@@ -143,7 +143,7 @@ function PriorityButtons(props: PriorityButtonsProps) {
       ) : (
         <>
           <PriorityButton
-            name="Off"
+            name="Выкл."
             modifier="off"
             color="light-grey"
             enabled={!priority}
@@ -151,21 +151,21 @@ function PriorityButtons(props: PriorityButtonsProps) {
           />
 
           <PriorityButton
-            name="Low"
+            name="Низкий"
             color="red"
             enabled={priority === JobPriority.Low}
             onClick={createSetPriority(JobPriority.Low)}
           />
 
           <PriorityButton
-            name="Medium"
+            name="Средний"
             color="yellow"
             enabled={priority === JobPriority.Medium}
             onClick={createSetPriority(JobPriority.Medium)}
           />
 
           <PriorityButton
-            name="High"
+            name="Высокий"
             color="green"
             enabled={priority === JobPriority.High}
             onClick={createSetPriority(JobPriority.High)}
@@ -203,7 +203,7 @@ function JobRow(props: JobRowProps) {
     rightSide = (
       <Stack align="center" height="100%" pr={1}>
         <Stack.Item grow textAlign="right">
-          <b>{hoursNeeded}h</b> as {experience_type}
+          <b>{hoursNeeded} ч</b> за {experience_type}
         </Stack.Item>
       </Stack>
     );
@@ -211,7 +211,7 @@ function JobRow(props: JobRowProps) {
     rightSide = (
       <Stack align="center" height="100%" pr={1}>
         <Stack.Item grow textAlign="right">
-          <b>{daysLeft}</b> day{daysLeft === 1 ? '' : 's'} left
+          Осталось <b>{daysLeft}</b> дн.
         </Stack.Item>
       </Stack>
     );
@@ -219,7 +219,7 @@ function JobRow(props: JobRowProps) {
     rightSide = (
       <Stack align="center" height="100%" pr={1}>
         <Stack.Item grow textAlign="right">
-          <b>Banned</b>
+          <b>Запрещено</b>
         </Stack.Item>
       </Stack>
     );
@@ -244,7 +244,7 @@ function JobRow(props: JobRowProps) {
               paddingLeft: '0.3em',
             }}
           >
-            {name}
+            {job.display_name || name}
           </Stack.Item>
         </Tooltip>
 
@@ -312,15 +312,15 @@ function JoblessRoleDropdown(props) {
 
   const options = [
     {
-      displayText: `Join as ${data.overflow_role} if unavailable`,
+      displayText: `Если недоступно, зайти как ${data.overflow_role}`,
       value: JoblessRole.BeOverflow,
     },
     {
-      displayText: `Join as a random job if unavailable`,
+      displayText: `Если недоступно, выбрать случайную должность`,
       value: JoblessRole.BeRandomJob,
     },
     {
-      displayText: `Return to lobby if unavailable`,
+      displayText: `Если недоступно, вернуться в лобби`,
       value: JoblessRole.ReturnToLobby,
     },
   ];

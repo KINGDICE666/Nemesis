@@ -48,26 +48,26 @@ export function AirLockMainSection(props) {
       <Stack.Item>
         <Section fill>
           <LabeledList>
-            <LabeledList.Item label="Integrated Circuit Shell">
+            <LabeledList.Item label="Корпус интегральной схемы">
               <Button.Checkbox
                 checked={shell}
                 onClick={() => {
                   act('set_shell', { on: !shell });
                 }}
-                tooltip="Whether this airlock can have an integrated circuit placed inside of it or not."
+                tooltip="Можно ли установить интегральную схему внутрь этого шлюза."
               >
-                Shell
+                Корпус
               </Button.Checkbox>
             </LabeledList.Item>
-            <LabeledList.Item label="Access Required">
+            <LabeledList.Item label="Требуемый доступ">
               <Button
                 icon={oneAccess ? 'unlock' : 'lock'}
                 onClick={() => act('one_access')}
               >
-                {oneAccess ? 'One' : 'All'}
+                {oneAccess ? 'Один' : 'Все'}
               </Button>
             </LabeledList.Item>
-            <LabeledList.Item label="Unrestricted Access">
+            <LabeledList.Item label="Свободный проход">
               <Button
                 icon={unres_direction & 1 ? 'check-square-o' : 'square-o'}
                 selected={unres_direction & 1}
@@ -77,7 +77,7 @@ export function AirLockMainSection(props) {
                   })
                 }
               >
-                North
+                Север
               </Button>
               <Button
                 icon={unres_direction & 2 ? 'check-square-o' : 'square-o'}
@@ -88,7 +88,7 @@ export function AirLockMainSection(props) {
                   })
                 }
               >
-                South
+                Юг
               </Button>
               <Button
                 icon={unres_direction & 4 ? 'check-square-o' : 'square-o'}
@@ -99,7 +99,7 @@ export function AirLockMainSection(props) {
                   })
                 }
               >
-                East
+                Восток
               </Button>
               <Button
                 icon={unres_direction & 8 ? 'check-square-o' : 'square-o'}
@@ -110,10 +110,10 @@ export function AirLockMainSection(props) {
                   })
                 }
               >
-                West
+                Запад
               </Button>
             </LabeledList.Item>
-            <LabeledList.Item label="Airlock Name">
+            <LabeledList.Item label="Название шлюза">
               <Input
                 fluid
                 maxLength={30}
@@ -125,7 +125,7 @@ export function AirLockMainSection(props) {
                 }
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Cycling Id">
+            <LabeledList.Item label="ID цикла">
               <Input
                 fluid
                 maxLength={30}

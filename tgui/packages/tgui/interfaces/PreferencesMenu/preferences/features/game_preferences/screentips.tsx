@@ -8,29 +8,29 @@ import {
 import { FeatureDropdownInput } from '../dropdowns';
 
 export const screentip_color: Feature<string> = {
-  name: 'Screentips: Screentips color',
+  name: 'Screentips: цвет подсказок',
   category: 'UI',
   description: `
-    The color of screen tips, the text you see when hovering over something.
+    Цвет экранных подсказок, которые появляются при наведении.
   `,
   component: FeatureColorInput,
 };
 
 export const screentip_images: FeatureToggle = {
-  name: 'Screentips: Allow images',
+  name: 'Screentips: картинки кнопок',
   category: 'UI',
-  description: `When enabled, screentip hints use images for
-    the mouse button rather than LMB/RMB.`,
+  description: `Если включено, подсказки используют картинки кнопок мыши
+    вместо текста ЛКМ/ПКМ.`,
   component: CheckboxInput,
 };
 
 export const screentip_pref: FeatureChoiced = {
-  name: 'Screentips: Enable screentips',
+  name: 'Screentips: включить подсказки',
   category: 'UI',
   description: `
-    Enables screen tips, the text you see when hovering over something.
-    When set to "Only with tips", will only show when there is more information
-    than just the name, such as what right-clicking it does.
+    Включает экранные подсказки, которые появляются при наведении.
+    В режиме "Только с подсказками" показывается только когда есть
+    дополнительная информация, например действие правого клика.
   `,
   component: FeatureDropdownInput,
 };

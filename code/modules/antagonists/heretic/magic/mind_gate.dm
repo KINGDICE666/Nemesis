@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/pointed/mind_gate
-	name = "Mind Gate"
-	desc = "Deals you 20 brain damage and the target suffers a hallucination, \
+	name = "Врата разума"
+	desc = "Наносит вам 20 урона мозгу, а цель страдает от галлюцинации, \
 			is left confused for 10 seconds, and suffers oxygen loss and brain damage. \
 			It also blinds, mutes and deafens your target, if their sanity is low enough, they will be knocked down as well."
 	background_icon_state = "bg_heretic"

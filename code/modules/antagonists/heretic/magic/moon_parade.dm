@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/pointed/projectile/moon_parade
-	name = "Lunar parade"
-	desc = "This unleashes the parade, making everyone in its way join it and suffer hallucinations."
+	name = "Лунный парад"
+	desc = "Выпускает парад, заставляя всех на пути присоединиться к нему и страдать от галлюцинаций."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'
@@ -22,7 +22,7 @@
 	antimagic_flags = MAGIC_RESISTANCE_MOON
 
 /obj/projectile/moon_parade
-	name = "Lunar parade"
+	name = "Лунный парад"
 	icon_state = "lunar_parade"
 	damage = 0
 	damage_type = BURN

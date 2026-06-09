@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/pointed/projectile/star_blast
-	name = "Star Blast"
-	desc = "This spell fires an unstoppable disk with cosmic energies at a target, spreading the star mark. \
+	name = "Звёздный взрыв"
+	desc = "Это заклинание выпускает в цель неостановимый диск космической энергии, распространяя звёздную метку. \
 			When recasted, you will be teleported to the disk, and cosmic fields will generate from the disk and from the caster, pulling nearby heathens into it."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
@@ -78,7 +78,7 @@
 	unset_click_ability(owner) // Unselect because we will re-select it to teleport
 
 /obj/projectile/magic/star_ball
-	name = "star ball"
+	name = "звёздная сфера"
 	icon_state = "star_ball"
 	damage = 0
 	speed = 0.2

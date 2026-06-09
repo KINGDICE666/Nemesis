@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/pointed/void_phase
-	name = "Void Phase"
-	desc = "Lets you blink to your pointed destination, causes 3x3 aoe damage bubble \
+	name = "Фаза Пустоты"
+	desc = "Позволяет скачком переместиться в указанную точку и создаёт зону урона 3x3 \
 		around your pointed destination and your current location. \
 		It has a minimum range of 3 tiles and a maximum range of 9 tiles."
 	background_icon_state = "bg_heretic"

@@ -269,7 +269,7 @@ function QuirkPopper(props: QuirkPopperProps) {
           <Button
             selected={customizationExpanded}
             icon="cog"
-            tooltip="Customize"
+            tooltip="Настроить"
             style={{
               float: 'right',
             }}
@@ -365,9 +365,9 @@ function QuirkPage() {
 
     if (quirk.value > 0) {
       if (maxPositiveQuirks !== -1 && positiveQuirks >= maxPositiveQuirks) {
-        return "You can't have any more positive quirks!";
+        return 'Больше положительных черт выбрать нельзя!';
       } else if (pointsEnabled && balance + quirk.value > 0) {
-        return 'You need a negative quirk to balance this out!';
+        return 'Нужна отрицательная черта, чтобы сбалансировать выбор!';
       }
     }
 
@@ -385,12 +385,12 @@ function QuirkPage() {
           incompatibleQuirk !== quirk.name &&
           selectedQuirkNames.indexOf(incompatibleQuirk) !== -1
         ) {
-          return `This is incompatible with ${incompatibleQuirk}!`;
+          return `Несовместимо с ${incompatibleQuirk}!`;
         }
       }
     }
     if (data.species_disallowed_quirks.includes(quirk.name)) {
-      return 'This quirk is incompatible with your selected species.';
+      return 'Эта черта несовместима с выбранным видом.';
     }
     return;
   }
@@ -399,7 +399,7 @@ function QuirkPage() {
     const quirk = quirkInfo[quirkName];
 
     if (pointsEnabled && balance - quirk.value > 0) {
-      return 'You need to remove a positive quirk first!';
+      return 'Сначала нужно убрать положительную черту!';
     }
 
     return;
@@ -411,7 +411,7 @@ function QuirkPage() {
         <Stack vertical fill align="center">
           <Stack.Item>
             {maxPositiveQuirks > 0 ? (
-              <Box fontSize="1.3em">Positive Quirks</Box>
+              <Box fontSize="1.3em">Положительные черты</Box>
             ) : (
               <Box mt={pointsEnabled ? 3.4 : 0} />
             )}
@@ -429,12 +429,12 @@ function QuirkPage() {
 
           <Stack.Item>
             <Box as="b" fontSize="1.6em">
-              Available Quirks
+              Доступные черты
             </Box>
           </Stack.Item>
           <Stack.Item>
             <Input
-              placeholder="Search quirks..."
+              placeholder="Поиск черт..."
               width="200px"
               value={searchQuery}
               onChange={setSearchQuery}
@@ -485,7 +485,7 @@ function QuirkPage() {
         <Stack vertical fill align="center">
           <Stack.Item>
             {pointsEnabled ? (
-              <Box fontSize="1.3em">Quirk Balance</Box>
+              <Box fontSize="1.3em">Баланс черт</Box>
             ) : (
               <Box mt={maxPositiveQuirks > 0 ? 3.4 : 0} />
             )}
@@ -499,7 +499,7 @@ function QuirkPage() {
           </Stack.Item>
           <Stack.Item>
             <Box as="b" fontSize="1.6em">
-              Current Quirks
+              Выбранные черты
             </Box>
           </Stack.Item>
           <Stack.Item p={1.5} /> {/* Filler to better align the menu*/}
@@ -560,7 +560,7 @@ export function QuirkPersonalityPage() {
               align="center"
               fontSize="14px"
             >
-              Quirks
+              Черты
             </Button>
           </Stack.Item>
           <Stack.Item grow>
@@ -571,7 +571,7 @@ export function QuirkPersonalityPage() {
               align="center"
               fontSize="14px"
             >
-              Personality
+              Характер
             </Button>
           </Stack.Item>
         </Stack>

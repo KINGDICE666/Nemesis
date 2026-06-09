@@ -21,6 +21,40 @@ type ByondProps = {
   scale: BooleanLike;
 };
 
+const CHANNEL_DISPLAY_NAMES: Record<Channel, string> = {
+  Say: 'Сказать',
+  Radio: 'Рация',
+  Me: 'Действие',
+  OOC: 'OOC',
+  Admin: 'Админ',
+  Pray: 'Молитва',
+};
+
+const PREFIX_DISPLAY_NAMES: Partial<Record<keyof typeof RADIO_PREFIXES, string>> = {
+  ':a ': 'Улей',
+  ':b ': 'io',
+  ':c ': 'Ком',
+  ':e ': 'Инж',
+  ':g ': 'Ген',
+  ':m ': 'Мед',
+  ':n ': 'Наука',
+  ':o ': 'ИИ',
+  ':p ': 'Эфир',
+  ':s ': 'СБ',
+  ':t ': 'Син',
+  ':u ': 'Снаб',
+  ':v ': 'Серв',
+  ':y ': 'ЦК',
+};
+
+function getButtonContent(channel: Channel): string {
+  return CHANNEL_DISPLAY_NAMES[channel] || channel;
+}
+
+function getPrefixButtonContent(prefix: keyof typeof RADIO_PREFIXES): string {
+  return PREFIX_DISPLAY_NAMES[prefix] || RADIO_PREFIXES[prefix];
+}
+
 export function TguiSay() {
   const innerRef = useRef<HTMLTextAreaElement>(null);
   const channelIterator = useRef(new ChannelIterator());
@@ -64,7 +98,7 @@ export function TguiSay() {
       const nextMessage = chat.getNewerMessage() || chat.getTemp() || '';
 
       const newContent = chat.isAtLatest()
-        ? iterator.current()
+        ? getButtonContent(iterator.current())
         : chat.getIndex().toString();
 
       setButtonContent(newContent);
@@ -79,7 +113,11 @@ export function TguiSay() {
     // User is on a chat history message
     if (!chat.isAtLatest()) {
       chat.reset();
-      setButtonContent(currentPrefix.current ?? iterator.current());
+      setButtonContent(
+        currentPrefix.current
+          ? getPrefixButtonContent(currentPrefix.current)
+          : getButtonContent(iterator.current()),
+      );
 
       // Empty input, resets the channel
     } else if (
@@ -88,7 +126,7 @@ export function TguiSay() {
       value?.length === 0
     ) {
       setCurrentPrefix(null);
-      setButtonContent(iterator.current());
+      setButtonContent(getButtonContent(iterator.current()));
     }
   }
 
@@ -169,7 +207,7 @@ export function TguiSay() {
     const iterator = channelIterator.current;
 
     iterator.next();
-    setButtonContent(iterator.current());
+    setButtonContent(getButtonContent(iterator.current()));
     setCurrentPrefix(null);
     messages.current.channelIncrementMsg(iterator.isVisible());
   }
@@ -181,7 +219,7 @@ export function TguiSay() {
     const newPrefix = getPrefix(newValue) || currentPrefix.current;
     // Handles switching prefixes
     if (newPrefix && newPrefix !== currentPrefix.current) {
-      setButtonContent(RADIO_PREFIXES[newPrefix]);
+      setButtonContent(getPrefixButtonContent(newPrefix));
       setCurrentPrefix(newPrefix);
       newValue = newValue.slice(3);
       iterator.set('Say');
@@ -238,7 +276,7 @@ export function TguiSay() {
     channelIterator.current.set(data.channel);
 
     setCurrentPrefix(null);
-    setButtonContent(channelIterator.current.current());
+    setButtonContent(getButtonContent(channelIterator.current.current()));
 
     windowOpen(channelIterator.current.current(), scale.current);
 
@@ -253,7 +291,7 @@ export function TguiSay() {
 
   function unloadChat(): void {
     setCurrentPrefix(null);
-    setButtonContent(channelIterator.current.current());
+    setButtonContent(getButtonContent(channelIterator.current.current()));
     setValue('');
   }
 

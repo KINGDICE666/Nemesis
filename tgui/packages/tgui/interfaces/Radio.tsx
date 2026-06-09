@@ -12,7 +12,7 @@ import { toFixed } from 'tgui-core/math';
 import type { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
-import { RADIO_CHANNELS } from '../constants';
+import { localizeRadioChannel, RADIO_CHANNELS } from '../constants';
 import { Window } from '../layouts';
 
 type RadioData = {
@@ -64,7 +64,7 @@ export const Radio = (props) => {
       <Window.Content>
         <Section>
           <LabeledList>
-            <LabeledList.Item label="Frequency">
+            <LabeledList.Item label="Частота">
               {(freqlock && (
                 <Box inline color="light-gray">
                   {`${toFixed(frequency / 10, 1)} kHz`}
@@ -89,11 +89,11 @@ export const Radio = (props) => {
               )}
               {tunedChannel && (
                 <Box inline color={tunedChannel.color} ml={2}>
-                  [{tunedChannel.name}]
+                  [{localizeRadioChannel(tunedChannel.name)}]
                 </Box>
               )}
             </LabeledList.Item>
-            <LabeledList.Item label="Audio">
+            <LabeledList.Item label="Аудио">
               <Button
                 textAlign="center"
                 width="37px"
@@ -113,7 +113,7 @@ export const Radio = (props) => {
                   ml={1}
                   icon="bullhorn"
                   selected={useCommand}
-                  content={`High volume ${useCommand ? 'ON' : 'OFF'}`}
+                  content={`Громкий режим ${useCommand ? 'ВКЛ' : 'ВЫКЛ'}`}
                   onClick={() => act('command')}
                 />
               )}
@@ -122,12 +122,12 @@ export const Radio = (props) => {
                   ml={1}
                   icon="bullhorn"
                   selected={subspace}
-                  content={`Subspace Tx ${subspace ? 'ON' : 'OFF'}`}
+                  content={`Субпростр. Tx ${subspace ? 'ВКЛ' : 'ВЫКЛ'}`}
                   onClick={() => act('subspace')}
                 />
               )}
             </LabeledList.Item>
-            <LabeledList.Item label="Radio Noise Volume">
+            <LabeledList.Item label="Громкость шума рации">
               <Slider
                 onChange={(e, value) => {
                   act('set_radio_volume', {
@@ -142,10 +142,10 @@ export const Radio = (props) => {
               />
             </LabeledList.Item>
             {(!!subspace || channels.length > 0) && (
-              <LabeledList.Item label="Channels">
+              <LabeledList.Item label="Каналы">
                 {channels.length === 0 && (
                   <Box inline color="bad">
-                    No encryption keys installed.
+                    Ключи шифрования не установлены.
                   </Box>
                 )}
                 <Stack vertical>
@@ -154,7 +154,7 @@ export const Radio = (props) => {
                       <Button
                         icon={channel.status ? 'check-square-o' : 'square-o'}
                         selected={channel.status}
-                        content={channel.name}
+                        content={localizeRadioChannel(channel.name)}
                         onClick={() =>
                           act('channel', {
                             channel: channel.name,
@@ -175,7 +175,7 @@ export const Radio = (props) => {
                             })
                           }
                         >
-                          Tune
+                          Настроить
                         </Button>
                       )}
                     </Box>

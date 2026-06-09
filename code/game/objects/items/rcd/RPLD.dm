@@ -1,7 +1,7 @@
 ///The plumbing RCD. All the blueprints are located in _globalvars > lists > construction.dm
 /obj/item/construction/plumbing
-	name = "Plumbing Constructor"
-	desc = "An expertly modified RCD outfitted to construct plumbing machinery."
+	name = "конструктор сантехники"
+	desc = "Искусно модифицированное RCD, приспособленное для строительства сантехнических машин."
 	icon_state = "plumberer2"
 	inhand_icon_state = "plumberer"
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
@@ -37,7 +37,7 @@
 	///Design types for general plumbing constructor
 	var/static/list/general_design_types = list(
 		//category 1 Synthesizers i.e devices which creates , reacts & destroys chemicals
-		"Synthesizers" = list(
+		"Синтезаторы" = list(
 			/obj/machinery/plumbing/synthesizer = 15,
 			/obj/machinery/plumbing/reaction_chamber/chem = 15,
 			/obj/machinery/plumbing/grinder_chemical = 30,
@@ -47,7 +47,7 @@
 		),
 
 		//category 2 distributors i.e devices which inject , move around , remove chemicals from the network
-		"Distributors" = list(
+		"Распределители" = list(
 			/obj/machinery/duct = 1,
 			/obj/machinery/plumbing/layer_manifold = 5,
 			/obj/machinery/plumbing/input = 5,
@@ -58,7 +58,7 @@
 		),
 
 		//category 3 Storage i.e devices which stores & makes the processed chemicals ready for consumption
-		"Storage" = list(
+		"Хранилище" = list(
 			/obj/machinery/plumbing/tank = 20,
 			/obj/machinery/plumbing/acclimator = 10,
 			/obj/machinery/plumbing/buffer = 10,
@@ -293,8 +293,8 @@
 	to_chat(source, span_notice("You set the layer to [current_layer]."))
 
 /obj/item/construction/plumbing/service
-	name = "service plumbing constructor"
-	desc = "A type of plumbing constructor designed to rapidly deploy the machines needed to make a brewery."
+	name = "сервисный конструктор сантехники"
+	desc = "Вариант конструктора сантехники для быстрой установки машин, нужных для пивоварни."
 	icon_state = "plumberer_service"
 	///Extra price because it appears in bartender's vendor
 	custom_premium_price = PAYCHECK_CREW * 6

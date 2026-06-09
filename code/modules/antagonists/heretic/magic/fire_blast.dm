@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/charged/beam/fire_blast
-	name = "Volcano Blast"
-	desc = "Charge up a blast of fire that chains between nearby targets, setting them ablaze. \
+	name = "Вулканический взрыв"
+	desc = "Зарядите огненный выброс, который переходит между ближайшими целями и поджигает их. \
 		Targets already on fire will take priority. If the target fails to catch ablaze, or \
 		extinguishes themselves before it bounces, the chain will stop."
 	background_icon_state = "bg_heretic"
@@ -183,7 +183,7 @@
 
 // The beam fireblast spits out, causes people to walk through it to be on fire
 /obj/effect/ebeam/reacting/fire
-	name = "fire beam"
+	name = "огненный луч"
 
 /obj/effect/ebeam/reacting/fire/beam_entered(atom/movable/entered)
 	. = ..()
@@ -200,7 +200,7 @@
 
 // Visual effect played when we hit the max bounces
 /obj/effect/temp_visual/fire_blast_bonus
-	name = "fire blast"
+	name = "огненный взрыв"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "explosion"
 	duration = 1 SECONDS

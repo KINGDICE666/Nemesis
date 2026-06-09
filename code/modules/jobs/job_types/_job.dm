@@ -303,29 +303,26 @@
 /datum/job/proc/get_spawn_message_information()
 	SHOULD_CALL_PARENT(TRUE)
 	var/list/info = list()
-	info += "<b>You are the [title].</b>\n"
+	info += "<b>Вы - [get_display_title()].</b>\n"
 	var/related_policy = get_policy(policy_override || title)
 	var/radio_info = get_radio_information()
 	if(related_policy)
 		info += related_policy
 	if(supervisors)
-		info += "As the [title] you answer directly to [supervisors]. Special circumstances may change this."
+		info += "Как [get_display_title()], вы подчиняетесь: [get_display_supervisors()]. Особые обстоятельства могут это изменить."
 	if(radio_info)
 		info += radio_info
 	if(req_admin_notify)
-		info += "<b>You are playing a job that is important for Game Progression. \
-			If you have to disconnect, please notify the admins via adminhelp.</b>"
+		info += "<b>Вы играете важную для хода раунда роль. Если вам нужно отключиться, предупредите администрацию через adminhelp.</b>"
 	if(CONFIG_GET(number/minimal_access_threshold))
-		info += span_boldnotice("As this station was initially staffed with a \
-			[CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] \
-			have been added to your ID card.")
+		info += span_boldnotice("Из-за начального состава станции на вашу ID-карту был добавлен [CONFIG_GET(flag/jobs_have_minimal_access) ? "только необходимый для должности" : "дополнительный"] доступ.")
 
 	return info
 
 /// Returns information pertaining to this job's radio.
 /datum/job/proc/get_radio_information()
 	if(job_flags & JOB_CREW_MEMBER)
-		return "<b>Prefix your message with :h to speak on your department's radio. To see other prefixes, look closely at your headset.</b>"
+		return "<b>Чтобы говорить в канал отдела, начните сообщение с :h. Остальные префиксы можно посмотреть на гарнитуре.</b>"
 
 /datum/outfit/job
 	name = "Standard Gear"
@@ -462,7 +459,7 @@
 
 
 /datum/job/proc/get_captaincy_announcement(mob/living/captain)
-	return "Due to extreme staffing shortages, newly promoted Acting Captain [captain.real_name] on deck!"
+	return "Из-за критической нехватки персонала исполняющий обязанности капитана [captain.real_name] вступает в командование!"
 
 
 /// Returns an atom where the mob should spawn in.

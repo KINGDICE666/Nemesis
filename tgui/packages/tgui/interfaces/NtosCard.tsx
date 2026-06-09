@@ -93,14 +93,14 @@ export const NtosCardContent = (props) => {
       {!!modified_card && !!authed_user && (
         <Stack.Item>
           <Section
-            title="Templates"
+            title="Шаблоны"
             mt={1}
             buttons={
               <Button
                 icon="question-circle"
                 tooltip={
-                  'Will attempt to apply all access for the template to the ID card.\n' +
-                  'Does not use wildcards unless the template specifies them.'
+                  'Попробует выдать ID-карте все доступы из выбранного шаблона.\n' +
+                  'Wildcard-слоты используются только если они указаны в шаблоне.'
                 }
                 tooltipPosition="left"
               />
@@ -109,7 +109,7 @@ export const NtosCardContent = (props) => {
             {modified_card.has_trim ? (
               <TemplateDropdown templates={templates} />
             ) : (
-              'Templates require a trim already applied to the card. Please use an ID Painter to apply a trim.'
+              'Для шаблонов на карте уже должна быть нанесена основа. Используйте ID Painter, чтобы нанести основу.'
             )}
           </Section>
         </Stack.Item>
@@ -123,14 +123,14 @@ export const NtosCardContent = (props) => {
                 selectedList={modified_card.access_on_card}
                 wildcardFlags={wildcard_flags}
                 wildcardSlots={modified_card.wildcard_slots}
-                trim_access={modified_card.trim_access}
+                trimAccess={modified_card.trim_access}
                 accessFlags={access_flags}
                 accessFlagNames={access_flag_names}
                 showBasic={!!show_basic}
                 extraButtons={
                   <Button.Confirm
-                    content="Terminate Employment"
-                    confirmContent="Fire Employee?"
+                    content="Уволить"
+                    confirmContent="Уволить сотрудника?"
                     color="bad"
                     onClick={() => act('PRG_terminate')}
                   />
@@ -160,8 +160,8 @@ const LoginPage = () => {
         <Stack.Item grow>
           <NoticeBox info={!!authed_user}>
             {authed_user
-              ? `Login: ${authed_user}`
-              : 'Please log in to continue.'}
+              ? `Вход: ${authed_user}`
+              : 'Войдите, чтобы продолжить.'}
           </NoticeBox>
         </Stack.Item>
         <Stack.Item width="100%">
@@ -178,7 +178,7 @@ const LoginPage = () => {
               >
                 {auth_card
                   ? `${auth_card.id_owner} (${auth_card.id_rank})`
-                  : 'Insert ID'}
+                  : 'Вставить ID'}
               </Button>
             </Flex.Item>
             <Flex.Item>
@@ -189,7 +189,7 @@ const LoginPage = () => {
                   act(authed_user ? 'PRG_logout' : 'PRG_authenticate');
                 }}
               >
-                {authed_user ? 'Log Out' : 'Log In'}
+                {authed_user ? 'Выйти' : 'Войти'}
               </Button>
             </Flex.Item>
           </Flex>
@@ -220,7 +220,7 @@ const IdCardPage = (props) => {
               >
                 {modified_card
                   ? `${modified_card.id_owner} (${modified_card.id_rank})`
-                  : 'Insert ID'}
+                  : 'Вставить ID'}
               </Button>
             </Flex.Item>
             <Flex.Item>
@@ -229,7 +229,7 @@ const IdCardPage = (props) => {
                 disabled={!modified_card || !authed_user}
                 onClick={() => act('PRG_print')}
               >
-                Print Report
+                Печать отчёта
               </Button>
             </Flex.Item>
           </Flex>
@@ -238,7 +238,7 @@ const IdCardPage = (props) => {
       {!!(modified_card && authed_user) && (
         <>
           <Stack mt={1}>
-            <Stack.Item align="center">Details:</Stack.Item>
+            <Stack.Item align="center">Данные:</Stack.Item>
             <Stack.Item grow={1} mr={1} ml={1}>
               <Input
                 width="100%"
@@ -254,7 +254,7 @@ const IdCardPage = (props) => {
               <NumberInput
                 step={1}
                 value={modified_card.id_age || 0}
-                unit="Years"
+                unit="лет"
                 minValue={17}
                 maxValue={85}
                 onChange={(value) => {
@@ -266,7 +266,7 @@ const IdCardPage = (props) => {
             </Stack.Item>
           </Stack>
           <Stack>
-            <Stack.Item align="center">Assignment:</Stack.Item>
+            <Stack.Item align="center">Должность:</Stack.Item>
             <Stack.Item grow={1} ml={1}>
               <Input
                 fluid
@@ -299,7 +299,7 @@ const TemplateDropdown = (props) => {
       <Stack.Item grow>
         <Dropdown
           width="100%"
-          placeholder="Select a template..."
+          placeholder="Выберите шаблон..."
           options={templateKeys.map((path) => {
             return templates[path];
           })}
@@ -308,7 +308,7 @@ const TemplateDropdown = (props) => {
               name: sel,
             })
           }
-          selected="None"
+          selected="Нет"
         />
       </Stack.Item>
     </Stack>

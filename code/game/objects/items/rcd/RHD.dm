@@ -83,12 +83,12 @@
 
 /obj/item/construction/examine(mob/user)
 	. = ..()
-	. += "It currently holds [get_matter(user)]/[max_matter] matter-units."
+	. += "Сейчас содержит [get_matter(user)]/[max_matter] ед. материи."
 	if(construction_upgrades & RCD_UPGRADE_SILO_LINK)
-		. += "Remote storage link state: [silo_link ? "[silo_mats.on_hold() ? "ON HOLD" : "ON"]" : "OFF"]."
+		. += "Состояние связи с удалённым хранилищем: [silo_link ? "[silo_mats.on_hold() ? "НА УДЕРЖАНИИ" : "ВКЛ"]" : "ВЫКЛ"]."
 		var/iron = get_silo_iron()
 		if(iron)
-			. += "Remote connection has iron in equivalent to [iron] RCD unit\s." //1 matter for 1 floor tile, as 4 tiles are produced from 1 iron
+			. += "В удалённом хранилище есть железо, эквивалентное [iron] ед. RCD." //1 matter for 1 floor tile, as 4 tiles are produced from 1 iron
 
 /obj/item/construction/Destroy()
 	QDEL_NULL(spark_system)
@@ -118,10 +118,10 @@
 /// Installs an upgrade into the RCD checking if it is already installed, or if it is a banned upgrade
 /obj/item/construction/proc/install_upgrade(obj/item/rcd_upgrade/design_disk, mob/user)
 	if(design_disk.upgrade & construction_upgrades)
-		balloon_alert(user, "already installed!")
+		balloon_alert(user, "уже установлено!")
 		return FALSE
 	if(design_disk.upgrade & banned_upgrades)
-		balloon_alert(user, "cannot install upgrade!")
+		balloon_alert(user, "нельзя установить!")
 		return FALSE
 	construction_upgrades |= design_disk.upgrade
 	if((design_disk.upgrade & RCD_UPGRADE_SILO_LINK) && !silo_mats)
@@ -141,7 +141,7 @@
 		var/obj/item/rcd_ammo/ammo = item
 		var/load = min(ammo.ammoamt, max_matter - matter)
 		if(load <= 0)
-			balloon_alert(user, "storage full!")
+			balloon_alert(user, "хранилище заполнено!")
 			return FALSE
 		ammo.ammoamt -= load
 		if(ammo.ammoamt <= 0)
@@ -157,7 +157,7 @@
 
 /obj/item/construction/proc/loadwithsheets(obj/item/stack/the_stack, mob/user)
 	if(the_stack.matter_amount <= 0)
-		balloon_alert(user, "invalid sheets!")
+		balloon_alert(user, "неподходящие листы!")
 		return FALSE
 	var/maxsheets = round((max_matter-matter) / the_stack.matter_amount) //calculate the max number of sheets that will fit in RCD
 	if(maxsheets > 0)
@@ -166,7 +166,7 @@
 		matter += the_stack.matter_amount * amount_to_use
 		playsound(loc, 'sound/machines/click.ogg', 50, TRUE)
 		return TRUE
-	balloon_alert(user, "storage full!")
+	balloon_alert(user, "хранилище заполнено!")
 	return FALSE
 
 /obj/item/construction/attack_self(mob/user)
@@ -195,7 +195,7 @@
 			if(has_ammobar)
 				flick("[icon_state]_empty", src)
 			if(user)
-				balloon_alert(user, "not enough matter!")
+				balloon_alert(user, "не хватает материи!")
 			return FALSE
 		if(!dry_run)
 			matter -= amount
@@ -204,11 +204,11 @@
 	else
 		if(!silo_mats.can_use_resource(user_data = ID_DATA(user)))
 			if(user)
-				balloon_alert(user, "permission denied!")
+				balloon_alert(user, "доступ запрещён!")
 			return FALSE
 		if(!silo_mats.mat_container.has_enough_of_material(/datum/material/iron, amount * SILO_USE_AMOUNT))
 			if(user)
-				balloon_alert(user, "not enough silo material!")
+				balloon_alert(user, "не хватает материала в силосе!")
 			return FALSE
 		if(!dry_run)
 			amount = silo_mats.use_materials(list(/datum/material/iron = SILO_USE_AMOUNT), multiplier = amount, action = "RESTOCKED", name = "x restocked an RCD", user_data = ID_DATA(user))
@@ -236,15 +236,15 @@
 
 /obj/item/construction/proc/toggle_silo(mob/user)
 	if(!silo_mats)
-		to_chat(user, span_warning("no remote storage connection."))
+		to_chat(user, span_warning("нет связи с удалённым хранилищем."))
 		return FALSE
 
 	if(!silo_mats.mat_container && !silo_link) // Allow them to turn off an invalid link.
-		to_chat(user, span_warning("no silo link detected."))
+		to_chat(user, span_warning("связь с силосом не обнаружена."))
 		return FALSE
 
 	silo_link = !silo_link
-	to_chat(user, span_notice("silo link state: [silo_link ? "on" : "off"]"))
+	to_chat(user, span_notice("состояние связи с силосом: [silo_link ? "вкл" : "выкл"]"))
 	return TRUE
 
 ///shared action for toggling silo link rcd,rld & plumbing
@@ -270,7 +270,7 @@
 	if(target.z != user.z)
 		return
 	if(!(target in dview(7, get_turf(user))))
-		balloon_alert(user, "out of range!")
+		balloon_alert(user, "слишком далеко!")
 		flick("[icon_state]_empty", src)
 		return FALSE
 	else
@@ -293,50 +293,50 @@
 	return TRUE
 
 /obj/item/rcd_upgrade
-	name = "RCD advanced design disk"
-	desc = "It seems to be empty."
+	name = "диск продвинутых чертежей RCD"
+	desc = "Похоже, он пуст."
 	icon = 'icons/obj/devices/floppy_disks.dmi'
 	icon_state = "datadisk3"
 	var/upgrade
 
 /obj/item/rcd_upgrade/frames
-	name = "RCD advanced upgrade: frames"
-	desc = "It contains the design for machine frames and computer frames."
+	name = "продвинутое улучшение RCD: каркасы"
+	desc = "Содержит чертежи каркасов машин и компьютеров."
 	icon_state = "datadisk6"
 	upgrade = RCD_UPGRADE_FRAMES
 
 /obj/item/rcd_upgrade/simple_circuits
-	name = "RCD advanced upgrade: simple circuits"
-	desc = "It contains the design for firelock, air alarm, fire alarm, APC circuits and crap power cells."
+	name = "продвинутое улучшение RCD: простые схемы"
+	desc = "Содержит чертежи пожарного шлюза, воздушной тревоги, пожарной тревоги, плат APC и простых батарей."
 	icon_state = "datadisk4"
 	upgrade = RCD_UPGRADE_SIMPLE_CIRCUITS
 
 /obj/item/rcd_upgrade/anti_interrupt
-	name = "RCD advanced upgrade: anti disruption"
-	desc = "It contains the upgrades necessary to prevent interruption of RCD construction and deconstruction."
+	name = "продвинутое улучшение RCD: защита от прерывания"
+	desc = "Содержит улучшения, предотвращающие прерывание строительства и разборки через RCD."
 	icon_state = "datadisk2"
 	upgrade = RCD_UPGRADE_ANTI_INTERRUPT
 
 /obj/item/rcd_upgrade/cooling
-	name = "RCD advanced upgrade: enhanced cooling"
-	desc = "It contains the upgrades necessary to allow more frequent use of the RCD."
+	name = "продвинутое улучшение RCD: усиленное охлаждение"
+	desc = "Содержит улучшения, позволяющие чаще использовать RCD."
 	icon_state = "datadisk7"
 	upgrade = RCD_UPGRADE_NO_FREQUENT_USE_COOLDOWN
 
 /obj/item/rcd_upgrade/silo_link
-	name = "RCD advanced upgrade: silo link"
-	desc = "It contains direct silo connection RCD upgrade."
+	name = "продвинутое улучшение RCD: связь с силосом"
+	desc = "Содержит улучшение RCD для прямого подключения к силосу."
 	icon_state = "datadisk8"
 	upgrade = RCD_UPGRADE_SILO_LINK
 
 /obj/item/rcd_upgrade/furnishing
-	name = "RCD advanced upgrade: furnishings"
-	desc = "It contains the design for chairs, stools, tables, and glass tables."
+	name = "продвинутое улучшение RCD: мебель"
+	desc = "Содержит чертежи стульев, табуретов, столов и стеклянных столов."
 	icon_state = "datadisk5"
 	upgrade = RCD_UPGRADE_FURNISHING
 
 /datum/action/item_action/rcd_scan
-	name = "Destruction Scan"
-	desc = "Scans the surrounding area for destruction. Scanned structures will rebuild significantly faster."
+	name = "Скан разрушения"
+	desc = "Сканирует окружающую область для разрушения. Просканированные конструкции будут восстанавливаться значительно быстрее."
 
 #undef SILO_USE_AMOUNT

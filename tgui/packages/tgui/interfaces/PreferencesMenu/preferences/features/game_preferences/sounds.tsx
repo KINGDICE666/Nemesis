@@ -8,111 +8,111 @@ import {
 import { FeatureDropdownInput } from '../dropdowns';
 
 export const sound_ambience_volume: Feature<number> = {
-  name: 'Ambience volume',
+  name: 'Громкость окружения',
   category: 'SOUND',
-  description: `Ambience refers to the more noticeable ambient sounds that play on occasion.`,
+  description: `Окружение - это заметные фоновые звуки, которые периодически проигрываются.`,
   component: FeatureSliderInput,
 };
 
 export const sound_breathing: FeatureToggle = {
-  name: 'Enable breathing sounds',
+  name: 'Звуки дыхания',
   category: 'SOUND',
-  description: 'When enabled, hear breathing sounds when using internals.',
+  description: 'Если включено, при использовании интерналов будут слышны звуки дыхания.',
   component: CheckboxInput,
 };
 
 export const sound_announcements: FeatureToggle = {
-  name: 'Enable announcement sounds',
+  name: 'Звуки объявлений',
   category: 'SOUND',
-  description: 'When enabled, hear sounds for command reports, notices, etc.',
+  description: 'Если включено, будут слышны звуки отчётов командования, уведомлений и т.п.',
   component: CheckboxInput,
 };
 
 export const sound_ghost_poll_prompt: FeatureChoiced = {
-  name: 'Ghost poll prompt',
+  name: 'Звук опроса призраков',
   category: 'SOUND',
-  description: 'Choose which sound prompt to play on getting ghost polls.',
+  description: 'Выберите звук, который проигрывается при получении опроса для призраков.',
   component: FeatureDropdownInput,
 };
 
 export const sound_ghost_poll_prompt_volume: Feature<number> = {
-  name: 'Ghost poll prompt volume',
+  name: 'Громкость опроса призраков',
   category: 'SOUND',
-  description: 'The volume that ghost poll prompts will play at.',
+  description: 'Громкость звука опросов для призраков.',
   component: FeatureSliderInput,
 };
 
 export const sound_combatmode: FeatureToggle = {
-  name: 'Enable combat mode sound',
+  name: 'Звук боевого режима',
   category: 'SOUND',
-  description: 'When enabled, hear sounds when toggling combat mode.',
+  description: 'Если включено, переключение боевого режима будет сопровождаться звуком.',
   component: CheckboxInput,
 };
 
 export const sound_instruments: Feature<number> = {
-  name: 'Instruments volume',
+  name: 'Громкость инструментов',
   category: 'SOUND',
-  description: 'Volume of instruments.',
+  description: 'Громкость музыкальных инструментов.',
   component: FeatureSliderInput,
 };
 
 export const sound_jukebox: Feature<number> = {
-  name: 'Jukebox volume',
+  name: 'Громкость музыкального автомата',
   category: 'SOUND',
-  description: 'Volume of jukebox tracks.',
+  description: 'Громкость треков музыкального автомата.',
   component: FeatureSliderInput,
 };
 
 export const sound_tts: FeatureChoiced = {
-  name: 'Enable TTS',
+  name: 'Включить TTS',
   category: 'SOUND',
   description: `
-    When enabled, be able to hear text-to-speech sounds in game.
-    When set to "Blips", text to speech will be replaced with blip sounds based on the voice.
+    Если включено, в игре будет слышна озвучка текста.
+    В режиме "Blips" озвучка заменяется короткими звуковыми сигналами на основе голоса.
   `,
   component: FeatureDropdownInput,
 };
 
 export const sound_tts_volume: Feature<number> = {
-  name: 'TTS Volume',
+  name: 'Громкость TTS',
   category: 'SOUND',
-  description: 'The volume that the text-to-speech sounds will play at.',
+  description: 'Громкость звуков text-to-speech.',
   component: FeatureSliderInput,
 };
 
 export const sound_lobby_volume: Feature<number> = {
-  name: 'Lobby music volume',
+  name: 'Громкость музыки лобби',
   category: 'SOUND',
   component: FeatureSliderInput,
 };
 
 export const sound_midi: Feature<number> = {
-  name: 'Admin music volume',
+  name: 'Громкость админской музыки',
   category: 'SOUND',
-  description: 'Volume of admin musics.',
+  description: 'Громкость музыки, запускаемой администрацией.',
   component: FeatureSliderInput,
 };
 
 export const sound_ship_ambience_volume: Feature<number> = {
-  name: 'Ship ambience volume',
+  name: 'Громкость фонового шума корабля',
   category: 'SOUND',
-  description: `Ship ambience refers to the low ambient buzz that plays on loop.`,
+  description: `Фоновый шум корабля - это тихий гул, который проигрывается по кругу.`,
   component: FeatureSliderInput,
 };
 
 export const sound_achievement: FeatureChoiced = {
-  name: 'Achievement unlock sound',
+  name: 'Звук достижения',
   category: 'SOUND',
   description: `
-    The sound that's played when unlocking an achievement.
-    If disabled, no sound will be played.
+    Звук, который проигрывается при получении достижения.
+    Если отключено, звук проигрываться не будет.
   `,
   component: FeatureDropdownInput,
 };
 
 export const sound_ai_vox: Feature<number> = {
-  name: 'AI VOX announcements volume',
+  name: 'Громкость VOX-объявлений ИИ',
   category: 'SOUND',
-  description: 'Volume of vocal AI announcements (also known as "VOX").',
+  description: 'Громкость голосовых объявлений ИИ, также известных как VOX.',
   component: FeatureSliderInput,
 };

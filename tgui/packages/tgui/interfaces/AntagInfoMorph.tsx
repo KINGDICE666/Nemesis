@@ -19,33 +19,33 @@ export const AntagInfoMorph = (props) => {
     <Window width={620} height={170} theme="abductor">
       <Window.Content>
         <Stack vertical fill>
-          <Stack.Item fontSize="25px">You are a morph...</Stack.Item>
+          <Stack.Item fontSize="25px">Вы - морф...</Stack.Item>
           <Stack.Item>
             <BlockQuote>
-              ...a shapeshifting abomination that can eat almost anything. You
-              may take the form of anything you can see by{' '}
+              ...меняющая форму аномалия, способная съесть почти всё. Вы
+              можете принять форму любого видимого объекта,{' '}
               <span style={noticestyle}>
-                using your &quot;Assume Form&quot; ability on it. Shift-clicking
-                the object in question will also work.
+                применив к нему способность &quot;Принять форму&quot;. Shift-клик
+                по нужному объекту тоже сработает.
               </span>{' '}
               <span style={badstyle}>
-                &ensp;This process will alert any nearby observers.
+                &ensp;Этот процесс насторожит всех наблюдателей поблизости.
               </span>{' '}
-              While morphed, you move faster, but are unable to attack creatures
-              or eat anything. In addition,
+              В принятой форме вы двигаетесь быстрее, но не можете атаковать
+              существ или что-либо есть. Кроме того,
               <span style={badstyle}>
-                &ensp;anyone within three tiles will note an uncanny wrongness
-                if examining you.
+                &ensp;любой в пределах трёх клеток заметит странную
+                неправильность, если осмотрит вас.
               </span>{' '}
-              You can attack any item or dead creature to consume it -
+              Вы можете атаковать любой предмет или мёртвое существо, чтобы
+              поглотить его -
               <span style={goodstyle}>
-                &ensp;corpses will restore your health.
+                &ensp;трупы восстановят ваше здоровье.
               </span>{' '}
-              Finally, you can restore yourself to your original form while
-              morphed by{' '}
+              Наконец, в принятой форме можно вернуться к исходному облику,{' '}
               <span style={noticestyle}>
-                using the &quot;Assume Form&quot; ability on yourself. You can
-                also shift-click yourself.
+                применив &quot;Принять форму&quot; к себе. Также можно
+                shift-кликнуть по себе.
               </span>{' '}
             </BlockQuote>
           </Stack.Item>

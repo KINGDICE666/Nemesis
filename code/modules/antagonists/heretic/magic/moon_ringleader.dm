@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/aoe/moon_ringleader
-	name = "Ringleaders Rise"
-	desc = "Big AoE spell that summons copies of you. \
+	name = "Восхождение распорядителя"
+	desc = "Большое AoE-заклинание, призывающее ваши копии. \
 			If any copies are attacked, they cause brain damage, sanity damage, and will briefly stun everyone nearby."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"

@@ -2,13 +2,13 @@
 
 /obj/item/radio
 	icon = 'icons/obj/devices/voice.dmi'
-	name = "station bounced radio"
+	name = "портативная станционная рация"
 	icon_state = "walkietalkie"
 	inhand_icon_state = "walkietalkie"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	worn_icon_state = "radio"
-	desc = "A basic handheld radio that communicates with local telecommunication networks."
+	desc = "Базовая ручная рация для связи с локальной телекоммуникационной сетью."
 	dog_fashion = /datum/dog_fashion/back
 	interaction_flags_atom = parent_type::interaction_flags_atom | INTERACT_ATOM_ALLOW_USER_LOCATION | INTERACT_ATOM_IGNORE_MOBILITY
 	sound_vary = TRUE
@@ -135,11 +135,11 @@
 /obj/item/radio/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
 	if(held_item?.tool_behaviour == TOOL_SCREWDRIVER)
-		context[SCREENTIP_CONTEXT_LMB] = "Remove encryption key"
-		context[SCREENTIP_CONTEXT_RMB] = unscrewed ? "Screw in" : "Unscrew"
+		context[SCREENTIP_CONTEXT_LMB] = "Снять ключ шифрования"
+		context[SCREENTIP_CONTEXT_RMB] = unscrewed ? "Закрутить" : "Открутить"
 		. = CONTEXTUAL_SCREENTIP_SET
 	if(istype(held_item, /obj/item/encryptionkey))
-		context[SCREENTIP_CONTEXT_LMB] = "Install encryption key"
+		context[SCREENTIP_CONTEXT_LMB] = "Установить ключ шифрования"
 		. = CONTEXTUAL_SCREENTIP_SET
 
 /obj/item/radio/on_saboteur(datum/source, disrupt_duration)
@@ -568,11 +568,11 @@
 /obj/item/radio/examine(mob/user)
 	. = ..()
 	if (frequency && in_range(src, user))
-		. += span_notice("It is set to broadcast over the [span_radio("[frequency/10]")] frequency.")
+		. += span_notice("Настроено на передачу по частоте [span_radio("[frequency/10]")].")
 	if (unscrewed)
-		. += span_notice("It can be attached and modified.")
+		. += span_notice("Можно закрепить и модифицировать.")
 	else
-		. += span_notice("It cannot be modified or attached.")
+		. += span_notice("Нельзя модифицировать или закрепить.")
 
 /obj/item/radio/update_overlays()
 	. = ..()
@@ -595,27 +595,27 @@
 	unscrewed = !unscrewed
 	tool.play_tool_sound(src, 10)
 	if(unscrewed)
-		to_chat(user, span_notice("[src] can now be attached and modified!"))
+		to_chat(user, span_notice("[src] теперь можно закрепить и модифицировать!"))
 	else
-		to_chat(user, span_notice("[src] can no longer be modified or attached!"))
+		to_chat(user, span_notice("[src] больше нельзя модифицировать или закрепить!"))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/radio/screwdriver_act(mob/living/user, obj/item/tool)
 	switch(keylock)
 		if(RADIO_KEYSLOT_LOCKED)
-			to_chat(user, span_warning("The screws locking [src]'s keyslot are stripped, and can't be removed."))
+			to_chat(user, span_warning("Винты, блокирующие слот ключа [src], сорваны, их нельзя снять."))
 			return ITEM_INTERACT_BLOCKING
 		if(RADIO_KEYSLOT_EMAGGABLE_LOCK)
-			to_chat(user, span_warning("The screws locking [src]'s keyslot are fastened tight, and likely can't be removed without some kind of magnet..."))
+			to_chat(user, span_warning("Винты, блокирующие слот ключа [src], затянуты намертво. Без какого-нибудь магнита их, вероятно, не снять..."))
 			return ITEM_INTERACT_BLOCKING
 
 	var/list/removed_keys = remove_keys(user)
 	if(length(removed_keys) > 1)
-		to_chat(user, span_notice("You remove the encryption keys from [src]."))
+		to_chat(user, span_notice("Вы извлекаете ключи шифрования из [src]."))
 	else if(length(removed_keys) == 1)
-		to_chat(user, span_notice("You remove [removed_keys[1]] from [src]."))
+		to_chat(user, span_notice("Вы извлекаете [removed_keys[1]] из [src]."))
 	else
-		to_chat(user, span_warning("[src] doesn't have any unique encryption keys! How useless..."))
+		to_chat(user, span_warning("В [src] нет уникальных ключей шифрования. Бесполезно..."))
 	tool.play_tool_sound(src, 10)
 	return TRUE
 
@@ -639,20 +639,20 @@
 /// Attempts to install the given encryption key into the radio
 /obj/item/radio/proc/install_key(mob/living/user, obj/item/encryptionkey/key)
 	if(keyslot)
-		loc.balloon_alert(user, "cannot hold a second key!")
+		loc.balloon_alert(user, "второй ключ не помещается!")
 		return ITEM_INTERACT_BLOCKING
 	if(freqlock || keylock)
-		loc.balloon_alert(user, "keyslot is locked!")
+		loc.balloon_alert(user, "слот ключа заблокирован!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(!user.transferItemToLoc(key, src))
-		loc.balloon_alert(user, "cannot install!")
+		loc.balloon_alert(user, "не установить!")
 		return ITEM_INTERACT_BLOCKING
 
 	keyslot = key
 	recalculateChannels()
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
-	loc.balloon_alert(user, "encryption key installed")
+	loc.balloon_alert(user, "ключ шифрования установлен")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/radio/emp_act(severity)
@@ -662,14 +662,14 @@
 	emped++ //There's been an EMP; better count it
 	var/curremp = emped //Remember which EMP this was
 	if (listening && ismob(loc)) // if the radio is turned on and on someone's person they notice
-		to_chat(loc, span_warning("\The [src] overloads."))
+		to_chat(loc, span_warning("[capitalize(declent_ru(NOMINATIVE))] перегружается."))
 	for (var/ch_name in channels)
 		channels[ch_name] = 0
 	set_on(FALSE)
 	addtimer(CALLBACK(src, PROC_REF(end_emp_effect), curremp), 20 SECONDS)
 
 /obj/item/radio/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] starts bouncing [src] off [user.p_their()] head! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user] начинает бить себя по голове предметом [src]! Похоже, это попытка самоубийства!"))
 	return BRUTELOSS
 
 /obj/item/radio/proc/end_emp_effect(curremp)
@@ -680,9 +680,9 @@
 	return TRUE
 
 /obj/item/radio/proc/make_silly()
-	name = "\improper Little-Crew: Assistant's First Radio"
+	name = "\improper Little-Crew: первая рация ассистента"
 	icon_state = "walkieian"
-	desc = "A Little-Crew branded toy radio in the shape of a lovable pet. After Little-Crew HQ was hit with a Donksoft Nuke, these have become collector's items!"
+	desc = "Игрушечная рация бренда Little-Crew в форме любимого питомца. После удара Donksoft Nuke по штаб-квартире Little-Crew такие стали коллекционными."
 	overlay_speaker_idle = null
 	overlay_speaker_active = null
 	overlay_mic_idle = null
@@ -694,7 +694,7 @@
 //Giving borgs their own radio to have some more room to work with -Sieve
 
 /obj/item/radio/borg
-	name = "cyborg radio"
+	name = "рация киборга"
 	subspace_transmission = TRUE
 	subspace_switchable = TRUE
 	dog_fashion = null
@@ -725,7 +725,7 @@
 
 // RADIOS USED BY BROADCASTING
 /obj/item/radio/entertainment
-	desc = "You should not hold this."
+	desc = "Вам не стоит держать это в руках."
 	canhear_range = 7
 	freerange = TRUE
 	freqlock = RADIO_FREQENCY_LOCKED
@@ -754,8 +754,8 @@
 	return ..()
 
 /obj/item/radio/entertainment/speakers/physical // Can be used as a physical item
-	name = "entertainment radio"
-	desc = "A portable one-way radio permanently tuned into entertainment frequency."
+	name = "развлекательная рация"
+	desc = "Портативная односторонняя рация, постоянно настроенная на развлекательную частоту."
 	icon_state = "radio"
 	inhand_icon_state = "radio"
 	worn_icon_state = "radio"
@@ -775,8 +775,8 @@
 	wires?.cut(WIRE_RX)
 
 /obj/item/radio/entertainment/microphone/physical // Can be used as a physical item
-	name = "microphone"
-	desc = "No comments."
+	name = "микрофон"
+	desc = "Без комментариев."
 	icon = 'icons/obj/service/broadcast.dmi'
 	icon_state = "microphone"
 	inhand_icon_state = "microphone"

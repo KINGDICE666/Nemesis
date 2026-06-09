@@ -18,6 +18,16 @@ const textStyles = {
   },
 } as const;
 
+const GLITCH_NAMES: Record<string, string> = {
+  'Cyber Police': 'Киберполиция',
+  'Cyber Tac': 'Кибертактик',
+  'NetGuardian Prime': 'НетСтраж-Прайм',
+};
+
+function localizeGlitchName(name: string): string {
+  return GLITCH_NAMES[name] || name;
+}
+
 export const AntagInfoGlitch = (props) => {
   const { data } = useBackend<Data>();
   const { antag_name, objectives = [] } = data;
@@ -30,12 +40,14 @@ export const AntagInfoGlitch = (props) => {
             <Stack.Item>FN TERMINATE_INTRUDERS (REF)</Stack.Item>
             <Stack.Divider />
             <Stack.Item bold fontSize="16px">
-              <span style={textStyles.variable}>Initialize({antag_name})</span>
+              <span style={textStyles.variable}>
+                Initialize({localizeGlitchName(antag_name)})
+              </span>
             </Stack.Item>
             <Stack.Item mb={1}>
-              <span style={textStyles.danger}>Bitrunning</span> is a crime. Your
-              mission: <span style={textStyles.variable}>Eliminate</span>{' '}
-              organic intruders to maintain the integrity of the system.
+              <span style={textStyles.danger}>Битраннинг</span> - преступление.
+              Ваша миссия: <span style={textStyles.variable}>устранить</span>{' '}
+              органических нарушителей, чтобы сохранить целостность системы.
             </Stack.Item>
             <SpecificInfo />
 
@@ -77,12 +89,12 @@ const SpecificInfo = (props) => {
       return (
         <>
           <Stack.Item mb={1}>
-            To assist your task, your program has been loaded with cutting edge{' '}
-            <span style={textStyles.variable}>martial arts</span> skills.
+            Для выполнения задачи ваша программа загружена передовыми навыками{' '}
+            <span style={textStyles.variable}>боевых искусств</span>.
           </Stack.Item>
           <Stack.Item grow>
-            Ranged weaponry is <span style={textStyles.danger}>forbidden</span>.
-            Ballistic defense is frowned upon. Style is paramount.
+            Дальнобойное оружие <span style={textStyles.danger}>запрещено</span>.
+            Баллистическая защита не приветствуется. Стиль превыше всего.
           </Stack.Item>
         </>
       );
@@ -90,12 +102,12 @@ const SpecificInfo = (props) => {
       return (
         <>
           <Stack.Item mb={1}>
-            You are an advanced combat unit. You have been outfitted with{' '}
-            <span style={textStyles.variable}>lethal weaponry</span>.
+            Вы - продвинутый боевой юнит. Вы оснащены{' '}
+            <span style={textStyles.variable}>летальным вооружением</span>.
           </Stack.Item>
           <Stack.Item grow>
-            <span style={textStyles.danger}>Terminate</span> organic life at any
-            cost.
+            <span style={textStyles.danger}>Уничтожить</span> органическую жизнь
+            любой ценой.
           </Stack.Item>
         </>
       );
@@ -103,7 +115,7 @@ const SpecificInfo = (props) => {
       return (
         <Stack.Item grow>
           <span style={{ ...textStyles.danger, fontSize: '16px' }}>
-            ORGANIC LIFE MUST BE TERMINATED.
+            ОРГАНИЧЕСКАЯ ЖИЗНЬ ДОЛЖНА БЫТЬ УНИЧТОЖЕНА.
           </span>
         </Stack.Item>
       );

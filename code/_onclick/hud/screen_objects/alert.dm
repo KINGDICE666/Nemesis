@@ -96,8 +96,8 @@
 /atom/movable/screen/alert
 	icon = 'icons/hud/screen_alert.dmi'
 	icon_state = "template"
-	name = "Alert"
-	desc = "Something seems to have gone wrong with this alert, so report this bug please"
+	name = "Оповещение"
+	desc = "С этим оповещением что-то пошло не так. Пожалуйста, сообщите об ошибке."
 	mouse_opacity = MOUSE_OPACITY_ICON
 	/// do we glow to represent we do stuff when clicked
 	var/clickable_glow = FALSE
@@ -200,84 +200,84 @@
 // * /mob/living/simple_animal/handle_environment()
 
 /atom/movable/screen/alert/not_enough_oxy
-	name = "Choking (No O2)"
-	desc = "You're not getting enough oxygen. Find some good air before you pass out! The box in your backpack has an oxygen tank and breath mask in it."
+	name = "Удушье (нет O2)"
+	desc = "Вам не хватает кислорода. Найдите пригодный воздух, пока не потеряли сознание! В коробке в вашем рюкзаке есть кислородный баллон и дыхательная маска."
 	icon_state = ALERT_NOT_ENOUGH_OXYGEN
 
 /atom/movable/screen/alert/too_much_oxy
-	name = "Choking (O2)"
-	desc = "There's too much oxygen in the air, and you're breathing it in! Find some good air before you pass out!"
+	name = "Удушье (O2)"
+	desc = "В воздухе слишком много кислорода, и вы им дышите! Найдите пригодный воздух, пока не потеряли сознание!"
 	icon_state = ALERT_TOO_MUCH_OXYGEN
 
 /atom/movable/screen/alert/not_enough_nitro
-	name = "Choking (No N2)"
-	desc = "You're not getting enough nitrogen. Find some good air before you pass out!"
+	name = "Удушье (нет N2)"
+	desc = "Вам не хватает азота. Найдите пригодный воздух, пока не потеряли сознание!"
 	icon_state = ALERT_NOT_ENOUGH_NITRO
 
 /atom/movable/screen/alert/too_much_nitro
-	name = "Choking (N2)"
-	desc = "There's too much nitrogen in the air, and you're breathing it in! Find some good air before you pass out!"
+	name = "Удушье (N2)"
+	desc = "В воздухе слишком много азота, и вы им дышите! Найдите пригодный воздух, пока не потеряли сознание!"
 	icon_state = ALERT_TOO_MUCH_NITRO
 
 /atom/movable/screen/alert/not_enough_co2
-	name = "Choking (No CO2)"
-	desc = "You're not getting enough carbon dioxide. Find some good air before you pass out!"
+	name = "Удушье (нет CO2)"
+	desc = "Вам не хватает углекислого газа. Найдите пригодный воздух, пока не потеряли сознание!"
 	icon_state = ALERT_NOT_ENOUGH_CO2
 
 /atom/movable/screen/alert/too_much_co2
-	name = "Choking (CO2)"
-	desc = "There's too much carbon dioxide in the air, and you're breathing it in! Find some good air before you pass out!"
+	name = "Удушье (CO2)"
+	desc = "В воздухе слишком много углекислого газа, и вы им дышите! Найдите пригодный воздух, пока не потеряли сознание!"
 	icon_state = ALERT_TOO_MUCH_CO2
 
 /atom/movable/screen/alert/not_enough_plas
-	name = "Choking (No Plasma)"
-	desc = "You're not getting enough plasma. Find some good air before you pass out! The box in your backpack has a spare plasma tank."
+	name = "Удушье (нет плазмы)"
+	desc = "Вам не хватает плазмы. Найдите пригодный воздух, пока не потеряли сознание! В коробке в вашем рюкзаке есть запасной баллон плазмы."
 	icon_state = ALERT_NOT_ENOUGH_PLASMA
 
 /atom/movable/screen/alert/too_much_plas
-	name = "Choking (Plasma)"
-	desc = "There's highly flammable, toxic plasma in the air and you're breathing it in. Find some fresh air. The box in your backpack has an oxygen tank and breath mask in it."
+	name = "Удушье (плазма)"
+	desc = "В воздухе горючая токсичная плазма, и вы ей дышите. Найдите свежий воздух. В коробке в вашем рюкзаке есть кислородный баллон и дыхательная маска."
 	icon_state = ALERT_TOO_MUCH_PLASMA
 
 /atom/movable/screen/alert/not_enough_n2o
-	name = "Choking (No N2O)"
-	desc = "You're not getting enough N2O. Find some good air before you pass out!"
+	name = "Удушье (нет N2O)"
+	desc = "Вам не хватает N2O. Найдите пригодный воздух, пока не потеряли сознание!"
 	icon_state = ALERT_NOT_ENOUGH_N2O
 
 /atom/movable/screen/alert/too_much_n2o
-	name = "Choking (N2O)"
-	desc = "There's sleeping gas in the air and you're breathing it in. Find some fresh air. The box in your backpack has an oxygen tank and breath mask in it."
+	name = "Удушье (N2O)"
+	desc = "В воздухе усыпляющий газ, и вы им дышите. Найдите свежий воздух. В коробке в вашем рюкзаке есть кислородный баллон и дыхательная маска."
 	icon_state = ALERT_TOO_MUCH_N2O
 
 /atom/movable/screen/alert/not_enough_water
-	name = "Choking (No H2O)"
-	desc = "You're not getting enough water. Drench yourself in some water (e.g. showers) or get some water vapor before you pass out!"
+	name = "Удушье (нет H2O)"
+	desc = "Вам не хватает воды. Облейтесь водой, например в душе, или найдите водяной пар, пока не потеряли сознание!"
 	icon_state = ALERT_NOT_ENOUGH_WATER
 
 //End gas alerts
 
 /atom/movable/screen/alert/bronchodilated
-	name = "Bronchodilated"
-	desc = "You feel like your lungs are larger than usual! You're taking deeper breaths!"
+	name = "Бронхи расширены"
+	desc = "Ваши лёгкие будто стали больше обычного! Вы делаете более глубокие вдохи!"
 	icon_state = "bronchodilated"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_icon = 'icons/obj/medical/organs/organs.dmi'
 	overlay_state = "lungs"
 
 /atom/movable/screen/alert/bronchoconstricted
-	name = "Bronchocontracted"
-	desc = "You feel like your lungs are smaller than usual! You might need a higher pressure environment/internals to breathe!"
+	name = "Бронхи сужены"
+	desc = "Ваши лёгкие будто стали меньше обычного! Возможно, для дыхания нужна среда с большим давлением или баллон."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "bronchoconstricted"
 
 /atom/movable/screen/alert/gross
-	name = "Grossed out."
-	desc = "That was kind of gross..."
+	name = "Отвращение."
+	desc = "Это было довольно мерзко..."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "gross"
 
 /atom/movable/screen/alert/verygross
-	name = "Very grossed out."
+	name = "Сильное отвращение."
 	desc = "You're not feeling very well..."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "gross2"

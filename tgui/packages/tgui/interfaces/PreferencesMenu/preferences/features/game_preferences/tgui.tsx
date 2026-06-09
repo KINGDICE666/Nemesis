@@ -1,43 +1,43 @@
 import { CheckboxInput, type FeatureToggle } from '../base';
 
 export const tgui_input: FeatureToggle = {
-  name: 'Input: Enable TGUI',
+  name: 'Ввод: включить TGUI',
   category: 'UI',
-  description: 'Renders input boxes in TGUI.',
+  description: 'Отображает окна ввода через TGUI.',
   component: CheckboxInput,
 };
 
 export const tgui_input_large: FeatureToggle = {
-  name: 'Input: Larger buttons',
+  name: 'Ввод: крупные кнопки',
   category: 'UI',
-  description: 'Makes TGUI buttons less traditional, more functional.',
+  description: 'Делает кнопки TGUI крупнее и удобнее.',
   component: CheckboxInput,
 };
 
 export const tgui_input_swapped: FeatureToggle = {
-  name: 'Input: Swap Submit/Cancel buttons',
+  name: 'Ввод: поменять кнопки подтверждения/отмены',
   category: 'UI',
-  description: 'Makes TGUI buttons less traditional, more functional.',
+  description: 'Меняет расположение кнопок подтверждения и отмены.',
   component: CheckboxInput,
 };
 
 export const tgui_lock: FeatureToggle = {
-  name: 'Lock TGUI to main monitor',
+  name: 'Закрепить TGUI на основном мониторе',
   category: 'UI',
-  description: 'Locks TGUI windows to your main monitor.',
+  description: 'Закрепляет окна TGUI на основном мониторе.',
   component: CheckboxInput,
 };
 
 export const ui_scale: FeatureToggle = {
-  name: 'Toggle UI scaling',
+  name: 'Масштабирование UI',
   category: 'UI',
-  description: 'If UIs should scale up to match your monitor scaling.',
+  description: 'Должны ли интерфейсы масштабироваться под масштаб монитора.',
   component: CheckboxInput,
 };
 
 export const tgui_say_light_mode: FeatureToggle = {
-  name: 'Say: Light mode',
+  name: 'Say: светлая тема',
   category: 'UI',
-  description: 'Sets TGUI Say to use a light mode.',
+  description: 'Включает светлую тему для TGUI Say.',
   component: CheckboxInput,
 };

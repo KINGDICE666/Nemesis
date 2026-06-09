@@ -75,8 +75,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/rcd_loaded
-	name = "Rapid Construction Device"
-	desc = "A tool that can construct and deconstruct walls, airlocks and floors on the fly."
+	name = "Устройство быстрого строительства"
+	desc = "Инструмент, способный на ходу строить и разбирать стены, шлюзы и полы."
 	id = "rcd_loaded"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT*30, /datum/material/glass =SHEET_MATERIAL_AMOUNT * 2.5)
@@ -99,7 +99,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/rcd_ammo
-	name = "RCD Matter Cartridge"
+	name = "Картридж материи RCD"
 	id = "rcd_ammo"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT*6, /datum/material/glass =SHEET_MATERIAL_AMOUNT*4)
@@ -110,8 +110,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/rcd_upgrade/frames
-	name = "RCD frames designs upgrade"
-	desc = "Adds computer and machine frame designs to the RCD."
+	name = "Улучшение RCD: чертежи каркасов"
+	desc = "Добавляет в RCD чертежи компьютерных и машинных каркасов."
 	id = "rcd_upgrade_frames"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT * 2.5, /datum/material/glass =SHEET_MATERIAL_AMOUNT*1.25, /datum/material/silver =HALF_SHEET_MATERIAL_AMOUNT * 1.5, /datum/material/titanium =SHEET_MATERIAL_AMOUNT)
@@ -122,8 +122,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/rcd_upgrade/simple_circuits
-	name = "RCD simple circuits designs upgrade"
-	desc = "Adds the ability to produce simple circuits using the RCD."
+	name = "Улучшение RCD: чертежи простых схем"
+	desc = "Добавляет возможность создавать простые схемы с помощью RCD."
 	id = "rcd_upgrade_simple_circuits"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT * 2.5, /datum/material/glass =SHEET_MATERIAL_AMOUNT*1.25, /datum/material/silver =HALF_SHEET_MATERIAL_AMOUNT * 1.5, /datum/material/titanium =SHEET_MATERIAL_AMOUNT)
@@ -134,8 +134,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/rcd_upgrade/anti_interrupt
-	name = "RCD anti disruption designs upgrade"
-	desc = "Prevents interruption of RCD construction and deconstruction."
+	name = "Улучшение RCD: защита от прерывания"
+	desc = "Предотвращает прерывание строительства и разборки через RCD."
 	id = "rcd_upgrade_anti_interrupt"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(
@@ -151,8 +151,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/rcd_upgrade/cooling
-	name = "RCD cooling upgrade"
-	desc = "Allows the RCD to more quickly perform multiple actions at once."
+	name = "Улучшение RCD: охлаждение"
+	desc = "Позволяет RCD быстрее выполнять несколько действий подряд."
 	id = "rcd_upgrade_cooling"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(
@@ -167,8 +167,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/rcd_upgrade/furnishing
-	name = "RCD furnishing upgrade"
-	desc = "Adds the ability to furnish areas using the RCD."
+	name = "Улучшение RCD: мебель"
+	desc = "Добавляет возможность обставлять помещения с помощью RCD."
 	id = "rcd_upgrade_furnishing"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT * 2.5, /datum/material/glass =SHEET_MATERIAL_AMOUNT*1.25, /datum/material/silver =HALF_SHEET_MATERIAL_AMOUNT * 1.5, /datum/material/titanium =SHEET_MATERIAL_AMOUNT)
@@ -179,8 +179,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/rcd_upgrade/silo_link
-	name = "Advanced RCD silo link upgrade"
-	desc = "Upgrades the RCD to be able to pull materials from the ore silo. The RCD must be linked to the silo using a multitool before it will function."
+	name = "Продвинутое улучшение RCD: связь с силосом"
+	desc = "Позволяет RCD брать материалы из рудного силоса. Перед использованием RCD нужно привязать к силосу мультитулом."
 	id = "rcd_upgrade_silo_link"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT*1.25, /datum/material/glass =SHEET_MATERIAL_AMOUNT*1.25, /datum/material/silver =SHEET_MATERIAL_AMOUNT*1.25, /datum/material/titanium =SHEET_MATERIAL_AMOUNT*1.25, /datum/material/bluespace =SHEET_MATERIAL_AMOUNT*1.25)

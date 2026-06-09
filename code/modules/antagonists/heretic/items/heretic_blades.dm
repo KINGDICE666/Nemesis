@@ -1,7 +1,7 @@
 
 /obj/item/melee/sickly_blade
-	name = "\improper sickly blade"
-	desc = "A sickly green crescent blade, decorated with an ornamental eye. You feel like you're being watched..."
+	name = "\improper болезненный клинок"
+	desc = "Болезненно-зелёный серповидный клинок, украшенный орнаментальным глазом. Вам кажется, что за вами наблюдают..."
 	icon = 'icons/obj/weapons/khopesh.dmi'
 	icon_state = "eldritch_blade"
 	inhand_icon_state = "eldritch_blade"
@@ -35,7 +35,7 @@
 	if(!check_usability(user))
 		return
 
-	. += span_notice("You can shatter the blade to teleport to a random, (mostly) safe location by <b>activating it in-hand</b>.")
+	. += span_notice("Вы можете разбить клинок, чтобы телепортироваться в случайное, в основном безопасное место, <b>активировав его в руке</b>.")
 
 /// Checks if the passed mob can use this blade without being stunned
 /obj/item/melee/sickly_blade/proc/check_usability(mob/living/user)
@@ -46,7 +46,7 @@
 	if(.)
 		return .
 	if(!check_usability(user))
-		to_chat(user, span_danger("You feel a pulse of alien intellect lash out at your mind!"))
+		to_chat(user, span_danger("Вы чувствуете, как импульс чуждого разума бьёт по вашему сознанию!"))
 		var/mob/living/carbon/human/human_user = user
 		human_user.AdjustParalyzed(5 SECONDS)
 		return TRUE
@@ -58,9 +58,9 @@
 	if(heretic_datum?.unlimited_blades)
 		return
 	if(HAS_TRAIT(user, TRAIT_ELDRITCH_ARENA_PARTICIPANT))
-		user.balloon_alert(user, "can't escape!")
+		user.balloon_alert(user, "не сбежать!")
 		if(escape_attempts > 2)
-			to_chat(user, span_hypnophrase(span_big("Cowardly sheep will be slaughtered!")))
+			to_chat(user, span_hypnophrase(span_big("Трусливые овцы будут зарезаны!")))
 			playsound(src, SFX_SHATTER, 70, TRUE)
 			var/obj/item/bodypart/to_remove = user.get_active_hand()
 			to_remove.dismember()
@@ -71,7 +71,7 @@
 		escape_timer = addtimer(CALLBACK(src, PROC_REF(reset_attempts)), 2 SECONDS, TIMER_STOPPABLE)
 		return
 	if(HAS_TRAIT(user, TRAIT_NO_TELEPORT))
-		user.balloon_alert(user, "can't break!")
+		user.balloon_alert(user, "не сломать!")
 		return
 	seek_safety(user)
 
@@ -84,11 +84,11 @@
 	var/turf/safe_turf = find_safe_turf(z, extended_safety_checks = TRUE)
 	if(check_usability(user))
 		if(do_teleport(user, safe_turf, channel = TELEPORT_CHANNEL_MAGIC))
-			to_chat(user, span_warning("As you shatter [src], you feel a gust of energy flow through your body. [after_use_message]"))
+			to_chat(user, span_warning("Разбивая [src], вы чувствуете, как поток энергии проходит сквозь тело. [after_use_message]"))
 		else
-			to_chat(user, span_warning("You shatter [src], but your plea goes unanswered."))
+			to_chat(user, span_warning("Вы разбиваете [src], но ваша мольба остаётся без ответа."))
 	else
-		to_chat(user,span_warning("You shatter [src]."))
+		to_chat(user,span_warning("Вы разбиваете [src]."))
 	playsound(src, SFX_SHATTER, 70, TRUE) //copied from the code for smashing a glass sheet onto the ground to turn it into a shard
 	qdel(src)
 
@@ -101,31 +101,31 @@
 
 // Path of Rust's blade
 /obj/item/melee/sickly_blade/rust
-	name = "\improper rusted blade"
-	desc = "This crescent blade is decrepit, wasting to rust. \
-		Yet still it bites, ripping flesh and bone with jagged, rotten teeth."
+	name = "\improper ржавый клинок"
+	desc = "Этот серповидный клинок ветх и истлевает ржавчиной. \
+		И всё же он кусает, разрывая плоть и кость зазубренными гнилыми зубьями."
 	icon_state = "rust_blade"
 	inhand_icon_state = "rust_blade"
-	after_use_message = "The Rusted Hills hear your call..."
+	after_use_message = "Ржавые Холмы слышат ваш зов..."
 
 // Path of Ash's blade
 /obj/item/melee/sickly_blade/ash
-	name = "\improper ashen blade"
-	desc = "Molten and unwrought, a hunk of metal warped to cinders and slag. \
-		Unmade, it aspires to be more than it is, and shears soot-filled wounds with a blunt edge."
+	name = "\improper пепельный клинок"
+	desc = "Расплавленный и необработанный кусок металла, искривлённый до углей и шлака. \
+		Незавершённый, он стремится стать чем-то большим и оставляет тупой кромкой раны, полные сажи."
 	icon_state = "ash_blade"
 	inhand_icon_state = "ash_blade"
-	after_use_message = "The Nightwatcher hears your call..."
+	after_use_message = "Ночной Дозорный слышит ваш зов..."
 	resistance_flags = FIRE_PROOF
 
 // Path of Flesh's blade
 /obj/item/melee/sickly_blade/flesh
-	name = "\improper bloody blade"
-	desc = "A crescent blade born from a fleshwarped creature. \
-		Keenly aware, it seeks to spread to others the suffering it has endured from its dreadful origins."
+	name = "\improper кровавый клинок"
+	desc = "Серповидный клинок, рождённый из искажённой плоти. \
+		Он болезненно осознан и стремится передать другим страдание своего ужасного происхождения."
 	icon_state = "flesh_blade"
 	inhand_icon_state = "flesh_blade"
-	after_use_message = "The Marshal hears your call..."
+	after_use_message = "Маршал слышит ваш зов..."
 
 /obj/item/melee/sickly_blade/flesh/Initialize(mapload)
 	. = ..()
@@ -144,23 +144,23 @@
 
 // Path of Void's blade
 /obj/item/melee/sickly_blade/void
-	name = "\improper void blade"
-	desc = "Devoid of any substance, this blade reflects nothingness. \
-		It is a real depiction of purity, and chaos that ensues after its implementation."
+	name = "\improper клинок пустоты"
+	desc = "Лишённый всякой материи, этот клинок отражает ничто. \
+		Это подлинное воплощение чистоты и хаоса, который следует за её применением."
 	icon_state = "void_blade"
 	inhand_icon_state = "void_blade"
-	after_use_message = "The Aristocrat hears your call..."
+	after_use_message = "Аристократ слышит ваш зов..."
 
 // Path of the Blade's... blade.
 // Opting for /dark instead of /blade to avoid "sickly_blade/blade".
 /obj/item/melee/sickly_blade/dark
-	name = "\improper sundered blade"
-	desc = "A galliant blade, sundered and torn. \
-		Furiously, the blade cuts. Silver scars bind it forever to its dark purpose."
+	name = "\improper рассечённый клинок"
+	desc = "Доблестный клинок, расколотый и разорванный. \
+		Он яростно режет. Серебряные шрамы навеки привязали его к тёмной цели."
 	icon_state = "dark_blade"
 	base_icon_state = "dark_blade"
 	inhand_icon_state = "dark_blade"
-	after_use_message = "The Torn Champion hears your call..."
+	after_use_message = "Разорванный Чемпион слышит ваш зов..."
 	///If our blade is currently infused with the mansus grasp
 	var/infused = FALSE
 
@@ -187,7 +187,7 @@
 	// We're officially behind them, apply effects
 	living_target.AdjustParalyzed(1.5 SECONDS)
 	living_target.apply_damage(10, BRUTE, wound_bonus = CANT_WOUND)
-	living_target.balloon_alert(user, "backstab!")
+	living_target.balloon_alert(user, "удар в спину!")
 	playsound(living_target, 'sound/items/weapons/guillotine.ogg', 100, TRUE)
 
 /obj/item/melee/sickly_blade/dark/dropped(mob/user, silent)
@@ -207,40 +207,40 @@
 
 // Path of Cosmos's blade
 /obj/item/melee/sickly_blade/cosmic
-	name = "\improper cosmic blade"
-	desc = "A mote of celestial resonance, shaped into a star-woven blade. \
-		An iridescent exile, carving radiant trails, desperately seeking unification."
+	name = "\improper космический клинок"
+	desc = "Частица небесного резонанса, обретшая форму звёзднотканого клинка. \
+		Радужный изгнанник, оставляющий сияющие следы и отчаянно ищущий единения."
 	icon_state = "cosmic_blade"
 	inhand_icon_state = "cosmic_blade"
-	after_use_message = "The Stargazer hears your call..."
+	after_use_message = "Звездочёт слышит ваш зов..."
 
 // Path of Knock's blade
 /obj/item/melee/sickly_blade/lock
-	name = "\improper key blade"
-	desc = "A blade and a key, a key to what? \
-		What grand gates does it open?"
+	name = "\improper клинок-ключ"
+	desc = "Клинок и ключ. Ключ к чему? \
+		Какие великие врата он открывает?"
 	icon_state = "key_blade"
 	inhand_icon_state = "key_blade"
-	after_use_message = "The Stewards hear your call..."
+	after_use_message = "Распорядители слышат ваш зов..."
 	tool_behaviour = TOOL_CROWBAR
 	toolspeed = 1.3
 
 // Path of Moon's blade
 /obj/item/melee/sickly_blade/moon
-	name = "\improper moon blade"
-	desc = "A blade of iron, reflecting the truth of the earth: All join the troupe one day. \
-		A troupe bringing joy, carving smiles on their faces if they want one or not."
+	name = "\improper лунный клинок"
+	desc = "Железный клинок, отражающий истину земли: однажды все присоединятся к труппе. \
+		Труппе, несущей радость и вырезающей улыбки на лицах, хотят они того или нет."
 	icon_state = "moon_blade"
 	inhand_icon_state = "moon_blade"
-	after_use_message = "The Moon hears your call..."
+	after_use_message = "Луна слышит ваш зов..."
 
 // Path of Nar'Sie's blade
 // What!? This blade is given to cultists as an altar item when they sacrifice a heretic.
 // It is also given to the heretic themself if they sacrifice a cultist.
 /obj/item/melee/sickly_blade/cursed
-	name = "\improper cursed blade"
-	desc = "A dark blade, cursed to bleed forever. In constant struggle between the eldritch and the dark, it is forced to accept any wielder as its master. \
-		Its eye's cornea drips blood endlessly into the ground, yet its piercing gaze remains on you."
+	name = "\improper проклятый клинок"
+	desc = "Тёмный клинок, проклятый вечно кровоточить. В постоянной борьбе между потусторонним и тьмой он вынужден признавать любого владельца своим хозяином. \
+		Роговица его глаза бесконечно роняет кровь на землю, но пронзительный взгляд остаётся на вас."
 	force = 25
 	throwforce = 15
 	block_chance = 35

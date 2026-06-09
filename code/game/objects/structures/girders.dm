@@ -1,9 +1,9 @@
 /obj/structure/girder
 	icon = 'icons/obj/smooth_structures/girder.dmi'
-	name = "girder"
+	name = "балка"
 	base_icon_state = "girder"
 	icon_state = "girder-0"
-	desc = "A large structural assembly made out of metal; It requires a layer of iron before it can be considered a wall."
+	desc = "Крупная металлическая несущая конструкция. Чтобы она стала стеной, нужен слой железа."
 	anchored = TRUE
 	density = TRUE
 	max_integrity = 200
@@ -38,26 +38,26 @@
 	. = ..()
 	switch(state)
 		if(GIRDER_REINF)
-			. += span_notice("The support struts are <b>screwed</b> in place.")
+			. += span_notice("Опорные распорки <b>прикручены</b> на месте.")
 		if(GIRDER_REINF_STRUTS)
-			. += span_notice("The support struts are <i>unscrewed</i> and the inner <b>grille</b> is intact.")
+			. += span_notice("Опорные распорки <i>откручены</i>, а внутренняя <b>решётка</b> цела.")
 		if(GIRDER_NORMAL)
 			if(can_displace)
-				. += span_notice("The bolts are <b>wrenched</b> in place.")
+				. += span_notice("Болты <b>затянуты ключом</b>.")
 		if(GIRDER_DISPLACED)
-			. += span_notice("The bolts are <i>loosened</i>, but the <b>screws</b> are holding [src] together.")
+			. += span_notice("Болты <i>ослаблены</i>, но <b>винты</b> всё ещё удерживают [src].")
 		if(GIRDER_TRAM)
-			. += span_notice("[src] is designed for tram usage. Deconstructed with a screwdriver!")
+			. += span_notice("[src] предназначена для трамвайных конструкций. Разбирается отвёрткой!")
 	if (can_weld_apart)
-		. += span_notice("The frame looks weak enough to be <b>welded</b> apart.")
+		. += span_notice("Каркас выглядит достаточно слабым, чтобы его можно было <b>разварить</b>.")
 	else
-		. += span_notice("The frame could be sliced apart with a <b>plasmacutter</b>.")
+		. += span_notice("Каркас можно разрезать <b>плазморезом</b>.")
 
 /obj/structure/girder/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if (user.combat_mode)
 		return
 	if (istype(tool, /obj/item/stack/sheet/plasteel))
-		if (try_construction_step(user, tool, 5 SECONDS, req_state = GIRDER_NORMAL, start_alert = "reinforcing frame...", amount = 1))
+		if (try_construction_step(user, tool, 5 SECONDS, req_state = GIRDER_NORMAL, start_alert = "укрепление каркаса...", amount = 1))
 			replace_girder(/obj/structure/girder/reinforced)
 			return ITEM_INTERACT_SUCCESS
 		return ITEM_INTERACT_BLOCKING
@@ -66,25 +66,25 @@
 	. = ITEM_INTERACT_BLOCKING
 	switch (state)
 		if (GIRDER_TRAM)
-			if (try_construction_step(user, tool, 4 SECONDS, req_state = GIRDER_TRAM, start_alert = "disassembling frame..."))
+			if (try_construction_step(user, tool, 4 SECONDS, req_state = GIRDER_TRAM, start_alert = "разборка каркаса..."))
 				deconstruct(disassembled = TRUE)
 				return ITEM_INTERACT_SUCCESS
 		if (GIRDER_DISPLACED)
-			if (try_construction_step(user, tool, 4 SECONDS, req_state = GIRDER_DISPLACED, start_alert = "disassembling frame..."))
+			if (try_construction_step(user, tool, 4 SECONDS, req_state = GIRDER_DISPLACED, start_alert = "разборка каркаса..."))
 				deconstruct(disassembled = TRUE)
 				return ITEM_INTERACT_SUCCESS
 		if (GIRDER_REINF)
-			if (try_construction_step(user, tool, 4 SECONDS, req_state = GIRDER_REINF, start_alert = "unsecuring support struts..."))
+			if (try_construction_step(user, tool, 4 SECONDS, req_state = GIRDER_REINF, start_alert = "откручивание опорных распорок..."))
 				state = GIRDER_REINF_STRUTS
 				return ITEM_INTERACT_SUCCESS
 		if (GIRDER_REINF_STRUTS)
-			if (try_construction_step(user, tool, 4 SECONDS, req_state = GIRDER_REINF_STRUTS, start_alert = "securing support struts..."))
+			if (try_construction_step(user, tool, 4 SECONDS, req_state = GIRDER_REINF_STRUTS, start_alert = "закрепление опорных распорок..."))
 				state = GIRDER_REINF
 				return ITEM_INTERACT_SUCCESS
 
 /obj/structure/girder/wirecutter_act(mob/user, obj/item/tool)
 	. = ITEM_INTERACT_BLOCKING
-	if (try_construction_step(user, tool, 4 SECONDS, req_state = GIRDER_REINF_STRUTS, start_alert = "removing inner grille..."))
+	if (try_construction_step(user, tool, 4 SECONDS, req_state = GIRDER_REINF_STRUTS, start_alert = "снятие внутренней решётки..."))
 		new /obj/item/stack/sheet/plasteel(get_turf(src))
 		replace_girder(/obj/structure/girder)
 		return ITEM_INTERACT_SUCCESS
@@ -92,15 +92,15 @@
 /obj/structure/girder/wrench_act(mob/user, obj/item/tool)
 	. = ITEM_INTERACT_BLOCKING
 	if (!can_displace)
-		balloon_alert(user, "no bolts!")
+		balloon_alert(user, "нет болтов!")
 		return
 	switch (state)
 		if (GIRDER_NORMAL)
-			if (try_construction_step(user, tool, 4 SECONDS, req_state = GIRDER_NORMAL, start_alert = "unsecuring frame..."))
+			if (try_construction_step(user, tool, 4 SECONDS, req_state = GIRDER_NORMAL, start_alert = "откручивание каркаса..."))
 				replace_girder(/obj/structure/girder/displaced)
 				return ITEM_INTERACT_SUCCESS
 		if (GIRDER_DISPLACED)
-			if (try_construction_step(user, tool, 4 SECONDS, req_state = GIRDER_DISPLACED, start_alert = "securing frame..."))
+			if (try_construction_step(user, tool, 4 SECONDS, req_state = GIRDER_DISPLACED, start_alert = "закрепление каркаса..."))
 				replace_girder(/obj/structure/girder)
 				return ITEM_INTERACT_SUCCESS
 
@@ -108,9 +108,9 @@
 	. = ITEM_INTERACT_BLOCKING
 	// Plasmacutters can always slice apart girders.
 	if (!can_weld_apart && !istype(tool, /obj/item/gun/energy/plasmacutter))
-		balloon_alert(user, "can't weld apart!")
+		balloon_alert(user, "не разварить!")
 		return
-	if (try_construction_step(user, tool, 4 SECONDS, start_alert = "slicing apart..."))
+	if (try_construction_step(user, tool, 4 SECONDS, start_alert = "разрезание..."))
 		deconstruct(disassembled = TRUE)
 		return ITEM_INTERACT_SUCCESS
 
@@ -129,7 +129,7 @@
 	if (!isnull(req_state) && req_state != state)
 		return FALSE
 	if (req_floor && !isfloorturf(loc))
-		balloon_alert(user, "needs a floor!")
+		balloon_alert(user, "нужен пол!")
 		return FALSE
 	return TRUE
 
@@ -165,7 +165,7 @@
 	replace_girder(/obj/structure/girder/cult)
 
 /obj/structure/girder/displaced
-	name = "displaced girder"
+	name = "смещённая балка"
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "displaced"
 	anchored = FALSE
@@ -177,7 +177,7 @@
 	canSmoothWith = null
 
 /obj/structure/girder/reinforced
-	name = "reinforced girder"
+	name = "укреплённая балка"
 	icon = 'icons/obj/smooth_structures/reinforced_girder.dmi'
 	icon_state = "reinforced-0"
 	base_icon_state = "reinforced"
@@ -186,8 +186,8 @@
 	max_integrity = 350
 
 /obj/structure/girder/tram
-	name = "tram girder"
-	desc = "Titanium framework to construct tram walls. Can be plated with <b>titanium glass</b> or other wall materials."
+	name = "трамвайная балка"
+	desc = "Титановый каркас для строительства трамвайных стен. Можно обшить <b>титановым стеклом</b> или другими стеновыми материалами."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "tram"
 	state = GIRDER_TRAM
@@ -198,13 +198,13 @@
 	stack_type = /obj/item/stack/sheet/mineral/titanium
 
 /obj/structure/girder/tram/corner
-	name = "tram frame corner"
+	name = "угол трамвайного каркаса"
 
 //////////////////////////////////////////// cult girder //////////////////////////////////////////////
 
 /obj/structure/girder/cult
-	name = "runed girder"
-	desc = "Framework made of a strange and shockingly cold metal. It doesn't seem to have any bolts."
+	name = "рунная балка"
+	desc = "Каркас из странного и пугающе холодного металла. Кажется, на нём нет болтов."
 	icon = 'icons/obj/antags/cult/structures.dmi'
 	icon_state= "cultgirder"
 	can_displace = FALSE
@@ -250,8 +250,8 @@
 	return FALSE
 
 /obj/structure/girder/bronze
-	name = "wall gear"
-	desc = "A girder made out of sturdy bronze, made to resemble a gear."
+	name = "стенная шестерня"
+	desc = "Балка из прочной бронзы, сделанная в форме шестерни."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "wall_gear"
 	can_displace = FALSE

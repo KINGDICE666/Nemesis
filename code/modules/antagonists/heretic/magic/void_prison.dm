@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/pointed/void_prison
-	name = "Void Prison"
-	desc = "Sends a heathen into the void for 10 seconds. \
+	name = "Тюрьма Пустоты"
+	desc = "Отправляет неверного в пустоту на 10 секунд. \
 		They will be unable to perform any actions for the duration. \
 		Afterwards, they will be chilled and returned to the mortal plane."
 	background_icon_state = "bg_heretic"
@@ -95,8 +95,8 @@
 
 //---- Screen alert
 /atom/movable/screen/alert/status_effect/void_prison
-	name = "Void Prison"
-	desc = "A Yawning void encases your mortal coil." //Go straight to jail, do not pass GO, do not collect 200$
+	name = "Тюрьма Пустоты"
+	desc = "Разверзшаяся пустота сковывает вашу смертную оболочку." //Go straight to jail, do not pass GO, do not collect 200$
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	icon_state = "heretic_template"
 	overlay_icon = 'icons/mob/actions/actions_ecult.dmi'

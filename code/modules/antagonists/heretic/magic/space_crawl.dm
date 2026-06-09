@@ -6,8 +6,8 @@
  * Lets the caster enter and exit tiles of space or misc turfs.
  */
 /datum/action/cooldown/spell/jaunt/space_crawl
-	name = "Space Phase"
-	desc = "Allows you to phase in and out of existence while in space or a low-pressure, outdoor area."
+	name = "Космическая фаза"
+	desc = "Позволяет фазироваться из существования и обратно в космосе или на открытой области с низким давлением."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 
@@ -139,8 +139,8 @@
 
 /// Spacecrawl "hands", prevent the user from holding items in spacecrawl
 /obj/item/space_crawl
-	name = "space crawl"
-	desc = "You are unable to hold anything while in this form."
+	name = "космическое скольжение"
+	desc = "В этой форме вы не можете ничего держать."
 	icon = 'icons/obj/antags/eldritch.dmi'
 	item_flags = ABSTRACT | DROPDEL
 

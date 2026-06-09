@@ -8,7 +8,6 @@ import {
   Tabs,
 } from 'tgui-core/components';
 import { type BooleanLike, classes } from 'tgui-core/react';
-import { capitalizeAll } from 'tgui-core/string';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
@@ -36,6 +35,15 @@ type Recipe = {
   name: string;
 };
 
+const plumbingCategoryNames: Record<string, string> = {
+  Synthesizers: 'Синтезаторы',
+  Distributors: 'Распределители',
+  Storage: 'Хранилище',
+};
+
+const localizePlumbingCategory = (category: string) =>
+  plumbingCategoryNames[category] || category;
+
 const PlumbingTypeSection = (props) => {
   const { act, data } = useBackend<Data>();
   const { categories = [], selected_category, selected_recipe } = data;
@@ -53,7 +61,7 @@ const PlumbingTypeSection = (props) => {
             selected={category.cat_name === shownCategory.cat_name}
             onClick={() => setCategoryName(category.cat_name)}
           >
-            {category.cat_name}
+            {localizePlumbingCategory(category.cat_name)}
           </Tabs.Tab>
         ))}
       </Tabs>
@@ -80,7 +88,7 @@ const PlumbingTypeSection = (props) => {
               transform: 'scale(1.3) translate(9.5%, 11.2%)',
             }}
           />
-          <span>{capitalizeAll(recipe.name)}</span>
+          <span>{recipe.name}</span>
         </Button>
       ))}
     </Section>
@@ -91,7 +99,7 @@ export const LayerSelect = (props) => {
   const { act, data } = useBackend<Data>();
   const { piping_layer } = data;
   return (
-    <LabeledList.Item label="Layer">
+    <LabeledList.Item label="Слой">
       {[1, 2, 3, 4, 5].map((layer) => (
         <Button.Checkbox
           key={layer}

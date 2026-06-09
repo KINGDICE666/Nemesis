@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/pointed/apetra_vulnera
 	name = "Apetra Vulnera"
-	desc = "Causes severe bleeding on every limb of a target which has more than 15 brute damage. \
+	desc = "Вызывает сильное кровотечение каждой конечности цели, имеющей более 15 грубого урона. \
 		Wounds a random limb if no limb is sufficiently damaged."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"

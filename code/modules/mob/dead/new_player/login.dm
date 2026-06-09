@@ -30,11 +30,11 @@
 		to_chat(src, "<div class=\"motd\">[motd]</div>", handle_whitespace=FALSE)
 
 	if(GLOB.admin_notice)
-		to_chat(src, span_notice("<b>Admin Notice:</b>\n \t [GLOB.admin_notice]"))
+		to_chat(src, span_notice("<b>Уведомление администрации:</b>\n \t [GLOB.admin_notice]"))
 
 	var/spc = CONFIG_GET(number/soft_popcap)
 	if(spc && living_player_count() >= spc)
-		to_chat(src, span_notice("<b>Server Notice:</b>\n \t [CONFIG_GET(string/soft_popcap_message)]"))
+		to_chat(src, span_notice("<b>Уведомление сервера:</b>\n \t [CONFIG_GET(string/soft_popcap_message)]"))
 
 	add_sight(SEE_TURFS)
 
@@ -54,13 +54,13 @@
 
 	if(SSticker.current_state < GAME_STATE_SETTING_UP)
 		var/tl = SSticker.GetTimeLeft()
-		to_chat(src, "Please set up your character and select \"Ready\". The game will start [tl > 0 ? "in about [DisplayTimeText(tl)]" : "soon"].")
+		to_chat(src, "Настройте персонажа и выберите \"Готов\". Игра начнется [tl > 0 ? "примерно через [DisplayTimeText(tl)]" : "скоро"].")
 
 	if(GLOB.unrecommended_builds[num2text(client.byond_build)])
 		INVOKE_ASYNC(src, PROC_REF(unrcommended_build_alert))
 
 /mob/dead/new_player/proc/unrcommended_build_alert()
-	var/warning = "Hey! The build of byond you are running ([client.byond_build]) has one or more potential issues that may cause major gameplay disruptions.\n\n\
-		You may continue to play, but be aware you may encounter the following issue while playing:\n\"[GLOB.unrecommended_builds[num2text(client.byond_build)]]\"\n\n\
-		If possible, we recommend updating your BYOND version.\nIf you are on the latest version, download an earlier release instead from www.byond.com/download/build."
-	alert(src, warning, "Bad BYOND Build", "OK")
+	var/warning = "Ваша сборка BYOND ([client.byond_build]) имеет одну или несколько потенциальных проблем, которые могут серьезно мешать игре.\n\n\
+		Вы можете продолжить, но во время игры можете столкнуться со следующей проблемой:\n\"[GLOB.unrecommended_builds[num2text(client.byond_build)]]\"\n\n\
+		По возможности обновите BYOND. Если у вас последняя версия, скачайте более ранний релиз с www.byond.com/download/build."
+	alert(src, warning, "Проблемная сборка BYOND", "OK")

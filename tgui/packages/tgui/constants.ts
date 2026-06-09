@@ -165,6 +165,30 @@ export const RADIO_CHANNELS = [
   },
 ] as const;
 
+const RADIO_CHANNEL_NAMES: Record<string, string> = {
+  Common: 'Общий',
+  Security: 'Служба безопасности',
+  Engineering: 'Инженерия',
+  Command: 'Командование',
+  Science: 'Наука',
+  Medical: 'Медицина',
+  Supply: 'Снабжение',
+  Service: 'Сервис',
+  'AI Private': 'Приватный ИИ',
+  Entertainment: 'Развлечения',
+  Syndicate: 'Синдикат',
+  CentCom: 'ЦК',
+  Uplink: 'Аплинк',
+  'Red Team': 'Красная команда',
+  'Blue Team': 'Синяя команда',
+  'Green Team': 'Зелёная команда',
+  'Yellow Team': 'Жёлтая команда',
+};
+
+export function localizeRadioChannel(channel: string): string {
+  return RADIO_CHANNEL_NAMES[channel] || channel;
+}
+
 const GASES = [
   {
     id: 'o2',

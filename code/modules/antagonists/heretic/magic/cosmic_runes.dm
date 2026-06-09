@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/cosmic_rune
-	name = "Cosmic Rune"
-	desc = "Creates a cosmic rune at your position, only two can exist at a time. Invoking one rune transports you to the other. \
+	name = "Космическая руна"
+	desc = "Создаёт космическую руну в вашей позиции. Одновременно могут существовать только две. Активация одной переносит вас к другой. \
 		Anyone with a star mark gets transported along with you."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
@@ -51,8 +51,8 @@
 
 /// A rune that allows you to teleport to the location of a linked rune.
 /obj/effect/cosmic_rune
-	name = "cosmic rune"
-	desc = "A strange rune, that can instantly transport people to another location."
+	name = "космическая руна"
+	desc = "Странная руна, способная мгновенно переносить людей в другое место."
 	anchored = TRUE
 	icon = 'icons/obj/service/hand_of_god_structures.dmi'
 	icon_state = "cosmic_rune"
@@ -165,7 +165,7 @@
 	linked_rune = null
 
 /obj/effect/temp_visual/cosmic_rune_fade
-	name = "cosmic rune"
+	name = "космическая руна"
 	icon = 'icons/obj/service/hand_of_god_structures.dmi'
 	icon_state = "cosmic_rune_fade"
 	plane = FLOOR_PLANE
@@ -180,7 +180,7 @@
 	add_alt_appearance(/datum/atom_hud/alternate_appearance/basic/silicons, "cosmic", silicon_image)
 
 /obj/effect/temp_visual/rune_light
-	name = "cosmic rune"
+	name = "космическая руна"
 	icon = 'icons/obj/service/hand_of_god_structures.dmi'
 	icon_state = "cosmic_rune_light"
 	plane = FLOOR_PLANE

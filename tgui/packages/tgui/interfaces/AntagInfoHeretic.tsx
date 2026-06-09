@@ -117,7 +117,7 @@ const IntroductionSection = (props) => {
   return (
     <Stack justify="space-evenly" height="100%" width="100%">
       <Stack.Item grow>
-        <Section title="You are the Heretic!" fill fontSize="14px">
+        <Section title="Вы Еретик!" fill fontSize="14px">
           <Stack vertical>
             <FlavorSection />
             <Stack.Divider />
@@ -131,17 +131,17 @@ const IntroductionSection = (props) => {
                   fill
                   titleMessage={
                     can_change_objective
-                      ? 'In order to ascend, you have these tasks to fulfill'
-                      : 'Use your dark knowledge to fulfil your personal goal'
+                      ? 'Чтобы вознестись, выполните эти задачи'
+                      : 'Используйте тёмное знание, чтобы выполнить личную цель'
                   }
                   objectives={objectives}
                   objectiveFollowup={
                     <ReplaceObjectivesButton
                       can_change_objective={can_change_objective}
-                      button_title={'Reject Ascension'}
+                      button_title={'Отвергнуть Вознесение'}
                       button_colour={'red'}
                       button_tooltip={
-                        'Turn your back on the Mansus to accomplish a task of your choosing. Selecting this option will prevent you from ascending!'
+                        'Отвернитесь от Мансуса ради выбранной вами задачи. Этот выбор навсегда лишит вас возможности вознестись!'
                       }
                     />
                   }
@@ -161,18 +161,18 @@ const FlavorSection = () => {
       <Stack vertical textAlign="center" fontSize="14px">
         <Stack.Item>
           <i>
-            Another day at a meaningless job. You feel a&nbsp;
-            <span style={hereticBlue}>shimmer</span>
-            &nbsp;around you, as a realization of something&nbsp;
-            <span style={hereticRed}>strange</span>
-            &nbsp;in the air unfolds. You look inwards and discover something
-            that will change your life.
+            Ещё один день на бессмысленной работе. Вы ощущаете&nbsp;
+          <span style={hereticBlue}>мерцание</span>
+            &nbsp;вокруг себя, и понимание чего-то&nbsp;
+            <span style={hereticRed}>странного</span>
+            &nbsp;в воздухе раскрывается перед вами. Вы заглядываете внутрь себя
+            и находите то, что изменит вашу жизнь.
           </i>
         </Stack.Item>
         <Stack.Item>
           <b>
-            The <span style={hereticPurple}>Gates of Mansus</span>
-            &nbsp;open up to your mind.
+            <span style={hereticPurple}>Врата Мансуса</span>
+            &nbsp;открываются вашему разуму.
           </b>
         </Stack.Item>
       </Stack>
@@ -187,66 +187,65 @@ const GuideSection = () => {
     <Stack.Item>
       <Stack vertical fontSize="12px">
         <Stack.Item>
-          - Find reality smashing&nbsp;
-          <span style={hereticPurple}>influences</span>
-          &nbsp;around the station invisible to the normal eye and&nbsp;
-          <b>right click</b> on them to harvest them for&nbsp;
-          <span style={hereticBlue}>knowledge points</span>. Tapping them makes
-          them visible to all after a short time. Dreaming of Mansus may help to
-          find them.
+          - Ищите разрывающие реальность&nbsp;
+          <span style={hereticPurple}>влияния</span>
+          &nbsp;по станции, невидимые обычному глазу, и&nbsp;
+          <b>кликайте правой кнопкой</b> по ним, чтобы получить&nbsp;
+          <span style={hereticBlue}>очки знания</span>. Прикосновение вскоре
+          сделает их видимыми для всех.
+          Сны о Мансусе могут помочь их найти.
         </Stack.Item>
         <Stack.Item>
-          - Use your&nbsp;
-          <span style={hereticRed}>Living Heart action</span>
-          &nbsp;to track down&nbsp;
-          <span style={hereticRed}>sacrifice targets</span>, but be careful:
-          Pulsing it will produce a heartbeat sound that nearby people may hear.
-          This action is tied to your <b>heart</b> - if you lose it, you must
-          complete a ritual to regain it.
+          - Используйте действие&nbsp;
+          <span style={hereticRed}>Живого сердца</span>
+          &nbsp;для поиска&nbsp;
+          <span style={hereticRed}>целей жертвоприношения</span>, но будьте
+          осторожны: пульсация создаёт звук сердцебиения, который могут услышать
+          окружающие. Это действие связано с вашим <b>сердцем</b>: если вы
+          потеряете его, потребуется ритуал для восстановления.
         </Stack.Item>
         <Stack.Item>
-          - Draw a&nbsp;
-          <span style={hereticGreen}>transmutation rune</span> by using a
-          drawing tool (a pen or crayon) on the floor while having&nbsp;
-          <span style={hereticGreen}>Mansus Grasp</span>
-          &nbsp;active in your other hand. This rune allows you to complete
-          rituals and sacrifices.
+          - Нарисуйте&nbsp;
+          <span style={hereticGreen}>руну трансмутации</span>, использовав
+          пишущий инструмент (ручку или мелок) на полу, пока в другой руке
+          активна&nbsp;
+          <span style={hereticGreen}>Хватка Мансуса</span>.
+          &nbsp;Эта руна позволяет проводить ритуалы и жертвоприношения.
         </Stack.Item>
         <Stack.Item>
-          - Follow your <span style={hereticRed}>Living Heart</span> to find
-          your targets. Bring them back to a&nbsp;
-          <span style={hereticGreen}>transmutation rune</span> in critical or
-          worse condition to&nbsp;
-          <span style={hereticRed}>sacrifice</span> them for&nbsp;
-          <span style={hereticBlue}>knowledge points</span>. The Mansus{' '}
-          <b>ONLY</b> accepts targets pointed to by the&nbsp;
-          <span style={hereticRed}>Living Heart</span>.
+          - Следуйте за <span style={hereticRed}>Живым сердцем</span>, чтобы
+          найти цели. Принесите их к&nbsp;
+          <span style={hereticGreen}>руне трансмутации</span> в критическом или
+          худшем состоянии, чтобы&nbsp;
+          <span style={hereticRed}>принести в жертву</span> за&nbsp;
+          <span style={hereticBlue}>очки знания</span>. Мансус принимает{' '}
+          <b>ТОЛЬКО</b> цели, на которые указывает&nbsp;
+          <span style={hereticRed}>Живое сердце</span>.
         </Stack.Item>
         <Stack.Item>
-          - Make yourself a <span style={hereticYellow}>focus</span> to be able
-          to cast various advanced spells to assist you in acquiring harder and
-          harder sacrifices.
+          - Создайте себе <span style={hereticYellow}>фокус</span>, чтобы
+          применять продвинутые заклинания и добывать всё более трудные жертвы.
         </Stack.Item>
         <Stack.Item>
-          - Accomplish all of your objectives to be able to learn the{' '}
-          <span style={hereticYellow}>final ritual</span>. Complete the ritual
-          to become all powerful!
+          - Выполните все цели, чтобы изучить{' '}
+          <span style={hereticYellow}>финальный ритуал</span>. Завершите его и
+          станьте всемогущим!
         </Stack.Item>
         <Stack.Item>
-          <span style={hereticRed}>WARNING!</span>
-          <br /> Accumulating a total of <b>{points_to_aura}</b>&nbsp;
-          <span style={hereticBlue}>knowledge points</span>
-          &nbsp;to manifest a visible aura of&nbsp;
-          <span style={hereticPurple}>Mansus energy</span> around you. Simply
-          gaining the points is sufficent, spending them will not trigger it.
+          <span style={hereticRed}>ВНИМАНИЕ!</span>
+          <br /> Накопление <b>{points_to_aura}</b>&nbsp;
+          <span style={hereticBlue}>очков знания</span>
+          &nbsp;проявит вокруг вас видимую ауру&nbsp;
+          <span style={hereticPurple}>энергии Мансуса</span>. Достаточно просто
+          получить очки; их трата не отменит проявление.
           <br />
-          This aura will be visible to all those around you and will mark you as
-          a heretic. Consider the risks before accumulating too much knowledge!
+          Эта аура будет видна всем вокруг и выдаст в вас еретика. Оцените риск,
+          прежде чем копить слишком много знания!
           <br />
-          Keep in mind that using a&nbsp;
-          <span style={hereticPurple}>Codex Cicatrix</span> will also make you
-          very obvious as a heretic when draining&nbsp;
-          <span style={hereticYellow}>influences</span>
+          Помните, что использование&nbsp;
+          <span style={hereticPurple}>Кодекса Цикатрикс</span> при поглощении&nbsp;
+          <span style={hereticYellow}>влияний</span> тоже очень явно выдаёт в
+          вас еретика.
         </Stack.Item>
       </Stack>
     </Stack.Item>
@@ -262,10 +261,10 @@ const InformationSection = () => {
         {!!ascended && (
           <Stack.Item>
             <Stack align="center">
-              <Stack.Item>You have</Stack.Item>
+              <Stack.Item>Вы</Stack.Item>
               <Stack.Item fontSize="24px">
                 <Box inline color="yellow">
-                  ASCENDED
+                  ВОЗНЕСЛИСЬ
                 </Box>
                 !
               </Stack.Item>
@@ -273,16 +272,16 @@ const InformationSection = () => {
           </Stack.Item>
         )}
         <Stack.Item>
-          You have <b>{charges || 0}</b>&nbsp;
+          У вас <b>{charges || 0}</b>&nbsp;
           <span style={hereticBlue}>
-            knowledge point{charges !== 1 ? 's' : ''}
+            {charges === 1 ? 'очко знания' : 'очков знания'}
           </span>
           .
         </Stack.Item>
         <Stack.Item>
-          You have made a total of&nbsp;
+          Всего совершено&nbsp;
           <b>{total_sacrifices || 0}</b>&nbsp;
-          <span style={hereticRed}>sacrifices</span>.
+          <span style={hereticRed}>жертвоприношений</span>.
         </Stack.Item>
       </Stack>
     </Stack.Item>
@@ -296,13 +295,13 @@ const KnowledgeTree = () => {
   const nodesToShow = knowledge_tiers.filter((tier) => tier.nodes.length > 0);
 
   return (
-    <Section title="Research Tree" fill scrollable>
+    <Section title="Дерево исследований" fill scrollable>
       <Box textAlign="center" fontSize="32px">
-        <span style={hereticYellow}>DAWN</span>
+        <span style={hereticYellow}>РАССВЕТ</span>
       </Box>
       <Stack vertical>
         {nodesToShow.length === 0
-          ? 'None!'
+          ? 'Нет!'
           : nodesToShow.map((tier, i) => (
               <Stack.Item key={i}>
                 <Stack
@@ -365,7 +364,7 @@ const KnowledgeNode = (props: KnowledgeNodeProps) => {
         }
         onClick={
           !isBuyable
-            ? () => logger.warn(`Cannot buy ${node.name}`)
+            ? () => logger.warn(`Нельзя купить ${node.name}`)
             : () =>
                 act('research', { path: node.path, category: purchaseCategory })
         }
@@ -406,12 +405,12 @@ const KnowledgeNode = (props: KnowledgeNodeProps) => {
           bold
           style={{ margin: '2px', borderRadius: '100%' }}
         >
-          {isBuyable && (node.cost > 0 ? node.cost : 'FREE')}
+          {isBuyable && (node.cost > 0 ? node.cost : 'БЕСПЛАТНО')}
         </Box>
       </Button>
       {!!node.ascension && (
         <Box textAlign="center" fontSize="32px">
-          <span style={hereticPurple}>DUSK</span>
+          <span style={hereticPurple}>СУМЕРКИ</span>
         </Box>
       )}
     </Stack.Item>
@@ -427,7 +426,7 @@ const KnowledgeShop = () => {
   }
 
   return (
-    <Section title="Knowledge Shop" fill scrollable>
+    <Section title="Магазин знаний" fill scrollable>
       <Stack vertical fill>
         <Knowledges />
       </Stack>
@@ -447,7 +446,7 @@ const KnowledgeShop = () => {
 
     return tiers?.map((tier, index) => (
       <Stack.Item key={`tier-${index}`}>
-        Tier {index + 1}
+        Уровень {index + 1}
         <Stack fill scrollable wrap="wrap">
           {tier.map((knowledge) => (
             <Stack.Item key={`knowledge-${knowledge.path}`}>
@@ -471,11 +470,11 @@ const ResearchInfo = () => {
   return (
     <>
       <Stack.Item mb={1.5} fontSize="20px" textAlign="center">
-        You have <b>{charges || 0}</b>&nbsp;
+        У вас <b>{charges || 0}</b>&nbsp;
         <span style={hereticBlue}>
-          knowledge point{charges !== 1 ? 's' : ''}
+          {charges === 1 ? 'очко знания' : 'очков знания'}
         </span>{' '}
-        to spend.
+        для траты.
       </Stack.Item>
       <Stack fill>
         <Stack.Item grow>
@@ -548,14 +547,14 @@ const PathContent = ({
       <Stack vertical>
         {!isPathSelected && (
           <Stack.Item verticalAlign="center" textAlign="center">
-            <h1>Choose Path:</h1>{' '}
+            <h1>Выберите путь:</h1>{' '}
             <KnowledgeNode
               node={path.starting_knowledge}
               purchaseCategory={ShopCategory.Start}
             />
             <div>
               <h3>
-                Complexity:{' '}
+                Сложность:{' '}
                 <span style={{ color: path.complexity_color }}>
                   {path.complexity}
                 </span>
@@ -565,20 +564,20 @@ const PathContent = ({
         )}
 
         <Stack.Item>
-          <b>Description:</b>{' '}
+          <b>Описание:</b>{' '}
           {path.description.map((line, index) => (
             <div key={index}>{line}</div>
           ))}
         </Stack.Item>
         {(!isPathSelected && (
           <Stack.Item style={{ justifyItems: 'center' }}>
-            <b>Passive: {name}</b>
+            <b>Пассивный эффект: {name}</b>
             <p className="Passive">{description[0]}</p>
           </Stack.Item>
         )) || (
           <Stack.Item>
             <b>
-              Passive: {name}, level: {passive_level}
+              Пассивный эффект: {name}, уровень: {passive_level}
             </b>
             <Stack>
               {description.map((line, index) => (
@@ -586,7 +585,7 @@ const PathContent = ({
                   key={index}
                   className={`Passive ${passive_level >= index + 1 ? 'Passive--Active' : ''}`}
                 >
-                  Level {index + 1}
+                  Уровень {index + 1}
                   <br />
                   {line}
                 </Stack.Item>
@@ -597,7 +596,7 @@ const PathContent = ({
         <Stack.Item>
           {!isPathSelected && (
             <>
-              <b>Guaranteed Abilities:</b>
+              <b>Гарантированные способности:</b>
               <Stack wrap="wrap" justify="center">
                 {path.preview_abilities.map((ability) => (
                   <Stack.Item key={`guaranteed_${ability.name}`} m={1}>
@@ -611,7 +610,7 @@ const PathContent = ({
         {!isPathSelected && (
           <>
             <Stack.Item>
-              <b>Pros:</b>
+              <b>Плюсы:</b>
               <div>
                 {path.pros.map((pro, index) => (
                   <p key={index}>{pro}</p>
@@ -619,7 +618,7 @@ const PathContent = ({
               </div>
             </Stack.Item>
             <Stack.Item>
-              <b>Cons:</b>
+              <b>Минусы:</b>
               <div>
                 {path.cons.map((con, index) => (
                   <p key={index}>{con}</p>
@@ -631,7 +630,7 @@ const PathContent = ({
 
         {isPathSelected && (
           <Stack.Item textAlign="left" mt={2} mb={1}>
-            <b>Tips:</b>
+            <b>Советы:</b>
             <ul>
               {path.tips.map((tip, index) => (
                 <li key={index}>{tip}</li>
@@ -659,13 +658,13 @@ export const AntagInfoHeretic = () => {
   );
 
   const tabs = [
-    { label: 'Information', icon: 'info', content: <IntroductionSection /> },
+    { label: 'Информация', icon: 'info', content: <IntroductionSection /> },
     {
-      label: 'Path Info',
+      label: 'Путь',
       icon: 'info',
       content: <PathInfo currentPath={currentPath} />,
     },
-    { label: 'Research', icon: 'book', content: <ResearchInfo /> },
+    { label: 'Исследования', icon: 'book', content: <ResearchInfo /> },
   ];
 
   const currentTheme = () => {

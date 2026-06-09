@@ -1,6 +1,6 @@
 /datum/action/cooldown/lunatic_track
-	name = "Moonlight Echo"
-	desc = "Track your ringleader."
+	name = "Лунное эхо"
+	desc = "Отследите своего распорядителя."
 	check_flags = AB_CHECK_CONSCIOUS
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"

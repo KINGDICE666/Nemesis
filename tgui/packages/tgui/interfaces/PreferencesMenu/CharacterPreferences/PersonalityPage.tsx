@@ -29,14 +29,14 @@ function getButtonColors(
     return {
       backgroundColor: 'rgba(64, 34, 34, 0.5)',
       borderColor: 'darkred',
-      tooltip: `You cannot select this personality with ${invalid}.`,
+      tooltip: `Нельзя выбрать этот характер вместе с ${invalid}.`,
     };
   }
   if (disabled) {
     return {
       backgroundColor: 'rgba(64, 64, 64, 0.5)',
       borderColor: '#666666',
-      tooltip: 'You are at the maximum number of personalities.',
+      tooltip: 'Вы достигли максимального числа характеров.',
     };
   }
   if (selected) {
@@ -186,7 +186,7 @@ function isIncompatible(
       if (personalityIncompatibilities[group].includes(selectedTypePath)) {
         return (
           getPersonalityName(allPersonalities, selectedTypePath) ||
-          'an unknown personality'
+          'неизвестным характером'
         );
       }
     }
@@ -238,7 +238,7 @@ function getAllSelectedPersonalitiesString(
     }
   }
   if (personalityNames.length === 0) {
-    return 'You have no personality.';
+    return 'Характер не выбран.';
   }
   personalityNames.sort((a, b) => (a < b ? -1 : 1));
   let finalString = '';
@@ -253,10 +253,10 @@ function getAllSelectedPersonalitiesString(
       if (finalString[finalString.length - 1] !== ' ') {
         finalString += ' ';
       }
-      finalString += 'and ';
+      finalString += 'и ';
     }
   }
-  return `You are ${finalString}.`;
+  return `Ваш характер: ${finalString}.`;
 }
 
 export function PersonalityPage() {
@@ -335,8 +335,8 @@ export function PersonalityPage() {
                   <Icon name="exclamation-triangle" mr={1} />
                 </Flex.Item>
                 <Flex.Item>
-                  Mood is disabled on this server. You can still select
-                  personalities, but they will have no effect.
+                  Настроение отключено на этом сервере. Характер можно выбрать,
+                  но он не будет ни на что влиять.
                 </Flex.Item>
               </Flex>
             </NoticeBox>
@@ -345,7 +345,7 @@ export function PersonalityPage() {
         <Stack.Item mb={1}>
           <Input
             fluid
-            placeholder="Search..."
+            placeholder="Поиск..."
             value={searchQuery}
             onChange={(v) => setSearchQuery(v)}
           />

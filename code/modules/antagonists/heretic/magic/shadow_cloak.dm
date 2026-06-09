@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/shadow_cloak
-	name = "Cloak of Shadow"
-	desc = "Completely conceals your identity, but does not make you invisible.  Can be activated early to disable it. \
+	name = "Плащ Тени"
+	desc = "Полностью скрывает вашу личность, но не делает невидимым. Можно активировать повторно, чтобы отключить эффект. \
 		While cloaked, you move faster, but undergo actions much slower. \
 		Taking damage while cloaked may cause it to lift suddenly, causing negative effects. "
 	background_icon_state = "bg_heretic"

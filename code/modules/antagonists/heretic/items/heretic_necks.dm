@@ -1,6 +1,6 @@
 /obj/item/clothing/neck/heretic_focus
-	name = "amber focus"
-	desc = "An amber focusing glass that provides a link to the world beyond. The necklace seems to twitch, but only when you look at it from the corner of your eye."
+	name = "янтарный фокус"
+	desc = "Янтарное фокусирующее стекло, дающее связь с потусторонним миром. Ожерелье словно подёргивается, но только когда смотришь краем глаза."
 	icon_state = "eldritch_necklace"
 	w_class = WEIGHT_CLASS_SMALL
 	resistance_flags = FIRE_PROOF
@@ -10,8 +10,8 @@
 	AddElement(/datum/element/heretic_focus)
 
 /obj/item/clothing/neck/heretic_focus/crimson_medallion
-	name = "crimson medallion"
-	desc = "A blood-red focusing glass that provides a link to the world beyond, and worse. Its eye is constantly twitching and gazing in all directions. It almost seems to be silently screaming..."
+	name = "багровый медальон"
+	desc = "Кроваво-красное фокусирующее стекло, дающее связь с потусторонним миром и чем-то худшим. Его глаз постоянно дёргается и смотрит во все стороны. Кажется, он беззвучно кричит..."
 	icon_state = "crimson_medallion"
 	/// The aura healing component. Used to delete it when taken off.
 	var/datum/component/component
@@ -37,7 +37,7 @@
 		team_color = pick(COLOR_CULT_RED, COLOR_GREEN)
 
 	user.add_traits(list(TRAIT_MANSUS_TOUCHED, TRAIT_BLOOD_FOUNTAIN), REF(src))
-	to_chat(user, span_alert("Your heart takes on a strange yet soothing irregular rhythm, and your blood feels significantly less viscous than it used to be. You're not sure if that's a good thing."))
+	to_chat(user, span_alert("Ваше сердце принимает странный, но успокаивающий неровный ритм, а кровь кажется заметно менее вязкой, чем раньше. Вы не уверены, хорошо ли это."))
 	component = user.AddComponent( \
 		/datum/component/aura_healing, \
 		range = 3, \
@@ -58,7 +58,7 @@
 		return
 
 	if(HAS_TRAIT_FROM(user, TRAIT_MANSUS_TOUCHED, REF(src)))
-		to_chat(user, span_notice("Your heart and blood return to their regular old rhythm and flow."))
+		to_chat(user, span_notice("Ваше сердце и кровь возвращаются к прежнему ритму и течению."))
 
 	if(IS_HERETIC_OR_MONSTER(user) && active)
 		for(var/datum/action/cooldown/spell/spell_action in user.actions)
@@ -77,10 +77,10 @@
 
 /obj/item/clothing/neck/heretic_focus/crimson_medallion/attack_self(mob/living/user, modifiers)
 	. = ..()
-	to_chat(user, span_danger("You start tightly squeezing [src]..."))
+	to_chat(user, span_danger("Вы начинаете крепко сжимать [src]..."))
 	if(!do_after(user, 1.25 SECONDS, src))
 		return
-	to_chat(user, span_danger("[src] explodes into a shower of gore and blood, drenching your arm. You can feel the blood seeping into your skin. You inmediately feel better, but soon, the feeling turns hollow as your veins itch."))
+	to_chat(user, span_danger("[src] взрывается брызгами плоти и крови, заливая вашу руку. Вы чувствуете, как кровь впитывается в кожу. Сразу становится лучше, но вскоре ощущение пустеет, а вены начинают зудеть."))
 	new /obj/effect/gibspawner/generic(get_turf(src))
 	var/heal_amt = user.adjust_brute_loss(-50)
 	user.adjust_fire_loss( -(50 - abs(heal_amt)) ) // no double dipping
@@ -95,18 +95,18 @@
 
 	var/magic_dude
 	if(IS_CULTIST(user))
-		. += span_cult_bold("This focus will allow you to store one extra spell and halve the empowering time, alongside providing a small regenerative effect.")
+		. += span_cult_bold("Этот фокус позволит хранить одно дополнительное заклинание и вдвое сократит время усиления, а также даст небольшой регенеративный эффект.")
 		magic_dude = TRUE
 	if(IS_HERETIC_OR_MONSTER(user))
-		. += span_notice("This focus will halve your spell cooldowns, alongside granting a small regenerative effect to any nearby heretics or monsters, including you.")
+		. += span_notice("Этот фокус вдвое сократит перезарядку ваших заклинаний и даст небольшой регенеративный эффект ближайшим еретикам и монстрам, включая вас.")
 		magic_dude = TRUE
 
 	if(magic_dude)
-		. += span_red("You can also squeeze it to recover a large amount of health quickly, at a cost...")
+		. += span_red("Вы также можете сжать его, чтобы быстро восстановить много здоровья, но за цену...")
 
 /obj/item/clothing/neck/eldritch_amulet
-	name = "warm eldritch medallion"
-	desc = "A strange medallion. Peering through the crystalline surface, the world around you melts away. You see your own beating heart, and the pulsing of a thousand others."
+	name = "тёплый потусторонний медальон"
+	desc = "Странный медальон. Глядя сквозь кристаллическую поверхность, вы видите, как мир вокруг тает. Вы видите собственное бьющееся сердце и пульс тысячи других."
 	icon = 'icons/obj/antags/eldritch.dmi'
 	icon_state = "eye_medalion"
 	w_class = WEIGHT_CLASS_SMALL
@@ -134,22 +134,22 @@
 	user.update_sight()
 
 /obj/item/clothing/neck/eldritch_amulet/piercing
-	name = "piercing eldritch medallion"
-	desc = "A strange medallion. Peering through the crystalline surface, the light refracts into new and terrifying spectrums of color. You see yourself, reflected off cascading mirrors, warped into impossible shapes."
+	name = "пронзающий потусторонний медальон"
+	desc = "Странный медальон. Глядя сквозь кристаллическую поверхность, вы видите, как свет преломляется в новых и пугающих спектрах цвета. Вы видите себя в каскаде зеркал, искривлённым в невозможные формы."
 	heretic_only_trait = TRAIT_XRAY_VISION
 
 // Cosmetic-only version
 /obj/item/clothing/neck/fake_heretic_amulet
-	name = "religious icon"
-	desc = "A strange medallion, which makes its wearer look like they're part of some cult."
+	name = "религиозный символ"
+	desc = "Странный медальон, из-за которого владелец выглядит как участник какого-то культа."
 	icon = 'icons/obj/antags/eldritch.dmi'
 	icon_state = "eye_medalion"
 	w_class = WEIGHT_CLASS_SMALL
 
 // The amulet conversion tool used by moon heretics
 /obj/item/clothing/neck/heretic_focus/moon_amulet
-	name = "moonlight amulet"
-	desc = "A piece of the mind, the soul and the moon. Gazing into it makes your head spin and hear whispers of laughter and joy."
+	name = "лунный амулет"
+	desc = "Частица разума, души и луны. Взгляд на него кружит голову и заставляет слышать шёпот смеха и радости."
 	icon = 'icons/obj/antags/eldritch.dmi'
 	icon_state = "moon_amulette"
 	w_class = WEIGHT_CLASS_SMALL
@@ -166,7 +166,7 @@
 /obj/item/clothing/neck/heretic_focus/moon_amulet/examine(mob/user)
 	. = ..()
 	if(IS_HERETIC(user))
-		. += span_notice("Wearing this amulet increases your healing speed by 50%")
+		. += span_notice("Ношение этого амулета увеличивает скорость вашего исцеления на 50%.")
 
 /obj/item/clothing/neck/heretic_focus/moon_amulet/equipped(mob/living/user, slot)
 	. = ..()

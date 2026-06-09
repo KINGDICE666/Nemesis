@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/touch/star_touch
-	name = "Star Touch"
-	desc = "Can be used to apply a star mark to a target. \
+	name = "Звёздное касание"
+	desc = "Можно использовать, чтобы наложить на цель звёздную метку. \
 		If your victim is already star marked, tethers you to your target with a cosmic ray. \
 		If the tether remains unbroken for 8 seconds, they will be put to sleep and teleported to you. \
 		Star Touch can also remove Cosmic Runes, or teleport you to your Star Gazer when used in hand."
@@ -65,8 +65,8 @@
 	return FALSE
 
 /obj/item/melee/touch_attack/star_touch
-	name = "Star Touch"
-	desc = "A sinister looking aura that distorts the flow of reality around it. \
+	name = "Звёздное касание"
+	desc = "Зловещая на вид аура, искажающая поток реальности вокруг себя. \
 		Causes people with a star mark to sleep for 4 seconds, and causes people without a star mark to get one."
 	icon_state = "star"
 	inhand_icon_state = "star"
@@ -131,7 +131,7 @@
 	remove_hand_with_no_refund(user)
 
 /obj/effect/ebeam/cosmic
-	name = "cosmic beam"
+	name = "космический луч"
 
 /datum/status_effect/cosmic_beam
 	id = "cosmic_beam"

@@ -41,7 +41,7 @@ const IntroductionSection = (props) => {
   const { act, data } = useBackend<Info>();
   const { intro, objectives } = data;
   return (
-    <Section fill title="Intro" scrollable>
+    <Section fill title="Вводная" scrollable>
       <Stack vertical fill>
         <Stack.Item fontSize="25px">{intro}</Stack.Item>
         <Stack.Item grow>
@@ -58,18 +58,18 @@ const EmployerSection = (props) => {
   return (
     <Section
       fill
-      title="Employer"
+      title="Работодатель"
       scrollable
       buttons={
         <Button
           icon="hammer"
           tooltip={`
-            This is a gameplay suggestion for bored traitors.
-            You don't have to follow it, unless you want some
-            ideas for how to spend the round.`}
+            Это игровая подсказка для предателей, которым скучно.
+            Следовать ей не обязательно, но она может дать идеи
+            на раунд.`}
           tooltipPosition="bottom-start"
         >
-          Policy
+          Политика
         </Button>
       }
     >
@@ -78,7 +78,7 @@ const EmployerSection = (props) => {
           <Stack vertical>
             <Stack.Item>
               <span style={allystyle}>
-                Your allegiances:
+                Ваши связи:
                 <br />
               </span>
               <BlockQuote>{allies}</BlockQuote>
@@ -86,7 +86,7 @@ const EmployerSection = (props) => {
             <Stack.Divider />
             <Stack.Item mb={1}>
               <span style={goalstyle}>
-                Employer thoughts:
+                Мысли работодателя:
                 <br />
               </span>
               <BlockQuote>{goal}</BlockQuote>
@@ -103,17 +103,17 @@ const UplinkSection = (props) => {
   const { has_uplink, uplink_intro, uplink_unlock_info, code, failsafe_code } =
     data;
   return (
-    <Section title="Uplink" mb={!has_uplink && -1}>
+    <Section title="Аплинк" mb={!has_uplink && -1}>
       <Stack fill>
         {
           <>
             <Stack.Item bold>
               {uplink_intro}
               <br />
-              {code && <span style={goalstyle}>Code: {code}</span>}
+              {code && <span style={goalstyle}>Код: {code}</span>}
               <br />
               {failsafe_code && (
-                <span style={badstyle}>Failsafe: {failsafe_code}</span>
+                <span style={badstyle}>Аварийный код: {failsafe_code}</span>
               )}
             </Stack.Item>
             <Stack.Divider />
@@ -139,36 +139,36 @@ const CodewordsSection = (props) => {
   const { data } = useBackend<Info>();
   const { has_codewords, phrases, responses } = data;
   return (
-    <Section title="Codewords" mb={!has_codewords && -1}>
+    <Section title="Кодовые слова" mb={!has_codewords && -1}>
       <Stack fill>
         {(!has_codewords && (
           <BlockQuote>
-            You have not been supplied with codewords. You will have to use
-            alternative methods to find potential allies. Proceed with caution,
-            however, as everyone is a potential foe.
+            Вам не выдали кодовые слова. Придётся искать потенциальных
+            союзников другими способами. Действуйте осторожно: каждый может
+            оказаться врагом.
           </BlockQuote>
         )) || (
           <>
             <Stack.Item grow basis={0}>
               <BlockQuote>
-                Your employer provided you with the following codewords to
-                identify fellow agents. Use the codewords during regular
-                conversation to identify other agents. Proceed with caution,
-                however, as everyone is a potential foe.
+                Работодатель выдал вам следующие кодовые слова для
+                распознавания других агентов. Используйте их в обычном
+                разговоре, чтобы найти своих. Действуйте осторожно: каждый
+                может оказаться врагом.
                 <span style={badstyle}>
-                  &ensp;You have memorized the codewords, allowing you to
-                  recognise them when heard.
+                  &ensp;Вы запомнили кодовые слова и сможете распознать их на
+                  слух.
                 </span>
               </BlockQuote>
             </Stack.Item>
             <Stack.Divider mr={1} />
             <Stack.Item grow basis={0}>
               <Stack vertical>
-                <Stack.Item>Code Phrases:</Stack.Item>
+                <Stack.Item>Кодовые фразы:</Stack.Item>
                 <Stack.Item bold textColor="blue">
                   {phrases}
                 </Stack.Item>
-                <Stack.Item>Code Responses:</Stack.Item>
+                <Stack.Item>Кодовые ответы:</Stack.Item>
                 <Stack.Item bold textColor="red">
                   {responses}
                 </Stack.Item>

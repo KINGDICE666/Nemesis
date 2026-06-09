@@ -1,7 +1,7 @@
 // Realignment. It's like Fleshmend but solely for stamina damage and stuns. Sec meta
 /datum/action/cooldown/spell/realignment
-	name = "Realignment"
-	desc = "Realign yourself, rapidly regenerating stamina and reducing any stuns or knockdowns. \
+	name = "Перестройка"
+	desc = "Перестройте своё тело, быстро восстанавливая выносливость и сокращая оглушения или сбивания с ног. \
 		You cannot attack while realigning. Can be casted multiple times in short succession, but each cast lengthens the cooldown."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
@@ -77,6 +77,6 @@
 	owner.AdjustAllImmobility(-1 SECONDS)
 
 /atom/movable/screen/alert/status_effect/realignment
-	name = "Realignment"
-	desc = "You're realignment yourself. You cannot attack, but are rapidly regenerating stamina."
+	name = "Перестройка"
+	desc = "Вы перестраиваете себя. Вы не можете атаковать, но быстро восстанавливаете выносливость."
 	icon_state = "realignment"

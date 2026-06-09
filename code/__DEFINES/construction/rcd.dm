@@ -15,6 +15,10 @@
 	#define RCD_DECONSTRUCT (1 << 5)
 /// The typepath of the structure the rcd is trying to build
 #define RCD_DESIGN_PATH "rcd_design_path"
+/// Optional display title for an RCD design, separate from the built atom's name
+#define RCD_DESIGN_TITLE "rcd_design_title"
+/// Optional stable icon key for an RCD design, separate from the localized display name
+#define RCD_DESIGN_ICON "rcd_design_icon"
 
 /// Time taken for an rcd hologram to disappear
 #define RCD_HOLOGRAM_FADE_TIME (15 SECONDS)

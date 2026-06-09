@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/conjure/cosmic_expansion
-	name = "Cosmic Expansion"
-	desc = "This spell generates a 5x5 domain of cosmic fields. \
+	name = "Космическое расширение"
+	desc = "Это заклинание создаёт область космических полей 5x5. \
 		Creatures up to 7 tiles away will also receive a star mark."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"

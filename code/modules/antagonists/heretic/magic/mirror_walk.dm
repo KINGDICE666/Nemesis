@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/jaunt/mirror_walk
-	name = "Mirror Walk"
-	desc = "Allows you to traverse invisibly and freely across the station within the realm of the mirror. \
+	name = "Зеркальная поступь"
+	desc = "Позволяет невидимо и свободно перемещаться по станции в зеркальном измерении. \
 		You can only enter and exit the realm of mirrors when nearby reflective surfaces and items, \
 		such as windows, mirrors, and reflective walls or equipment. \
 		You will slowly heal damage while in this form."
@@ -156,7 +156,7 @@
 	return null
 
 /obj/effect/dummy/phased_mob/mirror_walk
-	name = "reflection"
+	name = "отражение"
 
 /obj/effect/dummy/phased_mob/mirror_walk/Initialize(mapload, atom/movable/jaunter)
 	. = ..()

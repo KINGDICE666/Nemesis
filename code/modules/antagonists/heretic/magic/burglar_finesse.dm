@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/pointed/burglar_finesse
-	name = "Burglar's Finesse"
-	desc = "Steal a random item from the victim's backpack."
+	name = "Ловкость взломщика"
+	desc = "Украдите случайный предмет из рюкзака жертвы."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'

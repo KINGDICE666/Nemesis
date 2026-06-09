@@ -122,7 +122,7 @@ for(var/obj/item/I in contents)
 - **Имя объекта (`name`):** У `/obj` не переводится. Для русских названий используется система **ru_names**. Для статических названий переопределять `get_ru_names()`. Для динамических — `get_ru_names_cached()` или задавать `ru_names` напрямую.
 ```dm
 /obj/item/bloodcrawl/get_ru_names()
-	return list(
+	return alist(
 		NOMINATIVE = "кровавый путь",
 		GENITIVE = "кровавого пути",
 		DATIVE = "кровавому пути",

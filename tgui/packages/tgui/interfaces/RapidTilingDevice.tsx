@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Box, Button, Section, Stack, Tabs } from 'tgui-core/components';
 import { classes } from 'tgui-core/react';
-import { capitalizeAll } from 'tgui-core/string';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
@@ -25,6 +24,28 @@ type Design = {
   name: string;
   icon: string;
 };
+
+const tileCategoryNames: Record<string, string> = {
+  Conventional: 'Обычные',
+  Carpets: 'Ковры',
+  Miscellaneous: 'Прочее',
+  Standard: 'Стандартные',
+  Department: 'Отделы',
+  Misc: 'Прочее',
+};
+
+const directionNames: Record<string, string> = {
+  north: 'север',
+  south: 'юг',
+  east: 'восток',
+  west: 'запад',
+};
+
+const localizeTileCategory = (category: string) =>
+  tileCategoryNames[category] || category;
+
+const localizeDirection = (direction: string) =>
+  directionNames[direction] || direction;
 
 const TilePreview = (props) => {
   const { data } = useBackend<Data>();
@@ -57,7 +78,7 @@ const DirectionSelect = (props) => {
         {tile_dirs.map((dir) => (
           <Stack.Item key={dir}>
             <Button.Checkbox
-              content={dir}
+              content={localizeDirection(dir)}
               color="transparent"
               checked={dir === selected_direction}
               onClick={() =>
@@ -105,7 +126,7 @@ const TileDesignSection = (props) => {
             selected={category.category_name === categoryName}
             onClick={() => setCategoryName(category.category_name)}
           >
-            {category.category_name}
+            {localizeTileCategory(category.category_name)}
           </Tabs.Tab>
         ))}
       </Tabs>
@@ -134,7 +155,7 @@ const TileDesignSection = (props) => {
             mr="20px"
             className={classes(['rtd32x32', `${recipe.icon}south`])}
           />
-          <span>{capitalizeAll(recipe.name)}</span>
+          <span>{recipe.name}</span>
         </Button>
       ))}
     </Section>

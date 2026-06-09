@@ -17,7 +17,7 @@
 				var/atom/movable/path = design[RCD_DESIGN_PATH]
 				if(!ispath(path))
 					continue
-				sprite_name = initial(path.name)
+				sprite_name = rcd_design_icon_name(design)
 				var/datum/universal_icon/sprite_icon
 
 				//icon for windows are blended with grills if required and loaded from radial menu

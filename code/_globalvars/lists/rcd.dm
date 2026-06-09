@@ -4,14 +4,14 @@ GLOBAL_LIST_INIT(rcd_designs, list(
 	"Construction" = list( //Stuff you use to make & decorate areas
 		//Walls & Windows
 		"Structures" = list(
-			list(RCD_DESIGN_MODE = RCD_TURF, RCD_DESIGN_PATH = /turf/open/floor/plating/rcd),
-			list(RCD_DESIGN_MODE = RCD_WINDOWGRILLE, RCD_DESIGN_PATH = /obj/structure/window),
-			list(RCD_DESIGN_MODE = RCD_WINDOWGRILLE, RCD_DESIGN_PATH = /obj/structure/window/reinforced),
-			list(RCD_DESIGN_MODE = RCD_WINDOWGRILLE, RCD_DESIGN_PATH = /obj/structure/window/fulltile),
-			list(RCD_DESIGN_MODE = RCD_WINDOWGRILLE, RCD_DESIGN_PATH = /obj/structure/window/reinforced/fulltile),
+			list(RCD_DESIGN_MODE = RCD_TURF, RCD_DESIGN_PATH = /turf/open/floor/plating/rcd, RCD_DESIGN_ICON = "Floor/Wall"),
+			list(RCD_DESIGN_MODE = RCD_WINDOWGRILLE, RCD_DESIGN_PATH = /obj/structure/window, RCD_DESIGN_ICON = "window"),
+			list(RCD_DESIGN_MODE = RCD_WINDOWGRILLE, RCD_DESIGN_PATH = /obj/structure/window/reinforced, RCD_DESIGN_ICON = "reinforced window"),
+			list(RCD_DESIGN_MODE = RCD_WINDOWGRILLE, RCD_DESIGN_PATH = /obj/structure/window/fulltile, RCD_DESIGN_ICON = "full tile window"),
+			list(RCD_DESIGN_MODE = RCD_WINDOWGRILLE, RCD_DESIGN_PATH = /obj/structure/window/reinforced/fulltile, RCD_DESIGN_ICON = "full tile reinforced window"),
 			list(RCD_DESIGN_MODE = RCD_STRUCTURE, RCD_DESIGN_PATH = /obj/structure/reflector/wrenched),
 			list(RCD_DESIGN_MODE = RCD_TURF, RCD_DESIGN_PATH = /obj/structure/lattice/catwalk),
-			list(RCD_DESIGN_MODE = RCD_STRUCTURE, RCD_DESIGN_PATH = /obj/structure/girder),
+			list(RCD_DESIGN_MODE = RCD_STRUCTURE, RCD_DESIGN_PATH = /obj/structure/girder, RCD_DESIGN_ICON = "girder"),
 		),
 
 		//Computers & Machine Frames

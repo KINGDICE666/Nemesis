@@ -115,8 +115,8 @@
 
 /datum/techweb_node/rcd_upgrade
 	id = TECHWEB_NODE_RCD_UPGRADE
-	display_name = "Rapid Construction Device Upgrades"
-	description = "New designs and enhancements for RCD and RPD."
+	display_name = "Улучшения устройств быстрого строительства"
+	description = "Новые чертежи и улучшения для RCD и RPD."
 	prereq_ids = list(TECHWEB_NODE_EXP_TOOLS, TECHWEB_NODE_PARTS_BLUESPACE)
 	design_ids = list(
 		"rcd_upgrade_silo_link",

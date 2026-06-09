@@ -549,8 +549,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/mech_rcd
-	name = "RCD Module"
-	desc = "An exosuit-mounted Rapid Construction Device."
+	name = "модуль RCD"
+	desc = "Устройство быстрого строительства, установленное на экзокостюм."
 	id = "mech_rcd"
 	build_type = MECHFAB
 	build_path = /obj/item/mecha_parts/mecha_equipment/rcd

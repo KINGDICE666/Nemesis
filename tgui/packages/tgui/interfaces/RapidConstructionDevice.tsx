@@ -8,7 +8,6 @@ import {
   Tabs,
 } from 'tgui-core/components';
 import { type BooleanLike, classes } from 'tgui-core/react';
-import { capitalizeAll } from 'tgui-core/string';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
@@ -36,12 +35,33 @@ type Design = {
   icon: string;
 };
 
+const rootCategoryNames: Record<string, string> = {
+  Construction: 'Строительство',
+  Airlocks: 'Шлюзы',
+  'Airlock Access': 'Доступ шлюзов',
+};
+
+const designCategoryNames: Record<string, string> = {
+  Structures: 'Конструкции',
+  Machines: 'Механизмы',
+  Furniture: 'Мебель',
+  Windoors: 'Окнодвери',
+  'Glass Airlocks': 'Стеклянные шлюзы',
+  'Solid Airlocks': 'Сплошные шлюзы',
+};
+
+const localizeRootCategory = (category: string) =>
+  rootCategoryNames[category] || category;
+
+const localizeDesignCategory = (category: string) =>
+  designCategoryNames[category] || category;
+
 export const MatterItem = (props) => {
   const { data } = useBackend<Data>();
   const { matterLeft } = data;
   return (
-    <LabeledList.Item label="Units Left">
-      &nbsp;{matterLeft} Units
+    <LabeledList.Item label="Материя">
+      &nbsp;{matterLeft} ед.
     </LabeledList.Item>
   );
 };
@@ -50,9 +70,9 @@ export const SiloItem = (props) => {
   const { act, data } = useBackend<Data>();
   const { silo_enabled } = data;
   return (
-    <LabeledList.Item label="Silo Link">
+    <LabeledList.Item label="Связь с силосом">
       <Button.Checkbox
-        content={silo_enabled ? 'Silo Online' : 'Silo Offline'}
+        content={silo_enabled ? 'Силос подключён' : 'Силос отключён'}
         checked={silo_enabled}
         color="transparent"
         onClick={() => act('toggle_silo')}
@@ -65,11 +85,11 @@ const CategoryItem = (props) => {
   const { act, data } = useBackend<Data>();
   const { root_categories = [], selected_root } = data;
   return (
-    <LabeledList.Item label="Category">
+    <LabeledList.Item label="Категория">
       {root_categories.map((root) => (
         <Button
           key={root}
-          content={root}
+          content={localizeRootCategory(root)}
           selected={selected_root === root}
           color="transparent"
           onClick={() => act('root_category', { root_category: root })}
@@ -111,7 +131,7 @@ const DesignSection = (props) => {
             selected={category.cat_name === shownCategory.cat_name}
             onClick={() => setCategoryName(category.cat_name)}
           >
-            {category.cat_name}
+            {localizeDesignCategory(category.cat_name)}
           </Tabs.Tab>
         ))}
       </Tabs>
@@ -139,14 +159,14 @@ const DesignSection = (props) => {
             className={classes(['rcd-tgui32x32', design.icon])}
             style={{
               transform:
-                design.title === 'full tile window' ||
-                design.title === 'full tile reinforced window' ||
-                design.title === 'catwalk'
+                design.icon === 'fulltilewindow' ||
+                design.icon === 'fulltilereinforcedwindow' ||
+                design.icon === 'catwalk'
                   ? 'scale(0.7)'
                   : 'scale(1.0)',
             }}
           />
-          <span>{capitalizeAll(design.title)}</span>
+          <span>{design.title}</span>
         </Button>
       ))}
     </Section>

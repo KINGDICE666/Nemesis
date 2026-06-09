@@ -4,7 +4,7 @@
 //RAPID CONSTRUCTION DEVICE
 
 /obj/item/construction/rcd
-	name = "rapid-construction-device (RCD)"
+	name = "устройство быстрого строительства (RCD)"
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rcd"
 	worn_icon_state = "RCD"
@@ -58,10 +58,21 @@
 	. = ..()
 	QDEL_IN(src, RCD_HOLOGRAM_FADE_TIME)
 
+/proc/rcd_design_display_name(list/design)
+	var/atom/design_path = design[RCD_DESIGN_PATH]
+	return design[RCD_DESIGN_TITLE] || initial(design_path.name)
+
+/proc/rcd_design_icon_name(list/design)
+	var/atom/design_path = design[RCD_DESIGN_PATH]
+	return design[RCD_DESIGN_ICON] || initial(design_path.name)
+
+/proc/rcd_design_icon_class(list/design)
+	return sanitize_css_class_name(rcd_design_icon_name(design))
+
 /obj/item/construction/rcd/Initialize(mapload)
 	. = ..()
 	airlock_electronics = new(src)
-	airlock_electronics.name = "Access Control"
+	airlock_electronics.name = "контроль доступа"
 	airlock_electronics.holder = src
 
 	root_category =  GLOB.rcd_designs[1]
@@ -69,7 +80,7 @@
 	var/list/design = GLOB.rcd_designs[root_category][design_category][1]
 
 	rcd_design_path = design[RCD_DESIGN_PATH]
-	design_title = initial(rcd_design_path.name)
+	design_title = rcd_design_display_name(design)
 	mode = design[RCD_DESIGN_MODE]
 	construction_mode = mode
 
@@ -79,7 +90,7 @@
 /obj/item/construction/rcd/examine(mob/user)
 	. = ..()
 	if(construction_upgrades)
-		. += "It has the following upgrades installed:"
+		. += "Установлены следующие улучшения:"
 		if(construction_upgrades & RCD_UPGRADE_FRAMES)
 			. += /obj/item/rcd_upgrade/frames::name
 		if(construction_upgrades & RCD_UPGRADE_SIMPLE_CIRCUITS)
@@ -100,7 +111,7 @@
 
 /obj/item/construction/rcd/ui_action_click(mob/user, actiontype)
 	if (!COOLDOWN_FINISHED(src, destructive_scan_cooldown))
-		to_chat(user, span_warning("[src] lets out a low buzz."))
+		to_chat(user, span_warning("[src] издаёт тихое гудение."))
 		return
 
 	COOLDOWN_START(src, destructive_scan_cooldown, RCD_DESTRUCTIVE_SCAN_COOLDOWN)
@@ -164,7 +175,7 @@
 			//check if we can build our window on the grill
 			if(target_turf.is_blocked_turf(exclude_mobs = !is_full_tile, source_atom = null, ignore_atoms = structures_to_ignore, type_list = TRUE))
 				playsound(user, SFX_TOOL_SWITCH, 20, TRUE)
-				balloon_alert(user, "tile is blocked!")
+				balloon_alert(user, "тайл заблокирован!")
 				return FALSE
 
 		/**
@@ -184,7 +195,7 @@
 
 			if(ignore_types && target_turf.is_blocked_turf(exclude_mobs = FALSE, source_atom = null, ignore_atoms = ignore_types, type_list = TRUE))
 				playsound(get_turf(user), SFX_TOOL_SWITCH, 20, TRUE)
-				balloon_alert(user, "something is on the girder!")
+				balloon_alert(user, "что-то на балке!")
 				return FALSE
 
 		//check if turf is blocked in for dense structures
@@ -219,7 +230,7 @@
 			//check if the structure can fit on this turf
 			if(target_turf.is_blocked_turf(exclude_mobs = ignore_mobs, source_atom = null, ignore_atoms = ignored_types, type_list = TRUE))
 				playsound(get_turf(user), SFX_TOOL_SWITCH, 20, TRUE)
-				balloon_alert(user, "something is on the tile!")
+				balloon_alert(user, "что-то на тайле!")
 				return FALSE
 
 	return TRUE
@@ -254,7 +265,7 @@
 
 	//straight up can't touch this
 	if(mode == RCD_DECONSTRUCT && (target.resistance_flags & INDESTRUCTIBLE))
-		balloon_alert(user, "too durable!")
+		balloon_alert(user, "слишком прочное!")
 		return ITEM_INTERACT_BLOCKING
 
 	rcd_results[RCD_DESIGN_MODE] = mode
@@ -361,11 +372,8 @@
 
 		var/list/designs = list() //initialize all designs under this category
 		for(var/list/design as anything in target_category)
-			var/atom/movable/design_path = design[RCD_DESIGN_PATH]
-
-			var/design_name = initial(design_path.name)
-
-			designs += list(list("title" = design_name, "icon" = sanitize_css_class_name(design_name)))
+			var/design_name = rcd_design_display_name(design)
+			designs += list(list("title" = design_name, "icon" = rcd_design_icon_class(design)))
 		data["categories"] += list(list("cat_name" = sub_category, "designs" = designs))
 
 	return data
@@ -424,7 +432,7 @@
 			mode = design[RCD_DESIGN_MODE]
 			construction_mode = mode
 			rcd_design_path = design[RCD_DESIGN_PATH]
-			design_title = initial(rcd_design_path.name)
+			design_title = rcd_design_display_name(design)
 			blueprint_changed = TRUE
 
 		else
@@ -476,7 +484,7 @@
 	qdel(src)
 
 /obj/item/construction/rcd/borg
-	desc = "A device used to rapidly build walls and floors."
+	desc = "Устройство для быстрого строительства стен и полов."
 	banned_upgrades = RCD_UPGRADE_SILO_LINK
 	/// enery usage
 	var/energyfactor = 0.072 * STANDARD_CELL_CHARGE
@@ -495,10 +503,10 @@
 	if(!iscyborg(borgy))
 		return FALSE
 	if(!borgy.cell)
-		balloon_alert(user, "no cell found!")
+		balloon_alert(user, "нет батареи!")
 		return FALSE
 	if(borgy.cell.charge < (amount * energyfactor))
-		balloon_alert(user, "insufficient charge!")
+		balloon_alert(user, "не хватает заряда!")
 		return FALSE
 	if(!dry_run)
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
@@ -506,8 +514,8 @@
 	return TRUE
 
 /obj/item/construction/rcd/borg/syndicate
-	name = "syndicate RCD"
-	desc = "A reverse-engineered RCD with black market upgrades that allow this device to deconstruct reinforced walls. Property of Donk Co."
+	name = "синдикатское RCD"
+	desc = "Воссозданное по обратной разработке RCD с чёрнорыночными улучшениями, позволяющими разбирать укреплённые стены. Собственность Donk Co."
 	icon_state = "ircd"
 	inhand_icon_state = "ircd"
 	energyfactor = 0.066 * STANDARD_CELL_CHARGE
@@ -520,15 +528,15 @@
 	construction_upgrades = RCD_ALL_UPGRADES
 
 /obj/item/construction/rcd/ce
-	name = "professional RCD"
-	desc = "A higher-end model of the rapid construction device, prefitted with improved cooling and disruption prevention. Provided to the chief engineer."
+	name = "профессиональное RCD"
+	desc = "Улучшенная модель устройства быстрого строительства с предустановленным охлаждением и защитой от прерывания. Выдаётся старшему инженеру."
 	icon_state = "cercd"
 	inhand_icon_state = "cercd"
 	construction_upgrades = RCD_UPGRADE_ANTI_INTERRUPT | RCD_UPGRADE_NO_FREQUENT_USE_COOLDOWN
 	matter = 160
 
 /obj/item/construction/rcd/combat
-	name = "industrial RCD"
+	name = "промышленное RCD"
 	icon_state = "ircd"
 	inhand_icon_state = "ircd"
 	max_matter = 500
@@ -537,7 +545,7 @@
 	construction_upgrades = RCD_ALL_UPGRADES
 
 /obj/item/construction/rcd/combat/admin
-	name = "admin RCD"
+	name = "админское RCD"
 	max_matter = INFINITY
 	matter = INFINITY
 	construction_upgrades = RCD_ALL_UPGRADES & ~RCD_UPGRADE_SILO_LINK
@@ -545,8 +553,8 @@
 
 // Ranged RCD
 /obj/item/construction/rcd/arcd
-	name = "advanced rapid-construction-device (ARCD)"
-	desc = "A prototype RCD with ranged capability and infinite capacity."
+	name = "продвинутое устройство быстрого строительства (ARCD)"
+	desc = "Прототип RCD с дистанционным режимом и бесконечной ёмкостью."
 	max_matter = INFINITY
 	matter = INFINITY
 	canRturf = TRUE
@@ -561,8 +569,8 @@
 #define MASS_TO_ENERGY (0.016 * STANDARD_CELL_CHARGE)
 
 /obj/item/construction/rcd/exosuit
-	name = "mounted RCD"
-	desc = "An exosuit-mounted Rapid Construction Device."
+	name = "установленное RCD"
+	desc = "Устройство быстрого строительства, установленное на экзокостюм."
 	max_matter = INFINITY // mass-energy equivalence go brrrrrr
 	canRturf = TRUE
 	ranged = TRUE
@@ -603,7 +611,7 @@
 		return FALSE
 	var/obj/vehicle/sealed/mecha/gundam = owner
 	if(!gundam.has_charge(amount * MASS_TO_ENERGY))
-		gundam.balloon_alert(user, "insufficient charge!")
+		gundam.balloon_alert(user, "не хватает заряда!")
 		return FALSE
 	if(!dry_run)
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
@@ -632,8 +640,8 @@
 #undef FREQUENT_USE_DEBUFF_MULTIPLIER
 
 /obj/item/rcd_ammo
-	name = "RCD matter cartridge"
-	desc = "Highly compressed matter for the RCD."
+	name = "картридж материи RCD"
+	desc = "Сильно сжатая материя для RCD."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rcdammo"
 	w_class = WEIGHT_CLASS_TINY

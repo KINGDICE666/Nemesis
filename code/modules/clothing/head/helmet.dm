@@ -1,6 +1,6 @@
 /obj/item/clothing/head/helmet
-	name = "helmet"
-	desc = "Standard Security gear. Protects the head from impacts."
+	name = "шлем"
+	desc = "Стандартное снаряжение службы безопасности. Защищает голову от ударов."
 	icon = 'icons/obj/clothing/head/helmet.dmi'
 	worn_icon = 'icons/mob/clothing/head/helmet.dmi'
 	icon_state = "helmet"
@@ -51,14 +51,14 @@
 		// There's a flashlight in us. Remove it first, or it'll be lost forever!
 		var/obj/item/flashlight/seclite/blocking_us = locate() in src
 		if(blocking_us)
-			to_chat(user, span_warning("[blocking_us] is in the way, remove it first!"))
+			to_chat(user, span_warning("[blocking_us] мешает, сначала уберите его!"))
 			return TRUE
 
 		if(!attached_signaler.secured)
-			to_chat(user, span_warning("Secure [attached_signaler] first!"))
+			to_chat(user, span_warning("Сначала закрепите [attached_signaler]!"))
 			return TRUE
 
-		to_chat(user, span_notice("You add [attached_signaler] to [src]."))
+		to_chat(user, span_notice("Вы добавляете [attached_signaler] к [src]."))
 
 		qdel(attached_signaler)
 		var/obj/item/bot_assembly/secbot/secbot_frame = new(drop_location())
@@ -74,16 +74,16 @@
 	. = ..()
 	if(.)
 		return
-	balloon_alert(user, "[flags_inv & HIDEHAIR ? "loosening" : "tightening"] straps...")
+	balloon_alert(user, "[flags_inv & HIDEHAIR ? "ослабляем" : "затягиваем"] ремешки...")
 	if(!do_after(user, 3 SECONDS, src))
 		return
 	flags_inv ^= HIDEHAIR
-	balloon_alert(user, "[flags_inv & HIDEHAIR ? "tightened" : "loosened"] straps")
+	balloon_alert(user, "ремешки [flags_inv & HIDEHAIR ? "затянуты" : "ослаблены"]")
 	return TRUE
 
 /obj/item/clothing/head/helmet/sec/click_alt(mob/user)
 	flipped_visor = !flipped_visor
-	balloon_alert(user, "visor flipped")
+	balloon_alert(user, "визор повернут")
 	// base_icon_state is modified for seclight attachment component
 	base_icon_state = "[initial(base_icon_state)][flipped_visor ? "-novisor" : ""]"
 	icon_state = base_icon_state
@@ -97,8 +97,8 @@
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/clothing/head/helmet/press
-	name = "press helmet"
-	desc = "A blue helmet used to distinguish <i>non-combatant</i> \"PRESS\" members, like anyone cares."
+	name = "шлем прессы"
+	desc = "Синий шлем, обозначающий <i>некомбатантов</i> из \"ПРЕССЫ\", будто кому-то не все равно."
 	icon_state = "helmet_press"
 	base_icon_state = "helmet_press"
 	sound_vary = TRUE
@@ -116,8 +116,8 @@
 		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha, effect_type = EMISSIVE_SPECULAR)
 
 /obj/item/clothing/head/helmet/alt
-	name = "bulletproof helmet"
-	desc = "A bulletproof combat helmet that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent."
+	name = "пуленепробиваемый шлем"
+	desc = "Пуленепробиваемый боевой шлем, отлично защищающий владельца от традиционного огнестрельного оружия и в небольшой степени от взрывов."
 	icon_state = "helmetalt"
 	base_icon_state = "helmetalt"
 	inhand_icon_state = "helmet"
@@ -143,8 +143,8 @@
 	AddComponent(/datum/component/seclite_attachable, light_icon_state = "flight")
 
 /obj/item/clothing/head/helmet/marine
-	name = "tactical combat helmet"
-	desc = "A tactical black helmet, sealed from outside hazards with a plate of glass and not much else."
+	name = "тактический боевой шлем"
+	desc = "Тактический черный шлем, изолированный от внешних опасностей стеклянной пластиной и почти ничем больше."
 	icon_state = "marine_command"
 	base_icon_state = "marine_command"
 	inhand_icon_state = "marine_helmet"
@@ -174,31 +174,31 @@
 	AddComponent(/datum/component/seclite_attachable, starting_light = new /obj/item/flashlight/seclite(src), light_icon_state = "flight")
 
 /obj/item/clothing/head/helmet/marine/security
-	name = "marine heavy helmet"
+	name = "тяжелый шлем морпеха"
 	icon_state = "marine_security"
 	base_icon_state = "marine_security"
 
 /obj/item/clothing/head/helmet/marine/engineer
-	name = "marine utility helmet"
+	name = "инженерный шлем морпеха"
 	icon_state = "marine_engineer"
 	base_icon_state = "marine_engineer"
 
 /obj/item/clothing/head/helmet/marine/medic
-	name = "marine medic helmet"
+	name = "медицинский шлем морпеха"
 	icon_state = "marine_medic"
 	base_icon_state = "marine_medic"
 
 /obj/item/clothing/head/helmet/marine/pmc
 	icon_state = "marine"
-	desc = "A tactical black helmet, designed to protect one's head from various injuries sustained in operations. Its stellar survivability makes up for its lack of space worthiness"
+	desc = "Тактический черный шлем, созданный для защиты головы от различных травм во время операций. Его выдающаяся живучесть компенсирует отсутствие пригодности для космоса."
 	min_cold_protection_temperature = HELMET_MIN_TEMP_PROTECT
 	max_heat_protection_temperature = HELMET_MAX_TEMP_PROTECT
 	clothing_flags = null
 	armor_type = /datum/armor/pmc
 
 /obj/item/clothing/head/helmet/old
-	name = "degrading helmet"
-	desc = "Standard issue security helmet. Due to degradation the helmet's visor obstructs the users ability to see long distances."
+	name = "изношенный шлем"
+	desc = "Стандартный шлем службы безопасности. Из-за износа визор мешает владельцу видеть на большие расстояния."
 	tint = 2
 	sound_vary = TRUE
 	equip_sound = 'sound/items/handling/helmet/helmet_equip1.ogg'
@@ -206,8 +206,8 @@
 	drop_sound = 'sound/items/handling/helmet/helmet_drop1.ogg'
 
 /obj/item/clothing/head/helmet/blueshirt
-	name = "blue helmet"
-	desc = "A reliable, blue tinted helmet reminding you that you <i>still</i> owe that engineer a beer."
+	name = "синий шлем"
+	desc = "Надежный шлем с синим оттенком, напоминающий, что вы <i>все еще</i> должны тому инженеру пиво."
 	icon_state = "blueshift"
 	inhand_icon_state = "blueshift_helmet"
 	custom_premium_price = PAYCHECK_COMMAND
@@ -235,13 +235,13 @@
 		icon_state = base_icon_state
 
 /obj/item/clothing/head/helmet/toggleable/riot
-	name = "riot helmet"
-	desc = "It's a helmet specifically designed to protect against close range attacks."
+	name = "противоударный шлем"
+	desc = "Шлем, специально созданный для защиты от атак в ближнем бою."
 	icon_state = "riot"
 	base_icon_state = "riot"
 	inhand_icon_state = "riot_helmet"
-	toggle_message = "You pull the visor down."
-	alt_toggle_message = "You push the visor up."
+	toggle_message = "Вы опускаете визор."
+	alt_toggle_message = "Вы поднимаете визор."
 	armor_type = /datum/armor/toggleable_riot
 	flags_inv = HIDEHAIR|HIDEEARS|HIDEFACE|HIDESNOUT
 	strip_delay = 8 SECONDS
@@ -275,8 +275,8 @@
 	wound = 15
 
 /obj/item/clothing/head/helmet/balloon
-	name = "balloon helmet"
-	desc = "A helmet made out of balloons. The like saw great usage in the Great Clown - Mime War. Surprisingly resistant to fire. Mimes were doing unspeakable things."
+	name = "шлем из шариков"
+	desc = "Шлем, сделанный из шариков. Такие широко применялись в Великой войне клоунов и мимов. Удивительно устойчив к огню. Мимы творили неописуемые вещи."
 	icon_state = "helmet_balloon"
 	inhand_icon_state = "helmet_balloon"
 	armor_type = /datum/armor/balloon
@@ -290,13 +290,13 @@
 	acid = 50
 
 /obj/item/clothing/head/helmet/toggleable/justice
-	name = "helmet of justice"
-	desc = "WEEEEOOO. WEEEEEOOO. WEEEEOOOO."
+	name = "шлем правосудия"
+	desc = "ВИИИУУУ. ВИИИУУУ. ВИИИУУУ."
 	icon_state = "justice"
 	base_icon_state = "justice"
 	inhand_icon_state = "justice_helmet"
-	toggle_message = "You turn off the lights."
-	alt_toggle_message = "You turn on the lights."
+	toggle_message = "Вы выключаете огни."
+	alt_toggle_message = "Вы включаете огни."
 	actions_types = list(/datum/action/item_action/toggle_helmet_light)
 	///Cooldown for toggling the visor.
 	COOLDOWN_DECLARE(visor_toggle_cooldown)
@@ -331,14 +331,14 @@
 	return ..()
 
 /obj/item/clothing/head/helmet/toggleable/justice/escape
-	name = "alarm helmet"
-	desc = "WEEEEOOO. WEEEEEOOO. STOP THAT MONKEY. WEEEOOOO."
+	name = "тревожный шлем"
+	desc = "ВИИИУУУ. ВИИИУУУ. ОСТАНОВИТЕ ЭТУ ОБЕЗЬЯНУ. ВИИИУУУ."
 	icon_state = "justice2"
 	base_icon_state = "justice2"
 
 /obj/item/clothing/head/helmet/swat
-	name = "\improper SWAT helmet"
-	desc = "An extremely robust, space-worthy helmet in a nefarious red and black stripe pattern."
+	name = "\improper шлем SWAT"
+	desc = "Крайне прочный космостойкий шлем со зловещим красно-черным полосатым узором."
 	icon_state = "swatsyndie"
 	inhand_icon_state = "swatsyndie_helmet"
 	armor_type = /datum/armor/helmet_swat
@@ -372,8 +372,8 @@
 	wound = 15
 
 /obj/item/clothing/head/helmet/swat/nanotrasen
-	name = "\improper SWAT helmet"
-	desc = "An extremely robust helmet with the Nanotrasen logo emblazoned on the top."
+	name = "\improper шлем SWAT"
+	desc = "Крайне прочный шлем с эмблемой Nanotrasen сверху."
 	icon_state = "swat"
 	base_icon_state = "swat"
 	inhand_icon_state = "swat_helmet"
@@ -389,8 +389,8 @@
 	AddComponent(/datum/component/seclite_attachable, light_icon_state = "flight")
 
 /obj/item/clothing/head/helmet/thunderdome
-	name = "\improper Thunderdome helmet"
-	desc = "<i>'Let the battle commence!'</i>"
+	name = "\improper шлем Громокола"
+	desc = "<i>'Да начнется битва!'</i>"
 	flags_inv = HIDEEARS|HIDEHAIR
 	icon_state = "thunderdome"
 	inhand_icon_state = "thunderdome_helmet"
@@ -422,8 +422,8 @@
 	bullet = 10
 
 /obj/item/clothing/head/helmet/roman
-	name = "\improper Roman helmet"
-	desc = "An ancient helmet made of bronze and leather."
+	name = "\improper римский шлем"
+	desc = "Древний шлем из бронзы и кожи."
 	flags_inv = HIDEEARS|HIDEHAIR
 	flags_cover = HEADCOVERSEYES
 	armor_type = /datum/armor/helmet_roman
@@ -443,21 +443,21 @@
 	wound = 5
 
 /obj/item/clothing/head/helmet/roman/fake
-	desc = "An ancient helmet made of plastic and leather."
+	desc = "Древний шлем из пластика и кожи."
 	armor_type = /datum/armor/none
 
 /obj/item/clothing/head/helmet/roman/legionnaire
-	name = "\improper Roman legionnaire helmet"
-	desc = "An ancient helmet made of bronze and leather. Has a red crest on top of it."
+	name = "\improper шлем римского легионера"
+	desc = "Древний шлем из бронзы и кожи. Сверху красный гребень."
 	icon_state = "roman_c"
 
 /obj/item/clothing/head/helmet/roman/legionnaire/fake
-	desc = "An ancient helmet made of plastic and leather. Has a red crest on top of it."
+	desc = "Древний шлем из пластика и кожи. Сверху красный гребень."
 	armor_type = /datum/armor/none
 
 /obj/item/clothing/head/helmet/gladiator
-	name = "gladiator helmet"
-	desc = "Ave, Imperator, morituri te salutant."
+	name = "шлем гладиатора"
+	desc = "Аве, Император, идущие на смерть приветствуют тебя."
 	icon_state = "gladiator"
 	inhand_icon_state = "gladiator_helmet"
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR
@@ -483,20 +483,20 @@
 	acid = 50
 
 /obj/item/clothing/head/helmet/taghelm/red
-	name = "red laser tag helmet"
-	desc = "They have chosen their own end."
+	name = "красный шлем лазертага"
+	desc = "Они сами выбрали свой конец."
 	icon_state = "redtaghelm"
 	inhand_icon_state = "redtag_helmet"
 
 /obj/item/clothing/head/helmet/taghelm/blue
-	name = "blue laser tag helmet"
-	desc = "They'll need more men."
+	name = "синий шлем лазертага"
+	desc = "Им понадобится больше людей."
 	icon_state = "bluetaghelm"
 	inhand_icon_state = "bluetag_helmet"
 
 /obj/item/clothing/head/helmet/knight
-	name = "medieval helmet"
-	desc = "A classic metal helmet."
+	name = "средневековый шлем"
+	desc = "Классический металлический шлем."
 	icon_state = "knight_green"
 	inhand_icon_state = "knight_helmet"
 	armor_type = /datum/armor/helmet_knight
@@ -529,16 +529,16 @@
 	icon_state = "knight_red"
 
 /obj/item/clothing/head/helmet/knight/greyscale
-	name = "knight helmet"
-	desc = "A classic medieval helmet, if you hold it upside down you could see that it's actually a bucket."
+	name = "рыцарский шлем"
+	desc = "Классический средневековый шлем. Если перевернуть его вверх дном, можно заметить, что это на самом деле ведро."
 	icon_state = "knight_greyscale"
 	inhand_icon_state = null
 	armor_type = /datum/armor/knight_greyscale
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS //Can change color and add prefix
 
 /obj/item/clothing/head/helmet/durathread
-	name = "durathread helmet"
-	desc = "A helmet made from durathread and leather."
+	name = "дюратканевый шлем"
+	desc = "Шлем из дюраткани и кожи."
 	icon_state = "durathread"
 	inhand_icon_state = "durathread_helmet"
 	resistance_flags = FLAMMABLE
@@ -556,8 +556,8 @@
 	wound = 5
 
 /obj/item/clothing/head/helmet/rus_helmet
-	name = "russian helmet"
-	desc = "It can hold a bottle of vodka."
+	name = "русский шлем"
+	desc = "В него помещается бутылка водки."
 	icon_state = "rus_helmet"
 	inhand_icon_state = "rus_helmet"
 	armor_type = /datum/armor/helmet_rus_helmet
@@ -581,8 +581,8 @@
 	create_storage(storage_type = /datum/storage/pockets/helmet)
 
 /obj/item/clothing/head/helmet/rus_ushanka
-	name = "battle ushanka"
-	desc = "100% bear."
+	name = "боевая ушанка"
+	desc = "100% медведь."
 	icon_state = "rus_ushanka"
 	inhand_icon_state = "rus_ushanka"
 	body_parts_covered = HEAD
@@ -602,8 +602,8 @@
 	wound = 5
 
 /obj/item/clothing/head/helmet/elder_atmosian
-	name = "\improper Elder Atmosian Helmet"
-	desc = "A superb helmet made with the toughest and rarest materials available to man."
+	name = "\improper шлем Древнего Атмосианина"
+	desc = "Превосходный шлем из самых прочных и редких материалов, доступных человеку."
 	icon_state = "h2helmet"
 	inhand_icon_state = "h2_helmet"
 	armor_type = /datum/armor/helmet_elder_atmosian
@@ -623,8 +623,8 @@
 	wound = 15
 
 /obj/item/clothing/head/helmet/military
-	name = "Crude Helmet"
-	desc = "A cheaply made kettle helmet with an added faceplate to protect the eyes and mouth."
+	name = "грубый шлем"
+	desc = "Дешево сделанный котелковый шлем с добавленной лицевой пластиной для защиты глаз и рта."
 	icon_state = "military"
 	inhand_icon_state = "knight_helmet"
 	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|HIDESNOUT
@@ -649,8 +649,8 @@
 	wound = 20
 
 /obj/item/clothing/head/helmet/knight/warlord
-	name = "golden barbute helmet"
-	desc = "There is no man behind the helmet, only a terrible thought."
+	name = "золотой шлем-барбют"
+	desc = "За этим шлемом нет человека, только ужасная мысль."
 	icon_state = "warlord"
 	inhand_icon_state = null
 	armor_type = /datum/armor/helmet_warlord
@@ -673,8 +673,8 @@
 	take_damage(1, BRUTE, 0, 0)
 
 /obj/item/clothing/head/helmet/durability/watermelon
-	name = "watermelon helmet"
-	desc = "A helmet cut out from a watermelon. Might take a few hits, but don't expect it to withstand much."
+	name = "арбузный шлем"
+	desc = "Шлем, вырезанный из арбуза. Может выдержать пару ударов, но не ждите от него многого."
 	icon_state = "watermelon"
 	inhand_icon_state = "watermelon"
 	flags_inv = HIDEEARS
@@ -705,8 +705,8 @@
 	wound = 5
 
 /obj/item/clothing/head/helmet/durability/holymelon
-	name = "holymelon helmet"
-	desc = "A helmet from a hollowed out holymelon. Might take a few hits, but don't expect it to withstand much."
+	name = "шлем из святодыни"
+	desc = "Шлем из выдолбленной святодыни. Может выдержать пару ударов, но не ждите от него многого."
 	icon_state = "holymelon"
 	inhand_icon_state = "holymelon"
 	flags_inv = HIDEEARS
@@ -731,14 +731,14 @@
 	)
 
 /obj/item/clothing/head/helmet/durability/holymelon/proc/drain_antimagic(mob/user)
-	to_chat(user, span_warning("[src] looses a bit of its shimmer and glossiness..."))
+	to_chat(user, span_warning("[src] теряет немного своего сияния и блеска..."))
 
 /obj/item/clothing/head/helmet/durability/holymelon/proc/decay()
 	take_damage(8, BRUTE, 0, 0)
 
 /obj/item/clothing/head/helmet/durability/barrelmelon
-	name = "barrelmelon helmet"
-	desc = "A helmet made from a hollowed out barrelmelon. As sturdy as actual wood, though its rigid structure makes it break quicker."
+	name = "шлем из бочкодыни"
+	desc = "Шлем из выдолбленной бочкодыни. Прочен почти как настоящее дерево, хотя жесткая структура заставляет его ломаться быстрее."
 	icon_state = "barrelmelon"
 	inhand_icon_state = "barrelmelon"
 	flags_inv = HIDEEARS
@@ -769,8 +769,8 @@
 	wound = 10
 
 /obj/item/clothing/head/helmet/dragoon
-	name = "drachen helmet"
-	desc = "A chainmail helmet with dragon scales attached to the skeleton, with ash-covered mythril plate reinforcement covering it."
+	name = "шлем драхена"
+	desc = "Кольчужный шлем с драконьей чешуей, прикрепленной к каркасу, и покрытым пеплом мифриловым пластинчатым усилением."
 	icon_state = "dragoonhelm"
 	base_icon_state = "dragoonhelm"
 	inhand_icon_state = "dragoonhelm"

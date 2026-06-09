@@ -1,6 +1,6 @@
 /obj/item/clothing/shoes/sandal
-	desc = "A pair of rather plain wooden sandals."
-	name = "sandals"
+	desc = "Пара довольно простых деревянных сандалий."
+	name = "сандалии"
 	icon_state = "wizard"
 	inhand_icon_state = "wizshoe"
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT)
@@ -14,8 +14,8 @@
 	clothing_flags = parent_type::clothing_flags | CARP_STYLE_FACTOR
 
 /obj/item/clothing/shoes/sandal/alt
-	name = "black sandals"
-	desc = "A pair of shiny black wooden sandals."
+	name = "черные сандалии"
+	desc = "Пара блестящих черных деревянных сандалий."
 	icon_state = "blacksandals"
 	inhand_icon_state = "blacksandals"
 
@@ -23,20 +23,20 @@
 	bio = 10
 
 /obj/item/clothing/shoes/sandal/magic
-	name = "magical sandals"
-	desc = "A pair of sandals imbued with magic."
+	name = "волшебные сандалии"
+	desc = "Пара сандалий, наполненных магией."
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /obj/item/clothing/shoes/sandal/beach
-	name = "flip-flops"
-	desc = "A very fashionable pair of flip-flops."
+	name = "шлепанцы"
+	desc = "Очень модная пара шлепанцев."
 
 /obj/item/clothing/shoes/sandal/velcro
-	name = "velcro sandals"
-	desc = "A pair of wooden sandals that have been 'upgraded' with velcro straps in order to comply with corporate uniform policy."
+	name = "сандалии на липучках"
+	desc = "Пара деревянных сандалий, 'улучшенных' липучками ради соответствия корпоративной политике униформы."
 	fastening_type = SHOES_VELCRO
 
 /obj/item/clothing/shoes/sandal/alt/velcro
-	name = "black velcro sandals"
-	desc = "A pair of shiny black sandals that have been 'upgraded' with velcro straps in order to comply with corporate uniform policy."
+	name = "черные сандалии на липучках"
+	desc = "Пара блестящих черных сандалий, 'улучшенных' липучками ради соответствия корпоративной политике униформы."
 	fastening_type = SHOES_VELCRO

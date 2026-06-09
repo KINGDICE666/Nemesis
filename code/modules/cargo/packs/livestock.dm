@@ -1,13 +1,13 @@
 /datum/supply_pack/critter
-	group = "Livestock"
+	group = "Живность"
 	crate_type = /obj/structure/closet/crate/critter
 
 /datum/supply_pack/critter/parrot
-	name = "Bird Crate"
-	desc = "Contains five expert telecommunication birds."
+	name = "Ящик птиц"
+	desc = "Содержит пять птиц-экспертов по телекоммуникациям."
 	cost = CARGO_CRATE_VALUE * 4
 	contains = list(/mob/living/basic/parrot)
-	crate_name = "parrot crate"
+	crate_name = "ящик попугаев"
 
 /datum/supply_pack/critter/parrot/generate(atom/A, datum/bank_account/paying_account, crate_override)
 	. = ..()
@@ -15,12 +15,12 @@
 		new /mob/living/basic/parrot(.)
 
 /datum/supply_pack/critter/butterfly
-	name = "Butterflies Crate"
-	desc = "Not a very dangerous insect, but they do give off a better image than, say, flies or cockroaches."//is that a motherfucking worm reference
+	name = "Ящик бабочек"
+	desc = "Не самое опасное насекомое, зато выглядит лучше, чем, скажем, мухи или тараканы."//is that a motherfucking worm reference
 	order_flags = ORDER_CONTRABAND
 	cost = CARGO_CRATE_VALUE * 5
 	contains = list(/mob/living/basic/butterfly)
-	crate_name = "entomology samples crate"
+	crate_name = "ящик энтомологических образцов"
 
 /datum/supply_pack/critter/butterfly/generate(atom/A, datum/bank_account/paying_account, crate_override)
 	. = ..()
@@ -28,15 +28,15 @@
 		new /mob/living/basic/butterfly(.)
 
 /datum/supply_pack/critter/cat
-	name = "Cat Crate"
-	desc = "The cat goes meow! Comes with a collar and a nice cat toy! Cheeseburger not included."//i can't believe im making this reference
+	name = "Ящик кошки"
+	desc = "Кошка говорит мяу! Поставляется с ошейником и хорошей кошачьей игрушкой! Чизбургер не включён."//i can't believe im making this reference
 	cost = CARGO_CRATE_VALUE * 4 //Cats are worth as much as corgis.
 	contains = list(
 		/mob/living/basic/pet/cat,
 		/obj/item/clothing/neck/petcollar,
 		/obj/item/toy/cattoy,
 	)
-	crate_name = "cat crate"
+	crate_name = "ящик кошки"
 
 /datum/supply_pack/critter/cat/generate(atom/A, datum/bank_account/paying_account, crate_override)
 	. = ..()
@@ -49,21 +49,21 @@
 	new /mob/living/basic/pet/cat/_proc(.)
 
 /datum/supply_pack/critter/chick
-	name = "Chicken Crate"
-	desc = "The chicken goes bwaak!"
+	name = "Ящик цыплёнка"
+	desc = "Цыплёнок говорит ко-ко!"
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/mob/living/basic/chick)
-	crate_name = "chicken crate"
+	crate_name = "ящик цыплёнка"
 
 /datum/supply_pack/critter/corgi
-	name = "Corgi Crate"
-	desc = "Considered the optimal dog breed by thousands of research scientists, this Corgi is but \
-		one dog from the millions of Ian's noble bloodline. Comes with a cute collar!"
+	name = "Ящик корги"
+	desc = "Тысячи учёных считают корги оптимальной породой собак, а этот корги - лишь \
+		одна собака из миллионов благородной родословной Иана. Поставляется с милым ошейником!"
 	cost = CARGO_CRATE_VALUE * 4
 	contains = list(/mob/living/basic/pet/dog/corgi,
 					/obj/item/clothing/neck/petcollar,
 				)
-	crate_name = "corgi crate"
+	crate_name = "ящик корги"
 
 /datum/supply_pack/critter/corgi/generate(atom/A, datum/bank_account/paying_account, crate_override)
 	. = ..()
@@ -74,45 +74,45 @@
 			new /mob/living/basic/pet/dog/corgi/lisa(.)
 
 /datum/supply_pack/critter/cow
-	name = "Cow Crate"
-	desc = "The cow goes moo! Contains one cow."
+	name = "Ящик коровы"
+	desc = "Корова говорит му! Содержит одну корову."
 	cost = CARGO_CRATE_VALUE * 3
 	contains = list(/mob/living/basic/cow)
-	crate_name = "cow crate"
+	crate_name = "ящик коровы"
 
 /datum/supply_pack/critter/sheep
-	name = "Sheep Crate"
-	desc = "The sheep goes BAAAA! Contains one sheep."
+	name = "Ящик овцы"
+	desc = "Овца говорит БЕЕЕ! Содержит одну овцу."
 	cost = CARGO_CRATE_VALUE * 3
 	contains = list(/mob/living/basic/sheep)
-	crate_name = "sheep crate"
+	crate_name = "ящик овцы"
 
 /datum/supply_pack/critter/pig
-	name = "Pig Crate"
-	desc = "The pig goes oink! Contains one pig."
+	name = "Ящик свиньи"
+	desc = "Свинья говорит хрю! Содержит одну свинью."
 	cost = CARGO_CRATE_VALUE * 3
 	contains = list(/mob/living/basic/pig)
-	crate_name = "pig crate"
+	crate_name = "ящик свиньи"
 
 /datum/supply_pack/critter/pony
-	name = "Pony Crate"
-	desc = "Ponies, yay! (Just the one.)"
+	name = "Ящик пони"
+	desc = "Пони, ура! Только один."
 	cost = CARGO_CRATE_VALUE * 5
 	contains = list(/mob/living/basic/pony)
-	crate_name = "pony crate"
+	crate_name = "ящик пони"
 
 /datum/supply_pack/critter/crab
-	name = "Crab Rocket"
-	desc = "CRAAAAAAB ROCKET. CRAB ROCKET. CRAB ROCKET. CRAB CRAB CRAB CRAB CRAB CRAB CRAB \
-		CRAB CRAB CRAB CRAB CRAB CRAB CRAB CRAB CRAB CRAB CRAB CRAB CRAB CRAB CRAB CRAB CRAB \
-		CRAB CRAB CRAB CRAB CRAB CRAB CRAB CRAB CRAB CRAB CRAB CRAB CRAB CRAB CRAB CRAB CRAB \
-		CRAB CRAB CRAB CRAB CRAB CRAB ROCKET. CRAFT. ROCKET. BUY. CRAFT ROCKET. CRAB ROOOCKET. \
-		CRAB ROOOOCKET. CRAB CRAB CRAB CRAB CRAB CRAB CRAB CRAB ROOOOOOOOOOOOOOOOOOOOOOCK \
-		EEEEEEEEEEEEEEEEEEEEEEEEE EEEETTTTTTTTTTTTAAAAAAAAA AAAHHHHHHHHHHHHH. CRAB ROCKET. CRAAAB \
-		ROCKEEEEEEEEEGGGGHHHHTT CRAB CRAB CRAABROCKET CRAB ROCKEEEET."//fun fact: i actually spent like 10 minutes and transcribed the entire video.
+	name = "Крабовая ракета"
+	desc = "КРААААААБОВАЯ РАКЕТА. КРАБОВАЯ РАКЕТА. КРАБОВАЯ РАКЕТА. КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ \
+		КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ \
+		КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ \
+		КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ РАКЕТА. КРАФТ. РАКЕТА. КУПИ. КРАФТ РАКЕТА. КРАБОООРАКЕТА. \
+		КРАБООООРАКЕТА. КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ КРАБ РАААААААААААААААК \
+		ЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕТАААААААААААААААААА АААААААААААА. КРАБОВАЯ РАКЕТА. КРАААБ \
+		РАКЕЕЕЕЕЕЕЕЕЕЕЕЕТАА КРАБ КРАБ КРАБРАКЕТА КРАБ РАКЕЕЕЕТА."//fun fact: i actually spent like 10 minutes and transcribed the entire video.
 	cost = CARGO_CRATE_VALUE * 8
 	contains = list(/mob/living/basic/crab)
-	crate_name = "look sir free crabs"
+	crate_name = "смотрите, сэр, бесплатные крабы"
 	order_flags = ORDER_POD_ONLY
 
 /datum/supply_pack/critter/crab/generate(atom/A, datum/bank_account/paying_account, crate_override)
@@ -121,107 +121,107 @@
 		new /mob/living/basic/crab(.)
 
 /datum/supply_pack/critter/corgis/exotic
-	name = "Exotic Corgi Crate"
-	desc = "Corgi fit for a king, this corgi comes in a unique color to signify their superiority. \
-		Comes with a cute collar!"
+	name = "Ящик экзотического корги"
+	desc = "Корги, достойный короля: этот корги имеет уникальный окрас, подчёркивающий его превосходство. \
+		Поставляется с милым ошейником!"
 	cost = CARGO_CRATE_VALUE * 7
 	contains = list(/mob/living/basic/pet/dog/corgi/exoticcorgi,
 					/obj/item/clothing/neck/petcollar,
 				)
-	crate_name = "exotic corgi crate"
+	crate_name = "ящик экзотического корги"
 
 /datum/supply_pack/critter/fox
-	name = "Fox Crate"
-	desc = "The fox goes...? Contains one fox. Comes with a collar!"//what does the fox say
+	name = "Ящик лисы"
+	desc = "Лиса говорит...? Содержит одну лису. Поставляется с ошейником!"//what does the fox say
 	cost = CARGO_CRATE_VALUE * 4
 	contains = list(
 		/mob/living/basic/pet/fox,
 		/obj/item/clothing/neck/petcollar,
 	)
-	crate_name = "fox crate"
+	crate_name = "ящик лисы"
 
 /datum/supply_pack/critter/goat
-	name = "Goat Crate"
-	desc = "The goat goes baa! Contains one goat. Warranty void if used as a replacement for Pete."
+	name = "Ящик козы"
+	desc = "Коза говорит бе! Содержит одну козу. Гарантия аннулируется при использовании в качестве замены Пита."
 	cost = CARGO_CRATE_VALUE * 3
 	contains = list(/mob/living/basic/goat)
-	crate_name = "goat crate"
+	crate_name = "ящик козы"
 
 /datum/supply_pack/critter/rabbit
-	name = "Rabbit Crate"
-	desc = "What noise do rabbits even make? Contains one rabbit."
+	name = "Ящик кролика"
+	desc = "Какие звуки вообще издают кролики? Содержит одного кролика."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/mob/living/basic/rabbit)
-	crate_name = "rabbit crate"
+	crate_name = "ящик кролика"
 
 /datum/supply_pack/critter/mothroach
-	name = "Mothroach Crate"
-	desc = "Put the mothroach on your head and find out what true cuteness looks like. \
-		Contains one mothroach."
+	name = "Ящик мольтаракана"
+	desc = "Положите мольтаракана на голову и узнайте, как выглядит настоящая милота. \
+		Содержит одного мольтаракана."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/mob/living/basic/mothroach)
-	crate_name = "mothroach crate"
+	crate_name = "ящик мольтаракана"
 
 /datum/supply_pack/critter/monkey
-	name = "Monkey Cube Crate"
-	desc = "Stop monkeying around! Contains seven monkey cubes. Just add water!"
+	name = "Ящик кубиков обезьян"
+	desc = "Хватит обезьянничать! Содержит семь кубиков обезьян. Просто добавь воды!"
 	cost = CARGO_CRATE_VALUE * 4
 	contains = list (/obj/item/storage/box/monkeycubes)
 	crate_type = /obj/structure/closet/crate
-	crate_name = "monkey cube crate"
+	crate_name = "ящик кубиков обезьян"
 
 /datum/supply_pack/critter/pug
-	name = "Pug Crate"
-	desc = "Like a normal dog, but... squished. Contains one pug. Comes with a nice collar!"
+	name = "Ящик мопса"
+	desc = "Как обычная собака, но... сплющенная. Содержит одного мопса. Поставляется с хорошим ошейником!"
 	cost = CARGO_CRATE_VALUE * 4
 	contains = list(/mob/living/basic/pet/dog/pug,
 					/obj/item/clothing/neck/petcollar,
 				)
-	crate_name = "pug crate"
+	crate_name = "ящик мопса"
 
 /datum/supply_pack/critter/bullterrier
-	name = "Bull Terrier Crate"
-	desc = "Like a normal dog, but with a head the shape of an egg. Contains one bull terrier. \
-		Comes with a nice collar!"
+	name = "Ящик бультерьера"
+	desc = "Как обычная собака, но с головой в форме яйца. Содержит одного бультерьера. \
+		Поставляется с хорошим ошейником!"
 	cost = CARGO_CRATE_VALUE * 4
 	contains = list(/mob/living/basic/pet/dog/bullterrier,
 					/obj/item/clothing/neck/petcollar,
 				)
-	crate_name = "bull terrier crate"
+	crate_name = "ящик бультерьера"
 
 /datum/supply_pack/critter/snake
-	name = "Snake Crate"
-	desc = "Tired of these MOTHER FUCKING snakes on this MOTHER FUCKING space station? \
-		Then this isn't the crate for you. Contains three venomous snakes."
+	name = "Ящик змей"
+	desc = "Устали от этих ЧЁРТОВЫХ змей на этой ЧЁРТОВОЙ космической станции? \
+		Тогда этот ящик не для вас. Содержит трёх ядовитых змей."
 	cost = CARGO_CRATE_VALUE * 3
 	contains = list(/mob/living/basic/snake = 3)
-	crate_name = "snake crate"
+	crate_name = "ящик змей"
 
 /datum/supply_pack/critter/amphibians
-	name = "Amphibian Friends Crate"
-	desc = "Two disgustingly cute slimey friends. Cytologists love them! \
-		Contains one frog and one axolotl. Warning: Frog may have hallucinogenic properties."
+	name = "Ящик друзей-амфибий"
+	desc = "Два отвратительно милых склизких друга. Цитологи их обожают! \
+		Содержит одну лягушку и одного аксолотля. Предупреждение: лягушка может обладать галлюциногенными свойствами."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(
 		/mob/living/basic/axolotl,
 		/obj/effect/spawner/random/frog,
 	)
-	crate_name = "amphibian crate"
+	crate_name = "ящик амфибий"
 
 /datum/supply_pack/critter/lizard
-	name = "Lizard Crate"
-	desc = "Hisss! Containssss a friendly lizard. Not to be confusssed with a lizardperssson."
+	name = "Ящик ящерицы"
+	desc = "Шшш! Содержит дружелюбную ящерицу. Не путать с ящерочеловеком."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/mob/living/basic/lizard)
-	crate_name = "lizard crate"
+	crate_name = "ящик ящерицы"
 
 /datum/supply_pack/critter/garden_gnome
-	name = "Garden Gnome Crate"
-	desc = "Collect them all for your garden. Comes with three!"
+	name = "Ящик садовых гномов"
+	desc = "Соберите их всех для своего сада. Поставляется с тремя!"
 	order_flags = ORDER_EMAG_ONLY
 	cost = CARGO_CRATE_VALUE * 15
 	contains = list(/mob/living/basic/garden_gnome)
-	crate_name = "garden gnome crate"
+	crate_name = "ящик садовых гномов"
 	discountable = SUPPLY_PACK_RARE_DISCOUNTABLE
 
 /datum/supply_pack/critter/garden_gnome/generate(atom/A, datum/bank_account/paying_account, crate_override)
@@ -233,36 +233,36 @@
 	test_ignored = TRUE // However, we should be wary of how possible it is to get more valuable fish out of this on average, depending on sample size.
 
 /datum/supply_pack/critter/fish/aquarium_fish
-	name = "Aquarium Fish Case"
-	desc = "An aquarium fish bundle handpicked by monkeys from our collection. Contains two random fish."
+	name = "Кейс аквариумных рыб"
+	desc = "Набор аквариумных рыб, вручную выбранный обезьянами из нашей коллекции. Содержит две случайные рыбы."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/storage/fish_case/random = 2)
-	crate_name = "aquarium fish crate"
+	crate_name = "ящик аквариумных рыб"
 
 /datum/supply_pack/critter/fish/freshwater_fish
-	name = "Freshwater Fish Case"
-	desc = "Aquarium fish that have had most of their mud cleaned off."
+	name = "Кейс пресноводных рыб"
+	desc = "Аквариумные рыбы, с которых смыли большую часть грязи."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/storage/fish_case/random/freshwater = 2)
-	crate_name = "freshwater fish crate"
+	crate_name = "ящик пресноводных рыб"
 
 /datum/supply_pack/critter/fish/saltwater_fish
-	name = "Saltwater Fish Case"
-	desc = "Aquarium fish that fill the room with the smell of salt."
+	name = "Кейс морских рыб"
+	desc = "Аквариумные рыбы, наполняющие комнату запахом соли."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/storage/fish_case/random/saltwater = 2)
-	crate_name = "saltwater fish crate"
+	crate_name = "ящик морских рыб"
 
 /datum/supply_pack/critter/fish/tiziran_fish
-	name = "Tiziran Fish Case"
-	desc = "Tiziran saltwater fish imported from the Zagos Sea."
+	name = "Кейс тизирских рыб"
+	desc = "Тизирские морские рыбы, импортированные из моря Загос."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/storage/fish_case/tiziran = 2)
-	crate_name = "tiziran fish crate"
+	crate_name = "ящик тизирских рыб"
 
 /datum/supply_pack/critter/turtle
-	name = "Turtle Crate"
-	desc = "Cute flora turtles that'll emit good vibes to nearby plants!"
+	name = "Ящик черепах"
+	desc = "Милые флора-черепахи, излучающие хорошие вибрации для ближайших растений!"
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/mob/living/basic/turtle)
-	crate_name = "flora-turtle crate"
+	crate_name = "ящик флора-черепах"

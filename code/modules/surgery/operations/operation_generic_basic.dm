@@ -1,10 +1,10 @@
 // Some operations that mirror basic carbon state-moving operations but for basic mobs
 /// Incision of skin for basic mobs
 /datum/surgery_operation/basic/incise_skin
-	name = "make incision"
+	name = "сделать разрез"
 	// rnd_name = "Laparotomy / Craniotomy / Myotomy (Make Incision)" // Maybe we keep this one simple
-	desc = "Make an incision in the patient's skin to access internals. \
-		Causes \"cut skin\" surgical state."
+	desc = "Сделать разрез кожи пациента для доступа внутрь. \
+		Вызывает хирургическое состояние \"кожа разрезана\"."
 	implements = list(
 		TOOL_SCALPEL = 1,
 		/obj/item/melee/energy/sword = 1.33,
@@ -22,10 +22,10 @@
 	target_zone = null
 
 /datum/surgery_operation/basic/incise_skin/get_any_tool()
-	return "Any sharp edged item"
+	return "Любой острый режущий предмет"
 
 /datum/surgery_operation/basic/incise_skin/all_blocked_strings()
-	return ..() + list("The patient must not have complex anatomy")
+	return ..() + list("у пациента не должно быть сложной анатомии")
 
 /datum/surgery_operation/basic/incise_skin/get_default_radial_image()
 	return image('icons/hud/surgery_radial.dmi', "make_incision")
@@ -57,9 +57,9 @@
 	patient.apply_status_effect(/datum/status_effect/basic_surgery_state, SURGERY_SKIN_OPEN)
 
 /datum/surgery_operation/basic/saw_bone
-	name = "saw bone"
-	desc = "Saw through the patient's bones to access their internal organs. \
-		Causes \"bone sawed\" surgical state."
+	name = "распилить кость"
+	desc = "Распилить кости пациента для доступа к внутренним органам. \
+		Вызывает хирургическое состояние \"кость распилена\"."
 	implements = list(
 		TOOL_SAW = 1,
 		/obj/item/shovel/serrated = 1.33,
@@ -85,10 +85,10 @@
 	target_zone = null
 
 /datum/surgery_operation/basic/saw_bone/get_any_tool()
-	return "Any sharp edged item with decent force"
+	return "Любой острый режущий предмет с достаточной силой"
 
 /datum/surgery_operation/basic/saw_bone/all_blocked_strings()
-	return ..() + list("The patient must not have complex anatomy")
+	return ..() + list("у пациента не должно быть сложной анатомии")
 
 /datum/surgery_operation/basic/saw_bone/get_default_radial_image()
 	return image('icons/hud/surgery_radial.dmi', "mend_incision")
@@ -125,9 +125,9 @@
 
 // Closing of skin for basic mobs
 /datum/surgery_operation/basic/close_skin
-	name = "mend incision"
-	desc = "Mend the incision in the patient's skin, closing it up. \
-		Clears most surgical states."
+	name = "зашить разрез"
+	desc = "Зашить разрез кожи пациента, закрывая его. \
+		Снимает большинство хирургических состояний."
 	implements = list(
 		TOOL_CAUTERY = 1,
 		/obj/item/stack/medical/suture = 1,
@@ -148,10 +148,10 @@
 	target_zone = null
 
 /datum/surgery_operation/basic/close_skin/get_any_tool()
-	return "Any heat source"
+	return "Любой источник тепла"
 
 /datum/surgery_operation/basic/close_skin/all_blocked_strings()
-	return ..() + list("The patient must not have complex anatomy")
+	return ..() + list("у пациента не должно быть сложной анатомии")
 
 /datum/surgery_operation/basic/close_skin/get_default_radial_image()
 	return image(/obj/item/cautery)

@@ -1,6 +1,6 @@
 /obj/machinery/portable_atmospherics/scrubber
-	name = "portable air scrubber"
-	desc = "A portable variant of the station scrubbers, capable of filtering gas from the air around it or inserted tank. May also be wrenched into a port."
+	name = "портативный воздушный скруббер"
+	desc = "Портативный вариант станционных скрубберов, способный фильтровать газ из воздуха вокруг себя или из вставленного баллона. Также может быть закреплен ключом на порту."
 	icon_state = "scrubber"
 	density = TRUE
 	max_integrity = 250
@@ -194,7 +194,7 @@
 	return ..()
 
 /obj/machinery/portable_atmospherics/scrubber/huge
-	name = "huge air scrubber"
+	name = "огромный воздушный скруббер"
 	icon_state = "hugescrubber"
 	anchored = TRUE
 	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 0.5

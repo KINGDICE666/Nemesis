@@ -5,8 +5,8 @@
 #define ENGINE_WELDTIME (20 SECONDS)
 
 /obj/machinery/power/shuttle_engine
-	name = "engine"
-	desc = "A bluespace engine used to make shuttles move."
+	name = "двигатель"
+	desc = "Блюспейс-двигатель, используемый для движения шаттлов."
 	icon = 'icons/turf/shuttle.dmi'
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	smoothing_groups = SMOOTH_GROUP_SHUTTLE_PARTS
@@ -72,21 +72,21 @@
 	. = ..()
 	switch(engine_state)
 		if(ENGINE_UNWRENCHED)
-			. += span_notice("\The [src] is unbolted from the floor. It needs to be wrenched to the floor to be installed.")
+			. += span_notice("\The [src] не прикручен к полу. Для установки его нужно закрепить ключом.")
 		if(ENGINE_WRENCHED)
-			. += span_notice("\The [src] is bolted to the floor and can be unbolted with a wrench. It needs to be welded to the floor to finish installation.")
+			. += span_notice("\The [src] прикручен к полу, его можно открутить ключом. Для завершения установки его нужно приварить к полу.")
 		if(ENGINE_WELDED)
-			. += span_notice("\The [src] is welded to the floor and can be unwelded. It is currently fully installed.")
+			. += span_notice("\The [src] приварен к полу и может быть разварен. Сейчас он полностью установлен.")
 
 /obj/machinery/power/shuttle_engine/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	if(held_item?.tool_behaviour == TOOL_WELDER && engine_state == ENGINE_WRENCHED)
-		context[SCREENTIP_CONTEXT_LMB] = "Weld to Floor"
+		context[SCREENTIP_CONTEXT_LMB] = "Приварить к полу"
 	if(held_item?.tool_behaviour == TOOL_WELDER && engine_state == ENGINE_WELDED)
-		context[SCREENTIP_CONTEXT_LMB] = "Unweld from Floor"
+		context[SCREENTIP_CONTEXT_LMB] = "Разварить от пола"
 	if(held_item?.tool_behaviour == TOOL_WRENCH && engine_state == ENGINE_UNWRENCHED)
-		context[SCREENTIP_CONTEXT_LMB] = "Wrench to Floor"
+		context[SCREENTIP_CONTEXT_LMB] = "Закрепить к полу"
 	if(held_item?.tool_behaviour == TOOL_WRENCH && engine_state == ENGINE_WRENCHED)
-		context[SCREENTIP_CONTEXT_LMB] = "Unwrench from Floor"
+		context[SCREENTIP_CONTEXT_LMB] = "Открепить от пола"
 	return CONTEXTUAL_SCREENTIP_SET
 
 /**
@@ -102,7 +102,7 @@
 /obj/machinery/power/shuttle_engine/can_be_unfasten_wrench(mob/user, silent)
 	if(engine_state == ENGINE_WELDED)
 		if(!silent)
-			to_chat(user, span_warning("[src] is welded to the floor!"))
+			to_chat(user, span_warning("[src] приварен к полу!"))
 		return FAILED_UNFASTEN
 	return ..()
 
@@ -131,31 +131,31 @@
 	. = ..()
 	switch(engine_state)
 		if(ENGINE_UNWRENCHED)
-			to_chat(user, span_warning("\The [src] needs to be wrenched to the floor!"))
+			to_chat(user, span_warning("\The [src] нужно закрепить к полу ключом!"))
 		if(ENGINE_WRENCHED)
 			if(!tool.tool_start_check(user, heat_required = HIGH_TEMPERATURE_REQUIRED))
 				return TRUE
 
-			user.visible_message(span_notice("[user.name] starts to weld \the [src] to the floor."), \
-				span_notice("You start to weld \the [src] to the floor..."), \
-				span_hear("You hear welding."))
+			user.visible_message(span_notice("[user.name] начинает приваривать \the [src] к полу."), \
+				span_notice("Вы начинаете приваривать \the [src] к полу..."), \
+				span_hear("Вы слышите сварку."))
 
 			if(tool.use_tool(src, user, ENGINE_WELDTIME, volume = 50))
 				engine_state = ENGINE_WELDED
-				to_chat(user, span_notice("You weld \the [src] to the floor."))
+				to_chat(user, span_notice("Вы привариваете \the [src] к полу."))
 				alter_engine_power(engine_power)
 
 		if(ENGINE_WELDED)
 			if(!tool.tool_start_check(user, heat_required = HIGH_TEMPERATURE_REQUIRED))
 				return TRUE
 
-			user.visible_message(span_notice("[user.name] starts to cut \the [src] free from the floor."), \
-				span_notice("You start to cut \the [src] free from the floor..."), \
-				span_hear("You hear welding."))
+			user.visible_message(span_notice("[user.name] начинает отрезать \the [src] от пола."), \
+				span_notice("Вы начинаете отрезать \the [src] от пола..."), \
+				span_hear("Вы слышите сварку."))
 
 			if(tool.use_tool(src, user, ENGINE_WELDTIME, volume = 50))
 				engine_state = ENGINE_WRENCHED
-				to_chat(user, span_notice("You cut \the [src] free from the floor."))
+				to_chat(user, span_notice("Вы отрезаете \the [src] от пола."))
 				alter_engine_power(-engine_power)
 	return TRUE
 
@@ -165,44 +165,44 @@
 		connected_ship.alter_engines(mod)
 
 /obj/machinery/power/shuttle_engine/heater
-	name = "engine heater"
-	desc = "Directs energy into compressed particles in order to power engines."
+	name = "нагреватель двигателя"
+	desc = "Направляет энергию в сжатые частицы для питания двигателей."
 	icon_state = "heater"
 	circuit = /obj/item/circuitboard/machine/engine/heater
 	engine_power = 0 // todo make these into 2x1 parts
 
 /obj/machinery/power/shuttle_engine/propulsion
-	name = "propulsion engine"
+	name = "маршевый двигатель"
 	icon_state = "propulsion"
-	desc = "A standard reliable bluespace engine used by many forms of shuttles."
+	desc = "Стандартный надежный блюспейс-двигатель, используемый многими типами шаттлов."
 	circuit = /obj/item/circuitboard/machine/engine/propulsion
 	opacity = TRUE
 
 /obj/machinery/power/shuttle_engine/propulsion/left
-	name = "left propulsion engine"
+	name = "левый маршевый двигатель"
 	icon_state = "propulsion_l"
 
 /obj/machinery/power/shuttle_engine/propulsion/right
-	name = "right propulsion engine"
+	name = "правый маршевый двигатель"
 	icon_state = "propulsion_r"
 
 /obj/machinery/power/shuttle_engine/propulsion/burst
-	name = "burst engine"
-	desc = "An engine that releases a large bluespace burst to propel it."
+	name = "импульсный двигатель"
+	desc = "Двигатель, создающий мощный блюспейс-импульс для движения."
 
 /obj/machinery/power/shuttle_engine/propulsion/burst/left
-	name = "left burst engine"
+	name = "левый импульсный двигатель"
 	icon_state = "burst_l"
 
 /obj/machinery/power/shuttle_engine/propulsion/burst/right
-	name = "right burst engine"
+	name = "правый импульсный двигатель"
 	icon_state = "burst_r"
 
 /obj/machinery/power/shuttle_engine/large
-	name = "engine"
+	name = "двигатель"
 	icon = 'icons/obj/fluff/2x2.dmi'
 	icon_state = "large_engine"
-	desc = "A very large bluespace engine used to propel very large ships."
+	desc = "Очень крупный блюспейс-двигатель, используемый для движения очень больших кораблей."
 	circuit = null
 	opacity = TRUE
 	bound_width = 64
@@ -210,10 +210,10 @@
 	appearance_flags = LONG_GLIDE
 
 /obj/machinery/power/shuttle_engine/huge
-	name = "engine"
+	name = "двигатель"
 	icon = 'icons/obj/fluff/3x3.dmi'
 	icon_state = "huge_engine"
-	desc = "An extremely large bluespace engine used to propel extremely large ships."
+	desc = "Чрезвычайно крупный блюспейс-двигатель, используемый для движения огромных кораблей."
 	circuit = null
 	opacity = TRUE
 	bound_width = 96

@@ -1,6 +1,6 @@
 /obj/item/clothing/head/costume/kitty
-	name = "kitty ears"
-	desc = "A pair of kitty ears. Meow!"
+	name = "кошачьи ушки"
+	desc = "Пара кошачьих ушек. Мяу!"
 	icon_state = "kitty"
 	color = "#999999"
 
@@ -18,11 +18,11 @@
 		add_atom_colour(user.hair_color, FIXED_COLOUR_PRIORITY)
 
 /obj/item/clothing/head/costume/kitty/genuine
-	desc = "A pair of kitty ears. A tag on the inside says \"Hand made from real cats.\""
+	desc = "Пара кошачьих ушек. На внутренней бирке написано: \"Сделано вручную из настоящих кошек.\""
 
 /obj/item/clothing/head/costume/rabbitears
-	name = "rabbit ears"
-	desc = "Wearing these makes you look useless, and only good for your sex appeal."
+	name = "кроличьи ушки"
+	desc = "В них вы выглядите бесполезно, зато сексуально."
 	icon_state = "bunny"
 
 	dog_fashion = /datum/dog_fashion/head/rabbit

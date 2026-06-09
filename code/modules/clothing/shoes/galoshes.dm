@@ -1,6 +1,6 @@
 /obj/item/clothing/shoes/galoshes
-	desc = "A pair of yellow rubber boots, designed to prevent slipping on wet surfaces."
-	name = "galoshes"
+	desc = "Пара желтых резиновых сапог, созданных для защиты от скольжения на мокрых поверхностях."
+	name = "галоши"
 	icon_state = "galoshes"
 	inhand_icon_state = "galoshes"
 	clothing_traits = list(TRAIT_NO_SLIP_WATER)
@@ -20,8 +20,8 @@
 	AddElement(/datum/element/adjust_fishing_difficulty, fishing_modifier)
 
 /obj/item/clothing/shoes/galoshes/dry
-	name = "absorbent galoshes"
-	desc = "A pair of purple rubber boots, designed to prevent slipping on wet surfaces while also drying them."
+	name = "впитывающие галоши"
+	desc = "Пара фиолетовых резиновых сапог, которые защищают от скольжения на мокрых поверхностях и заодно высушивают их."
 	icon_state = "galoshes_dry"
 	fishing_modifier = -6
 

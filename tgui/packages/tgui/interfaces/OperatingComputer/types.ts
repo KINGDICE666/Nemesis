@@ -49,19 +49,19 @@ export type damageType = {
 
 export const damageTypes: damageType[] = [
   {
-    label: 'Brute',
+    label: 'Травмы',
     type: 'bruteLoss',
   },
   {
-    label: 'Burn',
+    label: 'Ожоги',
     type: 'fireLoss',
   },
   {
-    label: 'Toxin',
+    label: 'Токсины',
     type: 'toxLoss',
   },
   {
-    label: 'Respiratory',
+    label: 'Дыхание',
     type: 'oxyLoss',
   },
 ];

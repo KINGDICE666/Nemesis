@@ -4,8 +4,8 @@
 #define TEMPERATURE_RESISTANCE (1000 + T0C)
 
 /obj/machinery/portable_atmospherics/canister
-	name = "canister"
-	desc = "A canister for the storage of gas."
+	name = "канистра"
+	desc = "Канистра для хранения газа."
 	icon = 'icons/map_icons/objects.dmi'
 	icon_state = "/obj/machinery/portable_atmospherics/canister"
 	post_init_icon_state = ""
@@ -81,56 +81,56 @@
 /obj/machinery/portable_atmospherics/canister/interact(mob/user)
 	. = ..()
 	if(!allowed(user))
-		to_chat(user, span_alert("Error - Unauthorized User."))
+		to_chat(user, span_alert("Ошибка - пользователь не авторизован."))
 		playsound(src, 'sound/machines/compiler/compiler-failure.ogg', 50, TRUE)
 		return
 
 /obj/machinery/portable_atmospherics/canister/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
 	if(holding)
-		context[SCREENTIP_CONTEXT_ALT_LMB] = "Remove tank"
+		context[SCREENTIP_CONTEXT_ALT_LMB] = "Извлечь баллон"
 	if(!held_item)
 		return CONTEXTUAL_SCREENTIP_SET
 	if(istype(held_item, /obj/item/stock_parts/power_store/cell))
-		context[SCREENTIP_CONTEXT_LMB] = "Insert cell"
+		context[SCREENTIP_CONTEXT_LMB] = "Вставить батарею"
 	switch(held_item.tool_behaviour)
 		if(TOOL_SCREWDRIVER)
-			context[SCREENTIP_CONTEXT_LMB] = "[panel_open ? "Close" : "Open"] hatch"
+			context[SCREENTIP_CONTEXT_LMB] = "[panel_open ? "Закрыть" : "Открыть"] люк"
 		if(TOOL_CROWBAR)
 			if(panel_open && internal_cell)
-				context[SCREENTIP_CONTEXT_LMB] = "Remove cell"
+				context[SCREENTIP_CONTEXT_LMB] = "Извлечь батарею"
 		if(TOOL_WELDER)
-			context[SCREENTIP_CONTEXT_LMB] = "Repair"
-			context[SCREENTIP_CONTEXT_RMB] = "Dismantle"
+			context[SCREENTIP_CONTEXT_LMB] = "Починить"
+			context[SCREENTIP_CONTEXT_RMB] = "Разобрать"
 
 	return CONTEXTUAL_SCREENTIP_SET
 
 /obj/machinery/portable_atmospherics/canister/examine(user)
 	. = ..()
 	if(atom_integrity < max_integrity)
-		. += span_notice("Integrity compromised, repair hull with a welding tool.")
-	. += span_notice("A sticker on its side says <b>MAX SAFE PRESSURE: [siunit_pressure(initial(pressure_limit), 0)]; MAX SAFE TEMPERATURE: [siunit(temp_limit, "K", 0)]</b>.")
-	. += span_notice("The hull is <b>welded</b> together and can be cut apart.")
+		. += span_notice("Целостность нарушена, корпус можно починить сварочным инструментом.")
+	. += span_notice("Наклейка сбоку гласит: <b>МАКС. БЕЗОПАСНОЕ ДАВЛЕНИЕ: [siunit_pressure(initial(pressure_limit), 0)]; МАКС. БЕЗОПАСНАЯ ТЕМПЕРАТУРА: [siunit(temp_limit, "K", 0)]</b>.")
+	. += span_notice("Корпус <b>заварен</b>, его можно разрезать.")
 	if(internal_cell)
-		. += span_notice("The internal cell has [internal_cell.percent()]% of its total charge.")
+		. += span_notice("Внутренняя батарея заряжена на [internal_cell.percent()]%.")
 	else
-		. += span_notice("Warning, no cell installed, use a screwdriver to open the hatch and insert one.")
+		. += span_notice("Внимание: батарея не установлена. Откройте люк отверткой и вставьте батарею.")
 	if(panel_open)
-		. += span_notice("Hatch open, close it with a screwdriver.")
+		. += span_notice("Люк открыт, его можно закрыть отверткой.")
 
 // Please keep the canister types sorted
 // Basic canister per gas below here
 
 /obj/machinery/portable_atmospherics/canister/air
-	name = "Air canister"
-	desc = "Pre-mixed air."
+	name = "канистра воздуха"
+	desc = "Готовая воздушная смесь."
 	icon_state = "/obj/machinery/portable_atmospherics/canister/air"
 	post_init_icon_state = ""
 	greyscale_config = /datum/greyscale_config/canister
 	greyscale_colors = "#c6c0b5"
 
 /obj/machinery/portable_atmospherics/canister/antinoblium
-	name = "Antinoblium canister"
+	name = "канистра антиноблия"
 	gas_type = /datum/gas/antinoblium
 	filled = 1
 	icon_state = "/obj/machinery/portable_atmospherics/canister/antinoblium"
@@ -139,7 +139,7 @@
 	greyscale_colors = "#333333#fefb30"
 
 /obj/machinery/portable_atmospherics/canister/bz
-	name = "\improper BZ canister"
+	name = "\improper канистра BZ"
 	gas_type = /datum/gas/bz
 	icon_state = "/obj/machinery/portable_atmospherics/canister/bz"
 	post_init_icon_state = ""
@@ -147,7 +147,7 @@
 	greyscale_colors = "#9b5d7f#d0d2a0"
 
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide
-	name = "Carbon dioxide canister"
+	name = "канистра углекислого газа"
 	gas_type = /datum/gas/carbon_dioxide
 	icon_state = "/obj/machinery/portable_atmospherics/canister/carbon_dioxide"
 	post_init_icon_state = ""
@@ -155,7 +155,7 @@
 	greyscale_colors = "#4e4c48#eaeaea"
 
 /obj/machinery/portable_atmospherics/canister/freon
-	name = "Freon canister"
+	name = "канистра фреона"
 	gas_type = /datum/gas/freon
 	filled = 1
 	icon_state = "/obj/machinery/portable_atmospherics/canister/freon"
@@ -164,7 +164,7 @@
 	greyscale_colors = "#6696ee#fefb30"
 
 /obj/machinery/portable_atmospherics/canister/halon
-	name = "Halon canister"
+	name = "канистра галона"
 	gas_type = /datum/gas/halon
 	filled = 1
 	icon_state = "/obj/machinery/portable_atmospherics/canister/halon"
@@ -173,7 +173,7 @@
 	greyscale_colors = "#9b5d7f#368bff"
 
 /obj/machinery/portable_atmospherics/canister/healium
-	name = "Healium canister"
+	name = "канистра хилиума"
 	gas_type = /datum/gas/healium
 	filled = 1
 	icon_state = "/obj/machinery/portable_atmospherics/canister/healium"
@@ -182,7 +182,7 @@
 	greyscale_colors = "#009823#ff0e00"
 
 /obj/machinery/portable_atmospherics/canister/helium
-	name = "Helium canister"
+	name = "канистра гелия"
 	gas_type = /datum/gas/helium
 	filled = 1
 	icon_state = "/obj/machinery/portable_atmospherics/canister/helium"
@@ -191,7 +191,7 @@
 	greyscale_colors = "#9b5d7f#368bff"
 
 /obj/machinery/portable_atmospherics/canister/hydrogen
-	name = "Hydrogen canister"
+	name = "канистра водорода"
 	gas_type = /datum/gas/hydrogen
 	filled = 1
 	icon_state = "/obj/machinery/portable_atmospherics/canister/hydrogen"
@@ -200,7 +200,7 @@
 	greyscale_colors = "#eaeaea#be3455"
 
 /obj/machinery/portable_atmospherics/canister/miasma
-	name = "Miasma canister"
+	name = "канистра миазмы"
 	gas_type = /datum/gas/miasma
 	filled = 1
 	icon_state = "/obj/machinery/portable_atmospherics/canister/miasma"
@@ -209,7 +209,7 @@
 	greyscale_colors = "#009823#f7d5d3"
 
 /obj/machinery/portable_atmospherics/canister/nitrogen
-	name = "Nitrogen canister"
+	name = "канистра азота"
 	gas_type = /datum/gas/nitrogen
 	icon_state = "/obj/machinery/portable_atmospherics/canister/nitrogen"
 	post_init_icon_state = ""
@@ -217,7 +217,7 @@
 	greyscale_colors = "#e9ff5c#f4fce8"
 
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide
-	name = "Nitrous oxide canister"
+	name = "канистра закиси азота"
 	gas_type = /datum/gas/nitrous_oxide
 	icon_state = "/obj/machinery/portable_atmospherics/canister/nitrous_oxide"
 	post_init_icon_state = ""
@@ -225,7 +225,7 @@
 	greyscale_colors = "#c63e3b#f7d5d3"
 
 /obj/machinery/portable_atmospherics/canister/nitrium
-	name = "Nitrium canister"
+	name = "канистра нитриума"
 	gas_type = /datum/gas/nitrium
 	icon_state = "/obj/machinery/portable_atmospherics/canister/nitrium"
 	post_init_icon_state = ""
@@ -233,7 +233,7 @@
 	greyscale_colors = "#7b4732"
 
 /obj/machinery/portable_atmospherics/canister/nob
-	name = "Hyper-noblium canister"
+	name = "канистра гиперноблия"
 	gas_type = /datum/gas/hypernoblium
 	icon_state = "/obj/machinery/portable_atmospherics/canister/nob"
 	post_init_icon_state = ""
@@ -241,7 +241,7 @@
 	greyscale_colors = "#6399fc#b2b2b2"
 
 /obj/machinery/portable_atmospherics/canister/oxygen
-	name = "Oxygen canister"
+	name = "канистра кислорода"
 	gas_type = /datum/gas/oxygen
 	icon_state = "/obj/machinery/portable_atmospherics/canister/oxygen"
 	post_init_icon_state = ""
@@ -249,7 +249,7 @@
 	greyscale_colors = "#2786e5#e8fefe"
 
 /obj/machinery/portable_atmospherics/canister/pluoxium
-	name = "Pluoxium canister"
+	name = "канистра плюоксиума"
 	gas_type = /datum/gas/pluoxium
 	icon_state = "/obj/machinery/portable_atmospherics/canister/pluoxium"
 	post_init_icon_state = ""
@@ -257,7 +257,7 @@
 	greyscale_colors = "#2786e5"
 
 /obj/machinery/portable_atmospherics/canister/proto_nitrate
-	name = "Proto Nitrate canister"
+	name = "канистра протонитрата"
 	gas_type = /datum/gas/proto_nitrate
 	filled = 1
 	icon_state = "/obj/machinery/portable_atmospherics/canister/proto_nitrate"
@@ -266,7 +266,7 @@
 	greyscale_colors = "#008200#33cc33"
 
 /obj/machinery/portable_atmospherics/canister/plasma
-	name = "Plasma canister"
+	name = "канистра плазмы"
 	gas_type = /datum/gas/plasma
 	icon_state = "/obj/machinery/portable_atmospherics/canister/plasma"
 	post_init_icon_state = ""
@@ -274,7 +274,7 @@
 	greyscale_colors = "#f62800#000000"
 
 /obj/machinery/portable_atmospherics/canister/tritium
-	name = "Tritium canister"
+	name = "канистра трития"
 	gas_type = /datum/gas/tritium
 	icon_state = "/obj/machinery/portable_atmospherics/canister/tritium"
 	post_init_icon_state = ""
@@ -282,7 +282,7 @@
 	greyscale_colors = "#3fcd40#000000"
 
 /obj/machinery/portable_atmospherics/canister/water_vapor
-	name = "Water vapor canister"
+	name = "канистра водяного пара"
 	gas_type = /datum/gas/water_vapor
 	filled = 1
 	icon_state = "/obj/machinery/portable_atmospherics/canister/water_vapor"
@@ -291,7 +291,7 @@
 	greyscale_colors = "#4c4e4d#f7d5d3"
 
 /obj/machinery/portable_atmospherics/canister/zauker
-	name = "Zauker canister"
+	name = "канистра заукера"
 	gas_type = /datum/gas/zauker
 	filled = 1
 	icon_state = "/obj/machinery/portable_atmospherics/canister/zauker"
@@ -302,8 +302,8 @@
 // Special canisters below here
 
 /obj/machinery/portable_atmospherics/canister/fusion_test
-	name = "fusion test canister"
-	desc = "Don't be a badmin."
+	name = "тестовая термоядерная канистра"
+	desc = "Не будьте плохим админом."
 	temp_limit = 1e12
 	pressure_limit = 1e14
 
@@ -314,8 +314,8 @@
 	SSair.start_processing_machine(src)
 
 /obj/machinery/portable_atmospherics/canister/anesthetic_mix
-	name = "Anesthetic mix"
-	desc = "A mixture of N2O and Oxygen"
+	name = "анестезирующая смесь"
+	desc = "Смесь N2O и кислорода."
 	icon_state = "/obj/machinery/portable_atmospherics/canister/anesthetic_mix"
 	post_init_icon_state = ""
 	greyscale_config = /datum/greyscale_config/canister/double_stripe
@@ -416,15 +416,15 @@
 	if(istype(item, /obj/item/stock_parts/power_store/cell))
 		var/obj/item/stock_parts/power_store/cell/active_cell = item
 		if(!panel_open)
-			balloon_alert(user, "open hatch first!")
+			balloon_alert(user, "сначала откройте люк!")
 			return TRUE
 		if(!user.transferItemToLoc(active_cell, src))
 			return TRUE
 		if(internal_cell)
 			user.put_in_hands(internal_cell)
-			balloon_alert(user, "you replace the cell")
+			balloon_alert(user, "батарея заменена")
 		else
-			balloon_alert(user, "you install the cell")
+			balloon_alert(user, "батарея установлена")
 		internal_cell = active_cell
 		return TRUE
 	return ..()
@@ -437,7 +437,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	internal_cell.forceMove(drop_location())
-	balloon_alert(user, "cell removed")
+	balloon_alert(user, "батарея извлечена")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/portable_atmospherics/canister/welder_act_secondary(mob/living/user, obj/item/I)
@@ -446,12 +446,12 @@
 
 	var/pressure = air_contents.return_pressure()
 	if(pressure > 300)
-		to_chat(user, span_alert("The pressure gauge on [src] indicates a high pressure inside... maybe you want to reconsider?"))
+		to_chat(user, span_alert("Манометр [src] показывает высокое внутреннее давление... возможно, стоит передумать?"))
 		message_admins("[src] deconstructed by [ADMIN_LOOKUPFLW(user)]")
 		user.log_message("deconstructed [src] with a welder.", LOG_GAME)
-	to_chat(user, span_notice("You begin cutting [src] apart..."))
+	to_chat(user, span_notice("Вы начинаете разрезать [src]..."))
 	if(I.use_tool(src, user, 3 SECONDS, volume=50))
-		to_chat(user, span_notice("You cut [src] apart."))
+		to_chat(user, span_notice("Вы разрезаете [src]."))
 		deconstruct(TRUE)
 
 	return ITEM_INTERACT_SUCCESS

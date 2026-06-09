@@ -6,9 +6,9 @@
 #define COMBO_SURGERY (1<<2)
 
 /datum/surgery_operation/basic/tend_wounds
-	name = "tend wounds"
-	rnd_name = "Tend Wounds"
-	desc = "Perform superficial wound care on a patient's bruises and burns."
+	name = "обработать раны"
+	rnd_name = "Обработка ран"
+	desc = "Обработать поверхностные ушибы и ожоги пациента."
 	implements = list(
 		TOOL_HEMOSTAT = 1,
 		TOOL_SCREWDRIVER = 1.5,
@@ -33,7 +33,7 @@
 	var/healing_multiplier = 0.07
 
 /datum/surgery_operation/basic/tend_wounds/all_required_strings()
-	return ..() + list("the patient must have brute or burn damage")
+	return ..() + list("у пациента должны быть травмы или ожоги")
 
 /datum/surgery_operation/basic/tend_wounds/state_check(mob/living/patient)
 	return patient.get_brute_loss() > 0 || patient.get_fire_loss() > 0
@@ -49,8 +49,8 @@
 		if(!all_healing)
 			all_healing = new()
 			all_healing.image = image(/obj/item/storage/medkit/advanced)
-			all_healing.name = "tend bruises and burns"
-			all_healing.info = "Heal a patient's superficial bruises, cuts, and burns."
+			all_healing.name = "обработать ушибы и ожоги"
+			all_healing.info = "Лечит поверхностные ушибы, порезы и ожоги пациента."
 			LAZYSET(cached_healing_options, "[COMBO_SURGERY]", all_healing)
 
 		options[all_healing] = list(
@@ -66,8 +66,8 @@
 		if(!brute_healing)
 			brute_healing = new()
 			brute_healing.image = image(/obj/item/storage/medkit/brute)
-			brute_healing.name = "tend bruises"
-			brute_healing.info = "Heal a patient's superficial bruises and cuts."
+			brute_healing.name = "обработать ушибы"
+			brute_healing.info = "Лечит поверхностные ушибы и порезы пациента."
 			LAZYSET(cached_healing_options, "[BRUTE_SURGERY]", brute_healing)
 
 		options[brute_healing] = list(
@@ -81,8 +81,8 @@
 		if(!burn_healing)
 			burn_healing = new()
 			burn_healing.image = image(/obj/item/storage/medkit/fire)
-			burn_healing.name = "tend burns"
-			burn_healing.info = "Heal a patient's superficial burns."
+			burn_healing.name = "обработать ожоги"
+			burn_healing.info = "Лечит поверхностные ожоги пациента."
 			LAZYSET(cached_healing_options, "[BURN_SURGERY]", burn_healing)
 
 		options[burn_healing] = list(
@@ -246,7 +246,7 @@
 	healing_multiplier = 0.2
 
 /datum/surgery_operation/basic/tend_wounds/combo
-	rnd_name = "Advanced Tend Wounds"
+	rnd_name = "Продвинутая обработка ран"
 	operation_flags = parent_type::operation_flags | OPERATION_LOCKED
 	replaced_by = /datum/surgery_operation/basic/tend_wounds/combo/upgraded
 	can_heal = COMBO_SURGERY

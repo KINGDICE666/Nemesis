@@ -1,6 +1,6 @@
 /obj/item/clothing/suit/toggle/labcoat
-	name = "labcoat"
-	desc = "A suit that protects against minor chemical spills."
+	name = "лабораторный халат"
+	desc = "Одежда, защищающая от небольших химических разливов."
 	icon_state = "labcoat"
 	icon = 'icons/obj/clothing/suits/labcoat.dmi'
 	worn_icon = 'icons/mob/clothing/suits/labcoat.dmi'
@@ -34,8 +34,8 @@
 	species_exception = list(/datum/species/golem)
 
 /obj/item/clothing/suit/toggle/labcoat/cmo
-	name = "chief medical officer's labcoat"
-	desc = "Bluer than the standard model."
+	name = "лабораторный халат главного врача"
+	desc = "Синее стандартной модели."
 	icon_state = "labcoat_cmo"
 	inhand_icon_state = null
 
@@ -55,8 +55,8 @@
 	)
 
 /obj/item/clothing/suit/toggle/labcoat/paramedic
-	name = "paramedic's jacket"
-	desc = "A dark blue jacket for paramedics with reflective stripes."
+	name = "куртка парамедика"
+	desc = "Темно-синяя куртка парамедика со светоотражающими полосами."
 	icon_state = "labcoat_paramedic"
 	inhand_icon_state = null
 
@@ -66,14 +66,14 @@
 	allowed += /obj/item/crowbar/power/paramedic
 
 /obj/item/clothing/suit/toggle/labcoat/mad
-	name = "\proper The Mad's labcoat"
-	desc = "It makes you look capable of konking someone on the noggin and shooting them into space."
+	name = "\proper халат Безумца"
+	desc = "В нем вы выглядите так, будто способны стукнуть кого-нибудь по башке и запустить в космос."
 	icon_state = "labgreen"
 	inhand_icon_state = null
 
 /obj/item/clothing/suit/toggle/labcoat/genetics
-	name = "geneticist labcoat"
-	desc = "A suit that protects against minor chemical spills. Has a blue stripe on the shoulder."
+	name = "халат генетика"
+	desc = "Одежда, защищающая от небольших химических разливов. На плече есть синяя полоса."
 	icon = 'icons/map_icons/clothing/suit/_suit.dmi'
 	icon_state = "/obj/item/clothing/suit/toggle/labcoat/genetics"
 	post_init_icon_state = "labcoat_job"
@@ -86,8 +86,8 @@
 	allowed += /obj/item/sequence_scanner
 
 /obj/item/clothing/suit/toggle/labcoat/chemist
-	name = "chemist labcoat"
-	desc = "A suit that protects against minor chemical spills. Has an orange stripe on the shoulder."
+	name = "халат химика"
+	desc = "Одежда, защищающая от небольших химических разливов. На плече есть оранжевая полоса."
 	icon = 'icons/map_icons/clothing/suit/_suit.dmi'
 	icon_state = "/obj/item/clothing/suit/toggle/labcoat/chemist"
 	post_init_icon_state = "labcoat_job"
@@ -100,8 +100,8 @@
 	allowed += /obj/item/storage/bag/chemistry
 
 /obj/item/clothing/suit/toggle/labcoat/virologist
-	name = "virologist labcoat"
-	desc = "A suit that protects against minor chemical spills. Has a green stripe on the shoulder."
+	name = "халат вирусолога"
+	desc = "Одежда, защищающая от небольших химических разливов. На плече есть зеленая полоса."
 	icon = 'icons/map_icons/clothing/suit/_suit.dmi'
 	icon_state = "/obj/item/clothing/suit/toggle/labcoat/virologist"
 	post_init_icon_state = "labcoat_job"
@@ -114,8 +114,8 @@
 	allowed += /obj/item/storage/bag/bio
 
 /obj/item/clothing/suit/toggle/labcoat/coroner
-	name = "coroner labcoat"
-	desc = "A suit that protects against minor chemical spills. Has a black stripe on the shoulder."
+	name = "халат коронера"
+	desc = "Одежда, защищающая от небольших химических разливов. На плече есть черная полоса."
 	icon = 'icons/map_icons/clothing/suit/_suit.dmi'
 	icon_state = "/obj/item/clothing/suit/toggle/labcoat/coroner"
 	post_init_icon_state = "labcoat_job"
@@ -134,8 +134,8 @@
 	)
 
 /obj/item/clothing/suit/toggle/labcoat/science
-	name = "scientist labcoat"
-	desc = "A suit that protects against minor chemical spills. Has a purple stripe on the shoulder."
+	name = "халат ученого"
+	desc = "Одежда, защищающая от небольших химических разливов. На плече есть фиолетовая полоса."
 	icon = 'icons/map_icons/clothing/suit/_suit.dmi'
 	icon_state = "/obj/item/clothing/suit/toggle/labcoat/science"
 	post_init_icon_state = "labcoat_job"
@@ -148,8 +148,8 @@
 	allowed += /obj/item/storage/bag/xeno
 
 /obj/item/clothing/suit/toggle/labcoat/roboticist
-	name = "roboticist labcoat"
-	desc = "More like an eccentric coat than a labcoat. Helps pass off bloodstains as part of the aesthetic. Comes with red shoulder pads."
+	name = "халат робототехника"
+	desc = "Больше похож на эксцентричное пальто, чем на халат. Помогает выдавать пятна крови за часть эстетики. Идет с красными наплечниками."
 	icon = 'icons/map_icons/clothing/suit/_suit.dmi'
 	icon_state = "/obj/item/clothing/suit/toggle/labcoat/roboticist"
 	post_init_icon_state = "labcoat_job"
@@ -158,8 +158,8 @@
 	greyscale_colors = "#EEEEEE#88242D#88242D#39393F"
 
 /obj/item/clothing/suit/toggle/labcoat/interdyne
-	name = "interdyne labcoat"
-	desc = "More like an eccentric coat than a labcoat. Helps pass off bloodstains as part of the aesthetic. Comes with red shoulder pads."
+	name = "халат Interdyne"
+	desc = "Больше похож на эксцентричное пальто, чем на халат. Помогает выдавать пятна крови за часть эстетики. Идет с красными наплечниками."
 	icon = 'icons/map_icons/clothing/suit/_suit.dmi'
 	icon_state = "/obj/item/clothing/suit/toggle/labcoat/interdyne"
 	post_init_icon_state = "labcoat_job"
@@ -170,8 +170,8 @@
 // Research Director
 
 /obj/item/clothing/suit/toggle/labcoat/research_director
-	name = "research director's coat"
-	desc = "A mix between a labcoat and just a regular coat. It's made out of a special antibacterial, anti-acidic, and anti-biohazardous synthetic fabric."
+	name = "пальто научного руководителя"
+	desc = "Нечто среднее между лабораторным халатом и обычным пальто. Сделано из специальной антибактериальной, кислотостойкой и биозащитной синтетической ткани."
 	icon_state = "labcoat_rd"
 	armor_type = /datum/armor/jacket_research_director
 	body_parts_covered = CHEST|GROIN|ARMS

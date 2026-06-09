@@ -20,6 +20,12 @@ import {
   type PatientData,
 } from './types';
 
+const patientStateText = {
+  Conscious: 'В сознании',
+  Unconscious: 'Без сознания',
+  Dead: 'Мертв',
+} as const;
+
 type PatientStateViewProps = {
   setTab: (tab: number) => void;
   setSearchText: (text: string) => void;
@@ -36,7 +42,7 @@ export const PatientStateView = (props: PatientStateViewProps) => {
     return (
       <Section fill>
         <NoticeBox color="yellow" align="center">
-          No table detected
+          Операционный стол не обнаружен
         </NoticeBox>
       </Section>
     );
@@ -45,7 +51,7 @@ export const PatientStateView = (props: PatientStateViewProps) => {
     return (
       <Section fill>
         <NoticeBox color="red" align="center">
-          No patient detected
+          Пациент не обнаружен
         </NoticeBox>
       </Section>
     );
@@ -84,13 +90,13 @@ const PatientStateMainStateView = (props: PatientStateMainStateViewProps) => {
 
   return (
     <LabeledList>
-      <LabeledList.Item label="State" color={patient.statstate}>
-        {patient.stat}
+      <LabeledList.Item label="Состояние" color={patient.statstate}>
+        {patientStateText[patient.stat]}
       </LabeledList.Item>
-      <LabeledList.Item label="Blood Type">
-        {patient.blood_type || 'Unable to determine blood type'}
+      <LabeledList.Item label="Группа крови">
+        {patient.blood_type || 'Не удалось определить группу крови'}
       </LabeledList.Item>
-      <LabeledList.Item label="Health">
+      <LabeledList.Item label="Здоровье">
         <ProgressBar
           value={patient.health}
           minValue={patient.minHealth}
@@ -103,7 +109,7 @@ const PatientStateMainStateView = (props: PatientStateMainStateViewProps) => {
           />
         </ProgressBar>
       </LabeledList.Item>
-      <LabeledList.Item label="Blood Level">
+      <LabeledList.Item label="Уровень крови">
         <ProgressBar
           value={patient.blood_level}
           minValue={0}
@@ -222,13 +228,13 @@ const PatientStateNextOperationsView = (
 
   return (
     <Section
-      title="Possible Operations"
+      title="Возможные операции"
       scrollable
       fill
       buttons={
         <Button
           icon="filter"
-          tooltip="Filter by recommended tool. Right click to reset."
+          tooltip="Фильтр по рекомендуемому инструменту. ПКМ: сбросить."
           tooltipPosition="top"
           width="100px"
           ellipsis
@@ -240,7 +246,9 @@ const PatientStateNextOperationsView = (
           }
           onContextMenu={() => setFilterByTool(allTools[0])}
         >
-          {capitalizeFirst(filterByTool)}
+          {filterByTool === allTools[0]
+            ? 'Все инструменты'
+            : capitalizeFirst(filterByTool)}
         </Button>
       }
     >
@@ -248,7 +256,7 @@ const PatientStateNextOperationsView = (
         {possible_next_operations.length === 0 ? (
           <Stack.Item>
             <NoticeBox color="green" align="center">
-              No operations available
+              Нет доступных операций
             </NoticeBox>
           </Stack.Item>
         ) : (
@@ -269,26 +277,26 @@ const PatientStateNextOperationsView = (
                         {!!operation.priority && (
                           <Stack.Item color="orange">
                             <Icon name="exclamation" mr={1} />
-                            Recommended next step
+                            Рекомендуемый следующий шаг
                           </Stack.Item>
                         )}
                         {pinnedOperations.includes(operation.name) && (
                           <Stack.Item color="yellow">
                             <Icon name="thumbtack" mr={1} />
-                            Pinned
+                            Закреплено
                           </Stack.Item>
                         )}
                         <Stack.Item>{operation.desc}</Stack.Item>
                         <Stack.Item italic fontSize="0.9rem">
-                          {`Left click ${
+                          {`ЛКМ ${
                             pinnedOperations.includes(operation.name)
-                              ? 'unpins operation from'
-                              : 'pins operation to'
-                          } the top.`}
+                              ? 'убирает операцию из'
+                              : 'закрепляет операцию в'
+                          } верхней части списка.`}
                         </Stack.Item>
                         {!!operation.show_in_list && (
                           <Stack.Item italic fontSize="0.9rem">
-                            Right click opens operation info.
+                            ПКМ открывает информацию об операции.
                           </Stack.Item>
                         )}
                       </Stack>

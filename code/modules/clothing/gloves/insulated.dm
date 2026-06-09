@@ -4,8 +4,8 @@
 	greyscale_colors = null
 
 /obj/item/clothing/gloves/color/yellow
-	desc = "These gloves provide protection against electric shock."
-	name = "insulated gloves"
+	desc = "Эти перчатки защищают от удара током."
+	name = "изолирующие перчатки"
 	icon_state = "yellow"
 	inhand_icon_state = "ygloves"
 	siemens_coefficient = 0
@@ -35,14 +35,14 @@
 	bio = 50
 
 /obj/item/clothing/gloves/color/yellow/heavy
-	name = "ceramic-lined insulated gloves"
-	desc = "A cheaper make of the standard insulated gloves, using internal ceramic lining to make up for the sub-par rubber material. The extra weight makes them more bulky to use."
+	name = "изолирующие перчатки с керамической подкладкой"
+	desc = "Более дешевая версия стандартных изолирующих перчаток, где внутренняя керамическая подкладка компенсирует посредственную резину. Из-за лишнего веса ими неудобнее пользоваться."
 	slowdown = 1
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/toy/sprayoncan
-	name = "spray-on insulation applicator"
-	desc = "What is the number one problem facing our station today?"
+	name = "аэрозольный изолирующий аппликатор"
+	desc = "Какая проблема номер один стоит перед нашей станцией сегодня?"
 	icon = 'icons/obj/clothing/gloves.dmi'
 	icon_state = "sprayoncan"
 
@@ -54,16 +54,16 @@
 	var/success = C.equip_to_slot_if_possible(new /obj/item/clothing/gloves/color/yellow/sprayon, ITEM_SLOT_GLOVES, qdel_on_fail = TRUE, disable_warning = TRUE)
 	if(success)
 		if(C == user)
-			C.visible_message(span_notice("[U] sprays their hands with glittery rubber!"))
+			C.visible_message(span_notice("[U] покрывает свои руки блестящей резиной!"))
 		else
-			C.visible_message(span_warning("[U] sprays glittery rubber on the hands of [C]!"))
+			C.visible_message(span_warning("[U] покрывает руки [C] блестящей резиной!"))
 	else
-		C.visible_message(span_warning("The rubber fails to stick to [C]'s hands!"))
+		C.visible_message(span_warning("Резина не прилипает к рукам [C]!"))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/clothing/gloves/color/yellow/sprayon
-	desc = "How're you gonna get 'em off, nerd?"
-	name = "spray-on insulated gloves"
+	desc = "И как ты теперь их снимешь, умник?"
+	name = "напыляемые изолирующие перчатки"
 	icon_state = "sprayon"
 	inhand_icon_state = null
 	item_flags = DROPDEL
@@ -89,14 +89,14 @@
 	charges_remaining--
 	if(charges_remaining <= 0)
 		var/turf/location = get_turf(src)
-		location.visible_message(span_warning("[src] crumble[p_s()] away into nothing.")) // just like my dreams after working with .dm
+		location.visible_message(span_warning("[src] рассыпаются в ничто.")) // just like my dreams after working with .dm
 		qdel(src)
 
 	. |= COMPONENT_CLEANED
 
 /obj/item/clothing/gloves/color/fyellow                             //Cheap Chinese Crap
-	desc = "These gloves are cheap knockoffs of the coveted ones - no way this can end badly."
-	name = "budget insulated gloves"
+	desc = "Эти перчатки - дешевая подделка под желанную модель. Ничего плохого точно не случится."
+	name = "бюджетные изолирующие перчатки"
 	icon_state = "yellow"
 	inhand_icon_state = "ygloves"
 	greyscale_colors = null
@@ -117,19 +117,19 @@
 	// Pretend we're always insulated
 	if (.["partially insulated"])
 		. -= "partially insulated"
-	.["insulated"] = "It is made from a robust electrical insulator and will block any electricity passing through it!"
+	.["insulated"] = "Они сделаны из прочного электроизолятора и блокируют проходящий через них ток!"
 
 /obj/item/clothing/gloves/color/fyellow/old
-	desc = "Old and worn out insulated gloves, hopefully they still work."
-	name = "worn out insulated gloves"
+	desc = "Старые и изношенные изолирующие перчатки. Остается надеяться, что они все еще работают."
+	name = "изношенные изолирующие перчатки"
 
 /obj/item/clothing/gloves/color/fyellow/old/Initialize(mapload)
 	. = ..()
 	siemens_coefficient = pick(0,0,0,0.5,0.5,0.5,0.75)
 
 /obj/item/clothing/gloves/cut
-	desc = "These gloves would protect the wearer from electric shock... if the fingers were covered."
-	name = "fingerless insulated gloves"
+	desc = "Эти перчатки защищали бы владельца от удара током... если бы пальцы были закрыты."
+	name = "изолирующие перчатки без пальцев"
 	icon_state = "yellowcut"
 	inhand_icon_state = "ygloves"
 	greyscale_colors = null
@@ -140,11 +140,11 @@
 	AddElement(/datum/element/adjust_fishing_difficulty, -5)
 
 /obj/item/clothing/gloves/cut/heirloom
-	desc = "The old gloves your great grandfather stole from Engineering, many moons ago. They've seen some tough times recently."
+	desc = "Старые перчатки, которые ваш прадед когда-то украл из инженерного отдела. Последнее время им пришлось нелегко."
 
 /obj/item/clothing/gloves/chief_engineer
-	desc = "These gloves provide excellent heat and electric insulation."
-	name = "advanced insulated gloves"
+	desc = "Эти перчатки отлично защищают от жара и электричества."
+	name = "продвинутые изолирующие перчатки"
 	icon_state = "ce_insuls"
 	inhand_icon_state = null
 	greyscale_colors = null

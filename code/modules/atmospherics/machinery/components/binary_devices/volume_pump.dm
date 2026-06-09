@@ -12,8 +12,8 @@
 
 /obj/machinery/atmospherics/components/binary/volume_pump
 	icon_state = "volpump_map-3"
-	name = "volumetric gas pump"
-	desc = "A pump that moves gas by volume."
+	name = "объемный газовый насос"
+	desc = "Насос, перемещающий газ по объему."
 	can_unwrench = TRUE
 	shift_underlay_only = FALSE
 	construction_type = /obj/item/pipe/directional
@@ -38,7 +38,7 @@
 /obj/machinery/atmospherics/components/binary/volume_pump/click_ctrl(mob/user)
 	if(can_interact(user))
 		set_on(!on)
-		balloon_alert(user, "turned [on ? "on" : "off"]")
+		balloon_alert(user, "[on ? "включено" : "выключено"]")
 		investigate_log("was turned [on ? "on" : "off"] by [key_name(user)]", INVESTIGATE_ATMOS)
 		return CLICK_ACTION_SUCCESS
 	return CLICK_ACTION_BLOCKING
@@ -49,7 +49,7 @@
 
 	transfer_rate = MAX_TRANSFER_RATE
 	investigate_log("was set to [transfer_rate] L/s by [key_name(user)]", INVESTIGATE_ATMOS)
-	balloon_alert(user, "volume output set to [transfer_rate] L/s")
+	balloon_alert(user, "выходной объем: [transfer_rate] л/с")
 	update_appearance(UPDATE_ICON)
 	return CLICK_ACTION_SUCCESS
 
@@ -80,7 +80,7 @@
 	if(overclocked)
 		var/turf/turf = loc
 		if(isclosedturf(turf))
-			balloon_alert_to_viewers("jammed!")
+			balloon_alert_to_viewers("заклинило!")
 			overclocked = FALSE
 			update_appearance(UPDATE_ICON)
 
@@ -106,16 +106,16 @@
 
 /obj/machinery/atmospherics/components/binary/volume_pump/examine(mob/user)
 	. = ..()
-	. += span_notice("Its pressure limits could be [overclocked ? "en" : "dis"]abled with a <b>multitool</b>.")
+	. += span_notice("Ограничения давления можно [overclocked ? "включить" : "отключить"] <b>мультитулом</b>.")
 	if(overclocked)
-		. += "Its warning light is on[on ? " and it's spewing gas!" : "."]"
+		. += "Предупреждающий индикатор горит[on ? ", и из него вырывается газ!" : "."]"
 
 /obj/machinery/atmospherics/components/binary/volume_pump/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
-	context[SCREENTIP_CONTEXT_CTRL_LMB] = "Turn [on ? "off" : "on"]"
-	context[SCREENTIP_CONTEXT_ALT_LMB] = "Maximize transfer rate"
+	context[SCREENTIP_CONTEXT_CTRL_LMB] = "[on ? "Выключить" : "Включить"]"
+	context[SCREENTIP_CONTEXT_ALT_LMB] = "Максимизировать скорость передачи"
 	if(held_item && held_item.tool_behaviour == TOOL_MULTITOOL)
-		context[SCREENTIP_CONTEXT_LMB] = "[overclocked ? "En" : "Dis"]able pressure limits"
+		context[SCREENTIP_CONTEXT_LMB] = "[overclocked ? "Включить" : "Отключить"] ограничения давления"
 	return CONTEXTUAL_SCREENTIP_SET
 
 /obj/machinery/atmospherics/components/binary/volume_pump/ui_interact(mob/user, datum/tgui/ui)
@@ -156,16 +156,16 @@
 /obj/machinery/atmospherics/components/binary/volume_pump/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational)
-		to_chat(user, span_warning("You cannot unwrench [src], turn it off first!"))
+		to_chat(user, span_warning("Нельзя открепить [src], сначала выключите его!"))
 		return FALSE
 
 /obj/machinery/atmospherics/components/binary/volume_pump/multitool_act(mob/living/user, obj/item/I)
 	if(!overclocked)
 		overclocked = TRUE
-		to_chat(user, "The pump makes a grinding noise and air starts to hiss out as you disable its pressure limits.")
+		to_chat(user, "Насос издает скрежет, и воздух начинает шипеть наружу, когда вы отключаете ограничения давления.")
 	else
 		overclocked = FALSE
-		to_chat(user, "The pump quiets down as you turn its limiters back on.")
+		to_chat(user, "Насос затихает, когда вы снова включаете ограничители.")
 	update_appearance(UPDATE_ICON)
 	return TRUE
 
@@ -192,8 +192,8 @@
 	icon_state = "volpump_on_map-4"
 
 /obj/item/circuit_component/atmos_volume_pump
-	display_name = "Atmospheric Volume Pump"
-	desc = "The interface for communicating with a volume pump."
+	display_name = "атмосферный объемный насос"
+	desc = "Интерфейс для связи с объемным насосом."
 
 	///Set the transfer rate of the pump
 	var/datum/port/input/transfer_rate
@@ -224,19 +224,19 @@
 	var/obj/machinery/atmospherics/components/binary/volume_pump/connected_pump
 
 /obj/item/circuit_component/atmos_volume_pump/populate_ports()
-	transfer_rate = add_input_port("New Transfer Rate", PORT_TYPE_NUMBER, trigger = PROC_REF(set_transfer_rate))
-	on = add_input_port("Turn On", PORT_TYPE_SIGNAL, trigger = PROC_REF(set_pump_on))
-	off = add_input_port("Turn Off", PORT_TYPE_SIGNAL, trigger = PROC_REF(set_pump_off))
-	request_data = add_input_port("Request Port Data", PORT_TYPE_SIGNAL, trigger = PROC_REF(request_pump_data))
+	transfer_rate = add_input_port("Новая скорость передачи", PORT_TYPE_NUMBER, trigger = PROC_REF(set_transfer_rate))
+	on = add_input_port("Включить", PORT_TYPE_SIGNAL, trigger = PROC_REF(set_pump_on))
+	off = add_input_port("Выключить", PORT_TYPE_SIGNAL, trigger = PROC_REF(set_pump_off))
+	request_data = add_input_port("Запросить данные портов", PORT_TYPE_SIGNAL, trigger = PROC_REF(request_pump_data))
 
-	input_pressure = add_output_port("Input Pressure", PORT_TYPE_NUMBER)
-	output_pressure = add_output_port("Output Pressure", PORT_TYPE_NUMBER)
-	input_temperature = add_output_port("Input Temperature", PORT_TYPE_NUMBER)
-	output_temperature = add_output_port("Output Temperature", PORT_TYPE_NUMBER)
+	input_pressure = add_output_port("Входное давление", PORT_TYPE_NUMBER)
+	output_pressure = add_output_port("Выходное давление", PORT_TYPE_NUMBER)
+	input_temperature = add_output_port("Входная температура", PORT_TYPE_NUMBER)
+	output_temperature = add_output_port("Выходная температура", PORT_TYPE_NUMBER)
 
-	is_active = add_output_port("Active", PORT_TYPE_BOOLEAN)
-	turned_on = add_output_port("Turned On", PORT_TYPE_SIGNAL)
-	turned_off = add_output_port("Turned Off", PORT_TYPE_SIGNAL)
+	is_active = add_output_port("Активен", PORT_TYPE_BOOLEAN)
+	turned_on = add_output_port("Включен", PORT_TYPE_SIGNAL)
+	turned_off = add_output_port("Выключен", PORT_TYPE_SIGNAL)
 
 /obj/item/circuit_component/atmos_volume_pump/register_usb_parent(atom/movable/shell)
 	. = ..()

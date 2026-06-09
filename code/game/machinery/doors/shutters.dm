@@ -1,7 +1,7 @@
 /obj/machinery/door/poddoor/shutters
 	gender = PLURAL
-	name = "shutters"
-	desc = "Heavy duty mechanical shutters with an atmospheric seal that keeps them airtight once closed."
+	name = "ставни"
+	desc = "Прочные механические ставни с атмосферным уплотнением, сохраняющим герметичность после закрытия."
 	icon = 'icons/obj/doors/shutters.dmi'
 	layer = SHUTTER_LAYER
 	closingLayer = SHUTTER_LAYER
@@ -41,7 +41,7 @@
 	custom_materials = list(/datum/material/alloy/plasteel = SHEET_MATERIAL_AMOUNT * 5)
 
 /obj/machinery/door/poddoor/shutters/indestructible
-	name = "hardened shutters"
+	name = "укрепленные ставни"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
 /obj/machinery/door/poddoor/shutters/indestructible/preopen
@@ -50,8 +50,8 @@
 	opacity = FALSE
 
 /obj/machinery/door/poddoor/shutters/radiation
-	name = "radiation shutters"
-	desc = "Lead-lined shutters with a radiation hazard symbol. Whilst this won't stop you getting irradiated, especially by a supermatter crystal, it will stop radiation travelling as far."
+	name = "радиационные ставни"
+	desc = "Ставни со свинцовой обшивкой и знаком радиационной опасности. Они не защитят вас от облучения полностью, особенно рядом с кристаллом суперматерии, но ограничат распространение радиации."
 	icon = 'icons/obj/doors/shutters_radiation.dmi'
 	icon_state = "closed"
 	rad_insulation = RAD_EXTREME_INSULATION
@@ -80,8 +80,8 @@
 	rad_insulation = RAD_EXTREME_INSULATION
 
 /obj/machinery/door/poddoor/shutters/window
-	name = "windowed shutters"
-	desc = "A shutter with a thick see-through polycarbonate window."
+	name = "ставни с окном"
+	desc = "Ставни с толстым прозрачным поликарбонатным окном."
 	icon = 'icons/obj/doors/shutters_window.dmi'
 	icon_state = "closed"
 	opacity = FALSE
@@ -92,7 +92,7 @@
 	density = FALSE
 
 /obj/machinery/door/poddoor/shutters/window/indestructible
-	name = "hardened windowed shutters"
+	name = "укрепленные ставни с окном"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
 /obj/machinery/door/poddoor/shutters/window/indestructible/preopen
@@ -109,5 +109,5 @@
 	opacity = FALSE
 
 /obj/machinery/door/poddoor/shutters/syndicate/indestructible
-	name = "hardened syndicate shutters"
+	name = "укрепленные ставни Синдиката"
 	resistance_flags = INDESTRUCTIBLE

@@ -1,8 +1,8 @@
 // Surgical analog to manual dislocation treatment
 /datum/surgery_operation/limb/repair_dislocation
-	name = "reset dislocation"
-	desc = "Reset a dislocated bone in a patient's limb. \
-		Similar to the field procedure, but quicker and safer due to being performed in a controlled environment."
+	name = "вправить вывих"
+	desc = "Вправить вывихнутую кость в конечности пациента. \
+		Похоже на полевую процедуру, но быстрее и безопаснее благодаря контролируемым условиям."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED | OPERATION_AFFECTS_MOOD | OPERATION_STANDING_ALLOWED | OPERATION_IGNORE_CLOTHES
 	implements = list(
 		TOOL_BONESET = 1,
@@ -21,7 +21,7 @@
 	return image(/obj/item/bonesetter)
 
 /datum/surgery_operation/limb/repair_dislocation/all_required_strings()
-	return list("the limb must be dislocated") + ..()
+	return list("конечность должна быть вывихнута") + ..()
 
 /datum/surgery_operation/limb/repair_dislocation/state_check(obj/item/bodypart/limb)
 	for(var/datum/wound/blunt/bone/bone_wound in limb.wounds)
@@ -66,8 +66,8 @@
 	limb.receive_damage(25, damage_source = tool)
 
 /datum/surgery_operation/limb/repair_hairline
-	name = "repair hairline fracture"
-	desc = "Mend a hairline fracture in a patient's bone."
+	name = "устранить трещину кости"
+	desc = "Залечить трещину в кости пациента."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		TOOL_BONESET = 1,
@@ -89,7 +89,7 @@
 	return image(/obj/item/bonesetter)
 
 /datum/surgery_operation/limb/repair_hairline/all_required_strings()
-	return list("the limb must have a hairline fracture") + ..()
+	return list("у конечности должна быть трещина кости") + ..()
 
 /datum/surgery_operation/limb/repair_hairline/state_check(obj/item/bodypart/limb)
 	if(!(locate(/datum/wound/blunt/bone/severe) in limb.wounds))
@@ -119,8 +119,8 @@
 	)
 
 /datum/surgery_operation/limb/reset_compound
-	name = "reset compound fracture"
-	desc = "Reset a compound fracture in a patient's bone, preparing it for proper healing."
+	name = "вправить открытый перелом"
+	desc = "Вправить открытый перелом кости пациента, подготовив его к полноценному заживлению."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		TOOL_BONESET = 1,
@@ -142,7 +142,7 @@
 	return image(/obj/item/bonesetter)
 
 /datum/surgery_operation/limb/reset_compound/all_required_strings()
-	return list("the limb must have a compound fracture") + ..()
+	return list("у конечности должен быть открытый перелом") + ..()
 
 /datum/surgery_operation/limb/reset_compound/state_check(obj/item/bodypart/limb)
 	var/datum/wound/blunt/bone/critical/fracture = locate() in limb.wounds
@@ -173,8 +173,8 @@
 	)
 
 /datum/surgery_operation/limb/repair_compound
-	name = "repair compound fracture"
-	desc = "Mend a compound fracture in a patient's bone."
+	name = "залечить открытый перелом"
+	desc = "Залечить открытый перелом кости пациента."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		/obj/item/stack/medical/bone_gel = 1,
@@ -195,7 +195,7 @@
 	return image(/obj/item/stack/medical/bone_gel)
 
 /datum/surgery_operation/limb/repair_compound/all_required_strings()
-	return list("the limb's compound fracture has been reset") + ..()
+	return list("открытый перелом конечности должен быть вправлен") + ..()
 
 /datum/surgery_operation/limb/repair_compound/state_check(obj/item/bodypart/limb)
 	var/datum/wound/blunt/bone/critical/fracture = locate() in limb.wounds
@@ -225,8 +225,8 @@
 	)
 
 /datum/surgery_operation/limb/prepare_cranium_repair
-	name = "discard skull debris"
-	desc = "Clear away bone fragments and debris from a patient's cranial fissure in preparation for repair."
+	name = "убрать осколки черепа"
+	desc = "Убрать костные фрагменты и мусор из трещины черепа пациента, подготовив ее к восстановлению."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		TOOL_HEMOSTAT = 1,
@@ -246,7 +246,7 @@
 	return image(/obj/item/hemostat)
 
 /datum/surgery_operation/limb/prepare_cranium_repair/all_required_strings()
-	return list("the cranium must be fractured") + ..()
+	return list("череп должен быть треснут") + ..()
 
 /datum/surgery_operation/limb/prepare_cranium_repair/state_check(obj/item/bodypart/limb)
 	var/datum/wound/cranial_fissure/fissure = locate() in limb.wounds
@@ -270,8 +270,8 @@
 	fissure?.prepped = TRUE
 
 /datum/surgery_operation/limb/repair_cranium
-	name = "repair cranium"
-	desc = "Mend a cranial fissure in a patient's skull."
+	name = "восстановить череп"
+	desc = "Залечить трещину черепа пациента."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		/obj/item/stack/medical/bone_gel = 1,
@@ -291,7 +291,7 @@
 	return image(/obj/item/stack/medical/bone_gel)
 
 /datum/surgery_operation/limb/repair_cranium/all_required_strings()
-	return list("the debris has been cleared from the cranial fissure") + ..()
+	return list("осколки должны быть убраны из трещины черепа") + ..()
 
 /datum/surgery_operation/limb/repair_cranium/state_check(obj/item/bodypart/limb)
 	var/datum/wound/cranial_fissure/fissure = locate() in limb.wounds

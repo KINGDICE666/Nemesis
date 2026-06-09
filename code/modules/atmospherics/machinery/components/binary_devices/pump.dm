@@ -12,8 +12,8 @@
 
 /obj/machinery/atmospherics/components/binary/pump
 	icon_state = "pump_map-3"
-	name = "gas pump"
-	desc = "A pump that moves gas by pressure."
+	name = "газовый насос"
+	desc = "Насос, перемещающий газ по давлению."
 	can_unwrench = TRUE
 	shift_underlay_only = FALSE
 	construction_type = /obj/item/pipe/directional
@@ -29,14 +29,14 @@
 
 /obj/machinery/atmospherics/components/binary/pump/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
-	context[SCREENTIP_CONTEXT_CTRL_LMB] = "Turn [on ? "off" : "on"]"
-	context[SCREENTIP_CONTEXT_ALT_LMB] = "Maximize target pressure"
+	context[SCREENTIP_CONTEXT_CTRL_LMB] = "[on ? "Выключить" : "Включить"]"
+	context[SCREENTIP_CONTEXT_ALT_LMB] = "Максимизировать целевое давление"
 	return CONTEXTUAL_SCREENTIP_SET
 
 /obj/machinery/atmospherics/components/binary/pump/click_ctrl(mob/user)
 	if(is_operational)
 		set_on(!on)
-		balloon_alert(user, "turned [on ? "on" : "off"]")
+		balloon_alert(user, "[on ? "включено" : "выключено"]")
 		investigate_log("was turned [on ? "on" : "off"] by [key_name(user)]", INVESTIGATE_ATMOS)
 		return CLICK_ACTION_SUCCESS
 	return CLICK_ACTION_BLOCKING
@@ -47,7 +47,7 @@
 
 	target_pressure = MAX_OUTPUT_PRESSURE
 	investigate_log("was set to [target_pressure] kPa by [key_name(user)]", INVESTIGATE_ATMOS)
-	balloon_alert(user, "pressure output set to [target_pressure] kPa")
+	balloon_alert(user, "выходное давление: [target_pressure] кПа")
 	update_appearance(UPDATE_ICON)
 	return CLICK_ACTION_SUCCESS
 
@@ -103,7 +103,7 @@
 /obj/machinery/atmospherics/components/binary/pump/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational)
-		to_chat(user, span_warning("You cannot unwrench [src], turn it off first!"))
+		to_chat(user, span_warning("Нельзя открепить [src], сначала выключите его!"))
 		return FALSE
 
 /obj/machinery/atmospherics/components/binary/pump/layer2
@@ -131,8 +131,8 @@
 	icon_state = "pump_on_map-5"
 
 /obj/item/circuit_component/atmos_pump
-	display_name = "Atmospheric Binary Pump"
-	desc = "The interface for communicating with a pump."
+	display_name = "атмосферный бинарный насос"
+	desc = "Интерфейс для связи с насосом."
 
 	///Set the target pressure of the pump
 	var/datum/port/input/pressure_value
@@ -163,19 +163,19 @@
 	var/obj/machinery/atmospherics/components/binary/pump/connected_pump
 
 /obj/item/circuit_component/atmos_pump/populate_ports()
-	pressure_value = add_input_port("New Pressure", PORT_TYPE_NUMBER, trigger = PROC_REF(set_pump_pressure))
-	on = add_input_port("Turn On", PORT_TYPE_SIGNAL, trigger = PROC_REF(set_pump_on))
-	off = add_input_port("Turn Off", PORT_TYPE_SIGNAL, trigger = PROC_REF(set_pump_off))
-	request_data = add_input_port("Request Port Data", PORT_TYPE_SIGNAL, trigger = PROC_REF(request_pump_data))
+	pressure_value = add_input_port("Новое давление", PORT_TYPE_NUMBER, trigger = PROC_REF(set_pump_pressure))
+	on = add_input_port("Включить", PORT_TYPE_SIGNAL, trigger = PROC_REF(set_pump_on))
+	off = add_input_port("Выключить", PORT_TYPE_SIGNAL, trigger = PROC_REF(set_pump_off))
+	request_data = add_input_port("Запросить данные портов", PORT_TYPE_SIGNAL, trigger = PROC_REF(request_pump_data))
 
-	input_pressure = add_output_port("Input Pressure", PORT_TYPE_NUMBER)
-	output_pressure = add_output_port("Output Pressure", PORT_TYPE_NUMBER)
-	input_temperature = add_output_port("Input Temperature", PORT_TYPE_NUMBER)
-	output_temperature = add_output_port("Output Temperature", PORT_TYPE_NUMBER)
+	input_pressure = add_output_port("Входное давление", PORT_TYPE_NUMBER)
+	output_pressure = add_output_port("Выходное давление", PORT_TYPE_NUMBER)
+	input_temperature = add_output_port("Входная температура", PORT_TYPE_NUMBER)
+	output_temperature = add_output_port("Выходная температура", PORT_TYPE_NUMBER)
 
-	is_active = add_output_port("Active", PORT_TYPE_BOOLEAN)
-	turned_on = add_output_port("Turned On", PORT_TYPE_SIGNAL)
-	turned_off = add_output_port("Turned Off", PORT_TYPE_SIGNAL)
+	is_active = add_output_port("Активен", PORT_TYPE_BOOLEAN)
+	turned_on = add_output_port("Включен", PORT_TYPE_SIGNAL)
+	turned_off = add_output_port("Выключен", PORT_TYPE_SIGNAL)
 
 /obj/item/circuit_component/atmos_pump/register_usb_parent(atom/movable/shell)
 	. = ..()

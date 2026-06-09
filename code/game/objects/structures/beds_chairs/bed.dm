@@ -8,8 +8,8 @@
 
 /// Beds
 /obj/structure/bed
-	name = "bed"
-	desc = "This is used to lie in, sleep in or strap on."
+	name = "кровать"
+	desc = "На ней можно лежать, спать или быть пристегнутым."
 	icon_state = "bed"
 	icon = 'icons/obj/bed.dmi'
 	anchored = TRUE
@@ -76,18 +76,18 @@
 /obj/structure/bed/examine(mob/user)
 	. = ..()
 	if (can_deconstruct)
-		. += span_notice("It's held together by a couple of <b>bolts</b>.")
+		. += span_notice("Она держится на паре <b>болтов</b>.")
 
 /obj/structure/bed/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	if(held_item)
 		if(held_item.tool_behaviour != TOOL_WRENCH)
 			return
 
-		context[SCREENTIP_CONTEXT_RMB] = "Dismantle"
+		context[SCREENTIP_CONTEXT_RMB] = "Разобрать"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	else if(has_buckled_mobs())
-		context[SCREENTIP_CONTEXT_LMB] = "Unbuckle"
+		context[SCREENTIP_CONTEXT_LMB] = "Отстегнуть"
 		return CONTEXTUAL_SCREENTIP_SET
 
 /obj/structure/bed/setDir(newdir)
@@ -114,9 +114,9 @@
 
 /// Medical beds
 /obj/structure/bed/medical
-	name = "medical bed"
+	name = "медицинская кровать"
 	icon = 'icons/obj/medical/medical_bed.dmi'
-	desc = "A medical bed with wheels for assisted patient movement or medbay racing tournaments."
+	desc = "Медицинская кровать на колесах для перевозки пациентов или гоночных турниров медотсека."
 	icon_state = "med_down"
 	base_icon_state = "med"
 	anchored = FALSE
@@ -135,8 +135,8 @@
 	anchored = TRUE
 
 /obj/structure/bed/medical/emergency
-	name = "emergency medical bed"
-	desc = "A compact medical bed. This emergency version can be folded and carried for quick transport."
+	name = "аварийная медицинская кровать"
+	desc = "Компактная медицинская кровать. Эту аварийную версию можно сложить и переносить для быстрой транспортировки."
 	icon_state = "emerg_down"
 	base_icon_state = "emerg"
 	foldable_type = /obj/item/emergency_bed
@@ -149,28 +149,28 @@
 
 /obj/structure/bed/medical/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	. = ..()
-	context[SCREENTIP_CONTEXT_ALT_LMB] = "[anchored ? "Release brakes" : "Apply brakes"]"
+	context[SCREENTIP_CONTEXT_ALT_LMB] = "[anchored ? "Отпустить тормоза" : "Включить тормоза"]"
 	if(!isnull(foldable_type) && !has_buckled_mobs())
-		context[SCREENTIP_CONTEXT_RMB] = "Fold up"
+		context[SCREENTIP_CONTEXT_RMB] = "Сложить"
 
 	return CONTEXTUAL_SCREENTIP_SET
 
 /obj/structure/bed/medical/examine(mob/user)
 	. = ..()
 	if(anchored)
-		. += span_notice("The brakes are applied. They can be released with an Alt-click.")
+		. += span_notice("Тормоза включены. Их можно отпустить Alt-кликом.")
 	else
-		. += span_notice("The brakes can be applied with an Alt-click.")
+		. += span_notice("Тормоза можно включить Alt-кликом.")
 
 	if(!isnull(foldable_type))
-		. += span_notice("You can fold it up with a Right-click.")
+		. += span_notice("Ее можно сложить правым кликом.")
 
 /obj/structure/bed/medical/click_alt(mob/user)
 	if(has_buckled_mobs() && (user in buckled_mobs))
 		return CLICK_ACTION_BLOCKING
 
 	anchored = !anchored
-	balloon_alert(user, "brakes [anchored ? "applied" : "released"]")
+	balloon_alert(user, "тормоза [anchored ? "включены" : "отпущены"]")
 	update_appearance()
 	return CLICK_ACTION_SUCCESS
 
@@ -246,8 +246,8 @@
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/emergency_bed
-	name = "roller bed"
-	desc = "A collapsed medical bed that can be carried around."
+	name = "каталка"
+	desc = "Сложенная медицинская кровать, которую можно носить с собой."
 	icon = 'icons/obj/medical/medical_bed.dmi'
 	icon_state = "emerg_folded"
 	inhand_icon_state = "emergencybed"
@@ -286,8 +286,8 @@
 	qdel(src)
 
 /obj/item/emergency_bed/silicon // ROLLER ROBO DA!
-	name = "emergency bed dock"
-	desc = "A collapsed medical bed that can be ejected for emergency use. Must be collected or replaced after use."
+	name = "док аварийной кровати"
+	desc = "Сложенная медицинская кровать, которую можно выдвинуть для экстренного использования. После применения ее нужно собрать или заменить."
 	var/obj/structure/bed/medical/emergency/loaded = null
 
 /obj/item/emergency_bed/silicon/Initialize(mapload)
@@ -296,7 +296,7 @@
 
 /obj/item/emergency_bed/silicon/examine(mob/user)
 	. = ..()
-	. += "The dock is [loaded ? "loaded" : "empty"]."
+	. += "Док [loaded ? "заряжен" : "пуст"]."
 
 /obj/item/emergency_bed/silicon/deploy_bed(mob/user, atom/location)
 	if(loaded)
@@ -304,13 +304,13 @@
 		user.visible_message(span_notice("[user] deploys [loaded]."), span_notice("You deploy [loaded]."))
 		loaded = null
 	else
-		to_chat(user, span_warning("The dock is empty!"))
+		to_chat(user, span_warning("Док пуст!"))
 
 /// Dog bed
 /obj/structure/bed/dogbed
-	name = "dog bed"
+	name = "лежанка"
 	icon_state = "dogbed"
-	desc = "A comfy-looking dog bed. You can even strap your pet in, in case the gravity turns off."
+	desc = "Уютная лежанка. В нее даже можно пристегнуть питомца на случай отключения гравитации."
 	anchored = FALSE
 	build_stack_type = /obj/item/stack/sheet/mineral/wood
 	build_stack_amount = 10
@@ -319,37 +319,37 @@
 	var/owned = FALSE
 
 /obj/structure/bed/dogbed/ian
-	desc = "Ian's bed! Looks comfy."
-	name = "Ian's bed"
+	desc = "Лежанка Яна! Выглядит уютно."
+	name = "лежанка Яна"
 	anchored = TRUE
 
 /obj/structure/bed/dogbed/cayenne
-	desc = "Seems kind of... fishy."
-	name = "Cayenne's bed"
+	desc = "Кажется какой-то... рыбной."
+	name = "лежанка Кайен"
 	anchored = TRUE
 
 /obj/structure/bed/dogbed/misha
-	desc = "There is fur all over it, and some blood..."
-	name = "Misha's bed"
+	desc = "Она вся в шерсти, и на ней немного крови..."
+	name = "лежанка Миши"
 	anchored = TRUE
 
 /obj/structure/bed/dogbed/lia
-	desc = "Seems kind of... fishy."
-	name = "Lia's bed"
+	desc = "Кажется какой-то... рыбной."
+	name = "лежанка Лии"
 	anchored = TRUE
 
 /obj/structure/bed/dogbed/renault
-	desc = "Renault's bed! Looks comfy. A foxy person needs a foxy pet."
-	name = "Renault's bed"
+	desc = "Лежанка Рено! Выглядит уютно. Хитрому человеку нужен хитрый питомец."
+	name = "лежанка Рено"
 	anchored = TRUE
 
 /obj/structure/bed/dogbed/mcgriff
-	desc = "McGriff's bed, because even crimefighters sometimes need a nap."
-	name = "McGriff's bed"
+	desc = "Лежанка МакГриффа, потому что даже борцам с преступностью иногда нужен сон."
+	name = "лежанка МакГриффа"
 
 /obj/structure/bed/dogbed/runtime
-	desc = "A comfy-looking cat bed. You can even strap your pet in, in case the gravity turns off."
-	name = "Runtime's bed"
+	desc = "Уютная кошачья лежанка. В нее даже можно пристегнуть питомца на случай отключения гравитации."
+	name = "лежанка Рантайма"
 	anchored = TRUE
 
 ///Used to set the owner of a dogbed, returns FALSE if called on an owned bed or an invalid one, TRUE if the possesion succeeds
@@ -358,8 +358,8 @@
 		return FALSE //Failed
 
 	owned = TRUE
-	name = "[furball]'s bed"
-	desc = "[furball]'s bed! Looks comfy."
+	name = "лежанка [furball]"
+	desc = "Лежанка [furball]! Выглядит уютно."
 	return TRUE // Let any callers know that this bed is ours now
 
 /obj/structure/bed/dogbed/buckle_mob(mob/living/furball, force, check_loc)
@@ -367,8 +367,8 @@
 	update_owner(furball)
 
 /obj/structure/bed/maint
-	name = "dirty mattress"
-	desc = "An old grubby mattress. You try to not think about what could be the cause of those stains."
+	name = "грязный матрас"
+	desc = "Старый замызганный матрас. Вы стараетесь не думать, откуда на нем эти пятна."
 	icon_state = "dirty_mattress"
 	elevation = 7
 
@@ -378,8 +378,8 @@
 
 // Double Beds, for luxurious sleeping, i.e. the captain and maybe heads- if people use this for ERP, send them to skyrat
 /obj/structure/bed/double
-	name = "double bed"
-	desc = "A luxurious double bed, for those too important for small dreams."
+	name = "двуспальная кровать"
+	desc = "Роскошная двуспальная кровать для тех, кто слишком важен для маленьких снов."
 	icon_state = "bed_double"
 	build_stack_amount = 4
 	max_buckled_mobs = 2

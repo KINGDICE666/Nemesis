@@ -1,6 +1,6 @@
 /obj/structure/chair
-	name = "chair"
-	desc = "You sit in this. Either by will or force."
+	name = "стул"
+	desc = "На нем сидят. Добровольно или силой."
 	icon = 'icons/obj/chairs.dmi'
 	icon_state = "chair"
 	anchored = TRUE
@@ -23,7 +23,7 @@
 /obj/structure/chair/Initialize(mapload)
 	. = ..()
 	if(prob(0.2))
-		name = "tactical [name]"
+		name = "тактический [name]"
 		fishing_modifier -= 8
 	MakeRotate()
 	if(can_buckle && fishing_modifier)
@@ -65,9 +65,9 @@
 
 /obj/structure/chair/examine(mob/user)
 	. = ..()
-	. += span_notice("It's held together by a couple of <b>bolts</b>.")
+	. += span_notice("Он держится на паре <b>болтов</b>.")
 	if(!has_buckled_mobs() && can_buckle)
-		. += span_notice("While standing on [src], drag and drop your sprite onto [src] to buckle to it.")
+		. += span_notice("Стоя на [src], перетащите свой спрайт на [src], чтобы пристегнуться.")
 
 ///This proc adds the rotate component, overwrite this if you for some reason want to change some specific args.
 /obj/structure/chair/proc/MakeRotate()
@@ -121,10 +121,10 @@
 		AddComponent(/datum/component/electrified_buckle, (SHOCK_REQUIREMENT_ITEM | SHOCK_REQUIREMENT_LIVE_CABLE | SHOCK_REQUIREMENT_SIGNAL_RECEIVED_TOGGLE), input_shock_kit, overlays_from_child_procs, FALSE)
 
 	if(HAS_TRAIT(src, TRAIT_ELECTRIFIED_BUCKLE))
-		to_chat(user, span_notice("You connect the shock kit to \the [src], electrifying it "))
+		to_chat(user, span_notice("Вы подключаете шоковый комплект к \the [src], электрифицируя его."))
 	else
 		user.put_in_active_hand(input_shock_kit)
-		to_chat(user, span_notice("You cannot fit the shock kit onto \the [src]!"))
+		to_chat(user, span_notice("Вы не можете установить шоковый комплект на \the [src]!"))
 
 
 /obj/structure/chair/wrench_act_secondary(mob/living/user, obj/item/weapon)
@@ -180,8 +180,8 @@
 
 /obj/structure/chair/wood
 	icon_state = "wooden_chair"
-	name = "wooden chair"
-	desc = "Old is never too old to not be in fashion."
+	name = "деревянный стул"
+	desc = "Старое никогда не бывает слишком старым, чтобы быть не в моде."
 	resistance_flags = FLAMMABLE
 	max_integrity = 40
 	buildstacktype = /obj/item/stack/sheet/mineral/wood
@@ -198,8 +198,8 @@
 	item_chair = /obj/item/chair/wood/wings
 
 /obj/structure/chair/comfy
-	name = "comfy chair"
-	desc = "It looks comfy."
+	name = "удобное кресло"
+	desc = "Выглядит удобным."
 	icon_state = "comfychair"
 	color = rgb(255, 255, 255)
 	resistance_flags = FLAMMABLE
@@ -226,8 +226,8 @@
 	color = rgb(193, 248, 104)
 
 /obj/structure/chair/comfy/shuttle
-	name = "shuttle seat"
-	desc = "A comfortable, secure seat. It has a more sturdy looking buckling system, for smoother flights."
+	name = "сиденье шаттла"
+	desc = "Удобное и безопасное сиденье. У него более прочная система фиксации для плавных полетов."
 	icon_state = "shuttle_chair"
 	buildstacktype = /obj/item/stack/sheet/mineral/titanium
 	buckle_sound = SFX_SEATBELT_BUCKLE
@@ -284,18 +284,18 @@
 		. += mutable_appearance(icon, "[icon_state]_up", src.layer + 0.01)
 
 /obj/structure/chair/comfy/shuttle/tactical
-	name = "tactical chair"
+	name = "тактическое кресло"
 
 /obj/structure/chair/comfy/carp
-	name = "carpskin chair"
-	desc = "A luxurious chair, the many purple scales reflect the light in a most pleasing manner."
+	name = "кресло из карпьей кожи"
+	desc = "Роскошное кресло, множество фиолетовых чешуек приятно отражают свет."
 	icon_state = "carp_chair"
 	buildstacktype = /obj/item/stack/sheet/animalhide/carp
 	fishing_modifier = -12
 	custom_materials = null
 
 /obj/structure/chair/office
-	name = "office chair"
+	name = "офисное кресло"
 	anchored = FALSE
 	buildstackamount = 5
 	item_chair = null
@@ -315,18 +315,18 @@
 	. = ..()
 
 /obj/structure/chair/office/tactical
-	name = "tactical swivel chair"
+	name = "тактическое вращающееся кресло"
 	fishing_modifier = -10
 
 /obj/structure/chair/office/light
-	name = "office chair"
+	name = "офисное кресло"
 	icon_state = "officechair_white"
 
 //Stool
 
 /obj/structure/chair/stool
-	name = "stool"
-	desc = "Apply butt."
+	name = "табурет"
+	desc = "Приложите зад."
 	icon_state = "stool"
 	buildstackamount = 1
 	item_chair = /obj/item/chair/stool
@@ -350,11 +350,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool, 0)
 	if(!item_chair || has_buckled_mobs())
 		return
 	if(flags_1 & HOLOGRAM_1)
-		to_chat(user, span_notice("You try to pick up \the [src], but it fades away!"))
+		to_chat(user, span_notice("Вы пытаетесь поднять \the [src], но он исчезает!"))
 		qdel(src)
 		return
 
-	user.visible_message(span_notice("[user] grabs \the [src.name]."), span_notice("You grab \the [src.name]."))
+	user.visible_message(span_notice("[user] хватает \the [src.name]."), span_notice("Вы хватаете \the [src.name]."))
 	var/obj/item/chair_item = new item_chair(loc)
 	chair_item.set_custom_materials(custom_materials)
 	TransferComponents(chair_item)
@@ -366,8 +366,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool, 0)
 	return ..()
 
 /obj/structure/chair/stool/bar
-	name = "bar stool"
-	desc = "It has some unsavory stains on it..."
+	name = "барный табурет"
+	desc = "На нем есть неприятные пятна..."
 	icon_state = "bar"
 	item_chair = /obj/item/chair/stool/bar
 
@@ -378,8 +378,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool, 0)
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 
 /obj/structure/chair/stool/bamboo
-	name = "bamboo stool"
-	desc = "A makeshift bamboo stool with a rustic look."
+	name = "бамбуковый табурет"
+	desc = "Самодельный бамбуковый табурет в деревенском стиле."
 	icon_state = "bamboo_stool"
 	resistance_flags = FLAMMABLE
 	max_integrity = 40
@@ -389,8 +389,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 	custom_materials = list(/datum/material/bamboo = SHEET_MATERIAL_AMOUNT * 2)
 
 /obj/item/chair
-	name = "chair"
-	desc = "Bar brawl essential."
+	name = "стул"
+	desc = "Необходимая вещь для барной драки."
 	icon = 'icons/obj/chairs.dmi'
 	icon_state = "chair_toppled"
 	inhand_icon_state = "chair"
@@ -434,25 +434,25 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 /obj/item/chair/proc/plant(mob/user)
 	var/turf/turf = user.loc
 	if(!istype(turf) || isgroundlessturf(turf))
-		to_chat(user, span_warning("You need ground to plant this on!"))
+		to_chat(user, span_warning("Для установки нужна твердая поверхность!"))
 		return
 	if(!user.dropItemToGround(src))
-		to_chat(user, span_warning("[src] is stuck to your hand!"))
+		to_chat(user, span_warning("[src] прилип к вашей руке!"))
 		return
 	if(flags_1 & HOLOGRAM_1)
-		to_chat(user, span_notice("You try to place down \the [src], but it fades away!"))
+		to_chat(user, span_notice("Вы пытаетесь поставить \the [src], но он исчезает!"))
 		qdel(src)
 		return
 
 	for(var/obj/object in turf)
 		if(istype(object, /obj/structure/chair))
-			to_chat(user, span_warning("There is already a chair here!"))
+			to_chat(user, span_warning("Здесь уже есть стул!"))
 			return
 		if(object.density && !(object.flags_1 & ON_BORDER_1))
-			to_chat(user, span_warning("There is already something here!"))
+			to_chat(user, span_warning("Здесь уже что-то есть!"))
 			return
 
-	user.visible_message(span_notice("[user] rights \the [src.name]."), span_notice("You right \the [name]."))
+	user.visible_message(span_notice("[user] ставит \the [src.name] вертикально."), span_notice("Вы ставите \the [name] вертикально."))
 	var/obj/structure/chair/chair = new origin_type(turf)
 	chair.set_custom_materials(custom_materials)
 	TransferComponents(chair)
@@ -516,20 +516,20 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 	origin_type = /obj/structure/chair/greyscale
 
 /obj/item/chair/stool
-	name = "stool"
+	name = "табурет"
 	icon_state = "stool_toppled"
 	inhand_icon_state = "stool"
 	origin_type = /obj/structure/chair/stool
 	max_integrity = 300 //It's too sturdy.
 
 /obj/item/chair/stool/bar
-	name = "bar stool"
+	name = "барный табурет"
 	icon_state = "bar_toppled"
 	inhand_icon_state = "stool_bar"
 	origin_type = /obj/structure/chair/stool/bar
 
 /obj/item/chair/stool/bamboo
-	name = "bamboo stool"
+	name = "бамбуковый табурет"
 	icon_state = "bamboo_stool"
 	inhand_icon_state = "stool_bamboo"
 	hitsound = 'sound/items/weapons/genhit1.ogg'
@@ -542,7 +542,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 	return //sturdy enough to ignore a god
 
 /obj/item/chair/wood
-	name = "wooden chair"
+	name = "деревянный стул"
 	icon_state = "wooden_chair_toppled"
 	inhand_icon_state = "woodenchair"
 	resistance_flags = FLAMMABLE
@@ -561,15 +561,15 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 	origin_type = /obj/structure/chair/wood/wings
 
 /obj/structure/chair/old
-	name = "strange chair"
-	desc = "You sit in this. Either by will or force. Looks REALLY uncomfortable."
+	name = "странный стул"
+	desc = "На нем сидят. Добровольно или силой. Выглядит ОЧЕНЬ неудобным."
 	icon_state = "chairold"
 	item_chair = null
 	fishing_modifier = 4
 
 /obj/structure/chair/bronze
-	name = "brass chair"
-	desc = "A spinny chair made of bronze. It has little cogs for wheels!"
+	name = "латунное кресло"
+	desc = "Вращающееся кресло из бронзы. Вместо колесиков у него маленькие шестеренки!"
 	anchored = FALSE
 	icon_state = "brass_chair"
 	buildstacktype = /obj/item/stack/sheet/bronze
@@ -612,8 +612,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 	return CLICK_ACTION_SUCCESS
 
 /obj/structure/chair/mime
-	name = "invisible chair"
-	desc = "The mime needs to sit down and shut up."
+	name = "невидимый стул"
+	desc = "Миму нужно сесть и замолчать."
 	anchored = FALSE
 	icon_state = null
 	buildstacktype = null
@@ -635,8 +635,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 
 /obj/structure/chair/plastic
 	icon_state = "plastic_chair"
-	name = "folding plastic chair"
-	desc = "No matter how much you squirm, it'll still be uncomfortable."
+	name = "складной пластиковый стул"
+	desc = "Как бы вы ни ерзали, он все равно будет неудобным."
 	resistance_flags = FLAMMABLE
 	max_integrity = 70
 	custom_materials = list(/datum/material/plastic = SHEET_MATERIAL_AMOUNT * 2)
@@ -656,15 +656,15 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 
 /obj/structure/chair/plastic/proc/snap_check(mob/living/carbon/Mob)
 	if (Mob.nutrition >= NUTRITION_LEVEL_FAT)
-		to_chat(Mob, span_warning("The chair begins to pop and crack, you're too heavy!"))
+		to_chat(Mob, span_warning("Стул начинает щелкать и трещать, вы слишком тяжелые!"))
 		if(do_after(Mob, 6 SECONDS, progress = FALSE))
-			Mob.visible_message(span_notice("The plastic chair snaps under [Mob]'s weight!"))
+			Mob.visible_message(span_notice("Пластиковый стул ломается под весом [Mob]!"))
 			new /obj/effect/decal/cleanable/plastic(loc)
 			qdel(src)
 
 /obj/item/chair/plastic
-	name = "folding plastic chair"
-	desc = "Somehow, you can always find one under the wrestling ring."
+	name = "складной пластиковый стул"
+	desc = "Почему-то такой всегда можно найти под борцовским рингом."
 	icon = 'icons/obj/chairs.dmi'
 	icon_state = "folded_chair"
 	inhand_icon_state = "folded_chair"
@@ -679,20 +679,20 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 	origin_type = /obj/structure/chair/plastic
 
 /obj/structure/chair/musical
-	name = "musical chair"
-	desc = "You listen to this. Either by will or by force."
+	name = "музыкальный стул"
+	desc = "Его слушают. Добровольно или силой."
 	item_chair = /obj/item/chair/musical
 	particles = new /particles/musical_notes
 
 /obj/item/chair/musical
-	name = "musical chair"
-	desc = "Oh, so this is like the fucked up Monopoly rules where there are no rules and you can pick up and place the musical chairs as you please."
+	name = "музыкальный стул"
+	desc = "А, это как странные правила Монополии, где правил нет и музыкальные стулья можно поднимать и ставить как угодно."
 	particles = new /particles/musical_notes
 	origin_type = /obj/structure/chair/musical
 
 /obj/structure/handrail
-	name = "handrail"
-	desc = "Hold on tight!"
+	name = "поручень"
+	desc = "Держитесь крепче!"
 	icon = 'icons/obj/handrail.dmi'
 	icon_state = "handrail"
 	anchored = TRUE

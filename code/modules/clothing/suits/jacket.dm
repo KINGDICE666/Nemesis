@@ -44,8 +44,8 @@
 	allowed += GLOB.personal_carry_allowed
 
 /obj/item/clothing/suit/toggle/jacket/sweater
-	name = "sweater jacket"
-	desc = "A sweater jacket."
+	name = "куртка-свитер"
+	desc = "Куртка-свитер."
 	icon = 'icons/map_icons/clothing/suit/_suit.dmi'
 	icon_state = "/obj/item/clothing/suit/toggle/jacket/sweater"
 	post_init_icon_state = "sweater"
@@ -55,8 +55,8 @@
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/suit/toggle/jacket/trenchcoat
-	name = "trenchcoat"
-	desc = "A multi-purpose trenchcoat."
+	name = "тренчкот"
+	desc = "Многоцелевой тренчкот."
 	icon = 'icons/map_icons/clothing/suit/_suit.dmi'
 	icon_state = "/obj/item/clothing/suit/toggle/jacket/trenchcoat"
 	post_init_icon_state = "trenchcoat"
@@ -73,8 +73,8 @@
 	allowed += GLOB.improvised_firearm_allowed
 
 /obj/item/clothing/suit/jacket/blazer
-	name = "blazer jacket"
-	desc = "A blazer jacket."
+	name = "блейзер"
+	desc = "Куртка-блейзер."
 	icon = 'icons/map_icons/clothing/suit/_suit.dmi'
 	icon_state = "/obj/item/clothing/suit/jacket/blazer"
 	post_init_icon_state = "blazer"
@@ -85,8 +85,8 @@
 	clothing_flags = parent_type::clothing_flags | CARP_STYLE_FACTOR
 
 /obj/item/clothing/suit/jacket/oversized
-	name = "oversized jacket"
-	desc = "An oversized jacket."
+	name = "безразмерная куртка"
+	desc = "Куртка слишком большого размера."
 	icon = 'icons/map_icons/clothing/suit/_suit.dmi'
 	icon_state = "/obj/item/clothing/suit/jacket/oversized"
 	post_init_icon_state = "jacket_oversized"
@@ -96,8 +96,8 @@
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/suit/jacket/fancy
-	name = "fancy fur coat"
-	desc = "Rated 10 out of 10 in Cosmo for best coat brand."
+	name = "роскошная меховая шуба"
+	desc = "Оценка 10 из 10 в Cosmo за лучшую марку пальто."
 	icon = 'icons/map_icons/clothing/suit/_suit.dmi'
 	icon_state = "/obj/item/clothing/suit/jacket/fancy"
 	post_init_icon_state = "fancy_coat"
@@ -111,8 +111,8 @@
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/suit/jacket/bomber
-	name = "bomber jacket"
-	desc = "Aviators not included."
+	name = "куртка-бомбер"
+	desc = "Авиаторы в комплект не входят."
 	icon_state = "bomberjacket"
 	inhand_icon_state = "brownjsuit"
 
@@ -121,8 +121,8 @@
 	allowed += GLOB.improvised_firearm_allowed
 
 /obj/item/clothing/suit/jacket/leather
-	name = "leather jacket"
-	desc = "Pompadour not included."
+	name = "кожаная куртка"
+	desc = "Помпадур в комплект не входит."
 	icon_state = "leatherjacket"
 	inhand_icon_state = "hostrench"
 	resistance_flags = NONE
@@ -133,13 +133,13 @@
 	allowed += GLOB.improvised_firearm_allowed
 
 /obj/item/clothing/suit/jacket/leather/biker
-	name = "biker jacket"
-	desc = "You think I'm not even worth a single dollar, but I feel like a millionare."
+	name = "байкерская куртка"
+	desc = "Вы думаете, что я не стою и доллара, но чувствую себя миллионером."
 	icon_state = "leatherjacket_biker"
 
 /obj/item/clothing/suit/jacket/puffer
-	name = "puffer jacket"
-	desc = "A thick jacket with a rubbery, water-resistant shell."
+	name = "дутая куртка"
+	desc = "Толстая куртка с прорезиненной водостойкой оболочкой."
 	icon_state = "pufferjacket"
 	inhand_icon_state = "hostrench"
 	armor_type = /datum/armor/jacket_puffer
@@ -148,8 +148,8 @@
 	bio = 50
 
 /obj/item/clothing/suit/jacket/puffer/vest
-	name = "puffer vest"
-	desc = "A thick vest with a rubbery, water-resistant shell."
+	name = "дутый жилет"
+	desc = "Толстый жилет с прорезиненной водостойкой оболочкой."
 	icon_state = "puffervest"
 	inhand_icon_state = "armor"
 	body_parts_covered = CHEST|GROIN
@@ -160,8 +160,8 @@
 	bio = 30
 
 /obj/item/clothing/suit/jacket/miljacket
-	name = "military jacket"
-	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable."
+	name = "военная куртка"
+	desc = "Брезентовая куртка в стиле классической американской военной формы. Кажется прочной, но удобной."
 	icon_state = "militaryjacket"
 	inhand_icon_state = null
 
@@ -170,8 +170,8 @@
 	allowed += GLOB.improvised_firearm_allowed
 
 /obj/item/clothing/suit/jacket/letterman
-	name = "letterman jacket"
-	desc = "A classic brown letterman jacket. Looks pretty hot and heavy."
+	name = "университетская куртка"
+	desc = "Классическая коричневая университетская куртка. Выглядит довольно теплой и тяжелой."
 	icon_state = "letterman"
 	inhand_icon_state = null
 	species_exception = list(/datum/species/golem)
@@ -181,8 +181,8 @@
 	allowed += GLOB.improvised_firearm_allowed
 
 /obj/item/clothing/suit/jacket/letterman_red
-	name = "red letterman jacket"
-	desc = "A letterman jacket in a sick red color. Radical."
+	name = "красная университетская куртка"
+	desc = "Университетская куртка крутого красного цвета. Радикально."
 	icon_state = "letterman_red"
 	inhand_icon_state = null
 	species_exception = list(/datum/species/golem)
@@ -192,8 +192,8 @@
 	allowed += GLOB.improvised_firearm_allowed
 
 /obj/item/clothing/suit/jacket/letterman_syndie
-	name = "blood-red letterman jacket"
-	desc = "Oddly, this jacket seems to have a large S on the back..."
+	name = "кроваво-красная университетская куртка"
+	desc = "Странно, кажется, на спине этой куртки большая буква S..."
 	icon_state = "letterman_s"
 	inhand_icon_state = null
 	species_exception = list(/datum/species/golem)
@@ -203,8 +203,8 @@
 	allowed += GLOB.improvised_firearm_allowed
 
 /obj/item/clothing/suit/jacket/letterman_nanotrasen
-	name = "blue letterman jacket"
-	desc = "A blue letterman jacket with a proud Nanotrasen N on the back. The tag says that it was made in Space China."
+	name = "синяя университетская куртка"
+	desc = "Синяя университетская куртка с гордой буквой N Nanotrasen на спине. На бирке написано, что она сделана в Космическом Китае."
 	icon_state = "letterman_n"
 	inhand_icon_state = null
 	species_exception = list(/datum/species/golem)

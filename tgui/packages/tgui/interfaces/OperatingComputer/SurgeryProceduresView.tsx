@@ -11,6 +11,12 @@ import { useBackend, useSharedState } from '../../backend';
 import { extractRequirementMap, extractSurgeryName } from './helpers';
 import type { OperatingComputerData, OperationData } from './types';
 
+const sortTypeText = {
+  default: 'Исходно',
+  name: 'Имя',
+  tool: 'Инструмент',
+} as const;
+
 type SurgeryRequirementsInnerProps = {
   cat_text: string;
   cat_contents: string[];
@@ -107,22 +113,22 @@ export const SurgeryProceduresView = (props: SurgeryProceduresViewProps) => {
         <>
           <Input
             width="215px"
-            placeholder="Search..."
+            placeholder="Поиск..."
             value={searchText}
             onChange={setSearchText}
           />
           <Button
             icon="filter"
-            tooltip="Filter out robotic surgeries."
+            tooltip="Скрыть роботизированные операции."
             onClick={() => setFilterRobotic(!filterRobotic)}
             selected={filterRobotic}
           >
-            Hide Mechanic
+            Скрыть механику
           </Button>
           <Button
             width="75px"
             icon="sort"
-            tooltip="Cycle between sorting methods."
+            tooltip="Переключить способ сортировки."
             onClick={() =>
               setSortType(
                 sortType === 'default'
@@ -133,7 +139,7 @@ export const SurgeryProceduresView = (props: SurgeryProceduresViewProps) => {
               )
             }
           >
-            {capitalizeFirst(sortType)}
+            {sortTypeText[sortType]}
           </Button>
         </>
       }
@@ -199,7 +205,7 @@ export const SurgeryProceduresView = (props: SurgeryProceduresViewProps) => {
                   <Stack.Item bold>{surgery.desc}</Stack.Item>
                   <Stack.Item>
                     <Collapsible
-                      title="Requirements"
+                      title="Требования"
                       open={pinnedOperations.includes(surgery.name)}
                     >
                       <Stack

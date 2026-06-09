@@ -1,5 +1,5 @@
 /obj/item/clothing/mask
-	name = "mask"
+	name = "маска"
 	icon = 'icons/obj/clothing/masks.dmi'
 	lefthand_file = 'icons/mob/inhands/clothing/masks_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/clothing/masks_righthand.dmi'
@@ -24,7 +24,7 @@
 	if((clothing_flags & VOICEBOX_TOGGLABLE))
 		clothing_flags ^= (VOICEBOX_DISABLED)
 		var/status = !(clothing_flags & VOICEBOX_DISABLED)
-		to_chat(user, span_notice("You turn the voice box in [src] [status ? "on" : "off"]."))
+		to_chat(user, span_notice("Вы [status ? "включаете" : "выключаете"] голосовой модуль в [src]."))
 
 /obj/item/clothing/mask/worn_overlays(mutable_appearance/standing, isinhands = FALSE)
 	. = ..()

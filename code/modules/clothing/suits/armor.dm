@@ -1,5 +1,5 @@
 /obj/item/clothing/suit/armor
-	name = "armor"
+	name = "броня"
 	icon = 'icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
 	abstract_type = /obj/item/clothing/suit/armor
@@ -45,15 +45,15 @@
 	return ..()
 
 /obj/item/clothing/suit/armor/vest
-	name = "armor vest"
-	desc = "A slim Type I armored vest that provides decent protection against most types of damage."
+	name = "бронежилет"
+	desc = "Тонкий бронежилет типа I, обеспечивающий достойную защиту от большинства видов урона."
 	icon_state = "armoralt"
 	inhand_icon_state = "armor"
 	blood_overlay_type = "armor"
 	dog_fashion = /datum/dog_fashion/back/armorvest
 
 /obj/item/clothing/suit/armor/vest/alt
-	desc = "A Type I armored vest that provides decent protection against most types of damage."
+	desc = "Бронежилет типа I, обеспечивающий достойную защиту от большинства видов урона."
 	icon_state = "armor"
 	inhand_icon_state = "armor"
 
@@ -61,8 +61,8 @@
 	icon_state = "armor_sec"
 
 /obj/item/clothing/suit/armor/vest/press
-	name = "press armor vest"
-	desc = "A blue armor vest used to distinguish <i>non-combatant</i> \"PRESS\" members, like if anyone cares."
+	name = "бронежилет прессы"
+	desc = "Синий бронежилет, обозначающий <i>некомбатантов</i> из \"ПРЕССЫ\", будто кому-то не все равно."
 	icon_state = "armor_press"
 
 /obj/item/clothing/suit/armor/vest/press/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
@@ -71,8 +71,8 @@
 		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha, effect_type = EMISSIVE_SPECULAR)
 
 /obj/item/clothing/suit/armor/vest/marine
-	name = "tactical armor vest"
-	desc = "A set of the finest mass produced, stamped plasteel armor plates, containing an environmental protection unit for all-condition door kicking."
+	name = "тактический бронежилет"
+	desc = "Комплект лучших массово производимых штампованных пласталевых бронепластин с модулем защиты от среды для выбивания дверей в любых условиях."
 	icon_state = "marine_command"
 	inhand_icon_state = "armor"
 	clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL
@@ -105,20 +105,20 @@
 	wound = 20
 
 /obj/item/clothing/suit/armor/vest/marine/security
-	name = "large tactical armor vest"
+	name = "большой тактический бронежилет"
 	icon_state = "marine_security"
 
 /obj/item/clothing/suit/armor/vest/marine/engineer
-	name = "tactical utility armor vest"
+	name = "тактический инженерный бронежилет"
 	icon_state = "marine_engineer"
 
 /obj/item/clothing/suit/armor/vest/marine/medic
-	name = "tactical medic's armor vest"
+	name = "тактический бронежилет медика"
 	icon_state = "marine_medic"
 	body_parts_covered = CHEST|GROIN
 
 /obj/item/clothing/suit/armor/vest/marine/pmc
-	desc = "A set of the finest mass produced, stamped plasteel armor plates, for an all-around door-kicking and ass-smashing. Its stellar survivability making up is for its lack of space worthiness"
+	desc = "Комплект лучших массово производимых штампованных пласталевых бронепластин для универсального выбивания дверей и ломания лиц. Выдающаяся живучесть компенсирует отсутствие космостойкости."
 	min_cold_protection_temperature = HELMET_MIN_TEMP_PROTECT
 	max_heat_protection_temperature = HELMET_MAX_TEMP_PROTECT
 	clothing_flags = THICKMATERIAL
@@ -126,22 +126,22 @@
 	armor_type = /datum/armor/pmc
 
 /obj/item/clothing/suit/armor/vest/old
-	name = "degrading armor vest"
-	desc = "Older generation Type 1 armored vest. Due to degradation over time the vest is far less maneuverable to move in."
+	name = "изношенный бронежилет"
+	desc = "Бронежилет типа I старого поколения. Из-за деградации со временем двигаться в нем стало гораздо сложнее."
 	icon_state = "armor"
 	inhand_icon_state = "armor"
 	slowdown = 1
 
 /obj/item/clothing/suit/armor/vest/blueshirt
-	name = "large armor vest"
-	desc = "A large, yet comfortable piece of armor, protecting you from some threats."
+	name = "большой бронежилет"
+	desc = "Крупная, но удобная броня, защищающая от некоторых угроз."
 	icon_state = "blueshift"
 	inhand_icon_state = null
 	custom_premium_price = PAYCHECK_COMMAND
 
 /obj/item/clothing/suit/armor/vest/cuirass
-	name = "cuirass"
-	desc = "A lighter plate armor used to still keep out those pesky arrows, while retaining the ability to move."
+	name = "кираса"
+	desc = "Более легкая пластинчатая броня, которая все еще защищает от надоедливых стрел, сохраняя подвижность."
 	icon_state = "cuirass"
 	inhand_icon_state = "armor"
 	dog_fashion = null
@@ -151,8 +151,8 @@
 	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_PLATE_ARMOR_RUSTLE, 8)
 
 /obj/item/clothing/suit/armor/hos
-	name = "armored greatcoat"
-	desc = "A greatcoat enhanced with a special alloy for some extra protection and style for those with a commanding presence."
+	name = "бронированная шинель"
+	desc = "Шинель, усиленная особым сплавом ради дополнительной защиты и стиля для тех, кто обладает командным видом."
 	icon_state = "hos"
 	inhand_icon_state = "greatcoat"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
@@ -172,22 +172,22 @@
 	wound = 10
 
 /obj/item/clothing/suit/armor/hos/trenchcoat
-	name = "armored trenchcoat"
-	desc = "A trenchcoat enhanced with a special lightweight kevlar. The epitome of tactical plainclothes."
+	name = "бронированный тренчкот"
+	desc = "Тренчкот, усиленный особым легким кевларом. Воплощение тактической гражданской одежды."
 	icon_state = "hostrench"
 	inhand_icon_state = "hostrench"
 	flags_inv = 0
 	strip_delay = 8 SECONDS
 
 /obj/item/clothing/suit/armor/hos/trenchcoat/winter
-	name = "head of security's winter trenchcoat"
-	desc = "A trenchcoat enhanced with a special lightweight kevlar, padded with wool on the collar and inside. You feel strangely lonely wearing this coat."
+	name = "зимний тренчкот главы службы безопасности"
+	desc = "Тренчкот, усиленный особым легким кевларом, с шерстяной подкладкой на воротнике и внутри. В этом пальто вы чувствуете странное одиночество."
 	icon_state = "hoswinter"
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
 /obj/item/clothing/suit/armor/hos/hos_formal
-	name = "\improper Head of Security's parade jacket"
-	desc = "For when an armoured vest isn't fashionable enough."
+	name = "\improper парадная куртка главы службы безопасности"
+	desc = "На случай, когда бронежилет недостаточно модный."
 	icon_state = "hosformal"
 	inhand_icon_state = "hostrench"
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -197,8 +197,8 @@
 	AddComponent(/datum/component/toggle_icon)
 
 /obj/item/clothing/suit/armor/vest/warden
-	name = "warden's jacket"
-	desc = "A navy-blue armored jacket with blue shoulder designations and '/Warden/' stitched into one of the chest pockets."
+	name = "куртка смотрителя"
+	desc = "Темно-синяя бронированная куртка с синими обозначениями на плечах и вышивкой '/Warden/' на одном из нагрудных карманов."
 	icon_state = "warden_alt"
 	inhand_icon_state = "armor"
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -209,13 +209,13 @@
 	dog_fashion = null
 
 /obj/item/clothing/suit/armor/vest/warden/alt
-	name = "warden's armored jacket"
-	desc = "A red jacket with silver rank pips and body armor strapped on top."
+	name = "бронированная куртка смотрителя"
+	desc = "Красная куртка с серебряными знаками ранга и броней, закрепленной сверху."
 	icon_state = "warden_jacket"
 
 /obj/item/clothing/suit/armor/vest/secjacket
-	name = "security jacket"
-	desc = "A red jacket in red Security colors. It has hi-vis stripes all over it."
+	name = "куртка службы безопасности"
+	desc = "Красная куртка в цветах службы безопасности. По всей поверхности нанесены светоотражающие полосы."
 	icon_state = "secjacket"
 	inhand_icon_state = "armor"
 	armor_type = /datum/armor/armor_secjacket
@@ -241,8 +241,8 @@
 	wound = 5
 
 /obj/item/clothing/suit/armor/vest/leather
-	name = "security overcoat"
-	desc = "Lightly armored leather overcoat meant as casual wear for high-ranking officers. Bears the crest of Nanotrasen Security."
+	name = "пальто службы безопасности"
+	desc = "Слегка бронированное кожаное пальто для повседневной носки высокопоставленными офицерами. Несет герб службы безопасности Nanotrasen."
 	icon_state = "leathercoat-sec"
 	inhand_icon_state = "hostrench"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
@@ -251,8 +251,8 @@
 	dog_fashion = null
 
 /obj/item/clothing/suit/armor/vest/capcarapace
-	name = "captain's carapace"
-	desc = "A fireproof armored chestpiece reinforced with ceramic plates and plasteel pauldrons to provide additional protection whilst still offering maximum mobility and flexibility. Issued only to the station's finest, although it does chafe your nipples."
+	name = "капитанский панцирь"
+	desc = "Огнестойкая бронированная нагрудная пластина, усиленная керамическими плитами и пласталевыми наплечниками, дающая дополнительную защиту при максимальной подвижности и гибкости. Выдается только лучшим на станции, хотя натирает соски."
 	icon_state = "capcarapace"
 	inhand_icon_state = "armor"
 	body_parts_covered = CHEST|GROIN
@@ -271,13 +271,13 @@
 	wound = 10
 
 /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
-	name = "syndicate captain's vest"
-	desc = "A sinister looking vest of advanced armor worn over a black and red fireproof jacket. The gold collar and shoulders denote that this belongs to a high ranking syndicate officer."
+	name = "капитанский жилет Синдиката"
+	desc = "Зловещий жилет из продвинутой брони, надетый поверх черно-красной огнестойкой куртки. Золотой воротник и плечи показывают, что он принадлежит высокопоставленному офицеру Синдиката."
 	icon_state = "syndievest"
 
 /obj/item/clothing/suit/armor/vest/capcarapace/captains_formal
-	name = "captain's parade coat"
-	desc = "For when an armoured vest isn't fashionable enough."
+	name = "капитанское парадное пальто"
+	desc = "На случай, когда бронежилет недостаточно модный."
 	icon_state = "capformal"
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -287,8 +287,8 @@
 	AddComponent(/datum/component/toggle_icon)
 
 /obj/item/clothing/suit/armor/riot
-	name = "riot suit"
-	desc = "A suit of semi-flexible polycarbonate body armor with heavy padding to protect against melee attacks. Helps the wearer resist shoving in close quarters."
+	name = "противоударный костюм"
+	desc = "Костюм из полугибкой поликарбонатной брони с толстой подкладкой для защиты от атак ближнего боя. Помогает владельцу сопротивляться толчкам в тесных пространствах."
 	icon_state = "riot"
 	inhand_icon_state = "swat_suit"
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -317,8 +317,8 @@
 	wound = 20
 
 /obj/item/clothing/suit/armor/balloon_vest
-	name = "balloon vest"
-	desc = "A vest made entirely from balloons, resistant to any evil forces a mime could throw at you, including electricity and fire. Just a strike with something sharp, though..."
+	name = "жилет из шариков"
+	desc = "Жилет, полностью сделанный из шариков, устойчивый к любым злым силам, которые мим может обрушить на вас, включая электричество и огонь. Но хватит одного удара чем-нибудь острым..."
 	icon_state = "balloon-vest"
 	inhand_icon_state = "balloon_armor"
 	blood_overlay_type = "armor"
@@ -351,8 +351,8 @@
 
 
 /obj/item/clothing/suit/armor/bulletproof
-	name = "bulletproof armor"
-	desc = "A Type III heavy bulletproof vest that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent."
+	name = "пуленепробиваемая броня"
+	desc = "Тяжелый бронежилет типа III, отлично защищающий владельца от традиционного огнестрельного оружия и в небольшой степени от взрывов."
 	icon_state = "bulletproof"
 	inhand_icon_state = "armor"
 	blood_overlay_type = "armor"
@@ -371,8 +371,8 @@
 	wound = 20
 
 /obj/item/clothing/suit/armor/laserproof
-	name = "reflector vest"
-	desc = "A vest that excels in protecting the wearer against energy projectiles, as well as occasionally reflecting them."
+	name = "отражающий жилет"
+	desc = "Жилет, отлично защищающий владельца от энергетических снарядов и иногда отражающий их."
 	icon_state = "armor_reflec"
 	inhand_icon_state = "armor_reflec"
 	blood_overlay_type = "armor"
@@ -398,8 +398,8 @@
 		return TRUE
 
 /obj/item/clothing/suit/armor/vest/det_suit
-	name = "detective's flak vest"
-	desc = "An armored vest with a detective's badge on it."
+	name = "бронежилет детектива"
+	desc = "Бронежилет с детективным значком."
 	icon_state = "detective-armor"
 	resistance_flags = FLAMMABLE
 	dog_fashion = null
@@ -409,9 +409,9 @@
 	allowed = GLOB.detective_vest_allowed
 
 /obj/item/clothing/suit/armor/swat
-	name = "MK.I SWAT Suit"
-	desc = "A tactical suit first developed in a joint effort by the defunct IS-ERI and Nanotrasen in 2321 for military operations. \
-		It has a minor slowdown, but offers decent protection and helps the wearer resist shoving in close quarters."
+	name = "костюм SWAT MK.I"
+	desc = "Тактический костюм, впервые разработанный совместными усилиями ныне несуществующей IS-ERI и Nanotrasen в 2321 году для военных операций. \
+		Немного замедляет, но дает достойную защиту и помогает владельцу сопротивляться толчкам в тесных пространствах."
 	icon_state = "heavy"
 	inhand_icon_state = "swat_suit"
 	armor_type = /datum/armor/armor_swat
@@ -449,8 +449,8 @@
 	wound = 15
 
 /obj/item/clothing/suit/armor/heavy
-	name = "heavy armor"
-	desc = "A heavily armored suit that protects against moderate damage."
+	name = "тяжелая броня"
+	desc = "Тяжело бронированный костюм, защищающий от умеренного урона."
 	icon_state = "heavy"
 	inhand_icon_state = "swat_suit"
 	w_class = WEIGHT_CLASS_BULKY
@@ -489,19 +489,19 @@
 	acid = 90
 
 /obj/item/clothing/suit/armor/tdome/red
-	name = "thunderdome suit"
-	desc = "Reddish armor."
+	name = "костюм Громокола"
+	desc = "Красноватая броня."
 	icon_state = "tdred"
 	inhand_icon_state = "tdred"
 
 /obj/item/clothing/suit/armor/tdome/green
-	name = "thunderdome suit"
-	desc = "Pukish armor." //classy.
+	name = "костюм Громокола"
+	desc = "Тошнотворная броня." //classy.
 	icon_state = "tdgreen"
 	inhand_icon_state = "tdgreen"
 
 /obj/item/clothing/suit/armor/tdome/holosuit
-	name = "thunderdome suit"
+	name = "костюм Громокола"
 	armor_type = /datum/armor/tdome_holosuit
 	cold_protection = null
 	heat_protection = null
@@ -511,18 +511,18 @@
 	bullet = 10
 
 /obj/item/clothing/suit/armor/tdome/holosuit/red
-	desc = "Reddish armor."
+	desc = "Красноватая броня."
 	icon_state = "tdred"
 	inhand_icon_state = "tdred"
 
 /obj/item/clothing/suit/armor/tdome/holosuit/green
-	desc = "Pukish armor."
+	desc = "Тошнотворная броня."
 	icon_state = "tdgreen"
 	inhand_icon_state = "tdgreen"
 
 /obj/item/clothing/suit/armor/riot/knight
-	name = "plate armour"
-	desc = "A classic suit of plate armour, highly effective at stopping melee attacks."
+	name = "латная броня"
+	desc = "Классический комплект латной брони, крайне эффективный против атак ближнего боя."
 	icon_state = "knight_green"
 	inhand_icon_state = null
 	allowed = list(
@@ -548,8 +548,8 @@
 	inhand_icon_state = null
 
 /obj/item/clothing/suit/armor/riot/knight/greyscale
-	name = "knight armour"
-	desc = "A classic suit of armour, able to be made from many different materials."
+	name = "рыцарская броня"
+	desc = "Классический комплект брони, который можно сделать из множества разных материалов."
 	icon_state = "knight_greyscale"
 	inhand_icon_state = null
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS // Can change color and add prefix
@@ -566,8 +566,8 @@
 	acid = 40
 
 /obj/item/clothing/suit/armor/vest/durathread
-	name = "durathread vest"
-	desc = "A vest made of durathread with strips of leather acting as trauma plates."
+	name = "дюратканевый жилет"
+	desc = "Жилет из дюраткани с кожаными полосами, выполняющими роль травматических пластин."
 	icon_state = "durathread"
 	inhand_icon_state = null
 	strip_delay = 6 SECONDS
@@ -591,8 +591,8 @@
 	acid = 50
 
 /obj/item/clothing/suit/armor/vest/russian
-	name = "russian vest"
-	desc = "A bulletproof vest with forest camo. Good thing there's plenty of forests to hide in around here, right?"
+	name = "русский бронежилет"
+	desc = "Бронежилет с лесным камуфляжем. Хорошо, что здесь полно лесов, где можно спрятаться, правда?"
 	icon_state = "rus_armor"
 	inhand_icon_state = null
 	armor_type = /datum/armor/vest_russian
@@ -608,8 +608,8 @@
 	wound = 10
 
 /obj/item/clothing/suit/armor/vest/russian_coat
-	name = "russian battle coat"
-	desc = "Used in extremely cold fronts, made out of real bears."
+	name = "русское боевое пальто"
+	desc = "Используется на крайне холодных фронтах, сделано из настоящих медведей."
 	icon_state = "rus_coat"
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -630,8 +630,8 @@
 	wound = 10
 
 /obj/item/clothing/suit/armor/elder_atmosian
-	name = "\improper Elder Atmosian Armor"
-	desc = "A superb armor made with the toughest and rarest materials available to man."
+	name = "\improper броня Древнего Атмосианина"
+	desc = "Превосходная броня из самых прочных и редких материалов, доступных человеку."
 	icon_state = "h2armor"
 	inhand_icon_state = null
 	material_flags = MATERIAL_EFFECTS
@@ -658,8 +658,8 @@
 	wound = 15
 
 /obj/item/clothing/suit/armor/centcom_formal
-	name = "\improper CentCom formal coat"
-	desc = "A stylish coat given to CentCom Commanders. Perfect for sending ERTs to suicide missions with style!"
+	name = "\improper парадное пальто ЦК"
+	desc = "Стильное пальто, выдаваемое командирам ЦК. Идеально подходит, чтобы отправлять ОБР на самоубийственные миссии со стилем!"
 	icon_state = "centcom_formal"
 	inhand_icon_state = "centcom"
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -680,16 +680,16 @@
 	AddComponent(/datum/component/toggle_icon)
 
 /obj/item/clothing/suit/armor/vest/hop
-	name = "head of personnel's coat"
-	desc = "A stylish coat given to a Head of Personnel."
+	name = "пальто главы персонала"
+	desc = "Стильное пальто, выдаваемое главе персонала."
 	icon_state = "hop_coat"
 	inhand_icon_state = "b_suit"
 	body_parts_covered = CHEST|GROIN|ARMS
 	dog_fashion = null
 
 /obj/item/clothing/suit/armor/militia
-	name = "station defender's coat"
-	desc = "A well worn uniform used by militia across the frontier, its thick padding useful for cushioning blows."
+	name = "пальто защитника станции"
+	desc = "Потрепанная форма, используемая ополчением на фронтире. Толстая подкладка хорошо смягчает удары."
 	icon_state = "militia"
 	inhand_icon_state = "b_suit"
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -708,8 +708,8 @@
 	wound = 30
 
 /obj/item/clothing/suit/armor/vest/military
-	name = "Crude chestplate"
-	desc = "It may look rough, rusty and battered, but it's also made out of junk and uncomfortable to wear."
+	name = "грубая кираса"
+	desc = "Она выглядит грубой, ржавой и побитой, но еще и сделана из хлама, а носить ее неудобно."
 	icon_state = "military"
 	inhand_icon_state = "armor"
 	dog_fashion = null
@@ -737,8 +737,8 @@
 	wound = 20
 
 /obj/item/clothing/suit/armor/riot/knight/warlord
-	name = "golden plate armor"
-	desc = "This bulky set of armor is coated with a shiny layer of gold. It seems to almost reflect all light sources."
+	name = "золотая латная броня"
+	desc = "Этот громоздкий комплект брони покрыт блестящим слоем золота. Кажется, он почти отражает все источники света."
 	icon_state = "warlord"
 	inhand_icon_state = null
 	armor_type = /datum/armor/armor_warlord
@@ -763,8 +763,8 @@
 	take_damage(1, BRUTE, 0, 0)
 
 /obj/item/clothing/suit/armor/durability/watermelon
-	name = "watermelon armor"
-	desc = "An armor, made from watermelons. Probably won't take too many hits, but at least it looks serious... As serious as worn watermelon can be."
+	name = "арбузная броня"
+	desc = "Броня, сделанная из арбузов. Вряд ли выдержит много ударов, но хотя бы выглядит серьезно... насколько серьезно может выглядеть ношеный арбуз."
 	icon_state = "watermelon"
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -797,8 +797,8 @@
 	wound = 5
 
 /obj/item/clothing/suit/armor/durability/holymelon
-	name = "holymelon armor"
-	desc = "An armor, made from holymelons. Inspires you to go on some sort of crusade... Perhaps spreading spinach to children?"
+	name = "броня из святодынь"
+	desc = "Броня, сделанная из святодынь. Вдохновляет на какой-нибудь крестовый поход... Может, распространять шпинат среди детей?"
 	icon_state = "holymelon"
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -825,15 +825,15 @@
 	)
 
 /obj/item/clothing/suit/armor/durability/holymelon/proc/drain_antimagic(mob/user)
-	to_chat(user, span_warning("[src] looses a bit of its shimmer and glossiness..."))
+	to_chat(user, span_warning("[src] теряет немного своего сияния и блеска..."))
 
 /obj/item/clothing/suit/armor/durability/holymelon/proc/decay()
 	take_damage(8, BRUTE, 0, 0)
 
 
 /obj/item/clothing/suit/armor/durability/barrelmelon
-	name = "barrelmelon armor"
-	desc = "An armor, made from barrelmelons. Reeks of ale, inspiring to courageous deeds. Or, perhaps, a bar brawl."
+	name = "броня из бочкодынь"
+	desc = "Броня, сделанная из бочкодынь. Разит элем и вдохновляет на подвиги. Или, возможно, на барную драку."
 	icon_state = "barrelmelon"
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -866,8 +866,8 @@
 	wound = 10
 
 /obj/item/clothing/suit/armor/dragoon
-	name = "drachen suit"
-	desc = "A chainmail suit with dragon scales attached to the skeleton, with ash-covered mythril plate reinforcement covering it."
+	name = "костюм драхена"
+	desc = "Кольчужный костюм с драконьей чешуей, прикрепленной к каркасу, и покрытым пеплом мифриловым пластинчатым усилением."
 	icon_state = "dragoon"
 	inhand_icon_state = "dragoon"
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS

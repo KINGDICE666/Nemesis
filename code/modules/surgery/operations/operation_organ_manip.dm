@@ -2,7 +2,7 @@
 
 /// Adding or removing specific organs
 /datum/surgery_operation/limb/organ_manipulation
-	name = "organ manipulation"
+	name = "манипуляция органами"
 	abstract_type = /datum/surgery_operation/limb/organ_manipulation
 	operation_flags = OPERATION_MORBID | OPERATION_NOTABLE | OPERATION_NO_PATIENT_REQUIRED
 	required_bodytype = ~BODYTYPE_ROBOTIC
@@ -34,7 +34,7 @@
 	implements = remove_implements + insert_implements
 
 /datum/surgery_operation/limb/organ_manipulation/get_recommended_tool()
-	return "[..()] / organ"
+	return "[..()] / орган"
 
 /datum/surgery_operation/limb/organ_manipulation/get_default_radial_image()
 	return image('icons/obj/medical/surgery_ui.dmi', "surgery_any")
@@ -108,8 +108,8 @@
 			option = new()
 			option.image = image('icons/hud/surgery_radial.dmi', "base")
 			option.image.overlays += add_radial_overlays(organ.type)
-			option.name = "remove [initial(organ.name)]"
-			option.info = "Remove [initial(organ.name)] from the [limb.owner ? "patient" : "limb"]."
+			option.name = "извлечь [initial(organ.name)]"
+			option.info = "Извлечь [initial(organ.name)] из [limb.owner ? "пациента" : "конечности"]."
 			LAZYSET(cached_organ_manipulation_options, "[organ.type]_remove", option)
 
 		options[option] = list("[OPERATION_ACTION]" = "remove", "[OPERATION_REMOVED_ORGAN]" = organ)
@@ -122,8 +122,8 @@
 		option = new()
 		option.image = image('icons/hud/surgery_radial.dmi', "base")
 		option.image.overlays += add_radial_overlays(list(image('icons/hud/screen_gen.dmi', "arrow_large_still"), organ.type))
-		option.name = "insert [initial(organ.name)]"
-		option.info = "insert [initial(organ.name)] into the [limb.owner ? "patient" : "limb"]."
+		option.name = "вставить [initial(organ.name)]"
+		option.info = "Вставить [initial(organ.name)] в [limb.owner ? "пациента" : "конечность"]."
 		LAZYSET(cached_organ_manipulation_options, "[organ.type]_insert", option)
 
 	var/list/result = list()
@@ -217,12 +217,12 @@
 	display_pain(limb.owner, "Your [limb.plaintext_zone] throbs with pain as your new [organ.name] comes to life!")
 
 /datum/surgery_operation/limb/organ_manipulation/internal
-	name = "internal organ manipulation"
-	desc = "Manipulate a patient's internal organs."
+	name = "манипуляция внутренними органами"
+	desc = "Манипулировать внутренними органами пациента."
 	replaced_by = /datum/surgery_operation/limb/organ_manipulation/internal/abductor
 	all_surgery_states_required = SURGERY_SKIN_OPEN|SURGERY_ORGANS_CUT
 
-	var/bone_locked_organs = "the brain or any chest organs"
+	var/bone_locked_organs = "мозг или любые органы грудной клетки"
 
 /datum/surgery_operation/limb/organ_manipulation/internal/organ_check(obj/item/bodypart/limb, obj/item/organ/organ)
 	if(organ.organ_flags & ORGAN_EXTERNAL)
@@ -234,12 +234,12 @@
 
 /datum/surgery_operation/limb/organ_manipulation/internal/any_required_strings()
 	return ..() + list(
-		"if operating on [bone_locked_organs], the bone MUST be sawed",
-		"otherwise, the state of the bone doesn't matter",
+		"если операция проводится на [bone_locked_organs], кость ОБЯЗАТЕЛЬНО должна быть распилена",
+		"иначе состояние кости не имеет значения",
 	)
 
 /datum/surgery_operation/limb/organ_manipulation/internal/mechanic
-	name = "prosthetic organ manipulation"
+	name = "манипуляция протезными органами"
 	required_bodytype = BODYTYPE_ROBOTIC
 	remove_implements = list(
 		TOOL_CROWBAR = 1,
@@ -250,19 +250,19 @@
 
 /// Abductor subtype that works through clothes and lets you extract the heart without sawing bones
 /datum/surgery_operation/limb/organ_manipulation/internal/abductor
-	name = "experimental organ manipulation"
+	name = "экспериментальная манипуляция органами"
 	operation_flags = parent_type::operation_flags | OPERATION_IGNORE_CLOTHES | OPERATION_LOCKED | OPERATION_NO_WIKI
 	all_surgery_states_required = SURGERY_SKIN_OPEN
 	any_surgery_states_blocked = SURGERY_VESSELS_UNCLAMPED
-	bone_locked_organs = "the brain or any chest organs EXCLUDING the heart"
+	bone_locked_organs = "мозг или любые органы грудной клетки, КРОМЕ сердца"
 
 /datum/surgery_operation/limb/organ_manipulation/internal/abductor/organ_check(obj/item/bodypart/limb, obj/item/organ/organ)
 	return (organ.slot == ORGAN_SLOT_HEART) || ..() // Hearts can always be removed, it doesn't check for bone state
 
 // All external organ manipulation requires bones sawed
 /datum/surgery_operation/limb/organ_manipulation/external
-	name = "feature manipulation"
-	desc = "Manipulate features of the patient, such as a moth's wings or a lizard's tail."
+	name = "манипуляция особенностями"
+	desc = "Манипулировать внешними особенностями пациента, например крыльями ниана или хвостом ящера."
 	replaced_by = /datum/surgery_operation/limb/organ_manipulation/external/abductor
 	all_surgery_states_required = SURGERY_SKIN_OPEN|SURGERY_BONE_SAWED
 	any_surgery_states_blocked = SURGERY_VESSELS_UNCLAMPED
@@ -271,7 +271,7 @@
 	return (organ.organ_flags & ORGAN_EXTERNAL)
 
 /datum/surgery_operation/limb/organ_manipulation/external/mechanic
-	name = "prosthetic feature manipulation"
+	name = "манипуляция протезными особенностями"
 	required_bodytype = BODYTYPE_ROBOTIC
 	remove_implements = list(
 		TOOL_CROWBAR = 1,
@@ -283,7 +283,7 @@
 
 /// Abductor subtype that works through clothes
 /datum/surgery_operation/limb/organ_manipulation/external/abductor
-	name = "experimental feature manipulation"
+	name = "экспериментальная манипуляция особенностями"
 	operation_flags = parent_type::operation_flags | OPERATION_IGNORE_CLOTHES | OPERATION_LOCKED | OPERATION_NO_WIKI
 	all_surgery_states_required = SURGERY_SKIN_OPEN
 	any_surgery_states_blocked = SURGERY_VESSELS_UNCLAMPED

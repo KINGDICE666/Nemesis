@@ -1,10 +1,10 @@
 // Basic operations for moving back and forth between surgery states
 /// First step of every surgery, makes an incision in the skin
 /datum/surgery_operation/limb/incise_skin
-	name = "make skin incision"
+	name = "сделать разрез кожи"
 	// rnd_name = "Laparotomy / Craniotomy / Myotomy (Make Incision)" // Maybe we keep this one simple
-	desc = "Make an incision in the patient's skin to access internal organs. \
-		Causes \"cut skin\" surgical state."
+	desc = "Сделать разрез кожи пациента для доступа к внутренним органам. \
+		Вызывает хирургическое состояние \"кожа разрезана\"."
 	required_bodytype = ~BODYTYPE_ROBOTIC
 	replaced_by = /datum/surgery_operation/limb/incise_skin/abductor
 	implements = list(
@@ -26,7 +26,7 @@
 	var/biostate_blacklist = BIO_CHITIN
 
 /datum/surgery_operation/limb/incise_skin/get_any_tool()
-	return "Any sharp edged item"
+	return "Любой острый режущий предмет"
 
 /datum/surgery_operation/limb/incise_skin/get_default_radial_image()
 	return image('icons/hud/surgery_radial.dmi', "make_incision")
@@ -76,7 +76,7 @@
 
 /// Subtype for thick skinned creatures (Xenomorphs)
 /datum/surgery_operation/limb/incise_skin/thick
-	name = "make thick skin incision"
+	name = "сделать разрез толстой кожи"
 	implements = list(
 		TOOL_SAW = 1,
 		/obj/item/melee/energy/sword = 1.25,
@@ -87,7 +87,7 @@
 	biostate_blacklist = BIO_FLESH|BIO_METAL
 
 /datum/surgery_operation/limb/incise_skin/thick/get_any_tool()
-	return "Any sharp edged item with decent force"
+	return "Любой острый режущий предмет с достаточной силой"
 
 /datum/surgery_operation/limb/incise_skin/thick/tool_check(obj/item/tool)
 	return ..() && tool.force >= 10
@@ -99,9 +99,9 @@
 
 /// Pulls the skin back to access internals
 /datum/surgery_operation/limb/retract_skin
-	name = "retract skin"
-	desc = "Retract the patient's skin to access their internal organs. \
-		Causes \"skin open\" surgical state."
+	name = "отвести кожу"
+	desc = "Отвести кожу пациента для доступа к внутренним органам. \
+		Вызывает хирургическое состояние \"кожа открыта\"."
 	operation_flags = OPERATION_NO_PATIENT_REQUIRED
 	required_bodytype = ~BODYTYPE_ROBOTIC
 	replaced_by = /datum/surgery_operation/limb/retract_skin/abductor
@@ -144,9 +144,9 @@
 
 /// Closes the skin
 /datum/surgery_operation/limb/close_skin
-	name = "mend skin incision"
-	desc = "Mend the incision in the patient's skin, closing it up. \
-		Clears most surgical states."
+	name = "зашить разрез кожи"
+	desc = "Зашить разрез кожи пациента, закрывая его. \
+		Снимает большинство хирургических состояний."
 	required_bodytype = ~BODYTYPE_ROBOTIC
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	replaced_by = /datum/surgery_operation/limb/close_skin/abductor
@@ -170,13 +170,13 @@
 	allow_stumps = TRUE
 
 /datum/surgery_operation/limb/close_skin/get_any_tool()
-	return "Any heat source"
+	return "Любой источник тепла"
 
 /datum/surgery_operation/limb/close_skin/get_default_radial_image()
 	return image('icons/hud/surgery_radial.dmi', "mend_incision")
 
 /datum/surgery_operation/limb/close_skin/all_required_strings()
-	return ..() + list("the limb must have skin")
+	return ..() + list("у конечности должна быть кожа")
 
 /datum/surgery_operation/limb/close_skin/state_check(obj/item/bodypart/limb)
 	return LIMB_HAS_SKIN(limb)
@@ -213,9 +213,9 @@
 
 /// Clamps bleeding blood vessels to prevent blood loss
 /datum/surgery_operation/limb/clamp_bleeders
-	name = "clamp bleeders"
-	desc = "Clamp bleeding blood vessels in the patient's body to prevent blood loss. \
-		Causes \"vessels clamped\" surgical state."
+	name = "зажать кровотечение"
+	desc = "Зажать кровоточащие сосуды в теле пациента, чтобы предотвратить кровопотерю. \
+		Вызывает хирургическое состояние \"сосуды зажаты\"."
 	required_bodytype = ~BODYTYPE_ROBOTIC
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	replaced_by = /datum/surgery_operation/limb/clamp_bleeders/abductor
@@ -257,9 +257,9 @@
 
 /// Unclamps blood vessels to allow blood flow again
 /datum/surgery_operation/limb/unclamp_bleeders
-	name = "unclamp bleeders"
-	desc = "Unclamp blood vessels in the patient's body to allow blood flow again. \
-		Clears \"vessels clamped\" surgical state."
+	name = "ослабить зажимы сосудов"
+	desc = "Ослабить зажимы кровеносных сосудов пациента, чтобы снова пустить кровь. \
+		Снимает хирургическое состояние \"сосуды зажаты\"."
 	required_bodytype = ~BODYTYPE_ROBOTIC
 	operation_flags = OPERATION_NO_PATIENT_REQUIRED
 	replaced_by = /datum/surgery_operation/limb/unclamp_bleeders/abductor
@@ -278,7 +278,7 @@
 	return image('icons/hud/surgery_radial.dmi', "unclamp_bleeders")
 
 /datum/surgery_operation/limb/unclamp_bleeders/all_required_strings()
-	return ..() + list("the limb must have blood vessels")
+	return ..() + list("у конечности должны быть кровеносные сосуды")
 
 /datum/surgery_operation/limb/unclamp_bleeders/state_check(obj/item/bodypart/limb)
 	return LIMB_HAS_VESSELS(limb)
@@ -304,9 +304,9 @@
 
 /// Saws through bones to access organs
 /datum/surgery_operation/limb/saw_bones
-	name = "saw limb bone"
-	desc = "Saw through the patient's bones to access their internal organs. \
-		Causes \"bone sawed\" surgical state."
+	name = "распилить кость конечности"
+	desc = "Распилить кости пациента для доступа к внутренним органам. \
+		Вызывает хирургическое состояние \"кость распилена\"."
 	required_bodytype = ~BODYTYPE_ROBOTIC
 	implements = list(
 		TOOL_SAW = 1,
@@ -333,7 +333,7 @@
 	allow_stumps = TRUE
 
 /datum/surgery_operation/limb/saw_bones/get_any_tool()
-	return "Any sharp edged item with decent force"
+	return "Любой острый режущий предмет с достаточной силой"
 
 /datum/surgery_operation/limb/saw_bones/get_default_radial_image()
 	return image('icons/hud/surgery_radial.dmi', "saw_bones")
@@ -367,9 +367,9 @@
 
 /// Fixes sawed bones back together
 /datum/surgery_operation/limb/fix_bones
-	name = "fix limb bone"
-	desc = "Repair a patient's cut or broken bones. \
-		Clears \"bone sawed\" and \"bone drilled\" surgical states."
+	name = "починить кость конечности"
+	desc = "Восстановить распиленные или сломанные кости пациента. \
+		Снимает хирургические состояния \"кость распилена\" и \"кость просверлена\"."
 	required_bodytype = ~BODYTYPE_ROBOTIC
 	operation_flags = OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
@@ -393,7 +393,7 @@
 	return image('icons/hud/surgery_radial.dmi', "fix_bones")
 
 /datum/surgery_operation/limb/fix_bones/all_required_strings()
-	return ..() + list("the limb must have bones")
+	return ..() + list("у конечности должны быть кости")
 
 /datum/surgery_operation/limb/fix_bones/state_check(obj/item/bodypart/limb)
 	if(!LIMB_HAS_BONES(limb))
@@ -422,9 +422,9 @@
 	limb.heal_damage(40)
 
 /datum/surgery_operation/limb/drill_bones
-	name = "drill limb bone"
-	desc = "Drill through a patient's bones. \
-		Causes \"bone drilled\" surgical state."
+	name = "просверлить кость конечности"
+	desc = "Просверлить кости пациента. \
+		Вызывает хирургическое состояние \"кость просверлена\"."
 	required_bodytype = ~BODYTYPE_ROBOTIC
 	operation_flags = OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
@@ -443,7 +443,7 @@
 	allow_stumps = TRUE
 
 /datum/surgery_operation/limb/drill_bones/get_any_tool()
-	return "Any sharp pointed item with decent force"
+	return "Любой острый колющий предмет с достаточной силой"
 
 /datum/surgery_operation/limb/drill_bones/get_default_radial_image()
 	return image('icons/hud/surgery_radial.dmi', "drill_bones")
@@ -474,9 +474,9 @@
 	)
 
 /datum/surgery_operation/limb/incise_organs
-	name = "incise organs"
-	desc = "Make an incision in the patient's internal organ tissue to allow for manipulation or repair. \
-		Causes \"organs cut\" surgical state."
+	name = "надрезать органы"
+	desc = "Сделать разрез ткани внутренних органов пациента для манипуляций или восстановления. \
+		Вызывает хирургическое состояние \"органы надрезаны\"."
 	required_bodytype = ~BODYTYPE_ROBOTIC
 	operation_flags = OPERATION_NO_PATIENT_REQUIRED
 	replaced_by = /datum/surgery_operation/limb/incise_organs/abductor
@@ -496,7 +496,7 @@
 	allow_stumps = TRUE
 
 /datum/surgery_operation/limb/incise_organs/get_any_tool()
-	return "Any sharp edged item"
+	return "Любой острый режущий предмет"
 
 /datum/surgery_operation/limb/incise_organs/get_default_radial_image()
 	return image('icons/hud/surgery_radial.dmi', "incise_organs")

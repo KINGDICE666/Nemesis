@@ -7,13 +7,13 @@
 #define SHOES_KNOTTED 2
 
 /// Shoes aren't fastened with anything
-#define SHOES_SLIPON "absence of laces"
+#define SHOES_SLIPON "отсутствие шнурков"
 /// Shoes are fastened with laces
-#define SHOES_LACED "shoelaces"
+#define SHOES_LACED "шнурки"
 /// Shoes are fastened with velcro
-#define SHOES_VELCRO "velcro straps"
+#define SHOES_VELCRO "липучки"
 /// Shoes are fastened with buckled straps
-#define SHOES_STRAPS "straps"
+#define SHOES_STRAPS "ремешки"
 
 //suit sensors: sensor_mode defines
 /// Suit sensor is turned off

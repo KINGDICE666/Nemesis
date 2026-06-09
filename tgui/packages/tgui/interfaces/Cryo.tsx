@@ -14,19 +14,19 @@ import { type Beaker, BeakerSectionDisplay } from './common/BeakerDisplay';
 
 const damageTypes = [
   {
-    label: 'Brute',
+    label: 'Травмы',
     type: 'bruteLoss',
   },
   {
-    label: 'Respiratory',
+    label: 'Дыхание',
     type: 'oxyLoss',
   },
   {
-    label: 'Toxin',
+    label: 'Токсины',
     type: 'toxLoss',
   },
   {
-    label: 'Burn',
+    label: 'Ожоги',
     type: 'fireLoss',
   },
 ] as const;
@@ -35,6 +35,12 @@ const stat_to_color = {
   Dead: 'bad',
   Conscious: 'bad',
   Unconscious: 'good',
+} as const;
+
+const stat_to_text = {
+  Dead: 'Мертв',
+  Conscious: 'В сознании',
+  Unconscious: 'Без сознания',
 } as const;
 
 type Occupant = {
@@ -66,27 +72,27 @@ export const Cryo = () => {
   return (
     <Window width={400} height={550}>
       <Window.Content scrollable>
-        <Section title="Occupant">
+        <Section title="Пациент">
           <LabeledList>
-            <LabeledList.Item label="Occupant">
-              {occupant?.name || 'No Occupant'}
+            <LabeledList.Item label="Пациент">
+              {occupant?.name || 'Нет пациента'}
             </LabeledList.Item>
             {!!occupant && (
               <>
                 <LabeledList.Item
-                  label="State"
+                  label="Состояние"
                   color={stat_to_color[occupant.stat]}
                 >
-                  {occupant.stat}
+                  {stat_to_text[occupant.stat] || occupant.stat}
                 </LabeledList.Item>
                 <LabeledList.Item
-                  label="Temperature"
+                  label="Температура"
                   color={occupant.bodyTemperature < data.T0C ? 'good' : 'bad'} // Green if the mob can actually be healed by cryoxadone.
                 >
                   <AnimatedNumber value={round(occupant.bodyTemperature, 0)} />
                   {' K'}
                 </LabeledList.Item>
-                <LabeledList.Item label="Health">
+                <LabeledList.Item label="Здоровье">
                   <ProgressBar
                     value={round(occupant.health / occupant.maxHealth, 2)}
                     color={occupant.health > 0 ? 'good' : 'average'}
@@ -112,33 +118,33 @@ export const Cryo = () => {
             )}
           </LabeledList>
         </Section>
-        <Section title="Cell">
+        <Section title="Капсула">
           <LabeledList>
-            <LabeledList.Item label="Power">
+            <LabeledList.Item label="Питание">
               <Button
                 icon={isOperating ? 'power-off' : 'times'}
                 disabled={isOpen}
                 onClick={() => act('power')}
                 color={isOperating && 'green'}
               >
-                {isOperating ? 'On' : 'Off'}
+                {isOperating ? 'Вкл' : 'Выкл'}
               </Button>
             </LabeledList.Item>
-            <LabeledList.Item label="Temperature">
+            <LabeledList.Item label="Температура">
               <AnimatedNumber value={round(data.cellTemperature, 0)} /> K
             </LabeledList.Item>
-            <LabeledList.Item label="Door">
+            <LabeledList.Item label="Дверь">
               <Button
                 icon={isOpen ? 'unlock' : 'lock'}
                 onClick={() => act('door')}
               >
-                {isOpen ? 'Open' : 'Closed'}
+                {isOpen ? 'Открыта' : 'Закрыта'}
               </Button>
               <Button
                 icon={data.autoEject ? 'sign-out-alt' : 'sign-in-alt'}
                 onClick={() => act('autoeject')}
               >
-                {data.autoEject ? 'Auto' : 'Manual'}
+                {data.autoEject ? 'Авто' : 'Ручной'}
               </Button>
             </LabeledList.Item>
           </LabeledList>

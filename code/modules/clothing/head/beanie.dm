@@ -4,8 +4,8 @@
 //Plus a bobble hat, lets be inclusive!!
 
 /obj/item/clothing/head/beanie
-	name = "beanie"
-	desc = "A stylish beanie. The perfect winter accessory for those with a keen fashion sense, and those who just can't handle a cold breeze on their heads."
+	name = "шапка-бини"
+	desc = "Стильная шапка-бини. Идеальный зимний аксессуар для тех, кто разбирается в моде, и для тех, кто просто не переносит холодный ветер."
 	icon = 'icons/map_icons/clothing/head/_head.dmi'
 	worn_icon = 'icons/mob/clothing/head/beanie.dmi'
 	icon_state = "/obj/item/clothing/head/beanie"
@@ -17,52 +17,52 @@
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/head/beanie/black
-	name = "black beanie"
+	name = "черная шапка-бини"
 	icon_state = "/obj/item/clothing/head/beanie/black"
 	greyscale_colors = "#4A4A4B#4A4A4B"
 
 /obj/item/clothing/head/beanie/red
-	name = "red beanie"
+	name = "красная шапка-бини"
 	icon_state = "/obj/item/clothing/head/beanie/red"
 	greyscale_colors = "#D91414#D91414"
 
 /obj/item/clothing/head/beanie/darkblue
-	name = "dark blue beanie"
+	name = "темно-синяя шапка-бини"
 	icon_state = "/obj/item/clothing/head/beanie/darkblue"
 	greyscale_colors = "#1E85BC#1E85BC"
 
 /obj/item/clothing/head/beanie/yellow
-	name = "yellow beanie"
+	name = "желтая шапка-бини"
 	icon_state = "/obj/item/clothing/head/beanie/yellow"
 	greyscale_colors = "#E0C14F#E0C14F"
 
 /obj/item/clothing/head/beanie/orange
-	name = "orange beanie"
+	name = "оранжевая шапка-бини"
 	icon_state = "/obj/item/clothing/head/beanie/orange"
 	greyscale_colors = "#C67A4B#C67A4B"
 
 /obj/item/clothing/head/beanie/christmas
-	name = "christmas beanie"
+	name = "рождественская шапка-бини"
 	icon_state = "/obj/item/clothing/head/beanie/christmas"
 	greyscale_colors = "#038000#960000"
 
 /obj/item/clothing/head/beanie/durathread
-	name = "durathread beanie"
-	desc = "A beanie made from durathread. Its resilient fibres provide some protection to the wearer."
+	name = "дюратканевая шапка-бини"
+	desc = "Шапка-бини из дюраткани. Ее прочные волокна дают носителю небольшую защиту."
 	icon_state = "/obj/item/clothing/head/beanie/durathread"
 	greyscale_colors = "#8291A1#8291A1"
 	armor_type = /datum/armor/beanie_durathread
 
 /obj/item/clothing/head/rasta
-	name = "rastacap"
-	desc = "Perfect for tucking in those dreadlocks."
+	name = "растаманская шапка"
+	desc = "Идеально подходит, чтобы спрятать дреды."
 	icon = 'icons/obj/clothing/head/beanie.dmi'
 	worn_icon = 'icons/mob/clothing/head/beanie.dmi'
 	icon_state = "beanierasta"
 
 /obj/item/clothing/head/waldo
-	name = "red striped bobble hat"
-	desc = "If you're going on a worldwide hike, you'll need some cold protection."
+	name = "красная полосатая шапка с помпоном"
+	desc = "Если собираетесь в кругосветный поход, защита от холода пригодится."
 	icon = 'icons/obj/clothing/head/beanie.dmi'
 	worn_icon = 'icons/mob/clothing/head/beanie.dmi'
 	icon_state = "waldo_hat"
@@ -70,8 +70,8 @@
 //No dog fashion sprites yet :(  poor Ian can't be dope like the rest of us yet
 
 /obj/item/clothing/head/beanie/black/dboy
-	name = "test subject beanie"
-	desc = "A dingy and torn black beanie. Is that slime or grease?"
+	name = "шапка-бини подопытного"
+	desc = "Грязная и рваная черная шапка-бини. Это слизь или смазка?"
 	/// Used for the extra flavor text the d-boy himself sees
 	var/datum/weakref/beanie_owner = null
 
@@ -92,4 +92,4 @@
 /obj/item/clothing/head/beanie/black/dboy/examine(mob/user)
 	. = ..()
 	if(IS_WEAKREF_OF(user, beanie_owner))
-		. += span_purple("It's covered in otherworldly debris only your eyes have been ruined enough to see.")
+		. += span_purple("Она покрыта потусторонним мусором, который видят только ваши достаточно испорченные глаза.")

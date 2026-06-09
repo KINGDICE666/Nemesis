@@ -1,74 +1,74 @@
 /datum/supply_pack/materials
-	group = "Canisters & Materials"
+	group = "Канистры и материалы"
 
 /datum/supply_pack/materials/cardboard50
-	name = "50 Cardboard Sheets"
-	desc = "Create a bunch of boxes."
+	name = "50 листов картона"
+	desc = "Создайте кучу коробок."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/stack/sheet/cardboard/fifty)
-	crate_name = "cardboard sheets crate"
+	crate_name = "ящик листов картона"
 
 /datum/supply_pack/materials/license50
-	name = "50 Empty License Plates"
-	desc = "Create a bunch of license plates."
+	name = "50 пустых номерных знаков"
+	desc = "Создайте кучу номерных знаков."
 	cost = CARGO_CRATE_VALUE * 2  // 50 * 25 + 700 - 1000 = 950 credits profit
 	access_view = ACCESS_BRIG_ENTRANCE
 	contains = list(/obj/item/stack/license_plates/empty/fifty)
-	crate_name = "empty license plate crate"
+	crate_name = "ящик пустых номерных знаков"
 
 /datum/supply_pack/materials/plastic50
-	name = "50 Plastic Sheets"
-	desc = "Build a limitless amount of toys with fifty plastic sheets!"
+	name = "50 листов пластика"
+	desc = "Постройте безграничное количество игрушек из пятидесяти листов пластика!"
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/stack/sheet/plastic/fifty)
-	crate_name = "plastic sheets crate"
+	crate_name = "ящик листов пластика"
 
 /datum/supply_pack/materials/sandstone30
-	name = "30 Sandstone Blocks"
-	desc = "Neither sandy nor stony, these thirty blocks will still get the job done."
+	name = "30 блоков песчаника"
+	desc = "Не совсем песок и не совсем камень, но эти тридцать блоков всё равно сделают своё дело."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/stack/sheet/mineral/sandstone/thirty)
-	crate_name = "sandstone blocks crate"
+	crate_name = "ящик блоков песчаника"
 
 /datum/supply_pack/materials/wood50
-	name = "50 Wood Planks"
-	desc = "Turn cargo's boring metal groundwork into beautiful \
-		panelled flooring and much more with fifty wooden planks!"
+	name = "50 деревянных досок"
+	desc = "Превратите скучное металлическое основание карго в красивый \
+		дощатый пол и многое другое с пятьюдесятью деревянными досками!"
 	cost = CARGO_CRATE_VALUE * 4
 	contains = list(/obj/item/stack/sheet/mineral/wood/fifty)
-	crate_name = "wood planks crate"
+	crate_name = "ящик деревянных досок"
 
 /datum/supply_pack/materials/foamtank
-	name = "Firefighting Foam Tank Crate"
-	desc = "Contains a tank of firefighting foam. Also known as \"plasmaman's bane.\""
+	name = "Ящик бака противопожарной пены"
+	desc = "Содержит бак противопожарной пены. Также известен как «погибель плазмамена»."
 	cost = CARGO_CRATE_VALUE * 3
 	contains = list(/obj/structure/reagent_dispensers/foamtank)
-	crate_name = "foam tank crate"
+	crate_name = "ящик бака пены"
 	crate_type = /obj/structure/closet/crate/large
 
 /datum/supply_pack/materials/fueltank
-	name = "Fuel Tank Crate"
-	desc = "Contains a welding fuel tank. Caution, highly flammable."
+	name = "Ящик топливного бака"
+	desc = "Содержит бак сварочного топлива. Осторожно, крайне огнеопасно."
 	cost = CARGO_CRATE_VALUE * 1.6
 	contains = list(/obj/structure/reagent_dispensers/fueltank)
-	crate_name = "fuel tank crate"
+	crate_name = "ящик топливного бака"
 	crate_type = /obj/structure/closet/crate/large
 
 /datum/supply_pack/materials/hightankfuel
-	name = "Large Fuel Tank Crate"
-	desc = "Contains a high-capacity fuel tank. Keep contents away from open flame."
+	name = "Ящик большого топливного бака"
+	desc = "Содержит топливный бак большой ёмкости. Держите содержимое подальше от открытого огня."
 	cost = CARGO_CRATE_VALUE * 4
 	access_view = ACCESS_ENGINEERING
 	contains = list(/obj/structure/reagent_dispensers/fueltank/large)
-	crate_name = "high-capacity fuel tank crate"
+	crate_name = "ящик топливного бака большой ёмкости"
 	crate_type = /obj/structure/closet/crate/large
 
 /datum/supply_pack/materials/watertank
-	name = "Water Tank Crate"
-	desc = "Contains a tank of dihydrogen monoxide... sounds dangerous."
+	name = "Ящик водяного бака"
+	desc = "Содержит бак монооксида дигидрогена... звучит опасно."
 	cost = CARGO_CRATE_VALUE * 1.2
 	contains = list(/obj/structure/reagent_dispensers/watertank)
-	crate_name = "water tank crate"
+	crate_name = "ящик водяного бака"
 	crate_type = /obj/structure/closet/crate/large
 
 /datum/supply_pack/materials/gas_canisters
@@ -90,12 +90,12 @@
 		if(!initial(gas.purchaseable))
 			continue
 		var/datum/supply_pack/materials/pack = new
-		pack.name = "[name] Canister"
-		pack.desc = "Contains a canister of [name]."
+		pack.name = "Канистра [name]"
+		pack.desc = "Содержит канистру [name]."
 		if(initial(gas.dangerous))
 			pack.access = ACCESS_ATMOSPHERICS
 			pack.access_view = ACCESS_ATMOSPHERICS
-		pack.crate_name = "[name] canister crate"
+		pack.crate_name = "ящик канистры [name]"
 		pack.id = "[type]([name])"
 
 		pack.cost = cost + moleCount * initial(gas.base_value) * 1.6

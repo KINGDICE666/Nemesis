@@ -1,11 +1,11 @@
 /datum/supply_pack/service
-	group = "Service"
+	group = "Сервис"
 
 /datum/supply_pack/service/cargo_supples
-	name = "Cargo Supplies Crate"
-	desc = "Sold everything that wasn't bolted down? You can get right \
-		back to work with this crate containing stamps, an export scanner, \
-		destination tagger, hand labeler and some package wrapping."
+	name = "Ящик снабжения карго"
+	desc = "Продали всё, что не было прикручено? Вы можете сразу \
+		вернуться к работе с этим ящиком, содержащим печати, экспортный сканер, \
+		маркиратор назначения, ручной этикетировщик и немного упаковочной плёнки."
 	cost = CARGO_CRATE_VALUE * 1.75
 	contains = list(/obj/item/stamp/granted,
 					/obj/item/stamp/denied,
@@ -14,21 +14,21 @@
 					/obj/item/hand_labeler,
 					/obj/item/stack/package_wrap,
 				)
-	crate_name = "cargo supplies crate"
+	crate_name = "ящик снабжения карго"
 
 /datum/supply_pack/service/noslipfloor
-	name = "High-traction Floor Tiles"
-	desc = "Make slipping a thing of the past with thirty industrial-grade anti-slip floor tiles!"
+	name = "Напольная плитка с высоким сцеплением"
+	desc = "Оставьте скольжение в прошлом с тридцатью промышленными противоскользящими плитками!"
 	cost = CARGO_CRATE_VALUE * 4
 	access_view = ACCESS_JANITOR
 	contains = list(/obj/item/stack/tile/noslip/thirty)
-	crate_name = "high-traction floor tiles crate"
+	crate_name = "ящик плитки с высоким сцеплением"
 
 /datum/supply_pack/service/janitor
-	name = "Janitorial Supplies Crate"
-	desc = "Fight back against dirt and grime with Nanotrasen's Janitorial Essentials™! \
-		Contains three buckets, caution signs, and cleaner grenades. Also has a single mop, \
-		broom, spray cleaner, rag, and trash bag."
+	name = "Ящик уборочных припасов"
+	desc = "Дайте отпор грязи и налёту с уборочным набором Nanotrasen™! \
+		Содержит по три ведра, предупреждающих знака и чистящих гранаты. Также включает одну швабру, \
+		метлу, чистящий спрей, тряпку и мешок для мусора."
 	cost = CARGO_CRATE_VALUE * 2
 	access_view = ACCESS_JANITOR
 	contains = list(/obj/item/reagent_containers/cup/bucket = 3,
@@ -40,43 +40,43 @@
 					/obj/item/rag,
 					/obj/item/grenade/chem_grenade/cleaner = 3,
 				)
-	crate_name = "janitorial supplies crate"
+	crate_name = "ящик уборочных припасов"
 
 /datum/supply_pack/service/janitor/janicart
-	name = "Janitorial Cart and Galoshes Crate"
-	desc = "The keystone to any successful janitor. As long as you have feet, this pair \
-		of galoshes will keep them firmly planted on the ground. Also contains a janitorial cart."
+	name = "Ящик уборочной тележки и галош"
+	desc = "Ключ к успеху любого уборщика. Пока у вас есть ноги, эта пара \
+		галош будет крепко держать их на полу. Также содержит уборочную тележку."
 	cost = CARGO_CRATE_VALUE * 4
 	contains = list(/obj/structure/mop_bucket/janitorialcart,
 					/obj/item/clothing/shoes/galoshes,
 				)
-	crate_name = "janitorial cart crate"
+	crate_name = "ящик уборочной тележки"
 	crate_type = /obj/structure/closet/crate/large
 
 /datum/supply_pack/service/janitor/janitank
-	name = "Janitor Backpack Crate"
-	desc = "Call forth divine judgement upon dirt and grime with this high capacity janitor \
-		backpack. Contains 500 units of station-cleansing cleaner."
+	name = "Ящик ранца уборщика"
+	desc = "Призовите божественный суд на грязь и налёт с этим вместительным уборочным \
+		ранцем. Содержит 500 единиц станционного чистящего средства."
 	cost = CARGO_CRATE_VALUE * 2
 	access = ACCESS_JANITOR
 	contains = list(/obj/item/watertank/janitor)
-	crate_name = "janitor backpack crate"
+	crate_name = "ящик ранца уборщика"
 	crate_type = /obj/structure/closet/crate/secure
 
 /datum/supply_pack/service/mule
-	name = "MULEbot Crate"
-	desc = "Pink-haired Quartermaster not doing her job? Replace her with this tireless worker, today! \
-		Contains one MULEbot."
+	name = "Ящик MULEbot"
+	desc = "Розововолосый квартирмейстер не справляется с работой? Замените его этим неутомимым работником уже сегодня! \
+		Содержит одного MULEbot."
 	cost = CARGO_CRATE_VALUE * 4
 	contains = list(/mob/living/simple_animal/bot/mulebot)
-	crate_name = "\improper MULEbot Crate"
+	crate_name = "\improper ящик MULEbot"
 	crate_type = /obj/structure/closet/crate/large
 
 /datum/supply_pack/service/party
-	name = "Party Equipment"
-	desc = "Celebrate both life and death on the station with Nanotrasen's Party Essentials™! \
-		Contains seven colored glowsticks, six beers, six sodas, two ales, and a bottle of patron, \
-		goldschlager, and shaker!"
+	name = "Вечериночное снаряжение"
+	desc = "Празднуйте жизнь и смерть на станции с вечериночным набором Nanotrasen™! \
+		Содержит семь цветных светящихся палочек, шесть бутылок пива, шесть газировок, два эля, бутылку патрона, \
+		гольдшлегер и шейкер!"
 	cost = CARGO_CRATE_VALUE * 5
 	contains = list(/obj/item/storage/box/drinkingglasses,
 					/obj/item/reagent_containers/cup/glass/shaker,
@@ -93,22 +93,22 @@
 					/obj/item/flashlight/glowstick/yellow,
 					/obj/item/flashlight/glowstick/pink,
 				)
-	crate_name = "party equipment crate"
+	crate_name = "ящик вечериночного снаряжения"
 
 /datum/supply_pack/service/carpet
-	name = "Premium Carpet Crate"
-	desc = "Iron floor tiles getting on your nerves? These stacks of extra soft carpet \
-		will tie any room together. Contains 100 tiles each of regular and black carpet."
+	name = "Ящик премиального ковра"
+	desc = "Железная напольная плитка действует на нервы? Эти стопки особенно мягкого ковра \
+		свяжут любую комнату воедино. Содержит по 100 плиток обычного и чёрного ковра."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/stack/tile/carpet/fifty = 2,
 					/obj/item/stack/tile/carpet/black/fifty = 2)
-	crate_name = "premium carpet crate"
+	crate_name = "ящик премиального ковра"
 	discountable = SUPPLY_PACK_UNCOMMON_DISCOUNTABLE
 
 /datum/supply_pack/service/carpet_exotic
-	name = "Exotic Carpet Crate"
-	desc = "Exotic carpets straight from Space Russia, for all your decorating needs. \
-		Contains 100 tiles each of 8 different flooring patterns."
+	name = "Ящик экзотического ковра"
+	desc = "Экзотические ковры прямо из Космической России для всех ваших декоративных нужд. \
+		Содержит по 100 плиток 8 разных узоров пола."
 	cost = CARGO_CRATE_VALUE * 8
 	contains = list(/obj/item/stack/tile/carpet/blue/fifty = 2,
 					/obj/item/stack/tile/carpet/cyan/fifty = 2,
@@ -119,13 +119,13 @@
 					/obj/item/stack/tile/carpet/royalblue/fifty = 2,
 					/obj/item/stack/tile/carpet/royalblack/fifty = 2,
 				)
-	crate_name = "exotic carpet crate"
+	crate_name = "ящик экзотического ковра"
 	discountable = SUPPLY_PACK_UNCOMMON_DISCOUNTABLE
 
 /datum/supply_pack/service/carpet_neon
-	name = "Simple Neon Carpet Crate"
-	desc = "Simple rubbery mats with phosphorescent lining. Contains 120 tiles \
-		each of 13 color variants. Limited edition release."
+	name = "Ящик простого неонового ковра"
+	desc = "Простые резиновые коврики с фосфоресцентной окантовкой. Содержит по 120 плиток \
+		13 цветовых вариантов. Ограниченный выпуск."
 	cost = CARGO_CRATE_VALUE * 15
 	contains = list(/obj/item/stack/tile/carpet/neon/simple/white/sixty = 2,
 					/obj/item/stack/tile/carpet/neon/simple/black/sixty = 2,
@@ -141,44 +141,44 @@
 					/obj/item/stack/tile/carpet/neon/simple/violet/sixty = 2,
 					/obj/item/stack/tile/carpet/neon/simple/pink/sixty = 2,
 				)
-	crate_name = "neon carpet crate"
+	crate_name = "ящик неонового ковра"
 	discountable = SUPPLY_PACK_UNCOMMON_DISCOUNTABLE
 
 /datum/supply_pack/service/lightbulbs
-	name = "Replacement Lights"
-	desc = "May the light of Aether shine upon this station! Or at least, the light of \
-		forty-two light tubes and twenty one light bulbs."
+	name = "Запасные лампы"
+	desc = "Да озарит эту станцию свет Эфира! Или хотя бы свет \
+		сорока двух световых трубок и двадцати одной лампочки."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/storage/box/lights/mixed = 3)
-	crate_name = "replacement lights"
+	crate_name = "запасные лампы"
 
 /datum/supply_pack/service/minerkit
-	name = "Shaft Miner Starter Kit"
-	desc = "All the miners died too fast? Assistant wants to get a taste of life off-station? \
-		Either way, this kit is the best way to turn a regular crewman into an ore-producing, \
-		monster-slaying machine. Contains meson goggles, a pickaxe, advanced mining scanner, \
-		cargo headset, ore bag, gasmask, an explorer suit and a miner ID upgrade."
+	name = "Стартовый набор шахтёра"
+	desc = "Все шахтёры слишком быстро умерли? Ассистент хочет вкусить жизнь вне станции? \
+		В любом случае этот набор - лучший способ превратить обычного члена экипажа в добывающую руду \
+		и уничтожающую чудовищ машину. Содержит мезонные очки, кирку, продвинутый шахтёрский сканер, \
+		гарнитуру карго, мешок для руды, противогаз, костюм исследователя и улучшение ID шахтёра."
 	cost = CARGO_CRATE_VALUE * 4
 	access = ACCESS_QM
 	access_view = ACCESS_MINING_STATION
 	contains = list(/obj/item/storage/backpack/duffelbag/mining_conscript)
-	crate_name = "shaft miner starter kit"
+	crate_name = "стартовый набор шахтёра"
 	crate_type = /obj/structure/closet/crate/secure/cargo/mining
 
 /datum/supply_pack/service/survivalknives
-	name = "Survival Knives Crate"
-	desc = "Contains three sharpened survival knives. Each knife guaranteed to fit snugly \
-		inside any Nanotrasen-standard boot."
+	name = "Ящик ножей выживания"
+	desc = "Содержит три заточенных ножа выживания. Каждый нож гарантированно удобно помещается \
+		в любой стандартный ботинок Nanotrasen."
 	cost = CARGO_CRATE_VALUE * 3
 	contains = list(/obj/item/knife/combat/survival = 3)
-	crate_name = "survival knife crate"
+	crate_name = "ящик ножей выживания"
 	crate_type = /obj/structure/closet/crate/cargo/mining
 
 /datum/supply_pack/service/wedding
-	name = "Wedding Crate"
-	desc = "Everything you need to host a wedding! Now you just need an officiant. \
-		Contains a wedding dress, tuxedo, cummerbund, wedding veil, three bouquets, \
-		and a bottle of champagne."
+	name = "Свадебный ящик"
+	desc = "Всё необходимое для свадьбы! Теперь нужен только церемониймейстер. \
+		Содержит свадебное платье, смокинг, кушак, свадебную фату, три букета \
+		и бутылку шампанского."
 	cost = CARGO_CRATE_VALUE * 3
 	contains = list(/obj/item/clothing/under/dress/wedding_dress,
 					/obj/item/clothing/under/suit/tuxedo,
@@ -189,37 +189,37 @@
 					/obj/item/bouquet/poppy,
 					/obj/item/reagent_containers/cup/glass/bottle/champagne,
 				)
-	crate_name = "wedding crate"
+	crate_name = "свадебный ящик"
 
 /// Box of 7 grey IDs.
 /datum/supply_pack/service/greyidbox
-	name = "Grey ID Card Multipack Crate"
-	desc = "A convenient crate containing a box of seven cheap ID cards in a handy wallet-sized form factor. \
-		Cards come in every colour you can imagine, as long as it's grey."
+	name = "Мультинабор серых ID-карт"
+	desc = "Удобный ящик с коробкой из семи дешёвых ID-карт в компактном формате для бумажника. \
+		Карты бывают любого цвета, который вы можете представить, если этот цвет серый."
 	cost = CARGO_CRATE_VALUE * 3
 	contains = list(/obj/item/storage/box/ids)
-	crate_name = "basic id card crate"
+	crate_name = "ящик базовых ID-карт"
 
 /// Single silver ID.
 /datum/supply_pack/service/silverid
-	name = "Silver ID Card Crate"
-	desc = "Did we forget to hire any Heads of Staff? Recruit your own with this high value ID card \
-		capable of holding advanced levels of access in a handy wallet-sized form factor."
+	name = "Ящик серебряной ID-карты"
+	desc = "Мы забыли нанять глав отделов? Наберите своих с этой ценной ID-картой, \
+		способной хранить продвинутые уровни доступа в удобном формате для бумажника."
 	cost = CARGO_CRATE_VALUE * 7
 	contains = list(/obj/item/card/id/advanced/silver)
-	crate_name = "silver id card crate"
+	crate_name = "ящик серебряной ID-карты"
 
 /datum/supply_pack/service/emptycrate
-	name = "Empty Crate"
-	desc = "It's an empty crate, for all your storage needs."
+	name = "Пустой ящик"
+	desc = "Это пустой ящик для всех ваших нужд хранения."
 	cost = CARGO_CRATE_VALUE * 1.4 //Net Zero Profit.
 	contains = list()
-	crate_name = "crate"
+	crate_name = "ящик"
 
 /datum/supply_pack/service/randomized/donkpockets
-	name = "Donk Pocket Variety Crate"
-	desc = "Featuring a line up of Donk Co.'s most popular pastry! Contains \
-		a random assortment of Donk Pocket boxes."
+	name = "Ящик разных Donk Pocket"
+	desc = "Линейка самой популярной выпечки Donk Co.! Содержит \
+		случайный набор коробок Donk Pocket."
 	cost = CARGO_CRATE_VALUE * 4
 	contains = list(/obj/item/storage/box/donkpockets/donkpocketspicy,
 					/obj/item/storage/box/donkpockets/donkpocketteriyaki,
@@ -227,7 +227,7 @@
 					/obj/item/storage/box/donkpockets/donkpocketberry,
 					/obj/item/storage/box/donkpockets/donkpockethonk,
 				)
-	crate_name = "donk pocket crate"
+	crate_name = "ящик Donk Pocket"
 	crate_type = /obj/structure/closet/crate/freezer/food
 
 /datum/supply_pack/service/randomized/donkpockets/fill(obj/container)
@@ -236,9 +236,9 @@
 		new item(container)
 
 /datum/supply_pack/service/randomized/ready_donk
-	name = "Ready-Donk Variety Crate"
-	desc = "Featuring a line up of Donk Co.'s fan-favourite microwave meal! Contains \
-		a random assortment of Ready Donk products."
+	name = "Ящик разных Ready-Donk"
+	desc = "Линейка любимых фанатами блюд Donk Co. для микроволновки! Содержит \
+		случайный набор продуктов Ready Donk."
 	cost = CARGO_CRATE_VALUE * 3
 	contains = list(/obj/item/food/ready_donk,
 					/obj/item/food/ready_donk/mac_n_cheese,
@@ -248,7 +248,7 @@
 					/obj/item/food/ready_donk/salisbury_steak,
 					/obj/item/food/ready_donk/country_chicken,
 				)
-	crate_name = "\improper Ready-Donk crate"
+	crate_name = "\improper ящик Ready-Donk"
 	crate_type = /obj/structure/closet/crate/freezer/donk
 	discountable = SUPPLY_PACK_UNCOMMON_DISCOUNTABLE
 
@@ -258,8 +258,8 @@
 		new item(container)
 
 /datum/supply_pack/service/coffeekit
-	name = "Coffee Equipment Crate"
-	desc = "A complete kit to setup your own cozy coffee shop, the coffeemaker is for some reason not included."
+	name = "Ящик кофейного оборудования"
+	desc = "Полный набор для создания собственной уютной кофейни; кофеварка почему-то не включена."
 	cost = CARGO_CRATE_VALUE * 4
 	contains = list(
 		/obj/item/storage/box/coffeepack/robusta,
@@ -272,45 +272,45 @@
 		/obj/item/reagent_containers/condiment/sugar,
 		/obj/item/reagent_containers/cup/bottle/syrup_bottle/caramel, //one extra syrup as a treat
 	)
-	crate_name = "coffee equipment crate"
+	crate_name = "ящик кофейного оборудования"
 	crate_type = /obj/structure/closet/crate/robust
 	discountable = SUPPLY_PACK_UNCOMMON_DISCOUNTABLE
 
 /datum/supply_pack/service/coffeemaker
-	name = "Impressa Coffeemaker Crate"
-	desc = "An assembled Impressa model coffeemaker."
+	name = "Ящик кофеварки Impressa"
+	desc = "Собранная кофеварка модели Impressa."
 	cost = CARGO_CRATE_VALUE * 4
 	contains = list(/obj/machinery/coffeemaker/impressa)
-	crate_name = "coffeemaker crate"
+	crate_name = "ящик кофеварки"
 	crate_type = /obj/structure/closet/crate/large
 	discountable = SUPPLY_PACK_UNCOMMON_DISCOUNTABLE
 
 /// Spare bar sign wallmount
 /datum/supply_pack/service/bar_sign
-	name = "Bar Sign Replacement Kit"
-	desc = "A replacement bar sign, perfect for drawing in customers to your bar, tavern, inn, nightclub, or even coffeehouse!"
+	name = "Запасной комплект барной вывески"
+	desc = "Запасная барная вывеска, идеально подходящая для привлечения клиентов в бар, таверну, постоялый двор, ночной клуб или даже кофейню!"
 	cost = CARGO_CRATE_VALUE * 14
 	contains = list(/obj/item/wallframe/barsign/all_access)
-	crate_name = "bar sign crate"
+	crate_name = "ящик барной вывески"
 	discountable = SUPPLY_PACK_RARE_DISCOUNTABLE
 
 /datum/supply_pack/service/bowmaking
-	name = "Fletching and Bow-Making Starter Kit"
-	desc = "A fairly outdated copy of 'Whittle Me This: Fletching for the Modern Spacer', along with some useful materials. \
-		For those looking to get into bow-making, or give their LARPing a little more edge, you can't go wrong. Also has \
-		instructions for making violins."
+	name = "Стартовый набор оперения и изготовления луков"
+	desc = "Довольно устаревший экземпляр «Выстрогай мне это: оперение для современного космонавта» и немного полезных материалов. \
+		Для тех, кто хочет заняться изготовлением луков или добавить остроты своему LARP, это беспроигрышный вариант. Также содержит \
+		инструкции по изготовлению скрипок."
 	cost = CARGO_CRATE_VALUE * 5
 	contains = list(
 		/obj/item/book/granter/crafting_recipe/fletching = 1,
 		/obj/item/stack/sheet/mineral/wood = 10,
 		/obj/item/stack/sheet/cloth = 10,
 	)
-	crate_name = "bowmaking starter kit crate"
+	crate_name = "ящик стартового набора изготовления луков"
 	crate_type = /obj/structure/closet/crate/wooden
 
 /datum/supply_pack/service/mousetraps
-	name = "Pest-B-Gon Mousetraps"
-	desc = "Three boxes of handy little spring-loaded traps for catching pesty rodents. Keep out of reach of children!"
+	name = "Мышеловки Pest-B-Gon"
+	desc = "Три коробки удобных маленьких пружинных ловушек для поимки вредных грызунов. Беречь от детей!"
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/storage/box/mousetraps = 3)
-	crate_name = "mousetraps crate"
+	crate_name = "ящик мышеловок"

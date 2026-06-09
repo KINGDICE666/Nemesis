@@ -1,11 +1,11 @@
 /datum/supply_pack/medical
-	group = "Medical"
+	group = "Медицина"
 	access_view = ACCESS_MEDICAL
 	crate_type = /obj/structure/closet/crate/medical/department
 
 /datum/supply_pack/medical/bloodpacks
-	name = "Blood Pack Variety Crate"
-	desc = "Contains ten different blood packs for reintroducing blood to patients."
+	name = "Ящик разных пакетов крови"
+	desc = "Содержит десять разных пакетов крови для восполнения крови у пациентов."
 	cost = CARGO_CRATE_VALUE * 7
 	contains = list(
 		/obj/item/reagent_containers/blood = 2,
@@ -19,34 +19,34 @@
 		/obj/item/reagent_containers/blood/ethereal,
 		/obj/item/paper/fluff/jobs/medical/blood_types,
 	)
-	crate_name = "blood freezer"
+	crate_name = "кровяной морозильник"
 	crate_type = /obj/structure/closet/crate/freezer
 
 /datum/supply_pack/medical/medipen_variety
-	name = "Medipen Variety-Pak"
-	desc = "Contains eight different medipens in three different varieties, \
-		to assist in quickly treating seriously injured patients."
+	name = "Набор разных медипенов"
+	desc = "Содержит восемь медипенов трёх разных видов, \
+		помогающих быстро лечить тяжело раненых пациентов."
 	cost = CARGO_CRATE_VALUE * 3.5
 	contains = list(/obj/item/reagent_containers/hypospray/medipen = 2,
 					/obj/item/reagent_containers/hypospray/medipen/ekit = 3,
 					/obj/item/reagent_containers/hypospray/medipen/blood_loss = 3)
-	crate_name = "medipen crate"
+	crate_name = "ящик медипенов"
 	crate_type = /obj/structure/closet/crate/deforest
 
 /datum/supply_pack/medical/coroner_crate
-	name = "Autopsy Kit"
-	desc = "Contains an autopsy scanner, when you lose your own and really \
-		need to complete your dissection experiments."
+	name = "Комплект для аутопсии"
+	desc = "Содержит сканер аутопсии на случай, если вы потеряли свой и вам очень \
+		нужно завершить эксперименты по вскрытию."
 	cost = CARGO_CRATE_VALUE * 2.5
 	contains = list(
 		/obj/item/autopsy_scanner = 1,
 		/obj/item/storage/medkit/coroner = 1,
 	)
-	crate_name = "autopsy kit crate"
+	crate_name = "ящик комплекта для аутопсии"
 
 /datum/supply_pack/medical/chemical
-	name = "Chemical Starter Kit Crate"
-	desc = "Contains thirteen different chemicals, for all the fun experiments you can make."
+	name = "Стартовый химический набор"
+	desc = "Содержит тринадцать разных химикатов для всех весёлых экспериментов, которые вы можете провести."
 	cost = CARGO_CRATE_VALUE * 2.6
 	contains = list(/obj/item/reagent_containers/cup/bottle/hydrogen,
 					/obj/item/reagent_containers/cup/bottle/carbon,
@@ -65,27 +65,27 @@
 					/obj/item/reagent_containers/dropper,
 					/obj/item/storage/box/beakers,
 				)
-	crate_name = "chemical crate"
+	crate_name = "химический ящик"
 
 /datum/supply_pack/medical/defibs
-	name = "Defibrillator Crate"
-	desc = "Contains two defibrillators for bringing the recently deceased back to life."
+	name = "Ящик дефибрилляторов"
+	desc = "Содержит два дефибриллятора для возвращения недавно умерших к жизни."
 	cost = CARGO_CRATE_VALUE * 5
 	contains = list(/obj/item/defibrillator/loaded = 2)
-	crate_name = "defibrillator crate"
+	crate_name = "ящик дефибрилляторов"
 	crate_type = /obj/structure/closet/crate/medical
 
 /datum/supply_pack/medical/iv_drip
-	name = "IV Drip Crate"
-	desc = "Contains a single IV drip for administering blood to patients."
+	name = "Ящик капельницы"
+	desc = "Содержит одну капельницу для введения крови пациентам."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/machinery/iv_drip)
-	crate_name = "iv drip crate"
+	crate_name = "ящик капельницы"
 	crate_type = /obj/structure/closet/crate/medical
 
 /datum/supply_pack/medical/supplies
-	name = "Medical Supplies Crate"
-	desc = "Contains a random assortment of medical supplies. German doctor not included."
+	name = "Ящик медицинских припасов"
+	desc = "Содержит случайный набор медицинских припасов. Немецкий доктор не включён."
 	cost = CARGO_CRATE_VALUE * 4
 	contains = list(/obj/item/reagent_containers/cup/bottle/multiver,
 					/obj/item/reagent_containers/cup/bottle/epinephrine,
@@ -112,7 +112,7 @@
 					/obj/item/vending_refill/medical,
 					/obj/item/vending_refill/drugs,
 				)
-	crate_name = "medical supplies crate"
+	crate_name = "ящик медицинских припасов"
 	crate_type = /obj/structure/closet/crate/medical
 	test_ignored = TRUE
 
@@ -122,42 +122,42 @@
 		new item(container)
 
 /datum/supply_pack/medical/experimentalmedicine
-	name = "Experimental Medicine Crate"
-	desc = "A crate containing the medication required for living with Hereditary Manifold Sickness, Sansufentanyl."
+	name = "Ящик экспериментальной медицины"
+	desc = "Ящик с препаратом Sansufentanyl, необходимым для жизни с наследственной многосложной болезнью."
 	cost = CARGO_CRATE_VALUE * 3
 	contains = list(/obj/item/storage/pill_bottle/sansufentanyl = 2)
-	crate_name = "experimental medicine crate"
+	crate_name = "ящик экспериментальной медицины"
 	crate_type = /obj/structure/closet/crate/medical
 
 /datum/supply_pack/medical/surgery
-	name = "Surgical Supplies Crate"
-	desc = "Do you want to perform surgery, but don't have one of those fancy \
-		shmancy degrees? Just get started with this crate containing a DeForest surgery tray, \
-		Sterilizine spray and collapsible roller bed."
+	name = "Ящик хирургических припасов"
+	desc = "Хотите провести операцию, но у вас нет одной из этих модных \
+		дипломированных бумажек? Просто начните с этого ящика, содержащего хирургический лоток DeForest, \
+		спрей Sterilizine и складную кровать на колёсиках."
 	cost = CARGO_CRATE_VALUE * 6
 	contains = list(
 		/obj/item/surgery_tray/full,
 		/obj/item/reagent_containers/medigel/sterilizine,
 		/obj/item/emergency_bed,
 	)
-	crate_name = "surgical supplies crate"
+	crate_name = "ящик хирургических припасов"
 	crate_type = /obj/structure/closet/crate/deforest
 
 /datum/supply_pack/medical/salglucanister
-	name = "Heavy-Duty Saline Canister"
-	desc = "Contains a bulk supply of saline-glucose condensed into a single canister that \
-		should last several days, with a large pump to fill containers with. Direct injection \
-		of saline should be left to medical professionals as the pump is capable of overdosing \
-		patients."
+	name = "Усиленная канистра физраствора"
+	desc = "Содержит крупный запас физраствора с глюкозой, упакованный в одну канистру, \
+		которой должно хватить на несколько дней, а также большой насос для наполнения ёмкостей. Прямое введение \
+		физраствора стоит оставить медицинским специалистам, поскольку насос способен вызвать передозировку \
+		у пациентов."
 	cost = CARGO_CRATE_VALUE * 6
 	access = ACCESS_MEDICAL
 	contains = list(/obj/machinery/iv_drip/saline)
 	crate_type = /obj/structure/closet/crate/large
 
 /datum/supply_pack/medical/virus
-	name = "Virus Crate"
-	desc = "Contains twelve different bottles of several viral samples for virology \
-		research. Also includes seven beakers and syringes. Balled-up jeans not included."
+	name = "Ящик вирусов"
+	desc = "Содержит двенадцать бутылок с несколькими вирусными образцами для вирусологических \
+		исследований. Также включает семь мензурок и шприцы. Скомканные джинсы не включены."
 	cost = CARGO_CRATE_VALUE * 5
 	access = ACCESS_CMO
 	access_view = ACCESS_VIROLOGY
@@ -174,13 +174,13 @@
 					/obj/item/storage/box/beakers,
 					/obj/item/reagent_containers/cup/bottle/mutagen,
 				)
-	crate_name = "virus crate"
+	crate_name = "ящик вирусов"
 	crate_type = /obj/structure/closet/crate/secure/plasma
 	order_flags = ORDER_DANGEROUS
 
 /datum/supply_pack/medical/cmoturtlenecks
-	name = "Chief Medical Officer Turtlenecks"
-	desc = "Contains the CMO's turtleneck and turtleneck skirt."
+	name = "Водолазки главного врача"
+	desc = "Содержит водолазку главного врача и юбку-водолазку."
 	cost = CARGO_CRATE_VALUE * 2
 	access = ACCESS_CMO
 	contains = list(/obj/item/clothing/under/rank/medical/chief_medical_officer/turtleneck,
@@ -188,34 +188,34 @@
 				)
 
 /datum/supply_pack/medical/arm_implants
-	name = "Strong-Arm Implant Set"
-	desc = "A crate containing two implants, which can be surgically implanted to empower the strength of human arms. Warranty void if exposed to electromagnetic pulses."
+	name = "Набор имплантов сильных рук"
+	desc = "Ящик с двумя имплантами, которые можно хирургически установить для усиления человеческих рук. Гарантия аннулируется при воздействии электромагнитных импульсов."
 	cost = CARGO_CRATE_VALUE * 6
 	contains = list(/obj/item/organ/cyberimp/arm/strongarm = 2)
-	crate_name = "Strong-Arm implant crate"
+	crate_name = "ящик имплантов сильных рук"
 	discountable = SUPPLY_PACK_RARE_DISCOUNTABLE
 
 /datum/supply_pack/medical/paperwork_implants
-	name = "Paperwork Implant Set"
-	desc = "A crate containing two implants, which can be surgically implanted to effectivize crewmembers at paperwork. Warranty void if exposed to electromagnetic pulses."
+	name = "Набор имплантов бумажной работы"
+	desc = "Ящик с двумя имплантами, которые можно хирургически установить для повышения эффективности экипажа в бумажной работе. Гарантия аннулируется при воздействии электромагнитных импульсов."
 	cost = CARGO_CRATE_VALUE * 3
 	contains = list(/obj/item/organ/cyberimp/arm/toolkit/paperwork = 2)
-	crate_name = "Paperwork implant crate"
+	crate_name = "ящик имплантов бумажной работы"
 	discountable = SUPPLY_PACK_RARE_DISCOUNTABLE
 
 /datum/supply_pack/medical/lost_crew
-	name = "Recovered NT Employee corpse"
-	desc = "We don't have the accomodations to bring them back, could we send them to you? Please revive and employ them. \
-	The price is a downpayment, we will reimburse the medical budget once our employee has been alive again for a bit."
+	name = "Найденное тело сотрудника NT"
+	desc = "У нас нет условий, чтобы вернуть его к жизни. Можно отправить его вам? Пожалуйста, оживите и трудоустройте его. \
+	Цена является авансом, мы возместим медицинский бюджет, как только наш сотрудник снова немного поживёт."
 	cost = CARGO_CRATE_VALUE * 5
 	contains = list(/obj/structure/closet/body_bag/lost_crew/with_body)
-	crate_name = "body freezer"
+	crate_name = "морозильник для тел"
 	crate_type = /obj/structure/closet/crate/secure/freezer
 
 /datum/supply_pack/medical/organ_growing
-	name = "Organ Growing Kit"
-	desc = "All the tools you need to grow organs at home! Besides letting you grow standard organs from tissue samples, \
-	you might find mutant cells which can be further proliferated to grow strange properties."
+	name = "Набор выращивания органов"
+	desc = "Все инструменты, необходимые для выращивания органов дома! Помимо выращивания стандартных органов из образцов ткани, \
+	вы можете найти мутантные клетки, которые можно дальше размножать для получения странных свойств."
 	cost = CARGO_CRATE_VALUE * 5
 	contains = list(
 		/obj/machinery/vatgrower/small/unanchored,
@@ -225,23 +225,23 @@
 		/obj/item/reagent_containers/cup/mortar,
 		/obj/item/pestle,
 	)
-	crate_name = "organ growing kit"
+	crate_name = "набор выращивания органов"
 
 /datum/supply_pack/medical/chiral_inversing_buffer
-	name = "Chiral Inversing Buffer Crate"
-	desc = "A crate containing a rare sample of an inversing buffer. \
-		It can transform impure reagents into their inverse counterparts when the right conditions are met."
+	name = "Ящик хирального инвертирующего буфера"
+	desc = "Ящик с редким образцом инвертирующего буфера. \
+		При подходящих условиях он может превращать нечистые реагенты в их обратные аналоги."
 	cost = CARGO_CRATE_VALUE * 3
 	contains = list(/obj/item/reagent_containers/cup/bottle/inversing_buffer)
-	crate_name = "chiral inversing buffer crate"
+	crate_name = "ящик хирального инвертирующего буфера"
 
 /datum/supply_pack/medical/handheld_crew_monitor
-	name = "Handheld Crew Monitor Crate"
-	desc = "A crate containing three handheld crew monitors"
+	name = "Ящик ручных мониторов экипажа"
+	desc = "Ящик с тремя ручными мониторами экипажа."
 	cost = (CARGO_CRATE_VALUE * /obj/item/sensor_device::custom_premium_price * 3 * 0.8) / 280 // Bulk discount .8X base /tg/ vending machine value with the CARGO_CRATE_VALUE modifier
 	contains = list(
 		/obj/item/sensor_device,
 		/obj/item/sensor_device,
 		/obj/item/sensor_device,
 	)
-	crate_name = "handheld crew monitor crate"
+	crate_name = "ящик ручных мониторов экипажа"

@@ -2,8 +2,8 @@
 /datum/techweb_node/parts
 	id = TECHWEB_NODE_PARTS
 	starting_node = TRUE
-	display_name = "Essential Stock Parts"
-	description = "Foundational components that form the backbone of station operations, encompassing a range of essential equipment necessary for day-to-day functionality."
+	display_name = "Базовые компоненты"
+	description = "Основные компоненты, составляющие основу работы станции и включающие широкий набор оборудования, необходимого для повседневной эксплуатации."
 	design_ids = list(
 		"micro_servo",
 		"basic_battery",
@@ -28,8 +28,8 @@
 
 /datum/techweb_node/parts_upg
 	id = TECHWEB_NODE_PARTS_UPG
-	display_name = "Upgraded Parts"
-	description = "Offering enhanced capabilities beyond their basic counterparts."
+	display_name = "Улучшенные компоненты"
+	description = "Предлагают расширенные возможности по сравнению с базовыми аналогами."
 	prereq_ids = list(TECHWEB_NODE_PARTS, TECHWEB_NODE_ENERGY_MANIPULATION)
 	design_ids = list(
 		"rped",
@@ -46,8 +46,8 @@
 
 /datum/techweb_node/parts_adv
 	id = TECHWEB_NODE_PARTS_ADV
-	display_name = "Advanced Parts"
-	description = "The most finely tuned and accurate stock parts."
+	display_name = "Продвинутые компоненты"
+	description = "Самые точно настроенные и аккуратные стандартные компоненты."
 	prereq_ids = list(TECHWEB_NODE_PARTS_UPG)
 	design_ids = list(
 		"ultra_micro_laser",
@@ -65,8 +65,8 @@
 
 /datum/techweb_node/parts_bluespace
 	id = TECHWEB_NODE_PARTS_BLUESPACE
-	display_name = "Bluespace Parts"
-	description = "Integrating the latest in bluespace technology, these advanced components not only enhance functionality but also open up new possibilities for the station's technological capabilities."
+	display_name = "Блюспейс-компоненты"
+	description = "Эти продвинутые компоненты используют новейшие блюспейс-технологии, не только повышая функциональность, но и открывая новые возможности для технологического потенциала станции."
 	prereq_ids = list(TECHWEB_NODE_PARTS_ADV, TECHWEB_NODE_BLUESPACE_TRAVEL)
 	design_ids = list(
 		"bs_rped",
@@ -84,8 +84,8 @@
 
 /datum/techweb_node/telecomms
 	id = TECHWEB_NODE_TELECOMS
-	display_name = "Telecommunications Technology"
-	description = "A comprehensive suite of machinery for station-wide communication setups, ensuring seamless connectivity and operational coordination."
+	display_name = "Телекоммуникационные технологии"
+	description = "Комплекс машин для станционной связи, обеспечивающий бесперебойное соединение и координацию работы."
 	prereq_ids = list(TECHWEB_NODE_PARTS_BLUESPACE)
 	design_ids = list(
 		"comm_monitor",
@@ -114,8 +114,8 @@
 /datum/techweb_node/construction
 	id = TECHWEB_NODE_CONSTRUCTION
 	starting_node = TRUE
-	display_name = "Construction"
-	description = "Tools and essential machinery used for station maintenance and expansion."
+	display_name = "Строительство"
+	description = "Инструменты и основное оборудование для обслуживания и расширения станции."
 	design_ids = list(
 		"circuit_imprinter_offstation",
 		"circuit_imprinter",
@@ -160,8 +160,8 @@
 
 /datum/techweb_node/energy_manipulation
 	id = TECHWEB_NODE_ENERGY_MANIPULATION
-	display_name = "Energy Manipulation"
-	description = "Harnessing the raw power of lightning arcs through sophisticated energy control methods."
+	display_name = "Управление энергией"
+	description = "Использование грубой мощи электрических дуг с помощью сложных методов контроля энергии."
 	prereq_ids = list(TECHWEB_NODE_CONSTRUCTION)
 	design_ids = list(
 		"apc_control",
@@ -186,8 +186,8 @@
 
 /datum/techweb_node/shuttle_engineering
 	id = TECHWEB_NODE_SHUTTLE_ENG
-	display_name = "Shuttle Engineering"
-	description = "Materials and equipment for constructing shuttles"
+	display_name = "Инженерия шаттлов"
+	description = "Материалы и оборудование для строительства шаттлов."
 	prereq_ids = list(TECHWEB_NODE_ENERGY_MANIPULATION, TECHWEB_NODE_APPLIED_BLUESPACE)
 	design_ids = list(
 		"borg_upgrade_engineering_shuttle_blueprints",
@@ -203,8 +203,8 @@
 
 /datum/techweb_node/holographics
 	id = TECHWEB_NODE_HOLOGRAPHICS
-	display_name = "Holographics"
-	description = "Use of holographic technology for signage and barriers."
+	display_name = "Голография"
+	description = "Применение голографических технологий для указателей и барьеров."
 	prereq_ids = list(TECHWEB_NODE_ENERGY_MANIPULATION)
 	design_ids = list(
 		"atmosshieldgen",
@@ -233,8 +233,8 @@
 
 /datum/techweb_node/hud
 	id = TECHWEB_NODE_HUD
-	display_name = "Integrated HUDs"
-	description = "Initially developed for assistants to learn the nuances of different professions through augmented reality."
+	display_name = "Интегрированные ИЛС"
+	description = "Изначально разработаны, чтобы ассистенты изучали нюансы разных профессий через дополненную реальность."
 	prereq_ids = list(TECHWEB_NODE_HOLOGRAPHICS, TECHWEB_NODE_CYBER_IMPLANTS)
 	design_ids = list(
 		"health_hud",
@@ -252,8 +252,8 @@
 
 /datum/techweb_node/night_vision
 	id = TECHWEB_NODE_NIGHT_VISION
-	display_name = "Night Vision Technology"
-	description = "There are whispers that Nanotrasen pushed for this technology to extend shift durations, ensuring productivity around the clock."
+	display_name = "Технологии ночного зрения"
+	description = "Ходят слухи, что Nanotrasen продвигала эту технологию ради увеличения длительности смен и круглосуточной продуктивности."
 	prereq_ids = list(TECHWEB_NODE_HUD)
 	design_ids = list(
 		"diagnostic_hud_night",

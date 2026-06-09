@@ -1,7 +1,7 @@
 
 /obj/item/storage/toolbox/fishing
-	name = "fishing toolbox"
-	desc = "Contains everything you need for your fishing trip."
+	name = "рыболовный ящик для инструментов"
+	desc = "Содержит всё необходимое для рыбалки."
 	icon_state = "teal"
 	inhand_icon_state = "toolbox_teal"
 	material_flags = NONE
@@ -23,8 +23,8 @@
 	new /obj/item/paper/paperslip/fishing_tip(src)
 
 /obj/item/storage/toolbox/fishing/small
-	name = "compact fishing toolbox"
-	desc = "Contains everything you need for your fishing trip. Except for the bait."
+	name = "компактный рыболовный ящик"
+	desc = "Содержит всё необходимое для рыбалки. Кроме наживки."
 	w_class = WEIGHT_CLASS_NORMAL
 	force = 5
 	throwforce = 5
@@ -37,8 +37,8 @@
 	new /obj/item/paper/paperslip/fishing_tip(src)
 
 /obj/item/storage/toolbox/fishing/master
-	name = "super fishing toolbox"
-	desc = "Contains (almost) EVERYTHING you need for your fishing trip."
+	name = "суперрыболовный ящик"
+	desc = "Содержит (почти) ВСЁ необходимое для рыбалки."
 	icon_state = "gold"
 	inhand_icon_state = "toolbox_gold"
 	fishing_modifier = -10

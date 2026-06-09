@@ -1204,7 +1204,7 @@
 /////////////////////////////////////////
 
 /datum/design/borg_upgrade_rename
-	name = "Rename Board"
+	name = "Плата переименования"
 	id = "borg_upgrade_rename"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/rename
@@ -1215,7 +1215,7 @@
 	)
 
 /datum/design/borg_upgrade_restart
-	name = "Emergency Reboot Board"
+	name = "Плата аварийной перезагрузки"
 	id = "borg_upgrade_restart"
 	build_type = MECHFAB
 	build_path = /obj/item/borg_restart_board
@@ -1229,7 +1229,7 @@
 	)
 
 /datum/design/borg_upgrade_thrusters
-	name = "Ion Thrusters"
+	name = "Ионные двигатели"
 	id = "borg_upgrade_thrusters"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/thrusters
@@ -1245,7 +1245,7 @@
 	)
 
 /datum/design/borg_upgrade_disablercooler
-	name = "Rapid Disabler Cooling Module"
+	name = "Модуль быстрого охлаждения дизейблера"
 	id = "borg_upgrade_disablercooler"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/disablercooler
@@ -1261,7 +1261,7 @@
 	)
 
 /datum/design/borg_upgrade_diamonddrill
-	name = "Diamond Drill"
+	name = "Алмазный бур"
 	id = "borg_upgrade_diamonddrill"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/diamond_drill
@@ -1276,7 +1276,7 @@
 	)
 
 /datum/design/borg_upgrade_holding
-	name = "Ore Satchel of Holding"
+	name = "Бездонная сумка для руды"
 	id = "borg_upgrade_holding"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/soh
@@ -1291,7 +1291,7 @@
 	)
 
 /datum/design/borg_upgrade_lavaproof
-	name = "Lavaproof Tracks"
+	name = "Лавостойкие гусеницы"
 	id = "borg_upgrade_lavaproof"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/lavaproof
@@ -1306,7 +1306,7 @@
 	)
 
 /datum/design/borg_syndicate_module
-	name = "Illegal Modules"
+	name = "Нелегальные модули"
 	id = "borg_syndicate_module"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/syndicate
@@ -1321,7 +1321,7 @@
 	)
 
 /datum/design/borg_transform_clown
-	name = "Clown Module"
+	name = "Модуль клоуна"
 	id = "borg_transform_clown"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/transform/clown
@@ -1336,7 +1336,7 @@
 	)
 
 /datum/design/borg_upgrade_selfrepair
-	name = "Self-Repair Module"
+	name = "Модуль саморемонта"
 	id = "borg_upgrade_selfrepair"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/selfrepair
@@ -1350,7 +1350,7 @@
 	)
 
 /datum/design/borg_upgrade_expandedsynthesiser
-	name = "Expanded Hypospray Synthesiser"
+	name = "Расширенный синтезатор гипоспрея"
 	id = "borg_upgrade_expandedsynthesiser"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/hypospray/expanded
@@ -1366,7 +1366,7 @@
 	)
 
 /datum/design/borg_upgrade_piercinghypospray
-	name = "Piercing Hypospray"
+	name = "Пробивающий гипоспрей"
 	id = "borg_upgrade_piercinghypospray"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/piercing_hypospray
@@ -1382,7 +1382,7 @@
 	)
 
 /datum/design/borg_upgrade_defibrillator
-	name = "Defibrillator"
+	name = "Дефибриллятор"
 	id = "borg_upgrade_defibrillator"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/defib
@@ -1398,7 +1398,7 @@
 	)
 
 /datum/design/borg_upgrade_surgicalprocessor
-	name = "Surgical Processor"
+	name = "Хирургический процессор"
 	id = "borg_upgrade_surgicalprocessor"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/processor
@@ -1413,7 +1413,7 @@
 	)
 
 /datum/design/borg_upgrade_surgicalomnitool
-	name = "Advanced Surgical Omnitool Upgrade"
+	name = "Продвинутый хирургический омнитул"
 	id = "borg_upgrade_surgicalomnitool"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/surgery_omnitool
@@ -1428,7 +1428,7 @@
 	)
 
 /datum/design/borg_upgrade_engineeringomnitool
-	name = "Advanced Engineering Omnitool Upgrade"
+	name = "Продвинутый инженерный омнитул"
 	id = "borg_upgrade_engineeringomnitool"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/engineering_omnitool
@@ -1443,7 +1443,7 @@
 	)
 
 /datum/design/borg_upgrade_trashofholding
-	name = "Trash Bag of Holding"
+	name = "Бездонный мешок для мусора"
 	id = "borg_upgrade_trashofholding"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/tboh
@@ -1457,7 +1457,7 @@
 	)
 
 /datum/design/borg_upgrade_advancedmop
-	name = "Advanced Mop"
+	name = "Продвинутая швабра"
 	id = "borg_upgrade_advancedmop"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/amop
@@ -1471,7 +1471,7 @@
 	)
 
 /datum/design/borg_upgrade_prt
-	name = "Plating Repair Tool"
+	name = "Инструмент ремонта обшивки"
 	id = "borg_upgrade_prt"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/prt
@@ -1485,7 +1485,7 @@
 	)
 
 /datum/design/borg_upgrade_plunger
-	name = "Integrated Plunger"
+	name = "Встроенный вантуз"
 	id = "borg_upgrade_plunger"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/plunger
@@ -1499,7 +1499,7 @@
 	)
 
 /datum/design/borg_upgrade_high_capacity_replacer
-	name = "High Capacity Light Replacer"
+	name = "Светозаменитель повышенной ёмкости"
 	id = "borg_upgrade_high_capacity_replacer"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/high_capacity_light_replacer
@@ -1513,7 +1513,7 @@
 	)
 
 /datum/design/borg_upgrade_rolling_table
-	name = "Rolling Table Dock"
+	name = "Док для катящегося стола"
 	id = "borg_upgrade_rolling_table"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/rolling_table
@@ -1527,7 +1527,7 @@
 	)
 
 /datum/design/borg_upgrade_condiment_synthesizer
-	name = "Condiment Synthesizer"
+	name = "Синтезатор приправ"
 	id = "borg_upgrade_condiment_synthesizer"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/condiment_synthesizer
@@ -1543,7 +1543,7 @@
 	)
 
 /datum/design/borg_upgrade_silicon_knife
-	name = "Kitchen Toolset"
+	name = "Кухонный набор инструментов"
 	id = "borg_upgrade_silicon_knife"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/silicon_knife
@@ -1558,7 +1558,7 @@
 	)
 
 /datum/design/borg_upgrade_botany
-	name = "Botany Tools"
+	name = "Ботанические инструменты"
 	id = "borg_upgrade_botany"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/botany_upgrade
@@ -1573,7 +1573,7 @@
 
 
 /datum/design/borg_upgrade_drink_apparatus
-	name = "Drink Apparatus"
+	name = "Аппарат для напитков"
 	id = "borg_upgrade_drink_apparatus"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/drink_app
@@ -1587,7 +1587,7 @@
 	)
 
 /datum/design/borg_upgrade_service_apparatus
-	name = "Service Apparatus"
+	name = "Сервисный аппарат"
 	id = "borg_upgrade_service_apparatus"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/service_apparatus
@@ -1598,7 +1598,7 @@
 	)
 
 /datum/design/borg_upgrade_service_cookbook
-	name = "Service Cookbook"
+	name = "Сервисная кулинарная книга"
 	id = "borg_upgrade_service_cookbook"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/service_cookbook
@@ -1612,7 +1612,7 @@
 	)
 
 /datum/design/borg_upgrade_shuttle_blueprints
-	name = "Engineering Shuttle Blueprints"
+	name = "Инженерные чертежи шаттла"
 	id = "borg_upgrade_engineering_shuttle_blueprints"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/shuttle_blueprints
@@ -1626,7 +1626,7 @@
 	)
 
 /datum/design/borg_upgrade_expand
-	name = "Expand Module"
+	name = "Модуль расширения"
 	id = "borg_upgrade_expand"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/expand
@@ -1640,7 +1640,7 @@
 	)
 
 /datum/design/boris_ai_controller
-	name = "B.O.R.I.S. AI-Cyborg Remote Control"
+	name = "Пульт управления ИИ-киборгом B.O.R.I.S."
 	id = "borg_ai_control"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/ai
@@ -1656,7 +1656,7 @@
 	search_metadata = "boris"
 
 /datum/design/borg_upgrade_rped
-	name = "Rapid Part Exchange Device Expanded"
+	name = "Расширенный RPED"
 	id = "borg_upgrade_rped"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/rped
@@ -1671,7 +1671,7 @@
 	)
 
 /datum/design/borg_upgrade_inducer
-	name = "Cyborg inducer"
+	name = "Индуктор киборга"
 	id = "borg_upgrade_inducer"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/inducer
@@ -1682,7 +1682,7 @@
 	)
 
 /datum/design/borg_upgrade_engineering_app
-	name = "Engineering Apparatus"
+	name = "Инженерный аппарат"
 	id = "borg_upgrade_engineeringapp"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/engineering_app
@@ -1696,7 +1696,7 @@
 	)
 
 /datum/design/borg_upgrade_beaker_app
-	name = "Secondary Beaker Storage"
+	name = "Дополнительное хранилище мензурок"
 	id = "borg_upgrade_beakerapp"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/beaker_app
@@ -1710,7 +1710,7 @@
 	)
 
 /datum/design/borg_upgrade_pinpointer
-	name = "Crew Pinpointer"
+	name = "Пинпоинтер экипажа"
 	id = "borg_upgrade_pinpointer"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/pinpointer
@@ -1724,7 +1724,7 @@
 	)
 
 /datum/design/borg_upgrade_syringe
-	name = "Advanced Syringe"
+	name = "Продвинутый шприц"
 	id = "borg_upgrade_syringe"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/bs_syringe
@@ -1740,7 +1740,7 @@
 	)
 
 /datum/design/borg_upgrade_broomer
-	name = "Experimental Push Broom"
+	name = "Экспериментальная широкая щётка"
 	id = "borg_upgrade_broomer"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/broomer
@@ -1754,8 +1754,8 @@
 	)
 
 /datum/design/mmi
-	name = "Man-Machine Interface"
-	desc = "The Warrior's bland acronym, MMI, obscures the true horror of this monstrosity."
+	name = "Человеко-машинный интерфейс"
+	desc = "Сухая аббревиатура MMI скрывает истинный ужас этого устройства."
 	id = "mmi"
 	build_type = MECHFAB
 	materials = list(
@@ -1778,8 +1778,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/posibrain
-	name = "Positronic Brain"
-	desc = "The latest in Artificial Intelligences."
+	name = "Позитронный мозг"
+	desc = "Новейшая разработка в области искусственного интеллекта."
 	id = "mmi_posi"
 	build_type = MECHFAB
 	materials = list(
@@ -1796,7 +1796,7 @@
 
 //Misc
 /datum/design/mecha_tracking
-	name = "Exosuit Tracking Beacon"
+	name = "Маяк отслеживания экзокостюма"
 	id = "mecha_tracking"
 	build_type = MECHFAB
 	build_path =/obj/item/mecha_parts/mecha_tracking
@@ -1815,7 +1815,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/mecha_tracking_ai_control
-	name = "AI Control Beacon"
+	name = "Маяк управления ИИ"
 	id = "mecha_tracking_ai_control"
 	build_type = MECHFAB
 	build_path = /obj/item/mecha_parts/mecha_tracking/ai_control
@@ -1838,8 +1838,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/mecha_camera
-	name = "Exosuit External Camera Kit"
-	desc = "A durable CCTV camera designed for exosuit operations."
+	name = "Комплект внешней камеры экзокостюма"
+	desc = "Прочная камера видеонаблюдения, предназначенная для работы с экзокостюмами."
 	id = "mecha_camera"
 	build_type = MECHFAB
 	build_path = /obj/item/mecha_parts/camera_kit
@@ -1863,8 +1863,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/synthetic_flash
-	name = "Flash"
-	desc = "When a problem arises, SCIENCE is the solution."
+	name = "Вспышка"
+	desc = "Когда возникает проблема, НАУКА становится решением."
 	id = "sflash"
 	build_type = MECHFAB
 	materials = list(
@@ -1884,8 +1884,8 @@
 //MODsuit construction
 
 /datum/design/mod_shell
-	name = "MOD Shell"
-	desc = "A 'Nakamura Engineering' designed shell for a Modular Suit."
+	name = "Оболочка MOD"
+	desc = "Оболочка модульного костюма, разработанная Nakamura Engineering."
 	id = "mod_shell"
 	build_type = MECHFAB
 	materials = list(
@@ -1899,8 +1899,8 @@
 	)
 
 /datum/design/mod_helmet
-	name = "MOD Helmet"
-	desc = "A 'Nakamura Engineering' designed helmet for a Modular Suit."
+	name = "Шлем MOD"
+	desc = "Шлем модульного костюма, разработанный Nakamura Engineering."
 	id = "mod_helmet"
 	build_type = MECHFAB
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT * 2.5)
@@ -1911,8 +1911,8 @@
 	)
 
 /datum/design/mod_chestplate
-	name = "MOD Chestplate"
-	desc = "A 'Nakamura Engineering' designed chestplate for a Modular Suit."
+	name = "Нагрудник MOD"
+	desc = "Нагрудник модульного костюма, разработанный Nakamura Engineering."
 	id = "mod_chestplate"
 	build_type = MECHFAB
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT * 2.5)
@@ -1923,8 +1923,8 @@
 	)
 
 /datum/design/mod_gauntlets
-	name = "MOD Gauntlets"
-	desc = "'Nakamura Engineering' designed gauntlets for a Modular Suit."
+	name = "Рукавицы MOD"
+	desc = "Рукавицы модульного костюма, разработанные Nakamura Engineering."
 	id = "mod_gauntlets"
 	build_type = MECHFAB
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT * 2.5)
@@ -1935,8 +1935,8 @@
 	)
 
 /datum/design/mod_boots
-	name = "MOD Boots"
-	desc = "'Nakamura Engineering' designed boots for a Modular Suit."
+	name = "Ботинки MOD"
+	desc = "Ботинки модульного костюма, разработанные Nakamura Engineering."
 	id = "mod_boots"
 	build_type = MECHFAB
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT * 2.5)
@@ -1947,8 +1947,8 @@
 	)
 
 /datum/design/mod_plating
-	name = "MOD External Plating"
-	desc = "External plating for a MODsuit."
+	name = "Внешняя обшивка MOD"
+	desc = "Внешняя обшивка для MOD-костюма."
 	id = "mod_plating_standard"
 	build_type = MECHFAB
 	materials = list(
@@ -1968,10 +1968,10 @@
 	. = ..()
 	var/obj/item/mod/construction/plating/armor_type = build_path
 	var/datum/mod_theme/theme = GLOB.mod_themes[initial(armor_type.theme)]
-	desc = "External plating for a MODsuit. [theme.desc]"
+	desc = "Внешняя обшивка для MOD-костюма. [theme.desc]"
 
 /datum/design/mod_plating/civilian
-	name = "MOD Civilian Plating"
+	name = "Гражданская обшивка MOD"
 	id = "mod_plating_civilian"
 	build_path = /obj/item/mod/construction/plating/civilian
 	materials = list(
@@ -1982,7 +1982,7 @@
 	research_icon_state = "civilian-plating"
 
 /datum/design/mod_plating/portable_suit
-	name = "MOD Portable Suit Plating"
+	name = "Портативная обшивка MOD"
 	id = "mod_plating_portable_suit"
 	build_path = /obj/item/mod/construction/plating/portable_suit
 	materials = list(
@@ -1994,7 +1994,7 @@
 	research_icon_state = "psuit-plating"
 
 /datum/design/mod_plating/engineering
-	name = "MOD Engineering Plating"
+	name = "Инженерная обшивка MOD"
 	id = "mod_plating_engineering"
 	build_path = /obj/item/mod/construction/plating/engineering
 	materials = list(
@@ -2007,7 +2007,7 @@
 	research_icon_state = "engineering-plating"
 
 /datum/design/mod_plating/atmospheric
-	name = "MOD Atmospheric Plating"
+	name = "Атмосферная обшивка MOD"
 	id = "mod_plating_atmospheric"
 	build_path = /obj/item/mod/construction/plating/atmospheric
 	materials = list(
@@ -2020,7 +2020,7 @@
 	research_icon_state = "atmospheric-plating"
 
 /datum/design/mod_plating/medical
-	name = "MOD Medical Plating"
+	name = "Медицинская обшивка MOD"
 	id = "mod_plating_medical"
 	build_path = /obj/item/mod/construction/plating/medical
 	materials = list(
@@ -2033,7 +2033,7 @@
 	research_icon_state = "medical-plating"
 
 /datum/design/mod_plating/cosmohonk
-	name = "MOD Cosmohonk Plating"
+	name = "Космохонк-обшивка MOD"
 	id = "mod_plating_cosmohonk"
 	build_path = /obj/item/mod/construction/plating/cosmohonk
 	materials = list(
@@ -2046,8 +2046,8 @@
 	research_icon_state = "cosmohonk-plating"
 
 /datum/design/mod_paint_kit
-	name = "MOD Paint Kit"
-	desc = "A paint kit for Modular Suits."
+	name = "Набор покраски MOD"
+	desc = "Набор краски для модульных костюмов."
 	id = "mod_paint_kit"
 	build_type = MECHFAB
 	materials = list(
@@ -2062,7 +2062,7 @@
 
 /datum/design/modlink_scryer
 	name = "MODlink Scryer"
-	desc = "A neck-worn piece of gear that can call with another MODlink-compatible device."
+	desc = "Шейное устройство, способное связываться с другим MODlink-совместимым устройством."
 	id = "modlink_scryer"
 	build_type = MECHFAB
 	materials = list(
@@ -2079,7 +2079,7 @@
 //MODsuit modules
 
 /datum/design/module
-	name = "MOD Module"
+	name = "Модуль MOD"
 	build_type = MECHFAB
 	construction_time = 1 SECONDS
 	materials = list(
@@ -2094,10 +2094,10 @@
 /datum/design/module/New()
 	. = ..()
 	var/obj/item/mod/module/module = build_path
-	desc = "[initial(module.desc)] It uses [initial(module.complexity)] complexity."
+	desc = "[initial(module.desc)] Использует [initial(module.complexity)] сложности."
 
 /datum/design/module/mod_storage
-	name = "Compact Storage Module"
+	name = "Компактный модуль хранения"
 	id = "mod_storage"
 	materials = list(
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT *1.25,
@@ -2106,7 +2106,7 @@
 	build_path = /obj/item/mod/module/storage
 
 /datum/design/module/mod_storage_expanded
-	name = "Storage Module"
+	name = "Модуль хранения"
 	id = "mod_storage_expanded"
 	materials = list(
 		/datum/material/iron =SHEET_MATERIAL_AMOUNT * 2.5,
@@ -2115,7 +2115,7 @@
 	build_path = /obj/item/mod/module/storage/large_capacity
 
 /datum/design/module/mod_storage_holding
-	name = "Storage Module of Holding"
+	name = "Бездонный модуль хранения"
 	id = "mod_storage_holding"
 	materials = list(
 		/datum/material/gold =SHEET_MATERIAL_AMOUNT * 1.5,
@@ -2126,7 +2126,7 @@
 	build_path = /obj/item/mod/module/storage/holding
 
 /datum/design/module/mod_visor_medhud
-	name = "Medical Visor Module"
+	name = "Медицинский визорный модуль"
 	id = "mod_visor_medhud"
 	materials = list(
 		/datum/material/silver =SMALL_MATERIAL_AMOUNT*5,
@@ -2138,7 +2138,7 @@
 	)
 
 /datum/design/module/mod_visor_diaghud
-	name = "Diagnostic Visor Module"
+	name = "Диагностический визорный модуль"
 	id = "mod_visor_diaghud"
 	materials = list(
 		/datum/material/gold =SMALL_MATERIAL_AMOUNT*5,
@@ -2149,7 +2149,7 @@
 		RND_CATEGORY_MODSUIT_MODULES + RND_SUBCATEGORY_MODSUIT_MODULES_SCIENCE
 	)
 /datum/design/module/mod_visor_sechud
-	name = "Security Visor Module"
+	name = "Охранный визорный модуль"
 	id = "mod_visor_sechud"
 	materials = list(
 		/datum/material/titanium =SMALL_MATERIAL_AMOUNT*5,
@@ -2160,7 +2160,7 @@
 		RND_CATEGORY_MODSUIT_MODULES + RND_SUBCATEGORY_MODSUIT_MODULES_SECURITY
 	)
 /datum/design/module/mod_visor_meson
-	name = "Meson Visor Module"
+	name = "Мезонный визорный модуль"
 	id = "mod_visor_meson"
 	materials = list(
 		/datum/material/uranium =SMALL_MATERIAL_AMOUNT*5,
@@ -2171,7 +2171,7 @@
 		RND_CATEGORY_MODSUIT_MODULES + RND_SUBCATEGORY_MODSUIT_MODULES_SUPPLY
 	)
 /datum/design/module/mod_visor_welding
-	name = "Welding Protection Module"
+	name = "Модуль сварочной защиты"
 	id = "mod_welding"
 	materials = list(
 		/datum/material/iron =SMALL_MATERIAL_AMOUNT*5,
@@ -2182,7 +2182,7 @@
 		RND_CATEGORY_MODSUIT_MODULES + RND_SUBCATEGORY_MODSUIT_MODULES_ENGINEERING
 	)
 /datum/design/module/mod_head_protection
-	name = "Safety-First Head Protection Module"
+	name = "Модуль защиты головы Safety-First"
 	id = "mod_safety"
 	materials = list(
 		/datum/material/iron =SMALL_MATERIAL_AMOUNT*5,
@@ -2193,7 +2193,7 @@
 		RND_CATEGORY_MODSUIT_MODULES + RND_SUBCATEGORY_MODSUIT_MODULES_ENGINEERING
 	)
 /datum/design/module/mod_t_ray
-	name = "T-Ray Scanner Module"
+	name = "Модуль Т-лучевого сканера"
 	id = "mod_t_ray"
 	materials = list(
 		/datum/material/iron =SMALL_MATERIAL_AMOUNT*5,
@@ -2204,7 +2204,7 @@
 		RND_CATEGORY_MODSUIT_MODULES + RND_SUBCATEGORY_MODSUIT_MODULES_ENGINEERING
 	)
 /datum/design/module/mod_health_analyzer
-	name = "Health Analyzer Module"
+	name = "Модуль анализатора здоровья"
 	id = "mod_health_analyzer"
 	materials = list(
 		/datum/material/iron =SMALL_MATERIAL_AMOUNT*5,
@@ -2216,7 +2216,7 @@
 	)
 
 /datum/design/module/mod_stealth
-	name = "Cloak Module"
+	name = "Модуль маскировки"
 	id = "mod_stealth"
 	materials = list(
 		/datum/material/iron =HALF_SHEET_MATERIAL_AMOUNT,
@@ -2227,13 +2227,13 @@
 		RND_CATEGORY_MODSUIT_MODULES + RND_SUBCATEGORY_MODSUIT_MODULES_SECURITY
 	)
 /datum/design/module/mod_jetpack
-	name = "Ion Jetpack Module"
+	name = "Модуль ионного джетпака"
 	id = "mod_jetpack"
 	materials = list(/datum/material/iron =HALF_SHEET_MATERIAL_AMOUNT * 1.5, /datum/material/plasma =HALF_SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/mod/module/jetpack
 
 /datum/design/module/mod_magboot
-	name = "Magnetic Stabilizator Module"
+	name = "Модуль магнитной стабилизации"
 	id = "mod_magboot"
 	materials = list(
 		/datum/material/iron =HALF_SHEET_MATERIAL_AMOUNT,
@@ -2245,7 +2245,7 @@
 	)
 
 /datum/design/module/mod_mag_harness
-	name = "Magnetic Harness Module"
+	name = "Модуль магнитной сбруи"
 	id = "mod_mag_harness"
 	materials = list(
 		/datum/material/iron =HALF_SHEET_MATERIAL_AMOUNT * 1.5,
@@ -2257,7 +2257,7 @@
 	)
 
 /datum/design/module/mod_tether
-	name = "Emergency Tether Module"
+	name = "Модуль аварийного троса"
 	id = "mod_tether"
 	materials = list(
 		/datum/material/iron =HALF_SHEET_MATERIAL_AMOUNT,
@@ -2269,13 +2269,13 @@
 	)
 
 /datum/design/module/mod_mouthhole
-	name = "Eating Apparatus Module"
+	name = "Модуль аппарата питания"
 	id = "mod_mouthhole"
 	materials = list(/datum/material/iron =HALF_SHEET_MATERIAL_AMOUNT * 1.5)
 	build_path = /obj/item/mod/module/mouthhole
 
 /datum/design/module/mod_rad_protection
-	name = "Radiation Protection Module"
+	name = "Модуль радиационной защиты"
 	id = "mod_rad_protection"
 	materials = list(
 		/datum/material/iron =HALF_SHEET_MATERIAL_AMOUNT,
@@ -2286,7 +2286,7 @@
 		RND_CATEGORY_MODSUIT_MODULES + RND_SUBCATEGORY_MODSUIT_MODULES_ENGINEERING
 	)
 /datum/design/module/mod_emp_shield
-	name = "EMP Shield Module"
+	name = "Модуль ЭМИ-защиты"
 	id = "mod_emp_shield"
 	materials = list(
 		/datum/material/iron =HALF_SHEET_MATERIAL_AMOUNT,
@@ -2295,7 +2295,7 @@
 	build_path = /obj/item/mod/module/emp_shield
 
 /datum/design/module/mod_flashlight
-	name = "Flashlight Module"
+	name = "Модуль фонаря"
 	id = "mod_flashlight"
 	materials = list(
 		/datum/material/iron =SMALL_MATERIAL_AMOUNT*5,
@@ -2304,7 +2304,7 @@
 	build_path = /obj/item/mod/module/flashlight
 
 /datum/design/module/mod_reagent_scanner
-	name = "Reagent Scanner Module"
+	name = "Модуль сканера реагентов"
 	id = "mod_reagent_scanner"
 	materials = list(/datum/material/glass =HALF_SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/mod/module/reagent_scanner
@@ -2313,7 +2313,7 @@
 	)
 
 /datum/design/module/mod_gps
-	name = "Internal GPS Module"
+	name = "Встроенный GPS-модуль"
 	id = "mod_gps"
 	materials = list(
 		/datum/material/iron =SMALL_MATERIAL_AMOUNT*5,
@@ -2325,7 +2325,7 @@
 	)
 
 /datum/design/module/mod_constructor
-	name = "Constructor Module"
+	name = "Строительный модуль"
 	id = "mod_constructor"
 	materials = list(
 		/datum/material/iron =HALF_SHEET_MATERIAL_AMOUNT,
@@ -2336,7 +2336,7 @@
 		RND_CATEGORY_MODSUIT_MODULES + RND_SUBCATEGORY_MODSUIT_MODULES_ENGINEERING
 	)
 /datum/design/module/mod_quick_carry
-	name = "Quick Carry Module"
+	name = "Модуль быстрой переноски"
 	id = "mod_quick_carry"
 	materials = list(
 		/datum/material/iron =HALF_SHEET_MATERIAL_AMOUNT,
@@ -2348,13 +2348,13 @@
 	)
 
 /datum/design/module/mod_longfall
-	name = "Longfall Module"
+	name = "Модуль безопасного падения"
 	id = "mod_longfall"
 	materials = list(/datum/material/iron =HALF_SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/mod/module/longfall
 
 /datum/design/module/mod_thermal_regulator
-	name = "Thermal Regulator Module"
+	name = "Модуль терморегулятора"
 	id = "mod_thermal_regulator"
 	materials = list(
 		/datum/material/iron =SMALL_MATERIAL_AMOUNT*5,
@@ -2363,7 +2363,7 @@
 	build_path = /obj/item/mod/module/thermal_regulator
 
 /datum/design/module/mod_injector
-	name = "Injector Module"
+	name = "Модуль инъектора"
 	id = "mod_injector"
 	materials = list(
 		/datum/material/iron =HALF_SHEET_MATERIAL_AMOUNT,
@@ -2375,7 +2375,7 @@
 	)
 
 /datum/design/module/mod_bikehorn
-	name = "Bike Horn Module"
+	name = "Модуль клаксона"
 	id = "mod_bikehorn"
 	materials = list(
 		/datum/material/plastic =SMALL_MATERIAL_AMOUNT*5,
@@ -2387,7 +2387,7 @@
 	)
 
 /datum/design/module/mod_microwave_beam
-	name = "Microwave Beam Module"
+	name = "Модуль микроволнового луча"
 	id = "mod_microwave_beam"
 	materials = list(
 		/datum/material/iron =HALF_SHEET_MATERIAL_AMOUNT,
@@ -2399,7 +2399,7 @@
 	)
 
 /datum/design/module/mod_waddle
-	name = "Waddle Module"
+	name = "Модуль вперевалку"
 	id = "mod_waddle"
 	materials = list(
 		/datum/material/plastic =HALF_SHEET_MATERIAL_AMOUNT,
@@ -2411,7 +2411,7 @@
 	)
 
 /datum/design/module/mod_clamp
-	name = "Crate Clamp Module"
+	name = "Модуль зажима ящиков"
 	id = "mod_clamp"
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/mod/module/clamp
@@ -2420,7 +2420,7 @@
 	)
 
 /datum/design/module/mod_drill
-	name = "Drill Module"
+	name = "Модуль бура"
 	id = "mod_drill"
 	materials = list(
 		/datum/material/silver =HALF_SHEET_MATERIAL_AMOUNT,
@@ -2432,7 +2432,7 @@
 	)
 
 /datum/design/module/mod_orebag
-	name = "Ore Bag Module"
+	name = "Модуль рудной сумки"
 	id = "mod_orebag"
 	materials = list(/datum/material/iron =HALF_SHEET_MATERIAL_AMOUNT * 1.5)
 	build_path = /obj/item/mod/module/orebag
@@ -2441,7 +2441,7 @@
 	)
 
 /datum/design/module/mod_organizer
-	name = "Organizer Module"
+	name = "Модуль органайзера"
 	id = "mod_organizer"
 	materials = list(
 		/datum/material/iron =HALF_SHEET_MATERIAL_AMOUNT,
@@ -2453,7 +2453,7 @@
 	)
 
 /datum/design/module/mod_pathfinder
-	name = "Pathfinder Module"
+	name = "Модуль следопыта"
 	id = "mod_pathfinder"
 	materials = list(
 		/datum/material/uranium =HALF_SHEET_MATERIAL_AMOUNT,
@@ -2462,7 +2462,7 @@
 	build_path = /obj/item/mod/module/pathfinder
 
 /datum/design/module/mod_dna_lock
-	name = "DNA Lock Module"
+	name = "Модуль ДНК-замка"
 	id = "mod_dna_lock"
 	materials = list(
 		/datum/material/diamond =SMALL_MATERIAL_AMOUNT*5,
@@ -2471,7 +2471,7 @@
 	build_path = /obj/item/mod/module/dna_lock
 
 /datum/design/module/mod_plasma_stabilizer
-	name = "Plasma Stabilizer Module"
+	name = "Модуль стабилизатора плазмы"
 	id = "mod_plasma"
 	materials = list(
 		/datum/material/plasma =HALF_SHEET_MATERIAL_AMOUNT,
@@ -2480,7 +2480,7 @@
 	build_path = /obj/item/mod/module/plasma_stabilizer
 
 /datum/design/module/mod_glove_translator
-	name = "Glove Translator Module"
+	name = "Модуль перчаточного переводчика"
 	id = "mod_sign_radio"
 	materials = list(
 		/datum/material/iron = SMALL_MATERIAL_AMOUNT * 7.5,
@@ -2489,7 +2489,7 @@
 	build_path = /obj/item/mod/module/signlang_radio
 
 /datum/design/module/mister_atmos
-	name = "Resin Mister Module"
+	name = "Модуль распылителя смолы"
 	id = "mod_mister_atmos"
 	materials = list(
 		/datum/material/glass =HALF_SHEET_MATERIAL_AMOUNT,
@@ -2501,7 +2501,7 @@
 	)
 
 /datum/design/module/mod_holster
-	name = "Holster Module"
+	name = "Модуль кобуры"
 	id = "mod_holster"
 	materials = list(
 		/datum/material/iron =HALF_SHEET_MATERIAL_AMOUNT * 1.5,
@@ -2513,7 +2513,7 @@
 	)
 
 /datum/design/module/mod_sonar
-	name = "Active Sonar Module"
+	name = "Модуль активного сонара"
 	id = "mod_sonar"
 	materials = list(
 		/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 2.5,
@@ -2527,7 +2527,7 @@
 	)
 
 /datum/design/module/projectile_dampener
-	name = "Projectile Dampener Module"
+	name = "Модуль гасителя снарядов"
 	id = "mod_projectile_dampener"
 	materials = list(
 		/datum/material/iron =HALF_SHEET_MATERIAL_AMOUNT,
@@ -2539,7 +2539,7 @@
 	)
 
 /datum/design/module/surgicalprocessor
-	name = "Surgical Processor Module"
+	name = "Модуль хирургического процессора"
 	id = "mod_surgicalprocessor"
 	materials = list(
 		/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 2.5,
@@ -2552,7 +2552,7 @@
 	)
 
 /datum/design/module/threadripper
-	name = "Thread Ripper Module"
+	name = "Модуль вспарывателя швов"
 	id = "mod_threadripper"
 	materials = list(
 		/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 2.5,
@@ -2565,7 +2565,7 @@
 	)
 
 /datum/design/module/defibrillator
-	name = "Defibrillator Module"
+	name = "Модуль дефибриллятора"
 	id = "mod_defib"
 	materials = list(
 		/datum/material/titanium = SMALL_MATERIAL_AMOUNT * 2.5,
@@ -2578,7 +2578,7 @@
 	)
 
 /datum/design/module/statusreadout
-	name = "Status Readout Module"
+	name = "Модуль вывода статуса"
 	id = "mod_statusreadout"
 	materials = list(
 		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT * 3,
@@ -2591,7 +2591,7 @@
 	)
 
 /datum/design/module/patienttransport
-	name = "Patient Transport Module"
+	name = "Модуль транспортировки пациентов"
 	id = "mod_patienttransport"
 	materials = list(
 		/datum/material/iron =HALF_SHEET_MATERIAL_AMOUNT,
@@ -2603,7 +2603,7 @@
 	)
 
 /datum/design/module/criminalcapture
-	name = "Criminal Capture Module"
+	name = "Модуль задержания преступников"
 	id = "mod_criminalcapture"
 	materials = list(
 		/datum/material/iron =HALF_SHEET_MATERIAL_AMOUNT,
@@ -2615,7 +2615,7 @@
 	)
 
 /datum/design/module/mirage
-	name = "Mirage Grenade Dispenser Module"
+	name = "Модуль раздатчика миражных гранат"
 	id = "mod_mirage_grenade"
 	materials = list(
 		/datum/material/iron =HALF_SHEET_MATERIAL_AMOUNT,
@@ -2628,7 +2628,7 @@
 
 //MODsuit bepis modules
 /datum/design/module/disposal
-	name = "Disposal Connector Module"
+	name = "Модуль мусорного коннектора"
 	id = "mod_disposal"
 	materials = list(
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT *1.25,
@@ -2640,7 +2640,7 @@
 	)
 
 /datum/design/module/joint_torsion
-	name = "Joint Torsion Ratchet Module"
+	name = "Модуль суставной трещотки"
 	id = "mod_joint_torsion"
 	materials = list(
 		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
@@ -2653,7 +2653,7 @@
 	)
 
 /datum/design/module/recycler
-	name = "Recycler Module"
+	name = "Модуль переработчика"
 	id = "mod_recycler"
 	materials = list(
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT,
@@ -2666,7 +2666,7 @@
 	)
 
 /datum/design/module/shooting_assistant
-	name = "Shooting Assistant Module"
+	name = "Модуль стрелкового ассистента"
 	id = "mod_shooting"
 	materials = list(
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT,
@@ -2681,7 +2681,7 @@
 
 //MODsuit anomalock modules
 /datum/design/module/mod_antigrav
-	name = "Anti-Gravity Module"
+	name = "Антигравитационный модуль"
 	id = "mod_antigrav"
 	materials = list(
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT *1.25,
@@ -2694,7 +2694,7 @@
 	)
 
 /datum/design/module/mod_teleporter
-	name = "Teleporter Module"
+	name = "Модуль телепортера"
 	id = "mod_teleporter"
 	materials = list(
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT *1.25,

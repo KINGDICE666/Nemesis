@@ -24,8 +24,8 @@ By design, d1 is the smallest direction and d2 is the highest
 */
 
 /obj/structure/pipe_cleaner
-	name = "pipe cleaner"
-	desc = "A bendable piece of wire covered in fuzz. Fun for arts and crafts!"
+	name = "труба"
+	desc = "Гибкий отрезок трубы для быстрой прокладки."
 	icon = 'icons/obj/pipes_n_cables/pipe_cleaner.dmi'
 	icon_state = "0-1"
 	layer = WIRE_LAYER //Above hidden pipes, GAS_PIPE_HIDDEN_LAYER
@@ -139,14 +139,14 @@ By design, d1 is the smallest direction and d2 is the highest
 	else if(istype(W, /obj/item/stack/pipe_cleaner_coil))
 		var/obj/item/stack/pipe_cleaner_coil/coil = W
 		if (coil.get_amount() < 1)
-			to_chat(user, span_warning("Not enough pipe cleaner!"))
+			to_chat(user, span_warning("Недостаточно труб!"))
 			return
 		coil.pipe_cleaner_join(src, user)
 
 	add_fingerprint(user)
 
 /obj/structure/pipe_cleaner/proc/cut_pipe_cleaner(mob/user)
-	user.visible_message(span_notice("[user] pulls up the pipe cleaner."), span_notice("You pull up the pipe cleaner."))
+	user.visible_message(span_notice("[user] вытаскивает трубу."), span_notice("Вы вытаскиваете трубу."))
 	stored.add_fingerprint(user)
 	investigate_log("was pulled up by [key_name(usr)] in [AREACOORD(src)]", INVESTIGATE_WIRES)
 	deconstruct()
@@ -177,8 +177,8 @@ By design, d1 is the smallest direction and d2 is the highest
 ////////////////////////////////
 
 /obj/item/stack/pipe_cleaner_coil
-	name = "pipe cleaner coil"
-	desc = "A coil of pipe cleaners. Good for arts and crafts, not to build with."
+	name = "моток труб"
+	desc = "Моток гибких труб для быстрой прокладки."
 	custom_price = PAYCHECK_CREW * 0.5
 	gender = NEUTER //That's a pipe_cleaner coil sounds better than that's some pipe_cleaner coils
 	icon = 'icons/obj/stack_objects.dmi'
@@ -197,9 +197,9 @@ By design, d1 is the smallest direction and d2 is the highest
 	mats_per_unit = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*0.1, /datum/material/glass=SMALL_MATERIAL_AMOUNT*0.1)
 	obj_flags = CONDUCTS_ELECTRICITY
 	slot_flags = ITEM_SLOT_BELT
-	attack_verb_continuous = list("whips", "lashes", "disciplines", "flogs")
-	attack_verb_simple = list("whip", "lash", "discipline", "flog")
-	singular_name = "pipe cleaner piece"
+	attack_verb_continuous = list("хлещет", "стегает", "воспитывает", "бьёт")
+	attack_verb_simple = list("хлестнуть", "стегнуть", "воспитать", "ударить")
+	singular_name = "отрезок трубы"
 	full_w_class = WEIGHT_CLASS_SMALL
 	usesound = 'sound/items/deconstruct.ogg'
 	cost = 1
@@ -246,9 +246,9 @@ By design, d1 is the smallest direction and d2 is the highest
 
 /obj/item/stack/pipe_cleaner_coil/suicide_act(mob/living/user)
 	if(locate(/obj/structure/chair/stool) in get_turf(user))
-		user.visible_message(span_suicide("[user] is making a noose with [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+		user.visible_message(span_suicide("[user] делает петлю из [src]! Похоже, [user.p_theyre()] пытается совершить самоубийство!"))
 	else
-		user.visible_message(span_suicide("[user] is strangling [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+		user.visible_message(span_suicide("[user] душит себя предметом [src]! Похоже, [user.p_theyre()] пытается совершить самоубийство!"))
 	return OXYLOSS
 
 /obj/item/stack/pipe_cleaner_coil/Initialize(mapload, new_amount = null, list/mat_override=null, mat_amt=1, param_color = null)
@@ -272,7 +272,7 @@ By design, d1 is the smallest direction and d2 is the highest
 
 /obj/item/stack/pipe_cleaner_coil/update_name()
 	. = ..()
-	name = "pipe cleaner [amount < 3 ? "piece" : "coil"]"
+	name = amount < 3 ? "отрезок трубы" : "моток труб"
 
 /obj/item/stack/pipe_cleaner_coil/update_icon_state()
 	. = ..()
@@ -312,15 +312,15 @@ By design, d1 is the smallest direction and d2 is the highest
 		return
 
 	if(!isturf(T) || !T.can_have_cabling())
-		to_chat(user, span_warning("You can only lay pipe cleaners on a solid floor!"))
+		to_chat(user, span_warning("Трубы можно прокладывать только на твёрдом полу!"))
 		return
 
 	if(get_amount() < 1) // Out of pipe_cleaner
-		to_chat(user, span_warning("There is no pipe cleaner left!"))
+		to_chat(user, span_warning("Трубы закончились!"))
 		return
 
 	if(get_dist(T,user) > 1) // Too far
-		to_chat(user, span_warning("You can't lay pipe cleaner at a place that far away!"))
+		to_chat(user, span_warning("Нельзя прокладывать трубы так далеко!"))
 		return
 
 	var/dirn
@@ -334,7 +334,7 @@ By design, d1 is the smallest direction and d2 is the highest
 
 	for(var/obj/structure/pipe_cleaner/LC in T)
 		if(LC.d2 == dirn && LC.d1 == 0)
-			to_chat(user, span_warning("There's already a pipe cleaner at that position!"))
+			to_chat(user, span_warning("В этой позиции уже есть труба!"))
 			return
 
 	var/obj/structure/pipe_cleaner/C = get_new_pipe_cleaner(T)
@@ -362,7 +362,7 @@ By design, d1 is the smallest direction and d2 is the highest
 		return
 
 	if(get_dist(C, user) > 1) // make sure it's close enough
-		to_chat(user, span_warning("You can't lay pipe cleaner at a place that far away!"))
+		to_chat(user, span_warning("Нельзя прокладывать трубы так далеко!"))
 		return
 
 
@@ -378,7 +378,7 @@ By design, d1 is the smallest direction and d2 is the highest
 	if((C.d1 == dirn || C.d2 == dirn) && !forceddir)
 		if(!U.can_have_cabling()) //checking if it's a plating or catwalk
 			if (showerror)
-				to_chat(user, span_warning("You can only lay pipe cleaners on catwalks and plating!"))
+				to_chat(user, span_warning("Трубы можно прокладывать только на мостиках и обшивке!"))
 			return
 		else
 			// pipe_cleaner is pointing at us, we're standing on an open tile
@@ -389,7 +389,7 @@ By design, d1 is the smallest direction and d2 is the highest
 			for(var/obj/structure/pipe_cleaner/LC in U) // check to make sure there's not a pipe_cleaner there already
 				if(LC.d1 == fdirn || LC.d2 == fdirn)
 					if (showerror)
-						to_chat(user, span_warning("There's already a pipe cleaner at that position!"))
+						to_chat(user, span_warning("В этой позиции уже есть труба!"))
 					return
 
 			var/obj/structure/pipe_cleaner/NC = get_new_pipe_cleaner(U)
@@ -420,7 +420,7 @@ By design, d1 is the smallest direction and d2 is the highest
 				continue
 			if((LC.d1 == nd1 && LC.d2 == nd2) || (LC.d1 == nd2 && LC.d2 == nd1) ) // make sure no pipe_cleaner matches either direction
 				if (showerror)
-					to_chat(user, span_warning("There's already a pipe cleaner at that position!"))
+					to_chat(user, span_warning("В этой позиции уже есть труба!"))
 
 				return
 

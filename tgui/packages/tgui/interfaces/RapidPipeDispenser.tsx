@@ -18,6 +18,18 @@ import { Window } from '../layouts';
 
 const ROOT_CATEGORIES = ['Atmospherics', 'Disposals', 'Transit Tubes'] as const;
 
+const CATEGORY_NAMES: Record<string, string> = {
+  Atmospherics: 'Атмосферика',
+  Binary: 'Бинарные',
+  Devices: 'Устройства',
+  'Disposal Pipes': 'Мусорные трубы',
+  Disposals: 'Мусорка',
+  'Heat Exchange': 'Теплообмен',
+  Pipes: 'Трубы',
+  'Station Equipment': 'Станционное оборудование',
+  'Transit Tubes': 'Транзитные трубы',
+};
+
 export const ICON_BY_CATEGORY_NAME = {
   Atmospherics: 'wrench',
   Binary: 'arrows-left-right',
@@ -33,21 +45,27 @@ export const ICON_BY_CATEGORY_NAME = {
 const TOOLS = [
   {
     name: 'Dispense',
+    label: 'Выдать',
     bitmask: 1,
   },
   {
     name: 'Connect',
+    label: 'Соединить',
     bitmask: 2,
   },
   {
     name: 'Destroy',
+    label: 'Разобрать',
     bitmask: 4,
   },
   {
     name: 'Reprogram',
+    label: 'Перенастроить',
     bitmask: 8,
   },
 ] as const;
+
+const localizeCategory = (category: string) => CATEGORY_NAMES[category] || category;
 
 type DirectionsAllowed = {
   east: BooleanLike;
@@ -97,7 +115,7 @@ export function ColorItem(props) {
   const colorNames = Object.keys(paint_colors);
 
   return (
-    <LabeledList.Item label="Color">
+    <LabeledList.Item label="Цвет">
       {colorNames.map((colorName) => (
         <ColorBox
           key={colorName}
@@ -128,7 +146,7 @@ function ModeItem(props) {
   const { mode } = data;
 
   return (
-    <LabeledList.Item label="Modes">
+    <LabeledList.Item label="Режимы">
       {TOOLS.map((tool) => (
         <Button.Checkbox
           key={tool.bitmask}
@@ -139,7 +157,7 @@ function ModeItem(props) {
             })
           }
         >
-          {tool.name}
+          {tool.label}
         </Button.Checkbox>
       ))}
     </LabeledList.Item>
@@ -151,7 +169,7 @@ function CategoryItem(props) {
   const { category: rootCategoryIndex } = data;
 
   return (
-    <LabeledList.Item label="Category">
+    <LabeledList.Item label="Категория">
       {ROOT_CATEGORIES.map((categoryName, i) => (
         <Button
           key={categoryName}
@@ -160,7 +178,7 @@ function CategoryItem(props) {
           color="transparent"
           onClick={() => act('category', { category: i })}
         >
-          {categoryName}
+          {localizeCategory(categoryName)}
         </Button>
       ))}
     </LabeledList.Item>
@@ -192,7 +210,7 @@ function LayerSelect(props) {
   const { pipe_layers, multi_layer, max_pipe_layers = 1 } = data;
 
   return (
-    <LabeledList.Item label="Layer">
+    <LabeledList.Item label="Слой">
       {Array.from({ length: max_pipe_layers }).map((_, layer) => (
         <Button.Checkbox
           key={layer}
@@ -211,12 +229,12 @@ function LayerSelect(props) {
       <Button.Checkbox
         key="multilayer"
         checked={multi_layer}
-        tooltip="Build on multiple pipe layers simultaneously"
+        tooltip="Строить сразу на нескольких слоях труб"
         onClick={() => {
           act('toggle_multi_layer');
         }}
       >
-        Multi
+        Неск.
       </Button.Checkbox>
     </LabeledList.Item>
   );
@@ -293,7 +311,7 @@ function PipeTypeSection(props) {
             selected={category.cat_name === shownCategory.cat_name}
             onClick={() => setCategoryName(category.cat_name)}
           >
-            {category.cat_name}
+            {localizeCategory(category.cat_name)}
           </Tabs.Tab>
         ))}
       </Tabs>
@@ -324,10 +342,7 @@ export function SmartPipeBlockSection(props) {
                 color="transparent"
                 icon="info"
                 tooltipPosition="right"
-                tooltip="This is a panel for blocking certain connection
-                directions for the smart pipes.
-                The button in the center resets to
-                default (all directions can connect)"
+                tooltip="Панель блокировки направлений соединения умных труб. Кнопка в центре сбрасывает настройку: все направления могут соединяться."
               />
             </Stack.Item>
             <Stack.Item>

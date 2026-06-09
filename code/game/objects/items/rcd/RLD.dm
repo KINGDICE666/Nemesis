@@ -16,8 +16,8 @@
 #define REMOVE_DELAY 15
 
 /obj/item/construction/rld
-	name = "Rapid Lighting Device"
-	desc = "A device used to rapidly provide lighting sources to an area. Reload with iron, plasteel, glass or compressed matter cartridges."
+	name = "устройство быстрого освещения"
+	desc = "Устройство для быстрой установки источников света. Перезаряжается железом, пласталью, стеклом или картриджами сжатой материи."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rld"
 	worn_icon_state = "RPD"
@@ -34,10 +34,10 @@
 	var/mode = LIGHT_MODE
 	///reference to thr original icons
 	var/static/list/original_options = list(
-		"Color Pick" = icon(icon = 'icons/hud/radial.dmi', icon_state = "omni"),
-		"Glow Stick" = icon(icon = 'icons/obj/lighting.dmi', icon_state = "glowstick"),
-		"Deconstruct" = icon(icon = 'icons/obj/tools.dmi', icon_state = "wrench"),
-		"Light Fixture" = icon(icon = 'icons/obj/lighting.dmi', icon_state = "ltube"),
+		"Выбрать цвет" = icon(icon = 'icons/hud/radial.dmi', icon_state = "omni"),
+		"Светящаяся палочка" = icon(icon = 'icons/obj/lighting.dmi', icon_state = "glowstick"),
+		"Разобрать" = icon(icon = 'icons/obj/tools.dmi', icon_state = "wrench"),
+		"Светильник" = icon(icon = 'icons/obj/lighting.dmi', icon_state = "ltube"),
 	)
 	///will contain the original icons modified with the color choice
 	var/list/display_options = list()
@@ -52,8 +52,8 @@
 /obj/item/construction/rld/attack_self(mob/user)
 	. = ..()
 
-	if((construction_upgrades & RCD_UPGRADE_SILO_LINK) && display_options["Silo Link"] == null) //silo upgrade instaled but option was not updated then update it just one
-		display_options["Silo Link"] = icon(icon = 'icons/obj/machines/ore_silo.dmi', icon_state = "silo")
+	if((construction_upgrades & RCD_UPGRADE_SILO_LINK) && display_options["Связь с силосом"] == null) //silo upgrade instaled but option was not updated then update it just one
+		display_options["Связь с силосом"] = icon(icon = 'icons/obj/machines/ore_silo.dmi', icon_state = "silo")
 
 	var/choice = show_radial_menu(user, src, display_options, custom_check = CALLBACK(src, PROC_REF(check_menu), user), require_near = TRUE, tooltips = TRUE)
 	if(!check_menu(user))
@@ -62,29 +62,29 @@
 		return
 
 	switch(choice)
-		if("Light Fixture")
+		if("Светильник")
 			mode = LIGHT_MODE
-			to_chat(user, span_notice("You change RLD's mode to 'Permanent Light Construction'."))
-		if("Glow Stick")
+			to_chat(user, span_notice("Вы переключаете RLD в режим «установка постоянного света»."))
+		if("Светящаяся палочка")
 			mode = GLOW_MODE
-			to_chat(user, span_notice("You change RLD's mode to 'Light Launcher'."))
-		if("Color Pick")
-			var/new_choice = tgui_color_picker(user, "", "Choose Color", color_choice)
+			to_chat(user, span_notice("Вы переключаете RLD в режим «запуск светящихся палочек»."))
+		if("Выбрать цвет")
+			var/new_choice = tgui_color_picker(user, "", "Выберите цвет", color_choice)
 			if(new_choice == null)
 				return
 
 			var/list/new_rgb = rgb2num(new_choice)
 			for(var/option in original_options)
-				if(option == "Color Pick" || option == "Deconstruct" || option == "Silo Link")
+				if(option == "Выбрать цвет" || option == "Разобрать" || option == "Связь с силосом")
 					continue
 				var/icon/icon = icon(original_options[option])
 				icon.SetIntensity(new_rgb[1] / 255, new_rgb[2] / 255, new_rgb[3] / 255) //apply new scale
 				display_options[option] = icon
 
 			color_choice = new_choice
-		if("Deconstruct")
+		if("Разобрать")
 			mode = REMOVE_MODE
-			to_chat(user, span_notice("You change RLD's mode to 'Deconstruct'."))
+			to_chat(user, span_notice("Вы переключаете RLD в режим «разборка»."))
 		else
 			toggle_silo(user)
 
@@ -169,7 +169,7 @@
 						winner = C
 						winning_dist = contender
 				if(!winner)
-					balloon_alert(user, "no valid target!")
+					balloon_alert(user, "нет подходящей цели!")
 					return ITEM_INTERACT_BLOCKING
 				var/obj/machinery/light/L = new /obj/machinery/light(get_turf(winner))
 				L.setDir(get_dir(winner, interacting_with))
@@ -217,8 +217,8 @@
 	return NONE
 
 /obj/item/construction/rld/mini
-	name = "mini-rapid-light-device"
-	desc = "A device used to rapidly provide lighting sources to an area. Reload with iron, plasteel, glass or compressed matter cartridges."
+	name = "мини-устройство быстрого освещения"
+	desc = "Устройство для быстрой установки источников света. Перезаряжается железом, пласталью, стеклом или картриджами сжатой материи."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rld"
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'

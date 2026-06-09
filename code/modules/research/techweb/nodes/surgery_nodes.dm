@@ -1,7 +1,7 @@
 /datum/techweb_node/oldstation_surgery
 	id = TECHWEB_NODE_OLDSTATION_SURGERY
-	display_name = "Experimental Dissection"
-	description = "Grants access to experimental dissections, which allows generation of research points."
+	display_name = "Экспериментальное вскрытие"
+	description = "Открывает доступ к экспериментальным вскрытиям, позволяющим получать исследовательские очки."
 	prereq_ids = list(TECHWEB_NODE_MEDBAY_EQUIP)
 	design_ids = list(
 		"surgery_oldstation_dissection",
@@ -12,8 +12,8 @@
 
 /datum/techweb_node/surgery
 	id = TECHWEB_NODE_SURGERY
-	display_name = "Improved Wound-Tending"
-	description = "Who would have known being more gentle with a hemostat decreases patient pain?"
+	display_name = "Улучшенная обработка ран"
+	description = "Кто бы мог подумать, что более аккуратная работа зажимом снижает боль пациента?"
 	prereq_ids = list(TECHWEB_NODE_MEDBAY_EQUIP)
 	design_ids = list(
 		"surgery_heal_upgrade",
@@ -24,8 +24,8 @@
 
 /datum/techweb_node/surgery_adv
 	id = TECHWEB_NODE_SURGERY_ADV
-	display_name = "Advanced Surgery"
-	description = "When simple medicine doesn't cut it."
+	display_name = "Продвинутая хирургия"
+	description = "Когда простой медицины уже недостаточно."
 	prereq_ids = list(TECHWEB_NODE_SURGERY)
 	design_ids = list(
 		"harvester",
@@ -42,8 +42,8 @@
 
 /datum/techweb_node/surgery_exp
 	id = TECHWEB_NODE_SURGERY_EXP
-	display_name = "Experimental Surgery"
-	description = "When evolution isn't fast enough."
+	display_name = "Экспериментальная хирургия"
+	description = "Когда эволюция недостаточно быстра."
 	prereq_ids = list(TECHWEB_NODE_SURGERY_ADV)
 	design_ids = list(
 		"medibot_upgrade_three",
@@ -74,8 +74,8 @@
 
 /datum/techweb_node/surgery_tools
 	id = TECHWEB_NODE_SURGERY_TOOLS
-	display_name = "Advanced Surgery Tools"
-	description = "Surgical instruments of dual purpose for quick operations."
+	display_name = "Продвинутые хирургические инструменты"
+	description = "Хирургические инструменты двойного назначения для быстрых операций."
 	prereq_ids = list(TECHWEB_NODE_SURGERY_EXP)
 	design_ids = list(
 		"laserscalpel",

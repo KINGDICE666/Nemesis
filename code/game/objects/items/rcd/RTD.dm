@@ -414,10 +414,10 @@
 	if(!iscyborg(borgy))
 		return FALSE
 	if(!borgy.cell)
-		balloon_alert(user, "no cell found!")
+		balloon_alert(user, "нет батареи!")
 		return FALSE
 	if(borgy.cell.charge < (amount * RTD_BORG_ENERGY_FACTOR))
-		balloon_alert(user, "insufficient charge!")
+		balloon_alert(user, "не хватает заряда!")
 		return FALSE
 	if(!dry_run)
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
@@ -430,7 +430,7 @@
 	matter = 350
 
 /obj/item/construction/rtd/admin
-	name = "admin RTD"
+	name = "админское RTD"
 	max_matter = INFINITY
 	matter = INFINITY
 

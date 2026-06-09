@@ -1,8 +1,8 @@
 //RAPID PIPE CLEANER
 
 /obj/item/rcl
-	name = "rapid pipe cleaner layer"
-	desc = "A device used to rapidly deploy pipe cleaners. It has screws on the side which can be removed to slide off the pipe cleaners. Do not use without insulation!"
+	name = "быстрый укладчик труб"
+	desc = "Устройство для быстрой укладки труб. Сбоку есть винты, которые можно выкрутить, чтобы снять направляющую и достать трубы. Не использовать без изоляции!"
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rcl-0"
 	inhand_icon_state = "rcl-0"
@@ -43,7 +43,7 @@
 		return FALSE
 	. = TRUE
 	if(ghetto && prob(10)) //Is it a ghetto RCL? If so, give it a 10% chance to fall apart
-		to_chat(user, span_warning("You attempt to loosen the securing screws on the side, but it falls apart!"))
+		to_chat(user, span_warning("Вы пытаетесь ослабить боковые крепёжные винты, но устройство разваливается!"))
 		while(loaded.amount > 30) //There are only two kinds of situations: "nodiff" (60,90), or "diff" (31-59, 61-89)
 			var/diff = loaded.amount % 30
 			if(diff)
@@ -56,7 +56,7 @@
 		return
 
 	tool.play_tool_sound(src)
-	to_chat(user, span_notice("You loosen the securing screws on the side, allowing you to lower the guiding edge and retrieve the wires."))
+	to_chat(user, span_notice("Вы ослабляете боковые крепёжные винты, опускаете направляющую кромку и достаёте трубы."))
 	while(loaded.amount > 30) //There are only two kinds of situations: "nodiff" (60,90), or "diff" (31-59, 61-89)
 		var/diff = loaded.amount % 30
 		if(diff)
@@ -78,7 +78,7 @@
 
 		if(!loaded)
 			if(!user.transferItemToLoc(W, src))
-				to_chat(user, span_warning("[src] is stuck to your hand!"))
+				to_chat(user, span_warning("[src] прилип к вашей руке!"))
 				return
 			else
 				loaded = W //W.loc is src at this point.
@@ -93,14 +93,14 @@
 		else
 			return
 		update_appearance()
-		to_chat(user, span_notice("You add the pipe cleaners to [src]. It now contains [loaded.amount]."))
+		to_chat(user, span_notice("Вы добавляете трубы в [src]. Теперь внутри [loaded.amount]."))
 	else
 		..()
 
 /obj/item/rcl/examine(mob/user)
 	. = ..()
 	if(loaded)
-		. += span_info("It contains [loaded.amount]/[max_amount] pipe cleaners.")
+		. += span_info("Внутри [loaded.amount]/[max_amount] труб.")
 
 /obj/item/rcl/Destroy()
 	QDEL_NULL(loaded)
@@ -133,7 +133,7 @@
 	update_appearance()
 	if(!loaded || !loaded.amount)
 		if(loud)
-			to_chat(user, span_notice("The last of the pipe cleaners unreel from [src]."))
+			to_chat(user, span_notice("Последняя труба разматывается из [src]."))
 		if(loaded)
 			QDEL_NULL(loaded)
 			loaded = null
@@ -185,11 +185,11 @@
 	if(!isturf(user.loc))
 		return
 	if(is_empty(user, 0))
-		balloon_alert(user, "its empty!")
+		balloon_alert(user, "пусто!")
 		return
 
 	if(prob(2) && ghetto) //Give ghetto RCLs a 2% chance to jam, requiring it to be reactviated manually.
-		balloon_alert(user, "wires jam!")
+		balloon_alert(user, "трубы заклинило!")
 		active = FALSE
 		return
 	else
@@ -272,7 +272,7 @@
 	if(!isturf(user.loc))
 		return
 	if(is_empty(user, 0))
-		to_chat(user, span_warning("\The [src] is empty!"))
+		to_chat(user, span_warning("\The [src] пуст!"))
 		return
 
 	var/turf/T = get_turf(user)
@@ -308,7 +308,7 @@
 		if (current_color_index > colors.len)
 			current_color_index = 1
 		var/cwname = colors[current_color_index]
-		to_chat(user, "Color changed to [cwname]!")
+		to_chat(user, "Цвет изменён на [cwname]!")
 		if(loaded)
 			loaded.set_pipecleaner_color(colors[current_color_index])
 		if(wiring_gui_menu)
@@ -322,7 +322,7 @@
 /obj/item/rcl/ghetto
 	actions_types = list()
 	max_amount = 30
-	name = "makeshift rapid pipe cleaner layer"
+	name = "самодельный быстрый укладчик труб"
 	ghetto = TRUE
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 15)
 
@@ -341,11 +341,11 @@
 	return ..()
 
 /datum/action/item_action/rcl_col
-	name = "Change Cable Color"
+	name = "Сменить цвет труб"
 	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "rcl_rainbow"
 
 /datum/action/item_action/rcl_gui
-	name = "Toggle Fast Wiring Gui"
+	name = "Переключить быстрое меню укладки труб"
 	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "rcl_gui"

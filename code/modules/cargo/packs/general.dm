@@ -3,8 +3,8 @@
 
 /datum/supply_pack/misc/artsupply
 	name = "Art Supplies"
-	desc = "Make some happy little accidents with a rapid pipe cleaner layer, \
-		three spraycans, and lots of crayons!"
+	desc = "Устройте немного счастливых случайностей с быстрым укладчиком труб, \
+		тремя баллончиками краски и кучей мелков!"
 	cost = CARGO_CRATE_VALUE * 1.8
 	contains = list(/obj/item/rcl,
 					/obj/item/storage/toolbox/artistic,

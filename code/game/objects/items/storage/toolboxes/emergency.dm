@@ -1,5 +1,5 @@
 /obj/item/storage/toolbox/emergency
-	name = "emergency toolbox"
+	name = "аварийный ящик для инструментов"
 	icon_state = "red"
 	inhand_icon_state = "toolbox_red"
 	material_flags = NONE
@@ -19,7 +19,7 @@
 	new /obj/item/radio/off(src)
 
 /obj/item/storage/toolbox/emergency/old
-	name = "rusty red toolbox"
+	name = "ржавый красный ящик для инструментов"
 	icon_state = "toolbox_red_old"
 	has_latches = FALSE
 	material_flags = NONE

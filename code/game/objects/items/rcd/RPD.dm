@@ -98,8 +98,8 @@
 
 /obj/item/pipe_dispenser/examine(mob/user)
 	. = ..()
-	. += span_notice("You can scroll your <b>mouse wheel</b> to change the piping layer.")
-	. += span_notice("You can <b>right click</b> a pipe to set the RPD to its color and layer.")
+	. += span_notice("Вы можете прокрутить <b>колесо мыши</b>, чтобы изменить слой труб.")
+	. += span_notice("Вы можете <b>ПКМ</b> по трубе, чтобы скопировать её цвет и слой в RPD.")
 
 /obj/item/pipe_dispenser/add_item_context(obj/item/source, list/context, atom/target, mob/living/user)
 	. = NONE
@@ -107,7 +107,7 @@
 	if(istype(target, /obj/machinery/atmospherics))
 		var/obj/machinery/atmospherics/atmos_target = target
 		if(atmos_target.pipe_color && atmos_target.piping_layer)
-			context[SCREENTIP_CONTEXT_RMB] = "Copy piping color and layer"
+			context[SCREENTIP_CONTEXT_RMB] = "Скопировать цвет и слой труб"
 			return CONTEXTUAL_SCREENTIP_SET
 
 /obj/item/pipe_dispenser/equipped(mob/user, slot, initial)
@@ -296,13 +296,13 @@
 
 		// Check if the upgrade's already present
 		if(rpd_disk.upgrade_flags & upgrade_flags)
-			balloon_alert(user, "already installed!")
+			balloon_alert(user, "уже установлено!")
 			return ITEM_INTERACT_BLOCKING
 
 		// Adds the upgrade from the disk and then deletes the disk
 		upgrade_flags |= rpd_disk.upgrade_flags
 		playsound(loc, 'sound/machines/click.ogg', 50, vary = TRUE)
-		balloon_alert(user, "upgrade installed")
+		balloon_alert(user, "улучшение установлено")
 		qdel(rpd_disk)
 		return ITEM_INTERACT_SUCCESS
 
@@ -344,16 +344,16 @@
 		var/obj/machinery/atmospherics/pipe/smart/target_smart_pipe = attack_target
 		if(istype(target_smart_pipe))
 			if(target_smart_pipe.dir == ALL_CARDINALS)
-				balloon_alert(user, "has no unconnected directions!")
+				balloon_alert(user, "нет свободных направлений!")
 				return ITEM_INTERACT_FAILURE
 			var/old_init_dir = target_smart_pipe.get_init_directions()
 			if(old_init_dir == p_init_dir)
-				balloon_alert(user, "already configured!")
+				balloon_alert(user, "уже настроено!")
 				return ITEM_INTERACT_FAILURE
 			// Check for differences in unconnected directions
 			var/target_differences = (p_init_dir ^ old_init_dir) & ~target_smart_pipe.connections
 			if(!target_differences)
-				balloon_alert(user, "already configured for its directions!")
+				balloon_alert(user, "направления уже настроены!")
 				return ITEM_INTERACT_FAILURE
 
 			playsound(get_turf(src), SFX_TOOL_SWITCH, 20, TRUE)
@@ -363,7 +363,7 @@
 
 			// Double check to make sure that nothing has changed. If anything we were about to change was connected during do_after, abort
 			if(target_differences & target_smart_pipe.connections)
-				balloon_alert(user, "can't configure for its direction!")
+				balloon_alert(user, "нельзя настроить это направление!")
 				return ITEM_INTERACT_FAILURE
 			// Grab the current initializable directions, which may differ from old_init_dir if someone else was working on the same pipe at the same time
 			var/current_init_dir = target_smart_pipe.get_init_directions()
@@ -372,7 +372,7 @@
 			var/new_init_dir = (current_init_dir & ~target_differences) | (p_init_dir & target_differences)
 			// Don't make a smart pipe with only one connection
 			if(ISSTUB(new_init_dir))
-				balloon_alert(user, "no one directional pipes allowed!")
+				balloon_alert(user, "односторонние трубы запрещены!")
 				return ITEM_INTERACT_FAILURE
 			target_smart_pipe.set_init_directions(new_init_dir)
 			// We're now reconfigured.
@@ -398,7 +398,7 @@
 				SSair.add_to_rebuild_queue(target_smart_pipe)
 			// Finally, update our internal state - update_pipe_icon also updates dir and connections
 			target_smart_pipe.update_pipe_icon()
-			user.visible_message(span_notice("[user] reprograms \the [target_smart_pipe]."), span_notice("You reprogram \the [target_smart_pipe]."))
+			user.visible_message(span_notice("[user] перенастраивает \the [target_smart_pipe]."), span_notice("Вы перенастраиваете \the [target_smart_pipe]."))
 			return ITEM_INTERACT_SUCCESS
 
 		// If this is an unplaced smart pipe, try to reprogram it
@@ -419,7 +419,7 @@
 					return ITEM_INTERACT_FAILURE
 				attack_target = get_turf(attack_target)
 				if(isclosedturf(attack_target))
-					balloon_alert(user, "target is blocked!")
+					balloon_alert(user, "цель заблокирована!")
 					return ITEM_INTERACT_FAILURE
 				playsound(get_turf(src), SFX_TOOL_SWITCH, 20, TRUE)
 
@@ -429,7 +429,7 @@
 				var/obj/structure/disposalconstruct/new_disposals_segment = new (attack_target, queued_pipe_type, queued_pipe_dir, queued_pipe_flipped)
 
 				if(!new_disposals_segment.can_place())
-					balloon_alert(user, "not enough room!")
+					balloon_alert(user, "не хватает места!")
 					qdel(new_disposals_segment)
 					return ITEM_INTERACT_FAILURE
 
@@ -446,12 +446,12 @@
 					return ITEM_INTERACT_FAILURE
 				attack_target = get_turf(attack_target)
 				if(isclosedturf(attack_target))
-					balloon_alert(user, "something in the way!")
+					balloon_alert(user, "что-то мешает!")
 					return ITEM_INTERACT_FAILURE
 
 				var/turf/target_turf = get_turf(attack_target)
 				if(target_turf.is_blocked_turf(exclude_mobs = TRUE))
-					balloon_alert(user, "something in the way!")
+					balloon_alert(user, "что-то мешает!")
 					return ITEM_INTERACT_FAILURE
 
 				playsound(get_turf(src), SFX_TOOL_SWITCH, 20, TRUE)
@@ -487,7 +487,7 @@
 	if(target.pipe_color && target.piping_layer)
 		paint_color = GLOB.pipe_color_name[target.pipe_color]
 		pipe_layers = PIPE_LAYER(target.piping_layer)
-		balloon_alert(user, "color/layer copied")
+		balloon_alert(user, "цвет/слой скопированы")
 		return ITEM_INTERACT_SUCCESS
 
 /**
@@ -539,7 +539,7 @@
 		if(!do_after(user, atmos_build_speed, target = atom_to_target))
 			return FALSE
 		if(!recipe.all_layers && (layer_to_build == 1 || layer_to_build == MAX_PIPE_LAYERS))
-			balloon_alert(user, "can't build on layer [layer_to_build]!")
+			balloon_alert(user, "нельзя строить на слое [layer_to_build]!")
 			if(multi_layer)
 				continue
 			return FALSE
@@ -577,7 +577,7 @@
 /obj/item/pipe_dispenser/proc/mouse_wheeled(mob/source_mob, atom/A, delta_x, delta_y, params)
 	SIGNAL_HANDLER
 	if(multi_layer)
-		balloon_alert(source_mob, "turn off multi layer!")
+		balloon_alert(source_mob, "отключите несколько слоёв!")
 		return
 	if(INCAPACITATED_IGNORING(source_mob, INCAPABLE_RESTRAINTS|INCAPABLE_STASIS))
 		return
@@ -591,20 +591,20 @@
 	else //mice with side-scrolling wheels are apparently a thing and fuck this up
 		return
 	SStgui.update_uis(src)
-	balloon_alert(source_mob, "set pipe layer to [get_active_pipe_layers()[1]]")
+	balloon_alert(source_mob, "слой труб: [get_active_pipe_layers()[1]]")
 
 
 /obj/item/rpd_upgrade
-	name = "RPD advanced design disk"
-	desc = "It seems to be empty."
+	name = "диск продвинутых чертежей RPD"
+	desc = "Похоже, он пуст."
 	icon = 'icons/obj/devices/floppy_disks.dmi'
 	icon_state = "datadisk3"
 	/// Bitflags for upgrades
 	var/upgrade_flags
 
 /obj/item/rpd_upgrade/unwrench
-	name = "RPD advanced upgrade: wrench mode"
-	desc = "Adds reverse wrench mode to the RPD. Attention, due to budget cuts, the mode is hard linked to the destroy mode control button."
+	name = "продвинутое улучшение RPD: режим откручивания"
+	desc = "Добавляет RPD обратный режим гаечного ключа. Внимание: из-за урезания бюджета режим жёстко привязан к кнопке режима разрушения."
 	icon_state = "datadisk1"
 	upgrade_flags = RPD_UPGRADE_UNWRENCH
 

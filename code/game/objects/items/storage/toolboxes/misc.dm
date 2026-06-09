@@ -1,6 +1,6 @@
 
 /obj/item/storage/toolbox/drone
-	name = "mechanical toolbox"
+	name = "механический ящик для инструментов"
 	icon_state = "blue"
 	inhand_icon_state = "toolbox_blue"
 	material_flags = NONE
@@ -16,8 +16,8 @@
 	new /obj/item/multitool(src)
 
 /obj/item/storage/toolbox/artistic
-	name = "artistic toolbox"
-	desc = "A toolbox painted bright green. Why anyone would store art supplies in a toolbox is beyond you, but it has plenty of extra space."
+	name = "художественный ящик для инструментов"
+	desc = "Ящик для инструментов, выкрашенный в ярко-зелёный. Зачем кому-то хранить художественные принадлежности в ящике для инструментов, непонятно, но места в нём много."
 	icon_state = "green"
 	inhand_icon_state = "toolbox_green"
 	w_class = WEIGHT_CLASS_GIGANTIC //Holds more than a regular toolbox!
@@ -34,12 +34,12 @@
 	new /obj/item/paint/anycolor(src)
 
 /obj/item/storage/toolbox/haunted
-	name = "old toolbox"
+	name = "старый ящик для инструментов"
 	custom_materials = list(/datum/material/hauntium = SMALL_MATERIAL_AMOUNT*5)
 
 /obj/item/storage/toolbox/crafter
-	name = "crafter toolbox"
-	desc = "A toolbox painted hot pink. Full of crafting supplies!"
+	name = "ящик для рукоделия"
+	desc = "Ящик для инструментов, выкрашенный в ярко-розовый. Полон материалов для рукоделия!"
 	icon_state = "pink"
 	inhand_icon_state = "toolbox_pink"
 	w_class = WEIGHT_CLASS_GIGANTIC //Holds more than a regular toolbox!

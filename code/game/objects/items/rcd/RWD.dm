@@ -1,6 +1,6 @@
 /obj/item/rwd
-	name = "rapid wiring device"
-	desc = "A device used to rapidly lay cable & pick up stray cable pieces laying around."
+	name = "устройство быстрой проводки"
+	desc = "Устройство для быстрой прокладки кабеля и сбора лежащих рядом обрезков."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rcl-0"
 	inhand_icon_state = "rcl-0"
@@ -40,10 +40,10 @@
 
 /obj/item/rwd/examine(mob/user)
 	. = ..()
-	. += "Dual wield & walk over floors to lay cable."
-	. += "It has [current_amount] pieces remaining."
-	. += "Right click on it to dispense a custom amount of cable."
-	. += "Alt click to change cable layer."
+	. += "Возьмите двумя руками и ходите по полу, чтобы прокладывать кабель."
+	. += "Осталось [current_amount] кусков."
+	. += "ПКМ по устройству выдаёт указанное количество кабеля."
+	. += "Alt-клик меняет слой кабеля."
 
 /obj/item/rwd/update_icon_state()
 	switch(current_amount)
@@ -63,10 +63,10 @@
 
 /obj/item/rwd/attack_self_secondary(mob/user, modifiers)
 	if(current_amount <= 0)
-		balloon_alert(user, "nothing to dispense!")
+		balloon_alert(user, "нечего выдавать!")
 		return
 
-	var/amount = tgui_input_number(user = user, message = "Enter amount to dispense", title = "Custom cable", default = 0, max_value = min(30, current_amount), min_value = min(1, current_amount), timeout = 0, round_value = TRUE)
+	var/amount = tgui_input_number(user = user, message = "Введите количество для выдачи", title = "Кабель", default = 0, max_value = min(30, current_amount), min_value = min(1, current_amount), timeout = 0, round_value = TRUE)
 	if(isnull(amount) || amount > current_amount)
 		return
 
@@ -89,7 +89,7 @@
 	//spawn the cable. if it merged with the stak below then you pick that up else put it in the user's hand
 	var/obj/item/stack/cable_coil/new_cable = new(user.drop_location(), amount)
 	if(QDELETED(new_cable))
-		balloon_alert(user, "merged with stack below!")
+		balloon_alert(user, "объединилось со стопкой!")
 	else
 		user.put_in_active_hand(modify_cable(new_cable))
 
@@ -128,20 +128,20 @@
 /obj/item/rwd/click_alt(mob/user)
 	if(!radial_menu)
 		radial_menu = list(
-			"Layer 1" = image(icon = 'icons/hud/radial.dmi', icon_state = "coil-red"),
-			"Layer 2" = image(icon = 'icons/hud/radial.dmi', icon_state = "coil-yellow"),
-			"Layer 3" = image(icon = 'icons/hud/radial.dmi', icon_state = "coil-blue"),
+			"Слой 1" = image(icon = 'icons/hud/radial.dmi', icon_state = "coil-red"),
+			"Слой 2" = image(icon = 'icons/hud/radial.dmi', icon_state = "coil-yellow"),
+			"Слой 3" = image(icon = 'icons/hud/radial.dmi', icon_state = "coil-blue"),
 		)
 
 	var/layer_result = show_radial_menu(user, src, radial_menu, custom_check = CALLBACK(src, PROC_REF(check_menu), user), require_near = TRUE, tooltips = TRUE)
 	if(!check_menu(user))
 		return CLICK_ACTION_BLOCKING
 	switch(layer_result)
-		if("Layer 1")
+		if("Слой 1")
 			cable_layer = CABLE_LAYER_1
-		if("Layer 2")
+		if("Слой 2")
 			cable_layer = CABLE_LAYER_2
-		if("Layer 3")
+		if("Слой 3")
 			cable_layer = CABLE_LAYER_3
 	update_appearance(UPDATE_ICON_STATE)
 	return CLICK_ACTION_SUCCESS
@@ -150,7 +150,7 @@
 	if(!istype(user))
 		return FALSE
 	if(!ISADVANCEDTOOLUSER(user))
-		to_chat(user, span_warning("You don't have the dexterity to do this!"))
+		to_chat(user, span_warning("Вам не хватает ловкости для этого!"))
 		return FALSE
 	if(user.incapacitated || !user.Adjacent(src))
 		return FALSE
@@ -159,7 +159,7 @@
 /// insert cable into the rwd
 /obj/item/rwd/proc/add_cable(mob/user, obj/item/stack/cable_coil/cable)
 	if(current_amount == max_amount)
-		balloon_alert(user, "device is full!")
+		balloon_alert(user, "устройство заполнено!")
 		return
 
 	var/insert_amount = min(cable.amount, max_amount - current_amount)
@@ -168,7 +168,7 @@
 
 	delta_cable(insert_amount, decrement = FALSE)
 	update_appearance(UPDATE_ICON_STATE)
-	balloon_alert(user, "inserted [insert_amount] cable")
+	balloon_alert(user, "загружено [insert_amount] кабеля")
 
 /// modify cable properties according to its layer
 /obj/item/rwd/proc/modify_cable(obj/item/stack/cable_coil/target_cable)
@@ -254,8 +254,7 @@
 	current_amount = 210
 
 /obj/item/rwd/admin
-	name = "admin RWD"
+	name = "админское RWD"
 	max_amount = INFINITY
 	current_amount = INFINITY
-
 

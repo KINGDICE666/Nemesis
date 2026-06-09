@@ -225,7 +225,7 @@
 	category = CAT_EQUIPMENT
 
 /datum/crafting_recipe/rcl
-	name = "Makeshift Rapid Pipe Cleaner Layer"
+	name = "Самодельный быстрый укладчик труб"
 	result = /obj/item/rcl/ghetto
 	time = 4 SECONDS
 	tool_behaviors = list(TOOL_WELDER, TOOL_SCREWDRIVER, TOOL_WRENCH)

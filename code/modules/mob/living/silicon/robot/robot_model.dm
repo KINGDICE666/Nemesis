@@ -1113,4 +1113,4 @@
 /datum/robot_energy_storage/pipe_cleaner
 	max_energy = 50
 	recharge_rate = 2
-	name = "Pipe Cleaner Synthesizer"
+	name = "Синтезатор труб"

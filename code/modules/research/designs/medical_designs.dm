@@ -3,7 +3,7 @@
 /////////////////////////////////////////
 
 /datum/design/healthanalyzer
-	name = "Health Analyzer"
+	name = "Анализатор здоровья"
 	id = "healthanalyzer"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SMALL_MATERIAL_AMOUNT*5, /datum/material/glass =SMALL_MATERIAL_AMOUNT*0.5)
@@ -14,7 +14,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/autopsy_scanner
-	name = "Autopsy Scanner"
+	name = "Сканер аутопсии"
 	id = "autopsyscanner"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT*5, /datum/material/glass = SMALL_MATERIAL_AMOUNT)
@@ -25,8 +25,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/bluespacebeaker
-	name = "Bluespace Beaker"
-	desc = "A bluespace beaker, powered by experimental bluespace technology and Element Cuban combined with the Compound Pete. Can hold up to 300 units."
+	name = "Блюспейс-мензурка"
+	desc = "Блюспейс-мензурка на экспериментальной блюспейс-технологии, совмещённой с Element Cuban и Compound Pete. Вмещает до 300 единиц."
 	id = "bluespacebeaker"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/glass =SHEET_MATERIAL_AMOUNT * 2.5, /datum/material/plastic =SHEET_MATERIAL_AMOUNT * 1.5, /datum/material/diamond =HALF_SHEET_MATERIAL_AMOUNT, /datum/material/bluespace =HALF_SHEET_MATERIAL_AMOUNT)
@@ -37,8 +37,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/noreactbeaker
-	name = "Cryostasis Beaker"
-	desc = "A cryostasis beaker that allows for chemical storage without reactions. Can hold up to 50 units."
+	name = "Криостазисная мензурка"
+	desc = "Криостазисная мензурка, позволяющая хранить химикаты без реакций. Вмещает до 50 единиц."
 	id = "splitbeaker"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT * 1.5)
@@ -49,7 +49,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/xlarge_beaker
-	name = "X-large Beaker"
+	name = "Очень большая мензурка"
 	id = "xlarge_beaker"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT*2.5, /datum/material/plastic =SHEET_MATERIAL_AMOUNT * 1.5)
@@ -60,7 +60,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/organ_jar
-	name = "Organ Jar"
+	name = "Банка для органов"
 	id = "organ_jar"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT*2.5, /datum/material/plastic =SHEET_MATERIAL_AMOUNT * 1.5)
@@ -71,7 +71,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/meta_beaker
-	name = "Metamaterial Beaker"
+	name = "Метаматериальная мензурка"
 	id = "meta_beaker"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT*2.5, /datum/material/plastic =SHEET_MATERIAL_AMOUNT * 1.5, /datum/material/gold =HALF_SHEET_MATERIAL_AMOUNT, /datum/material/titanium =HALF_SHEET_MATERIAL_AMOUNT)
@@ -82,7 +82,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/ph_meter
-	name = "Chemical Analyzer"
+	name = "Химический анализатор"
 	id = "ph_meter"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT*2.5, /datum/material/gold =HALF_SHEET_MATERIAL_AMOUNT, /datum/material/titanium =HALF_SHEET_MATERIAL_AMOUNT)
@@ -93,8 +93,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/bluespacesyringe
-	name = "Bluespace Syringe"
-	desc = "An advanced syringe that can hold 60 units of chemicals"
+	name = "Блюспейс-шприц"
+	desc = "Продвинутый шприц, вмещающий 60 единиц химикатов."
 	id = "bluespacesyringe"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/glass =SHEET_MATERIAL_AMOUNT, /datum/material/plasma =HALF_SHEET_MATERIAL_AMOUNT, /datum/material/diamond =HALF_SHEET_MATERIAL_AMOUNT, /datum/material/bluespace =SMALL_MATERIAL_AMOUNT*5)
@@ -105,8 +105,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/dna_disk
-	name = "Genetic Data Disk"
-	desc = "Produce additional disks for storing genetic data."
+	name = "Диск генетических данных"
+	desc = "Дополнительные диски для хранения генетических данных."
 	id = "dna_disk"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SMALL_MATERIAL_AMOUNT * 3, /datum/material/glass =SMALL_MATERIAL_AMOUNT, /datum/material/silver =SMALL_MATERIAL_AMOUNT*0.5)
@@ -117,8 +117,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/piercesyringe
-	name = "Piercing Syringe"
-	desc = "A diamond-tipped syringe that pierces armor when launched at high velocity. It can hold up to 10 units."
+	name = "Пробивающий шприц"
+	desc = "Шприц с алмазным наконечником, пробивающий броню при запуске на высокой скорости. Вмещает до 10 единиц."
 	id = "piercesyringe"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/glass =SHEET_MATERIAL_AMOUNT, /datum/material/diamond =HALF_SHEET_MATERIAL_AMOUNT)
@@ -129,8 +129,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/inhaler
-	name = "Inhaler"
-	desc = "A small device capable of administering short bursts of aerosolized chemicals. Requires a canister to function."
+	name = "Ингалятор"
+	desc = "Небольшое устройство для коротких выбросов аэрозольных химикатов. Для работы требует баллончик."
 	id = "inhaler"
 	build_path = /obj/item/inhaler/medical
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -141,8 +141,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/inhaler_canister
-	name = "Inhaler Canister"
-	desc = "A small canister filled with aerosolized reagents for use in a inhaler."
+	name = "Баллончик ингалятора"
+	desc = "Небольшой баллончик с аэрозольными реагентами для использования в ингаляторе."
 	id = "inhaler_canister"
 	build_path = /obj/item/reagent_containers/inhaler_canister
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -153,8 +153,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/bluespacebodybag
-	name = "Bluespace Body Bag"
-	desc = "A bluespace body bag, powered by experimental bluespace technology. It can hold loads of bodies and the largest of creatures."
+	name = "Блюспейс-мешок для тел"
+	desc = "Мешок для тел на экспериментальной блюспейс-технологии. Вмещает множество тел и самых крупных существ."
 	id = "bluespacebodybag"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT * 1.5, /datum/material/plasma =SHEET_MATERIAL_AMOUNT, /datum/material/diamond =SMALL_MATERIAL_AMOUNT*5, /datum/material/bluespace =SMALL_MATERIAL_AMOUNT*5)
@@ -165,9 +165,9 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/stasis_bag
-	name = "Stasis Bodybag"
-	desc = "A disposal bodybag designed to stabilize patients in the field in critical condition. \
-		The bag itself cannot maintain stasis for long, and will eventually fall apart."
+	name = "Стазисный мешок для тел"
+	desc = "Мешок для тел, предназначенный для стабилизации пациентов в критическом состоянии в полевых условиях. \
+		Сам мешок не может долго поддерживать стазис и со временем развалится."
 	id = "stasis_bodybag"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(
@@ -179,8 +179,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/plasmarefiller
-	name = "Plasmaman Jumpsuit Refill"
-	desc = "A refill pack for the auto-extinguisher on Plasma-man suits."
+	name = "Заправка комбинезона плазмамена"
+	desc = "Заправочный комплект для автоогнетушителя на костюмах плазмаменов."
 	id = "plasmarefiller" //Why did this have no plasmatech
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*2, /datum/material/plasma =HALF_SHEET_MATERIAL_AMOUNT)
@@ -191,8 +191,8 @@
 	departmental_flags = ALL
 
 /datum/design/crewpinpointer
-	name = "Crew Pinpointer"
-	desc = "Allows tracking of someone's location if their suit sensors are turned to tracking beacon."
+	name = "Пинпоинтер экипажа"
+	desc = "Позволяет отслеживать местоположение, если датчики костюма цели включены в режим маяка."
 	id = "crewpinpointer"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT * 1.5, /datum/material/glass =HALF_SHEET_MATERIAL_AMOUNT * 1.5, /datum/material/gold =SMALL_MATERIAL_AMOUNT*5)
@@ -203,8 +203,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/defibrillator_mount
-	name = "Defibrillator Wall Mount"
-	desc = "A mounted frame for holding defibrillators, providing easy security."
+	name = "Настенное крепление дефибриллятора"
+	desc = "Настенная рама для хранения дефибрилляторов с простой защитой."
 	id = "defibmountdefault"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT, /datum/material/glass =HALF_SHEET_MATERIAL_AMOUNT)
@@ -215,8 +215,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/defibrillator_mount_charging
-	name = "PENLITE Defibrillator Wall Mount"
-	desc = "An all-in-one mounted frame for holding defibrillators, complete with ID-locked clamps and recharging cables. The PENLITE version also allows for slow recharging of the defib's battery."
+	name = "Настенное крепление дефибриллятора PENLITE"
+	desc = "Универсальная настенная рама для дефибрилляторов с ID-замками и зарядными кабелями. Версия PENLITE также медленно заряжает батарею дефибриллятора."
 	id = "defibmount"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT, /datum/material/glass =HALF_SHEET_MATERIAL_AMOUNT, /datum/material/silver =SMALL_MATERIAL_AMOUNT*5)
@@ -227,8 +227,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/genescanner
-	name = "Genetic Sequence Analyzer"
-	desc = "A handy hand-held analyzers for quickly determining mutations and collecting the full sequence."
+	name = "Анализатор генетической последовательности"
+	desc = "Удобный ручной анализатор для быстрого определения мутаций и сбора полной последовательности."
 	id = "genescanner"
 	build_path = /obj/item/sequence_scanner
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -239,8 +239,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/healthanalyzer_advanced
-	name = "Advanced Health Analyzer"
-	desc = "A hand-held body scanner able to distinguish vital signs of the subject with high accuracy."
+	name = "Продвинутый анализатор здоровья"
+	desc = "Ручной сканер тела, способный с высокой точностью определять жизненные показатели субъекта."
 	id = "healthanalyzer_advanced"
 	build_path = /obj/item/healthanalyzer/advanced
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -251,8 +251,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/medigel
-	name = "Medical Gel"
-	desc = "A medical gel applicator bottle, designed for precision application, with an unscrewable cap."
+	name = "Медицинский гель"
+	desc = "Флакон-аппликатор медицинского геля для точного нанесения, с откручивающейся крышкой."
 	id = "medigel"
 	build_path = /obj/item/reagent_containers/medigel
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -263,7 +263,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/surgical_drapes
-	name = "Surgical Drapes"
+	name = "Хирургические салфетки"
 	id = "surgical_drapes"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic =SHEET_MATERIAL_AMOUNT)
@@ -274,8 +274,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/laserscalpel
-	name = "Laser Scalpel"
-	desc = "A laser scalpel used for precise cutting."
+	name = "Лазерный скальпель"
+	desc = "Лазерный скальпель для точных разрезов."
 	id = "laserscalpel"
 	build_path = /obj/item/scalpel/advanced
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -286,8 +286,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/mechanicalpinches
-	name = "Mechanical Pinches"
-	desc = "These pinches can be either used as retractor or hemostat."
+	name = "Механические щипцы"
+	desc = "Эти щипцы можно использовать как ретрактор или зажим."
 	id = "mechanicalpinches"
 	build_path = /obj/item/retractor/advanced
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -298,8 +298,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/searingtool
-	name = "Searing Tool"
-	desc = "Used to mend tissue together. Or drill tissue away."
+	name = "Прижигающий инструмент"
+	desc = "Используется для соединения тканей. Или для их высверливания."
 	id = "searingtool"
 	build_path = /obj/item/cautery/advanced
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -310,8 +310,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/medical_spray_bottle
-	name = "Medical Spray Bottle"
-	desc = "A traditional spray bottle used to generate a fine mist. Not to be confused with a medspray."
+	name = "Медицинский распылитель"
+	desc = "Обычный флакон-распылитель для создания мелкого тумана. Не путать с медспреем."
 	id = "med_spray_bottle"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic =SHEET_MATERIAL_AMOUNT)
@@ -322,8 +322,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/chem_pack
-	name = "Intravenous Medicine Bag"
-	desc = "A plastic pressure bag for IV administration of drugs."
+	name = "Пакет внутривенного лекарства"
+	desc = "Пластиковый пакет под давлением для внутривенного введения препаратов."
 	id = "chem_pack"
 	build_type = PROTOLATHE | AWAY_LATHE
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
@@ -335,8 +335,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/blood_pack
-	name = "Blood Pack"
-	desc = "Is used to contain blood used for transfusion. Must be attached to an IV drip."
+	name = "Пакет крови"
+	desc = "Используется для хранения крови для переливания. Должен подключаться к капельнице."
 	id = "blood_pack"
 	build_type = PROTOLATHE | AWAY_LATHE
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
@@ -348,8 +348,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/portable_chem_mixer
-	name = "Portable Chemical Mixer"
-	desc = "A portable device that dispenses and mixes chemicals. Reagents have to be supplied with beakers."
+	name = "Портативный химический смеситель"
+	desc = "Портативное устройство, выдающее и смешивающее химикаты. Реагенты подаются через мензурки."
 	id = "portable_chem_mixer"
 	build_type = PROTOLATHE | AWAY_LATHE
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
@@ -361,8 +361,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/medical_bed
-	name = "Medical Bed"
-	desc = "A bed made of sterile materials ideal for use in the medical field. Patient assistance or joyriding, it'll do it all!"
+	name = "Медицинская кровать"
+	desc = "Кровать из стерильных материалов, идеально подходящая для медотдела. Помощь пациентам или весёлые покатушки, справится со всем!"
 	id = "medicalbed"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/titanium = SHEET_MATERIAL_AMOUNT * 2.7, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 1.7)
@@ -373,8 +373,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/emergency_bed
-	name = "Medical Bed (Emergency)"
-	desc = "A portable, foldable version of the medical bed. Perfect for paramedics or whenever you have mass casualties!"
+	name = "Медицинская кровать (экстренная)"
+	desc = "Переносная складная версия медицинской кровати. Идеальна для парамедиков или случаев массовых жертв."
 	id = "medicalbed_emergency"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/titanium = SHEET_MATERIAL_AMOUNT * 2.7, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 1.7)
@@ -385,7 +385,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/penlight
-	name = "Penlight"
+	name = "Медицинский фонарик"
 	id = "penlight"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SMALL_MATERIAL_AMOUNT*5, /datum/material/glass =SMALL_MATERIAL_AMOUNT*0.5)
@@ -396,7 +396,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/penlight_paramedic
-	name = "Paramedic Penlight"
+	name = "Фонарик парамедика"
 	id = "penlight_paramedic"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SMALL_MATERIAL_AMOUNT*5, /datum/material/glass =SMALL_MATERIAL_AMOUNT*1)
@@ -407,8 +407,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/flesh_reshapers
-	name = "Flesh Reshaper"
-	desc = "Reshape those external features!"
+	name = "Изменитель плоти"
+	desc = "Меняйте внешние черты!"
 	id = "fleshreshaper"
 	build_path = /obj/item/flesh_shears
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -419,7 +419,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/flesh_reshapers/medical // slight variant with different color palette
-	name = "Medical Flesh Reshaper"
+	name = "Медицинский изменитель плоти"
 	id = "fleshreshapermed"
 	build_path = /obj/item/flesh_shears/medical
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
@@ -429,8 +429,8 @@
 /////////////////////////////////////////
 
 /datum/design/cyberimp_breather
-	name = "Breathing Tube Implant"
-	desc = "This simple implant adds an internals connector to your back, allowing you to use internals without a mask and protecting you from being choked."
+	name = "Имплант дыхательной трубки"
+	desc = "Простой имплант добавляет на спину разъём для баллона, позволяя пользоваться подачей воздуха без маски и защищая от удушения."
 	id = "ci-breather"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 3.5 SECONDS
@@ -442,8 +442,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_surgical
-	name = "Surgical Arm Implant"
-	desc = "A set of surgical tools hidden behind a concealed panel on the user's arm."
+	name = "Ручной хирургический имплант"
+	desc = "Набор хирургических инструментов, скрытый за потайной панелью на руке пользователя."
 	id = "ci-surgery"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	materials = list(
@@ -459,8 +459,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_toolset
-	name = "Toolset Arm Implant"
-	desc = "A stripped-down version of engineering cyborg toolset, designed to be installed on subject's arm."
+	name = "Ручной имплант набора инструментов"
+	desc = "Упрощённая версия инженерного набора инструментов киборга, предназначенная для установки в руку субъекта."
 	id = "ci-toolset"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	materials = list(
@@ -476,8 +476,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_medical_hud
-	name = "Medical HUD Implant"
-	desc = "These cybernetic eyes will display a medical HUD over everything you see. Wiggle eyes to control."
+	name = "Имплант медицинского ИЛС"
+	desc = "Эти кибернетические глаза отображают медицинский ИЛС поверх всего видимого. Управление движением глаз."
 	id = "ci-medhud"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 5 SECONDS
@@ -494,8 +494,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_security_hud
-	name = "Security HUD Implant"
-	desc = "These cybernetic eyes will display a security HUD over everything you see. Wiggle eyes to control."
+	name = "Имплант охранного ИЛС"
+	desc = "Эти кибернетические глаза отображают охранный ИЛС поверх всего видимого. Управление движением глаз."
 	id = "ci-sechud"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 5 SECONDS
@@ -512,8 +512,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_diagnostic_hud
-	name = "Diagnostic HUD Implant"
-	desc = "These cybernetic eyes will display a diagnostic HUD over everything you see. Wiggle eyes to control."
+	name = "Имплант диагностического ИЛС"
+	desc = "Эти кибернетические глаза отображают диагностический ИЛС поверх всего видимого. Управление движением глаз."
 	id = "ci-diaghud"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 5 SECONDS
@@ -530,8 +530,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_xray
-	name = "X-ray Eyes"
-	desc = "These cybernetic eyes will give you X-ray vision. Blinking is futile."
+	name = "Рентгеновские глаза"
+	desc = "Эти кибернетические глаза дают рентгеновское зрение. Моргать бесполезно."
 	id = "ci-xray"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 6 SECONDS
@@ -552,13 +552,13 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_xray/moth
-	name = "Moth X-ray Eyes"
+	name = "Рентгеновские глаза ниана"
 	id = "ci-xray-moth"
 	build_path = /obj/item/organ/eyes/robotic/xray/moth
 
 /datum/design/cyberimp_thermals
-	name = "Thermal Eyes"
-	desc = "These cybernetic eyes will give you Thermal vision. Vertical slit pupil included."
+	name = "Термальные глаза"
+	desc = "Эти кибернетические глаза дают тепловое зрение. Вертикальный щелевидный зрачок прилагается."
 	id = "ci-thermals"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 6 SECONDS
@@ -577,13 +577,13 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_thermals/moth
-	name = "Moth Thermal Eyes"
+	name = "Термальные глаза ниана"
 	id = "ci-thermals-moth"
 	build_path = /obj/item/organ/eyes/robotic/thermals/moth
 
 /datum/design/cyberimp_tacvisor
-	name = "Tactical IFF Visor"
-	desc = "A sick IFF visor with an inbuilt LED display. May critically overload the user's prefrontal cortex."
+	name = "Тактический визор IFF"
+	desc = "Мощный визор IFF со встроенным LED-дисплеем. Может критически перегрузить префронтальную кору пользователя."
 	id = "ci-tacvisor"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 6 SECONDS
@@ -601,8 +601,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_antidrop
-	name = "Anti-Drop Implant"
-	desc = "This cybernetic brain implant will allow you to force your hand muscles to contract, preventing item dropping. Twitch ear to toggle."
+	name = "Имплант против выпадения"
+	desc = "Этот кибернетический мозговой имплант заставляет мышцы рук сокращаться, не давая выронить предмет. Переключается движением уха."
 	id = "ci-antidrop"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 6 SECONDS
@@ -619,8 +619,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_antistun
-	name = "CNS Rebooter Implant"
-	desc = "This implant will automatically give you back control over your central nervous system, reducing downtime when stunned."
+	name = "Имплант перезапуска ЦНС"
+	desc = "Этот имплант автоматически возвращает контроль над центральной нервной системой, сокращая время беспомощности при оглушении."
 	id = "ci-antistun"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 6 SECONDS
@@ -637,8 +637,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_herculean
-	name = "Herculean Gravitronic Spinal Implant"
-	desc = "This gravitronic spinal interface allows the user to reduce the impact of gravity on their body, effectively improving athletic performance."
+	name = "Геркулесов гравитронный спинной имплант"
+	desc = "Этот гравитронный спинной интерфейс снижает воздействие гравитации на тело пользователя, фактически улучшая физические показатели."
 	id = "ci-herculean"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 4 SECONDS
@@ -655,8 +655,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_connector
-	name = "CNS Skillchip Connector Implant"
-	desc = "This cybernetic adds a port to the back of your head, where you can remove or add skillchips at will."
+	name = "Имплант разъёма скиллчипов ЦНС"
+	desc = "Эта кибернетика добавляет порт на затылке, позволяя свободно извлекать и устанавливать скиллчипы."
 	id = "ci-connector"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 6 SECONDS
@@ -672,8 +672,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_nutriment
-	name = "Nutriment Pump Implant"
-	desc = "This implant will synthesize and pump into your bloodstream a small amount of nutriment when you are starving."
+	name = "Имплант питательного насоса"
+	desc = "Этот имплант синтезирует и вводит в кровь небольшое количество питательных веществ, когда вы голодаете."
 	id = "ci-nutriment"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 4 SECONDS
@@ -689,8 +689,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_nutriment_plus
-	name = "Nutriment Pump Implant PLUS"
-	desc = "This implant will synthesize and pump into your bloodstream a small amount of nutriment when you are hungry."
+	name = "Имплант питательного насоса ПЛЮС"
+	desc = "Этот имплант синтезирует и вводит в кровь небольшое количество питательных веществ, когда вы проголодались."
 	id = "ci-nutrimentplus"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 5 SECONDS
@@ -707,8 +707,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_reviver
-	name = "Reviver Implant"
-	desc = "This implant will attempt to revive you if you lose consciousness. For the faint of heart!"
+	name = "Имплант-реаниматор"
+	desc = "Этот имплант попытается оживить вас при потере сознания. Для слабых сердцем!"
 	id = "ci-reviver"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 6 SECONDS
@@ -725,8 +725,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_thrusters
-	name = "Thrusters Set Implant"
-	desc = "This implant will allow you to use gas from environment or your internals for propulsion in zero-gravity areas."
+	name = "Имплант набора маневровых двигателей"
+	desc = "Этот имплант позволяет использовать газ из окружения или баллона для движения в невесомости."
 	id = "ci-thrusters"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 8 SECONDS
@@ -743,8 +743,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_surgery_brain
-	name = "Surgical Processor Implant"
-	desc = "A cybernetic brain implant that provides access to advanced surgeries."
+	name = "Имплант хирургического процессора"
+	desc = "Кибернетический мозговой имплант, открывающий доступ к продвинутым операциям."
 	id = "ci-surgery-brain"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 4 SECONDS
@@ -764,8 +764,8 @@
 /////////////////////////////////////////
 
 /datum/design/implanter
-	name = "Implanter"
-	desc = "A sterile automatic implant injector."
+	name = "Имплантер"
+	desc = "Стерильный автоматический инъектор имплантов."
 	id = "implanter"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT*6, /datum/material/glass =SMALL_MATERIAL_AMOUNT * 2)
@@ -776,8 +776,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY | DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/implantcase
-	name = "Implant Case"
-	desc = "A glass case for containing an implant."
+	name = "Футляр импланта"
+	desc = "Стеклянный футляр для хранения импланта."
 	id = "implantcase"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/glass =SMALL_MATERIAL_AMOUNT*5)
@@ -788,8 +788,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY | DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/implant_sadtrombone
-	name = "Sad Trombone Implant Case"
-	desc = "Makes death amusing."
+	name = "Футляр импланта грустного тромбона"
+	desc = "Делает смерть забавной."
 	id = "implant_trombone"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/glass =SMALL_MATERIAL_AMOUNT*5, /datum/material/bananium =SMALL_MATERIAL_AMOUNT*5)
@@ -800,8 +800,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/implant_chem
-	name = "Chemical Implant Case"
-	desc = "A glass case containing a chemical implant."
+	name = "Футляр химического импланта"
+	desc = "Стеклянный футляр с химическим имплантом."
 	id = "implant_chem"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/glass = SMALL_MATERIAL_AMOUNT * 7)
@@ -812,8 +812,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY | DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/implant_tracking
-	name = "Tracking Implant Case"
-	desc = "A glass case containing a tracking implant."
+	name = "Футляр отслеживающего импланта"
+	desc = "Стеклянный футляр с отслеживающим имплантом."
 	id = "implant_tracking"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 5)
@@ -824,8 +824,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY | DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/implant_beacon
-	name = "Beacon Implant Case"
-	desc = "A glass case containing a beacon implant."
+	name = "Футляр импланта-маяка"
+	desc = "Стеклянный футляр с имплантом-маяком."
 	id = "implant_beacon"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 5, /datum/material/bluespace = SMALL_MATERIAL_AMOUNT * 3)
@@ -836,8 +836,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/implant_bluespace
-	name = "Bluespace Grounding Implant Case"
-	desc = "A glass case containing a teleport blocker implant."
+	name = "Футляр блюспейс-заземляющего импланта"
+	desc = "Стеклянный футляр с имплантом-блокиратором телепортации."
 	id = "implant_bluespace"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 5, /datum/material/bluespace = SMALL_MATERIAL_AMOUNT * 3)
@@ -848,8 +848,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/implant_exile
-	name = "Exile Implant Case"
-	desc = "A glass case containing an exile implant."
+	name = "Футляр импланта изгнания"
+	desc = "Стеклянный футляр с имплантом изгнания."
 	id = "implant_exile"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 5, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 5, /datum/material/titanium = SMALL_MATERIAL_AMOUNT * 3)
@@ -862,8 +862,8 @@
 //Cybernetic organs
 
 /datum/design/cybernetic_liver
-	name = "Basic Cybernetic Liver"
-	desc = "A basic cybernetic liver."
+	name = "Базовая кибернетическая печень"
+	desc = "Базовая кибернетическая печень."
 	id = "cybernetic_liver"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 4 SECONDS
@@ -875,8 +875,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cybernetic_liver/tier2
-	name = "Cybernetic Liver"
-	desc = "A cybernetic liver."
+	name = "Кибернетическая печень"
+	desc = "Кибернетическая печень."
 	id = "cybernetic_liver_tier2"
 	materials = list(/datum/material/iron =SMALL_MATERIAL_AMOUNT*5, /datum/material/glass =SMALL_MATERIAL_AMOUNT*5)
 	build_path = /obj/item/organ/liver/cybernetic/tier2
@@ -886,8 +886,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cybernetic_liver/tier3
-	name = "Upgraded Cybernetic Liver"
-	desc = "An upgraded cybernetic liver."
+	name = "Улучшенная кибернетическая печень"
+	desc = "Улучшенная кибернетическая печень."
 	id = "cybernetic_liver_tier3"
 	construction_time = 5 SECONDS
 	materials = list(/datum/material/iron =SMALL_MATERIAL_AMOUNT*5, /datum/material/glass =SMALL_MATERIAL_AMOUNT*5, /datum/material/silver=SMALL_MATERIAL_AMOUNT*5)
@@ -898,8 +898,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cybernetic_heart
-	name = "Basic Cybernetic Heart"
-	desc = "A basic cybernetic heart."
+	name = "Базовое кибернетическое сердце"
+	desc = "Базовое кибернетическое сердце."
 	id = "cybernetic_heart"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 4 SECONDS
@@ -911,8 +911,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cybernetic_heart/tier2
-	name = "Cybernetic Heart"
-	desc = "A cybernetic heart."
+	name = "Кибернетическое сердце"
+	desc = "Кибернетическое сердце."
 	id = "cybernetic_heart_tier2"
 	materials = list(/datum/material/iron =SMALL_MATERIAL_AMOUNT*5, /datum/material/glass =SMALL_MATERIAL_AMOUNT*5)
 	build_path = /obj/item/organ/heart/cybernetic/tier2
@@ -922,8 +922,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cybernetic_heart/tier3
-	name = "Upgraded Cybernetic Heart"
-	desc = "An upgraded cybernetic heart."
+	name = "Улучшенное кибернетическое сердце"
+	desc = "Улучшенное кибернетическое сердце."
 	id = "cybernetic_heart_tier3"
 	construction_time = 5 SECONDS
 	materials = list(/datum/material/iron =SMALL_MATERIAL_AMOUNT*5, /datum/material/glass =SMALL_MATERIAL_AMOUNT*5, /datum/material/silver=SMALL_MATERIAL_AMOUNT*5)
@@ -934,8 +934,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cybernetic_heart/anomalock
-	name = "Voltaic combat cyberheart"
-	desc = "A cutting-edge cyberheart, originally designed for Nanotrasen killsquad usage but later declassified for normal research. Voltaic technology allows the heart to keep the body upright in dire circumstances, alongside redirecting anomalous flux energy to fully shield the user from shocks and electro-magnetic pulses. Does nothing without a flux anomaly core."
+	name = "Вольтаическое боевое киберсердце"
+	desc = "Передовое киберсердце, изначально разработанное для ударных отрядов Nanotrasen, но позже рассекреченное для обычных исследований. Вольтаическая технология помогает телу держаться в критических обстоятельствах и перенаправляет аномальную энергию потока, полностью защищая пользователя от ударов током и ЭМИ. Не работает без ядра потоковой аномалии."
 	id = "cybernetic_heart_anomalock"
 	construction_time = 5 SECONDS
 	materials = list(
@@ -951,8 +951,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/cybernetic_lungs
-	name = "Basic Cybernetic Lungs"
-	desc = "A basic pair of cybernetic lungs."
+	name = "Базовые кибернетические лёгкие"
+	desc = "Базовая пара кибернетических лёгких."
 	id = "cybernetic_lungs"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 4 SECONDS
@@ -964,8 +964,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cybernetic_lungs/tier2
-	name = "Cybernetic Lungs"
-	desc = "A pair of cybernetic lungs."
+	name = "Кибернетические лёгкие"
+	desc = "Пара кибернетических лёгких."
 	id = "cybernetic_lungs_tier2"
 	materials = list(/datum/material/iron =SMALL_MATERIAL_AMOUNT*5, /datum/material/glass =SMALL_MATERIAL_AMOUNT*5)
 	build_path = /obj/item/organ/lungs/cybernetic/tier2
@@ -975,8 +975,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cybernetic_lungs/tier3
-	name = "Upgraded Cybernetic Lungs"
-	desc = "A pair of upgraded cybernetic lungs."
+	name = "Улучшенные кибернетические лёгкие"
+	desc = "Пара улучшенных кибернетических лёгких."
 	id = "cybernetic_lungs_tier3"
 	construction_time = 5 SECONDS
 	materials = list(/datum/material/iron =SMALL_MATERIAL_AMOUNT*5, /datum/material/glass =SMALL_MATERIAL_AMOUNT*5, /datum/material/silver =SMALL_MATERIAL_AMOUNT*5)
@@ -987,8 +987,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cybernetic_stomach
-	name = "Basic Cybernetic Stomach"
-	desc = "A basic cybernetic stomach."
+	name = "Базовый кибернетический желудок"
+	desc = "Базовый кибернетический желудок."
 	id = "cybernetic_stomach"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 4 SECONDS
@@ -1000,8 +1000,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cybernetic_stomach/tier2
-	name = "Cybernetic Stomach"
-	desc = "A cybernetic stomach."
+	name = "Кибернетический желудок"
+	desc = "Кибернетический желудок."
 	id = "cybernetic_stomach_tier2"
 	materials = list(/datum/material/iron =SMALL_MATERIAL_AMOUNT*5, /datum/material/glass =SMALL_MATERIAL_AMOUNT*5)
 	build_path = /obj/item/organ/stomach/cybernetic/tier2
@@ -1011,8 +1011,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cybernetic_stomach/tier3
-	name = "Upgraded Cybernetic Stomach"
-	desc = "An upgraded cybernetic stomach."
+	name = "Улучшенный кибернетический желудок"
+	desc = "Улучшенный кибернетический желудок."
 	id = "cybernetic_stomach_tier3"
 	construction_time = 5 SECONDS
 	materials = list(/datum/material/iron =SMALL_MATERIAL_AMOUNT*5, /datum/material/glass =SMALL_MATERIAL_AMOUNT*5, /datum/material/silver =SMALL_MATERIAL_AMOUNT*5)
@@ -1023,8 +1023,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cybernetic_ears
-	name = "Basic Cybernetic Ears"
-	desc = "A Basic pair of cybernetic ears."
+	name = "Базовые кибернетические уши"
+	desc = "Базовая пара кибернетических ушей."
 	id = "cybernetic_ears"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 3 SECONDS
@@ -1036,8 +1036,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cybernetic_ears_u
-	name = "Cybernetic Ears"
-	desc = "A pair of cybernetic ears."
+	name = "Кибернетические уши"
+	desc = "Пара кибернетических ушей."
 	id = "cybernetic_ears_u"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 4 SECONDS
@@ -1053,8 +1053,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cybernetic_ears_whisper
-	name = "Whisper-sensitive Cybernetic Ears"
-	desc = "A pair of whisper-sensitive cybernetic ears."
+	name = "Кибернетические уши для шёпота"
+	desc = "Пара кибернетических ушей с повышенной чувствительностью к шёпоту."
 	id = "cybernetic_ears_whisper"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 4 SECONDS
@@ -1070,8 +1070,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cybernetic_ears_volume
-	name = "Volume-adjusting Cybernetic Ears"
-	desc = "A pair of volume-adjusting cybernetic ears"
+	name = "Кибернетические уши с регулировкой громкости"
+	desc = "Пара кибернетических ушей с регулировкой громкости."
 	id = "cybernetic_ears_volume"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 4 SECONDS
@@ -1087,8 +1087,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cybernetic_ears_xray
-	name = "Wall-penetrating Cybernetic Ears"
-	desc = "A pair of wall-penetrating cybernetic ears."
+	name = "Кибернетические уши сквозь стены"
+	desc = "Пара кибернетических ушей, слышащих сквозь стены."
 	id = "cybernetic_ears_xray"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 4 SECONDS
@@ -1104,38 +1104,38 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cybernetic_ears/cat
-	name = "Basic Cybernetic Cat Ears"
-	desc = "A basic pair of cybernetic cat ears"
+	name = "Базовые кибернетические кошачьи уши"
+	desc = "Базовая пара кибернетических кошачьих ушей."
 	id = "cybernetic_ears_cat"
 	build_path = /obj/item/organ/ears/cat/cybernetic
 
 /datum/design/cybernetic_ears_u/cat
-	name = "Cybernetic Cat Ears"
-	desc = "A pair of cybernetic cat ears"
+	name = "Кибернетические кошачьи уши"
+	desc = "Пара кибернетических кошачьих ушей."
 	id = "cybernetic_ears_u_cat"
 	build_path = /obj/item/organ/ears/cat/cybernetic/upgraded
 
 /datum/design/cybernetic_ears_whisper/cat
-	name = "Whisper-sensitive Cybernetic Cat Ears"
-	desc = "A pair of whisper-sensitive cybernetic cat ears"
+	name = "Кибернетические кошачьи уши для шёпота"
+	desc = "Пара кибернетических кошачьих ушей с повышенной чувствительностью к шёпоту."
 	id = "cybernetic_ears_whisper_cat"
 	build_path = /obj/item/organ/ears/cat/cybernetic/whisper
 
 /datum/design/cybernetic_ears_volume/cat
-	name = "Volume-adjusting Cybernetic Cat Ears"
-	desc = "A pair of volume-adjusting cybernetic cat ears"
+	name = "Кибернетические кошачьи уши с регулировкой громкости"
+	desc = "Пара кибернетических кошачьих ушей с регулировкой громкости."
 	id = "cybernetic_ears_volume_cat"
 	build_path = /obj/item/organ/ears/cat/cybernetic/volume
 
 /datum/design/cybernetic_ears_xray/cat
-	name = "Wall-penetrating Cybernetic Cat Ears"
-	desc = "A pair of wall-penetrating cybernetic cat ears"
+	name = "Кибернетические кошачьи уши сквозь стены"
+	desc = "Пара кибернетических кошачьих ушей, слышащих сквозь стены."
 	id = "cybernetic_ears_xray_cat"
 	build_path = /obj/item/organ/ears/cat/cybernetic/xray
 
 /datum/design/cybernetic_eyes
-	name = "Basic Cybernetic Eyes"
-	desc = "A basic pair of cybernetic eyes."
+	name = "Базовые кибернетические глаза"
+	desc = "Базовая пара кибернетических глаз."
 	id = "cybernetic_eyes"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 3 SECONDS
@@ -1147,13 +1147,13 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cybernetic_eyes/moth
-	name = "Basic Cybernetic Moth Eyes"
+	name = "Базовые кибернетические глаза ниана"
 	id = "cybernetic_eyes_moth"
 	build_path = /obj/item/organ/eyes/robotic/basic/moth
 
 /datum/design/cybernetic_eyes/improved
-	name = "Cybernetic Eyes"
-	desc = "A pair of cybernetic eyes."
+	name = "Кибернетические глаза"
+	desc = "Пара кибернетических глаз."
 	id = "cybernetic_eyes_improved"
 	build_path = /obj/item/organ/eyes/robotic
 	category = list(
@@ -1162,13 +1162,13 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cybernetic_eyes/improved/moth
-	name = "Cybernetic Moth Eyes"
+	name = "Кибернетические глаза ниана"
 	id = "cybernetic_eyes_improved_moth"
 	build_path = /obj/item/organ/eyes/robotic/moth
 
 /datum/design/cyberimp_welding
-	name = "Welding Shield Eyes"
-	desc = "These reactive micro-shields will protect you from welders and flashes without obscuring your vision."
+	name = "Глаза со сварочной защитой"
+	desc = "Эти реактивные микрозащитные экраны защищают от сварки и вспышек, не закрывая обзор."
 	id = "ci-welding"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 4 SECONDS
@@ -1180,13 +1180,13 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_welding/moth
-	name = "Welding Shield Moth Eyes"
+	name = "Глаза ниана со сварочной защитой"
 	id = "ci-welding-moth"
 	build_path = /obj/item/organ/eyes/robotic/shield/moth
 
 /datum/design/cyberimp_gloweyes
-	name = "Luminescent Eyes"
-	desc = "A pair of cybernetic eyes that can emit multicolored light"
+	name = "Люминесцентные глаза"
+	desc = "Пара кибернетических глаз, способных излучать многоцветный свет."
 	id = "ci-gloweyes"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 4 SECONDS
@@ -1198,13 +1198,13 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_gloweyes/moth
-	name = "Luminescent Moth Eyes"
+	name = "Люминесцентные глаза ниана"
 	id = "ci-gloweyes-moth"
 	build_path = /obj/item/organ/eyes/robotic/glow/moth
 
 /datum/design/medibot_upgrade
-	name = "Medibot Upgrade"
-	desc = "Automatically upgrades the effectiveness of all medibots linked to the research network."
+	name = "Улучшение медботов"
+	desc = "Автоматически повышает эффективность всех медботов, подключённых к исследовательской сети."
 	id = "medibot_upgrade"
 	research_icon = 'icons/mob/silicon/aibots.dmi'
 	research_icon_state = "medbot_generic_idle"
@@ -1268,32 +1268,32 @@
 	research_icon_state = "surgery_chest"
 
 /datum/design/surgery/tend_wounds_upgrade
-	name = "Tend Wounds Upgrade"
-	desc = "Upgrade the efficiency of the individual tend wound operations."
+	name = "Улучшение обработки ран"
+	desc = "Повышает эффективность отдельных операций по обработке ран."
 	id = "surgery_heal_upgrade"
 	surgery = /datum/surgery_operation/basic/tend_wounds/upgraded
 	research_icon_state = "surgery_chest"
 
 /datum/design/surgery/tend_wounds_upgrade/femto
-	name = "Tend Wounds Upgrade"
+	name = "Улучшение обработки ран"
 	surgery = /datum/surgery_operation/basic/tend_wounds/upgraded/master
 	id = "surgery_heal_upgrade_femto"
 
 /datum/design/surgery/tend_wounds_combo
-	name = "Tend Wounds Combo"
-	desc = "An alternative wound treatment operation that treats both bruises and burns at the same time, albeit less effectively than their individual counterparts."
+	name = "Комбинированная обработка ран"
+	desc = "Альтернативная операция обработки ран, одновременно лечащая ушибы и ожоги, но менее эффективно, чем отдельные процедуры."
 	surgery = /datum/surgery_operation/basic/tend_wounds/combo
 	id = "surgery_heal_combo"
 	research_icon_state = "surgery_chest"
 
 /datum/design/surgery/tend_wounds_combo/upgrade
-	name = "Tend Wounds Combo Upgrade"
+	name = "Улучшение комбинированной обработки ран"
 	surgery = /datum/surgery_operation/basic/tend_wounds/combo/upgraded
 	id = "surgery_heal_combo_upgrade"
 
 /datum/design/surgery/tend_wounds_combo/upgrade/femto
-	name = "Tend Wounds Combo Upgrade"
-	desc = "The ultimate in wound treatment operations, treating both bruises and burns simultaneous and faster than their individual counterparts."
+	name = "Улучшение комбинированной обработки ран"
+	desc = "Вершина операций по обработке ран: лечит ушибы и ожоги одновременно и быстрее, чем отдельные процедуры."
 	surgery = /datum/surgery_operation/basic/tend_wounds/combo/upgraded/master
 	id = "surgery_heal_combo_upgrade_femto"
 
@@ -1307,94 +1307,94 @@
 	surgery = /datum/surgery_operation/organ/brainwash/mechanic
 
 /datum/design/surgery/nerve_splicing
-	desc = "A surgical procedure which splices the patient's nerves, making them more resistant to stuns."
+	desc = "Хирургическая процедура сращивает нервы пациента, повышая устойчивость к оглушению."
 	id = "surgery_nerve_splice"
 	surgery = /datum/surgery_operation/limb/bioware/nerve_splicing
 	research_icon_state = "surgery_chest"
 
 /datum/design/surgery/nerve_splicing/mechanic
-	desc = "A robotic upgrade which upgrades a robotic patient's automatic systems, making them more resistant to stuns."
+	desc = "Роботизированное улучшение модернизирует автоматические системы пациента, повышая устойчивость к оглушению."
 	id = "surgery_nerve_splice_mechanic"
 	surgery = /datum/surgery_operation/limb/bioware/nerve_splicing/mechanic
 
 /datum/design/surgery/nerve_grounding
-	desc = "A surgical procedure which makes the patient's nerves act as grounding rods, protecting them from electrical shocks."
+	desc = "Хирургическая процедура заставляет нервы пациента работать как заземляющие стержни, защищая от ударов током."
 	id = "surgery_nerve_ground"
 	surgery = /datum/surgery_operation/limb/bioware/nerve_grounding
 	research_icon_state = "surgery_chest"
 
 /datum/design/surgery/nerve_grounding/mechanic
-	desc = "A robotic upgrade which installs grounding rods into the robotic patient's system, protecting them from electrical shocks."
+	desc = "Роботизированное улучшение устанавливает заземляющие стержни в систему пациента, защищая от ударов током."
 	id = "surgery_nerve_ground_mechanic"
 	surgery = /datum/surgery_operation/limb/bioware/nerve_grounding/mechanic
 
 /datum/design/surgery/vein_threading
-	desc = "A surgical procedure which severely reduces the amount of blood lost in case of injury."
+	desc = "Хирургическая процедура значительно снижает потерю крови при травмах."
 	id = "surgery_vein_thread"
 	surgery = /datum/surgery_operation/limb/bioware/vein_threading
 	research_icon_state = "surgery_chest"
 
 /datum/design/surgery/vein_threading/mechanic
-	desc = "A robotic upgrade which severely reduces the amount of hydraulic fluid lost in case of injury."
+	desc = "Роботизированное улучшение значительно снижает потерю гидравлической жидкости при повреждениях."
 	id = "surgery_vein_thread_mechanic"
 	surgery = /datum/surgery_operation/limb/bioware/vein_threading/mechanic
 
 /datum/design/surgery/muscled_veins
-	desc = "A surgical procedure which adds a muscled membrane to blood vessels, allowing a patient to pump blood without a heart."
+	desc = "Хирургическая процедура добавляет мышечную оболочку к сосудам, позволяя пациенту перекачивать кровь без сердца."
 	id = "surgery_muscled_veins"
 	surgery = /datum/surgery_operation/limb/bioware/muscled_veins
 	research_icon_state = "surgery_chest"
 
 /datum/design/surgery/muscled_veins/mechanic
-	desc = "A robotic upgrade which adds sophisticated hydraulics redundancies, allowing a patient to pump hydraulic fluid without an engine."
+	desc = "Роботизированное улучшение добавляет сложное резервирование гидравлики, позволяя пациенту перекачивать гидравлическую жидкость без двигателя."
 	id = "surgery_muscled_veins_mechanic"
 	surgery = /datum/surgery_operation/limb/bioware/muscled_veins/mechanic
 
 /datum/design/surgery/ligament_hook
-	desc = "A surgical procedure which reshapes the connections between torso and limbs, making it so limbs can be attached manually if severed. \
-		However, this weakens the connection, making them easier to detach as well."
+	desc = "Хирургическая процедура меняет соединения между торсом и конечностями, позволяя вручную прикреплять отсечённые конечности. \
+		Однако это ослабляет соединение, из-за чего их также проще отсоединить."
 	id = "surgery_ligament_hook"
 	surgery = /datum/surgery_operation/limb/bioware/ligament_hook
 	research_icon_state = "surgery_chest"
 
 /datum/design/surgery/ligament_hook/mechanic
-	desc = "A robotic upgrade which installs rapid detachment anchor points, making it so limbs can be attached manually if detached. \
-		However, this weakens the connection, making them easier to detach as well."
+	desc = "Роботизированное улучшение устанавливает крепления быстрого отсоединения, позволяя вручную прикреплять отделённые конечности. \
+		Однако это ослабляет соединение, из-за чего их также проще отсоединить."
 	id = "surgery_ligament_hook_mechanic"
 	surgery = /datum/surgery_operation/limb/bioware/ligament_hook/mechanic
 
 /datum/design/surgery/ligament_reinforcement
-	desc = "A surgical procedure which adds a protective tissue and bone cage around the connections between the torso and limbs, preventing dismemberment. \
-		However, the nerve connections as a result are more easily interrupted, making it easier to disable limbs with damage."
+	desc = "Хирургическая процедура добавляет защитную ткань и костный каркас вокруг соединений торса и конечностей, предотвращая расчленение. \
+		Однако нервные соединения из-за этого проще нарушить, поэтому конечности легче вывести из строя повреждениями."
 	id = "surgery_ligament_reinforcement"
 	surgery = /datum/surgery_operation/limb/bioware/ligament_reinforcement
 	research_icon_state = "surgery_chest"
 
 /datum/design/surgery/ligament_reinforcement/mechanic
-	desc = "A surgical procedure which adds reinforced limb anchor points to the patient's chassis, preventing dismemberment. \
-		However, the nerve connections as a result are more easily interrupted, making it easier to disable limbs with damage."
+	desc = "Процедура добавляет усиленные точки крепления конечностей к шасси пациента, предотвращая расчленение. \
+		Однако нервные соединения из-за этого проще нарушить, поэтому конечности легче вывести из строя повреждениями."
 	id = "surgery_ligament_reinforcement_mechanic"
 	surgery = /datum/surgery_operation/limb/bioware/ligament_reinforcement/mechanic
 
 /datum/design/surgery/cortex_imprint
-	desc = "A surgical procedure which modifies the cerebral cortex into a redundant neural pattern, making the brain able to bypass damage caused by minor brain traumas."
+	desc = "Хирургическая процедура меняет кору мозга на резервный нейронный паттерн, позволяя мозгу обходить повреждения от лёгких травм."
 	id = "surgery_cortex_imprint"
 	surgery = /datum/surgery_operation/limb/bioware/cortex_imprint
 	research_icon_state = "surgery_head"
 
 /datum/design/surgery/cortex_imprint/mechanic
-	desc = "A surgical procedure which updates the patient's operating system to the 'latest version', whatever that means, making the brain able to bypass damage caused by minor brain traumas."
+	desc = "Процедура обновляет операционную систему пациента до «последней версии», что бы это ни значило, позволяя мозгу обходить повреждения от лёгких травм."
 	id = "surgery_cortex_imprint_mechanic"
 	surgery = /datum/surgery_operation/limb/bioware/cortex_imprint/mechanic
 
 /datum/design/surgery/cortex_folding
-	desc = "A surgical procedure which modifies the cerebral cortex into a complex fold, giving space to non-standard neural patterns."
+	desc = "Хирургическая процедура превращает кору мозга в сложную складку, освобождая место для нестандартных нейронных паттернов."
 	id = "surgery_cortex_folding"
 	surgery = /datum/surgery_operation/limb/bioware/cortex_folding
 	research_icon_state = "surgery_head"
 
 /datum/design/surgery/cortex_folding/mechanic
-	desc = "A robotic upgrade which reprograms the patient's neural network in a downright eldritch programming language, giving space to non-standard neural patterns."
+	desc = "Роботизированное улучшение перепрограммирует нейросеть пациента на откровенно потустороннем языке, освобождая место для нестандартных нейронных паттернов."
 	id = "surgery_cortex_folding_mechanic"
 	surgery = /datum/surgery_operation/limb/bioware/cortex_folding/mechanic
 
@@ -1414,10 +1414,10 @@
 	research_icon_state = "surgery_chest"
 
 /datum/design/vitals_monitor
-	name = "Vitals Monitor"
-	desc = "A wall mounted computer that displays the vitals of a patient nearby. \
-		Links to stasis beds, operating tables, and other machines that can hold patients \
-		such as cryo cells, sleepers, and more."
+	name = "Монитор жизненных показателей"
+	desc = "Настенный компьютер, отображающий жизненные показатели пациента поблизости. \
+		Подключается к стазисным кроватям, операционным столам и другим машинам, удерживающим пациентов, \
+		например криокапсулам, слиперам и другим устройствам."
 	id = "vitals_monitor"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(
@@ -1430,8 +1430,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/vitals_monitor/advanced
-	name = "Advanced Vitals Monitor"
-	desc = "An updated vitals display which performs a more detailed scan of the patient than the basic display."
+	name = "Продвинутый монитор жизненных показателей"
+	desc = "Обновлённый дисплей жизненных показателей, выполняющий более детальное сканирование пациента, чем базовая версия."
 	id = "vitals_monitor_advanced"
 	materials = list(
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 4,

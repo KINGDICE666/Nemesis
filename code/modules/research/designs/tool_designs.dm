@@ -4,7 +4,7 @@
 /////////////////////////////////////////
 
 /datum/design/fire_extinguisher_advanced
-	name = "Advanced Fire Extinguisher"
+	name = "Продвинутый огнетушитель"
 	id = "adv_fire_extinguisher"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/titanium =SMALL_MATERIAL_AMOUNT*5, /datum/material/gold =SMALL_MATERIAL_AMOUNT*5)
@@ -15,8 +15,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/handdrill
-	name = "Hand Drill"
-	desc = "A small electric hand drill with an interchangeable screwdriver and bolt bit"
+	name = "Ручная дрель"
+	desc = "Небольшая электрическая ручная дрель со сменными битами отвёртки и болта."
 	id = "handdrill"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT*1.75, /datum/material/silver =HALF_SHEET_MATERIAL_AMOUNT * 1.5, /datum/material/titanium =SHEET_MATERIAL_AMOUNT*1.25)
@@ -27,8 +27,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/jawsoflife
-	name = "Jaws of Life"
-	desc = "A small, compact Jaws of Life with an interchangeable pry jaws and cutting jaws"
+	name = "Челюсти жизни"
+	desc = "Небольшие компактные челюсти жизни со сменными разжимными и режущими насадками."
 	id = "jawsoflife" // added one more requirment since the Jaws of Life are a bit OP
 	build_path = /obj/item/crowbar/power
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -40,8 +40,8 @@
 	autolathe_exportable = FALSE
 
 /datum/design/exwelder
-	name = "Experimental Welding Tool"
-	desc = "An experimental welder capable of self-fuel generation."
+	name = "Экспериментальный сварочный аппарат"
+	desc = "Экспериментальный сварочный аппарат, способный сам вырабатывать топливо."
 	id = "exwelder"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =HALF_SHEET_MATERIAL_AMOUNT, /datum/material/glass =SMALL_MATERIAL_AMOUNT*5, /datum/material/plasma =HALF_SHEET_MATERIAL_AMOUNT * 1.5, /datum/material/uranium =SMALL_MATERIAL_AMOUNT * 2)
@@ -52,8 +52,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/rangedanalyzer
-	name = "Experimental Long-range Gas Analyzer"
-	desc = "An experimental gas analyzer capable of operating at long distance"
+	name = "Экспериментальный дальнобойный газоанализатор"
+	desc = "Экспериментальный газоанализатор, способный работать на большом расстоянии."
 	id = "rangedanalyzer"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SMALL_MATERIAL_AMOUNT, /datum/material/glass =SMALL_MATERIAL_AMOUNT*0.2, /datum/material/gold =SMALL_MATERIAL_AMOUNT * 3, /datum/material/bluespace=SMALL_MATERIAL_AMOUNT * 2)
@@ -64,7 +64,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING | DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/rpd
-	name = "Rapid Pipe Dispenser (RPD)"
+	name = "Быстрый прокладчик труб (RPD)"
 	id = "rpd_loaded"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT*37.5, /datum/material/glass =SHEET_MATERIAL_AMOUNT*18.75)
@@ -87,8 +87,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/rtd_loaded
-	name = "Rapid Tiling Device"
-	desc = "A tool that can lay & destroy floor tiles on the fly."
+	name = "Устройство быстрой укладки плитки"
+	desc = "Инструмент, способный на ходу укладывать и разрушать напольную плитку."
 	id = "rtd_loaded"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT * 15, /datum/material/glass =SHEET_MATERIAL_AMOUNT*1.25)
@@ -191,8 +191,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/rpd_upgrade/unwrench
-	name = "RPD unwrenching upgrade"
-	desc = "Adds reverse wrench mode to the RPD. Attention, due to budget cuts, the mode is hard linked to the destroy mode control button."
+	name = "Улучшение RPD: откручивание"
+	desc = "Добавляет RPD обратный режим гаечного ключа. Внимание: из-за урезания бюджета режим жёстко привязан к кнопке режима разрушения."
 	id = "rpd_upgrade_unwrench"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT * 2.5, /datum/material/glass =SHEET_MATERIAL_AMOUNT*1.25)
@@ -203,8 +203,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/rld_mini
-	name = "Mini Rapid Light Device (MRLD)"
-	desc = "A tool that can deploy portable and standing lighting orbs and glowsticks."
+	name = "Мини-устройство быстрого освещения (MRLD)"
+	desc = "Инструмент, способный устанавливать переносные и стационарные световые сферы, а также светящиеся палочки."
 	id = "rld_mini"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT*10, /datum/material/glass =SHEET_MATERIAL_AMOUNT*5, /datum/material/plastic =SHEET_MATERIAL_AMOUNT*4, /datum/material/gold =SHEET_MATERIAL_AMOUNT)
@@ -215,8 +215,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING | DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_SERVICE
 
 /datum/design/geneshears
-	name = "Botanogenetic Plant Shears"
-	desc = "A high tech, high fidelity pair of plant shears, capable of cutting genetic traits out of a plant."
+	name = "Ботаногенетические секаторы"
+	desc = "Высокотехнологичные точные секаторы, способные вырезать генетические признаки из растения."
 	id = "gene_shears"
 	build_path = /obj/item/geneshears
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -227,7 +227,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
 /datum/design/plumbing_rcd_service
-	name = "Service Plumbing Constructor"
+	name = "Сервисный конструктор сантехники"
 	id = "plumbing_rcd_service"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT*37.5, /datum/material/glass =SHEET_MATERIAL_AMOUNT*18.75, /datum/material/plastic =HALF_SHEET_MATERIAL_AMOUNT)
@@ -238,7 +238,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
 /datum/design/biopsy_tool
-	name = "Biopsy Tool"
+	name = "Инструмент для биопсии"
 	id = "biopsy_tool"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT*2, /datum/material/glass =SHEET_MATERIAL_AMOUNT*1.5)
@@ -253,8 +253,8 @@
 /////////////////////////////////////////
 
 /datum/design/alienwrench
-	name = "Alien Wrench"
-	desc = "An advanced wrench obtained through Abductor technology."
+	name = "Инопланетный гаечный ключ"
+	desc = "Продвинутый гаечный ключ, полученный с помощью технологий абдукторов."
 	id = "alien_wrench"
 	build_path = /obj/item/wrench/abductor
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -265,8 +265,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/alienwirecutters
-	name = "Alien Wirecutters"
-	desc = "Advanced wirecutters obtained through Abductor technology."
+	name = "Инопланетные кусачки"
+	desc = "Продвинутые кусачки, полученные с помощью технологий абдукторов."
 	id = "alien_wirecutters"
 	build_path = /obj/item/wirecutters/abductor
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -277,8 +277,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/alienscrewdriver
-	name = "Alien Screwdriver"
-	desc = "An advanced screwdriver obtained through Abductor technology."
+	name = "Инопланетная отвёртка"
+	desc = "Продвинутая отвёртка, полученная с помощью технологий абдукторов."
 	id = "alien_screwdriver"
 	build_path = /obj/item/screwdriver/abductor
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -289,8 +289,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/aliencrowbar
-	name = "Alien Crowbar"
-	desc = "An advanced crowbar obtained through Abductor technology."
+	name = "Инопланетный лом"
+	desc = "Продвинутый лом, полученный с помощью технологий абдукторов."
 	id = "alien_crowbar"
 	build_path = /obj/item/crowbar/abductor
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -301,8 +301,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/alienwelder
-	name = "Alien Welding Tool"
-	desc = "An advanced welding tool obtained through Abductor technology."
+	name = "Инопланетный сварочный аппарат"
+	desc = "Продвинутый сварочный аппарат, полученный с помощью технологий абдукторов."
 	id = "alien_welder"
 	build_path = /obj/item/weldingtool/abductor
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -313,8 +313,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/alienmultitool
-	name = "Alien Multitool"
-	desc = "An advanced multitool obtained through Abductor technology."
+	name = "Инопланетный мультитул"
+	desc = "Продвинутый мультитул, полученный с помощью технологий абдукторов."
 	id = "alien_multitool"
 	build_path = /obj/item/multitool/abductor
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -329,8 +329,8 @@
 /////////////////////////////////////////
 
 /datum/design/alienscalpel
-	name = "Alien Scalpel"
-	desc = "An advanced scalpel obtained through Abductor technology."
+	name = "Инопланетный скальпель"
+	desc = "Продвинутый скальпель, полученный с помощью технологий абдукторов."
 	id = "alien_scalpel"
 	build_path = /obj/item/scalpel/alien
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -341,8 +341,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/alienhemostat
-	name = "Alien Hemostat"
-	desc = "An advanced hemostat obtained through Abductor technology."
+	name = "Инопланетный зажим"
+	desc = "Продвинутый зажим, полученный с помощью технологий абдукторов."
 	id = "alien_hemostat"
 	build_path = /obj/item/hemostat/alien
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -353,8 +353,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/alienretractor
-	name = "Alien Retractor"
-	desc = "An advanced retractor obtained through Abductor technology."
+	name = "Инопланетный ретрактор"
+	desc = "Продвинутый ретрактор, полученный с помощью технологий абдукторов."
 	id = "alien_retractor"
 	build_path = /obj/item/retractor/alien
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -365,8 +365,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/aliensaw
-	name = "Alien Circular Saw"
-	desc = "An advanced surgical saw obtained through Abductor technology."
+	name = "Инопланетная циркулярная пила"
+	desc = "Продвинутая хирургическая пила, полученная с помощью технологий абдукторов."
 	id = "alien_saw"
 	build_path = /obj/item/circular_saw/alien
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -377,8 +377,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/aliendrill
-	name = "Alien Drill"
-	desc = "An advanced drill obtained through Abductor technology."
+	name = "Инопланетная дрель"
+	desc = "Продвинутая дрель, полученная с помощью технологий абдукторов."
 	id = "alien_drill"
 	build_path = /obj/item/surgicaldrill/alien
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -389,8 +389,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/aliencautery
-	name = "Alien Cautery"
-	desc = "An advanced cautery obtained through Abductor technology."
+	name = "Инопланетный каутер"
+	desc = "Продвинутый каутер, полученный с помощью технологий абдукторов."
 	id = "alien_cautery"
 	build_path = /obj/item/cautery/alien
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -401,8 +401,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/wirebrush
-	name = "Wirebrush"
-	desc = "A tool to remove rust from walls."
+	name = "Проволочная щётка"
+	desc = "Инструмент для удаления ржавчины со стен."
 	id = "wirebrush"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_TOOLS)
@@ -415,8 +415,8 @@
 	)
 
 /datum/design/bolter_wrench
-	name = "Bolter Wrench"
-	desc = "A wrench that can unbolt airlocks regardless of power status."
+	name = "Болтер-ключ"
+	desc = "Гаечный ключ, способный откручивать шлюзы независимо от состояния питания."
 	id = "bolter_wrench"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT)
@@ -427,8 +427,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/shuttle_blueprints
-	name = "Shuttle Blueprints"
-	desc = "Blueprints suitable for constructing shuttles"
+	name = "Чертежи шаттла"
+	desc = "Чертежи, пригодные для строительства шаттлов."
 	id = "shuttle_blueprints"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT)
@@ -437,8 +437,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_ENGINEERING | DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/shuttle_remote
-	name = "Shuttle Remote Control"
-	desc = "A remote which can send away or try to dock shuttles once linked to a navigation console."
+	name = "Пульт управления шаттлом"
+	desc = "Пульт, который после привязки к навигационной консоли может отправлять шаттлы или пытаться пристыковать их."
 	id = "shuttle_remote"
 	build_type = PROTOLATHE
 	build_path = /obj/item/shuttle_remote

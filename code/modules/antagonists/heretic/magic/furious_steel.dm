@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/pointed/projectile/furious_steel
-	name = "Furious Steel"
-	desc = "Summon three silver blades which orbit you. \
+	name = "Яростная сталь"
+	desc = "Призывает три серебряных клинка, вращающихся вокруг вас. \
 		While orbiting you, these blades will protect you from attacks, but will be consumed on use. \
 		Additionally, you can click to fire the blades at a target, dealing damage and causing bleeding."
 	background_icon_state = "bg_heretic"
@@ -115,7 +115,7 @@
 	current_amount--
 
 /obj/projectile/floating_blade
-	name = "blade"
+	name = "клинок"
 	icon = 'icons/effects/eldritch.dmi'
 	icon_state = "dio_knife"
 	speed = 0.5
@@ -150,7 +150,7 @@
 	return ..()
 
 /obj/projectile/floating_blade/haunted
-	name = "ritual blade"
+	name = "ритуальный клинок"
 	icon = 'icons/obj/weapons/khopesh.dmi'
 	icon_state = "render"
 	damage = 35
@@ -158,15 +158,15 @@
 	outline_color = "#D7CBCA"
 
 /datum/action/cooldown/spell/pointed/projectile/furious_steel/solo
-	name = "Lesser Furious Steel"
+	name = "Малая яростная сталь"
 	cooldown_time = 20 SECONDS
 	projectile_amount = 1
 	active_msg = "You summon forth a blade of furious silver."
 	deactive_msg = "You conceal the blade of furious silver."
 
 /datum/action/cooldown/spell/pointed/projectile/furious_steel/haunted
-	name = "Cursed Steel"
-	desc = "Summon two cursed blades which orbit you. \
+	name = "Проклятая сталь"
+	desc = "Призывает два проклятых клинка, вращающихся вокруг вас. \
 		While orbiting you, these blades will protect you from attacks, but will be consumed on use. \
 		Additionally, you can click to fire the blades at a target, dealing damage and causing bleeding."
 	background_icon_state = "bg_heretic" // kept intentionally

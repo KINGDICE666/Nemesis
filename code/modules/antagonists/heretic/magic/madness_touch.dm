@@ -1,7 +1,7 @@
 // Currently unused
 /datum/action/cooldown/spell/touch/mad_touch
-	name = "Touch of Madness"
-	desc = "A touch spell that drains your enemy's sanity and knocks them down."
+	name = "Касание безумия"
+	desc = "Контактное заклинание, истощающее рассудок врага и сбивающее его с ног."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'

@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/conjure/void_conduit
-	name = "Void Conduit"
-	desc = "Opens a gate to the Void; it releases an intermittent pulse that damages windows and airlocks, \
+	name = "Проводник Пустоты"
+	desc = "Открывает врата в Пустоту; они периодически выпускают импульс, повреждающий окна и шлюзы, \
 		while afflicting Heathens with void chill. \
 		Affected Heretics instead receive low pressure resistance."
 	background_icon_state = "bg_heretic"
@@ -22,8 +22,8 @@
 	summon_respects_prev_spawn_points = TRUE
 
 /obj/structure/void_conduit
-	name = "Void Conduit"
-	desc = "An open gate which leads to nothingness. Releases pulses which you do not want to get hit by."
+	name = "Проводник Пустоты"
+	desc = "Открытые врата, ведущие в ничто. Выпускают импульсы, под которые лучше не попадать."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "void_conduit"
 	anchored = TRUE

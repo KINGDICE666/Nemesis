@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/pointed/blood_siphon
-	name = "Blood Siphon"
-	desc = "A targeted spell that heals your wounds while damaging the enemy. \
+	name = "Кровавый сифон"
+	desc = "Направленное заклинание, которое исцеляет ваши раны, нанося урон врагу. \
 		It has a chance to transfer wounds between you and your enemy."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"

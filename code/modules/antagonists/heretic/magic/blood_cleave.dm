@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/pointed/cleave
-	name = "Cleave"
-	desc = "Causes severe bleeding on a target and several targets around them."
+	name = "Рассечение"
+	desc = "Вызывает сильное кровотечение у цели и нескольких целей вокруг неё."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'
@@ -54,7 +54,7 @@
 	return TRUE
 
 /datum/action/cooldown/spell/pointed/cleave/long
-	name = "Lesser Cleave"
+	name = "Малое рассечение"
 	cooldown_time = 60 SECONDS
 	wound_type = /datum/wound/slash/flesh/severe
 

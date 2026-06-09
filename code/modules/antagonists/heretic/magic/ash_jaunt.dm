@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/jaunt/ethereal_jaunt/ash
-	name = "Ashen Passage"
-	desc = "A short range spell that allows you to pass unimpeded through walls, removing restraints if empowered."
+	name = "Пепельный проход"
+	desc = "Заклинание малого радиуса, позволяющее беспрепятственно проходить сквозь стены. При усилении снимает путы."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'
@@ -78,8 +78,8 @@
 	return
 
 /datum/action/cooldown/spell/jaunt/ethereal_jaunt/ash/long
-	name = "Ashen Walk"
-	desc = "A long range spell that allows you pass unimpeded through multiple walls."
+	name = "Пепельная поступь"
+	desc = "Заклинание большого радиуса, позволяющее беспрепятственно пройти сквозь несколько стен."
 	jaunt_duration = 5 SECONDS
 
 /obj/effect/temp_visual/dir_setting/ash_shift

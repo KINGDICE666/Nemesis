@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/pointed/crimson_cleave
-	name = "Crimson Cleave"
-	desc = "A targeted spell that heals you while damaging the enemy. \
+	name = "Багровое рассечение"
+	desc = "Направленное заклинание, которое исцеляет вас, пока наносит урон врагу. \
 		It cleanses you of all wounds as well."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"

@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/aoe/rust_conversion
-	name = "Aggressive Spread"
-	desc = "Spreads rust onto nearby surfaces."
+	name = "Агрессивное распространение"
+	desc = "Распространяет ржавчину на ближайшие поверхности."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'
@@ -59,5 +59,5 @@
 		victim.rust_heretic_act()
 
 /datum/action/cooldown/spell/aoe/rust_conversion/construct
-	name = "Construct Spread"
+	name = "Распространение конструкции"
 	cooldown_time = 15 SECONDS

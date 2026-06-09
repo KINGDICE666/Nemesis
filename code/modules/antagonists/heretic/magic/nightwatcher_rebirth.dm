@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/aoe/fiery_rebirth
-	name = "Nightwatcher's Rebirth"
-	desc = "A spell that extinguishes you and drains nearby heathens engulfed in flames of their life force, \
+	name = "Возрождение Ночного Дозорного"
+	desc = "Заклинание, которое тушит вас и вытягивает жизненную силу из ближайших горящих неверных, \
 		healing you for each victim drained. Those in critical condition \
 		will have the last of their vitality drained, killing them."
 	background_icon_state = "bg_heretic"

@@ -1,7 +1,7 @@
 // Shoots out in a wave-like, what rust heretics themselves get
 /datum/action/cooldown/spell/cone/staggered/entropic_plume
-	name = "Entropic Plume"
-	desc = "Spews forth a disorienting plume that causes enemies to strike each other, \
+	name = "Энтропийный шлейф"
+	desc = "Извергает дезориентирующий шлейф, заставляющий врагов атаковать друг друга, \
 		briefly blinds them (increasing with range) and poisons them (decreasing with range). \
 		Also spreads rust in the path of the plume."
 	background_icon_state = "bg_heretic"
@@ -69,8 +69,8 @@
 
 // Shoots a straight line of rusty stuff ahead of the caster, what rust monsters get
 /datum/action/cooldown/spell/basic_projectile/rust_wave
-	name = "Patron's Reach"
-	desc = "Channels energy into your hands to release a wave of rust."
+	name = "Длань Покровителя"
+	desc = "Направляет энергию в ваши руки, чтобы выпустить волну ржавчины."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'
@@ -86,7 +86,7 @@
 	projectile_type = /obj/projectile/magic/aoe/rust_wave
 
 /obj/projectile/magic/aoe/rust_wave
-	name = "Patron's Reach"
+	name = "Длань Покровителя"
 	icon_state = "eldritch_projectile"
 	alpha = 180
 	damage = 30
@@ -115,7 +115,7 @@
 		T.rust_heretic_act()
 
 /datum/action/cooldown/spell/basic_projectile/rust_wave/short
-	name = "Lesser Patron's Reach"
+	name = "Малая Длань Покровителя"
 	projectile_type = /obj/projectile/magic/aoe/rust_wave/short
 
 /obj/projectile/magic/aoe/rust_wave/short

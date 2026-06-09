@@ -22,7 +22,7 @@ GLOBAL_LIST_INIT(heretic_path_datums, init_heretic_path_datums())
 	 * Medium = COLOR_YELLOW
 	 * Hard = COLOR_RED
 	*/
-	var/complexity = "Insane"
+	var/complexity = "Безумная"
 	var/complexity_color = COLOR_WHITE
 	var/list/icon = list(
 		"icon" = 'icons/obj/weapons/khopesh.dmi',

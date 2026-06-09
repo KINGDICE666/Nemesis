@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/caretaker
-	name = "Caretaker’s Last Refuge"
-	desc = "Shifts you into the Caretaker's Refuge, rendering you translucent and intangible. \
+	name = "Последнее убежище Смотрителя"
+	desc = "Переносит вас в Убежище Смотрителя, делая полупрозрачным и неосязаемым. \
 		While in the Refuge your movement is unrestricted, but you cannot use your hands or cast any spells. \
 		You cannot enter the Refuge while near other sentient beings, \
 		and you can be removed from it upon contact with antimagical artifacts."

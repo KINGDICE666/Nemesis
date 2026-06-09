@@ -139,6 +139,7 @@ class KeybindingButton extends Component<{
       this.props;
 
     const keyText = typingHotkey || currentHotkey || 'Unbound';
+    const displayKeyText = keyText === 'Unbound' ? 'Не назначено' : keyText;
     const child = (
       <Button
         fluid
@@ -160,7 +161,7 @@ class KeybindingButton extends Component<{
               : 'green'
         }
       >
-        {keyText}
+        {displayKeyText}
       </Button>
     );
 
@@ -217,7 +218,7 @@ function ResetToDefaultButton(props: ResetToDefaultButtonProps) {
         });
       }}
     >
-      Reset to Defaults
+      Сбросить
     </Button>
   );
 }
@@ -431,7 +432,7 @@ export class KeybindingsPage extends Component<any, KeybindingsPageState> {
     }
 
     if (lastKeyboardEvent === undefined) {
-      return 'Set New / ESC to Clear';
+      return 'Новая клавиша / ESC очистить';
     }
 
     return formatKeyboardEvent(lastKeyboardEvent);
@@ -507,7 +508,7 @@ export class KeybindingsPage extends Component<any, KeybindingsPageState> {
 
           <Stack.Item align="center">
             <Button.Confirm onClick={() => act('reset_all_keybinds')}>
-              Reset all keybindings
+              Сбросить все клавиши
             </Button.Confirm>
           </Stack.Item>
         </Stack>

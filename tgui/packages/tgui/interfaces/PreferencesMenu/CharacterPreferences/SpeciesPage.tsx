@@ -44,23 +44,23 @@ const FOOD_ICONS = {
 };
 
 const FOOD_NAMES: Record<keyof typeof FOOD_ICONS, string> = {
-  [Food.Bugs]: 'Bugs',
-  [Food.Cloth]: 'Clothing',
-  [Food.Dairy]: 'Dairy',
-  [Food.Fried]: 'Fried food',
-  [Food.Fruit]: 'Fruit',
-  [Food.Gore]: 'Gore',
-  [Food.Grain]: 'Grain',
-  [Food.Gross]: 'Gross food',
-  [Food.Junkfood]: 'Junk food',
-  [Food.Meat]: 'Meat',
-  [Food.Nuts]: 'Nuts',
-  [Food.Raw]: 'Raw',
-  [Food.Seafood]: 'Seafood',
-  [Food.Stone]: 'Rocks',
-  [Food.Sugar]: 'Sugar',
-  [Food.Toxic]: 'Toxic food',
-  [Food.Vegetables]: 'Vegetables',
+  [Food.Bugs]: 'Насекомые',
+  [Food.Cloth]: 'Ткань',
+  [Food.Dairy]: 'Молочное',
+  [Food.Fried]: 'Жареная еда',
+  [Food.Fruit]: 'Фрукты',
+  [Food.Gore]: 'Кровавое мясо',
+  [Food.Grain]: 'Зерновые',
+  [Food.Gross]: 'Отвратительная еда',
+  [Food.Junkfood]: 'Фастфуд',
+  [Food.Meat]: 'Мясо',
+  [Food.Nuts]: 'Орехи',
+  [Food.Raw]: 'Сырое',
+  [Food.Seafood]: 'Морепродукты',
+  [Food.Stone]: 'Камни',
+  [Food.Sugar]: 'Сладкое',
+  [Food.Toxic]: 'Токсичная еда',
+  [Food.Vegetables]: 'Овощи',
 };
 
 const IGNORE_UNLESS_LIKED: Set<Food> = new Set([
@@ -146,7 +146,7 @@ function Diet(props: DietProps) {
         <FoodList
           food={liked_food}
           icon="heart"
-          name="Liked food"
+          name="Любимая еда"
           className="color-pink"
         />
       </Stack.Item>
@@ -155,7 +155,7 @@ function Diet(props: DietProps) {
         <FoodList
           food={disliked_food.filter(notIn(IGNORE_UNLESS_LIKED))}
           icon="thumbs-down"
-          name="Disliked food"
+          name="Нелюбимая еда"
           className="color-red"
         />
       </Stack.Item>
@@ -164,7 +164,7 @@ function Diet(props: DietProps) {
         <FoodList
           food={toxic_food.filter(notIn(IGNORE_UNLESS_LIKED))}
           icon="biohazard"
-          name="Toxic food"
+          name="Токсичная еда"
           className="color-olive"
         />
       </Stack.Item>
@@ -281,7 +281,7 @@ function SpeciesPageInner(props: SpeciesPageInnerProps) {
     <Stack vertical fill>
       <Stack.Item>
         <Button icon="arrow-left" onClick={props.handleClose}>
-          Go Back
+          Назад
         </Button>
       </Stack.Item>
 
@@ -329,11 +329,11 @@ function SpeciesPageInner(props: SpeciesPageInnerProps) {
                         )
                       }
                     >
-                      <Section title="Description">
+                      <Section title="Описание">
                         {currentSpecies.desc}
                       </Section>
 
-                      <Section title="Features">
+                      <Section title="Особенности">
                         <SpeciesPerks perks={currentSpecies.perks} />
                       </Section>
                     </Section>
@@ -349,7 +349,7 @@ function SpeciesPageInner(props: SpeciesPageInnerProps) {
               </Box>
 
               <Box mt={1}>
-                <Section title="Lore">
+                <Section title="Лор">
                   <BlockQuote>
                     {currentSpecies.lore.map((text, index) => (
                       <Box key={index} maxWidth="100%">

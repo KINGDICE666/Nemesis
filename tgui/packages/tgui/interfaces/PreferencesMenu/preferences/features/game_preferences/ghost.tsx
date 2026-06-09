@@ -15,9 +15,9 @@ import {
 import { FeatureDropdownInput } from '../dropdowns';
 
 export const ghost_accs: FeatureChoiced = {
-  name: 'Ghost accessories',
+  name: 'Аксессуары призрака',
   category: 'GHOST',
-  description: 'Determines what adjustments your ghost will have.',
+  description: 'Определяет дополнительные элементы внешности вашего призрака.',
   component: FeatureDropdownInput,
 };
 
@@ -42,7 +42,7 @@ function GhostFormInput(
 
   const displayNames = serverData.display_names;
   if (!displayNames) {
-    return <Box color="red">No display names for ghost_form!</Box>;
+    return <Box color="red">Нет отображаемых имён для ghost_form!</Box>;
   }
 
   const displayTexts = {};
@@ -93,25 +93,25 @@ function GhostFormInput(
 }
 
 export const ghost_form: FeatureChoiced = {
-  name: 'Ghosts form',
+  name: 'Форма призрака',
   category: 'GHOST',
-  description: 'The appearance of your ghost. Requires BYOND membership.',
+  description: 'Внешний вид вашего призрака. Требуется BYOND membership.',
   component: GhostFormInput,
 };
 
 export const ghost_hud: FeatureToggle = {
-  name: 'Ghost HUD',
+  name: 'HUD призрака',
   category: 'GHOST',
-  description: 'Enable HUD buttons for ghosts.',
+  description: 'Включает HUD-кнопки для призраков.',
   component: CheckboxInput,
 };
 
 export const ghost_orbit: FeatureChoiced = {
-  name: 'Ghost orbit',
+  name: 'Орбита призрака',
   category: 'GHOST',
   description: `
-    The shape in which your ghost will orbit.
-    Requires BYOND membership.
+    Форма, по которой ваш призрак будет летать вокруг цели.
+    Требуется BYOND membership.
   `,
   component: (
     props: FeatureValueProps<string, string, FeatureChoicedServerData>,
@@ -125,30 +125,29 @@ export const ghost_orbit: FeatureChoiced = {
 };
 
 export const ghost_others: FeatureChoiced = {
-  name: 'Ghosts of others',
+  name: 'Призраки других',
   category: 'GHOST',
   description: `
-    Do you want the ghosts of others to show up as their own setting, as
-    their default sprites, or always as the default white ghost?
+    Показывать ли призраков других игроков с их настройками,
+    стандартными спрайтами или всегда как белых призраков?
   `,
   component: FeatureDropdownInput,
 };
 
 export const inquisitive_ghost: FeatureToggle = {
-  name: 'Ghost inquisitiveness',
+  name: 'Любопытство призрака',
   category: 'GHOST',
-  description: 'Clicking on something as a ghost will examine it.',
+  description: 'Клик по объекту за призрака будет осматривать его.',
   component: CheckboxInput,
 };
 
 export const ghost_roles: FeatureToggle = {
-  name: 'Get ghost roles',
+  name: 'Получать роли призрака',
   category: 'GHOST',
   description: `
-    If you de-select this, you will not get any ghost role pop-ups what-so-ever!
-    Every single type of these pop-ups WILL be muted for you when you are
-    ghosted. Very useful for those who find ghost roles or the
-    pop-ups annoying, use at your own peril.
+    Если выключить это, всплывающие предложения ролей призрака не будут приходить.
+    Все такие окна будут скрыты, пока вы призрак. Полезно, если роли призрака
+    или всплывающие окна вам мешают.
 `,
   component: CheckboxInput,
 };

@@ -18,6 +18,7 @@ import { JOB2ICON } from './common/JobToIcon';
 type Job = {
   unavailable_reason: string | null;
   command: BooleanLike;
+  display_name: string;
   open_slots: number;
   used_slots: number;
   prioritized: BooleanLike;
@@ -51,6 +52,7 @@ function JobEntry(props: JobEntryProps) {
   const { jobName, job, department, onClick } = props;
 
   const jobIcon = JOB2ICON[jobName] || null;
+  const displayName = job.display_name || jobName;
 
   return (
     <Button
@@ -73,7 +75,7 @@ function JobEntry(props: JobEntryProps) {
         (job.prioritized ? (
           <>
             <p style={{ marginTop: '0px' }}>
-              <b>The HoP wants more people in this job!</b>
+              <b>Глава персонала хочет больше людей на этой должности!</b>
             </p>
             {job.description}
           </>
@@ -92,7 +94,9 @@ function JobEntry(props: JobEntryProps) {
             <Icon name={jobIcon} />
           </Stack.Item>
         )}
-        <Stack.Item grow>{job.command ? <b>{jobName}</b> : jobName}</Stack.Item>
+        <Stack.Item grow>
+          {job.command ? <b>{displayName}</b> : displayName}
+        </Stack.Item>
         <Stack.Item>
           <span
             style={{
@@ -132,8 +136,7 @@ function DepartmentEntry(props: DepartmentEntryProps) {
               }}
             >
               {department.open_slots +
-                (department.open_slots === 1 ? ' slot' : ' slots') +
-                ' available'}
+                ' мест доступно'}
             </span>
           </>
         }
@@ -191,9 +194,9 @@ export function JobSelection(props) {
           buttons={
             <Button
               onClick={() => act('select_job', { job: 'Random' })}
-              tooltip="Roll target random job. You can re-roll or cancel your random job if you don't like it."
+              tooltip="Выбрать случайную доступную профессию. Если вариант не понравится, его можно перебросить или отменить."
             >
-              Random Job!
+              Случайная профессия
             </Button>
           }
           fill
@@ -202,7 +205,7 @@ export function JobSelection(props) {
             <>
               {shuttle_status && <NoticeBox info>{shuttle_status}</NoticeBox>}
               <Box as="span" color="label">
-                It is currently {round_duration} into the shift.
+                С начала смены прошло {round_duration}.
               </Box>
             </>
           }

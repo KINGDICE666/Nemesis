@@ -1,88 +1,88 @@
 import { CheckboxInput, type FeatureToggle } from '../base';
 
 export const chat_bankcard: FeatureToggle = {
-  name: 'Enable income updates',
+  name: 'Уведомления о доходе',
   category: 'CHAT',
-  description: 'Receive notifications for your bank account.',
+  description: 'Получать уведомления по вашему банковскому счёту.',
   component: CheckboxInput,
 };
 
 export const chat_dead: FeatureToggle = {
-  name: 'Enable deadchat',
+  name: 'Включить deadchat',
   category: 'ADMIN',
   component: CheckboxInput,
 };
 
 export const chat_ghostears: FeatureToggle = {
-  name: 'Hear all messages',
+  name: 'Слышать все сообщения',
   category: 'GHOST',
   description: `
-    When enabled, you will be able to hear all speech as a ghost.
-    When disabled, you will only be able to hear nearby speech.
+    Если включено, за призрака вы будете слышать всю речь.
+    Если выключено, вы будете слышать только речь поблизости.
   `,
   component: CheckboxInput,
 };
 
 export const chat_ghostlaws: FeatureToggle = {
-  name: 'Enable law change updates',
+  name: 'Уведомления об изменении законов',
   category: 'GHOST',
-  description: 'When enabled, be notified of any new law changes as a ghost.',
+  description: 'Если включено, за призрака вы будете получать уведомления об изменении законов.',
   component: CheckboxInput,
 };
 
 export const chat_ghostpda: FeatureToggle = {
-  name: 'Enable PDA notifications',
+  name: 'Уведомления КПК',
   category: 'GHOST',
-  description: 'When enabled, be notified of any PDA messages as a ghost.',
+  description: 'Если включено, за призрака вы будете получать уведомления о сообщениях КПК.',
   component: CheckboxInput,
 };
 
 export const chat_ghostradio: FeatureToggle = {
-  name: 'Enable radio',
+  name: 'Слышать радио',
   category: 'GHOST',
-  description: 'When enabled, be notified of any radio messages as a ghost.',
+  description: 'Если включено, за призрака вы будете получать радио-сообщения.',
   component: CheckboxInput,
 };
 
 export const chat_ghostsight: FeatureToggle = {
-  name: 'See all emotes',
+  name: 'Видеть все эмоции',
   category: 'GHOST',
-  description: 'When enabled, see all emotes as a ghost.',
+  description: 'Если включено, за призрака вы будете видеть все эмоции.',
   component: CheckboxInput,
 };
 
 export const chat_ghostwhisper: FeatureToggle = {
-  name: 'See all whispers',
+  name: 'Слышать весь шёпот',
   category: 'GHOST',
   description: `
-    When enabled, you will be able to hear all whispers as a ghost.
-    When disabled, you will only be able to hear nearby whispers.
+    Если включено, за призрака вы будете слышать весь шёпот.
+    Если выключено, вы будете слышать только шёпот поблизости.
   `,
   component: CheckboxInput,
 };
 
 export const chat_login_logout: FeatureToggle = {
-  name: 'See login/logout messages',
+  name: 'Сообщения входа/выхода',
   category: 'GHOST',
-  description: 'When enabled, be notified when a player logs in or out.',
+  description: 'Если включено, вы будете получать уведомления о входе и выходе игроков.',
   component: CheckboxInput,
 };
 
 export const chat_ooc: FeatureToggle = {
-  name: 'Enable OOC',
+  name: 'Включить OOC',
   category: 'CHAT',
   component: CheckboxInput,
 };
 
 export const chat_prayer: FeatureToggle = {
-  name: 'Listen to prayers',
+  name: 'Слышать молитвы',
   category: 'ADMIN',
   component: CheckboxInput,
 };
 
 export const chat_pullr: FeatureToggle = {
-  name: 'Enable pull request notifications',
+  name: 'Уведомления pull request',
   category: 'CHAT',
-  description: 'Be notified when a pull request is made, closed, or merged.',
+  description: 'Получать уведомления о создании, закрытии или слиянии pull request.',
   component: CheckboxInput,
 };

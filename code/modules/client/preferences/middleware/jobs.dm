@@ -52,7 +52,8 @@
 			)
 
 		jobs[job.title] = list(
-			"description" = job.description,
+			"display_name" = job.get_display_title(),
+			"description" = job.get_display_description(),
 			"department" = department_name,
 		)
 

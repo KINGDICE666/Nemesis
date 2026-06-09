@@ -219,42 +219,42 @@
 	user.log_message("[change_description] to an ID card [(id_card.registered_name) ? "belonging to [id_card.registered_name]." : "with no registered name."]", LOG_GAME); \
 
 /// Displayed name for Common ID card accesses.
-#define ACCESS_FLAG_COMMON_NAME "Common"
+#define ACCESS_FLAG_COMMON_NAME "Общий"
 /// Bitflag for Common ID card accesses. See COMMON_ACCESS.
 #define ACCESS_FLAG_COMMON (1 << 0)
 /// Displayed name for Command ID card accesses.
-#define ACCESS_FLAG_COMMAND_NAME "Command"
+#define ACCESS_FLAG_COMMAND_NAME "Командный"
 /// Bitflag for Command ID card accesses. See COMMAND_ACCESS.
 #define ACCESS_FLAG_COMMAND (1 << 1)
 /// Displayed name for Private Command ID card accesses.
-#define ACCESS_FLAG_PRV_COMMAND_NAME "Private Command"
+#define ACCESS_FLAG_PRV_COMMAND_NAME "Личный командный"
 /// Bitflag for Private Command ID card accesses. See PRIVATE_COMMAND_ACCESS.
 #define ACCESS_FLAG_PRV_COMMAND (1 << 2)
 /// Displayed name for Captain ID card accesses.
-#define ACCESS_FLAG_CAPTAIN_NAME "Captain"
+#define ACCESS_FLAG_CAPTAIN_NAME "Капитанский"
 /// Bitflag for Captain ID card accesses. See CAPTAIN_ACCESS.
 #define ACCESS_FLAG_CAPTAIN (1 << 3)
 /// Displayed name for Centcom ID card accesses.
-#define ACCESS_FLAG_CENTCOM_NAME "Centcom"
+#define ACCESS_FLAG_CENTCOM_NAME "ЦК"
 /// Bitflag for Centcom ID card accesses. See CENTCOM_ACCESS.
 #define ACCESS_FLAG_CENTCOM (1 << 4)
 /// Displayed name for Syndicate ID card accesses.
-#define ACCESS_FLAG_SYNDICATE_NAME "Syndicate"
+#define ACCESS_FLAG_SYNDICATE_NAME "Синдикат"
 /// Bitflag for Syndicate ID card accesses. See SYNDICATE_ACCESS.
 #define ACCESS_FLAG_SYNDICATE (1 << 5)
 /// Displayed name for Offstation/Ruin/Away Mission ID card accesses.
-#define ACCESS_FLAG_AWAY_NAME "Away"
+#define ACCESS_FLAG_AWAY_NAME "Вне станции"
 /// Bitflag for Offstation/Ruin/Away Mission ID card accesses. See AWAY_ACCESS.
 #define ACCESS_FLAG_AWAY (1 << 6)
 /// Displayed name for Special accesses that ordinaryily shouldn't be on ID cards.
-#define ACCESS_FLAG_SPECIAL_NAME "Special"
+#define ACCESS_FLAG_SPECIAL_NAME "Особый"
 /// Bitflag for Special accesses that ordinaryily shouldn't be on ID cards. See CULT_ACCESS.
 #define ACCESS_FLAG_SPECIAL (1 << 7)
 
 /// This wildcraft flag accepts any access level.
 #define WILDCARD_FLAG_ALL ALL
 /// Name associated with the all wildcard bitflag.
-#define WILDCARD_NAME_ALL "All"
+#define WILDCARD_NAME_ALL "Все"
 /// Access flags that can be applied to common wildcard slots.
 #define WILDCARD_FLAG_COMMON ACCESS_FLAG_COMMON
 /// Name associated with the common wildcard bitflag.
@@ -290,7 +290,7 @@
 /// Access flag that indicates a wildcard was forced onto an ID card.
 #define WILDCARD_FLAG_FORCED ALL
 /// Name associated with the wildcard bitflag that covers wildcards that have been forced onto an ID card that could not accept them.
-#define WILDCARD_NAME_FORCED "Hacked"
+#define WILDCARD_NAME_FORCED "Взломанный"
 
 /// Departmental/general/common area accesses. Do not use direct, access via SSid_access.get_flag_access_list(ACCESS_FLAG_COMMON)
 #define COMMON_ACCESS list( \
@@ -424,15 +424,15 @@
 )
 
 /// Name for the Global region.
-#define REGION_ALL_GLOBAL "All"
+#define REGION_ALL_GLOBAL "Все"
 /// Used to seed the accesses_by_region list in SSid_access. A list of every single access in the game.
 #define REGION_ACCESS_ALL_GLOBAL REGION_ACCESS_ALL_STATION + CENTCOM_ACCESS + SYNDICATE_ACCESS + AWAY_ACCESS + CULT_ACCESS
 /// Name for the Station All Access region.
-#define REGION_ALL_STATION "Station"
+#define REGION_ALL_STATION "Станция"
 /// Used to seed the accesses_by_region list in SSid_access. A list of all station accesses.
 #define REGION_ACCESS_ALL_STATION COMMON_ACCESS + COMMAND_ACCESS + PRIVATE_COMMAND_ACCESS + CAPTAIN_ACCESS
 /// Name for the General region.
-#define REGION_GENERAL "General"
+#define REGION_GENERAL "Общее"
 /// Used to seed the accesses_by_region list in SSid_access. A list of general service accesses that are overseen by the HoP.
 #define REGION_ACCESS_GENERAL list( \
 	ACCESS_BAR, \
@@ -448,7 +448,7 @@
 	ACCESS_THEATRE, \
 )
 /// Name for the Security region.
-#define REGION_SECURITY "Security"
+#define REGION_SECURITY "Служба безопасности"
 /// Used to seed the accesses_by_region list in SSid_access. A list of all security regional accesses that are overseen by the HoS.
 #define REGION_ACCESS_SECURITY list( \
 	ACCESS_ARMORY, \
@@ -463,7 +463,7 @@
 	ACCESS_WEAPONS, \
 )
 /// Name for the Medbay region.
-#define REGION_MEDBAY "Medbay"
+#define REGION_MEDBAY "Медбей"
 /// Used to seed the accesses_by_region list in SSid_access. A list of all medbay regional accesses that are overseen by the CMO.
 #define REGION_ACCESS_MEDBAY list( \
 	ACCESS_BUDGET, \
@@ -480,7 +480,7 @@
 	ACCESS_VIROLOGY, \
 )
 /// Name for the Research region.
-#define REGION_RESEARCH "Research"
+#define REGION_RESEARCH "Исследования"
 /// Used to seed the accesses_by_region list in SSid_access. A list of all research regional accesses that are overseen by the RD.
 #define REGION_ACCESS_RESEARCH list( \
 	ACCESS_AI_UPLOAD, \
@@ -498,7 +498,7 @@
 	ACCESS_XENOBIOLOGY, \
 )
 /// Name for the Engineering region.
-#define REGION_ENGINEERING "Engineering"
+#define REGION_ENGINEERING "Инженерия"
 /// Used to seed the accesses_by_region list in SSid_access. A list of all engineering regional accesses that are overseen by the CE.
 #define REGION_ACCESS_ENGINEERING list( \
 	ACCESS_ATMOSPHERICS, \
@@ -516,7 +516,7 @@
 	ACCESS_TECH_STORAGE, \
 )
 /// Name for the Supply region.
-#define REGION_SUPPLY "Supply"
+#define REGION_SUPPLY "Снабжение"
 /// Used to seed the accesses_by_region list in SSid_access. A list of all cargo regional accesses that are overseen by the HoP.
 #define REGION_ACCESS_SUPPLY list( \
 	ACCESS_BIT_DEN, \
@@ -531,7 +531,7 @@
 	ACCESS_VAULT, \
 )
 /// Name for the Command region.
-#define REGION_COMMAND "Command"
+#define REGION_COMMAND "Командование"
 /// Used to seed the accesses_by_region list in SSid_access. A list of all command regional accesses that are overseen by the Captain.
 #define REGION_ACCESS_COMMAND list( \
 	ACCESS_AI_UPLOAD, \
@@ -549,7 +549,7 @@
 	ACCESS_VAULT, \
 )
 /// Name for the Centcom region.
-#define REGION_CENTCOM "Central Command"
+#define REGION_CENTCOM "Центральное командование"
 /// Used to seed the accesses_by_region list in SSid_access. A list of all CENTCOM_ACCESS regional accesses.
 #define REGION_ACCESS_CENTCOM CENTCOM_ACCESS
 

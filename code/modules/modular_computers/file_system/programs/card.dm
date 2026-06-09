@@ -57,7 +57,7 @@
 	if((!target_dept || is_centcom) && (ACCESS_CHANGE_IDS in auth_card.access))
 		minor = FALSE
 		authenticated_card = "[auth_card.name]"
-		authenticated_user = auth_card.registered_name ? auth_card.registered_name : "Unknown"
+		authenticated_user = auth_card.registered_name ? auth_card.registered_name : "Неизвестно"
 		job_templates = is_centcom ? SSid_access.centcom_job_templates.Copy() : SSid_access.station_job_templates.Copy()
 		valid_access = is_centcom ? SSid_access.get_region_access_list(list(REGION_CENTCOM)) : SSid_access.get_region_access_list(list(REGION_ALL_STATION))
 		computer.update_static_data_for_all_viewers()
@@ -75,7 +75,7 @@
 	if(length(region_access))
 		minor = TRUE
 		valid_access |= SSid_access.get_region_access_list(region_access)
-		authenticated_card = "[auth_card.name] \[LIMITED ACCESS\]"
+		authenticated_card = "[auth_card.name] \[ОГРАНИЧЕННЫЙ ДОСТУП\]"
 		computer.update_static_data_for_all_viewers()
 		return TRUE
 
@@ -120,12 +120,12 @@
 		if("PRG_print")
 			if(!computer || !authenticated_card || !modified_id)
 				return TRUE
-			var/contents = {"<h4>Access Report</h4>
-						<u>Prepared By:</u> [authenticated_user]<br>
-						<u>For:</u> [modified_id.registered_name || "Unregistered"]<br>
+			var/contents = {"<h4>Отчёт о доступах</h4>
+						<u>Подготовил:</u> [authenticated_user]<br>
+						<u>Для:</u> [modified_id.registered_name || "Не зарегистрировано"]<br>
 						<hr>
-						<u>Assignment:</u> [modified_id.assignment]<br>
-						<u>Access:</u><br>
+						<u>Должность:</u> [modified_id.assignment]<br>
+						<u>Доступы:</u><br>
 						"}
 
 			var/list/known_access_rights = SSid_access.get_region_access_list(list(REGION_ALL_STATION))
@@ -133,12 +133,12 @@
 				if(A in known_access_rights)
 					contents += " [SSid_access.get_access_desc(A)]"
 
-			if(!computer.print_text(contents, "access report - [modified_id.registered_name || "Unregistered"]"))
-				to_chat(usr, span_notice("Printer is out of paper."))
+			if(!computer.print_text(contents, "отчёт о доступах - [modified_id.registered_name || "Не зарегистрировано"]"))
+				to_chat(usr, span_notice("В принтере закончилась бумага."))
 				return TRUE
 			else
 				playsound(computer, 'sound/machines/terminal/terminal_on.ogg', 50, FALSE)
-				computer.visible_message(span_notice("\The [computer] prints out a paper."))
+				computer.visible_message(span_notice("[capitalize(computer.declent_ru(NOMINATIVE))] печатает лист бумаги."))
 			return TRUE
 		// Used to fire someone. Wipes all access from their card and modifies their assignment.
 		if("PRG_terminate")
@@ -146,11 +146,11 @@
 				return TRUE
 			if(minor)
 				if(!(modified_id.trim?.type in job_templates))
-					to_chat(usr, span_notice("Software error: You do not have the necessary permissions to demote this card."))
+					to_chat(usr, span_notice("Ошибка ПО: у вас нет необходимых прав, чтобы понизить эту карту."))
 					return TRUE
 
 			// Set the new assignment then remove the trim.
-			modified_id.assignment = is_centcom ? "Fired" : "Demoted"
+			modified_id.assignment = is_centcom ? "Уволен" : "Понижен"
 			SSid_access.remove_trim_from_card(modified_id)
 
 			playsound(computer, 'sound/machines/terminal/terminal_prompt_deny.ogg', 50, FALSE)
@@ -179,7 +179,7 @@
 			new_name = reject_bad_name(new_name, allow_numbers = TRUE)
 
 			if(!new_name)
-				to_chat(usr, span_notice("Software error: The ID card rejected the new name as it contains prohibited characters."))
+				to_chat(usr, span_notice("Ошибка ПО: ID-карта отклонила новое имя, потому что оно содержит запрещённые символы."))
 				return TRUE
 
 			modified_id.registered_name = new_name
@@ -228,7 +228,7 @@
 				return TRUE
 
 			if(!modified_id.add_access(list(access_type), try_wildcard))
-				to_chat(usr, span_notice("ID error: ID card rejected your attempted access modification."))
+				to_chat(usr, span_notice("Ошибка ID: карта отклонила попытку изменить доступы."))
 				LOG_ID_ACCESS_CHANGE(user, modified_id, "failed to add [SSid_access.get_access_desc(access_type)][try_wildcard ? " with wildcard [try_wildcard]" : ""]")
 				return TRUE
 
@@ -271,7 +271,7 @@
 		if("PRG_insert_alt_id")
 			var/obj/item/card/id/alt_id = user.get_active_held_item()
 			if(!isidcard(alt_id))
-				to_chat(user, span_notice("You must hold an ID card to insert it into the secondary slot."))
+				to_chat(user, span_notice("Чтобы вставить карту во второй слот, держите ID-карту в руке."))
 				return TRUE
 			computer.insert_secondary_id(alt_id, user)
 			return TRUE
@@ -323,7 +323,7 @@
 	var/datum/id_trim/card_trim = card.trim
 
 	data["id_name"] = card.name
-	data["id_rank"] = card.assignment || "Unassigned"
+	data["id_rank"] = card.assignment || "Не назначено"
 	data["id_owner"] = card.registered_name || "-----"
 	data["access_on_card"] = card.access || list()
 	data["wildcard_slots"] = card.wildcard_slots || list()

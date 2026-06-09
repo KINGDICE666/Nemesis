@@ -14,6 +14,21 @@ type PreferenceChild = {
   children: ReactNode;
 };
 
+const CATEGORY_NAMES: Record<string, string> = {
+  ACCESSIBILITY: 'Доступность',
+  ADMIN: 'Админ',
+  CHAT: 'Чат',
+  GAMEPLAY: 'Геймплей',
+  GHOST: 'Призрак',
+  GRAPHICS: 'Графика',
+  INPUT: 'Ввод',
+  RUNECHAT: 'Runechat',
+  SOUND: 'Звук',
+  TOOLTIPS: 'Подсказки',
+  UI: 'Интерфейс',
+  ERROR: 'Ошибка',
+};
+
 function binaryInsertPreference(
   collection: PreferenceChild[],
   value: PreferenceChild,
@@ -77,7 +92,7 @@ export function GamePreferencesPage(props) {
             />
           ) : (
             <Box as="b" color="red">
-              ...is not filled out properly!!!
+              ...заполнено некорректно!!!
             </Box>
           )}
         </Flex.Item>
@@ -89,7 +104,7 @@ export function GamePreferencesPage(props) {
       children: child,
     };
 
-    const category = feature?.category || 'ERROR';
+    const category = CATEGORY_NAMES[feature?.category || 'ERROR'] || feature?.category || 'Ошибка';
 
     gamePreferences[category] = binaryInsertPreference(
       gamePreferences[category] || [],

@@ -81,6 +81,7 @@ export type Department = {
 
 export type Job = {
   description: string;
+  display_name?: string;
   department: string;
 };
 

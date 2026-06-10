@@ -42,9 +42,9 @@ export function CargoCart(props) {
                   onClick={() => act('send')}
                   px={2}
                   py={1}
-                  tooltip={sendable ? '' : `Shuttle is at ${location}`}
+                  tooltip={sendable ? '' : `Шаттл находится: ${location}`}
                 >
-                  Confirm the order
+                  Подтвердить заказ
                 </Button>
               </Stack.Item>
             </Stack>
@@ -62,18 +62,18 @@ function CheckoutItems(props) {
   const [isValid, setIsValid] = useState(true);
 
   if (cart.length === 0) {
-    return <NoticeBox>Nothing in cart</NoticeBox>;
+    return <NoticeBox>Корзина пуста</NoticeBox>;
   }
 
   return (
     <Table>
       <Table.Row header color="gray">
         <Table.Cell collapsing>ID</Table.Cell>
-        <Table.Cell>Supply Type</Table.Cell>
-        <Table.Cell>Amount</Table.Cell>
+        <Table.Cell>Тип снабжения</Table.Cell>
+        <Table.Cell>Количество</Table.Cell>
         <Table.Cell collapsing />
         <Table.Cell collapsing textAlign="right">
-          Cost
+          Стоимость
         </Table.Cell>
       </Table.Row>
 
@@ -119,8 +119,8 @@ function CheckoutItems(props) {
           </Table.Cell>
 
           <Table.Cell collapsing color="average">
-            {!!entry.paid && <b>[Private x {entry.amount}]</b>}
-            {!!entry.dep_order && <b>[Department x {entry.amount}]</b>}
+            {!!entry.paid && <b>[Личное x {entry.amount}]</b>}
+            {!!entry.dep_order && <b>[Отдел x {entry.amount}]</b>}
           </Table.Cell>
 
           <Table.Cell collapsing color="gold" textAlign="right">

@@ -1,10 +1,10 @@
 /**********************Mineral stacking unit console**************************/
 
 /obj/machinery/mineral/stacking_unit_console
-	name = "stacking machine console"
+	name = "консоль укладчика"
 	icon = 'icons/obj/machines/mining_machines.dmi'
 	icon_state = "console"
-	desc = "Controls a stacking machine... in theory."
+	desc = "Управляет укладчиком материалов... теоретически."
 	density = FALSE
 	circuit = /obj/item/circuitboard/machine/stacking_unit_console
 	/// Connected stacking machine
@@ -33,7 +33,7 @@
 
 /obj/machinery/mineral/stacking_unit_console/multitool_act(mob/living/user, obj/item/multitool/M)
 	M.set_buffer(src)
-	balloon_alert(user, "saved to multitool buffer")
+	balloon_alert(user, "сохранено в буфер мультитула")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/mineral/stacking_unit_console/ui_interact(mob/user, datum/tgui/ui)
@@ -86,10 +86,10 @@
 
 
 /obj/machinery/mineral/stacking_machine
-	name = "stacking machine"
+	name = "укладчик материалов"
 	icon = 'icons/obj/machines/mining_machines.dmi'
 	icon_state = "stacker"
-	desc = "A machine that automatically stacks acquired materials. Controlled by a nearby console."
+	desc = "Машина, автоматически складывающая полученные материалы в стопки. Управляется ближайшей консолью."
 	density = TRUE
 	circuit = /obj/item/circuitboard/machine/stacking_machine
 	input_dir = EAST
@@ -144,7 +144,7 @@
 
 	console = multi_tool.buffer
 	console.machine = src
-	to_chat(user, span_notice("You link [src] to the console in [multi_tool]'s buffer."))
+	to_chat(user, span_notice("Вы связываете [src] с консолью из буфера [multi_tool]."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/mineral/stacking_machine/proc/rotate(input)

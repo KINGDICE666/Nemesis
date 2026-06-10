@@ -24,8 +24,8 @@ export const SecurityRecordTabs = (props) => {
   const { higher_access, records = [], station_z } = data;
 
   const errorMessage = !records.length
-    ? 'No records found.'
-    : 'No match. Refine your search.';
+    ? 'Записи не найдены.'
+    : 'Совпадений нет. Уточните поиск.';
 
   const [search, setSearch] = useState('');
 
@@ -39,7 +39,7 @@ export const SecurityRecordTabs = (props) => {
       <Stack.Item>
         <Input
           fluid
-          placeholder="Name/Job/Fingerprints"
+          placeholder="Имя/должность/отпечатки"
           onChange={setSearch}
           expensive
         />
@@ -63,18 +63,18 @@ export const SecurityRecordTabs = (props) => {
             <Button
               disabled
               icon="plus"
-              tooltip="Add new records by inserting a 1 by 1 meter photo into the terminal. You do not need this screen open."
+              tooltip="Чтобы добавить запись, вставьте в терминал фотографию 1 на 1 метр. Этот экран можно не открывать."
             >
-              Create
+              Создать
             </Button>
           </Stack.Item>
           <Stack.Item>
             <Button.Confirm
-              content="Purge"
+              content="Очистить"
               disabled={!higher_access || !station_z}
               icon="trash"
               onClick={() => act('purge_records')}
-              tooltip="Wipe criminal record data."
+              tooltip="Очистить данные криминальных записей."
             />
           </Stack.Item>
         </Stack>

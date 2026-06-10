@@ -12,14 +12,14 @@ export function LockedExperiment(props) {
         <Flex align="center" justify="space-between">
           <Flex.Item color="rgba(0, 0, 0, 0.6)">
             <Icon name="lock" />
-            Undiscovered Experiment
+            Неоткрытый эксперимент
           </Flex.Item>
           <Flex.Item color="rgba(0, 0, 0, 0.5)">???</Flex.Item>
         </Flex>
       </Button>
       <Box className="ExperimentConfigure__ExperimentContent">
-        This experiment has not been discovered yet, continue researching nodes
-        in the tree to discover the contents of this experiment.
+        Этот эксперимент еще не открыт. Продолжайте исследовать узлы дерева,
+        чтобы раскрыть его содержимое.
       </Box>
     </Box>
   );

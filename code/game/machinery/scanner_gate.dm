@@ -2,7 +2,7 @@
 #define SCANGATE_MINDSHIELD "Mindshield"
 #define SCANGATE_DISEASE "Disease"
 #define SCANGATE_GUNS "Guns"
-#define SCANGATE_WANTED "Wanted"
+#define SCANGATE_WANTED "Розыск"
 #define SCANGATE_SPECIES "Species"
 #define SCANGATE_NUTRITION "Nutrition"
 
@@ -107,11 +107,11 @@
 /obj/machinery/scanner_gate/examine(mob/user)
 	. = ..()
 
-	. += span_notice("It's set to scan for [span_boldnotice(scangate_mode)].")
+	. += span_notice("Настроено на сканирование: [span_boldnotice(scangate_mode)].")
 	if(locked)
-		. += span_notice("The control panel is ID-locked. Swipe a valid ID to unlock it.")
+		. += span_notice("Панель управления заблокирована ID. Проведите действующей ID-картой, чтобы разблокировать ее.")
 	else
-		. += span_notice("The control panel is unlocked. Swipe an ID to lock it.")
+		. += span_notice("Панель управления разблокирована. Проведите ID-картой, чтобы заблокировать ее.")
 
 /obj/machinery/scanner_gate/proc/on_entered(datum/source, atom/movable/thing)
 	SIGNAL_HANDLER
@@ -161,14 +161,14 @@
 
 		locked = FALSE
 		req_access = list()
-		balloon_alert(user, "unlocked")
+		balloon_alert(user, "разблокировано")
 		return ITEM_INTERACT_SUCCESS
 
 	if(obj_flags & EMAGGED)
-		balloon_alert(user, "nothing happens!")
+		balloon_alert(user, "ничего не происходит!")
 		return ITEM_INTERACT_BLOCKING
 
-	balloon_alert(user, "locked")
+	balloon_alert(user, "заблокировано")
 	req_access = tool.GetAccess() // returns a copy so this is chill
 	locked = TRUE
 	return ITEM_INTERACT_SUCCESS
@@ -186,7 +186,7 @@
 	locked = FALSE
 	req_access = list()
 	obj_flags |= EMAGGED
-	balloon_alert(user, "id checker disabled")
+	balloon_alert(user, "проверка ID отключена")
 	return TRUE
 
 /obj/machinery/scanner_gate/proc/perform_scan(atom/movable/thing)
@@ -200,7 +200,7 @@
 			return
 		if(SCANGATE_WANTED)
 			if(ishuman(thing))
-				detected_thing = "Warrant"
+				detected_thing = "Ордер"
 				var/mob/living/carbon/human/scanned_human = thing
 				var/perpname = scanned_human.get_face_name(scanned_human.get_id_name())
 				var/datum/record/crew/target = find_record(perpname)
@@ -232,7 +232,7 @@
 					if(scanned_human.get_organ_slot(ORGAN_SLOT_ZOMBIE))
 						beep = TRUE
 		if(SCANGATE_GUNS)
-			detected_thing = "Weapons"
+			detected_thing = "Оружие"
 			if(isgun(thing))
 				beep = TRUE
 			else if(ishuman(thing))
@@ -276,7 +276,7 @@
 	else
 		SEND_SIGNAL(src, COMSIG_SCANGATE_PASS_NO_TRIGGER, thing)
 		if(bypassed)
-			say("[detected_thing] detection bypassed.")
+			say("Обнаружение ([detected_thing]) обойдено.")
 		if(!ignore_signals)
 			color = wires.get_color_of_wire(WIRE_DENY)
 			var/obj/item/assembly/assembly = wires.get_attached(color)
@@ -290,7 +290,7 @@
 		return
 
 	if(detected_thing)
-		say("[detected_thing][reverse ? " not " : " "]detected!!")
+		say("[detected_thing][reverse ? " не " : " "]обнаружено!!")
 
 	COOLDOWN_START(src, next_beep, 2 SECONDS)
 	playsound(source = src, soundin = 'sound/machines/scanner/scanbuzz.ogg', vol = 30, vary = FALSE, extrarange = MEDIUM_RANGE_SOUND_EXTRARANGE, falloff_distance = 4)

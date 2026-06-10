@@ -30,8 +30,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/security_hud
-	name = "Security HUD"
-	desc = "A heads-up display that scans the humans in view and provides accurate data about their ID status."
+	name = "HUD службы безопасности"
+	desc = "Проекционный дисплей, который сканирует людей в поле зрения и показывает точные данные об их ID-статусе."
 	id = "security_hud"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SMALL_MATERIAL_AMOUNT*5, /datum/material/glass =SMALL_MATERIAL_AMOUNT*5)
@@ -42,8 +42,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/security_hud_night
-	name = "Night Vision Security HUD"
-	desc = "A heads-up display which provides id data and vision in complete darkness."
+	name = "HUD службы безопасности с ночным зрением"
+	desc = "Проекционный дисплей, который показывает данные ID и позволяет видеть в полной темноте."
 	id = "security_hud_night"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(
@@ -658,8 +658,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
 /datum/design/holosignsec
-	name = "Security Holobarrier Projector"
-	desc = "A holographic projector that creates holographic security barriers."
+	name = "проектор голобарьеров СБ"
+	desc = "Голографический проектор, создающий защитные барьеры службы безопасности."
 	id = "holosignsec"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT * 2.5, /datum/material/glass =HALF_SHEET_MATERIAL_AMOUNT, /datum/material/gold =HALF_SHEET_MATERIAL_AMOUNT, /datum/material/silver =HALF_SHEET_MATERIAL_AMOUNT)
@@ -746,8 +746,8 @@
 // Security
 
 /datum/design/seclite
-	name = "Seclite"
-	desc = "A robust flashlight used by security."
+	name = "фонарь СБ"
+	desc = "Надежный фонарь, используемый службой безопасности."
 	id = "seclite"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT*2.5)
@@ -758,8 +758,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/pepperspray
-	name = "Pepper Spray"
-	desc = "Manufactured by UhangInc, used to blind and down an opponent quickly. Printed pepper sprays do not contain reagents."
+	name = "перцовый баллончик"
+	desc = "Производится UhangInc, используется для быстрого ослепления и нейтрализации противника. Напечатанные баллончики не содержат реагентов."
 	id = "pepperspray"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT * 2.5, /datum/material/glass =HALF_SHEET_MATERIAL_AMOUNT)
@@ -770,8 +770,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/bola_energy
-	name = "Energy Bola"
-	desc = "A specialized hard-light bola designed to ensnare fleeing criminals and aid in arrests."
+	name = "энергетическая бола"
+	desc = "Специализированная твердосветная бола, созданная для задержания убегающих преступников и помощи при арестах."
 	id = "bola_energy"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/silver =SMALL_MATERIAL_AMOUNT*5, /datum/material/plasma =SMALL_MATERIAL_AMOUNT*5, /datum/material/titanium =SMALL_MATERIAL_AMOUNT*5)
@@ -783,8 +783,8 @@
 	autolathe_exportable = FALSE
 
 /datum/design/zipties
-	name = "Zipties"
-	desc = "Plastic, disposable zipties that can be used to restrain temporarily but are destroyed after use."
+	name = "стяжки"
+	desc = "Пластиковые одноразовые стяжки для временного удержания. После использования уничтожаются."
 	id = "zipties"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = SMALL_MATERIAL_AMOUNT*2.5)
@@ -795,8 +795,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/evidencebag
-	name = "Evidence Bag"
-	desc = "An empty evidence bag."
+	name = "пакет для улик"
+	desc = "Пустой пакет для улик."
 	id = "evidencebag"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic =SMALL_MATERIAL_AMOUNT)
@@ -832,7 +832,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/sec_pen
-	name = "Security Pen"
+	name = "ручка СБ"
 	id = "sec_pen"
 	build_type = PROTOLATHE | AUTOLATHE
 	materials = list(/datum/material/iron =SMALL_MATERIAL_AMOUNT)

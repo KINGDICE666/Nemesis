@@ -57,21 +57,21 @@ export const AutomatedAnnouncement = (props) => {
   };
 
   const errorMessage = !config_entries.length
-    ? 'No configurable options detected! Please report this to Nanotrasen.'
-    : 'No match. Refine your search.';
+    ? 'Настраиваемые параметры не обнаружены! Сообщите об этом NanoTrasen.'
+    : 'Совпадений нет. Уточните поиск.';
 
   const sorted = sortBy(
     filter(config_entries, (entry) => isEntryMatch(entry, search)),
     [(entry) => entry.name],
   );
   return (
-    <Window title="Automated Announcement System" width={500} height={280}>
+    <Window title="Автоматическая система объявлений" width={500} height={280}>
       <Window.Content>
         <Stack fill vertical>
           <Stack.Item>
             <LabeledList>
-              <LabeledList.Item label="Search">
-                <Input fluid placeholder="Name/Line/Var" onChange={setSearch} />
+              <LabeledList.Item label="Поиск">
+                <Input fluid placeholder="Имя/строка/переменная" onChange={setSearch} />
               </LabeledList.Item>
             </LabeledList>
           </Stack.Item>
@@ -107,14 +107,14 @@ export const AutomatedAnnouncement = (props) => {
                           disabled={!entry.modifiable}
                           tooltip={
                             !entry.modifiable
-                              ? 'Editing disabled by CentCom!'
+                              ? 'Редактирование отключено ЦентКомом!'
                               : undefined
                           }
                           onClick={() =>
                             act('Toggle', { entryRef: entry.entryRef })
                           }
                         >
-                          {entry.enabled ? 'On' : 'Off'}
+                          {entry.enabled ? 'Вкл' : 'Выкл'}
                         </Button>
                       </>
                     }

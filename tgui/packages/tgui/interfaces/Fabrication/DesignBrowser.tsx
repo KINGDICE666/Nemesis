@@ -69,7 +69,7 @@ export type DesignBrowserProps<T extends Design = Design> = {
 /**
  * A meta-category that, when selected, renders all designs to the output.
  */
-const ALL_CATEGORY = 'All Designs';
+const ALL_CATEGORY = 'Все чертежи';
 
 /**
  * A meta-category that collects all designs without a single category.
@@ -212,7 +212,7 @@ export const DesignBrowser = <T extends Design = Design>(
         <Section fill>
           <Stack vertical fill>
             <Stack.Item>
-              <Section title="Categories" fitted />
+              <Section title="Категории" fitted />
             </Stack.Item>
             <Stack.Item grow style={{ overflowY: 'auto', overflowX: 'hidden' }}>
               <Section fill>
@@ -227,7 +227,7 @@ export const DesignBrowser = <T extends Design = Design>(
                   >
                     <div className="FabricatorTabs__Label">
                       <div className="FabricatorTabs__CategoryName">
-                        All Designs
+                        Все чертежи
                       </div>
                       <div className="FabricatorTabs__CategoryCount">
                         ({Object.entries(root.descendants).length})
@@ -257,9 +257,9 @@ export const DesignBrowser = <T extends Design = Design>(
         <Section
           title={
             searchText.length > 0
-              ? `Results for "${searchText}"`
+              ? `Результаты для "${searchText}"`
               : selectedCategory === ALL_CATEGORY
-                ? 'All Designs'
+                ? 'Все чертежи'
                 : selectedCategory
           }
           fill
@@ -271,7 +271,7 @@ export const DesignBrowser = <T extends Design = Design>(
                   expensive
                   query={searchText}
                   onSearch={setSearchText}
-                  placeholder={'Search all designs...'}
+                  placeholder={'Поиск по всем чертежам...'}
                 />
               </Section>
             </Stack.Item>
@@ -328,7 +328,7 @@ export const DesignBrowser = <T extends Design = Design>(
                 }}
               >
                 <Icon name="cog" spin />
-                {' Building items...'}
+                {' Печать предметов...'}
               </Dimmer>
             )}
           </Stack>

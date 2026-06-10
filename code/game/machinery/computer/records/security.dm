@@ -1,13 +1,13 @@
 #define COMP_SECURITY_ARREST_AMOUNT_TO_FLAG 10
-#define PRINTOUT_MISSING "Missing"
-#define PRINTOUT_RAPSHEET "Rapsheet"
-#define PRINTOUT_WANTED "Wanted"
+#define PRINTOUT_MISSING "Пропал"
+#define PRINTOUT_RAPSHEET "Досье"
+#define PRINTOUT_WANTED "Розыск"
 /// Editing this will cause UI issues.
 #define MAX_CRIME_NAME_LEN 24
 
 /obj/machinery/computer/records/security
-	name = "security records console"
-	desc = "Used to view and edit personnel's security records."
+	name = "консоль записей службы безопасности"
+	desc = "Используется для просмотра и редактирования записей службы безопасности."
 	icon_screen = "security"
 	icon_keyboard = "security_key"
 	req_one_access = list(ACCESS_SECURITY, ACCESS_HOP)
@@ -21,8 +21,8 @@
 	req_one_access = list(ACCESS_SYNDICATE)
 
 /obj/machinery/computer/records/security/laptop
-	name = "security laptop"
-	desc = "A cheap Nanotrasen security laptop, it functions as a security records console. It's bolted to the table."
+	name = "ноутбук службы безопасности"
+	desc = "Дешевый ноутбук службы безопасности Nanotrasen, работающий как консоль записей СБ. Он прикручен к столу."
 	icon_state = "laptop"
 	icon_screen = "seclaptop"
 	icon_keyboard = "laptop_key"
@@ -30,7 +30,7 @@
 	projectiles_pass_chance = 100
 
 /obj/machinery/computer/records/security/laptop/syndie
-	desc = "A cheap, jailbroken security laptop. It functions as a security records console. It's bolted to the table."
+	desc = "Дешевый взломанный ноутбук службы безопасности. Он работает как консоль записей СБ и прикручен к столу."
 	req_one_access = list(ACCESS_SYNDICATE)
 
 /obj/machinery/computer/records/security/Initialize(mapload, obj/item/circuitboard/C)
@@ -205,13 +205,13 @@
 /obj/machinery/computer/records/security/proc/add_crime(mob/user, datum/record/crew/target, list/params)
 	var/input_name = strip_html_full(params["name"], MAX_CRIME_NAME_LEN)
 	if(!input_name)
-		to_chat(usr, span_warning("You must enter a name for the crime."))
+		to_chat(usr, span_warning("Нужно ввести название преступления."))
 		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 75, TRUE)
 		return FALSE
 
 	var/max = CONFIG_GET(number/maxfine)
 	if(params["fine"] > max)
-		to_chat(usr, span_warning("The maximum fine is [max] [MONEY_NAME]."))
+		to_chat(usr, span_warning("Максимальный штраф составляет [max] [MONEY_NAME]."))
 		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 75, TRUE)
 		return FALSE
 
@@ -233,7 +233,7 @@
 	var/datum/crime/citation/new_citation = new(name = input_name, details = input_details, author = usr, fine = params["fine"])
 
 	target.citations += new_citation
-	new_citation.alert_owner(user, src, target.name, "You have been issued a [params["fine"]][MONEY_SYMBOL] citation for [input_name]. Fines are payable at Security.")
+	new_citation.alert_owner(user, src, target.name, "Вам выписан штраф [params["fine"]][MONEY_SYMBOL] за [input_name]. Штрафы оплачиваются в отделе службы безопасности.")
 	investigate_log("New Citation: <strong>[input_name]</strong> Fine: [params["fine"]] | Added to [target.name] by [key_name(user)]", INVESTIGATE_RECORDS)
 	SSblackbox.ReportCitation(REF(new_citation), user.ckey, user.real_name, target.name, input_name, input_details, params["fine"])
 
@@ -334,17 +334,17 @@
 /// Handles printing records via UI. Takes the params from UI_act.
 /obj/machinery/computer/records/security/proc/print_record(mob/user, datum/record/crew/target, list/params)
 	if(printing)
-		balloon_alert(user, "printer busy")
+		balloon_alert(user, "принтер занят")
 		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 100, TRUE)
 		return FALSE
 
 	printing = TRUE
-	balloon_alert(user, "printing")
+	balloon_alert(user, "печать")
 	playsound(src, 'sound/machines/printer.ogg', 100, TRUE)
 
 	var/obj/item/printable
 	var/input_alias = strip_html_full(params["alias"], MAX_NAME_LEN) || target.name
-	var/input_description = strip_html_full(params["desc"], MAX_BROADCAST_LEN) || "No further details."
+	var/input_description = strip_html_full(params["desc"], MAX_BROADCAST_LEN) || "Дополнительных деталей нет."
 	var/input_header = strip_html_full(params["head"], 8) || capitalize(params["type"])
 
 	switch(params["type"])
@@ -357,16 +357,16 @@
 		if("wanted")
 			var/list/crimes = target.crimes
 			if(!length(crimes))
-				balloon_alert(user, "no crimes")
+				balloon_alert(user, "нет преступлений")
 				return FALSE
 
-			input_description += "\n\n<b>WANTED FOR:</b>"
+			input_description += "\n\n<b>РАЗЫСКИВАЕТСЯ ЗА:</b>"
 			for(var/datum/crime/incident in crimes)
 				if(!incident.valid)
-					input_description += "<b>--REDACTED--</b>"
+					input_description += "<b>--УДАЛЕНО--</b>"
 					continue
-				input_description += "\n<bCrime:</b> [incident.name]\n"
-				input_description += "<b>Details:</b> [incident.details]\n"
+				input_description += "\n<b>Преступление:</b> [incident.name]\n"
+				input_description += "<b>Детали:</b> [incident.details]\n"
 
 			var/obj/item/photo/mugshot = target.get_front_photo()
 			var/obj/item/poster/wanted/wanted_poster = new(null, null, mugshot.picture.picture_image, input_alias, input_description, input_header)
@@ -376,7 +376,7 @@
 		if("rapsheet")
 			var/list/crimes = target.crimes
 			if(!length(crimes))
-				balloon_alert(user, "no crimes")
+				balloon_alert(user, "нет преступлений")
 				return FALSE
 
 			var/obj/item/paper/rapsheet = target.get_rapsheet(input_alias, input_header, input_description)
@@ -390,8 +390,8 @@
  * Security circuit component
  */
 /obj/item/circuit_component/arrest_console_data
-	display_name = "Security Records Data"
-	desc = "Outputs the security records data, where it can then be filtered with a Select Query component"
+	display_name = "Данные записей службы безопасности"
+	desc = "Выводит данные записей службы безопасности, которые затем можно фильтровать компонентом Select Query."
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL|CIRCUIT_FLAG_OUTPUT_SIGNAL
 
 	/// The records retrieved
@@ -403,8 +403,8 @@
 	var/obj/machinery/computer/records/security/attached_console
 
 /obj/item/circuit_component/arrest_console_data/populate_ports()
-	records = add_output_port("Security Records", PORT_TYPE_TABLE)
-	on_fail = add_output_port("Failed", PORT_TYPE_SIGNAL)
+	records = add_output_port("Записи СБ", PORT_TYPE_TABLE)
+	on_fail = add_output_port("Ошибка", PORT_TYPE_SIGNAL)
 
 /obj/item/circuit_component/arrest_console_data/register_usb_parent(atom/movable/shell)
 	. = ..()
@@ -453,8 +453,8 @@
 
 	records.set_output(new_table)
 /obj/item/circuit_component/arrest_console_arrest
-	display_name = "Security Records Set Status"
-	desc = "Receives a table to use to set people's arrest status. Table should be from the security records data component. If New Status port isn't set, the status will be decided by the options."
+	display_name = "Установка статуса записей СБ"
+	desc = "Получает таблицу для установки статуса ареста. Таблица должна поступать из компонента данных записей СБ. Если порт нового статуса не задан, статус будет выбран по опциям."
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL|CIRCUIT_FLAG_OUTPUT_SIGNAL
 
 	/// The targets to set the status of.
@@ -484,12 +484,12 @@
 	if(!attached_console)
 		return
 	var/list/available_statuses = WANTED_STATUSES()
-	new_status = add_option_port("Arrest Options", available_statuses)
+	new_status = add_option_port("Опции ареста", available_statuses)
 
 /obj/item/circuit_component/arrest_console_arrest/populate_ports()
-	targets = add_input_port("Targets", PORT_TYPE_TABLE)
-	new_status_set = add_output_port("Set Status", PORT_TYPE_STRING)
-	on_fail = add_output_port("Failed", PORT_TYPE_SIGNAL)
+	targets = add_input_port("Цели", PORT_TYPE_TABLE)
+	new_status_set = add_output_port("Установленный статус", PORT_TYPE_STRING)
+	on_fail = add_output_port("Ошибка", PORT_TYPE_SIGNAL)
 
 /obj/item/circuit_component/arrest_console_arrest/input_received(datum/port/input/port)
 	if(!attached_console || !attached_console.authenticated)

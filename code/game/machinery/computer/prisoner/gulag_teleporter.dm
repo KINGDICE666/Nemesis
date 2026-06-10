@@ -1,7 +1,7 @@
 //computer that handle the points and teleports the prisoner
 /obj/machinery/computer/prisoner/gulag_teleporter_computer
-	name = "labor camp teleporter console"
-	desc = "Used to send criminals to the Labor Camp."
+	name = "консоль телепортера трудового лагеря"
+	desc = "Используется для отправки преступников в трудовой лагерь."
 	icon_screen = "explosive"
 	icon_keyboard = "security_key"
 	req_access = list(ACCESS_BRIG)
@@ -74,7 +74,7 @@
 	if(isliving(usr))
 		playsound(src, 'sound/machines/terminal/terminal_prompt_confirm.ogg', 50, FALSE)
 	if(!allowed(usr))
-		to_chat(usr, span_warning("Access denied."))
+		to_chat(usr, span_warning("Доступ запрещен."))
 		return
 	switch(action)
 		if("scan_teleporter")
@@ -101,13 +101,13 @@
 			return TRUE
 		if("toggle_open")
 			if(teleporter.locked)
-				to_chat(usr, span_alert("The teleporter must be unlocked first."))
+				to_chat(usr, span_alert("Сначала нужно разблокировать телепортер."))
 				return
 			teleporter.toggle_open()
 			return TRUE
 		if("teleporter_lock")
 			if(teleporter.state_open)
-				to_chat(usr, span_alert("The teleporter must be closed first."))
+				to_chat(usr, span_alert("Сначала нужно закрыть телепортер."))
 				return
 			teleporter.locked = !teleporter.locked
 			return TRUE
@@ -134,20 +134,20 @@
 
 /obj/machinery/computer/prisoner/gulag_teleporter_computer/proc/teleport(mob/user)
 	if(!contained_id) //incase the ID was removed after the transfer timer was set.
-		say("Warning: Unable to transfer prisoner without a valid Prisoner ID inserted!")
+		say("Внимание: невозможно переместить заключенного без действительной ID заключенного!")
 		return
 	var/id_goal_not_set
 	if(!contained_id.goal)
 		id_goal_not_set = TRUE
 		contained_id.goal = default_goal
-		say("[contained_id]'s ID card goal defaulting to [contained_id.goal] points.")
+		say("Цель ID-карты [contained_id] сброшена к значению по умолчанию: [contained_id.goal] очков.")
 	user.log_message("teleported [key_name(prisoner)] to the Labor Camp [COORD(beacon)] for [id_goal_not_set ? "default goal of ":""][contained_id.goal] points.", LOG_GAME)
 	prisoner.log_message("teleported to Labor Camp [COORD(beacon)] by [key_name(user)] for [id_goal_not_set ? "default goal of ":""][contained_id.goal] points.", LOG_GAME, log_globally = FALSE)
 	teleporter.handle_prisoner(contained_id, temporary_record)
 	playsound(src, 'sound/items/weapons/emitter.ogg', 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	prisoner.forceMove(get_turf(beacon))
 	prisoner.Paralyze(40) // small travel dizziness
-	to_chat(prisoner, span_warning("The teleportation makes you a little dizzy."))
+	to_chat(prisoner, span_warning("После телепортации у вас слегка кружится голова."))
 	new /obj/effect/particle_effect/sparks(get_turf(prisoner))
 	playsound(src, SFX_PORTAL_ENTER, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	if(teleporter.locked)

@@ -65,12 +65,12 @@ export const Experimentor = (props: any) => {
             />
           ) : (
             <NoticeBox danger textAlign="center">
-              No item present in experimentation chamber. Please insert one.
+              В экспериментальной камере нет предмета. Вставьте предмет.
             </NoticeBox>
           )
         ) : (
           <NoticeBox danger textAlign="center">
-            Not connected to a server. Please sync one using a multitool.
+            Нет подключения к серверу. Синхронизируйте его мультитулом.
           </NoticeBox>
         )}
       </Window.Content>
@@ -138,7 +138,7 @@ const ItemPreview = (props: ItemPreviewProps) => {
               icon="eject"
               height="100%"
               fontSize={1.5}
-              tooltip="Eject"
+              tooltip="Извлечь"
               textAlign="center"
               onClick={() => onEject()}
               verticalAlignContent="middle"
@@ -174,7 +174,7 @@ const NodePreview = (props: NodePreviewProps) => {
   const { nodes } = props;
 
   return (
-    <Section fill title="Affected Nodes">
+    <Section fill title="Затронутые узлы">
       {nodes.length > 0 ? (
         <LabeledList>
           {nodes.map((node, index) => (
@@ -183,7 +183,7 @@ const NodePreview = (props: NodePreviewProps) => {
               label={node.name}
               color={node.isUnlocked ? 'good' : 'bad'}
             >
-              {node.isUnlocked ? 'Unlocked' : 'Locked'}
+              {node.isUnlocked ? 'Разблокирован' : 'Заблокирован'}
             </LabeledList.Item>
           ))}
         </LabeledList>
@@ -244,7 +244,7 @@ const ExperimentButtons = (props: ExperimentButtonsProps) => {
               disabled={!isRelic || disabled || !discoverExperiment.isAvailable}
               onClick={() => onExperiment(discoverExperiment.id)}
             >
-              Discover!
+              Обнаружить!
             </Button>
           )}
         </Stack.Item>

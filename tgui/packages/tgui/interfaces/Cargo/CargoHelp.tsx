@@ -1,78 +1,77 @@
 import { Box, NoticeBox, Section, Stack } from 'tgui-core/components';
 
-const ORDER_TEXT = `Each department on the station will order crates from their own personal
-        consoles. These orders are ENTIRELY FREE! They do not come out of
-        cargo's budget, and rather put the consoles on cooldown. So
-        here's where you come in: The ordered crates will show up on your
-        supply console, and you need to deliver the crates to the orderers.
-        You'll actually be paid the full value of the department crate on
-        delivery if the crate was not tampered with, making the system a good
-        source of income.`;
+const ORDER_TEXT = `Каждый отдел станции может заказывать ящики со своих
+        личных консолей. Эти заказы полностью бесплатны: они не тратят бюджет
+        карго, а только отправляют консоль отдела на перезарядку. Здесь и
+        начинается ваша работа: заказанные ящики появятся на консоли снабжения,
+        а вам нужно доставить их заказчикам. Если ящик не был вскрыт или
+        поврежден, за доставку будет выплачена полная стоимость отдела, так
+        что это хороший источник дохода.`;
 
-const DISPOSAL_TEXT = `In addition to MULEs and hand-deliveries, you can also make use of the
-        disposals mailing system. Note that a break in the disposal piping could
-        cause your package to be lost (this hardly ever happens), so this is not
-        always the most secure ways to deliver something. You can wrap up a
-        piece of paper and mail it the same way if you (or someone at the desk)
-        wants to mail a letter.`;
+const DISPOSAL_TEXT = `Кроме MULE-ботов и ручной доставки можно использовать
+        почтовую систему утилизации. Учтите, что разрыв в трубах утилизации
+        может потерять посылку, пусть это и случается редко, так что это не
+        всегда самый надежный способ доставки. Бумагу тоже можно завернуть и
+        отправить так же, если вам или кому-то за стойкой нужно отправить
+        письмо.`;
 
 export function CargoHelp(props) {
   return (
     <Stack fill vertical>
       <Stack.Item grow>
         <Section fill scrollable>
-          <Section color="label" title="Department Orders">
+          <Section color="label" title="Заказы отделов">
             {ORDER_TEXT}
             <br />
             <br />
-            Examine a department order crate to get specific details about where
-            the crate needs to go.
+            Осмотрите ведомственный ящик, чтобы узнать, куда именно его нужно
+            доставить.
           </Section>
           <Section title="MULEbots">
             <Box color="label">
-              MULEbots are slow but loyal delivery bots that will get crates
-              delivered with minimal technician effort required. It is slow,
-              though, and can be tampered with while en route.
+              MULE-боты медленные, но верные доставщики, которые довезут ящики
+              почти без участия техника. Доставка занимает время, и по пути в
+              нее могут вмешаться.
             </Box>
             <br />
             <Box bold color="green">
-              Setting up a MULEbot is easy:
+              Настроить MULE-бота просто:
             </Box>
-            <b>1.</b> Drag the crate you want to deliver next to the MULEbot.
+            <b>1.</b> Перетащите нужный ящик рядом с MULE-ботом.
             <br />
-            <b>2.</b> Drag the crate on top of MULEbot. It should load on.
+            <b>2.</b> Перетащите ящик на MULE-бота. Он должен загрузиться.
             <br />
-            <b>3.</b> Open your PDA.
+            <b>3.</b> Откройте PDA.
             <br />
-            <b>4.</b> Click <i>Delivery Bot Control</i>.<br />
-            <b>5.</b> Click <i>Scan for Active Bots</i>.<br />
-            <b>6.</b> Choose your MULE.
+            <b>4.</b> Нажмите <i>Управление доставочными ботами</i>.<br />
+            <b>5.</b> Нажмите <i>Поиск активных ботов</i>.<br />
+            <b>6.</b> Выберите своего MULE.
             <br />
-            <b>7.</b> Click on <i>Destination: (set)</i>.<br />
-            <b>8.</b> Choose a destination and click OK.
+            <b>7.</b> Нажмите <i>Пункт назначения: (задать)</i>.<br />
+            <b>8.</b> Выберите пункт назначения и нажмите OK.
             <br />
-            <b>9.</b> Click <i>Proceed</i>.
+            <b>9.</b> Нажмите <i>Выполнить</i>.
           </Section>
-          <Section title="Disposals Delivery System">
+          <Section title="Система доставки через утилизацию">
             <Box color="label">{DISPOSAL_TEXT}</Box>
             <br />
             <Box bold color="green">
-              Using the Disposals Delivery System is even easier:
+              Пользоваться системой доставки через утилизацию еще проще:
             </Box>
-            <b>1.</b> Wrap your item/crate in packaging paper.
+            <b>1.</b> Заверните предмет или ящик в упаковочную бумагу.
             <br />
-            <b>2.</b> Use the destinations tagger to choose where to send it.
+            <b>2.</b> Выберите пункт назначения адресатором.
             <br />
-            <b>3.</b> Tag the package.
+            <b>3.</b> Промаркируйте посылку.
             <br />
-            <b>4.</b> Stick it on the conveyor and let the system handle it.
+            <b>4.</b> Положите ее на конвейер и дайте системе сработать.
             <br />
           </Section>
         </Section>
       </Stack.Item>
       <Stack.Item>
         <NoticeBox textAlign="center" info mb={0}>
-          Pondering something not included here? When in doubt, ask the QM!
+          Не нашли ответ здесь? Если сомневаетесь, спросите КМ!
         </NoticeBox>
       </Stack.Item>
     </Stack>

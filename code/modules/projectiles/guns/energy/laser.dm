@@ -1,6 +1,6 @@
 /obj/item/gun/energy/laser
-	name = "\improper Type 5 laser gun"
-	desc = "The Type 5 Heat Delivery System, developed by Nanotrasen. The workhorse of Nanotrasen's security forces."
+	name = "\improper лазерная пушка Type 5"
+	desc = "Система тепловой доставки Type 5, разработанная Nanotrasen. Рабочая лошадка службы безопасности Nanotrasen."
 	icon_state = "laser"
 	inhand_icon_state = "laser"
 	w_class = WEIGHT_CLASS_BULKY
@@ -30,9 +30,9 @@
 		overlay_y = 12)
 
 /obj/item/gun/energy/laser/pistol
-	name = "\improper Type 5/C laser pistol"
-	desc = "The Type 5 Heat Delivery System, Compact Variant, developed by Nanotrasen. The workhorse of Nanotrasen's security forces, but in a more portable size. \
-		Sacrifices some stopping power and capacity for ease of carry and faster charging."
+	name = "\improper лазерный пистолет Type 5/C"
+	desc = "Компактный вариант системы тепловой доставки Type 5, разработанный Nanotrasen. Та же рабочая лошадка службы безопасности, но в более портативном размере. \
+		Жертвует частью останавливающей силы и емкости ради удобства ношения и более быстрой зарядки."
 	icon_state = "laser_pistol"
 	w_class = WEIGHT_CLASS_NORMAL
 	projectile_damage_multiplier = 0.8
@@ -43,9 +43,9 @@
 	return
 
 /obj/item/gun/energy/laser/assault
-	name = "\improper Type 5/A assault laser rifle"
-	desc = "The Type 5 Heat Delivery System, Assault Variant, developed by Nanotrasen. The workhorse of Nanotrasen's security forces and paramilitary organizations. \
-		While it sacrifices some stopping power and ease of use, its laser system is remarkably efficient and it boasts some resistance against electromagnetic interference."
+	name = "\improper штурмовая лазерная винтовка Type 5/A"
+	desc = "Штурмовой вариант системы тепловой доставки Type 5, разработанный Nanotrasen. Рабочая лошадка службы безопасности и военизированных организаций Nanotrasen. \
+		Жертвует частью останавливающей силы и удобства, зато лазерная система крайне эффективна и устойчива к электромагнитным помехам."
 	icon = 'icons/obj/weapons/guns/wide_guns.dmi'
 	icon_state = "assault_laser"
 	inhand_icon_state = "assault_laser"
@@ -67,8 +67,8 @@
 		overlay_y = 30)
 
 /obj/item/gun/energy/laser/practice
-	name = "practice laser gun"
-	desc = "A modified version of the Type 5 laser gun. Fires entirely harmless bolts of directed energy. Safe AND entertaining to fire with abandon."
+	name = "тренировочная лазерная пушка"
+	desc = "Модифицированная версия лазерной пушки Type 5. Стреляет полностью безвредными зарядами направленной энергии. Безопасно и весело."
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/practice)
 	clumsy_check = FALSE
 	item_flags = NONE
@@ -78,23 +78,23 @@
 	return
 
 /obj/item/gun/energy/laser/retro
-	name ="\improper Type 1 laser gun"
-	desc = "The Type 1 Heat Delivery System, developed by Nanotrasen. No longer used by Nanotrasen's private security or military forces. Nevertheless, \
-		it is still quite deadly and easy to maintain, making it a favorite amongst pirates and other outlaws."
+	name ="\improper лазерная пушка Type 1"
+	desc = "Система тепловой доставки Type 1, разработанная Nanotrasen. Больше не используется частной охраной и военными силами Nanotrasen. Тем не менее, \
+		она все еще смертоносна и проста в обслуживании, поэтому любима пиратами и прочими преступниками."
 	icon_state = "retro"
 	ammo_x_offset = 3
 
 /obj/item/gun/energy/laser/soul
-	name ="\improper Type 3 laser gun"
-	desc = "The Type 3 Heat Delivery System, developed by Nanotrasen. Quite possibly the most popular model of HDS ever made by Nanotrasen. \
-		They don't make them like they used to."
+	name ="\improper лазерная пушка Type 3"
+	desc = "Система тепловой доставки Type 3, разработанная Nanotrasen. Возможно, самая популярная модель HDS из всех, что выпускала Nanotrasen. \
+		Таких больше не делают."
 	icon_state = "laser_soulful"
 	inhand_icon_state = "laser_soulful"
 	ammo_x_offset = 1
 
 /obj/item/gun/energy/laser/carbine
-	name = "\improper Type 5/R laser carbine"
-	desc = "The burst fire Type 5/R Rapid Heat Delivery System, developed by Nanotrasen. Capable of firing a sustained volley of directed energy projectiles, though each individual projectile lacks the punch of the Type 5."
+	name = "\improper лазерный карабин Type 5/R"
+	desc = "Система быстрой тепловой доставки Type 5/R с очередями, разработанная Nanotrasen. Способна вести продолжительный залп направленных энергетических снарядов, хотя каждый отдельный снаряд слабее Type 5."
 	icon_state = "laser_carbine"
 	burst_size = 2
 	fire_delay = 2
@@ -105,7 +105,7 @@
 
 /obj/item/gun/energy/laser/cybersun
 	name = "\improper Cybersun S-120"
-	desc = "A laser gun primarily used by syndicate security guards. It fires a rapid spray of low-power plasma beams."
+	desc = "Лазерное оружие, в основном используемое охранниками Синдиката. Быстро выпускает поток слабых плазменных лучей."
 	icon_state = "cybersun_s120"
 	inhand_icon_state = "s120"
 	ammo_type = list(/obj/item/ammo_casing/energy/lasergun/cybersun)
@@ -124,8 +124,8 @@
 	pin = /obj/item/firing_pin
 
 /obj/item/gun/energy/laser/carbine/practice
-	name = "practice laser carbine"
-	desc = "A modified version of the Type 5/R laser carbine. Fires entirely harmless bolts of directed energy. Safe AND entertaining to fire with abandon."
+	name = "тренировочный лазерный карабин"
+	desc = "Модифицированная версия лазерного карабина Type 5/R. Стреляет полностью безвредными зарядами направленной энергии. Безопасно и весело."
 	ammo_type = list(/obj/item/ammo_casing/energy/lasergun/carbine/practice)
 	clumsy_check = FALSE
 	item_flags = NONE
@@ -135,27 +135,27 @@
 	return
 
 /obj/item/gun/energy/laser/retro/old
-	desc = "The NT Type 1 Heat Delivery System, developed by Nanotrasen. This one looks downright ancient. What the hell happened to it?"
+	desc = "Система тепловой доставки NT Type 1, разработанная Nanotrasen. Этот экземпляр выглядит совсем древним. Что с ним произошло?"
 	ammo_type = list(/obj/item/ammo_casing/energy/lasergun/old)
 
 /obj/item/gun/energy/laser/retro/old/add_deep_lore()
 	return
 
 /obj/item/gun/energy/laser/hellgun
-	name = "\improper Type 4 'hellfire' laser gun"
-	desc = "The Type 4 Heat Delivery System, developed by Nanotrasen. Technically speaking, it is an improvement. \
-		Legally speaking, possession of this weapon is restricted in most occupied sectors of space. \
-		The Type 4 is notorious for its ability to render victims a carbonized husk with ease, melting flesh and bone as easily as butter. \
-		A painful, gruesome death awaits anyone on the wrong end of this gun."
+	name = "\improper лазерная пушка Type 4 'hellfire'"
+	desc = "Система тепловой доставки Type 4, разработанная Nanotrasen. Технически это улучшение. \
+		Юридически владение этим оружием ограничено в большинстве обжитых секторов космоса. \
+		Type 4 печально известна способностью легко превращать жертв в обугленные останки, плавя плоть и кости. \
+		Болезненная и жуткая смерть ждет любого, кто окажется не с той стороны ствола."
 	icon_state = "hellgun"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hellfire)
 	ammo_x_offset = 1
 	light_color = COLOR_AMMO_HELLFIRE
 
 /obj/item/gun/energy/laser/captain
-	name = "antique laser gun"
-	desc = "This is an antique laser gun. All craftsmanship is of the highest quality. It is decorated with assistant leather and chrome. \
-		The object menaces with spikes of energy. On the item is an image of Space Station 13. The station is exploding."
+	name = "антикварная лазерная пушка"
+	desc = "Это антикварное лазерное оружие высочайшего качества. Оно украшено кожей ассистента и хромом. \
+		Предмет угрожающе искрит энергией. На корпусе изображена Space Station 13. Станция взрывается."
 	icon_state = "caplaser"
 	w_class = WEIGHT_CLASS_NORMAL
 	inhand_icon_state = null
@@ -168,9 +168,9 @@
 	light_color = COLOR_AMMO_HELLFIRE
 
 /obj/item/gun/energy/laser/captain/scattershot
-	name = "scatter shot laser rifle"
-	desc = "An industrial-grade heavy-duty laser rifle with a modified laser lens to scatter its shot into multiple smaller lasers. \
-		The inner-core can self-charge for theoretically infinite use."
+	name = "рассеивающая лазерная винтовка"
+	desc = "Промышленная тяжелая лазерная винтовка с модифицированной линзой, рассеивающей выстрел на несколько малых лазеров. \
+		Внутреннее ядро способно самозаряжаться, теоретически обеспечивая бесконечное использование."
 	icon_state = "lasercannon"
 	w_class = WEIGHT_CLASS_BULKY
 	inhand_icon_state = "laser"
@@ -184,7 +184,7 @@
 
 /obj/item/gun/energy/laser/cyborg
 	can_charge = FALSE
-	desc = "An energy-based laser gun that draws power from the cyborg's internal energy cell directly. So this is what freedom looks like?"
+	desc = "Энергетическая лазерная пушка, питающаяся напрямую от внутренней батареи киборга. Так вот как выглядит свобода?"
 	use_cyborg_cell = TRUE
 	ammo_x_offset = 1
 
@@ -196,8 +196,8 @@
 	return
 
 /obj/item/gun/energy/laser/scatter
-	name = "scatter laser gun"
-	desc = "A laser gun equipped with a refraction kit that spreads bolts."
+	name = "рассеивающая лазерная пушка"
+	desc = "Лазерное оружие с рефракционным комплектом, рассеивающим заряды."
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/scatter, /obj/item/ammo_casing/energy/laser)
 	ammo_x_offset = 1
 
@@ -205,11 +205,11 @@
 	return
 
 /obj/item/gun/energy/laser/scatter/shotty
-	name = "energy shotgun"
+	name = "энергетический дробовик"
 	icon = 'icons/obj/weapons/guns/ballistic.dmi'
 	icon_state = "cshotgun"
 	inhand_icon_state = "shotgun"
-	desc = "A combat shotgun gutted and refitted with an internal energy emission system. Can switch between scattered disabler shots and taser electrodes."
+	desc = "Боевой дробовик, переделанный под внутреннюю систему энергетического излучения. Может переключаться между рассеянными выстрелами дизейблера и электродами тазера."
 	shaded_charge = FALSE
 	pin = /obj/item/firing_pin/implant/mindshield
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/scatter/disabler, /obj/item/ammo_casing/energy/electrode)
@@ -219,8 +219,8 @@
 ///Laser Cannon
 
 /obj/item/gun/energy/lasercannon
-	name = "accelerator laser cannon"
-	desc = "An advanced laser cannon that does more damage the farther away the target is."
+	name = "ускорительная лазерная пушка"
+	desc = "Продвинутая лазерная пушка, наносящая больше урона чем дальше находится цель."
 	icon_state = "lasercannon"
 	inhand_icon_state = "laser"
 	worn_icon_state = null
@@ -235,9 +235,9 @@
 ///X-ray gun
 
 /obj/item/gun/energy/laser/xray
-	name = "\improper Type 6 X-ray laser gun"
-	desc = "The Type 6 Heat Delivery System, developed by Nanotrasen. \
-		Capable of expelling concentrated 'X-ray' blasts that pass through multiple soft targets and heavier materials."
+	name = "\improper рентгеновская лазерная пушка Type 6"
+	desc = "Система тепловой доставки Type 6, разработанная Nanotrasen. \
+		Способна выпускать концентрированные рентгеновские импульсы, проходящие через несколько мягких целей и более тяжелые материалы."
 	icon_state = "xray"
 	w_class = WEIGHT_CLASS_BULKY
 	inhand_icon_state = null
@@ -256,9 +256,9 @@
 ////////Laser Tag////////////////////
 
 /obj/item/gun/energy/laser/bluetag
-	name = "laser tag gun"
+	name = "лазертаг-пушка"
 	icon_state = "bluetag"
-	desc = "A retro laser gun modified to fire harmless blue beams of light. Sound effects included!"
+	desc = "Ретро-лазерная пушка, модифицированная для стрельбы безвредными синими лучами света. Звуковые эффекты включены!"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/bluetag)
 	item_flags = NONE
 	clumsy_check = FALSE
@@ -274,9 +274,9 @@
 	return
 
 /obj/item/gun/energy/laser/redtag
-	name = "laser tag gun"
+	name = "лазертаг-пушка"
 	icon_state = "redtag"
-	desc = "A retro laser gun modified to fire harmless beams red of light. Sound effects included!"
+	desc = "Ретро-лазерная пушка, модифицированная для стрельбы безвредными красными лучами света. Звуковые эффекты включены!"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/redtag)
 	item_flags = NONE
 	clumsy_check = FALSE
@@ -297,8 +297,8 @@
 	payment_amount = 20
 
 /obj/item/gun/energy/laser/luxurypaywall
-	name = "luxurious laser gun"
-	desc = "A laser gun modified to cost 20 credits to fire. Point towards poor people."
+	name = "роскошная лазерная пушка"
+	desc = "Лазерная пушка, модифицированная так, чтобы каждый выстрел стоил 20 кредитов. Наводите на бедных."
 	pin = /obj/item/firing_pin/paywall/luxury
 
 // The Deep Lore //

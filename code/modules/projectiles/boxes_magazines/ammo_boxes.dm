@@ -1,46 +1,46 @@
 /obj/item/ammo_box/c9mm
-	name = "ammo box (9mm)"
+	name = "коробка патронов (9 мм)"
 	icon_state = "9mmbox"
 	ammo_type = /obj/item/ammo_casing/c9mm
 	max_ammo = 30
 
 /obj/item/ammo_box/c10mm
-	name = "ammo box (10mm)"
+	name = "коробка патронов (10 мм)"
 	icon_state = "10mmbox"
 	ammo_type = /obj/item/ammo_casing/c10mm
 	max_ammo = 20
 
 /obj/item/ammo_box/c45
-	name = "ammo box (.45)"
+	name = "коробка патронов (.45)"
 	icon_state = "45box"
 	ammo_type = /obj/item/ammo_casing/c45
 	max_ammo = 20
 
 /obj/item/ammo_box/a40mm
-	name = "ammo box (40mm grenades)"
+	name = "коробка боеприпасов (40-мм гранаты)"
 	icon_state = "40mm"
 	ammo_type = /obj/item/ammo_casing/a40mm
 	max_ammo = 4
 	multiple_sprites = AMMO_BOX_PER_BULLET
 
 /obj/item/ammo_box/a40mm/rubber
-	name = "ammo box (40mm rubber puck)"
+	name = "коробка боеприпасов (40-мм резиновая шайба)"
 	ammo_type = /obj/item/ammo_casing/a40mm/rubber
 
 /obj/item/ammo_box/a40mm/flak
-	name = "ammo box (40mm titanium flak)"
+	name = "коробка боеприпасов (40-мм титановая шрапнель)"
 	ammo_type = /obj/item/ammo_casing/a40mm/flak
 
 /obj/item/ammo_box/a40mm/incendiary
-	name = "ammo box (40mm incendiary grenade)"
+	name = "коробка боеприпасов (40-мм зажигательная граната)"
 	ammo_type = /obj/item/ammo_casing/a40mm/incendiary
 
 /obj/item/ammo_box/a40mm/tear_gas
-	name = "ammo box (40mm tear gas grenade)"
+	name = "коробка боеприпасов (40-мм газовая граната)"
 	ammo_type = /obj/item/ammo_casing/a40mm/tear_gas
 
 /obj/item/ammo_box/rocket
-	name = "rocket bouquet (84mm HE)"
+	name = "связка ракет (84 мм фугасные)"
 	icon_state = "rocketbundle"
 	ammo_type = /obj/item/ammo_casing/rocket
 	max_ammo = 3
@@ -50,13 +50,13 @@
 	return FALSE
 
 /obj/item/ammo_box/n762
-	name = "ammo box (7.62x38mmR)"
+	name = "коробка патронов (7.62x38mmR)"
 	icon_state = "10mmbox"
 	ammo_type = /obj/item/ammo_casing/n762
 	max_ammo = 14
 
 /obj/item/ammo_box/foambox
-	name = "ammo box (Foam Darts)"
+	name = "коробка патронов (пенные дротики)"
 	icon = 'icons/obj/weapons/guns/toy.dmi'
 	icon_state = "foambox"
 	ammo_type = /obj/item/ammo_casing/foam_dart

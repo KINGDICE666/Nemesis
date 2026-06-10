@@ -55,7 +55,7 @@ export function LaunchpadConsole(props) {
     <Window width={475} height={275}>
       <Window.Content>
         {launchpads.length === 0 ? (
-          <NoticeBox>No Pads Connected</NoticeBox>
+          <NoticeBox>Нет подключенных площадок</NoticeBox>
         ) : (
           <Stack fill>
             <Stack.Item grow>
@@ -64,7 +64,7 @@ export function LaunchpadConsole(props) {
 
             <Stack.Item grow={3}>
               {!selected_id ? (
-                <Box>Please select a pad</Box>
+                <Box>Выберите площадку</Box>
               ) : (
                 <LaunchpadControl />
               )}
@@ -146,7 +146,7 @@ function LaunchpadTitle(props) {
         </Stack.Item>
         <Stack.Item>
           <Button icon="times" color="bad" onClick={() => act('remove')}>
-            Remove
+            Убрать
           </Button>
         </Stack.Item>
       </Stack>
@@ -158,7 +158,7 @@ function LaunchpadButtonPad(props) {
   const { act } = useBackend();
 
   return (
-    <Section fill title="Controls" align="center">
+    <Section fill title="Управление" align="center">
       <Stack fill justify="center">
         {buttonConfigs.map((buttonRow, i) => (
           <Stack.Item key={i}>
@@ -196,7 +196,7 @@ function TargetingControls(props) {
   ];
 
   return (
-    <Section fill title="Target" align="center">
+    <Section fill title="Цель" align="center">
       {inputConfigs.map((inputConfig, i) => (
         <Stack key={i} mb={2}>
           <Stack.Item grow>
@@ -241,7 +241,7 @@ function DeliveryButtons(props) {
             onClick={() => act('launch')}
             textAlign="center"
           >
-            Launch
+            Запуск
           </Button>
         </Stack.Item>
         <Stack.Item grow>
@@ -251,7 +251,7 @@ function DeliveryButtons(props) {
             onClick={() => act('pull')}
             textAlign="center"
           >
-            Pull
+            Возврат
           </Button>
         </Stack.Item>
       </Stack>

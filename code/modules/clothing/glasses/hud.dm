@@ -157,21 +157,21 @@
 	)
 
 /obj/item/clothing/glasses/hud/security
-	name = "security HUD"
-	desc = "A heads-up display that scans the humanoids in view and provides accurate data about their ID status and security records."
+	name = "HUD службы безопасности"
+	desc = "Проекционный дисплей, который сканирует гуманоидов в поле зрения и показывает точные данные об их ID-статусе и записях СБ."
 	icon_state = "securityhud"
 	clothing_traits = list(TRAIT_SECURITY_HUD)
 	glass_colour_type = /datum/client_colour/glass_colour/red
 
 /obj/item/clothing/glasses/hud/security/chameleon
-	name = "chameleon security HUD"
-	desc = "A stolen security HUD integrated with Syndicate chameleon technology. Provides flash protection."
+	name = "хамелеонный HUD службы безопасности"
+	desc = "Украденный HUD службы безопасности, объединенный с хамелеонной технологией Синдиката. Защищает от вспышек."
 	flash_protect = FLASH_PROTECTION_FLASH
 	actions_types = list(/datum/action/item_action/chameleon/change/glasses/no_preset)
 
 /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch
-	name = "eyepatch HUD"
-	desc = "The cooler looking cousin of HUDSunglasses."
+	name = "HUD-повязка"
+	desc = "Более круто выглядящий родственник HUD-очков."
 	icon_state = "hudpatch"
 	base_icon_state = "hudpatch"
 	actions_types = list(/datum/action/item_action/flip)
@@ -183,8 +183,8 @@
 
 /obj/item/clothing/glasses/hud/security/sunglasses
 	gender = PLURAL
-	name = "security HUDSunglasses"
-	desc = "Sunglasses with a security HUD."
+	name = "солнцезащитные HUD-очки СБ"
+	desc = "Солнцезащитные очки с HUD службы безопасности."
 	icon_state = "sunhudsec"
 	flash_protect = FLASH_PROTECTION_FLASH
 	flags_cover = GLASSESCOVERSEYES
@@ -202,8 +202,8 @@
 	)
 
 /obj/item/clothing/glasses/hud/security/night
-	name = "night vision security HUD"
-	desc = "An advanced heads-up display that provides ID data and vision in complete darkness."
+	name = "HUD службы безопасности с ночным зрением"
+	desc = "Продвинутый проекционный дисплей, который показывает данные ID и позволяет видеть в полной темноте."
 	icon_state = "securityhudnight"
 	flash_protect = FLASH_PROTECTION_SENSITIVE
 	flags_cover = GLASSESCOVERSEYES
@@ -218,8 +218,8 @@
 
 /obj/item/clothing/glasses/hud/security/sunglasses/gars
 	gender = PLURAL
-	name = "\improper HUD gar glasses"
-	desc = "GAR glasses with a HUD."
+	name = "GAR-очки с HUD"
+	desc = "GAR-очки с HUD."
 	icon_state = "gar_sec"
 	inhand_icon_state = "gar_black"
 	alternate_worn_layer = ABOVE_BODY_FRONT_HEAD_LAYER
@@ -232,8 +232,8 @@
 	sharpness = SHARP_EDGED
 
 /obj/item/clothing/glasses/hud/security/sunglasses/gars/giga
-	name = "giga HUD gar glasses"
-	desc = "GIGA GAR glasses with a HUD."
+	name = "гига-GAR-очки с HUD"
+	desc = "GIGA GAR-очки с HUD."
 	icon_state = "gigagar_sec"
 	force = 12
 	throwforce = 12

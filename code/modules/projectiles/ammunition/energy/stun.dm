@@ -1,6 +1,6 @@
 /obj/item/ammo_casing/energy/electrode
 	projectile_type = /obj/projectile/energy/electrode
-	select_name = "stun"
+	select_name = "оглушение"
 	fire_sound = 'sound/items/weapons/taser.ogg'
 	e_cost = LASER_SHOTS(5, STANDARD_CELL_CHARGE)
 	harmful = FALSE
@@ -22,7 +22,7 @@
 
 /obj/item/ammo_casing/energy/disabler
 	projectile_type = /obj/projectile/beam/disabler
-	select_name = "disable"
+	select_name = "обезвреживание"
 	e_cost = LASER_SHOTS(20, STANDARD_CELL_CHARGE)
 	fire_sound = 'sound/items/weapons/taser2.ogg'
 	harmful = FALSE

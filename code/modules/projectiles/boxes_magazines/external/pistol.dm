@@ -2,10 +2,10 @@
 // Makarov (9mm) //
 
 /obj/item/ammo_box/magazine/m9mm
-	name = "pistol magazine (9mm)"
+	name = "пистолетный магазин (9 мм)"
 	icon_state = "9x19p"
 	base_icon_state = "9x19p"
-	desc = "A 9mm handgun magazine, suitable for the Makarov pistol."
+	desc = "Магазин для 9-мм пистолета, подходит к пистолету Макарова."
 	ammo_band_icon = "+9x19ab"
 	ammo_band_color = null
 	ammo_type = /obj/item/ammo_casing/c9mm
@@ -15,25 +15,25 @@
 	multiple_sprite_use_base = TRUE
 
 /obj/item/ammo_box/magazine/m9mm/fire
-	name = "pistol magazine (9mm incendiary)"
+	name = "пистолетный магазин (9 мм зажигательные)"
 	MAGAZINE_TYPE_INCENDIARY
 	ammo_type = /obj/item/ammo_casing/c9mm/fire
 
 /obj/item/ammo_box/magazine/m9mm/hp
-	name = "pistol magazine (9mm HP)"
+	name = "пистолетный магазин (9 мм экспансивные)"
 	MAGAZINE_TYPE_HOLLOWPOINT
 	ammo_type = /obj/item/ammo_casing/c9mm/hp
 
 /obj/item/ammo_box/magazine/m9mm/ap
-	name = "pistol magazine (9mm AP)"
+	name = "пистолетный магазин (9 мм бронебойные)"
 	MAGAZINE_TYPE_ARMORPIERCE
 	ammo_type = /obj/item/ammo_casing/c9mm/ap
 
 // Stechkin APS (9mm) //
 
 /obj/item/ammo_box/magazine/m9mm_aps
-	name = "stechkin pistol magazine (9mm)"
-	desc = "A 9mm handgun magazine, suitable for the Stechkin APS machine pistol."
+	name = "магазин пистолета Стечкина (9 мм)"
+	desc = "Магазин для 9-мм пистолета, подходит к автоматическому пистолету Стечкина."
 	icon_state = "9mmaps-15"
 	base_icon_state = "9mmaps"
 	ammo_band_icon = "+9mmapsab"
@@ -47,25 +47,25 @@
 	icon_state = "[base_icon_state]-[round(ammo_count(), 5)]"
 
 /obj/item/ammo_box/magazine/m9mm_aps/fire
-	name = "stechkin pistol magazine (9mm incendiary)"
+	name = "магазин пистолета Стечкина (9 мм зажигательные)"
 	MAGAZINE_TYPE_INCENDIARY
 	ammo_type = /obj/item/ammo_casing/c9mm/fire
 
 /obj/item/ammo_box/magazine/m9mm_aps/hp
-	name = "stechkin pistol magazine (9mm HP)"
+	name = "магазин пистолета Стечкина (9 мм экспансивные)"
 	MAGAZINE_TYPE_HOLLOWPOINT
 	ammo_type = /obj/item/ammo_casing/c9mm/hp
 
 /obj/item/ammo_box/magazine/m9mm_aps/ap
-	name = "stechkin pistol magazine (9mm AP)"
+	name = "магазин пистолета Стечкина (9 мм бронебойные)"
 	MAGAZINE_TYPE_ARMORPIERCE
 	ammo_type = /obj/item/ammo_casing/c9mm/ap
 
 // Ansem (10mm) //
 
 /obj/item/ammo_box/magazine/m10mm
-	name = "pistol magazine (10mm)"
-	desc = "A 10mm handgun magazine, suitable for the Ansem pistol."
+	name = "пистолетный магазин (10 мм)"
+	desc = "Магазин для 10-мм пистолета, подходит к пистолету Ansem."
 	icon_state = "9x19p"
 	base_icon_state = "9x19p"
 	ammo_band_icon = "+9x19ab"
@@ -78,25 +78,25 @@
 	multiple_sprite_use_base = TRUE
 
 /obj/item/ammo_box/magazine/m10mm/fire
-	name = "pistol magazine (10mm incendiary)"
+	name = "пистолетный магазин (10 мм зажигательные)"
 	MAGAZINE_TYPE_INCENDIARY
 	ammo_type = /obj/item/ammo_casing/c10mm/fire
 
 /obj/item/ammo_box/magazine/m10mm/hp
-	name = "pistol magazine (10mm HP)"
+	name = "пистолетный магазин (10 мм экспансивные)"
 	MAGAZINE_TYPE_HOLLOWPOINT
 	ammo_type = /obj/item/ammo_casing/c10mm/hp
 
 /obj/item/ammo_box/magazine/m10mm/ap
-	name = "pistol magazine (10mm AP)"
+	name = "пистолетный магазин (10 мм бронебойные)"
 	MAGAZINE_TYPE_ARMORPIERCE
 	ammo_type = /obj/item/ammo_casing/c10mm/ap
 
 // Regal Condor (10mm) //
 
 /obj/item/ammo_box/magazine/r10mm
-	name = "regal condor magazine (10mm Reaper)"
-	desc = "A very expensive 10mm handgun magazine, suitable for the Regal Condor. Loaded with \"reaper\" rounds, which are dangerously effective against everything."
+	name = "магазин Regal Condor (10 мм Reaper)"
+	desc = "Очень дорогой 10-мм пистолетный магазин для Regal Condor. Заряжен патронами \"reaper\", опасно эффективными против всего."
 	icon_state = "r10mm-8"
 	base_icon_state = "r10mm"
 	ammo_type = /obj/item/ammo_casing/c10mm/reaper
@@ -114,8 +114,8 @@
 // M1911 (.45) //
 
 /obj/item/ammo_box/magazine/m45
-	name = "handgun magazine (.45)"
-	desc = "A .45 handgun magazine, suitable for the M1911."
+	name = "пистолетный магазин (.45)"
+	desc = "Пистолетный магазин калибра .45, подходит к M1911."
 	icon_state = "45-8"
 	base_icon_state = "45"
 	ammo_type = /obj/item/ammo_casing/c45
@@ -127,8 +127,8 @@
 // Desert Eagle (.50 AE) //
 
 /obj/item/ammo_box/magazine/m50
-	name = "handgun magazine (.50 AE)"
-	desc = "A .50 AE handgun magazine, suitable for the Desert Eagle."
+	name = "пистолетный магазин (.50 AE)"
+	desc = "Пистолетный магазин калибра .50 AE, подходит к Desert Eagle."
 	icon_state = "50ae"
 	ammo_type = /obj/item/ammo_casing/a50ae
 	caliber = CALIBER_50AE

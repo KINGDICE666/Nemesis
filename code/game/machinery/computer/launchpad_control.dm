@@ -1,6 +1,6 @@
 /obj/machinery/computer/launchpad
-	name = "launchpad control console"
-	desc = "Used to teleport objects to and from a launchpad."
+	name = "консоль управления телепортационной площадкой"
+	desc = "Используется для телепортации объектов на площадку и с нее."
 	icon_screen = "teleport"
 	icon_keyboard = "teleport_key"
 	circuit = /obj/item/circuitboard/computer/launchpad_console
@@ -15,15 +15,15 @@
 	AddComponent(/datum/component/usb_port, typecacheof(list(/obj/item/circuit_component/bluespace_launchpad/console), only_root_path = TRUE))
 
 /obj/item/circuit_component/bluespace_launchpad/console
-	display_name = "Bluespace Launchpad Console"
-	desc = "Teleports anything to and from any location on the station. Doesn't use actual GPS coordinates, but rather offsets from the launchpad itself. Can only go as far as the launchpad can go, which depends on its parts."
+	display_name = "Консоль блюспейс-площадки"
+	desc = "Телепортирует что угодно в любую точку станции и обратно. Использует не настоящие GPS-координаты, а смещения от самой площадки. Дальность зависит от установленных деталей."
 
 	var/datum/port/input/launchpad_id
 
 	var/obj/machinery/computer/launchpad/attached_console
 
 /obj/item/circuit_component/bluespace_launchpad/console/populate_ports()
-	launchpad_id = add_input_port("Launchpad ID", PORT_TYPE_NUMBER, trigger = null, default = 1)
+	launchpad_id = add_input_port("ID площадки", PORT_TYPE_NUMBER, trigger = null, default = 1)
 	..()
 
 /obj/item/circuit_component/bluespace_launchpad/console/register_usb_parent(atom/movable/shell)
@@ -37,7 +37,7 @@
 
 /obj/item/circuit_component/bluespace_launchpad/console/input_received(datum/port/input/port)
 	if(!attached_console || length(attached_console.launchpads) == 0)
-		why_fail.set_output("No launchpads connected!")
+		why_fail.set_output("Нет подключенных площадок!")
 		on_fail.set_output(COMPONENT_SIGNAL)
 		return
 
@@ -47,13 +47,13 @@
 	attached_launchpad = KEYBYINDEX(attached_console.launchpads, launchpad_id.value)
 
 	if(isnull(attached_launchpad))
-		why_fail.set_output("Invalid launchpad selected!")
+		why_fail.set_output("Выбрана неверная площадка!")
 		on_fail.set_output(COMPONENT_SIGNAL)
 		return
 	..()
 
 /obj/machinery/computer/launchpad/attack_paw(mob/user, list/modifiers)
-	to_chat(user, span_warning("You are too primitive to use this computer!"))
+	to_chat(user, span_warning("Вы слишком примитивны, чтобы пользоваться этим компьютером!"))
 	return
 
 /obj/machinery/computer/launchpad/multitool_act(mob/living/user, obj/item/multitool/tool)
@@ -64,7 +64,7 @@
 	if(LAZYLEN(launchpads) < maximum_pads)
 		launchpads |= tool.buffer
 		tool.set_buffer(null)
-		to_chat(user, span_notice("You upload the data from the [tool] buffer."))
+		to_chat(user, span_notice("Вы загружаете данные из буфера [tool]."))
 		return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/computer/launchpad/proc/pad_exists(number)
@@ -149,7 +149,7 @@
 				return
 			current_pad.display_name = new_name
 		if("remove")
-			if(usr && tgui_alert(usr, "Are you sure?", "Unlink Launchpad", list("I'm Sure", "Abort")) == "I'm Sure")
+			if(usr && tgui_alert(usr, "Вы уверены?", "Отвязать площадку", list("Уверен", "Отмена")) == "Уверен")
 				launchpads -= current_pad
 				selected_id = null
 			. = TRUE

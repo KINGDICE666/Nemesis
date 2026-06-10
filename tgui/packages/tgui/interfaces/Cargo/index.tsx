@@ -1,5 +1,4 @@
 import { Button, Section, Stack, Tabs } from 'tgui-core/components';
-import { toTitleCase } from 'tgui-core/string';
 
 import { useBackend, useSharedState } from '../../backend';
 import { Window } from '../../layouts';
@@ -12,10 +11,10 @@ import { CargoStatus } from './CargoStatus';
 import type { CargoData } from './types';
 
 enum TAB {
-  Catalog = 'catalog',
-  Requests = 'active requests',
-  Cart = 'cart',
-  Help = 'help',
+  Catalog = 'Каталог',
+  Requests = 'Активные заявки',
+  Cart = 'Корзина',
+  Help = 'Помощь',
 }
 
 export function Cargo(props) {
@@ -45,7 +44,7 @@ export function CargoContent(props) {
       </Stack.Item>
       <Stack.Item>
         <Section
-          title={toTitleCase(tab || '')}
+          title={tab || ''}
           buttons={
             <>
               {tab === TAB.Requests && !requestonly && (
@@ -54,7 +53,7 @@ export function CargoContent(props) {
                   color="transparent"
                   onClick={() => act('denyall')}
                 >
-                  Clear
+                  Очистить
                 </Button>
               )}
               {(tab === TAB.Catalog || tab === TAB.Cart) && (
@@ -69,7 +68,7 @@ export function CargoContent(props) {
               selected={tab === TAB.Catalog}
               onClick={() => setTab(TAB.Catalog)}
             >
-              Catalog
+              Каталог
             </Tabs.Tab>
             <Tabs.Tab
               icon="envelope"
@@ -79,7 +78,7 @@ export function CargoContent(props) {
               selected={tab === TAB.Requests}
               onClick={() => setTab(TAB.Requests)}
             >
-              Requests ({requests.length})
+              Заявки ({requests.length})
             </Tabs.Tab>
             {!requestonly && (
               <>
@@ -89,14 +88,14 @@ export function CargoContent(props) {
                   selected={tab === TAB.Cart}
                   onClick={() => setTab(TAB.Cart)}
                 >
-                  Checkout ({amount})
+                  Заказ ({amount})
                 </Tabs.Tab>
                 <Tabs.Tab
                   icon="question"
                   selected={tab === TAB.Help}
                   onClick={() => setTab(TAB.Help)}
                 >
-                  Help
+                  Помощь
                 </Tabs.Tab>
               </>
             )}

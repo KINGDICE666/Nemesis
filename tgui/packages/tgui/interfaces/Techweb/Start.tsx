@@ -17,10 +17,10 @@ export function TechwebStart(props) {
     return (
       <Modal width="15em" align="center" className="Techweb__LockedModal">
         <div>
-          <b>Console Locked</b>
+          <b>Консоль заблокирована</b>
         </div>
         <Button icon="unlock" onClick={() => act('toggleLock')}>
-          Unlock
+          Разблокировать
         </Button>
       </Modal>
     );
@@ -30,7 +30,7 @@ export function TechwebStart(props) {
     return (
       <Modal width="25em" align="center" className="Techweb__LockedModal">
         <div>
-          <b>No research techweb found, please synchronize the console.</b>
+          <b>Исследовательская сеть не найдена, синхронизируйте консоль.</b>
         </div>
       </Modal>
     );

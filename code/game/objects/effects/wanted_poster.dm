@@ -12,12 +12,12 @@
 	var/postHeaderText = "WANTED" // MAX 7 Characters
 	var/postHeaderColor = COLOR_RED
 	var/background = "wanted_background"
-	var/postName = "wanted poster"
-	var/postDesc = "A wanted poster for"
+	var/postName = "плакат розыска"
+	var/postDesc = "Плакат розыска на"
 
 /obj/item/poster/wanted/missing
-	postName = "missing poster"
-	postDesc = "A missing poster for"
+	postName = "плакат о пропаже"
+	postDesc = "Плакат о пропаже"
 	postHeaderText = "MISSING" // MAX 7 Characters
 	postHeaderColor = COLOR_BLUE
 

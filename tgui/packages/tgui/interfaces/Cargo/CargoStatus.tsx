@@ -40,13 +40,13 @@ export function CargoStatus(props) {
       }
     >
       <LabeledList>
-        <LabeledList.Item label="Shuttle">
+        <LabeledList.Item label="Шаттл">
           {!!docked && !requestonly && !!can_send ? (
             <Button
               color={grocery ? 'orange' : 'green'}
               tooltip={
                 grocery
-                  ? 'The kitchen is waiting for their grocery supply delivery!'
+                  ? 'Кухня ждет доставку своих продуктовых припасов!'
                   : ''
               }
               tooltipPosition="right"
@@ -58,15 +58,15 @@ export function CargoStatus(props) {
             String(location)
           )}
         </LabeledList.Item>
-        <LabeledList.Item label="CentCom Message">{message}</LabeledList.Item>
+        <LabeledList.Item label="Сообщение ЦК">{message}</LabeledList.Item>
         {!!loan && !requestonly && (
-          <LabeledList.Item label="Loan">
+          <LabeledList.Item label="Аренда">
             {!loan_dispatched ? (
               <Button disabled={!(away && docked)} onClick={() => act('loan')}>
-                Loan Shuttle
+                Одолжить шаттл
               </Button>
             ) : (
-              <Box color="bad">Loaned to Centcom</Box>
+              <Box color="bad">Передан ЦК</Box>
             )}
           </LabeledList.Item>
         )}

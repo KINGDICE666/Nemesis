@@ -83,17 +83,17 @@ const RecordList = (props) => {
         <Button
           icon="sync"
           onClick={() => act('refresh')}
-          tooltip="Refresh"
+          tooltip="Обновить"
           tooltipPosition="bottom-start"
         />
       }
       fill
       scrollable
-      title="Citations"
+      title="Штрафы"
     >
       <Stack fill vertical>
         {!records?.length ? (
-          <NoticeBox>No citations issued.</NoticeBox>
+          <NoticeBox>Штрафы не выписаны.</NoticeBox>
         ) : (
           <Tabs vertical>
             {sorted.map((record, index) => (
@@ -158,22 +158,22 @@ const CitationManager = (props) => {
             act('print', { crew_ref: crew_ref, fine_ref: fine_ref })
           }
         >
-          Print
+          Печать
         </Button>
       }
       color={getFineColor(fine)}
       title={fine_name}
     >
       <LabeledList>
-        <LabeledList.Item label="Details">
+        <LabeledList.Item label="Детали">
           <BlockQuote>{details}</BlockQuote>
         </LabeledList.Item>
-        <LabeledList.Item label="Author">{author}</LabeledList.Item>
-        <LabeledList.Item label="Time">{time}</LabeledList.Item>
-        <LabeledList.Item label="Fine">{fine}</LabeledList.Item>
-        <LabeledList.Item label="Paid">{paid}</LabeledList.Item>
+        <LabeledList.Item label="Автор">{author}</LabeledList.Item>
+        <LabeledList.Item label="Время">{time}</LabeledList.Item>
+        <LabeledList.Item label="Штраф">{fine}</LabeledList.Item>
+        <LabeledList.Item label="Оплачено">{paid}</LabeledList.Item>
         {fine > 0 && (
-          <LabeledList.Item label="Pay">
+          <LabeledList.Item label="Оплата">
             <RestrictedInput
               maxValue={fine}
               minValue={5}
@@ -191,7 +191,7 @@ const CitationManager = (props) => {
                 })
               }
             >
-              Pay
+              Оплатить
             </Button.Confirm>
           </LabeledList.Item>
         )}

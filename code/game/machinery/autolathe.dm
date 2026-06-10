@@ -1,6 +1,6 @@
 /obj/machinery/autolathe
-	name = "autolathe"
-	desc = "It produces items using iron, glass, plastic and maybe some more."
+	name = "автолат"
+	desc = "Производит предметы из железа, стекла, пластика и, возможно, других материалов."
 	icon = 'icons/obj/machines/lathes.dmi'
 	icon_state = "autolathe"
 	base_icon_state = "autolathe"
@@ -61,31 +61,31 @@
 	if(!in_range(user, src) && !isobserver(user))
 		return
 
-	. += span_notice("Material usage cost at <b>[creation_efficiency * 100]%</b>.")
+	. += span_notice("Расход материалов: <b>[creation_efficiency * 100]%</b>.")
 	if(drop_direction)
-		. += span_notice("Currently configured to drop printed objects <b>[dir2text(drop_direction)]</b>.")
-		. += span_notice("[EXAMINE_HINT("Alt-click")] to reset.")
+		. += span_notice("Сейчас настроен на выгрузку напечатанных предметов <b>[dir2text(drop_direction)]</b>.")
+		. += span_notice("[EXAMINE_HINT("Alt-клик")] для сброса.")
 	else
-		. += span_notice("[EXAMINE_HINT("Drag")] towards a direction (while next to it) to change drop direction.")
+		. += span_notice("[EXAMINE_HINT("Перетащите")] в сторону, стоя рядом, чтобы изменить направление выгрузки.")
 
-	. += span_notice("Its maintenance panel can be [EXAMINE_HINT("screwed")] [panel_open ? "closed" : "open"].")
+	. += span_notice("Его техническую панель можно [EXAMINE_HINT("открутить")], чтобы [panel_open ? "закрыть" : "открыть"].")
 	if(panel_open)
-		. += span_notice("The machine can be [EXAMINE_HINT("pried")] apart.")
+		. += span_notice("Машину можно [EXAMINE_HINT("разобрать ломом")].")
 
 /obj/machinery/autolathe/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	if(drop_direction)
-		context[SCREENTIP_CONTEXT_ALT_LMB] = "Reset Drop"
+		context[SCREENTIP_CONTEXT_ALT_LMB] = "Сбросить выгрузку"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	if(isnull(held_item))
 		return NONE
 
 	if(held_item.tool_behaviour == TOOL_SCREWDRIVER)
-		context[SCREENTIP_CONTEXT_LMB] = "[panel_open ? "Close" : "Open"] Panel"
+		context[SCREENTIP_CONTEXT_LMB] = panel_open ? "Закрыть панель" : "Открыть панель"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	if(panel_open && held_item.tool_behaviour == TOOL_CROWBAR)
-		context[SCREENTIP_CONTEXT_LMB] = "Deconstruct"
+		context[SCREENTIP_CONTEXT_LMB] = "Разобрать"
 		return CONTEXTUAL_SCREENTIP_SET
 
 /obj/machinery/autolathe/crowbar_act(mob/living/user, obj/item/tool)
@@ -229,11 +229,11 @@
 		return
 
 	if(disabled)
-		say("Unable to print, voltage mismatch in internal wiring.")
+		say("Печать невозможна: несоответствие напряжения во внутренней проводке.")
 		return
 
 	if(busy)
-		say("Currently printing.")
+		say("Печать уже выполняется.")
 		return
 
 	//validate design
@@ -250,7 +250,7 @@
 		stack_trace("got passed an invalid design id: [design_id] and somehow made it past all checks")
 		return
 	if(!(design.build_type & AUTOLATHE))
-		say("This fabricator does not have the necessary keys to decrypt this design.")
+		say("У этого фабрикатора нет нужных ключей для расшифровки этого чертежа.")
 		return
 
 	//validate print quantity
@@ -284,13 +284,13 @@
 				choices[valid_candidate.name] = valid_candidate
 
 		if(!length(choices))
-			say("No valid materials with applicable amounts detected for design.")
+			say("Для этого чертежа не найдено подходящих материалов в нужном количестве.")
 			return
 
 		var/chosen = tgui_input_list(
 			ui.user,
-			"Select the material to use[slot ? " for [LOWER_TEXT(slot.name)]" : ""]",
-			"Material Selection",
+			"Выберите материал[slot ? " для [LOWER_TEXT(slot.name)]" : ""]",
+			"Выбор материала",
 			sort_list(choices),
 		)
 		if(isnull(chosen))
@@ -308,7 +308,7 @@
 	//checks for available materials
 	var/material_cost_coefficient = ispath(design.build_path, /obj/item/stack) ? 1 : creation_efficiency
 	if(!materials.has_materials(materials_needed, material_cost_coefficient, build_count))
-		say("Not enough materials to begin production.")
+		say("Недостаточно материалов для начала производства.")
 		return
 
 	//compute power & time to print 1 item
@@ -363,7 +363,7 @@
 		return
 
 	if(!is_operational)
-		say("Unable to continue production, power failure.")
+		say("Невозможно продолжить производство: нет питания.")
 		finalize_build()
 		return
 
@@ -373,17 +373,17 @@
 		if(!QDELETED(my_apc))
 			var/charging_wait = my_apc.time_to_charge(charge_per_item)
 			if(!isnull(charging_wait))
-				say("Unable to continue production, APC overload. Wait [DisplayTimeText(charging_wait, round_seconds_to = 1)] and try again.")
+				say("Невозможно продолжить производство: перегрузка ЛКП. Подождите [DisplayTimeText(charging_wait, round_seconds_to = 1)] и попробуйте снова.")
 			else
-				say("Unable to continue production, power grid overload.")
+				say("Невозможно продолжить производство: перегрузка электросети.")
 		else
-			say("Unable to continue production, no APC in area.")
+			say("Невозможно продолжить производство: в зоне нет ЛКП.")
 		finalize_build()
 		return
 
 	var/is_stack = ispath(design.build_path, /obj/item/stack)
 	if(!materials.has_materials(materials_needed, material_cost_coefficient, is_stack ? items_remaining : 1))
-		say("Unable to continue production, missing materials.")
+		say("Невозможно продолжить производство: не хватает материалов.")
 		finalize_build()
 		return
 	materials.use_materials(materials_needed, material_cost_coefficient, is_stack ? items_remaining : 1)
@@ -436,21 +436,21 @@
 	if(!can_interact(user) || (!HAS_SILICON_ACCESS(user) && !isAdminGhostAI(user)) && !Adjacent(user))
 		return
 	if(busy)
-		balloon_alert(user, "printing started!")
+		balloon_alert(user, "печать начата!")
 		return
 	var/direction = get_dir(src, over_location)
 	if(!direction)
 		return
 	drop_direction = direction
-	balloon_alert(user, "dropping [dir2text(drop_direction)]")
+	balloon_alert(user, "выгрузка: [dir2text(drop_direction)]")
 
 /obj/machinery/autolathe/click_alt(mob/user)
 	if(!drop_direction)
 		return CLICK_ACTION_BLOCKING
 	if(busy)
-		balloon_alert(user, "busy printing!")
+		balloon_alert(user, "идет печать!")
 		return CLICK_ACTION_SUCCESS
-	balloon_alert(user, "drop direction reset")
+	balloon_alert(user, "направление выгрузки сброшено")
 	drop_direction = 0
 	return CLICK_ACTION_SUCCESS
 
@@ -459,7 +459,7 @@
 		return ..()
 
 	if(busy)
-		balloon_alert(user, "it's busy!")
+		balloon_alert(user, "занято!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(panel_open && is_wire_tool(tool))
@@ -473,18 +473,18 @@
 		return ..()
 
 	if(panel_open)
-		balloon_alert(user, "close the panel first!")
+		balloon_alert(user, "сначала закройте панель!")
 		return ITEM_INTERACT_BLOCKING
 
-	user.visible_message(span_notice("[user] begins to load \the [tool] in \the [src]..."),
-		balloon_alert(user, "uploading design..."),
+	user.visible_message(span_notice("[user] начинает загружать \the [tool] в \the [src]..."),
+		balloon_alert(user, "загрузка чертежа..."),
 		span_hear("You hear the chatter of a floppy drive."))
 	busy = TRUE
 
 	if(!do_after(user, 1.5 SECONDS, target = src))
 		busy = FALSE
 		update_static_data_for_all_viewers()
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "прервано!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/obj/item/disk/design_disk/disky = tool
@@ -498,7 +498,7 @@
 			LAZYADD(not_imported, blueprint.name)
 
 	if(not_imported)
-		to_chat(user, span_warning("The following design[length(not_imported) > 1 ? "s" : ""] couldn't be imported: [english_list(not_imported)]"))
+		to_chat(user, span_warning("Не удалось импортировать следующие чертежи: [english_list(not_imported)]"))
 
 	busy = FALSE
 	update_static_data_for_all_viewers()

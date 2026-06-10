@@ -1,6 +1,6 @@
 /obj/item/gun/energy/e_gun
-	name = "energy gun"
-	desc = "A basic hybrid energy gun with two settings: disable and kill."
+	name = "энергетическая пушка"
+	desc = "Базовое гибридное энергетическое оружие с двумя режимами: обезвреживание и летальный огонь."
 	icon_state = "energy"
 	w_class = WEIGHT_CLASS_BULKY
 	inhand_icon_state = null //so the human update icon uses the icon_state instead.
@@ -30,8 +30,8 @@
 		overlay_y = 10)
 
 /obj/item/gun/energy/e_gun/mini
-	name = "miniature energy gun"
-	desc = "A small, pistol-sized energy gun with a built-in flashlight. It has two settings: disable and kill."
+	name = "миниатюрная энергетическая пушка"
+	desc = "Небольшое энергетическое оружие размером с пистолет со встроенным фонариком. Имеет два режима: обезвреживание и летальный огонь."
 	icon_state = "mini"
 	inhand_icon_state = "gun"
 	w_class = WEIGHT_CLASS_SMALL
@@ -51,22 +51,22 @@
 		overlay_y = 13)
 
 /obj/item/gun/energy/e_gun/stun
-	name = "tactical energy gun"
-	desc = "Military issue energy gun, is able to fire stun rounds."
+	name = "тактическая энергетическая пушка"
+	desc = "Армейское энергетическое оружие, способное стрелять оглушающими зарядами."
 	icon_state = "energytac"
 	ammo_x_offset = 2
 	ammo_type = list(/obj/item/ammo_casing/energy/electrode/spec, /obj/item/ammo_casing/energy/disabler, /obj/item/ammo_casing/energy/laser)
 
 /obj/item/gun/energy/e_gun/old
-	name = "prototype energy gun"
-	desc = "NT-P:01 Prototype Energy Gun. Early stage development of a unique laser rifle that has multifaceted energy lens allowing the gun to alter the form of projectile it fires on command."
+	name = "прототип энергетической пушки"
+	desc = "NT-P:01 Prototype Energy Gun. Ранний прототип уникальной лазерной винтовки с многогранной энергетической линзой, позволяющей менять форму выпускаемого снаряда."
 	icon_state = "protolaser"
 	ammo_x_offset = 2
 	ammo_type = list(/obj/item/ammo_casing/energy/laser, /obj/item/ammo_casing/energy/electrode/old)
 
 /obj/item/gun/energy/e_gun/mini/practice_phaser
-	name = "practice phaser"
-	desc = "A modified version of the basic phaser gun, this one fires less concentrated energy bolts designed for target practice."
+	name = "тренировочный фазер"
+	desc = "Модифицированная версия базового фазера, стреляющая менее концентрированными энергетическими зарядами для тренировочной стрельбы."
 	ammo_type = list(/obj/item/ammo_casing/energy/disabler, /obj/item/ammo_casing/energy/laser/practice)
 	icon_state = "decloner"
 	//You have no icons for energy types, you're a decloner
@@ -75,7 +75,7 @@
 
 /obj/item/gun/energy/e_gun/hos
 	name = "\improper X-01 MultiPhase Energy Gun"
-	desc = "This is an expensive, modern recreation of an antique laser gun. This gun has several unique firemodes, but lacks the ability to recharge over time."
+	desc = "Дорогая современная реплика антикварного лазерного оружия. Имеет несколько уникальных режимов огня, но не способна заряжаться со временем."
 	cell_type = /obj/item/stock_parts/power_store/cell/hos_gun
 	icon_state = "hoslaser"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -87,9 +87,9 @@
 
 /obj/item/gun/energy/e_gun/dragnet
 	name = "\improper DRAGnet translocation shotgun"
-	desc = "The \"Dynamic Rapid-Apprehension of the Guilty Network\" translocation shotgun (or DRAGnet for short) is a revolution in law enforcement technology. \
-		By syncing the weapon to a DRAGnet beacon, the bluespace transportation fields produced by the weapon's 'snare' function can rapidly exfiltrate an entire \
-		security squad, with criminal in tow. Otherwise, the weapon is an entirely nonlethal apprehension tool. Exceptionally useful for nonlethal close-quarters battle."
+	desc = "Транслокационный дробовик \"Dynamic Rapid-Apprehension of the Guilty Network\" или DRAGnet - революция в технологиях правопорядка. \
+		При синхронизации с маяком DRAGnet блюспейс-поля функции 'snare' могут быстро вывести всю группу безопасности вместе с задержанным. \
+		В остальном это полностью нелетальный инструмент задержания, особенно полезный в ближнем бою."
 	icon_state = "dragnet"
 	worn_icon_state = "dragnet"
 	base_icon_state = "dragnet"
@@ -117,24 +117,24 @@
 /obj/item/gun/energy/e_gun/dragnet/proc/link_beacon(mob/living/user, obj/item/dragnet_beacon/our_beacon)
 	if(linked_beacon)
 		if(our_beacon == linked_beacon)
-			balloon_alert(user, "already synced!")
+			balloon_alert(user, "уже синхронизировано!")
 			return
 		else
 			UnregisterSignal(linked_beacon, COMSIG_QDELETING) //You're getting overridden dude.
 
 	linked_beacon = our_beacon
-	balloon_alert(user, "beacon synced")
+	balloon_alert(user, "маяк синхронизирован")
 	RegisterSignal(our_beacon, COMSIG_QDELETING, PROC_REF(handle_beacon_disable))
 
 ///Handles clearing the linked_beacon reference in the event that it is deleted.
 /obj/item/gun/energy/e_gun/dragnet/proc/handle_beacon_disable(datum/source)
 	SIGNAL_HANDLER
-	visible_message(span_warning("A light on the [src] flashes, indicating that it is no longer linked with a DRAGnet beacon!"))
+	visible_message(span_warning("Индикатор на [src] мигает, показывая, что связь с маяком DRAGnet потеряна!"))
 	linked_beacon = null
 
 /obj/item/gun/energy/e_gun/turret
-	name = "hybrid turret gun"
-	desc = "A heavy hybrid energy cannon with two settings: Stun and kill."
+	name = "гибридная турельная пушка"
+	desc = "Тяжелая гибридная энергетическая пушка с двумя режимами: оглушение и летальный огонь."
 	icon_state = "turretlaser"
 	inhand_icon_state = "turretlaser"
 	slot_flags = null
@@ -148,8 +148,8 @@
 	return
 
 /obj/item/gun/energy/e_gun/nuclear
-	name = "advanced energy gun"
-	desc = "An energy gun with an experimental miniaturized nuclear reactor that automatically charges the internal power cell."
+	name = "продвинутая энергетическая пушка"
+	desc = "Энергетическое оружие с экспериментальным миниатюрным ядерным реактором, автоматически заряжающим внутреннюю батарею."
 	icon_state = "nucgun"
 	inhand_icon_state = "nucgun"
 	charge_delay = 10
@@ -184,12 +184,12 @@
 			if(0 to 200)
 				fail_tick += (2*(fail_chance))
 				M.adjust_fire_loss(3)
-				to_chat(M, span_userdanger("Your [name] feels warmer."))
+				to_chat(M, span_userdanger("[src] в ваших руках становится теплее."))
 			if(201 to INFINITY)
 				SSobj.processing.Remove(src)
 				M.adjust_fire_loss(10)
 				reactor_overloaded = TRUE
-				to_chat(M, span_userdanger("Your [name]'s reactor overloads!"))
+				to_chat(M, span_userdanger("Реактор [src] перегружается!"))
 
 /obj/item/gun/energy/e_gun/nuclear/emp_act(severity)
 	. = ..()

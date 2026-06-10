@@ -24,13 +24,13 @@ export function TechwebContent(props) {
         <Flex className="Techweb__HeaderContent">
           <Flex.Item>
             <LabeledList>
-              <LabeledList.Item label="Security">
+              <LabeledList.Item label="Безопасность">
                 <span
                   className={`Techweb__SecProtocol ${
                     !!sec_protocols && 'engaged'
                   }`}
                 >
-                  {sec_protocols ? 'Engaged' : 'Disengaged'}
+                  {sec_protocols ? 'Активна' : 'Отключена'}
                 </span>
               </LabeledList.Item>
               {Object.keys(points).map((k) => (
@@ -39,24 +39,24 @@ export function TechwebContent(props) {
                   {!!points_last_tick[k] && ` (+${points_last_tick[k]}/sec)`}
                 </LabeledList.Item>
               ))}
-              <LabeledList.Item label="Queue">
+              <LabeledList.Item label="Очередь">
                 {queue_nodes.length !== 0
                   ? Object.keys(queue_nodes).map((node_id) => (
                       <Button
                         key={node_id}
-                        tooltip={`Added by: ${queue_nodes[node_id]}`}
+                        tooltip={`Добавил: ${queue_nodes[node_id]}`}
                       >
                         {node_cache[node_id].name}
                       </Button>
                     ))
-                  : 'Empty'}
+                  : 'Пусто'}
               </LabeledList.Item>
             </LabeledList>
           </Flex.Item>
           <Flex.Item grow />
           <Flex.Item>
             <Button fluid onClick={() => act('toggleLock')} icon="lock">
-              Lock Console
+              Заблокировать консоль
             </Button>
             {d_disk && (
               <Flex.Item>
@@ -66,7 +66,7 @@ export function TechwebContent(props) {
                     setTechwebRoute({ route: 'disk', diskType: 'design' })
                   }
                 >
-                  Design Disk Inserted
+                  Диск чертежей вставлен
                 </Button>
               </Flex.Item>
             )}
@@ -78,7 +78,7 @@ export function TechwebContent(props) {
                     setTechwebRoute({ route: 'disk', diskType: 'tech' })
                   }
                 >
-                  Tech Disk Inserted
+                  Технологический диск вставлен
                 </Button>
               </Flex.Item>
             )}

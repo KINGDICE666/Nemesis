@@ -51,7 +51,7 @@ export function TechwebOverview(props) {
       <Flex.Item>
         <Flex justify="space-between" className="Techweb__HeaderSectionTabs">
           <Flex.Item align="center" className="Techweb__HeaderTabTitle">
-            Web View
+            Сеть
           </Flex.Item>
           <Flex.Item grow>
             <Tabs>
@@ -59,28 +59,28 @@ export function TechwebOverview(props) {
                 selected={!searching && tabIndex === Tab.RESEARCHED}
                 onClick={() => switchTab(0)}
               >
-                Researched
+                Исследовано
               </Tabs.Tab>
               <Tabs.Tab
                 selected={!searching && tabIndex === Tab.AVAILABLE}
                 onClick={() => switchTab(1)}
               >
-                Available
+                Доступно
               </Tabs.Tab>
               <Tabs.Tab
                 selected={!searching && tabIndex === Tab.FUTURE}
                 onClick={() => switchTab(2)}
               >
-                Future
+                Будущее
               </Tabs.Tab>
-              {!!searching && <Tabs.Tab selected>Search Results</Tabs.Tab>}
+              {!!searching && <Tabs.Tab selected>Результаты поиска</Tabs.Tab>}
             </Tabs>
           </Flex.Item>
           <Flex.Item align="center">
             <Input
               value={searchText}
               onChange={setSearchText}
-              placeholder="Search..."
+              placeholder="Поиск..."
               expensive
             />
           </Flex.Item>

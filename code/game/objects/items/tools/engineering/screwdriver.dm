@@ -1,6 +1,6 @@
 /obj/item/screwdriver
-	name = "screwdriver"
-	desc = "You can be totally screwy with this."
+	name = "отвертка"
+	desc = "С ней можно закрутить почти что угодно."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/screwdriver"
 	post_init_icon_state = "screwdriver"
@@ -64,8 +64,8 @@
 	AddElement(/datum/element/falling_hazard, damage = force, wound_bonus = wound_bonus, hardhat_safety = TRUE, crushes = FALSE, impact_sound = hitsound)
 
 /obj/item/screwdriver/abductor
-	name = "alien screwdriver"
-	desc = "An ultrasonic screwdriver."
+	name = "инопланетная отвертка"
+	desc = "Ультразвуковая отвертка."
 	icon = 'icons/obj/antags/abductor.dmi'
 	icon_state = "screwdriver_a"
 	post_init_icon_state = null
@@ -83,8 +83,8 @@
 	return mutable_appearance('icons/obj/clothing/belt_overlays.dmi', "screwdriver_alien")
 
 /obj/item/screwdriver/power
-	name = "hand drill"
-	desc = "A simple powered hand drill."
+	name = "ручная дрель"
+	desc = "Простая электрическая ручная дрель."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "drill"
 	post_init_icon_state = null
@@ -137,13 +137,13 @@
 
 	tool_behaviour = (active ? TOOL_WRENCH : TOOL_SCREWDRIVER)
 	if(user)
-		balloon_alert(user, "attached [active ? "bolt bit" : "screw bit"]")
+		balloon_alert(user, "насадка: [active ? "болтовая" : "винтовая"]")
 	playsound(src, 'sound/items/tools/change_drill.ogg', 50, TRUE)
 	return COMPONENT_NO_DEFAULT_MESSAGE
 
 /obj/item/screwdriver/power/examine()
 	. = ..()
-	. += "It's fitted with a [tool_behaviour == TOOL_SCREWDRIVER ? "screw" : "bolt"] bit."
+	. += "Установлена [tool_behaviour == TOOL_SCREWDRIVER ? "винтовая" : "болтовая"] насадка."
 
 /obj/item/screwdriver/power/suicide_act(mob/living/user)
 	if(tool_behaviour == TOOL_SCREWDRIVER)
@@ -154,8 +154,8 @@
 	return BRUTELOSS
 
 /obj/item/screwdriver/cyborg
-	name = "automated screwdriver"
-	desc = "A powerful automated screwdriver, designed to be both precise and quick."
+	name = "автоматическая отвертка"
+	desc = "Мощная автоматическая отвертка, созданная для точной и быстрой работы."
 	icon = 'icons/obj/items_cyborg.dmi'
 	icon_state = "toolkit_engiborg_screwdriver"
 	post_init_icon_state = null

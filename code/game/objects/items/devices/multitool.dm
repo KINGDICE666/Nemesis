@@ -11,8 +11,8 @@
 
 
 /obj/item/multitool
-	name = "multitool"
-	desc = "Used for pulsing wires to test which to cut. Not recommended by doctors. You can activate it in-hand to locate the nearest APC."
+	name = "мультитул"
+	desc = "Используется для подачи импульсов на провода, чтобы понять, какой резать. Не рекомендован врачами. Можно активировать в руке, чтобы найти ближайший ЛКП."
 	icon = 'icons/obj/devices/tool.dmi'
 	icon_state = "multitool"
 	inhand_icon_state = "multitool"
@@ -46,7 +46,7 @@
 
 /obj/item/multitool/examine(mob/user)
 	. = ..()
-	. += span_notice("Its buffer [buffer ? "contains [buffer]." : "is empty."]")
+	. += span_notice("Буфер [buffer ? "содержит [buffer]." : "пуст."]")
 
 /obj/item/multitool/attack_self(mob/user, list/modifiers)
 	. = ..()
@@ -73,7 +73,7 @@
 	var/area/local_area = get_area(src)
 	var/obj/machinery/power/apc/power_controller = local_area.apc
 	if(!power_controller)
-		user.balloon_alert(user, "couldn't find apc!")
+		user.balloon_alert(user, "ЛКП не найден!")
 		return
 
 	var/dist = get_dist(src, power_controller)
@@ -83,7 +83,7 @@
 
 	switch(dist)
 		if (0)
-			user.balloon_alert(user, "found apc!")
+			user.balloon_alert(user, "ЛКП найден!")
 			return
 		if(1 to 5)
 			arrow_color = COLOR_GREEN
@@ -176,14 +176,14 @@
 	. = ..()
 	if(!hud_on)
 		return
-	. += span_notice("You can right-click to scan for nearby unseen spots. They will be shown for exactly 8 seconds due to battery limitations.")
+	. += span_notice("Можно нажать правой кнопкой, чтобы просканировать ближайшие невидимые зоны. Из-за ограничений батареи они будут показаны ровно 8 секунд.")
 	switch(detect_state)
 		if(PROXIMITY_NONE)
-			. += span_green("No AI should be currently looking at you. Keep on your clandestine activities.")
+			. += span_green("ИИ сейчас не должен на вас смотреть. Продолжайте свои тайные дела.")
 		if(PROXIMITY_NEAR)
-			. += span_warning("An AI is getting uncomfortably close. Maybe time to drop what youre doing.")
+			. += span_warning("ИИ становится неприятно близко. Возможно, пора прекратить то, что вы делаете.")
 		if(PROXIMITY_ON_SCREEN)
-			. += span_danger("An AI is (probably) looking at you. You should probably hide this.")
+			. += span_danger("ИИ, вероятно, смотрит на вас. Лучше спрятать это.")
 
 /obj/item/multitool/ai_detect/Destroy()
 	if(hud_on && ismob(loc))
@@ -227,7 +227,7 @@
 /obj/item/multitool/ai_detect/proc/toggle_hud(mob/user)
 	hud_on = !hud_on
 	if(user)
-		to_chat(user, span_notice("You toggle the ai detection feature on [src] [hud_on ? "on" : "off"]."))
+		to_chat(user, span_notice("Вы переключаете функцию обнаружения ИИ на [src]: [hud_on ? "вкл" : "выкл"]."))
 	if(hud_on)
 		START_PROCESSING(SSfastprocess, src)
 		show_hud(user)
@@ -272,7 +272,7 @@
 	if(isnull(user?.client)) // the monkey incident of 2564
 		return
 	if(!COOLDOWN_FINISHED(src, static_scan_cd))
-		balloon_alert(user, "recharging!")
+		balloon_alert(user, "перезарядка!")
 		return
 	cleanup_static()
 	var/turf/our_turf = get_turf(src)
@@ -291,7 +291,7 @@
 			new_images += img
 	user.client.images |= new_images
 	static_viewer = WEAKREF(user.client)
-	balloon_alert(user, "nearby unseen spots shown")
+	balloon_alert(user, "невидимые зоны показаны")
 	static_disappear_timer = addtimer(CALLBACK(src, PROC_REF(cleanup_static)), 8 SECONDS, TIMER_STOPPABLE)
 	COOLDOWN_START(src, static_scan_cd, 4 SECONDS)
 
@@ -324,8 +324,8 @@
 	static_disappear_timer = null
 
 /obj/item/multitool/abductor
-	name = "alien multitool"
-	desc = "An omni-technological interface."
+	name = "инопланетный мультитул"
+	desc = "Омни-технологический интерфейс."
 	icon = 'icons/obj/antags/abductor.dmi'
 	icon_state = "multitool"
 	inside_belt_icon_state = "multitool_alien"
@@ -333,8 +333,8 @@
 	toolspeed = 0.1
 
 /obj/item/multitool/cyborg
-	name = "electronic multitool"
-	desc = "Optimised version of a regular multitool. Streamlines processes handled by its internal microchip."
+	name = "электронный мультитул"
+	desc = "Оптимизированная версия обычного мультитула. Ускоряет процессы, обрабатываемые внутренним микрочипом."
 	icon = 'icons/obj/items_cyborg.dmi'
 	icon_state = "toolkit_engiborg_multitool"
 	icon_angle = 0

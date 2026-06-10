@@ -62,7 +62,7 @@ export function TechNodeDetail(props: TechNodeDetailProps) {
       <Flex.Item shrink={1}>
         <Flex justify="space-between" className="Techweb__HeaderSectionTabs">
           <Flex.Item align="center" className="Techweb__HeaderTabTitle">
-            Node
+            Узел
           </Flex.Item>
           <Flex.Item grow>
             <Tabs>
@@ -70,20 +70,20 @@ export function TechNodeDetail(props: TechNodeDetailProps) {
                 selected={tabIndex === Tab.REQUIRED}
                 onClick={() => setTabIndex(Tab.REQUIRED)}
               >
-                Required ({complPrereq}/{prereqNodes.length})
+                Требуется ({complPrereq}/{prereqNodes.length})
               </Tabs.Tab>
               <Tabs.Tab
                 selected={tabIndex === Tab.UNLOCKS}
                 // disabled={unlockedNodes.length === 0}
                 onClick={() => setTabIndex(Tab.UNLOCKS)}
               >
-                Unlocks ({unlockedNodes.length})
+                Открывает ({unlockedNodes.length})
               </Tabs.Tab>
             </Tabs>
           </Flex.Item>
           <Flex.Item align="center">
             <Button icon="home" onClick={() => setTechwebRoute({ route: '' })}>
-              Home
+              Домой
             </Button>
           </Flex.Item>
         </Flex>

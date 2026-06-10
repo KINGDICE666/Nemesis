@@ -1,6 +1,6 @@
 /obj/machinery/big_manipulator
-	name = "big manipulator"
-	desc = "Operates different objects. Truly, a groundbreaking innovation..."
+	name = "большой манипулятор"
+	desc = "Взаимодействует с разными объектами. По-настоящему прорывная инновация..."
 	icon = 'icons/obj/machines/big_manipulator_parts/big_manipulator_core.dmi'
 	icon_state = "core"
 	post_init_icon_state = "core"
@@ -63,7 +63,7 @@
 /// Attempts to create a new task and assign it to the list.
 /obj/machinery/big_manipulator/proc/create_new_task(mob/user, task_type, turf/new_turf)
 	if(length(tasks) >= interaction_point_limit)
-		balloon_alert(user, "task limit reached!")
+		balloon_alert(user, "достигнут лимит задач!")
 		return FALSE
 
 	var/datum/stock_part/servo/locate_servo = locate() in component_parts
@@ -161,7 +161,7 @@
 	. = ..()
 	var/mob/monkey_resolve = monkey_worker?.resolve()
 	if(!isnull(monkey_resolve))
-		. += "You can see a poor [monkey_resolve.name] buckled to [src]. You wonder if it's getting paid enough."
+		. += "Вы видите беднягу [monkey_resolve.name], пристегнутого к [src]. Интересно, достаточно ли ему платят."
 
 /obj/machinery/big_manipulator/attack_hand_secondary(mob/living/user, list/modifiers)
 	try_press_on(user)
@@ -174,25 +174,25 @@
 /obj/machinery/big_manipulator/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
 
-	context[SCREENTIP_CONTEXT_RMB] = "Toggle"
-	context[SCREENTIP_CONTEXT_ALT_LMB] = "Eject disk"
+	context[SCREENTIP_CONTEXT_RMB] = "Переключить"
+	context[SCREENTIP_CONTEXT_ALT_LMB] = "Извлечь диск"
 
 	if(isnull(held_item))
-		context[SCREENTIP_CONTEXT_LMB] = panel_open ? "Interact with wires" : "Open UI"
+		context[SCREENTIP_CONTEXT_LMB] = panel_open ? "Взаимодействовать с проводами" : "Открыть интерфейс"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	if(held_item.tool_behaviour == TOOL_WRENCH)
-		context[SCREENTIP_CONTEXT_LMB] = "[anchored ? "Una" : "A"]nchor"
-		context[SCREENTIP_CONTEXT_RMB] = "Rotate clockwise"
+		context[SCREENTIP_CONTEXT_LMB] = anchored ? "Открепить" : "Закрепить"
+		context[SCREENTIP_CONTEXT_RMB] = "Повернуть по часовой стрелке"
 		return CONTEXTUAL_SCREENTIP_SET
 	if(held_item.tool_behaviour == TOOL_SCREWDRIVER)
-		context[SCREENTIP_CONTEXT_LMB] = "[panel_open ? "Close" : "Open"] panel"
+		context[SCREENTIP_CONTEXT_LMB] = panel_open ? "Закрыть панель" : "Открыть панель"
 		return CONTEXTUAL_SCREENTIP_SET
 	if(held_item.tool_behaviour == TOOL_CROWBAR && panel_open)
-		context[SCREENTIP_CONTEXT_LMB] = "Deconstruct"
+		context[SCREENTIP_CONTEXT_LMB] = "Разобрать"
 		return CONTEXTUAL_SCREENTIP_SET
 	if(is_wire_tool(held_item) && panel_open)
-		context[SCREENTIP_CONTEXT_LMB] = "Interact with wires"
+		context[SCREENTIP_CONTEXT_LMB] = "Взаимодействовать с проводами"
 		return CONTEXTUAL_SCREENTIP_SET
 
 /obj/machinery/big_manipulator/atom_deconstruct(disassembled)
@@ -239,7 +239,7 @@
 	if(obj_flags & EMAGGED)
 		return FALSE
 
-	balloon_alert(user, "overloaded")
+	balloon_alert(user, "перегружено")
 	obj_flags |= EMAGGED
 
 	for(var/datum/manipulator_task/cargo/cargo_task in tasks)
@@ -254,7 +254,7 @@
 
 /obj/machinery/big_manipulator/can_be_unfasten_wrench(mob/user, silent)
 	if(on || stopping)
-		to_chat(user, span_warning("[src] is activated!"))
+		to_chat(user, span_warning("[src] активен!"))
 		return FAILED_UNFASTEN
 	return ..()
 
@@ -276,7 +276,7 @@
 
 	if(istype(tool, /obj/item/disk/manipulator))
 		if(on || stopping)
-			balloon_alert(user, "turn it off first!")
+			balloon_alert(user, "сначала выключите!")
 			return ITEM_INTERACT_BLOCKING
 		if(task_disk)
 			task_disk.forceMove(drop_location())
@@ -284,7 +284,7 @@
 		if(!user.transferItemToLoc(tool, src))
 			return ITEM_INTERACT_BLOCKING
 		task_disk = tool
-		balloon_alert(user, "disk inserted")
+		balloon_alert(user, "диск вставлен")
 		SStgui.update_uis(src)
 		return ITEM_INTERACT_SUCCESS
 
@@ -299,25 +299,25 @@
 
 /obj/machinery/big_manipulator/mouse_drop_dragged(atom/drop_point, mob/user, src_location, over_location, params)
 	if(on || stopping)
-		balloon_alert(user, "turn it off first!")
+		balloon_alert(user, "сначала выключите!")
 		return
 
 	var/mob/living/carbon/human/species/monkey/poor_monkey = monkey_worker?.resolve()
 	if(!poor_monkey)
 		return
 
-	balloon_alert(user, "trying to unbuckle...")
+	balloon_alert(user, "попытка отстегнуть...")
 	if(!do_after(user, 3 SECONDS, src))
-		balloon_alert(user, "interrupted")
+		balloon_alert(user, "прервано")
 		return
 
-	balloon_alert(user, "unbuckled")
+	balloon_alert(user, "отстегнуто")
 	poor_monkey.drop_all_held_items()
 	poor_monkey.forceMove(drop_point)
 
 /obj/machinery/big_manipulator/mouse_drop_receive(atom/monkey, mob/user, params)
 	if(on || stopping)
-		balloon_alert(user, "turn it off first!")
+		balloon_alert(user, "сначала выключите!")
 		return
 
 	if(monkey_worker?.resolve())
@@ -328,15 +328,15 @@
 
 	var/mob/living/carbon/human/species/monkey/poor_monkey = monkey
 	if(poor_monkey.mind)
-		balloon_alert(user, "too smart!")
+		balloon_alert(user, "слишком разумный!")
 		return
 
-	poor_monkey.balloon_alert(user, "trying to buckle...")
+	poor_monkey.balloon_alert(user, "попытка пристегнуть...")
 	if(!do_after(user, 3 SECONDS, poor_monkey))
-		poor_monkey.balloon_alert(user, "interrupted")
+		poor_monkey.balloon_alert(user, "прервано")
 		return
 
-	balloon_alert(user, "buckled")
+	balloon_alert(user, "пристегнуто")
 	monkey_worker = WEAKREF(poor_monkey)
 	poor_monkey.drop_all_held_items()
 	poor_monkey.forceMove(src)
@@ -357,14 +357,14 @@
 
 	if(!id_lock)
 		id_lock = WEAKREF(clicked_by_this_id)
-		balloon_alert(user, "successfully locked")
+		balloon_alert(user, "успешно заблокировано")
 		return
 	var/obj/item/card/id/resolve_id = id_lock.resolve()
 	if(clicked_by_this_id != resolve_id)
-		balloon_alert(user, "locked by another id")
+		balloon_alert(user, "заблокировано другой ID-картой")
 		return
 	id_lock = null
-	balloon_alert(user, "successfully unlocked")
+	balloon_alert(user, "успешно разблокировано")
 
 /// Attaching the arm effect to the core.
 /obj/machinery/big_manipulator/proc/create_manipulator_arm()
@@ -381,11 +381,11 @@
 
 	if(newly_on)
 		if(!powered())
-			balloon_alert(user, "no power!")
+			balloon_alert(user, "нет питания!")
 			return
 
 		if(!anchored)
-			balloon_alert(user, "anchor first!")
+			balloon_alert(user, "сначала закрепите!")
 			return
 
 		validate_all_tasks()
@@ -417,26 +417,26 @@
 /// Attempts to press the power button.
 /obj/machinery/big_manipulator/proc/try_press_on(mob/living/carbon/human/user)
 	if(power_access_wire_cut)
-		balloon_alert(user, "unresponsive!")
+		balloon_alert(user, "не отвечает!")
 		return
 
 	if(stopping)
-		balloon_alert(user, "stopping in progress!")
+		balloon_alert(user, "идет остановка!")
 		return
 
 	toggle_power_state(user)
 	if(on)
-		balloon_alert(user, "activated")
+		balloon_alert(user, "активировано")
 	else
-		balloon_alert(user, "deactivated")
+		balloon_alert(user, "деактивировано")
 
 /obj/machinery/big_manipulator/ui_interact(mob/user, datum/tgui/ui)
 	if(id_lock)
-		to_chat(user, span_warning("[src] is locked behind ID authentication!"))
+		to_chat(user, span_warning("[src] заблокирован ID-аутентификацией!"))
 		ui?.close()
 		return
 	if(!anchored)
-		to_chat(user, span_warning("[src] isn't attached to the ground!"))
+		to_chat(user, span_warning("[src] не прикреплен к полу!"))
 		ui?.close()
 		return
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -567,7 +567,7 @@
 
 		if("reset_tasking_index")
 			master_tasking.current_index = 1
-			balloon_alert(ui.user, "tasking index reset")
+			balloon_alert(ui.user, "индекс задач сброшен")
 			maybe_wake()
 			return TRUE
 
@@ -614,42 +614,42 @@
 
 /obj/machinery/big_manipulator/proc/eject_task_disk(mob/user)
 	if(on || stopping)
-		balloon_alert(user, "turn it off first!")
+		balloon_alert(user, "сначала выключите!")
 		return FALSE
 	if(!task_disk)
 		return FALSE
 	var/obj/item/disk/manipulator/ejectable_disk = task_disk
 	task_disk = null
 	if(istype(user) && user.put_in_hands(ejectable_disk))
-		balloon_alert(user, "disk ejected")
+		balloon_alert(user, "диск извлечен")
 	else
 		ejectable_disk.forceMove(drop_location())
-		balloon_alert(user, "disk dropped")
+		balloon_alert(user, "диск выпал")
 	SStgui.update_uis(src)
 	return TRUE
 
 /obj/machinery/big_manipulator/proc/clear_disk_tasks(mob/user)
 	if(on || stopping)
-		balloon_alert(user, "turn it off first!")
+		balloon_alert(user, "сначала выключите!")
 		return FALSE
 	if(!task_disk)
 		return FALSE
 	if(task_disk.read_only)
-		balloon_alert(user, "disk protected")
+		balloon_alert(user, "диск защищен")
 		return FALSE
 	task_disk.set_tasks(list())
-	balloon_alert(user, "cleared")
+	balloon_alert(user, "очищено")
 	SStgui.update_uis(src)
 	return TRUE
 
 /obj/machinery/big_manipulator/proc/write_disk_tasks(mob/user)
 	if(on || stopping)
-		balloon_alert(user, "turn it off first!")
+		balloon_alert(user, "сначала выключите!")
 		return FALSE
 	if(!task_disk)
 		return FALSE
 	if(task_disk.read_only)
-		balloon_alert(user, "disk protected")
+		balloon_alert(user, "диск защищен")
 		return FALSE
 
 	var/list/out = list()
@@ -657,13 +657,13 @@
 		out += list(task.serialize())
 
 	task_disk.set_tasks(out)
-	balloon_alert(user, "written")
+	balloon_alert(user, "записано")
 	SStgui.update_uis(src)
 	return TRUE
 
 /obj/machinery/big_manipulator/proc/read_disk_tasks(mob/user)
 	if(on || stopping)
-		balloon_alert(user, "turn it off first!")
+		balloon_alert(user, "сначала выключите!")
 		return FALSE
 	if(!task_disk)
 		return FALSE
@@ -715,7 +715,7 @@
 
 	process_upgrades()
 	validate_all_tasks()
-	balloon_alert(user, "loaded")
+	balloon_alert(user, "загружено")
 	SStgui.update_uis(src)
 	return TRUE
 

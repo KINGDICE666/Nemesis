@@ -18,12 +18,12 @@ import { Window } from '../../layouts';
 import type { ManipulatorData, ManipulatorTask } from './types';
 
 const TASK_TYPE_LABELS: Record<string, string> = {
-  pickup: 'Pick up...',
-  drop: 'Drop...',
-  throw: 'Throw...',
-  use: 'Use held...',
-  interact: 'Interact...',
-  wait: 'Wait...',
+  pickup: 'Подобрать...',
+  drop: 'Положить...',
+  throw: 'Бросить...',
+  use: 'Использовать в руке...',
+  interact: 'Взаимодействовать...',
+  wait: 'Ждать...',
 };
 
 const TASK_TYPE_ICONS: Record<string, string> = {
@@ -37,6 +37,41 @@ const TASKING_STRATEGY_ICONS: Record<string, string> = {
   Sequential: 'list-ol',
   'Strict order': 'lock',
 };
+
+const TASKING_STRATEGY_LABELS: Record<string, string> = {
+  Sequential: 'По порядку',
+  'Strict order': 'Строгий порядок',
+};
+
+const VALUE_LABELS: Record<string, string> = {
+  ALLOW: 'Разрешить',
+  'TO FILTERS': 'К фильтрам',
+  'TO HELD': 'К удерживаемому',
+  FORBID: 'Запретить',
+  'AT DROPOFF': 'У точки выгрузки',
+  'AT MACHINE': 'У машины',
+  'AT ANY FITTING': 'У любой подходящей',
+  CONTINUE: 'Продолжать',
+  'Always Pick Up': 'Подбирать всегда',
+  'Wait For Suiting': 'Ждать подходящего',
+  'SINGLE TIME': 'Один раз',
+  'EMPTY HAND': 'Пустая рука',
+  NORMAL: 'Обычное',
+  DROP: 'Положить',
+  THROW: 'Бросить',
+  USE: 'Использовать',
+  INTERACT: 'Взаимодействовать',
+  'DROP ON FLOOR': 'Положить на пол',
+  'DROP IN STORAGE': 'Положить в хранилище',
+  'USE ON LIVING': 'Использовать на живом',
+  'USE ON STRUCTURE': 'Использовать на структуре',
+  'USE ON MACHINERY': 'Использовать на машине',
+  'USE ON ITEM': 'Использовать на предмете',
+  'USE ON VEHICLES': 'Использовать на транспорте',
+};
+
+const getValueLabel = (value?: string | null) =>
+  value ? (VALUE_LABELS[value.toUpperCase()] ?? VALUE_LABELS[value] ?? value) : '—';
 
 const buttonNumberToIcon: Record<number, string> = {
   1: '',
@@ -91,19 +126,19 @@ function MasterControls() {
       <Stack.Item>
         <Button
           icon="eject"
-          tooltip="Disengage the claws, dropping the held item"
+          tooltip="Разжать захваты и уронить удерживаемый предмет"
           onClick={() => act('drop_held_atom')}
         >
-          Drop
+          Бросить
         </Button>
       </Stack.Item>
       <Stack.Item>
         <Button
           icon="person-walking-arrow-right"
-          tooltip="Unbuckle the worker"
+          tooltip="Отстегнуть работника"
           onClick={() => act('unbuckle')}
         >
-          Unbuckle
+          Отстегнуть
         </Button>
       </Stack.Item>
     </Stack>
@@ -152,10 +187,10 @@ const getPointButtonNumber = (offset: string): number | null => {
 
 const getFilteringModeText = (mode: number) => {
   switch (mode) {
-    case 1: return 'Items';
-    case 2: return 'Closets';
-    case 3: return 'Humans';
-    default: return 'Unknown';
+    case 1: return 'Предметы';
+    case 2: return 'Шкафы';
+    case 3: return 'Люди';
+    default: return 'Неизвестно';
   }
 };
 
@@ -183,7 +218,7 @@ function TaskEditModal(props: TaskEditModalProps) {
   return (
     <Modal style={{ padding: '6px', width: '340px', boxSizing: 'initial' }}>
       <Section
-        title={`Edit: ${task.name}`}
+        title={`Правка: ${task.name}`}
         buttons={
           <Button icon="xmark" color="bad" onClick={onClose} />
         }
@@ -192,7 +227,7 @@ function TaskEditModal(props: TaskEditModalProps) {
           <Table>
             <Table.Row className="candystripe" style={{ height: '2em', lineHeight: '2em' }}>
               <Table.Cell>
-                <Box style={{ marginLeft: '5px' }}>Wait Time</Box>
+                <Box style={{ marginLeft: '5px' }}>Время ожидания</Box>
               </Table.Cell>
               <Table.Cell style={{ paddingRight: '5px' }}>
                 <Slider
@@ -237,45 +272,45 @@ function TaskEditModal(props: TaskEditModalProps) {
             <Stack.Item grow>
               <Table>
                 <ConfigRow
-                  label="Object Type"
+                  label="Тип объекта"
                   content={getFilteringModeText(task.filtering_mode ?? 1)}
                   onClick={() => adjust('cycle_filtering_mode')}
-                  tooltip="Cycle object category"
+                  tooltip="Переключить категорию объекта"
                 />
                 <ConfigRow
-                  label="Use Filters"
-                  content={task.filters_status ? 'TRUE' : 'FALSE'}
+                  label="Фильтры"
+                  content={task.filters_status ? 'ВКЛ' : 'ВЫКЛ'}
                   onClick={() => adjust('toggle_filter_skip')}
-                  tooltip="Toggle filter usage"
+                  tooltip="Переключить использование фильтров"
                 />
                 {isPickup && (
                   <ConfigRow
-                    label="Eagerness"
-                    content={task.pickup_eagerness ?? '—'}
+                    label="Готовность"
+                    content={getValueLabel(task.pickup_eagerness)}
                     onClick={() => adjust('cycle_pickup_eagerness')}
-                    tooltip="Wait for dropoff slot or pick up immediately"
+                    tooltip="Ждать слот выгрузки или подбирать сразу"
                   />
                 )}
                 {isDropoff && (
                   <>
                     <ConfigRow
-                      label="Mode"
-                      content={(task.interaction_mode ?? '').toUpperCase()}
+                      label="Режим"
+                      content={getValueLabel(task.interaction_mode)}
                       onClick={() => adjust('cycle_interaction_mode')}
-                      tooltip="Drop / Throw / Use"
+                      tooltip="Положить / бросить / использовать"
                     />
                     <ConfigRow
-                      label="Overflow"
-                      content={task.overflow_status ?? '—'}
+                      label="Переполнение"
+                      content={getValueLabel(task.overflow_status)}
                       onClick={() => adjust('cycle_overflow_status')}
-                      tooltip="Cycle overflow behaviour"
+                      tooltip="Переключить поведение при переполнении"
                     />
                     {task.interaction_mode?.toUpperCase() === 'THROW' && (
                       <ConfigRow
-                        label="Throw Range"
-                        content={`${task.throw_range} TILES`}
+                        label="Дальность броска"
+                        content={`${task.throw_range} КЛ.`}
                         onClick={() => adjust('cycle_throw_range')}
-                        tooltip="Cycle throwing range"
+                        tooltip="Переключить дальность броска"
                       />
                     )}
                   </>
@@ -283,28 +318,28 @@ function TaskEditModal(props: TaskEditModalProps) {
                 {(isDropoff || isInteract) && task.interaction_mode?.toUpperCase() !== 'THROW' && (
                   <>
                     <ConfigRow
-                      label="Worker Action"
-                      content={task.worker_interaction ?? '—'}
+                      label="Действие работника"
+                      content={getValueLabel(task.worker_interaction)}
                       onClick={() => adjust('cycle_worker_interaction')}
-                      tooltip="Normal / Single use / Empty hand"
+                      tooltip="Обычное / один раз / пустая рука"
                     />
                     <ConfigRow
-                      label="Alt Click"
-                      content={task.worker_use_rmb ? 'TRUE' : 'FALSE'}
+                      label="Альт-клик"
+                      content={task.worker_use_rmb ? 'ВКЛ' : 'ВЫКЛ'}
                       onClick={() => adjust('toggle_worker_rmb')}
-                      tooltip="Simulate RMB click"
+                      tooltip="Имитировать ПКМ"
                     />
                     <ConfigRow
-                      label="Combat Mode"
-                      content={task.worker_combat_mode ? 'TRUE' : 'FALSE'}
+                      label="Боевой режим"
+                      content={task.worker_combat_mode ? 'ВКЛ' : 'ВЫКЛ'}
                       onClick={() => adjust('toggle_worker_combat')}
-                      tooltip="Use combat mode during interaction"
+                      tooltip="Использовать боевой режим при взаимодействии"
                     />
                     <ConfigRow
-                      label="No Uses Left"
-                      content={task.use_post_interaction ?? '—'}
+                      label="Нет применений"
+                      content={getValueLabel(task.use_post_interaction)}
                       onClick={() => adjust('cycle_post_interaction')}
-                      tooltip="What to do when nothing left to interact with"
+                      tooltip="Что делать, когда больше не с чем взаимодействовать"
                     />
                   </>
                 )}
@@ -317,18 +352,18 @@ function TaskEditModal(props: TaskEditModalProps) {
       {isCargo && (
         <>
           <Section
-            title="Item Filters"
+            title="Фильтры предметов"
             buttons={
               <>
                 <Button
                   icon="plus"
                   onClick={() => adjust('add_atom_filter_from_held')}
                 >
-                  Add held
+                  Добавить из руки
                 </Button>
                 <Button.Confirm
                   onClick={() => adjust('reset_atom_filters')}
-                  confirmContent="Reset?"
+                  confirmContent="Сбросить?"
                   icon="trash"
                 />
               </>
@@ -353,7 +388,7 @@ function TaskEditModal(props: TaskEditModalProps) {
           </Section>
 
           {(task.settings_list ?? []).length > 0 && (
-            <Section title="Interaction Priorities">
+            <Section title="Приоритеты взаимодействия">
               <Table>
                 {task.settings_list!.map((setting, index) => (
                   <Table.Row className="candystripe" key={setting.name}>
@@ -366,7 +401,7 @@ function TaskEditModal(props: TaskEditModalProps) {
                         checked={!!setting.active}
                         fluid
                       >
-                        {setting.name}
+                        {getValueLabel(setting.name)}
                       </Button.Checkbox>
                     </Table.Cell>
                     <Table.Cell width="1em">
@@ -420,26 +455,26 @@ const TaskList = () => {
   return (
     <>
       <Section
-        title="Tasks"
+        title="Задачи"
         buttons={
           <>
             <Button
               icon={strategyIcon}
               color="transparent"
-              tooltip="Cycle tasking strategy"
+              tooltip="Переключить стратегию задач"
               onClick={() => act('cycle_tasking_strategy', {
                 new_strategy: tasking_strategy === 'Sequential' ? 'Strict order' : 'Sequential',
               })}
             >
-              {tasking_strategy}
+              {TASKING_STRATEGY_LABELS[tasking_strategy] ?? tasking_strategy}
             </Button>
             <Button
               icon="arrows-spin"
               color="transparent"
-              tooltip="Reset tasking index"
+              tooltip="Сбросить индекс задач"
               onClick={() => act('reset_tasking_index')}
             >
-              Reset
+              Сброс
             </Button>
           </>
         }
@@ -491,14 +526,14 @@ const TaskList = () => {
 
                           {task.item_filters && task.item_filters.length > 0 && (
                             <Box>
-                              {'...any of: ' +
+                              {'...любой из: ' +
                                 task.item_filters.slice(0, 3).join(', ') +
-                                (task.item_filters.length > 3 ? ` and ${task.item_filters.length - 3} more` : '') +
+                                (task.item_filters.length > 3 ? ` и еще ${task.item_filters.length - 3}` : '') +
                                 '...'}
                             </Box>
                           )}
-                          {task.turf && <Box>...at [{task.turf}]...</Box>}
-                          {task.time && <Box>...for {task.time} second{task.time > 1 && "s"}...</Box>}
+                          {task.turf && <Box>...на [{task.turf}]...</Box>}
+                          {task.time && <Box>...на {task.time} сек...</Box>}
                         </Box>
                       </Box>
                   </Stack.Item>
@@ -560,7 +595,7 @@ const TaskList = () => {
               onClick={() => act('create_task', { task_type: selectedType })}
               style={{lineHeight: '22px'}}
             >
-              New
+              Новая
             </Button>
           </Stack.Item>
         </Stack>
@@ -581,17 +616,17 @@ export const BigManipulator = () => {
   const { active, stopping } = data;
 
   return (
-    <Window title="Manipulator Interface" width={420} height={560}>
+    <Window title="Интерфейс манипулятора" width={420} height={560}>
       <Window.Content overflowY="auto">
         <Section
-          title="Action Panel"
+          title="Панель действий"
           buttons={
             <Button
               icon={!active ? 'play' : stopping ? 'hourglass-start' : 'stop'}
               color={!active ? 'good' : stopping ? 'blue' : 'bad'}
               onClick={() => act('run_cycle')}
             >
-              {!active ? 'Run' : stopping ? 'Stopping' : 'Stop'}
+              {!active ? 'Запуск' : stopping ? 'Остановка' : 'Стоп'}
             </Button>
           }
         >
@@ -611,7 +646,7 @@ export const BigManipulator = () => {
               color={!data.disk_inserted && "none"}
               onClick={() => act('disk_eject')}
             >
-              { data.disk_inserted ? "floppy drive (tasks: " + data.disk_task_count + ")" : "No drives inserted" }
+              { data.disk_inserted ? "дисковод (задач: " + data.disk_task_count + ")" : "Диск не вставлен" }
             </Button>
             </Stack.Item>
             <Stack.Item>
@@ -622,7 +657,7 @@ export const BigManipulator = () => {
                 disabled={!data.disk_inserted || !!active || !!stopping}
                 onClick={() => act('disk_read')}
               >
-                Read
+                Чтение
               </Button>
             </Stack.Item>
             <Stack.Item>
@@ -633,7 +668,7 @@ export const BigManipulator = () => {
                 disabled={!data.disk_inserted || !!data.disk_read_only || !!active || !!stopping}
                 onClick={() => act('disk_write')}
               >
-                Write
+                Запись
               </Button>
             </Stack.Item>
             <Stack.Item>
@@ -642,9 +677,9 @@ export const BigManipulator = () => {
             }}
                 icon="trash"
                 disabled={!data.disk_inserted || !!data.disk_read_only || !!active || !!stopping}
-                confirmContent="Clear?"
+                confirmContent="Очистить?"
                 onClick={() => act('disk_clear')}
-              >Clear
+              >Очистить
               </Button.Confirm>
             </Stack.Item>
           </Stack>

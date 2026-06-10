@@ -11,7 +11,7 @@ export const SecurityRecords = (props) => {
   const { authenticated } = data;
 
   return (
-    <Window title="Security Records" width={750} height={550}>
+    <Window title="Записи службы безопасности" width={750} height={550}>
       <Window.Content>
         <Stack fill>{!authenticated ? <RestrictedView /> : <AuthView />}</Stack>
       </Window.Content>
@@ -37,9 +37,9 @@ const RestrictedView = (props) => {
         </Stack.Item>
         <Stack.Item>
           <NoticeBox align="right">
-            You are not logged in.
+            Вы не вошли в систему.
             <Button ml={2} icon="lock-open" onClick={() => act('login')}>
-              Login
+              Войти
             </Button>
           </NoticeBox>
         </Stack.Item>
@@ -64,7 +64,7 @@ const AuthView = (props) => {
           </Stack.Item>
           <Stack.Item>
             <NoticeBox align="right" info>
-              Secure Your Workspace.
+              Заблокируйте рабочее место.
               <Button
                 align="right"
                 icon="lock"
@@ -72,7 +72,7 @@ const AuthView = (props) => {
                 ml={2}
                 onClick={() => act('logout')}
               >
-                Log Out
+                Выйти
               </Button>
             </NoticeBox>
           </Stack.Item>

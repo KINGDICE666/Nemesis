@@ -35,10 +35,10 @@ export const DestructiveAnalyzer = (props) => {
   } = data;
   if (!server_connected) {
     return (
-      <Window width={400} height={260} title="Destructive Analyzer">
+      <Window width={400} height={260} title="Деструктивный анализатор">
         <Window.Content>
           <NoticeBox textAlign="center" danger>
-            Not connected to a server. Please sync one using a multitool.
+            Нет подключения к серверу. Синхронизируйте его мультитулом.
           </NoticeBox>
         </Window.Content>
       </Window>
@@ -46,25 +46,25 @@ export const DestructiveAnalyzer = (props) => {
   }
   if (!loaded_item) {
     return (
-      <Window width={400} height={260} title="Destructive Analyzer">
+      <Window width={400} height={260} title="Деструктивный анализатор">
         <Window.Content>
           <NoticeBox textAlign="center" danger>
-            No item loaded! <br />
-            Put any item inside to see what it&apos;s capable of!
+            Предмет не загружен! <br />
+            Поместите внутрь любой предмет, чтобы узнать, на что он способен!
           </NoticeBox>
         </Window.Content>
       </Window>
     );
   }
   return (
-    <Window width={400} height={260} title="Destructive Analyzer">
+    <Window width={400} height={260} title="Деструктивный анализатор">
       <Window.Content scrollable>
         <Section
           title={loaded_item}
           buttons={
             <Button
               icon="eject"
-              tooltip="Ejects the item currently inside the machine."
+              tooltip="Извлечь предмет из машины."
               onClick={() => act('eject_item')}
             />
           }
@@ -76,27 +76,27 @@ export const DestructiveAnalyzer = (props) => {
             verticalAlign="middle"
           />
         </Section>
-        <Section title="Deconstruction Methods">
+        <Section title="Методы деконструкции">
           {!indestructible && (
             <NoticeBox textAlign="center" danger>
-              This item can&apos;t be deconstructed!
+              Этот предмет нельзя деконструировать!
             </NoticeBox>
           )}
           {!!indestructible && (
             <>
               {!!recoverable_points && (
                 <>
-                  <Box fontSize="14px">Research points from deconstruction</Box>
+                  <Box fontSize="14px">Очки исследований за деконструкцию</Box>
                   <Box>{recoverable_points}</Box>
                 </>
               )}
               <Button.Confirm
-                content="Deconstruct"
+                content="Деконструировать"
                 icon="hammer"
                 tooltip={
                   already_deconstructed
-                    ? 'This item item has already been deconstructed, and will not give any additional information.'
-                    : 'Destroys the object currently residing in the machine.'
+                    ? 'Этот предмет уже деконструировали, дополнительной информации он не даст.'
+                    : 'Уничтожить объект, находящийся в машине.'
                 }
                 onClick={() =>
                   act('deconstruct', { deconstruct_id: research_point_id })
@@ -112,8 +112,8 @@ export const DestructiveAnalyzer = (props) => {
               key={node.node_id}
               tooltip={
                 node.node_hidden
-                  ? 'Deconstruct this to research the selected node.'
-                  : 'This node has already been researched.'
+                  ? 'Деконструируйте это, чтобы исследовать выбранный узел.'
+                  : 'Этот узел уже исследован.'
               }
               onClick={() =>
                 act('deconstruct', { deconstruct_id: node.node_id })

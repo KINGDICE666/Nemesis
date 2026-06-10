@@ -163,10 +163,10 @@ function CatalogTabs(props: CatalogTabsProps & Props) {
             color={self_paid ? 'caution' : 'transparent'}
             icon={self_paid ? 'check-square-o' : 'square-o'}
             onClick={() => act('toggleprivate')}
-            tooltip="Use your own funds to purchase items."
+            tooltip="Использовать личные средства для покупки."
             tooltipPosition="top"
           >
-            Buy Privately
+            Личная покупка
           </Button>
         )}
       </Stack.Item>
@@ -244,11 +244,11 @@ function CatalogList(props: CatalogListProps) {
                 <Stack.Item>
                   <Stack reverse>
                     {!!pack.small_item &&
-                      tooltipIcon('Small Item', 'compress-alt', 'purple')}
+                      tooltipIcon('Малый предмет', 'compress-alt', 'purple')}
                     {!!pack.access &&
-                      tooltipIcon('Restricted', 'lock', 'average')}
+                      tooltipIcon('Ограниченный доступ', 'lock', 'average')}
                     {!!pack.contraband &&
-                      tooltipIcon('Contraband', 'pastafarianism', 'bad')}
+                      tooltipIcon('Контрабанда', 'pastafarianism', 'bad')}
                   </Stack>
                 </Stack.Item>
               )}
@@ -301,7 +301,7 @@ function CatalogPackInfo(props: CatalogContentsProps) {
               />
             }
           >
-            <BlockQuote>{pack?.desc || 'No description available.'}</BlockQuote>
+            <BlockQuote>{pack?.desc || 'Описание недоступно.'}</BlockQuote>
           </Section>
         </Stack.Item>
         <Stack.Item m={0} grow>
@@ -333,8 +333,8 @@ function CatalogPackInfo(props: CatalogContentsProps) {
                   <Icon name="triangle-exclamation" size={6} color="orange" />
                 </Stack.Item>
                 <Stack.Item mt={2} color="label" textAlign="center">
-                  {`We can't find information about even the approximate contents
-                  of this order.`}
+                  {`Не удалось найти даже примерную информацию о содержимом
+                  этого заказа.`}
                 </Stack.Item>
               </Stack>
             )}

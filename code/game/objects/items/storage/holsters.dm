@@ -1,7 +1,7 @@
 
 /obj/item/storage/belt/holster
-	name = "shoulder holster"
-	desc = "A rather plain but still cool looking holster that can hold a handgun."
+	name = "плечевая кобура"
+	desc = "Довольно простая, но все еще круто выглядящая кобура для пистолета."
 	icon_state = "holster"
 	inhand_icon_state = "holster"
 	worn_icon_state = "holster"
@@ -19,13 +19,13 @@
 	REMOVE_CLOTHING_TRAIT(user, TRAIT_GUNFLIP)
 
 /obj/item/storage/belt/holster/energy
-	name = "energy shoulder holsters"
-	desc = "A rather plain pair of shoulder holsters with a bit of insulated padding inside. Designed to hold energy weaponry."
+	name = "плечевые кобуры для энергооружия"
+	desc = "Довольно простая пара плечевых кобур с изолирующей подкладкой внутри. Предназначены для энергетического оружия."
 	storage_type = /datum/storage/holster/energy
 
 /obj/item/storage/belt/holster/energy/thermal
-	name = "thermal shoulder holsters"
-	desc = "A rather plain pair of shoulder holsters with a bit of insulated padding inside. Meant to hold a twinned pair of thermal pistols, but can fit several kinds of energy handguns as well."
+	name = "плечевые кобуры для термального оружия"
+	desc = "Довольно простая пара плечевых кобур с изолирующей подкладкой внутри. Рассчитаны на пару термальных пистолетов, но подходят и для некоторых других энергетических пистолетов."
 
 /obj/item/storage/belt/holster/energy/thermal/PopulateContents()
 	generate_items_inside(list(
@@ -34,19 +34,19 @@
 	),src)
 
 /obj/item/storage/belt/holster/energy/disabler
-	desc = "A rather plain pair of shoulder holsters with a bit of insulated padding inside. Designed to hold energy weaponry. A production stamp indicates that it was shipped with a disabler."
+	desc = "Довольно простая пара плечевых кобур с изолирующей подкладкой внутри. Предназначены для энергетического оружия. Производственный штамп указывает, что они поставлялись с дизейблером."
 
 /obj/item/storage/belt/holster/energy/disabler/PopulateContents()
 	new /obj/item/gun/energy/disabler(src)
 
 /obj/item/storage/belt/holster/energy/laser_pistol
-	desc = "A rather plain pair of shoulder holsters with a bit of insulated padding inside. Designed to hold energy weaponry. A production stamp indicates that it was shipped with a Type 5C laser pistol."
+	desc = "Довольно простая пара плечевых кобур с изолирующей подкладкой внутри. Предназначены для энергетического оружия. Производственный штамп указывает, что они поставлялись с лазерным пистолетом Type 5C."
 
 /obj/item/storage/belt/holster/energy/laser_pistol/PopulateContents()
 	new /obj/item/gun/energy/laser/pistol(src)
 
 /obj/item/storage/belt/holster/energy/smoothbore
-	desc = "A rather plain pair of shoulder holsters with a bit of insulated padding inside. Designed to hold energy weaponry. Seems it was meant to fit two smoothbores."
+	desc = "Довольно простая пара плечевых кобур с изолирующей подкладкой внутри. Предназначены для энергетического оружия. Похоже, рассчитаны на два гладкоствольных образца."
 
 /obj/item/storage/belt/holster/energy/smoothbore/PopulateContents()
 	generate_items_inside(list(
@@ -54,8 +54,8 @@
 	),src)
 
 /obj/item/storage/belt/holster/detective
-	name = "detective's holster"
-	desc = "A holster able to carry handguns and some ammo. WARNING: Badasses only."
+	name = "кобура детектива"
+	desc = "Кобура для пистолетов и небольшого запаса боеприпасов. ВНИМАНИЕ: только для крутых."
 	w_class = WEIGHT_CLASS_BULKY
 	storage_type = /datum/storage/holster/detective
 
@@ -66,8 +66,8 @@
 	), src)
 
 /obj/item/storage/belt/holster/detective/full/ert
-	name = "marine's holster"
-	desc = "Wearing this makes you feel badass, but you suspect it's just a repainted detective's holster from the NT surplus."
+	name = "кобура морпеха"
+	desc = "С ней вы чувствуете себя круче, но подозреваете, что это просто перекрашенная кобура детектива из излишков NT."
 	icon_state = "syndicate_holster"
 	inhand_icon_state = "syndicate_holster"
 	worn_icon_state = "syndicate_holster"
@@ -79,8 +79,8 @@
 	),src)
 
 /obj/item/storage/belt/holster/chameleon
-	name = "syndicate holster"
-	desc = "A hip holster that uses chameleon technology to disguise itself, due to the added chameleon tech, it cannot be mounted onto armor."
+	name = "кобура Синдиката"
+	desc = "Набедренная кобура с хамелеон-технологией для маскировки. Из-за дополнительной электроники ее нельзя закрепить на броне."
 	icon_state = "syndicate_holster"
 	inhand_icon_state = "syndicate_holster"
 	worn_icon_state = "syndicate_holster"
@@ -89,8 +89,8 @@
 	storage_type = /datum/storage/holster/chameleon
 
 /obj/item/storage/belt/holster/nukie
-	name = "operative holster"
-	desc = "A deep shoulder holster capable of holding almost any form of firearm and its ammo."
+	name = "кобура оперативника"
+	desc = "Глубокая плечевая кобура, способная вместить почти любое огнестрельное оружие и боеприпасы к нему."
 	icon_state = "syndicate_holster"
 	inhand_icon_state = "syndicate_holster"
 	worn_icon_state = "syndicate_holster"
@@ -98,7 +98,7 @@
 	storage_type = /datum/storage/holster/nukie
 
 /obj/item/storage/belt/holster/nukie/cowboy
-	desc = "A deep shoulder holster capable of holding almost any form of small firearm and its ammo. This one's specialized for handguns."
+	desc = "Глубокая плечевая кобура, способная вместить почти любое малое огнестрельное оружие и боеприпасы к нему. Эта версия специализируется на пистолетах."
 	storage_type = /datum/storage/holster/nukie/cowboy
 
 /obj/item/storage/belt/holster/nukie/cowboy/full/PopulateContents()

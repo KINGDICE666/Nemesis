@@ -2,15 +2,15 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 
 /obj/machinery/announcement_system
 	density = TRUE
-	name = "\improper Automated Announcement System"
-	desc = "An automated announcement system that handles minor announcements over the radio."
+	name = "\improper автоматическая система объявлений"
+	desc = "Автоматическая система объявлений, которая передает небольшие сообщения по радио."
 	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "AAS_On"
 	base_icon_state = "AAS"
 
-	verb_say = "coldly states"
-	verb_ask = "queries"
-	verb_exclaim = "alarms"
+	verb_say = "холодно сообщает"
+	verb_ask = "запрашивает"
+	verb_exclaim = "подает тревогу"
 
 	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 0.05
 
@@ -70,7 +70,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 /obj/machinery/announcement_system/multitool_act(mob/living/user, obj/item/tool)
 	if(!panel_open || !(machine_stat & EMPED))
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_notice("You reset [src]'s firmware."))
+	to_chat(user, span_notice("Вы перезапускаете прошивку [src]."))
 	set_machine_stat(machine_stat & ~EMPED)
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
@@ -94,7 +94,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 		return FALSE
 	obj_flags |= EMAGGED
 	act_up()
-	balloon_alert(user, "announcement strings corrupted")
+	balloon_alert(user, "строки объявлений повреждены")
 	return TRUE
 
 /obj/machinery/announcement_system/ui_interact(mob/user, datum/tgui/ui)
@@ -131,7 +131,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if(!usr.can_perform_action(src, ALLOW_SILICON_REACH))
 		return
 	if(machine_stat & EMPED)
-		visible_message(span_warning("[src] buzzes."), span_hear("You hear a faint buzz."))
+		visible_message(span_warning("[src] жужжит."), span_hear("Вы слышите тихое жужжание."))
 		playsound(src.loc, 'sound/machines/buzz/buzz-two.ogg', 50, TRUE)
 		return
 
@@ -161,9 +161,9 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 		return
 
 	if (machine_stat & EMPED)
-		to_chat(user, span_warning("[src]'s firmware appears to be malfunctioning!"))
+		to_chat(user, span_warning("Похоже, прошивка [src] неисправна!"))
 		if (!isAI(user))	// Deus Ex Machina goes without multitool in his default complectation.
-			to_chat(user, span_warning("However, you can reset it with [EXAMINE_HINT("multitool")], while its [EXAMINE_HINT("panel is open")]!"))
+			to_chat(user, span_warning("Ее можно перезапустить [EXAMINE_HINT("мультитулом")], пока [EXAMINE_HINT("панель открыта")]!"))
 		return FALSE
 
 /// If AAS can't broadcast message, it shouldn't be picked by randomizer.
@@ -237,11 +237,11 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	announcer.announce(aas_config_entry_type, variables_map, channels, announcement_line, command_span)
 
 /datum/aas_config_entry
-	var/name = "AAS configurable entry"
+	var/name = "настраиваемая запись АСО"
 	// Should we broadcast this announcement?
 	var/enabled = TRUE
 	// The announcement message. Key will be displayed in the UI.
-	var/list/announcement_lines_map = list("Message" = "This is a default announcement line.")
+	var/list/announcement_lines_map = list("Сообщение" = "Это стандартная строка объявления.")
 	// Goes before tooltips for vars, mainly used if announcement has no replacable vars
 	var/general_tooltip
 	// Contains all replacable vars and their tooltips
@@ -277,12 +277,12 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 */
 
 /datum/aas_config_entry/arrival
-	name = "Global: Arrival Announcement"
+	name = "Общее: объявление о прибытии"
 	announcement_lines_map = list(
-		"Message" = "%PERSON has signed up as %RANK")
+		"Сообщение" = "%PERSON записался как %RANK")
 	vars_and_tooltips_map = list(
-		"PERSON" = "will be replaced with their name.",
-		"RANK" = "with their job."
+		"PERSON" = "будет заменено именем.",
+		"RANK" = "будет заменено должностью."
 	)
 
 /datum/aas_config_entry/arrival/act_up()
@@ -290,17 +290,17 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if (.)
 		return
 
-	announcement_lines_map["Message"] = pick("#!@%ERR-34%2 CANNOT LOCAT@# JO# F*LE!",
+	announcement_lines_map["Сообщение"] = pick("#!@%ERR-34%2 CANNOT LOCAT@# JO# F*LE!",
 		"CRITICAL ERROR 99.",
 		"ERR)#: DA#AB@#E NOT F(*ND!")
 
 /datum/aas_config_entry/newhead
-	name = "Departmental: Head Announcement"
+	name = "Отдел: объявление о главе"
 	announcement_lines_map = list(
-		"Message" = "%PERSON, %RANK, is the department head.")
+		"Сообщение" = "%PERSON, %RANK, является главой отдела.")
 	vars_and_tooltips_map = list(
-		"PERSON" = "will be replaced with their name.",
-		"RANK" = "with their job."
+		"PERSON" = "будет заменено именем.",
+		"RANK" = "будет заменено должностью."
 	)
 
 /datum/aas_config_entry/newhead/act_up()
@@ -308,16 +308,16 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if (.)
 		return
 
-	announcement_lines_map["Message"] = pick("OV#RL()D: \[UNKNOWN??\] DET*#CT)D!",
+	announcement_lines_map["Сообщение"] = pick("OV#RL()D: \[UNKNOWN??\] DET*#CT)D!",
 		"ER)#R - B*@ TEXT F*O(ND!",
 		"AAS.exe is not responding. NanoOS is searching for a solution to the problem.")
 
 /datum/aas_config_entry/researched_node
-	name = "Science Alert: Research Node Announcement"
+	name = "Наука: объявление об исследовании узла"
 	announcement_lines_map = list(
-		"Message" = "The %NODE techweb node has been researched")
+		"Сообщение" = "Технологический узел %NODE исследован")
 	vars_and_tooltips_map = list(
-		"NODE" = "will be replaced with the researched node."
+		"NODE" = "будет заменено исследованным узлом."
 	)
 
 /datum/aas_config_entry/researched_node/act_up()
@@ -325,25 +325,25 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if (.)
 		return
 
-	announcement_lines_map["Message"] = pick(
-		replacetext(/datum/aas_config_entry/researched_node::announcement_lines_map["Message"], "%NODE", /datum/techweb_node/mech_clown::display_name),
+	announcement_lines_map["Сообщение"] = pick(
+		replacetext(/datum/aas_config_entry/researched_node::announcement_lines_map["Сообщение"], "%NODE", /datum/techweb_node/mech_clown::display_name),
 		"R/NT1M3 A= ANNOUN-*#nt_SY!?EM.dm, LI%£ 86: N=0DE NULL!",
 		"BEPIS BEPIS BEPIS",
 		"ERR)#R - B*@ TEXT F*O(ND!")
 
 /datum/aas_config_entry/arrivals_broken
-	name = "Engineering Alert: Arrivals Shuttle Malfunction Announcement"
+	name = "Инженерия: объявление о неисправности шаттла прибытия"
 	announcement_lines_map = list(
-		"Message" = "The arrivals shuttle has been damaged. Docking for repairs...")
-	general_tooltip = "Broadcasted, when arrivals shuttle docks for repairs. No replacable variables provided."
+		"Сообщение" = "Шаттл прибытия поврежден. Стыковка для ремонта...")
+	general_tooltip = "Передается, когда шаттл прибытия стыкуется для ремонта. Переменных нет."
 	modifiable = FALSE
 
 /datum/aas_config_entry/announce_officer
-	name = "Security Alert: Officer Arrival Announcement"
+	name = "Служба безопасности: объявление о прибытии офицера"
 	announcement_lines_map = list(
-		"Message" = "Officer %OFFICER has been assigned to %DEPARTMENT.")
+		"Сообщение" = "Офицер %OFFICER назначен в отдел %DEPARTMENT.")
 	vars_and_tooltips_map = list(
-		"OFFICER" = "will be replaced with the officer's name.",
-		"DEPARTMENT" = "with the department they were assigned to."
+		"OFFICER" = "будет заменено именем офицера.",
+		"DEPARTMENT" = "будет заменено назначенным отделом."
 	)
 	modifiable = FALSE

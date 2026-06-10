@@ -1,43 +1,43 @@
 /datum/map_template/shuttle/cargo
 	port_id = "cargo"
-	name = "Base Shuttle Template (Cargo)"
+	name = "базовый шаблон шаттла (карго)"
 	who_can_purchase = null
 
 /datum/map_template/shuttle/cargo/mini
 	suffix ="mini"
-	name = "supply shuttle (Mini)"
+	name = "шаттл снабжения (Mini)"
 
 /datum/map_template/shuttle/cargo/kilo
 	suffix = "kilo"
-	name = "supply shuttle (Kilo)"
+	name = "шаттл снабжения (Kilo)"
 
 /datum/map_template/shuttle/cargo/birdboat
 	suffix = "birdboat"
-	name = "supply shuttle (Birdboat)"
+	name = "шаттл снабжения (Birdboat)"
 
 /datum/map_template/shuttle/cargo/pubby
 	suffix = "pubby"
-	name = "supply shuttle (Pubby)"
+	name = "шаттл снабжения (Pubby)"
 
 /datum/map_template/shuttle/cargo/birdshot
 	suffix = "birdshot"
-	name = "supply shuttle (Birdshot)"
+	name = "шаттл снабжения (Birdshot)"
 
 /datum/map_template/shuttle/cargo/box
 	suffix = "box"
-	name = "cargo ferry (Box)"
+	name = "карго-паром (Box)"
 
 /datum/map_template/shuttle/cargo/delta
 	suffix = "delta"
-	name = "cargo ferry (Delta)"
+	name = "карго-паром (Delta)"
 
 /datum/map_template/shuttle/cargo/northstar
 	suffix = "northstar"
-	name = "cargo ferry (North Star)"
+	name = "карго-паром (North Star)"
 
 /datum/map_template/shuttle/cargo/catwalk
 	suffix = "catwalk"
-	name = "cargo ferry (Catwalk)"
+	name = "карго-паром (Catwalk)"
 /datum/map_template/shuttle/cargo/nebula
 	suffix = "nebula"
-	name = "supply shuttle (Nebula)"
+	name = "шаттл снабжения (Nebula)"

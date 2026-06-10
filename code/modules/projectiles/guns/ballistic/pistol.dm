@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/pistol
-	name = "\improper Makarov pistol"
-	desc = "A small, easily concealable 9mm handgun. Has a threaded barrel for suppressors."
+	name = "\improper пистолет Макарова"
+	desc = "Небольшой 9-мм пистолет, который легко скрыть. Имеет резьбу на стволе для глушителей."
 	icon_state = "pistol"
 	w_class = WEIGHT_CLASS_SMALL
 	accepted_magazine_type = /obj/item/ammo_box/magazine/m9mm
@@ -53,18 +53,18 @@
 	install_suppressor(S)
 
 /obj/item/gun/ballistic/automatic/pistol/clandestine
-	name = "\improper Ansem pistol"
-	desc = "The spiritual successor of the Makarov, or maybe someone just dropped their gun in a bucket of paint. The gun is chambered in 10mm."
+	name = "\improper пистолет Ansem"
+	desc = "Духовный наследник Макарова, или кто-то просто уронил оружие в ведро краски. Использует патроны 10 мм."
 	icon_state = "pistol_evil"
 	accepted_magazine_type = /obj/item/ammo_box/magazine/m10mm
 	empty_indicator = TRUE
 	suppressor_x_offset = 12
 
 /obj/item/gun/ballistic/automatic/pistol/clandestine/fisher
-	name = "\improper Ansem/SC pistol"
-	desc = "A modified variant of the Ansem, spiritual successor to the Makarov, featuring an integral suppressor and push-button trigger on the grip \
-	for an underbarrel-mounted disruptor, similar in operation to the standalone SC/FISHER. Chambered in 10mm."
-	desc_controls = "Right-click to use the underbarrel disruptor. Two shots maximum between self-charges."
+	name = "\improper пистолет Ansem/SC"
+	desc = "Модифицированный вариант Ansem, духовного наследника Макарова, со встроенным глушителем и кнопкой на рукояти \
+		для подствольного дезруптора, работающего аналогично отдельному SC/FISHER. Использует патроны 10 мм."
+	desc_controls = "Правый клик - использовать подствольный дезруптор. Максимум два выстрела между самозарядками."
 	icon_state = "pistol_evil_fisher"
 	suppressed = SUPPRESSED_QUIET
 	can_suppress = FALSE
@@ -115,7 +115,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/m1911
 	name = "\improper M1911"
-	desc = "A classic .45 handgun with a small magazine capacity."
+	desc = "Классический пистолет калибра .45 с небольшим магазином."
 	icon_state = "m1911"
 	w_class = WEIGHT_CLASS_NORMAL
 	accepted_magazine_type = /obj/item/ammo_box/magazine/m45
@@ -131,7 +131,7 @@
  */
 /obj/item/gun/ballistic/automatic/pistol/m1911/chimpgun
 	name = "\improper CH1M911"
-	desc = "For the monkey mafioso on-the-go. Uses .45 rounds and has the distinct smell of bananas."
+	desc = "Для мобильного мафиози. Использует патроны .45 и отчетливо пахнет бананами."
 	projectile_damage_multiplier = 0.5
 	projectile_wound_bonus = -12
 	pin = /obj/item/firing_pin/monkey
@@ -142,7 +142,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/deagle
 	name = "\improper Desert Eagle"
-	desc = "A robust .50 AE handgun."
+	desc = "Надежный пистолет калибра .50 AE."
 	icon_state = "deagle"
 	force = 14
 	accepted_magazine_type = /obj/item/ammo_box/magazine/m50
@@ -167,20 +167,20 @@
 	pin.pin_removable = FALSE
 
 /obj/item/gun/ballistic/automatic/pistol/deagle/gold
-	desc = "A gold plated Desert Eagle folded over a million times by superior martian gunsmiths. Uses .50 AE ammo."
+	desc = "Позолоченный Desert Eagle, миллион раз перекованный превосходными марсианскими оружейниками. Использует патроны .50 AE."
 	icon_state = "deagleg"
 	inhand_icon_state = "deagleg"
 
 /obj/item/gun/ballistic/automatic/pistol/deagle/camo
-	desc = "A Deagle brand Deagle for operators operating operationally. Uses .50 AE ammo."
+	desc = "Фирменный Deagle для оперативников, работающих оперативно. Использует патроны .50 AE."
 	icon_state = "deaglecamo"
 	inhand_icon_state = "deagleg"
 
 /obj/item/gun/ballistic/automatic/pistol/deagle/regal
 	name = "\improper Regal Condor"
-	desc = "Unlike the Desert Eagle, this weapon seems to utilize some kind of advanced internal stabilization system to significantly \
-		reduce felt recoil and increase overall accuracy, at the cost of using a smaller caliber. \
-		This does allow it to fire a very quick 2-round burst. Uses 10mm ammo."
+	desc = "В отличие от Desert Eagle, это оружие использует продвинутую внутреннюю систему стабилизации, значительно \
+		снижающую отдачу и повышающую точность ценой меньшего калибра. \
+		Это позволяет вести очень быструю очередь по 2 выстрела. Использует патроны 10 мм."
 	icon_state = "reagle"
 	inhand_icon_state = "deagleg"
 	burst_size = 2
@@ -192,8 +192,8 @@
 	custom_materials = list(/datum/material/gold = SHEET_MATERIAL_AMOUNT * 30, /datum/material/silver = SHEET_MATERIAL_AMOUNT * 25, /datum/material/iron = SHEET_MATERIAL_AMOUNT * 11.5, /datum/material/telecrystal = SHEET_MATERIAL_AMOUNT * 4)
 
 /obj/item/gun/ballistic/automatic/pistol/aps
-	name = "\improper Stechkin APS machine pistol"
-	desc = "An old Soviet machine pistol. It fires quickly, but kicks like a mule. Uses 9mm ammo. Has a threaded barrel for suppressors."
+	name = "\improper автоматический пистолет Стечкина"
+	desc = "Старый советский автоматический пистолет. Стреляет быстро, но лягается как мул. Использует патроны 9 мм. Имеет резьбу на стволе для глушителей."
 	icon_state = "aps"
 	w_class = WEIGHT_CLASS_NORMAL
 	accepted_magazine_type = /obj/item/ammo_box/magazine/m9mm_aps
@@ -205,21 +205,21 @@
 	suppressor_x_offset = 6
 
 /obj/item/gun/ballistic/automatic/pistol/stickman
-	name = "flat gun"
-	desc = "A 2 dimensional gun.. what?"
+	name = "плоский пистолет"
+	desc = "Двухмерный пистолет... что?"
 	icon_state = "flatgun"
 	mag_display = FALSE
 	show_bolt_icon = FALSE
 
 /obj/item/gun/ballistic/automatic/pistol/stickman/equipped(mob/user, slot)
 	..()
-	to_chat(user, span_notice("As you try to manipulate [src], it slips out of your possession.."))
+	to_chat(user, span_notice("Когда вы пытаетесь управиться с [src], он выскальзывает из рук..."))
 	if(prob(50))
-		to_chat(user, span_notice("..and vanishes from your vision! Where the hell did it go?"))
+		to_chat(user, span_notice("...и исчезает из поля зрения! Куда он делся?"))
 		qdel(src)
 		user.update_icons()
 	else
-		to_chat(user, span_notice("..and falls into view. Whew, that was a close one."))
+		to_chat(user, span_notice("...и снова появляется. Фух, пронесло."))
 		user.dropItemToGround(src)
 
 #define DOORHICKEY_GUN_MIN_DAMAGE 70
@@ -227,8 +227,8 @@
 
 /obj/item/gun/ballistic/automatic/pistol/doorhickey
 	name = "\improper Liberator"
-	desc = "A poorly made 3D printed \"gun\", only capable of firing a single shot. Well-known throughout the Spinward Sector \
-		after an incident where 3 assistants were killed by shrapnel from such a device exploding while attempting to shoot a mouse."
+	desc = "Плохо сделанное 3D-печатное \"оружие\", способное выстрелить только один раз. Широко известно в секторе Спинвард \
+		после случая, когда 3 ассистента погибли от осколков такого устройства при попытке выстрелить в мышь."
 	icon_state = "doorhickey"
 	custom_materials = list(/datum/material/plastic = SHEET_MATERIAL_AMOUNT * 2)
 	bolt_type = BOLT_TYPE_NO_BOLT
@@ -247,10 +247,10 @@
 	if (forced)
 		return ..()
 
-	balloon_alert(user, "unscrewing the barrel...")
+	balloon_alert(user, "откручиваем ствол...")
 	playsound(user, 'sound/items/tools/screwdriver_operating.ogg', 75, FALSE, MEDIUM_RANGE_SOUND_EXTRARANGE)
 	if (!do_after(user, 2 SECONDS, src))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "прервано!")
 		return
 	. = ..()
 
@@ -259,12 +259,12 @@
 	if (!.)
 		return
 
-	balloon_alert(user, "screwing the barrel on...")
+	balloon_alert(user, "прикручиваем ствол...")
 	playsound(user, 'sound/items/tools/screwdriver_operating.ogg', 75, FALSE, MEDIUM_RANGE_SOUND_EXTRARANGE)
 	if (do_after(user, 2 SECONDS, src))
 		return TRUE
 
-	balloon_alert(user, "interrupted!")
+	balloon_alert(user, "прервано!")
 	unload_ammo(user, forced = TRUE)
 	return FALSE
 
@@ -307,9 +307,9 @@
 	if (prob(damage_to_take - atom_integrity) && poor_sod)
 		shrapnel_bomb = TRUE
 
-	user.visible_message(span_danger("[src] explodes into small pieces[shrapnel_bomb ? ", chunk of it embedding in [user]'s [user.parse_zone_with_bodypart(poor_sod.body_zone)]" : ""]!"),
-		span_userdanger("[src] explodes into small pieces[shrapnel_bomb ? ", chunk of it embedding in your [poor_sod]!" : ""]!"),
-		span_hear("You can hear sound of plastic shattering."))
+	user.visible_message(span_danger("[src] разлетается на мелкие куски[shrapnel_bomb ? ", один из них впивается в [user.parse_zone_with_bodypart(poor_sod.body_zone)] [user]" : ""]!"),
+		span_userdanger("[src] разлетается на мелкие куски[shrapnel_bomb ? ", один из них впивается в ваш [poor_sod]!" : ""]!"),
+		span_hear("Вы слышите треск ломающегося пластика."))
 
 	if (poor_sod)
 		poor_sod.receive_damage((damage_to_take - atom_integrity) * 0.5, wound_bonus = -10, exposed_wound_bonus = 20, sharpness = SHARP_EDGED, damage_source = src)
@@ -327,7 +327,7 @@
 	take_damage(damage_to_take)
 
 /obj/item/disk/design_disk/liberator
-	name = "illegal 3D printer design disk"
+	name = "диск нелегального чертежа для 3D-принтера"
 
 /obj/item/disk/design_disk/liberator/Initialize(mapload)
 	. = ..()

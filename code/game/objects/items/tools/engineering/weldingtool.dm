@@ -1,6 +1,6 @@
 /obj/item/weldingtool
-	name = "welding tool"
-	desc = "A standard edition welder provided by Nanotrasen."
+	name = "сварочный аппарат"
+	desc = "Стандартный сварочный аппарат от Nanotrasen."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "welder"
 	inhand_icon_state = "welder"
@@ -145,7 +145,7 @@
 /obj/item/weldingtool/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!status && interacting_with.is_refillable())
 		reagents.trans_to(interacting_with, reagents.total_volume, transferred_by = user)
-		to_chat(user, span_notice("You empty [src]'s fuel tank into [interacting_with]."))
+		to_chat(user, span_notice("Вы сливаете топливо из бака [src] в [interacting_with]."))
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 	if(!ishuman(interacting_with))
@@ -166,11 +166,11 @@
 		return NONE
 
 	if (!affecting.brute_dam)
-		balloon_alert(user, "limb not damaged")
+		balloon_alert(user, "конечность не повреждена")
 		return ITEM_INTERACT_BLOCKING
 
 	user.visible_message(span_notice("[user] starts to fix some of the dents on [attacked_humanoid == user ? user.p_their() : "[attacked_humanoid]'s"] [affecting.name]."),
-		span_notice("You start fixing some of the dents on [attacked_humanoid == user ? "your" : "[attacked_humanoid]'s"] [affecting.name]."))
+		span_notice("Вы начинаете чинить вмятины на [attacked_humanoid == user ? "своей" : "[attacked_humanoid]"] [affecting.name]."))
 	var/use_delay = repeating ? 1 SECONDS : 0
 	if(user == attacked_humanoid)
 		use_delay = 5 SECONDS
@@ -248,7 +248,7 @@
 // /Switches the welder on
 /obj/item/weldingtool/proc/switched_on(mob/user)
 	if(!status)
-		balloon_alert(user, "unsecured!")
+		balloon_alert(user, "разобрано!")
 		return
 	set_welding(!welding)
 	if(welding)
@@ -260,7 +260,7 @@
 			update_appearance()
 			START_PROCESSING(SSobj, src)
 		else
-			balloon_alert(user, "no fuel!")
+			balloon_alert(user, "нет топлива!")
 			switched_off(user)
 	else
 		playsound(loc, deactivation_sound, 50, TRUE)
@@ -278,7 +278,7 @@
 
 /obj/item/weldingtool/examine(mob/user)
 	. = ..()
-	. += "It contains [get_fuel()] unit\s of fuel out of [max_fuel]."
+	. += "Внутри [get_fuel()] ед. топлива из [max_fuel]."
 
 /obj/item/weldingtool/get_temperature()
 	return welding * heat
@@ -290,27 +290,27 @@
 /// If welding tool ran out of fuel during a construction task, construction fails.
 /obj/item/weldingtool/tool_use_check(mob/living/user, amount, heat_required)
 	if(!isOn() || !check_fuel())
-		to_chat(user, span_warning("[src] has to be on to complete this task!"))
+		to_chat(user, span_warning("[src] должен быть включен, чтобы выполнить эту задачу!"))
 		return FALSE
 	if(get_fuel() < amount)
-		to_chat(user, span_warning("You need more welding fuel to complete this task!"))
+		to_chat(user, span_warning("Для выполнения этой задачи нужно больше сварочного топлива!"))
 		return FALSE
 	if(heat < heat_required)
-		to_chat(user, span_warning("[src] is not hot enough to complete this task!"))
+		to_chat(user, span_warning("[src] недостаточно горячий для выполнения этой задачи!"))
 		return FALSE
 	return TRUE
 
 /// Ran when the welder is attacked by a screwdriver.
 /obj/item/weldingtool/proc/flamethrower_screwdriver(obj/item/tool, mob/user)
 	if(welding)
-		to_chat(user, span_warning("Turn it off first!"))
+		to_chat(user, span_warning("Сначала выключите его!"))
 		return
 	status = !status
 	if(status)
-		to_chat(user, span_notice("You resecure [src] and close the fuel tank."))
+		to_chat(user, span_notice("Вы снова закрепляете [src] и закрываете топливный бак."))
 		reagents.flags &= ~(OPENCONTAINER)
 	else
-		to_chat(user, span_notice("[src] can now be attached, modified, and refuelled."))
+		to_chat(user, span_notice("[src] теперь можно присоединять, модифицировать и заправлять."))
 		reagents.flags |= OPENCONTAINER
 	add_fingerprint(user)
 
@@ -324,10 +324,10 @@
 				user.transferItemToLoc(src, flamethrower_frame, TRUE)
 			flamethrower_frame.weldtool = src
 			add_fingerprint(user)
-			to_chat(user, span_notice("You add a rod to a welder, starting to build a flamethrower."))
+			to_chat(user, span_notice("Вы добавляете стержень к сварке, начиная собирать огнемет."))
 			user.put_in_hands(flamethrower_frame)
 		else
-			to_chat(user, span_warning("You need one rod to start building a flamethrower!"))
+			to_chat(user, span_warning("Для начала сборки огнемета нужен один стержень!"))
 
 /obj/item/weldingtool/ignition_effect(atom/ignitable_atom, mob/user)
 	if(use_tool(ignitable_atom, user, 0))
@@ -339,8 +339,8 @@
 	starting_fuel = FALSE
 
 /obj/item/weldingtool/largetank
-	name = "industrial welding tool"
-	desc = "A slightly larger welder with a larger tank."
+	name = "промышленный сварочный аппарат"
+	desc = "Слегка увеличенная сварка с большим баком."
 	icon_state = "indwelder"
 	inhand_icon_state = "indwelder"
 	max_fuel = 40
@@ -353,15 +353,15 @@
 	starting_fuel = FALSE
 
 /obj/item/weldingtool/largetank/cyborg
-	name = "integrated welding tool"
-	desc = "An advanced welder designed to be used in robotic systems. Custom framework doubles the speed of welding."
+	name = "встроенный сварочный аппарат"
+	desc = "Продвинутая сварка для роботизированных систем. Особая конструкция удваивает скорость сварки."
 	icon = 'icons/obj/items_cyborg.dmi'
 	icon_state = "indwelder_cyborg"
 	toolspeed = 0.5
 
 /obj/item/weldingtool/mini
-	name = "emergency welding tool"
-	desc = "A miniature welder used during emergencies."
+	name = "аварийный сварочный аппарат"
+	desc = "Миниатюрная сварка для чрезвычайных ситуаций."
 	icon_state = "miniwelder"
 	inhand_icon_state = "miniwelder"
 	max_fuel = 10
@@ -376,8 +376,8 @@
 	starting_fuel = FALSE
 
 /obj/item/weldingtool/abductor
-	name = "alien welding tool"
-	desc = "An alien welding tool. Whatever fuel it uses, it never runs out."
+	name = "инопланетный сварочный аппарат"
+	desc = "Инопланетная сварка. Какое бы топливо она ни использовала, оно никогда не заканчивается."
 	icon = 'icons/obj/antags/abductor.dmi'
 	icon_state = "welder"
 	inhand_icon_state = "abductorwelder"
@@ -393,16 +393,16 @@
 	..()
 
 /obj/item/weldingtool/hugetank
-	name = "upgraded industrial welding tool"
-	desc = "An upgraded welder based of the industrial welder."
+	name = "улучшенный промышленный сварочный аппарат"
+	desc = "Улучшенная сварка на базе промышленного сварочного аппарата."
 	icon_state = "upindwelder"
 	inhand_icon_state = "upindwelder"
 	max_fuel = 80
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*0.7, /datum/material/glass=SMALL_MATERIAL_AMOUNT*1.2)
 
 /obj/item/weldingtool/experimental
-	name = "experimental welding tool"
-	desc = "An experimental welder capable of self-fuel generation and less harmful to the eyes."
+	name = "экспериментальный сварочный аппарат"
+	desc = "Экспериментальная сварка, способная самостоятельно вырабатывать топливо и менее вредная для глаз."
 	icon_state = "exwelder"
 	inhand_icon_state = "exwelder"
 	max_fuel = 40

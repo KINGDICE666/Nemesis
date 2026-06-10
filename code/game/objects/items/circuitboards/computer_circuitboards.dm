@@ -524,12 +524,12 @@
 		balloon_alert(user, "no access!")
 
 /obj/item/circuitboard/computer/rdservercontrol
-	name = "R&D Server Control"
+	name = "контроль серверов РНД"
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/computer/rdservercontrol
 
 /obj/item/circuitboard/computer/research
-	name = "Research Monitor"
+	name = "монитор исследований"
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/computer/security/research
 

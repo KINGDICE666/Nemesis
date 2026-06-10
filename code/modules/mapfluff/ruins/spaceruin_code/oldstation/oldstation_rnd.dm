@@ -1,5 +1,5 @@
 /obj/machinery/rnd/server/oldstation
-	name = "\improper Ancient R&D Server"
+	name = "\improper древний сервер РНД"
 	circuit = /obj/item/circuitboard/machine/rdserver/oldstation
 	req_access = list(ACCESS_AWAY_SCIENCE)
 
@@ -12,7 +12,7 @@
 	. = ..()
 
 	if(istype(held_item, /obj/item/research_notes))
-		context[SCREENTIP_CONTEXT_LMB] = "Generate research points"
+		context[SCREENTIP_CONTEXT_LMB] = "Создать исследовательские очки"
 		return CONTEXTUAL_SCREENTIP_SET
 
 /obj/machinery/rnd/server/oldstation/examine(mob/user)
@@ -21,7 +21,7 @@
 	if(!in_range(user, src) && !isobserver(user))
 		return
 
-	. += span_notice("Insert [EXAMINE_HINT("Research Notes")] to generate points.")
+	. += span_notice("Вставьте [EXAMINE_HINT("исследовательские заметки")], чтобы создать очки.")
 
 /obj/machinery/rnd/server/oldstation/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/research_notes) && stored_research)

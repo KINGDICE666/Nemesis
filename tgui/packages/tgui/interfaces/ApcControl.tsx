@@ -54,7 +54,7 @@ export function ApcControl(props) {
   const { authenticated } = data;
 
   return (
-    <Window title="APC Controller" width={550} height={500}>
+    <Window title="Контроллер APC" width={550} height={500}>
       <Window.Content>
         {authenticated ? <ApcLoggedIn /> : <ApcLoggedOut />}
       </Window.Content>
@@ -65,7 +65,7 @@ export function ApcControl(props) {
 function ApcLoggedOut(props) {
   const { act, data } = useBackend<Data>();
   const { emagged } = data;
-  const text = emagged ? 'Open' : 'Log In';
+  const text = emagged ? 'Открыть' : 'Войти';
 
   return (
     <Section fill>
@@ -82,10 +82,10 @@ function ApcLoggedOut(props) {
           </Stack>
         </Stack.Item>
         <Stack.Item color="#2a2a2a">
-          Nanotrasen and its affiliates do not endorse this product. Risk of
-          serious bodily injury or death is inherent in the use of any device
-          that generates electricity. Nanotrasen is not responsible for any
-          damages caused by the use of this product.
+          Nanotrasen и ее филиалы не одобряют этот продукт. Любое устройство,
+          вырабатывающее электричество, несет риск тяжелых травм или смерти.
+          Nanotrasen не несет ответственности за ущерб, вызванный его
+          использованием.
         </Stack.Item>
         <Stack.Item>
           <NoticeBox
@@ -97,7 +97,7 @@ function ApcLoggedOut(props) {
               alignItems: 'center',
             }}
           >
-            Authorized personnel only.
+            Только для авторизованного персонала.
             <Button
               icon="sign-in-alt"
               color={emagged ? '' : 'good'}
@@ -130,7 +130,7 @@ function ApcLoggedIn(props) {
               act('check-apcs');
             }}
           >
-            APC Control Panel
+            Панель управления APC
           </Tabs.Tab>
           <Tabs.Tab
             selected={tabIndex === Screen.LogView}
@@ -139,14 +139,14 @@ function ApcLoggedIn(props) {
               act('check-logs');
             }}
           >
-            Log View Panel
+            Журнал
           </Tabs.Tab>
         </Tabs>
       </Stack.Item>
       {!!restoring && (
         <Dimmer fontSize="32px">
           <Icon name="cog" spin />
-          {' Resetting...'}
+          {' Сброс...'}
         </Dimmer>
       )}
       <Stack.Item grow>
@@ -190,25 +190,25 @@ function ControlPanel(props: ControlProps) {
     <Stack justify="space-between">
       <Stack.Item>
         <Box inline mr={2} color="label">
-          Sort by:
+          Сортировать:
         </Box>
         <Button.Checkbox
           checked={sortByField === 'name'}
           onClick={() => setSortByField('name')}
         >
-          Name
+          Имя
         </Button.Checkbox>
         <Button.Checkbox
           checked={sortByField === 'charge'}
           onClick={() => setSortByField('charge')}
         >
-          Charge
+          Заряд
         </Button.Checkbox>
         <Button.Checkbox
           checked={sortByField === 'draw'}
           onClick={() => setSortByField('draw')}
         >
-          Draw
+          Нагрузка
         </Button.Checkbox>
       </Stack.Item>
       <Stack.Item />
@@ -219,15 +219,15 @@ function ControlPanel(props: ControlProps) {
               color={logging ? 'bad' : 'good'}
               onClick={() => act('toggle-logs')}
             >
-              {logging ? 'Stop Logging' : 'Restore Logging'}
+              {logging ? 'Остановить журнал' : 'Восстановить журнал'}
             </Button>
             <Button onClick={() => act('restore-console')}>
-              Reset Console
+              Сбросить консоль
             </Button>
           </>
         )}
         <Button icon="sign-out-alt" color="bad" onClick={() => act('log-out')}>
-          Log Out
+          Выйти
         </Button>
       </Stack.Item>
     </Stack>
@@ -261,15 +261,15 @@ function ApcControlScene(props) {
   return (
     <Table>
       <Table.Row header>
-        <Table.Cell>On/Off</Table.Cell>
-        <Table.Cell>Area</Table.Cell>
-        <Table.Cell collapsing>Charge</Table.Cell>
+        <Table.Cell>Вкл/Выкл</Table.Cell>
+        <Table.Cell>Зона</Table.Cell>
+        <Table.Cell collapsing>Заряд</Table.Cell>
         <Table.Cell collapsing textAlign="right">
-          Draw
+          Нагрузка
         </Table.Cell>
-        <Table.Cell collapsing>Eqp</Table.Cell>
-        <Table.Cell collapsing>Lgt</Table.Cell>
-        <Table.Cell collapsing>Env</Table.Cell>
+        <Table.Cell collapsing>Обор</Table.Cell>
+        <Table.Cell collapsing>Свет</Table.Cell>
+        <Table.Cell collapsing>Среда</Table.Cell>
       </Table.Row>
       {sorted.map((apc, i) => (
         <Table.Row key={apc.id} className="candystripe">

@@ -9,8 +9,8 @@
  * First Aid Kits
  */
 /obj/item/storage/medkit
-	name = "medkit"
-	desc = "It's an emergency medical kit for those serious boo-boos."
+	name = "аптечка"
+	desc = "Экстренный медицинский набор для серьёзных травм."
 	icon = 'icons/obj/storage/medkit.dmi'
 	icon_state = "medkit"
 	inhand_icon_state = "medkit"
@@ -33,7 +33,7 @@
 
 /obj/item/storage/medkit/regular
 	icon_state = "medkit"
-	desc = "A first aid kit with the ability to heal common types of injuries."
+	desc = "Аптечка первой помощи для лечения распространённых травм."
 
 /obj/item/storage/medkit/regular/suicide_act(mob/living/carbon/user)
 	user.visible_message(span_suicide("[user] begins giving [user.p_them()]self aids with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
@@ -54,8 +54,8 @@
 /obj/item/storage/medkit/emergency
 	icon_state = "medbriefcase"
 	inhand_icon_state = "medkit-emergency"
-	name = "emergency medkit"
-	desc = "A very simple first aid kit meant to secure and stabilize serious wounds for later treatment."
+	name = "экстренная аптечка"
+	desc = "Простая аптечка для перевязки и стабилизации серьёзных ран до дальнейшего лечения."
 
 /obj/item/storage/medkit/emergency/PopulateContents()
 	if(empty)
@@ -71,10 +71,10 @@
 	generate_items_inside(items_inside,src)
 
 /obj/item/storage/medkit/surgery
-	name = "surgical medkit"
+	name = "хирургическая аптечка"
 	icon_state = "medkit_surgery"
 	inhand_icon_state = "medkit-surgical"
-	desc = "A high capacity aid kit for doctors, full of medical supplies and basic surgical equipment."
+	desc = "Вместительная аптечка для врачей, наполненная медицинскими средствами и базовыми хирургическими инструментами."
 	storage_type = /datum/storage/medkit/surgery
 
 /obj/item/storage/medkit/surgery/PopulateContents()
@@ -94,8 +94,8 @@
 	generate_items_inside(items_inside,src)
 
 /obj/item/storage/medkit/surgery_syndie
-	name = "suspicous surgical medkit"
-	desc = "An suspicous coloured medkit full of advanced medical equipment."
+	name = "подозрительная хирургическая аптечка"
+	desc = "Аптечка подозрительной расцветки, полная продвинутого медицинского оборудования."
 	icon_state = "medkit_tactical_lite"
 	inhand_icon_state = "medkit-tactical-lite"
 	damagetype_healed = HEAL_ALL_DAMAGE
@@ -125,7 +125,7 @@
 
 /obj/item/storage/medkit/ancient
 	icon_state = "oldfirstaid"
-	desc = "A first aid kit with the ability to heal common types of injuries."
+	desc = "Аптечка первой помощи для лечения распространённых травм."
 
 /obj/item/storage/medkit/ancient/PopulateContents()
 	if(empty)
@@ -137,12 +137,12 @@
 	generate_items_inside(items_inside,src)
 
 /obj/item/storage/medkit/ancient/heirloom
-	desc = "A first aid kit with the ability to heal common types of injuries. You start thinking of the good old days just by looking at it."
+	desc = "Аптечка первой помощи для лечения распространённых травм. Один взгляд на неё навевает мысли о старых добрых временах."
 	empty = TRUE // long since been ransacked by hungry powergaming assistants breaking into med storage
 
 /obj/item/storage/medkit/fire
-	name = "burn treatment kit"
-	desc = "A specialized medical kit for when the ordnance lab <i>-spontaneously-</i> burns down."
+	name = "набор лечения ожогов"
+	desc = "Специализированный медицинский набор на случай, если лаборатория боеприпасов <i>внезапно</i> сгорит."
 	icon_state = "medkit_burn"
 	inhand_icon_state = "medkit-ointment"
 	damagetype_healed = BURN
@@ -165,8 +165,8 @@
 	generate_items_inside(items_inside,src)
 
 /obj/item/storage/medkit/toxin
-	name = "toxin treatment kit"
-	desc = "Used to treat toxic blood content and radiation poisoning."
+	name = "набор лечения токсинов"
+	desc = "Используется для лечения токсинов в крови и радиационного отравления."
 	icon_state = "medkit_toxin"
 	inhand_icon_state = "medkit-toxin"
 	damagetype_healed = TOX
@@ -192,8 +192,8 @@
 	generate_items_inside(items_inside,src)
 
 /obj/item/storage/medkit/o2
-	name = "oxygen deprivation treatment kit"
-	desc = "A box full of oxygen goodies."
+	name = "набор лечения кислородного голодания"
+	desc = "Коробка с полезными средствами для восстановления кислорода."
 	icon_state = "medkit_o2"
 	inhand_icon_state = "medkit-o2"
 	damagetype_healed = OXY
@@ -216,8 +216,8 @@
 	generate_items_inside(items_inside,src)
 
 /obj/item/storage/medkit/brute
-	name = "brute trauma treatment kit"
-	desc = "A first aid kit for when you get toolboxed."
+	name = "набор лечения механических травм"
+	desc = "Аптечка первой помощи на случай тяжёлых ушибов и ран."
 	icon_state = "medkit_brute"
 	inhand_icon_state = "medkit-brute"
 	damagetype_healed = BRUTE
@@ -242,8 +242,8 @@
 	generate_items_inside(items_inside,src)
 
 /obj/item/storage/medkit/advanced
-	name = "advanced first aid kit"
-	desc = "An advanced kit to help deal with advanced wounds."
+	name = "продвинутая аптечка первой помощи"
+	desc = "Продвинутый набор для работы со сложными ранами."
 	icon_state = "medkit_advanced"
 	inhand_icon_state = "medkit-advanced"
 	custom_premium_price = PAYCHECK_COMMAND * 6
@@ -263,7 +263,7 @@
 	generate_items_inside(items_inside,src)
 
 /obj/item/storage/medkit/tactical_lite
-	name = "combat first aid kit"
+	name = "боевая аптечка первой помощи"
 	icon_state = "medkit_tactical_lite"
 	inhand_icon_state = "medkit-tactical-lite"
 	damagetype_healed = HEAL_ALL_DAMAGE
@@ -284,8 +284,8 @@
 	generate_items_inside(items_inside, src)
 
 /obj/item/storage/medkit/tactical
-	name = "combat medical kit"
-	desc = "I hope you've got insurance."
+	name = "боевой медицинский набор"
+	desc = "Надеюсь, у вас есть страховка."
 	icon_state = "medkit_tactical"
 	inhand_icon_state = "medkit-tactical"
 	damagetype_healed = HEAL_ALL_DAMAGE
@@ -315,8 +315,8 @@
 	generate_items_inside(items_inside,src)
 
 /obj/item/storage/medkit/tactical/premium
-	name = "premium combat medical kit"
-	desc = "May or may not contain traces of lead."
+	name = "премиальный боевой медицинский набор"
+	desc = "Может содержать следы свинца. А может и нет."
 	icon_state = "medkit_tactical_premium"
 	inhand_icon_state = "medkit-tactical-premium"
 	storage_type = /datum/storage/medkit/tactical/premium
@@ -348,8 +348,8 @@
 	generate_items_inside(items_inside,src)
 
 /obj/item/storage/medkit/coroner
-	name = "compact coroner's medkit"
-	desc = "A smaller medical kit designed primarily for assisting in dissecting the deceased, rather than treating the living."
+	name = "компактная аптечка коронера"
+	desc = "Небольшой медицинский набор, предназначенный скорее для вскрытия умерших, чем для лечения живых."
 	icon = 'icons/obj/storage/medkit.dmi'
 	icon_state = "compact_coronerkit"
 	inhand_icon_state = "coronerkit"
@@ -373,12 +373,12 @@
 		return ..()
 	//Making a medibot!
 	if(contents.len >= 1)
-		balloon_alert(user, "items inside!")
+		balloon_alert(user, "внутри предметы!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/obj/item/bot_assembly/medbot/medbot_assembly = new(drop_location())
 	medbot_assembly.set_skin(get_medbot_skin())
-	medbot_assembly.balloon_alert(user, "arm added")
+	medbot_assembly.balloon_alert(user, "рука добавлена")
 	medbot_assembly.robot_arm = tool.type
 	medbot_assembly.medkit_type = type
 	qdel(tool)
@@ -394,8 +394,8 @@
 
 /// A box which takes in coolant and uses it to preserve organs and body parts
 /obj/item/storage/organbox
-	name = "organ transport box"
-	desc = "An advanced box with a cooling mechanism that uses cryostylane or other cold reagents to keep the organs or bodyparts inside preserved."
+	name = "контейнер для перевозки органов"
+	desc = "Продвинутый контейнер с охлаждением, использующий криостилан или другие холодные реагенты для сохранения органов и частей тела."
 	icon = 'icons/obj/storage/case.dmi'
 	icon_state = "organbox"
 	base_icon_state = "organbox"
@@ -455,13 +455,13 @@
 		var/obj/item/reagent_containers/RC = tool
 		var/units = RC.reagents.trans_to(src, RC.amount_per_transfer_from_this, transferred_by = user)
 		if(units)
-			balloon_alert(user, "[units]u transferred")
+			balloon_alert(user, "перенесено [units] ед.")
 			return ITEM_INTERACT_SUCCESS
 		return ITEM_INTERACT_BLOCKING
 	if(istype(tool, /obj/item/plunger))
-		balloon_alert(user, "plunging...")
+		balloon_alert(user, "погружение...")
 		if(do_after(user, 1 SECONDS, target = src))
-			balloon_alert(user, "plunged")
+			balloon_alert(user, "погружено")
 			reagents.clear_reagents()
 		return ITEM_INTERACT_SUCCESS
 	return ..()
@@ -490,8 +490,8 @@
 	reagents.add_reagent(/datum/reagent/cryostylane, reagents.maximum_volume)
 
 /obj/item/storage/test_tube_rack
-	name = "test tube rack"
-	desc = "A wooden rack for storing test tubes."
+	name = "штатив для пробирок"
+	desc = "Деревянный штатив для хранения пробирок."
 	icon_state = "rack"
 	base_icon_state = "rack"
 	icon = 'icons/obj/medical/chemical.dmi'

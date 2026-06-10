@@ -15,9 +15,9 @@
 	if(get_malf_status(malf) != APC_AI_NO_HACK)
 		return
 	if(malf.malfhacking)
-		to_chat(malf, span_warning("You are already hacking an APC!"))
+		to_chat(malf, span_warning("Вы уже взламываете APC!"))
 		return
-	to_chat(malf, span_notice("Beginning override of APC systems. This takes some time, and you cannot perform other actions during the process."))
+	to_chat(malf, span_notice("Начинается перехват систем APC. Это займет время, и в процессе вы не сможете выполнять другие действия."))
 	malf.malfhack = src
 	malf.malfhacking = addtimer(CALLBACK(malf, TYPE_PROC_REF(/mob/living/silicon/ai/, malfhacked), src), 30 SECONDS + 10*malf.hacked_apcs.len SECONDS, TIMER_STOPPABLE)
 
@@ -29,18 +29,18 @@
 	if(!istype(malf))
 		return
 	if(istype(malf.loc, /obj/machinery/power/apc)) // Already in an APC
-		to_chat(malf, span_warning("You must evacuate your current APC first!"))
+		to_chat(malf, span_warning("Сначала нужно покинуть текущий APC!"))
 		return
 	if(!malf.can_shunt)
-		to_chat(malf, span_warning("You cannot shunt!"))
+		to_chat(malf, span_warning("Вы не можете перенестись!"))
 		return
 	if(!is_station_level(z))
 		return
 	INVOKE_ASYNC(src, PROC_REF(malfshunt), malf)
 
 /obj/machinery/power/apc/proc/malfshunt(mob/living/silicon/ai/malf)
-	var/confirm = tgui_alert(malf, "Are you sure that you want to shunt? This will take you out of your core!", "Shunt to [name]?", list("Yes", "No"))
-	if(confirm != "Yes")
+	var/confirm = tgui_alert(malf, "Вы уверены, что хотите перенестись? Это выведет вас из ядра!", "Перенестись в [name]?", list("Да", "Нет"))
+	if(confirm != "Да")
 		return
 	malf.ShutOffDoomsdayDevice()
 	occupier = malf
@@ -88,19 +88,19 @@
 	if(!.)
 		return
 	if(card.AI)
-		to_chat(user, span_warning("[card] is already occupied!"))
+		to_chat(user, span_warning("[card] уже занят!"))
 		return FALSE
 	if(!occupier)
-		to_chat(user, span_warning("There's nothing in [src] to transfer!"))
+		to_chat(user, span_warning("В [src] некого переносить!"))
 		return FALSE
 	if(!occupier.mind || !occupier.client)
-		to_chat(user, span_warning("[occupier] is either inactive or destroyed!"))
+		to_chat(user, span_warning("[occupier] неактивен или уничтожен!"))
 		return FALSE
 	if(occupier.linked_core) //if they have an active linked_core, they can't be transferred from an APC
-		to_chat(user, span_warning("[occupier] is refusing all attempts at transfer!") )
+		to_chat(user, span_warning("[occupier] отвергает все попытки переноса!") )
 		return FALSE
 	if(transfer_in_progress)
-		to_chat(user, span_warning("There's already a transfer in progress!"))
+		to_chat(user, span_warning("Перенос уже выполняется!"))
 		return FALSE
 	if(interaction != AI_TRANS_TO_CARD || occupier.stat)
 		return FALSE
@@ -108,30 +108,30 @@
 	if(!user_turf)
 		return FALSE
 	transfer_in_progress = TRUE
-	user.visible_message(span_notice("[user] slots [card] into [src]..."), span_notice("Transfer process initiated. Sending request for AI approval..."))
+	user.visible_message(span_notice("[user] вставляет [card] в [src]..."), span_notice("Процесс переноса начат. Отправка запроса на подтверждение ИИ..."))
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 	SEND_SOUND(occupier, sound('sound/announcer/notice/notice2.ogg')) //To alert the AI that someone's trying to card them if they're tabbed out
-	if(tgui_alert(occupier, "[user] is attempting to transfer you to \a [card.name]. Do you consent to this?", "APC Transfer", list("Yes - Transfer Me", "No - Keep Me Here")) == "No - Keep Me Here")
-		to_chat(user, span_danger("AI denied transfer request. Process terminated."))
+	if(tgui_alert(occupier, "[user] пытается перенести вас в [card.name]. Вы согласны?", "Перенос из APC", list("Да - перенести", "Нет - оставить здесь")) == "Нет - оставить здесь")
+		to_chat(user, span_danger("ИИ отклонил запрос на перенос. Процесс прерван."))
 		playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50, TRUE)
 		transfer_in_progress = FALSE
 		return FALSE
 	if(user.loc != user_turf)
-		to_chat(user, span_danger("Location changed. Process terminated."))
-		to_chat(occupier, span_warning("[user] moved away! Transfer canceled."))
+		to_chat(user, span_danger("Местоположение изменилось. Процесс прерван."))
+		to_chat(occupier, span_warning("[user] отошел! Перенос отменен."))
 		transfer_in_progress = FALSE
 		return FALSE
-	to_chat(user, span_notice("AI accepted request. Transferring stored intelligence to [card]..."))
-	to_chat(occupier, span_notice("Transfer starting. You will be moved to [card] shortly."))
+	to_chat(user, span_notice("ИИ принял запрос. Перенос сохраненного интеллекта в [card]..."))
+	to_chat(occupier, span_notice("Перенос начинается. Скоро вы будете перемещены в [card]."))
 	if(!do_after(user, 5 SECONDS, target = src))
-		to_chat(occupier, span_warning("[user] was interrupted! Transfer canceled."))
+		to_chat(occupier, span_warning("[user] был прерван! Перенос отменен."))
 		transfer_in_progress = FALSE
 		return FALSE
 	if(!occupier || !card)
 		transfer_in_progress = FALSE
 		return FALSE
-	user.visible_message(span_notice("[user] transfers [occupier] to [card]!"), span_notice("Transfer complete! [occupier] is now stored in [card]."))
-	to_chat(occupier, span_notice("Transfer complete! You've been stored in [user]'s [card.name]."))
+	user.visible_message(span_notice("[user] переносит [occupier] в [card]!"), span_notice("Перенос завершен! [occupier] теперь хранится в [card]."))
+	to_chat(occupier, span_notice("Перенос завершен! Вы сохранены в [card.name], принадлежащей [user]."))
 	occupier.forceMove(card)
 	card.AI = occupier
 	occupier.shunted = FALSE

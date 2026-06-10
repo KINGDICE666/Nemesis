@@ -1,6 +1,6 @@
 /obj/structure/emergency_shield
-	name = "emergency energy shield"
-	desc = "An energy shield used to contain hull breaches."
+	name = "аварийный энергетический щит"
+	desc = "Энергетический щит для сдерживания пробоин корпуса."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "shield-old"
 	integrity_failure = 0.5
@@ -50,8 +50,8 @@
 
 /// Subtype of shields that repair over time after sustaining integrity damage
 /obj/structure/emergency_shield/regenerating
-	name = "energy shield"
-	desc = "An energy shield used to let ships through, but keep out the void of space."
+	name = "энергетический щит"
+	desc = "Энергетический щит, пропускающий корабли, но удерживающий пустоту космоса."
 	max_integrity = 400
 	/// How much integrity is healed per second (per process multiplied by seconds per tick)
 	var/heal_rate_per_second = 5
@@ -77,8 +77,8 @@
 		STOP_PROCESSING(SSobj, src)
 
 /obj/structure/emergency_shield/cult
-	name = "cult barrier"
-	desc = "A shield summoned by cultists to keep heretics away."
+	name = "культовый барьер"
+	desc = "Щит, призванный культистами, чтобы держать еретиков подальше."
 	max_integrity = 100
 	icon_state = "shield-red"
 
@@ -87,13 +87,13 @@
 	AddElement(/datum/element/empprotection, EMP_PROTECT_SELF|EMP_NO_EXAMINE)
 
 /obj/structure/emergency_shield/cult/narsie
-	name = "sanguine barrier"
-	desc = "A potent shield summoned by cultists to defend their rites."
+	name = "кровавый барьер"
+	desc = "Мощный щит, призванный культистами для защиты их ритуалов."
 	max_integrity = 60
 
 /obj/structure/emergency_shield/cult/weak
-	name = "Invoker's Shield"
-	desc = "A weak shield summoned by cultists to protect them while they carry out delicate rituals."
+	name = "щит призывателя"
+	desc = "Слабый щит, призванный культистами для защиты во время тонких ритуалов."
 	color = COLOR_RED
 	max_integrity = 20
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -119,7 +119,7 @@
 		if(QDELING(parent_rune))
 			parent_rune = null
 			return ..()
-		parent_rune.visible_message(span_danger("The [parent_rune] fades away as [src] is destroyed!"))
+		parent_rune.visible_message(span_danger("[parent_rune] исчезает, когда [src] уничтожен!"))
 		QDEL_NULL(parent_rune)
 	return ..()
 
@@ -139,8 +139,8 @@
 		RemoveInvisibility(type)
 
 /obj/machinery/shieldgen
-	name = "anti-breach shielding projector"
-	desc = "Used to seal minor hull breaches."
+	name = "противопробоинный проектор щита"
+	desc = "Используется для герметизации небольших пробоин корпуса."
 	icon = 'icons/obj/machines/shield_generator.dmi'
 	icon_state = "shieldoff"
 	density = TRUE
@@ -191,50 +191,50 @@
 	if(.)
 		return
 	if(locked && !HAS_SILICON_ACCESS(user))
-		to_chat(user, span_warning("The machine is locked, you are unable to use it!"))
+		to_chat(user, span_warning("Машина заблокирована, вы не можете ее использовать!"))
 		return
 	if(panel_open)
-		to_chat(user, span_warning("The panel must be closed before operating this machine!"))
+		to_chat(user, span_warning("Перед использованием машины нужно закрыть панель!"))
 		return
 
 	if (active)
-		user.visible_message(span_notice("[user] deactivated \the [src]."), \
-			span_notice("You deactivate \the [src]."), \
-			span_hear("You hear heavy droning fade out."))
+		user.visible_message(span_notice("[user] деактивирует \the [src]."), \
+			span_notice("Вы деактивируете \the [src]."), \
+			span_hear("Вы слышите, как тяжелый гул стихает."))
 		shields_down()
 	else
 		if(anchored)
-			user.visible_message(span_notice("[user] activated \the [src]."), \
-				span_notice("You activate \the [src]."), \
-				span_hear("You hear heavy droning."))
+			user.visible_message(span_notice("[user] активирует \the [src]."), \
+				span_notice("Вы активируете \the [src]."), \
+				span_hear("Вы слышите тяжелый гул."))
 			shields_up()
 		else
-			to_chat(user, span_warning("The device must first be secured to the floor!"))
+			to_chat(user, span_warning("Сначала устройство нужно закрепить на полу!"))
 	return
 
 /obj/machinery/shieldgen/screwdriver_act(mob/living/user, obj/item/tool)
 	tool.play_tool_sound(src, 100)
 	toggle_panel_open()
 	if(panel_open)
-		to_chat(user, span_notice("You open the panel and expose the wiring."))
+		to_chat(user, span_notice("Вы открываете панель и обнажаете проводку."))
 	else
-		to_chat(user, span_notice("You close the panel."))
+		to_chat(user, span_notice("Вы закрываете панель."))
 	return TRUE
 
 /obj/machinery/shieldgen/wrench_act(mob/living/user, obj/item/tool)
 	. = TRUE
 	if(locked)
-		to_chat(user, span_warning("The bolts are covered! Unlocking this would retract the covers."))
+		to_chat(user, span_warning("Болты закрыты! Разблокировка уберет защитные крышки."))
 		return
 	if(!anchored && !isinspace())
 		tool.play_tool_sound(src, 100)
-		balloon_alert(user, "secured")
+		balloon_alert(user, "закреплено")
 		set_anchored(TRUE)
 	else if(anchored)
 		tool.play_tool_sound(src, 100)
-		balloon_alert(user, "unsecured")
+		balloon_alert(user, "откреплено")
 		if(active)
-			to_chat(user, span_notice("\The [src] shuts off!"))
+			to_chat(user, span_notice("\The [src] выключается!"))
 			shields_down()
 		set_anchored(FALSE)
 
@@ -243,38 +243,38 @@
 	if(istype(W, /obj/item/stack/cable_coil) && (machine_stat & BROKEN) && panel_open)
 		var/obj/item/stack/cable_coil/coil = W
 		if (coil.get_amount() < 1)
-			to_chat(user, span_warning("You need one length of cable to repair [src]!"))
+			to_chat(user, span_warning("Для ремонта [src] нужен один кусок кабеля!"))
 			return
-		to_chat(user, span_notice("You begin to replace the wires..."))
+		to_chat(user, span_notice("Вы начинаете заменять провода..."))
 		if(do_after(user, 3 SECONDS, target = src))
 			if(coil.get_amount() < 1)
 				return
 			coil.use(1)
 			atom_integrity = max_integrity
 			set_machine_stat(machine_stat & ~BROKEN)
-			to_chat(user, span_notice("You repair \the [src]."))
+			to_chat(user, span_notice("Вы чините \the [src]."))
 			update_appearance()
 
 	else if(W.GetID())
 		if(allowed(user) && !(obj_flags & EMAGGED))
 			locked = !locked
-			to_chat(user, span_notice("You [locked ? "lock" : "unlock"] the controls."))
+			to_chat(user, span_notice("Вы [locked ? "блокируете" : "разблокируете"] управление."))
 		else if(obj_flags & EMAGGED)
-			to_chat(user, span_danger("Error, access controller damaged!"))
+			to_chat(user, span_danger("Ошибка, контроллер доступа поврежден!"))
 		else
-			to_chat(user, span_danger("Access denied."))
+			to_chat(user, span_danger("Доступ запрещен."))
 
 	else
 		return ..()
 
 /obj/machinery/shieldgen/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
-		to_chat(user, span_warning("The access controller is damaged!"))
+		to_chat(user, span_warning("Контроллер доступа поврежден!"))
 		return FALSE
 	obj_flags |= EMAGGED
 	locked = FALSE
 	playsound(src, SFX_SPARKS, 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-	balloon_alert(user, "access controller shorted")
+	balloon_alert(user, "контроллер доступа закоротило")
 	return TRUE
 
 /obj/machinery/shieldgen/update_icon_state()
@@ -284,8 +284,8 @@
 #define ACTIVE_SETUPFIELDS 1
 #define ACTIVE_HASFIELDS 2
 /obj/machinery/power/shieldwallgen
-	name = "shield wall generator"
-	desc = "A shield generator."
+	name = "генератор щитовой стены"
+	desc = "Генератор щита."
 	icon = 'icons/obj/machines/shield_generator.dmi'
 	icon_state = "shield_wall_gen"
 	base_icon_state = "shield_wall_gen"
@@ -311,8 +311,8 @@
 	var/obj/structure/cable/attached
 
 /obj/machinery/power/shieldwallgen/xenobiologyaccess //use in xenobiology containment
-	name = "xenobiology shield wall generator"
-	desc = "A shield generator meant for use in xenobiology."
+	name = "ксенобиологический генератор щитовой стены"
+	desc = "Генератор щита для использования в ксенобиологии."
 	req_access = list(ACCESS_XENOBIOLOGY)
 
 /obj/machinery/power/shieldwallgen/anchored
@@ -374,9 +374,9 @@
 		if(!active_power_usage || surplus() >= active_power_usage)
 			add_load(active_power_usage)
 		else
-			visible_message(span_danger("[src] shuts down due to lack of power!"), \
+			visible_message(span_danger("[src] отключается из-за нехватки питания!"), \
 				"If this message is ever seen, something is wrong.",
-				span_hear("You hear heavy droning fade out."))
+				span_hear("Вы слышите, как тяжелый гул стихает."))
 			deactivate()
 			log_game("[src] deactivated due to lack of power at [AREACOORD(src)]")
 	else
@@ -439,7 +439,7 @@
 /obj/machinery/power/shieldwallgen/can_be_unfasten_wrench(mob/user, silent)
 	if(active)
 		if(!silent)
-			to_chat(user, span_warning("Turn off the shield generator first!"))
+			to_chat(user, span_warning("Сначала выключите генератор щита!"))
 		return FAILED_UNFASTEN
 	return ..()
 
@@ -453,7 +453,7 @@
 
 /obj/machinery/power/shieldwallgen/screwdriver_act(mob/user, obj/item/tool)
 	if(!panel_open && locked)
-		balloon_alert(user, "unlock first!")
+		balloon_alert(user, "сначала разблокируйте!")
 		return ITEM_INTERACT_BLOCKING
 
 	return default_deconstruction_screwdriver(user, tool)
@@ -469,11 +469,11 @@
 	if(W.GetID())
 		if(allowed(user) && !(obj_flags & EMAGGED))
 			locked = !locked
-			balloon_alert(user, "[locked ? "locked!" : "unlocked"]")
+			balloon_alert(user, locked ? "заблокировано!" : "разблокировано")
 		else if(obj_flags & EMAGGED)
-			balloon_alert(user, "malfunctioning!")
+			balloon_alert(user, "неисправно!")
 		else
-			balloon_alert(user, "no access!")
+			balloon_alert(user, "нет доступа!")
 		return
 
 	add_fingerprint(user)
@@ -487,40 +487,40 @@
 	if(.)
 		return
 	if(!anchored)
-		balloon_alert(user, "not secured!")
+		balloon_alert(user, "не закреплено!")
 		return
 	if(locked && !HAS_SILICON_ACCESS(user))
-		balloon_alert(user, "locked!")
+		balloon_alert(user, "заблокировано!")
 		return
 	if(!powernet)
-		balloon_alert(user, "needs to be powered by wire!")
+		balloon_alert(user, "нужно питание от провода!")
 		return
 	if(panel_open)
-		balloon_alert(user, "panel open!")
+		balloon_alert(user, "панель открыта!")
 		return
 
 	if(active)
-		user.visible_message(span_notice("[user] turned \the [src] off."), \
-			span_notice("You turn off \the [src]."), \
-			span_hear("You hear heavy droning fade out."))
+		user.visible_message(span_notice("[user] выключает \the [src]."), \
+			span_notice("Вы выключаете \the [src]."), \
+			span_hear("Вы слышите, как тяжелый гул стихает."))
 		deactivate()
 		user.log_message("deactivated [src].", LOG_GAME)
 	else
-		user.visible_message(span_notice("[user] turned \the [src] on."), \
-			span_notice("You turn on \the [src]."), \
-			span_hear("You hear heavy droning."))
+		user.visible_message(span_notice("[user] включает \the [src]."), \
+			span_notice("Вы включаете \the [src]."), \
+			span_hear("Вы слышите тяжелый гул."))
 		activate()
 		user.log_message("activated [src].", LOG_GAME)
 	add_fingerprint(user)
 
 /obj/machinery/power/shieldwallgen/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
-		to_chat(user, span_warning("The access controller is damaged!"))
+		to_chat(user, span_warning("Контроллер доступа поврежден!"))
 		return FALSE
 	obj_flags |= EMAGGED
 	locked = FALSE
 	playsound(src, SFX_SPARKS, 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-	balloon_alert(user, "access controller shorted")
+	balloon_alert(user, "контроллер доступа закоротило")
 	return TRUE
 
 /// Turn the machine on with side effects
@@ -538,8 +538,8 @@
 
 //////////////Containment Field START
 /obj/machinery/shieldwall
-	name = "shield wall"
-	desc = "An energy shield."
+	name = "щитовая стена"
+	desc = "Энергетический щит."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "shieldwall"
 	density = TRUE

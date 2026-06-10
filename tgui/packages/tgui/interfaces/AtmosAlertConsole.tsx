@@ -15,10 +15,10 @@ export const AtmosAlertConsole = (props) => {
   return (
     <Window width={350} height={300}>
       <Window.Content scrollable>
-        <Section title="Alarms">
+        <Section title="Тревоги">
           <ul>
             {priority.length === 0 && (
-              <li className="color-good">No priority alerts</li>
+              <li className="color-good">Нет приоритетных тревог</li>
             )}
             {priority.map((alert) => (
               <li key={alert}>
@@ -31,7 +31,7 @@ export const AtmosAlertConsole = (props) => {
               </li>
             ))}
             {minor.length === 0 && (
-              <li className="color-good">No minor alerts</li>
+              <li className="color-good">Нет малых тревог</li>
             )}
             {minor.map((alert) => (
               <li key={alert}>

@@ -2,8 +2,8 @@
 #define MENU_SURGERIES 2
 
 /obj/machinery/computer/operating
-	name = "operating computer"
-	desc = "Monitors patient vitals and displays surgery steps. Can be loaded with surgery disks to perform experimental procedures. Automatically syncs to operating tables within its line of sight for surgical tech advancement."
+	name = "операционный компьютер"
+	desc = "Отслеживает жизненные показатели пациента и показывает этапы операции. Может загружать хирургические диски для экспериментальных процедур. Автоматически синхронизируется с операционными столами в зоне видимости для доступа к продвинутым хирургическим технологиям."
 	icon_screen = "crew"
 	icon_keyboard = "med_key"
 	circuit = /obj/item/circuitboard/computer/operating
@@ -80,7 +80,7 @@
 		advanced_surgeries |= disky.surgeries
 		update_static_data_for_all_viewers()
 		playsound(src, 'sound/machines/compiler/compiler-stage2.ogg', 50, FALSE, SILENCED_SOUND_EXTRARANGE)
-		balloon_alert(user, "surgeries loaded")
+		balloon_alert(user, "операции загружены")
 		return ITEM_INTERACT_SUCCESS
 
 	if((tool.item_flags & SURGICAL_TOOL) && !user.combat_mode)

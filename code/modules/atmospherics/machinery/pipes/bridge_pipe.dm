@@ -2,8 +2,8 @@
 	icon = 'icons/obj/pipes_n_cables/bridge_pipe.dmi'
 	icon_state = "bridge_center"
 
-	name = "bridge pipe"
-	desc = "A one meter section of regular pipe used to connect pipenets over pipes."
+	name = "труба-мост"
+	desc = "Метровый участок обычной трубы для соединения трубопроводов поверх других труб."
 
 	layer = HIGH_PIPE_LAYER
 	dir = SOUTH

@@ -1,6 +1,6 @@
 /obj/machinery/sleeper
-	name = "sleeper"
-	desc = "An enclosed machine used to stabilize and heal patients."
+	name = "слипер"
+	desc = "Закрытая медицинская капсула для стабилизации и лечения пациентов."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	base_icon_state = "sleeper"
@@ -22,7 +22,7 @@
 	///Whether this sleeper can be deconstructed and drop the board, if its on mapload.
 	var/deconstructable = FALSE
 	///Message sent when a user enters the machine.
-	var/enter_message = span_boldnotice("You feel cool air surround you. You go numb as your senses turn inward.")
+	var/enter_message = span_boldnotice("Вы чувствуете, как вас окружает прохладный воздух. Тело немеет, а ощущения обращаются внутрь.")
 
 	///List of currently available chems.
 	var/list/available_chems = list()
@@ -185,16 +185,16 @@
 		data["occupant"]["name"] = mob_occupant.name
 		switch(mob_occupant.stat)
 			if(CONSCIOUS)
-				data["occupant"]["stat"] = "Conscious"
+				data["occupant"]["stat"] = "В сознании"
 				data["occupant"]["statstate"] = "good"
 			if(SOFT_CRIT)
-				data["occupant"]["stat"] = "Conscious"
+				data["occupant"]["stat"] = "В сознании"
 				data["occupant"]["statstate"] = "average"
 			if(UNCONSCIOUS, HARD_CRIT)
-				data["occupant"]["stat"] = "Unconscious"
+				data["occupant"]["stat"] = "Без сознания"
 				data["occupant"]["statstate"] = "average"
 			if(DEAD)
-				data["occupant"]["stat"] = "Dead"
+				data["occupant"]["stat"] = "Мёртв"
 				data["occupant"]["statstate"] = "bad"
 		data["occupant"]["health"] = mob_occupant.health
 		data["occupant"]["maxHealth"] = mob_occupant.maxHealth
@@ -240,13 +240,13 @@
 			if(inject_chem(chem, usr))
 				. = TRUE
 				if((obj_flags & EMAGGED) && prob(5))
-					to_chat(usr, span_warning("Chemical system re-route detected, results may not be as expected!"))
+					to_chat(usr, span_warning("Обнаружено перенаправление химической системы, результаты могут отличаться от ожидаемых!"))
 
 /obj/machinery/sleeper/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
 		return FALSE
 
-	balloon_alert(user, "interface scrambled")
+	balloon_alert(user, "интерфейс искажён")
 	obj_flags |= EMAGGED
 
 	var/list/av_chem = available_chems.Copy()
@@ -280,7 +280,7 @@
  * Can be controlled from the inside and can be deconstructed.
  */
 /obj/machinery/sleeper/syndie
-	name = "syndicate sleeper"
+	name = "слипер Синдиката"
 	icon_state = "sleeper_s"
 	base_icon_state = "sleeper_s"
 	controls_inside = TRUE
@@ -289,12 +289,12 @@
 
 ///Fully upgraded variant, the circuit using tier 4 parts.
 /obj/machinery/sleeper/syndie/fullupgrade
-	name = "upgraded syndicate sleeper"
+	name = "улучшенный слипер Синдиката"
 	circuit = /obj/item/circuitboard/machine/sleeper/fullupgrade
 
 ///Fully upgraded, not deconstructable, while using the normal sprite.
 /obj/machinery/sleeper/syndie/fullupgrade/nt
-	name = "\improper Nanotrasen sleeper"
+	name = "\improper слипер Nanotrasen"
 	icon_state = "sleeper"
 	base_icon_state = "sleeper"
 	deconstructable = FALSE
@@ -307,14 +307,14 @@
 	base_icon_state = "oldpod"
 
 /obj/machinery/sleeper/party
-	name = "party pod"
-	desc = "'Sleeper' units were once known for their healing properties, until a lengthy investigation revealed they were also dosing patients with deadly lead acetate. This appears to be one of those old 'sleeper' units repurposed as a 'Party Pod'. It’s probably not a good idea to use it."
+	name = "вечеринковая капсула"
+	desc = "Когда-то слиперы были известны своими лечебными свойствами, пока долгое расследование не показало, что они также вводили пациентам смертельно опасный ацетат свинца. Похоже, это один из старых слиперов, переделанный в вечеринковую капсулу. Использовать её, вероятно, не лучшая идея."
 	icon_state = "partypod"
 	base_icon_state = "partypod"
 	circuit = /obj/item/circuitboard/machine/sleeper/party
 	controls_inside = TRUE
 	deconstructable = TRUE
-	enter_message = span_boldnotice("You're surrounded by some funky music inside the chamber. You zone out as you feel waves of krunk vibe within you.")
+	enter_message = span_boldnotice("Внутри капсулы вас окружает заводная музыка. Вы отключаетесь, ощущая внутри волны странного веселья.")
 
 	//Exclusively uses non-lethal, "fun" chems. At an obvious downside.
 	possible_chems = list(

@@ -1,6 +1,6 @@
 /obj/machinery/computer/rdservercontrol
-	name = "R&D Server Controller"
-	desc = "Manages access to research databases and consoles."
+	name = "контроллер серверов РНД"
+	desc = "Управляет доступом к исследовательским базам данных и консолям."
 	icon_screen = "rdcomp"
 	icon_keyboard = "rd_key"
 	circuit = /obj/item/circuitboard/computer/rdservercontrol
@@ -17,7 +17,7 @@
 /obj/machinery/computer/rdservercontrol/multitool_act(mob/living/user, obj/item/multitool/tool)
 	if(!QDELETED(tool.buffer) && istype(tool.buffer, /datum/techweb))
 		stored_research = tool.buffer
-		balloon_alert(user, "techweb connected")
+		balloon_alert(user, "техвеб подключен")
 	return TRUE
 
 /obj/machinery/computer/rdservercontrol/emag_act(mob/user, obj/item/card/emag/emag_card)
@@ -25,7 +25,7 @@
 		return FALSE
 	obj_flags |= EMAGGED
 	playsound(src, SFX_SPARKS, 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-	balloon_alert(user, "console emagged")
+	balloon_alert(user, "консоль взломана")
 	return TRUE
 
 /obj/machinery/computer/rdservercontrol/ui_interact(mob/user, datum/tgui/ui)
@@ -67,7 +67,7 @@
 	if(.)
 		return TRUE
 	if(!allowed(usr) && !(obj_flags & EMAGGED))
-		balloon_alert(usr, "access denied!")
+		balloon_alert(usr, "доступ запрещен!")
 		playsound(src, 'sound/machines/click.ogg', 20, TRUE)
 		return TRUE
 

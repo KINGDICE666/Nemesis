@@ -429,8 +429,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/board/circuit_imprinter
-	name = "Circuit Imprinter Board"
-	desc = "The circuit board for a circuit imprinter."
+	name = "плата принтера плат"
+	desc = "Печатная плата для принтера плат."
 	id = "circuit_imprinter"
 	build_type = IMPRINTER
 	build_path = /obj/item/circuitboard/machine/circuit_imprinter
@@ -440,8 +440,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/board/circuit_imprinter/offstation
-	name = "Ancient Circuit Imprinter Board"
-	desc = "The circuit board for an ancient circuit imprinter."
+	name = "плата древнего принтера плат"
+	desc = "Печатная плата для древнего принтера плат."
 	id = "circuit_imprinter_offstation"
 	build_type = AWAY_IMPRINTER
 	build_path = /obj/item/circuitboard/machine/circuit_imprinter/offstation
@@ -451,8 +451,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/board/rdservercontrol
-	name = "R&D Server Control Console Board"
-	desc = "The circuit board for an R&D Server Control Console."
+	name = "плата консоли управления сервером РНД"
+	desc = "Печатная плата для консоли управления сервером РНД."
 	id = "rdservercontrol"
 	build_path = /obj/item/circuitboard/computer/rdservercontrol
 	category = list(
@@ -461,8 +461,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/board/rdserver
-	name = "R&D Server Board"
-	desc = "The circuit board for an R&D Server."
+	name = "плата сервера РНД"
+	desc = "Печатная плата для сервера РНД."
 	id = "rdserver"
 	build_path = /obj/item/circuitboard/machine/rdserver
 	category = list(

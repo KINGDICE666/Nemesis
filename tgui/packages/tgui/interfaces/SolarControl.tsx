@@ -52,7 +52,7 @@ export const SolarControl = (props) => {
   return (
     <Window width={330} height={330}>
       <Window.Content>
-        <Section title="Status">
+        <Section title="Состояние">
           <Box
             mb={1}
             position="relative"
@@ -82,7 +82,7 @@ export const SolarControl = (props) => {
           <Stack>
             <Stack.Item>
               <LabeledList>
-                <LabeledList.Item label="Power output">
+                <LabeledList.Item label="Выработка">
                   <ProgressBar
                     value={capacity > 0 ? supply / capacity : 0}
                     minValue={0}
@@ -94,61 +94,61 @@ export const SolarControl = (props) => {
                     }}
                   >
                     {capacity > 0
-                      ? `${formatPower(supply)} of ${formatPower(
+                      ? `${formatPower(supply)} из ${formatPower(
                           capacity,
                         )} (${Math.round((100 * supply) / capacity)}%)`
                       : formatPower(0)}
                   </ProgressBar>
                 </LabeledList.Item>
                 <LabeledList.Item
-                  label="Solar panels"
+                  label="Солнечные панели"
                   color={connected_panels > 0 ? 'good' : 'bad'}
                 >
                   {connected_panels}
                 </LabeledList.Item>
                 <LabeledList.Item
-                  label="Solar tracker"
+                  label="Солнечный трекер"
                   color={connected_tracker ? 'good' : 'bad'}
                 >
-                  {connected_tracker ? 'OK' : 'N/A'}
+                  {connected_tracker ? 'OK' : 'Н/Д'}
                 </LabeledList.Item>
               </LabeledList>
             </Stack.Item>
           </Stack>
         </Section>
         <Section
-          title="Controls"
+          title="Управление"
           buttons={
             <Button
               icon="sync"
-              content="Scan for new hardware"
+              content="Найти новое оборудование"
               onClick={() => act('refresh')}
             />
           }
         >
           <LabeledList>
-            <LabeledList.Item label="Tracking">
+            <LabeledList.Item label="Слежение">
               <Button
                 icon="times"
-                content="Off"
+                content="Выкл"
                 selected={tracking_state === 0}
                 onClick={() => act('tracking', { mode: 0 })}
               />
               <Button
                 icon="clock-o"
-                content="Timed"
+                content="По времени"
                 selected={tracking_state === 1}
                 onClick={() => act('tracking', { mode: 1 })}
               />
               <Button
                 icon="sync"
-                content="Auto"
+                content="Авто"
                 selected={tracking_state === 2}
                 disabled={!connected_tracker}
                 onClick={() => act('tracking', { mode: 2 })}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Azimuth">
+            <LabeledList.Item label="Азимут">
               <Icon mr={1} name="arrow-up" rotation={azimuth_current} />
               {(tracking_state === 0 || tracking_state === 1) && (
                 <NumberInput
@@ -182,7 +182,7 @@ export const SolarControl = (props) => {
               )}
               {tracking_state === 2 && (
                 <Box inline color="label" mt="3px">
-                  {`${azimuth_current} °`} (auto)
+                  {`${azimuth_current} °`} (авто)
                 </Box>
               )}
             </LabeledList.Item>

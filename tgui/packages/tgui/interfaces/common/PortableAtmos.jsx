@@ -21,30 +21,30 @@ export const PortableBasicInfo = (props) => {
   return (
     <>
       <Section
-        title="Status"
+        title="Состояние"
         buttons={
           <Button
             icon={on ? 'power-off' : 'times'}
-            content={on ? 'On' : 'Off'}
+            content={on ? 'Вкл' : 'Выкл'}
             selected={on}
             onClick={() => act('power')}
           />
         }
       >
         <LabeledList>
-          <LabeledList.Item label="Pressure">
+          <LabeledList.Item label="Давление">
             <AnimatedNumber value={pressure} />
             {' kPa'}
           </LabeledList.Item>
-          <LabeledList.Item label="Port" color={connected ? 'good' : 'average'}>
-            {connected ? 'Connected' : 'Not Connected'}
+          <LabeledList.Item label="Порт" color={connected ? 'good' : 'average'}>
+            {connected ? 'Подключено' : 'Не подключено'}
           </LabeledList.Item>
           {!!hasHypernobCrystal && (
-            <LabeledList.Item label="Reaction Suppression">
+            <LabeledList.Item label="Подавление реакций">
               <Button
                 icon={data.reactionSuppressionEnabled ? 'snowflake' : 'times'}
                 content={
-                  data.reactionSuppressionEnabled ? 'Enabled' : 'Disabled'
+                  data.reactionSuppressionEnabled ? 'Включено' : 'Отключено'
                 }
                 selected={data.reactionSuppressionEnabled}
                 onClick={() => act('reaction_suppression')}
@@ -54,12 +54,12 @@ export const PortableBasicInfo = (props) => {
         </LabeledList>
       </Section>
       <Section
-        title="Holding Tank"
+        title="Внутренний баллон"
         minHeight="82px"
         buttons={
           <Button
             icon="eject"
-            content="Eject"
+            content="Извлечь"
             disabled={!holding}
             onClick={() => act('eject')}
           />
@@ -67,14 +67,14 @@ export const PortableBasicInfo = (props) => {
       >
         {holding ? (
           <LabeledList>
-            <LabeledList.Item label="Label">{holding.name}</LabeledList.Item>
-            <LabeledList.Item label="Pressure">
+            <LabeledList.Item label="Метка">{holding.name}</LabeledList.Item>
+            <LabeledList.Item label="Давление">
               <AnimatedNumber value={holding.pressure} />
               {' kPa'}
             </LabeledList.Item>
           </LabeledList>
         ) : (
-          <Box color="average">No holding tank</Box>
+          <Box color="average">Нет внутреннего баллона</Box>
         )}
       </Section>
     </>

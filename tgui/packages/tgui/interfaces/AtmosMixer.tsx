@@ -32,15 +32,15 @@ export const AtmosMixer = (props) => {
       <Window.Content>
         <Section>
           <LabeledList>
-            <LabeledList.Item label="Power">
+            <LabeledList.Item label="Питание">
               <Button
                 icon={on ? 'power-off' : 'times'}
-                content={on ? 'On' : 'Off'}
+                content={on ? 'Вкл' : 'Выкл'}
                 selected={on}
                 onClick={() => act('power')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Output Pressure">
+            <LabeledList.Item label="Выходное давление">
               <NumberInput
                 animated
                 value={set_pressure}
@@ -58,7 +58,7 @@ export const AtmosMixer = (props) => {
               <Button
                 ml={1}
                 icon="plus"
-                content="Max"
+                content="Макс"
                 disabled={set_pressure === max_pressure}
                 onClick={() =>
                   act('pressure', {
@@ -67,7 +67,7 @@ export const AtmosMixer = (props) => {
                 }
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Main Node" labelColor="green">
+            <LabeledList.Item label="Основной узел" labelColor="green">
               <NumberInput
                 animated
                 tickWhileDragging
@@ -85,7 +85,7 @@ export const AtmosMixer = (props) => {
                 }
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Side Node" labelColor="blue">
+            <LabeledList.Item label="Боковой узел" labelColor="blue">
               <NumberInput
                 animated
                 tickWhileDragging

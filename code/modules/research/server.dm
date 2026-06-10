@@ -9,11 +9,11 @@
 /// The ninja has blown the HDD up.
 #define HDD_OVERLOADED 4
 
-#define SERVER_NOMINAL_TEXT "Nominal"
+#define SERVER_NOMINAL_TEXT "Номинально"
 
 /obj/machinery/rnd/server
-	name = "\improper R&D Server"
-	desc = "A computer system running a deep neural network that processes arbitrary information to produce data useable in the development of new technologies. In layman's terms, it makes research points."
+	name = "\improper сервер РНД"
+	desc = "Компьютерная система с глубокой нейросетью, обрабатывающей произвольную информацию для получения данных, пригодных при разработке новых технологий. Проще говоря, она создает исследовательские очки."
 	icon = 'icons/obj/machines/research.dmi'
 	icon_state = "RD-server-on"
 	base_icon_state = "RD-server"
@@ -97,13 +97,13 @@
 	if(machine_stat & EMPED)
 		return "O&F@I*$ - R3*&O$T R@U!R%D"
 	else if(machine_stat & NOPOWER)
-		return "Offline - Server Unpowered"
+		return "Отключен - сервер без питания"
 	else if(research_disabled)
-		return "Offline - Server Control Disabled"
+		return "Отключен - выключен через контроллер"
 	else if(!working)
 		// If, for some reason, working is FALSE even though we're not emp'd or powerless,
 		// We need something to update our working state - such as rebooting the server
-		return "Offline - Reboot Required"
+		return "Отключен - требуется перезагрузка"
 
 	return SERVER_NOMINAL_TEXT
 
@@ -111,7 +111,7 @@
 	if(!stored_research)
 		return
 	tool.set_buffer(stored_research)
-	balloon_alert(user, "saved to multitool buffer")
+	balloon_alert(user, "сохранено в буфер мультитула")
 	return TRUE
 
 /// Master R&D server. As long as this still exists and still holds the HDD for the theft objective, research points generate at normal speed. Destroy it or an antag steals the HDD? Half research speed.
@@ -125,8 +125,8 @@
 
 /obj/machinery/rnd/server/master/Initialize(mapload)
 	. = ..()
-	name = "\improper Master " + name
-	desc += "\nIt looks incredibly resistant to damage!"
+	name = "\improper главный " + name
+	desc += "\nОн выглядит невероятно устойчивым к повреждениям!"
 	source_code_hdd = new(src)
 
 	add_overlay("RD-server-objective-stripes")
@@ -139,22 +139,22 @@
 	. = ..()
 	// Give us a special message if we're nominal, but our hard drive is gone
 	if(. == SERVER_NOMINAL_TEXT && !source_code_hdd)
-		return "<font color=orange>Nominal - Hard Drive Missing</font>"
+		return "<font color=orange>Номинально - жесткий диск отсутствует</font>"
 
 /obj/machinery/rnd/server/master/examine(mob/user)
 	. = ..()
 
 	switch(deconstruction_state)
 		if(HDD_PANEL_CLOSED)
-			. += "The front panel is closed. You can see some recesses which may have <b>screws</b>."
+			. += "Передняя панель закрыта. Видны углубления, где могут быть <b>винты</b>."
 		if(HDD_PANEL_OPEN)
-			. += "The front panel is dangling open. The HDD is in a secure housing. Looks like you'll have to <b>pry</b> it loose."
+			. += "Передняя панель болтается открытой. HDD находится в защитном корпусе. Похоже, его придется <b>поддеть</b>."
 		if(HDD_PRIED)
-			. += "The front panel is dangling open. The HDD has been pried from its housing. It is still connected by <b>wires</b>."
+			. += "Передняя панель болтается открытой. HDD вырван из корпуса, но все еще подключен <b>проводами</b>."
 		if(HDD_CUT_LOOSE)
-			. += "The front panel is dangling open. All you can see inside are cut wires and mangled metal."
+			. += "Передняя панель болтается открытой. Внутри видны только обрезанные провода и искореженный металл."
 		if(HDD_OVERLOADED)
-			. += "The front panel is dangling open. The HDD inside is destroyed and the wires are all burned."
+			. += "Передняя панель болтается открытой. HDD внутри уничтожен, а все провода сгорели."
 
 /obj/machinery/rnd/server/master/tool_act(mob/living/user, obj/item/tool, list/modifiers)
 	if(!tool.tool_behaviour)
@@ -163,7 +163,7 @@
 	if(!user.is_antag())
 		if(user.combat_mode)
 			return ITEM_INTERACT_SKIP_TO_ATTACK
-		balloon_alert(user, "you can't find an obvious maintenance hatch!")
+		balloon_alert(user, "сервисного люка не видно!")
 		return ITEM_INTERACT_BLOCKING
 	return ..()
 
@@ -172,29 +172,29 @@
 		return NONE
 	switch(deconstruction_state)
 		if(HDD_PANEL_CLOSED)
-			balloon_alert(user, "you can't find a place to insert it!")
+			balloon_alert(user, "некуда вставить!")
 		if(HDD_PANEL_OPEN)
-			balloon_alert(user, "you weren't trained to install this!")
+			balloon_alert(user, "вы не обучены это ставить!")
 		if(HDD_PRIED)
-			balloon_alert(user, "the HDD housing is completely broken, it won't fit!")
+			balloon_alert(user, "корпус HDD сломан, не влезет!")
 		if(HDD_CUT_LOOSE)
-			balloon_alert(user, "the HDD housing is completely broken and all the wires are cut!")
+			balloon_alert(user, "корпус HDD сломан, провода перерезаны!")
 		if(HDD_OVERLOADED)
-			balloon_alert(user, "the inside is scorched and all the wires are burned!")
+			balloon_alert(user, "внутри все обуглено, провода сгорели!")
 	return ITEM_INTERACT_BLOCKING
 
 /obj/machinery/rnd/server/master/screwdriver_act(mob/living/user, obj/item/tool)
 	if(deconstruction_state != HDD_PANEL_CLOSED || user.combat_mode)
 		return NONE
 
-	to_chat(user, span_notice("You can see [front_panel_screws] screw\s. You start unscrewing [front_panel_screws == 1 ? "it" : "them"]..."))
+	to_chat(user, span_notice("Вы видите винты: [front_panel_screws]. Начинаете выкручивать [front_panel_screws == 1 ? "его" : "их"]..."))
 	while(tool.use_tool(src, user, 7.5 SECONDS, volume=100))
 		front_panel_screws--
 		if(front_panel_screws > 0)
-			to_chat(user, span_notice("The screw breaks as you remove it. Only [front_panel_screws] left..."))
+			to_chat(user, span_notice("Винт ломается при извлечении. Осталось [front_panel_screws]..."))
 			continue
 		deconstruction_state = HDD_PANEL_OPEN
-		to_chat(user, span_notice("You remove the last screw from [src]'s front panel."))
+		to_chat(user, span_notice("Вы извлекаете последний винт из передней панели [src]."))
 		add_overlay("RD-server-hdd-panel-open")
 		break
 	return ITEM_INTERACT_SUCCESS
@@ -203,9 +203,9 @@
 	if(deconstruction_state != HDD_PANEL_OPEN || user.combat_mode)
 		return FALSE
 
-	to_chat(user, span_notice("You can see [source_code_hdd] in a secure housing behind the front panel. You begin to pry it loose..."))
+	to_chat(user, span_notice("За передней панелью виден [source_code_hdd] в защитном корпусе. Вы начинаете выламывать его..."))
 	if(tool.use_tool(src, user, 15 SECONDS, volume=100))
-		to_chat(user, span_notice("You destroy the housing, prying [source_code_hdd] free."))
+		to_chat(user, span_notice("Вы разрушаете корпус и выламываете [source_code_hdd]."))
 		deconstruction_state = HDD_PRIED
 	return TRUE
 
@@ -213,18 +213,18 @@
 	if(deconstruction_state != HDD_PRIED || user.combat_mode)
 		return FALSE
 
-	to_chat(user, span_notice("There are [hdd_wires] wire\s connected to [source_code_hdd]. You start cutting [hdd_wires == 1 ? "it" : "them"]..."))
+	to_chat(user, span_notice("К [source_code_hdd] подключены провода: [hdd_wires]. Вы начинаете резать [hdd_wires == 1 ? "его" : "их"]..."))
 	while(tool.use_tool(src, user, 7.5 SECONDS, volume=100))
 		hdd_wires--
 
 		if(hdd_wires <= 0)
 			deconstruction_state = HDD_CUT_LOOSE
-			to_chat(user, span_notice("You cut the final wire and remove [source_code_hdd]."))
+			to_chat(user, span_notice("Вы перерезаете последний провод и извлекаете [source_code_hdd]."))
 			try_put_in_hand(source_code_hdd, user)
 			source_code_hdd = null
 			stored_research.income_modifier *= 0.5
 			return TRUE
-		to_chat(user, span_notice("You delicately cut the wire. [hdd_wires] wire\s left..."))
+		to_chat(user, span_notice("Вы аккуратно перерезаете провод. Осталось [hdd_wires]..."))
 	return TRUE
 
 /obj/machinery/rnd/server/master/on_deconstruction(disassembled)

@@ -19,8 +19,8 @@
  */
 /// A vent, scrubber and a sensor in a single device meant specifically for cycling airlocks. Ideal for airlocks of up to 3x3 tiles in size to avoid wind and timing out.
 /obj/machinery/atmospherics/components/unary/airlock_pump
-	name = "external airlock pump"
-	desc = "A pump for cycling an external airlock controlled by the connected doors."
+	name = "насос внешнего шлюза"
+	desc = "Насос для цикла внешнего шлюза, управляемый подключенными дверями."
 	icon = 'icons/obj/machines/atmospherics/unary_devices.dmi'
 	icon_state = "airlock_pump"
 	pipe_state = "airlock_pump"
@@ -166,10 +166,10 @@
 /obj/machinery/atmospherics/components/unary/airlock_pump/can_unwrench(mob/user)
 	. = ..()
 	if(!.)
-		to_chat(user, span_warning("You cannot unwrench [src], it is secured firmly in place!"))
+		to_chat(user, span_warning("Нельзя открутить [src], он прочно закреплен на месте!"))
 		return FALSE
 	if(. && on)
-		to_chat(user, span_warning("You cannot unwrench [src], wait for the cycle completion!"))
+		to_chat(user, span_warning("Нельзя открутить [src], дождитесь завершения цикла!"))
 		return FALSE
 
 /obj/machinery/atmospherics/components/unary/airlock_pump/set_on(active)
@@ -597,7 +597,7 @@
 		user.ventcrawl_layer = clamp(user.ventcrawl_layer + 2, PIPING_LAYER_DEFAULT - 1, PIPING_LAYER_DEFAULT + 1)
 	if((SOUTH|WEST) & direction)
 		user.ventcrawl_layer = clamp(user.ventcrawl_layer - 2, PIPING_LAYER_DEFAULT - 1, PIPING_LAYER_DEFAULT + 1)
-	to_chat(user, "You align yourself with the [user.ventcrawl_layer == 2 ? 1 : 2]\th output.")
+	to_chat(user, "Вы выравниваетесь с выходом [user.ventcrawl_layer == 2 ? 1 : 2].")
 
 /obj/machinery/atmospherics/components/unary/airlock_pump/on_set_is_operational(was_operational)
 	if(was_operational && !is_operational)

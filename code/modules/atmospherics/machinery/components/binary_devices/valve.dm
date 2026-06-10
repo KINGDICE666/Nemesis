@@ -6,8 +6,8 @@ It's like a regular ol' straight pipe, but you can turn it on and off.
 
 /obj/machinery/atmospherics/components/binary/valve
 	icon_state = "mvalve_map-3"
-	name = "manual valve"
-	desc = "A pipe with a valve that can be used to disable flow of gas through it."
+	name = "ручной клапан"
+	desc = "Труба с клапаном, которым можно перекрыть поток газа."
 	can_unwrench = TRUE
 	shift_underlay_only = FALSE
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_OPEN //Intentionally no allow_silicon flag
@@ -43,11 +43,11 @@ It's like a regular ol' straight pipe, but you can turn it on and off.
 		var/datum/pipeline/parent1 = parents[1]
 		parent1.reconcile_air()
 		investigate_log("was opened by [usr ? key_name(usr) : "a remote signal"]", INVESTIGATE_ATMOS)
-		balloon_alert_to_viewers("valve opened")
+		balloon_alert_to_viewers("клапан открыт")
 		vent_movement |= VENTCRAWL_ALLOWED
 	else
 		investigate_log("was closed by [usr ? key_name(usr) : "a remote signal"]", INVESTIGATE_ATMOS)
-		balloon_alert_to_viewers("valve closed")
+		balloon_alert_to_viewers("клапан закрыт")
 		vent_movement &= ~VENTCRAWL_ALLOWED
 
 
@@ -78,8 +78,8 @@ It's like a regular ol' straight pipe, but you can turn it on and off.
 /obj/machinery/atmospherics/components/binary/valve/digital // can be controlled by AI
 	icon_state = "dvalve_map-3"
 
-	name = "digital valve"
-	desc = "A digitally controlled valve."
+	name = "цифровой клапан"
+	desc = "Клапан с цифровым управлением."
 	valve_type = DIGITAL_VALVE
 	pipe_state = "dvalve"
 
@@ -90,8 +90,8 @@ It's like a regular ol' straight pipe, but you can turn it on and off.
 	AddComponent(/datum/component/usb_port, typecacheof(list(/obj/item/circuit_component/digital_valve), only_root_path = TRUE))
 
 /obj/item/circuit_component/digital_valve
-	display_name = "Digital Valve"
-	desc = "The interface for communicating with a digital valve."
+	display_name = "Цифровой клапан"
+	desc = "Интерфейс для связи с цифровым клапаном."
 
 	var/obj/machinery/atmospherics/components/binary/valve/digital/attached_valve
 
@@ -108,12 +108,12 @@ It's like a regular ol' straight pipe, but you can turn it on and off.
 	var/datum/port/output/closed
 
 /obj/item/circuit_component/digital_valve/populate_ports()
-	open = add_input_port("Open", PORT_TYPE_SIGNAL)
-	close = add_input_port("Close", PORT_TYPE_SIGNAL)
+	open = add_input_port("Открыть", PORT_TYPE_SIGNAL)
+	close = add_input_port("Закрыть", PORT_TYPE_SIGNAL)
 
-	is_open = add_output_port("Is Open", PORT_TYPE_BOOLEAN)
-	opened = add_output_port("Opened", PORT_TYPE_SIGNAL)
-	closed = add_output_port("Closed", PORT_TYPE_SIGNAL)
+	is_open = add_output_port("Открыт", PORT_TYPE_BOOLEAN)
+	opened = add_output_port("Открытие", PORT_TYPE_SIGNAL)
+	closed = add_output_port("Закрытие", PORT_TYPE_SIGNAL)
 
 /obj/item/circuit_component/digital_valve/register_usb_parent(atom/movable/shell)
 	. = ..()

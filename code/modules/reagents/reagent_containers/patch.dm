@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/applicator/patch
-	name = "patch"
-	desc = "A chemical patch for touch based applications."
+	name = "пластырь"
+	desc = "Химический пластырь для контактного применения."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bandaid_blank"
 	inhand_icon_state = null
@@ -20,11 +20,11 @@
 	var/obj/item/bodypart/affecting = carbon_eater.get_bodypart(check_zone(user.zone_selected))
 
 	if(!affecting)
-		to_chat(user, span_warning("The limb is missing!"))
+		to_chat(user, span_warning("Конечность отсутствует!"))
 		return FALSE
 
 	if(!IS_ORGANIC_LIMB(affecting))
-		to_chat(user, span_notice("Medicine won't work on an inorganic limb!"))
+		to_chat(user, span_notice("Лекарство не подействует на неорганическую конечность!"))
 		return FALSE
 
 	return TRUE
@@ -175,25 +175,25 @@
 	transfer_per_second = /obj/item/reagent_containers/applicator/patch::volume
 
 /obj/item/reagent_containers/applicator/patch/libital
-	name = "libital patch (brute)"
-	desc = "A pain reliever. Does minor liver damage. Diluted with Granibitaluri."
+	name = "пластырь с либиталом (мех.)"
+	desc = "Обезболивающее средство. Наносит небольшой урон печени. Разбавлено гранибиталури."
 	list_reagents = list(/datum/reagent/medicine/c2/libital = 2, /datum/reagent/medicine/granibitaluri = 8) //10 iterations
 	icon_state = "bandaid_brute"
 
 /obj/item/reagent_containers/applicator/patch/aiuri
-	name = "aiuri patch (burn)"
-	desc = "Helps with burn injuries. Does minor eye damage. Diluted with Granibitaluri."
+	name = "пластырь с айури (ожоги)"
+	desc = "Помогает при ожоговых травмах. Наносит небольшой урон глазам. Разбавлено гранибиталури."
 	list_reagents = list(/datum/reagent/medicine/c2/aiuri = 2, /datum/reagent/medicine/granibitaluri = 8)
 	icon_state = "bandaid_burn"
 
 /obj/item/reagent_containers/applicator/patch/fent
-	name = "unmarked patch"
-	desc = "An unmarked, unlabeled transdermal patch for you to wear!"
+	name = "немаркированный пластырь"
+	desc = "Немаркированный трансдермальный пластырь без этикетки."
 	list_reagents = list(/datum/reagent/toxin/fentanyl = 2)
 
 /obj/item/reagent_containers/applicator/patch/synthflesh
-	name = "synthflesh patch"
-	desc = "Helps with brute and burn injuries. Slightly toxic. Three patches applied can restore a corpse husked by burns."
+	name = "пластырь с синтеплотью"
+	desc = "Помогает при механических травмах и ожогах. Слегка токсичен. Три пластыря могут восстановить обугленный ожогами труп."
 	list_reagents = list(/datum/reagent/medicine/c2/synthflesh = 20)
 	list_reagents_purity = 1
 	icon_state = "bandaid_both"
@@ -213,8 +213,8 @@
 		carbies.visible_message(span_boldwarning("[carbies]'s burns need to be repaired first before synthflesh will unhusk it!"))
 
 /obj/item/reagent_containers/applicator/patch/ondansetron
-	name = "ondansetron patch"
-	desc = "Alleviates nausea. May cause drowsiness."
+	name = "пластырь с ондансетроном"
+	desc = "Облегчает тошноту. Может вызывать сонливость."
 	list_reagents = list(/datum/reagent/medicine/ondansetron = 10)
 	icon_state = "bandaid_toxin"
 

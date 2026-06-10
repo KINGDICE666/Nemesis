@@ -1,8 +1,8 @@
 /obj/machinery/atmospherics/pipe/layer_manifold
-	name = "layer adaptor"
+	name = "адаптер слоев"
 	icon = 'icons/obj/pipes_n_cables/manifold.dmi'
 	icon_state = "manifoldlayer"
-	desc = "A special pipe to bridge pipe layers with."
+	desc = "Специальная труба для соединения разных слоев трубопровода."
 	dir = SOUTH
 	initialize_directions = NORTH|SOUTH
 	pipe_flags = PIPING_ALL_LAYER | PIPING_DEFAULT_LAYER_ONLY | PIPING_CARDINAL_AUTONORMALIZE | PIPING_BRIDGE

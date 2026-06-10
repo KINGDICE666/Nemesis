@@ -3,9 +3,9 @@
 #define DEFIB_CAN_HURT(source) (source.combat || (source.req_defib && !source.defib.safety))
 
 /obj/item/defibrillator
-	name = "defibrillator"
-	desc = "A device that delivers powerful shocks to detachable paddles that resuscitate incapacitated patients. \
-	Has a rear bracket for attachments to wall mounts and medical cyborgs."
+	name = "дефибриллятор"
+	desc = "Устройство, подающее мощные разряды на съёмные электроды для реанимации недееспособных пациентов. \
+	Сзади есть крепление для настенных держателей и медицинских киборгов."
 	icon = 'icons/obj/medical/defib.dmi'
 	icon_state = "defibunit"
 	inhand_icon_state = "defibunit"
@@ -68,9 +68,9 @@
 	if(!cell_removable)
 		return
 	if(cell)
-		. += span_notice("Use a screwdriver to remove the cell.")
+		. += span_notice("Используйте отвёртку, чтобы извлечь батарею.")
 	else
-		. += span_warning("It has no power cell!")
+		. += span_warning("В нём нет батареи!")
 
 /obj/item/defibrillator/fire_act(exposed_temperature, exposed_volume)
 	. = ..()
@@ -124,7 +124,7 @@
 		if(user.get_slot_by_item(src) & slot_flags)
 			ui_action_click(user, modifiers)
 		else
-			balloon_alert(user, "equip the unit first!")
+			balloon_alert(user, "сначала наденьте блок!")
 		return
 	else if(istype(loc, /obj/machinery/defibrillator_mount))
 		ui_action_click(user, modifiers) //checks for this are handled in defibrillator.mount.dm
@@ -135,7 +135,7 @@
 		return FALSE
 
 	cell.forceMove(get_turf(src))
-	balloon_alert(user, "removed [cell]")
+	balloon_alert(user, "извлечено: [cell]")
 	cell = null
 	tool.play_tool_sound(src, 50)
 	update_power()
@@ -150,16 +150,16 @@
 
 	var/obj/item/stock_parts/power_store/cell/new_cell = item
 	if(!isnull(cell))
-		to_chat(user, span_warning("[src] already has a cell!"))
+		to_chat(user, span_warning("В [src] уже есть батарея!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(new_cell.maxcharge < paddles.revivecost)
-		to_chat(user, span_notice("[src] requires a higher capacity cell."))
+		to_chat(user, span_notice("[src] требует батарею большей ёмкости."))
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(new_cell, src))
 		return NONE
 	cell = new_cell
-	to_chat(user, span_notice("You install a cell in [src]."))
+	to_chat(user, span_notice("Вы устанавливаете батарею в [src]."))
 	update_power()
 	return ITEM_INTERACT_SUCCESS
 
@@ -167,8 +167,8 @@
 
 	safety = !safety
 
-	var/enabled_or_disabled = (safety ? "enabled" : "disabled")
-	balloon_alert(user, "safety protocols [enabled_or_disabled]")
+	var/enabled_or_disabled = (safety ? "включены" : "выключены")
+	balloon_alert(user, "протоколы безопасности [enabled_or_disabled]")
 
 	return TRUE
 
@@ -187,7 +187,7 @@
 		//Detach the paddles into the user's hands
 		if(!user.put_in_hands(paddles))
 			on = FALSE
-			to_chat(user, span_warning("You need a free hand to hold the paddles!"))
+			to_chat(user, span_warning("Нужна свободная рука, чтобы держать электроды!"))
 			update_power()
 			return
 	else
@@ -235,10 +235,10 @@
 /obj/item/defibrillator/proc/finish_charging()
 	if(cell)
 		if(cell.charge >= paddles.revivecost)
-			visible_message(span_notice("[src] beeps: Unit ready."))
+			visible_message(span_notice("[src] пищит: устройство готово."))
 			playsound(src, 'sound/machines/defib/defib_ready.ogg', 50, FALSE)
 		else
-			visible_message(span_notice("[src] beeps: Charge depleted."))
+			visible_message(span_notice("[src] пищит: заряд исчерпан."))
 			playsound(src, 'sound/machines/defib/defib_failed.ogg', 50, FALSE)
 	paddles.cooldown = FALSE
 	paddles.update_appearance()
@@ -251,8 +251,8 @@
 	return COMPONENT_DEFIB_STOP
 
 /obj/item/defibrillator/compact
-	name = "compact defibrillator"
-	desc = "A belt-equipped defibrillator that can be rapidly deployed."
+	name = "компактный дефибриллятор"
+	desc = "Дефибриллятор с креплением на пояс, который можно быстро развернуть."
 	icon_state = "defibcompact"
 	inhand_icon_state = null
 	slot_flags = ITEM_SLOT_BELT|ITEM_SLOT_SUITSTORE|ITEM_SLOT_DEX_STORAGE
@@ -271,13 +271,13 @@
 	update_power()
 
 /obj/item/defibrillator/compact/loaded/cmo // subtype for the spy steal objective
-	name = "chief medical officer's compact defibrillator"
+	name = "компактный дефибриллятор главного врача"
 	icon_state = "defibcmo"
 	resistance_flags = INDESTRUCTIBLE // So no cheesy getting rid of like other steal/head items
 
 /obj/item/defibrillator/compact/combat
-	name = "combat defibrillator"
-	desc = "A belt-equipped blood-red defibrillator. Can revive through thick clothing, has an experimental self-recharging battery, and can be utilized as a weapon via applying the paddles while in a combat stance."
+	name = "боевой дефибриллятор"
+	desc = "Кроваво-красный дефибриллятор с креплением на пояс. Может реанимировать через плотную одежду, имеет экспериментальную самозаряжающуюся батарею и может использоваться как оружие при применении электродов в боевой стойке."
 	icon_state = "defibcombat" //needs defib inhand sprites
 	inhand_icon_state = null
 	worn_icon_state = "defibcombat"
@@ -298,8 +298,8 @@
 	update_power()
 
 /obj/item/defibrillator/compact/combat/loaded/nanotrasen
-	name = "elite Nanotrasen defibrillator"
-	desc = "A belt-equipped state-of-the-art defibrillator. Can revive through thick clothing, has an experimental self-recharging battery, and can be utilized as a weapon via applying the paddles while in a combat stance."
+	name = "элитный дефибриллятор Nanotrasen"
+	desc = "Современный дефибриллятор с креплением на пояс. Может реанимировать через плотную одежду, имеет экспериментальную самозаряжающуюся батарею и может использоваться как оружие при применении электродов в боевой стойке."
 	icon_state = "defibnt" //needs defib inhand sprites
 	inhand_icon_state = null
 	worn_icon_state = "defibnt"
@@ -309,8 +309,8 @@
 //paddles
 
 /obj/item/shockpaddles
-	name = "defibrillator paddles"
-	desc = "A pair of plastic-gripped paddles with flat metal surfaces that are used to deliver powerful electric shocks."
+	name = "электроды дефибриллятора"
+	desc = "Пара электродов с пластиковыми рукоятками и плоскими металлическими поверхностями для подачи мощных электрических разрядов."
 	icon = 'icons/obj/medical/defib.dmi'
 	icon_state = "defibpaddles0"
 	inhand_icon_state = "defibpaddles0"
@@ -366,9 +366,9 @@
 	if(!in_range(src,defib))
 		if(isliving(loc))
 			var/mob/living/user = loc
-			to_chat(user, span_warning("[defib]'s paddles overextend and come out of your hands!"))
+			to_chat(user, span_warning("Электроды [defib] натягивают кабель и вырываются из ваших рук!"))
 		else
-			visible_message(span_notice("[src] snap back into [defib]."))
+			visible_message(span_notice("[src] возвращаются в [defib]."))
 		snap_back()
 
 /obj/item/shockpaddles/proc/recharge(time = 0)
@@ -380,7 +380,7 @@
 
 /obj/item/shockpaddles/proc/finish_recharge()
 	var/turf/current_turf = get_turf(src)
-	current_turf.audible_message(span_notice("[src] beeps: Unit is recharged."))
+	current_turf.audible_message(span_notice("[src] пищит: устройство перезаряжено."))
 	playsound(src, 'sound/machines/defib/defib_ready.ogg', 50, FALSE)
 	cooldown = FALSE
 	update_appearance()
@@ -416,7 +416,7 @@
 	UnregisterSignal(defib, COMSIG_MOVABLE_MOVED)
 	if(user)
 		UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
-		to_chat(user, span_notice("The paddles snap back into the main unit."))
+		to_chat(user, span_notice("Электроды возвращаются в основной блок."))
 	snap_back()
 	return ..()
 
@@ -432,20 +432,20 @@
 		return
 	defib?.update_power()
 	if(req_defib && !defib.powered)
-		user.visible_message(span_warning("[defib] beeps: Not enough charge!"))
+		user.visible_message(span_warning("[defib] пищит: недостаточно заряда!"))
 		playsound(src, 'sound/machines/defib/defib_failed.ogg', 50, FALSE)
 		return
 	if(!HAS_TRAIT(src, TRAIT_WIELDED))
 		if(iscyborg(user))
-			to_chat(user, span_warning("You must activate the paddles in your active module before you can use them on someone!"))
+			to_chat(user, span_warning("Нужно активировать электроды в активном модуле, прежде чем использовать их на ком-либо!"))
 		else
-			to_chat(user, span_warning("You need to wield the paddles in both hands before you can use them on someone!"))
+			to_chat(user, span_warning("Нужно держать электроды двумя руками, прежде чем использовать их на ком-либо!"))
 		return
 	if(cooldown)
 		if(req_defib)
-			to_chat(user, span_warning("[defib] is recharging!"))
+			to_chat(user, span_warning("[defib] перезаряжается!"))
 		else
-			to_chat(user, span_warning("[src] are recharging!"))
+			to_chat(user, span_warning("[src] перезаряжаются!"))
 		return
 
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
@@ -454,14 +454,14 @@
 
 	if(!iscarbon(M))
 		if(req_defib)
-			to_chat(user, span_warning("The instructions on [defib] don't mention how to revive that..."))
+			to_chat(user, span_warning("В инструкции к [defib] не сказано, как реанимировать это..."))
 		else
-			to_chat(user, span_warning("You aren't sure how to revive that..."))
+			to_chat(user, span_warning("Вы не уверены, как это реанимировать..."))
 		return
 	var/mob/living/carbon/H = M
 
 	if(user.zone_selected != BODY_ZONE_CHEST)
-		to_chat(user, span_warning("You need to target your patient's chest with [src]!"))
+		to_chat(user, span_warning("Нужно целиться в грудь пациента с [src]!"))
 		return
 
 	if(user.combat_mode)
@@ -675,7 +675,7 @@
 	return NONE
 
 /obj/item/shockpaddles/cyborg
-	name = "cyborg defibrillator paddles"
+	name = "электроды дефибриллятора киборга"
 	icon = 'icons/obj/medical/defib.dmi'
 	icon_state = "defibpaddles0"
 	inhand_icon_state = "defibpaddles0"
@@ -694,8 +694,8 @@
 	. = ..()
 
 /obj/item/shockpaddles/syndicate
-	name = "syndicate defibrillator paddles"
-	desc = "A pair of paddles used to revive deceased operatives. They possess both the ability to penetrate armor and to deliver powerful or disabling shocks offensively."
+	name = "электроды дефибриллятора Синдиката"
+	desc = "Пара электродов для реанимации погибших оперативников. Способны пробивать броню и наносить мощные или обездвиживающие разряды в бою."
 	combat = TRUE
 	icon = 'icons/obj/medical/defib.dmi'
 	icon_state = "syndiepaddles0"
@@ -703,8 +703,8 @@
 	base_icon_state = "syndiepaddles"
 
 /obj/item/shockpaddles/syndicate/nanotrasen
-	name = "elite Nanotrasen defibrillator paddles"
-	desc = "A pair of paddles used to revive deceased ERT members. They possess both the ability to penetrate armor and to deliver powerful or disabling shocks offensively."
+	name = "элитные электроды дефибриллятора Nanotrasen"
+	desc = "Пара электродов для реанимации погибших членов ОБР. Способны пробивать броню и наносить мощные или обездвиживающие разряды в бою."
 	icon_state = "ntpaddles0"
 	inhand_icon_state = "ntpaddles0"
 	base_icon_state = "ntpaddles"

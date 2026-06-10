@@ -9,8 +9,8 @@
 	//node2 is output port
 	//node1 is input port
 
-	name = "dual-port air vent"
-	desc = "Has a valve and pump attached to it. There are two ports."
+	name = "двухпортовая воздушная вентиляция"
+	desc = "К ней присоединены клапан и насос. Имеет два порта."
 
 	hide = TRUE
 
@@ -100,7 +100,7 @@
 		parent2.update = TRUE
 
 /obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume
-	name = "large dual-port air vent"
+	name = "большая двухпортовая воздушная вентиляция"
 
 /obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume/Initialize(mapload)
 	. = ..()

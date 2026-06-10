@@ -1,6 +1,6 @@
 /obj/machinery/modular_shield_generator
-	name = "modular shield generator"
-	desc = "A forcefield generator, it seems more stationary than its cousins. It can't handle G-force and will require frequent reboots when built on mobile craft."
+	name = "модульный генератор щита"
+	desc = "Генератор силового поля. Он кажется более стационарным, чем его аналоги, плохо переносит перегрузки и требует частых перезапусков при установке на подвижные суда."
 	icon = 'icons/obj/machines/modular_shield_generator.dmi'
 	icon_state = "gen_recovering_closed"
 	density = TRUE
@@ -74,7 +74,7 @@
 	var/icon_type = "gen"
 
 	///The name modular shield console tgui's see us as
-	var/display_name = "Shield Generator"
+	var/display_name = "Генератор щита"
 
 /obj/machinery/modular_shield_generator/power_change()
 	. = ..()
@@ -112,7 +112,7 @@
 		activate_shields()
 
 /datum/wires/modular_shield_generator
-	proper_name = "Modular shield generator"
+	proper_name = "Модульный генератор щита"
 	randomize = FALSE
 	holder_type = /obj/machinery/modular_shield_generator
 
@@ -154,7 +154,7 @@
 
 /obj/machinery/modular_shield_generator/multitool_act(mob/living/user, obj/item/multitool/multi)
 	multi.set_buffer(src)
-	balloon_alert(user, "saved to buffer")
+	balloon_alert(user, "сохранено в буфер")
 	return ITEM_INTERACT_SUCCESS
 
 ///toggles the forcefield on and off
@@ -392,8 +392,8 @@
 		random_shield.alpha = max(255 * (stored_strength/max_strength), 40)
 
 /obj/machinery/modular_shield_generator/gate
-	name = "modular shield gate"
-	desc = "A forcefield generator that can deploy a flat wall, it seems more stationary than its cousins. It can't handle G-force and will require frequent reboots when built on mobile craft."
+	name = "модульные щитовые ворота"
+	desc = "Генератор силового поля, способный развернуть плоскую стену. Он кажется более стационарным, чем его аналоги, плохо переносит перегрузки и требует частых перезапусков при установке на подвижные суда."
 	icon = 'icons/obj/machines/modular_shield_generator.dmi'
 	icon_state = "gate_recovering_closed"
 	density = FALSE
@@ -401,7 +401,7 @@
 	internal_penalty = FALSE
 	layer = GIB_LAYER
 	icon_type = "gate"
-	display_name = "Shield Gate"
+	display_name = "Щитовые ворота"
 
 /obj/machinery/modular_shield_generator/gate/ui_interact(mob/user, datum/tgui/ui)
 	return
@@ -449,8 +449,8 @@
 //Start of other machines
 ///The general code used for machines that want to connect to the network
 /obj/machinery/modular_shield/module
-	name = "modular shield debugger" //Filler name and sprite for testing
-	desc = "This is filler for testing you shouldn't see this."
+	name = "отладчик модульного щита" //Filler name and sprite for testing
+	desc = "Тестовая заглушка, вы не должны это видеть."
 	icon = 'icons/obj/machines/mech_bay.dmi'
 	icon_state = "recharge_port"
 	density = TRUE
@@ -490,9 +490,9 @@
 	. = ..()
 
 	if(isnull(shield_generator) && isnull(connected_node))
-		. += "It can be loosened and rotated with a screwdriver and wrench. It can be connected to a node or generator with a multitool."
+		. += "Его можно ослабить и повернуть отверткой и ключом. Мультитулом его можно подключить к узлу или генератору."
 		return
-	. += "It can be loosed and rotated with a screwdriver and wrench, rotating it will sever its connection."
+	. += "Его можно ослабить и повернуть отверткой и ключом; поворот разорвет подключение."
 
 /obj/machinery/modular_shield/module/screwdriver_act(mob/living/user, obj/item/tool)
 	. = ..()
@@ -501,9 +501,9 @@
 	tool.play_tool_sound(src, 50)
 	update_icon_state()
 	if(panel_open)
-		balloon_alert(user, "hatch opened")
+		balloon_alert(user, "люк открыт")
 		return TRUE
-	balloon_alert(user, "hatch closed")
+	balloon_alert(user, "люк закрыт")
 	return TRUE
 
 /obj/machinery/modular_shield/module/multitool_act(mob/living/user, obj/item/tool)
@@ -546,7 +546,7 @@
 /obj/machinery/modular_shield/module/proc/try_connect(user)
 
 	if(shield_generator || connected_node)
-		balloon_alert(user, "already connected to something!")
+		balloon_alert(user, "уже подключено!")
 		update_icon_state()
 		return
 
@@ -555,7 +555,7 @@
 	if(shield_generator)
 
 		LAZYOR(shield_generator.connected_modules, (src))
-		balloon_alert(user, "connected to generator")
+		balloon_alert(user, "подключено к генератору")
 		update_icon_state()
 		shield_generator.calculate_boost()
 		return
@@ -568,7 +568,7 @@
 		if(!connected_node.allow_boosters && is_booster)
 			connected_node = null
 			update_icon_state()
-			balloon_alert(user, "cant connect")
+			balloon_alert(user, "не подключается")
 			return
 
 		LAZYOR(connected_node.connected_through_us, (src))
@@ -576,19 +576,19 @@
 		shield_generator = connected_node.shield_generator
 		if(shield_generator)
 			LAZYOR(shield_generator.connected_modules, (src))
-			balloon_alert(user, "connected to generator")
+			balloon_alert(user, "подключено к генератору")
 			update_icon_state()
 			shield_generator.calculate_boost()
 			return
 		update_icon_state()
-		balloon_alert(user, "connected to node")
+		balloon_alert(user, "подключено к узлу")
 		return
 	update_icon_state()
-	balloon_alert(user, "no connection!")
+	balloon_alert(user, "нет подключения!")
 
 /obj/machinery/modular_shield/module/node
-	name = "modular shield node"
-	desc = "A waist high mess of humming pipes and wires that extend the modular shield network."
+	name = "узел модульного щита"
+	desc = "Гудящее сплетение труб и проводов по пояс высотой, расширяющее сеть модульного щита."
 	icon = 'icons/obj/machines/modular_shield_generator.dmi'
 	icon_state = "node_off_closed"
 	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 0.5
@@ -668,8 +668,8 @@
 		connected.update_icon_state()
 
 /obj/machinery/modular_shield/module/node/cable
-	name = "modular shield cable"
-	desc = "An ankle high mess of cables packed as low as possible at the cost of lacking connection components necessary for anything other than nodes and the generator itself."
+	name = "кабель модульного щита"
+	desc = "Сплетение кабелей по щиколотку высотой, уложенное как можно ниже ценой отсутствия компонентов подключения для всего, кроме узлов и самого генератора."
 	icon = 'icons/obj/machines/modular_shield_generator.dmi'
 	icon_state = "cable_node_closed_r_b_l"
 	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 0.1
@@ -694,8 +694,8 @@
 	icon_state = "cable_node_[panel_open ? "open" : "closed"]_[connected_right ? "r" : "nr"]_[connected_back ? "b" : "nb"]_[connected_left ? "l" : "nl"]"
 
 /obj/machinery/modular_shield/module/charger
-	name = "modular shield charger"
-	desc = "A machine that somehow fabricates hardlight using electrons."
+	name = "зарядник модульного щита"
+	desc = "Машина, которая каким-то образом создает жесткий свет с помощью электронов."
 	icon = 'icons/obj/machines/modular_shield_generator.dmi'
 	icon_state = "charger_off_closed"
 	is_booster = TRUE
@@ -722,8 +722,8 @@
 		shield_generator.calculate_boost()
 
 /obj/machinery/modular_shield/module/relay
-	name = "modular shield relay"
-	desc = "It helps the shield generator project farther out."
+	name = "реле модульного щита"
+	desc = "Помогает генератору щита проецировать поле дальше."
 	icon = 'icons/obj/machines/modular_shield_generator.dmi'
 	icon_state = "relay_off_closed"
 	is_booster = TRUE
@@ -750,8 +750,8 @@
 		shield_generator.calculate_boost()
 
 /obj/machinery/modular_shield/module/well
-	name = "modular shield well"
-	desc = "A device used to hold more hardlight for the modular shield generator."
+	name = "резервуар модульного щита"
+	desc = "Устройство для хранения большего количества жесткого света для модульного генератора щита."
 	icon = 'icons/obj/machines/modular_shield_generator.dmi'
 	icon_state = "well_off_closed"
 	is_booster = TRUE
@@ -779,15 +779,15 @@
 
 //The shield itself
 /obj/structure/emergency_shield/modular
-	name = "modular energy shield"
-	desc = "An energy shield with varying configurations."
+	name = "модульный энергетический щит"
+	desc = "Энергетический щит с изменяемыми конфигурациями."
 	color = "#00ffff"
 	density = FALSE
 	alpha = 100
 	flags_1 = PREVENT_CLICK_UNDER_1
 	explosion_block = 2
 	resistance_flags = INDESTRUCTIBLE //the shield itself is indestructible or at least should be
-	no_damage_feedback = "weakening the generator sustaining it"
+	no_damage_feedback = "ослабляя поддерживающий его генератор"
 	can_atmos_pass = ATMOS_PASS_NO
 
 	///The shield generator sustaining us

@@ -445,17 +445,17 @@
 		empty_pipe = TRUE
 
 	if(!empty_pipe)
-		to_chat(user, span_notice("You begin to unfasten \the [src]..."))
+		to_chat(user, span_notice("Вы начинаете откручивать [src]..."))
 
 	if (internal_pressure > 2 * ONE_ATMOSPHERE)
-		to_chat(user, span_warning("As you begin unwrenching \the [src] a gush of air blows in your face... maybe you should reconsider?"))
+		to_chat(user, span_warning("Когда вы начинаете откручивать [src], поток воздуха бьет вам в лицо... может, стоит передумать?"))
 		unsafe_wrenching = TRUE //Oh dear oh dear
 
 	if(I.use_tool(src, user, empty_pipe ? 0 : 2 SECONDS, volume = 50))
 		user.visible_message( \
-			"[user] unfastens \the [src].", \
-			span_notice("You unfasten \the [src]."), \
-			span_hear("You hear ratchet."))
+			"[user] откручивает [src].", \
+			span_notice("Вы откручиваете [src]."), \
+			span_hear("Вы слышите трещотку."))
 		investigate_log("was [span_warning("REMOVED")] by [key_name(usr)]", INVESTIGATE_ATMOS)
 
 		//You unwrenched a pipe full of pressure? Let's splat you into the wall, silly.
@@ -493,7 +493,7 @@
 		var/datum/gas_mixture/env_air = loc.return_air()
 		pressures = int_air.return_pressure() - env_air.return_pressure()
 
-	user.visible_message(span_danger("[user] is sent flying by pressure!"),span_userdanger("The pressure sends you flying!"))
+	user.visible_message(span_danger("[user] отлетает от давления!"),span_userdanger("Давление отбрасывает вас!"))
 
 	// if get_dir(src, user) is not 0, target is the edge_target_turf on that dir
 	// otherwise, edge_target_turf uses a random cardinal direction

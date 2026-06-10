@@ -1,8 +1,8 @@
 #define THERMOMACHINE_POWER_CONVERSION 0.01
 
 /obj/machinery/atmospherics/components/unary/thermomachine
-	name = "Temperature control unit"
-	desc = "Heats or cools gas in connected pipes."
+	name = "блок контроля температуры"
+	desc = "Нагревает или охлаждает газ в подключенных трубах."
 
 	icon = 'icons/map_icons/objects.dmi'
 	icon_state = "/obj/machinery/atmospherics/components/unary/thermomachine"
@@ -49,19 +49,19 @@
 
 /obj/machinery/atmospherics/components/unary/thermomachine/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
-	context[SCREENTIP_CONTEXT_CTRL_LMB] = "Turn [on ? "off" : "on"]"
-	context[SCREENTIP_CONTEXT_ALT_LMB] = "Cycle temperature"
+	context[SCREENTIP_CONTEXT_CTRL_LMB] = "[on ? "Выключить" : "Включить"]"
+	context[SCREENTIP_CONTEXT_ALT_LMB] = "Переключить температуру"
 	if(!held_item)
 		return CONTEXTUAL_SCREENTIP_SET
 	switch(held_item.tool_behaviour)
 		if(TOOL_SCREWDRIVER)
-			context[SCREENTIP_CONTEXT_LMB] = "[panel_open ? "Close" : "Open"] panel"
+			context[SCREENTIP_CONTEXT_LMB] = "[panel_open ? "Закрыть" : "Открыть"] панель"
 		if(TOOL_WRENCH)
-			context[SCREENTIP_CONTEXT_LMB] = "Rotate"
-			context[SCREENTIP_CONTEXT_RMB] = "[anchored ? "Unan" : "An"]chor"
+			context[SCREENTIP_CONTEXT_LMB] = "Повернуть"
+			context[SCREENTIP_CONTEXT_RMB] = "[anchored ? "Открепить" : "Закрепить"]"
 		if(TOOL_MULTITOOL)
-			context[SCREENTIP_CONTEXT_LMB] = "Change piping layer"
-			context[SCREENTIP_CONTEXT_RMB] = "Change piping color"
+			context[SCREENTIP_CONTEXT_LMB] = "Сменить слой труб"
+			context[SCREENTIP_CONTEXT_RMB] = "Сменить цвет труб"
 	return CONTEXTUAL_SCREENTIP_SET
 
 /obj/machinery/atmospherics/components/unary/thermomachine/is_connectable()
@@ -80,7 +80,7 @@
 	if(check_pipe_on_turf())
 		set_anchored(FALSE)
 		set_panel_open(TRUE)
-		balloon_alert(user, "the port is already in use!")
+		balloon_alert(user, "порт уже используется!")
 
 /obj/machinery/atmospherics/components/unary/thermomachine/RefreshParts()
 	. = ..()
@@ -133,20 +133,20 @@
 
 /obj/machinery/atmospherics/components/unary/thermomachine/examine(mob/user)
 	. = ..()
-	. += span_notice("With the panel open:")
-	. += span_notice(" -Use a wrench with left-click to rotate [src] and right-click to unanchor it.")
-	. += span_notice(" -Use a multitool with left-click to change the piping layer and right-click to change the piping color.")
-	. += span_notice(" -[EXAMINE_HINT("AltClick")] to cycle between temperaure ranges.")
-	. += span_notice(" -[EXAMINE_HINT("CtrlClick")] to toggle on/off.")
-	. += span_notice("The thermostat is set to [target_temperature]K ([(T0C-target_temperature)*-1]C).")
+	. += span_notice("При открытой панели:")
+	. += span_notice(" -ЛКМ гаечным ключом поворачивает [src], ПКМ открепляет его.")
+	. += span_notice(" -ЛКМ мультитулом меняет слой труб, ПКМ меняет цвет труб.")
+	. += span_notice(" -[EXAMINE_HINT("AltClick")] переключает диапазоны температуры.")
+	. += span_notice(" -[EXAMINE_HINT("CtrlClick")] включает/выключает устройство.")
+	. += span_notice("Термостат установлен на [target_temperature]K ([(T0C-target_temperature)*-1]C).")
 
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("Heat capacity at <b>[heat_capacity] Joules per Kelvin</b>.")
-		. += span_notice("Temperature range <b>[min_temperature]K - [max_temperature]K ([(T0C-min_temperature)*-1]C - [(T0C-max_temperature)*-1]C)</b>.")
+		. += span_notice("Теплоемкость: <b>[heat_capacity] Джоулей на Кельвин</b>.")
+		. += span_notice("Диапазон температуры: <b>[min_temperature]K - [max_temperature]K ([(T0C-min_temperature)*-1]C - [(T0C-max_temperature)*-1]C)</b>.")
 
 /obj/machinery/atmospherics/components/unary/thermomachine/click_alt(mob/living/user)
 	if(panel_open)
-		balloon_alert(user, "close panel!")
+		balloon_alert(user, "закройте панель!")
 		return CLICK_ACTION_BLOCKING
 
 	if(target_temperature == T20C)
@@ -157,7 +157,7 @@
 		target_temperature = T20C
 
 	investigate_log("was set to [target_temperature] K by [key_name(user)]", INVESTIGATE_ATMOS)
-	balloon_alert(user, "temperature reset to [target_temperature] K")
+	balloon_alert(user, "температура: [target_temperature] K")
 	update_appearance(UPDATE_ICON)
 	return CLICK_ACTION_SUCCESS
 
@@ -199,10 +199,10 @@
 
 /obj/machinery/atmospherics/components/unary/thermomachine/screwdriver_act(mob/living/user, obj/item/tool)
 	if(on)
-		balloon_alert(user, "turn off!")
+		balloon_alert(user, "выключите!")
 		return ITEM_INTERACT_SUCCESS
 	if(!anchored)
-		balloon_alert(user, "anchor!")
+		balloon_alert(user, "закрепите!")
 		return ITEM_INTERACT_SUCCESS
 
 	return default_deconstruction_screwdriver(user, tool)
@@ -215,10 +215,10 @@
 
 /obj/machinery/atmospherics/components/unary/thermomachine/multitool_act(mob/living/user, obj/item/multitool/multitool)
 	if(!panel_open)
-		balloon_alert(user, "open panel!")
+		balloon_alert(user, "откройте панель!")
 		return ITEM_INTERACT_SUCCESS
 	piping_layer = (piping_layer >= PIPING_LAYER_MAX) ? PIPING_LAYER_MIN : (piping_layer + 1)
-	to_chat(user, span_notice("You change the circuitboard to layer [piping_layer]."))
+	to_chat(user, span_notice("Вы переключаете плату на слой [piping_layer]."))
 	if(anchored)
 		reconnect_nodes()
 	update_appearance(UPDATE_ICON)
@@ -226,12 +226,12 @@
 
 /obj/machinery/atmospherics/components/unary/thermomachine/multitool_act_secondary(mob/living/user, obj/item/tool)
 	if(!panel_open)
-		balloon_alert(user, "open panel!")
+		balloon_alert(user, "откройте панель!")
 		return ITEM_INTERACT_SUCCESS
 	color_index = (color_index >= GLOB.pipe_paint_colors.len) ? (color_index = 1) : (color_index = 1 + color_index)
 	set_pipe_color(GLOB.pipe_paint_colors[GLOB.pipe_paint_colors[color_index]])
-	visible_message(span_notice("[user] set [src]'s pipe color to [GLOB.pipe_color_name[pipe_color]]."), ignored_mobs = user)
-	to_chat(user, span_notice("You set [src]'s pipe color to [GLOB.pipe_color_name[pipe_color]]."))
+	visible_message(span_notice("[user] меняет цвет труб [src] на [GLOB.pipe_color_name[pipe_color]]."), ignored_mobs = user)
+	to_chat(user, span_notice("Вы меняете цвет труб [src] на [GLOB.pipe_color_name[pipe_color]]."))
 	if(anchored)
 		reconnect_nodes()
 	update_appearance(UPDATE_ICON)

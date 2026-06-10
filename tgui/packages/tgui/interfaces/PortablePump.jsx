@@ -20,20 +20,20 @@ export const PortablePump = (props) => {
     minPressure,
     maxPressure,
   } = data;
-  const pump_or_port = connected ? 'Port' : 'Pump';
-  const area_or_tank = holding ? 'Tank' : 'Area';
+  const pump_or_port = connected ? 'Порт' : 'Насос';
+  const area_or_tank = holding ? 'Баллон' : 'Зона';
   return (
     <Window width={300} height={340}>
       <Window.Content>
         <PortableBasicInfo />
         <Section
-          title="Pumping"
+          title="Перекачка"
           buttons={
             <Button
               content={
                 direction
-                  ? `${area_or_tank} → ${pump_or_port}`
-                  : `${pump_or_port} → ${area_or_tank}`
+                  ? `${area_or_tank} -> ${pump_or_port}`
+                  : `${pump_or_port} -> ${area_or_tank}`
               }
               color={!direction && !holding ? 'caution' : null}
               onClick={() => act('direction')}
@@ -41,7 +41,7 @@ export const PortablePump = (props) => {
           }
         >
           <LabeledList>
-            <LabeledList.Item label="Output">
+            <LabeledList.Item label="Выход">
               <NumberInput
                 value={targetPressure}
                 unit="kPa"
@@ -56,7 +56,7 @@ export const PortablePump = (props) => {
                 }
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Presets">
+            <LabeledList.Item label="Пресеты">
               <Button
                 icon="minus"
                 disabled={targetPressure === minPressure}

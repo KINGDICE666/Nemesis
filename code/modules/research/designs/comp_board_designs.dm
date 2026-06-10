@@ -37,8 +37,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/board/rdcamera
-	name = "Research Monitor Board"
-	desc = "Allows for the construction of circuit boards used to build research camera computers."
+	name = "плата монитора исследований"
+	desc = "Позволяет создавать печатные платы для компьютеров наблюдения за исследовательским отделом."
 	id = "rdcamera"
 	build_path = /obj/item/circuitboard/computer/research
 	category = list(

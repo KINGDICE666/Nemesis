@@ -4,14 +4,14 @@
 #define SCANMODE_COUNT 2 // Update this to be the number of scan modes if you add more
 
 /obj/item/healthanalyzer
-	name = "health analyzer"
+	name = "анализатор здоровья"
 	icon = 'icons/obj/devices/scanner.dmi'
 	icon_state = "health"
 	inhand_icon_state = "healthanalyzer"
 	worn_icon_state = "healthanalyzer"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
-	desc = "A hand-held body scanner capable of distinguishing vital signs of the subject. Has a side button to scan for chemicals, and can be toggled to scan wounds."
+	desc = "Ручной сканер тела, способный считывать жизненные показатели пациента. Имеет боковую кнопку для химического сканирования и может переключаться в режим анализа ран."
 	obj_flags = CONDUCTS_ELECTRICITY
 	item_flags = NOBLUDGEON
 	slot_flags = ITEM_SLOT_BELT
@@ -45,7 +45,7 @@
 /obj/item/healthanalyzer/examine(mob/user)
 	. = ..()
 	if(src.mode != SCANNER_NO_MODE)
-		. += span_notice("Alt-click [src] to toggle the limb damage readout. Ctrl-shift-click to print readout report.")
+		. += span_notice("Alt-клик по [src] переключает отображение повреждений конечностей. Ctrl-shift-клик печатает отчёт сканирования.")
 
 /obj/item/healthanalyzer/suicide_act(mob/living/carbon/user)
 	user.visible_message(span_suicide("[user] begins to analyze [user.p_them()]self with [src]! The display shows that [user.p_theyre()] dead!"))
@@ -58,9 +58,9 @@
 	scanmode = (scanmode + 1) % SCANMODE_COUNT
 	switch(scanmode)
 		if(SCANMODE_HEALTH)
-			to_chat(user, span_notice("You switch the health analyzer to check physical health."))
+			to_chat(user, span_notice("Вы переключаете анализатор здоровья на проверку физического состояния."))
 		if(SCANMODE_WOUND)
-			to_chat(user, span_notice("You switch the health analyzer to report extra info on wounds."))
+			to_chat(user, span_notice("Вы переключаете анализатор здоровья на расширенный отчёт по ранам."))
 
 /obj/item/healthanalyzer/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!isliving(interacting_with))
@@ -91,11 +91,11 @@
 		return
 
 	if(ispodperson(M) && !advanced)
-		to_chat(user, span_info("[M]'s biological structure is too complex for the health analyzer."))
+		to_chat(user, span_info("Биологическая структура [M] слишком сложна для анализатора здоровья."))
 		return
 
-	user.visible_message(span_notice("[user] analyzes [M]'s vitals."))
-	balloon_alert(user, "analyzing vitals")
+	user.visible_message(span_notice("[user] анализирует жизненные показатели [M]."))
+	balloon_alert(user, "анализ показателей")
 	playsound(user.loc, 'sound/items/healthanalyzer.ogg', 50)
 
 	var/readability_check = user.can_read(src) && !user.is_blind()
@@ -129,11 +129,11 @@
 
 	switch (scanmode)
 		if (SCANMODE_HEALTH)
-			context[SCREENTIP_CONTEXT_LMB] = "Scan health"
+			context[SCREENTIP_CONTEXT_LMB] = "Сканировать здоровье"
 		if (SCANMODE_WOUND)
-			context[SCREENTIP_CONTEXT_LMB] = "Scan wounds"
+			context[SCREENTIP_CONTEXT_LMB] = "Сканировать раны"
 
-	context[SCREENTIP_CONTEXT_RMB] = "Scan chemicals"
+	context[SCREENTIP_CONTEXT_RMB] = "Сканировать реагенты"
 
 	return CONTEXTUAL_SCREENTIP_SET
 
@@ -474,8 +474,8 @@
 	var/obj/item/paper/medical_report/report_paper = new(get_turf(src))
 
 	report_paper.color = "#99ccff"
-	report_paper.name = "health scan report - [server_timestamp(format = "hh:mm", ic_time = TRUE)]"
-	var/report_text = "<center><B>Health scan report</br>\
+	report_paper.name = "отчёт сканирования здоровья - [server_timestamp(format = "hh:mm", ic_time = TRUE)]"
+	var/report_text = "<center><B>Отчёт сканирования здоровья</br>\
 		Time of retrieval: [UNDERLINED_HTML_TEXT("[server_timestamp(format = "hh:mm", ic_time = TRUE)]", "Shift Time: [round_timestamp(format = "hh:mm")]")]</B></center><HR>"
 	report_text += last_scan_text
 
@@ -600,9 +600,9 @@
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/healthanalyzer/advanced
-	name = "advanced health analyzer"
+	name = "продвинутый анализатор здоровья"
 	icon_state = "health_adv"
-	desc = "A hand-held body scanner able to distinguish vital signs of the subject with high accuracy."
+	desc = "Ручной сканер тела, способный с высокой точностью считывать жизненные показатели пациента."
 	advanced = TRUE
 
 #define AID_EMOTION_NEUTRAL "neutral"
@@ -627,7 +627,7 @@
 			if (scanner.give_wound_treatment_bonus)
 				ADD_TRAIT(current_wound, TRAIT_WOUND_SCANNED, ANALYZER_TRAIT)
 				if(!advised)
-					to_chat(user, span_notice("You notice how bright holo-images appear over your [(length(wounded_part.wounds) || length(patient.get_wounded_bodyparts()) ) > 1 ? "various wounds" : "wound"]. They seem to be filled with helpful information, this should make treatment easier!"))
+					to_chat(user, span_notice("Вы замечаете, как над [(length(wounded_part.wounds) || length(patient.get_wounded_bodyparts()) ) > 1 ? "разными ранами" : "раной"] появляются яркие голоизображения. Они заполнены полезной информацией, лечение должно стать проще!"))
 					advised = TRUE
 		render_list += "</span>"
 
@@ -636,9 +636,9 @@
 			var/obj/item/healthanalyzer/simple/simple_scanner = scanner
 			// Only emit the cheerful scanner message if this scan came from a scanner
 			playsound(simple_scanner, 'sound/machines/ping.ogg', 50, FALSE)
-			to_chat(user, span_notice("\The [simple_scanner] makes a happy ping and briefly displays a smiley face with several exclamation points! It's really excited to report that [patient] has no wounds!"))
+			to_chat(user, span_notice("\The [simple_scanner] радостно пикает и ненадолго показывает улыбающееся лицо с несколькими восклицательными знаками! Он очень рад сообщить, что у [patient] нет ран!"))
 			simple_scanner.show_emotion(AID_EMOTION_HAPPY)
-		to_chat(user, "<span class='notice ml-1'>No wounds detected in subject.</span>")
+		to_chat(user, "<span class='notice ml-1'>У пациента не обнаружено ран.</span>")
 	else
 		to_chat(user, custom_boxed_message("blue_box", jointext(render_list, "")), type = MESSAGE_TYPE_INFO)
 		if(simple_scan)
@@ -648,9 +648,9 @@
 
 
 /obj/item/healthanalyzer/simple
-	name = "wound analyzer"
+	name = "анализатор ран"
 	icon_state = "first_aid"
-	desc = "A helpful, child-proofed, and most importantly, extremely cheap MeLo-Tech medical scanner used to diagnose injuries and recommend treatment for serious wounds. While it might not sound very informative for it to be able to tell you if you have a gaping hole in your body or not, it applies a temporary holoimage near the wound with information that is guaranteed to double the efficacy and speed of treatment."
+	desc = "Полезный, защищённый от детей и, главное, крайне дешёвый медицинский сканер MeLo-Tech для диагностики травм и рекомендаций по лечению серьёзных ран. Он создаёт рядом с раной временное голоизображение с информацией, гарантированно повышающей эффективность и скорость лечения."
 	mode = SCANNER_NO_MODE
 	give_wound_treatment_bonus = TRUE
 
@@ -664,12 +664,12 @@
 	/// How often one can ask for encouragement
 	var/patience = 10 SECONDS
 	/// What do we scan for, only used in descriptions
-	var/scan_for_what = "serious injuries"
+	var/scan_for_what = "серьёзные травмы"
 
 /obj/item/healthanalyzer/simple/attack_self(mob/user)
 	if(next_encouragement < world.time)
 		playsound(src, 'sound/machines/ping.ogg', 50, FALSE)
-		to_chat(user, span_notice("[src] makes a happy ping and [pick(encouragements)]!"))
+		to_chat(user, span_notice("[src] радостно пикает и [pick(encouragements)]!"))
 		next_encouragement = world.time + 10 SECONDS
 		show_emotion(AID_EMOTION_HAPPY)
 	else if(emotion != AID_EMOTION_ANGRY)
@@ -678,14 +678,14 @@
 		violence(user)
 
 /obj/item/healthanalyzer/simple/proc/greed_warning(mob/user)
-	to_chat(user, span_warning("[src] displays an eerily high-definition frowny face, chastizing you for asking it for too much encouragement."))
+	to_chat(user, span_warning("[src] показывает пугающе чёткое недовольное лицо, упрекая вас за слишком частые просьбы о поддержке."))
 	show_emotion(AID_EMOTION_ANGRY)
 
 /obj/item/healthanalyzer/simple/proc/violence(mob/user)
 	playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50, FALSE)
 	if(isliving(user))
 		var/mob/living/L = user
-		to_chat(L, span_warning("[src] makes a disappointed buzz and pricks your finger for being greedy. Ow!"))
+		to_chat(L, span_warning("[src] разочарованно жужжит и колет ваш палец за жадность. Ай!"))
 		flick(icon_state + "_pinprick", src)
 		violence_damage(user)
 		user.dropItemToGround(src)
@@ -702,13 +702,13 @@
 
 	add_fingerprint(user)
 	user.visible_message(
-		span_notice("[user] scans [interacting_with] for [scan_for_what]."),
-		span_notice("You scan [interacting_with] for [scan_for_what]."),
+		span_notice("[user] сканирует [interacting_with] на [scan_for_what]."),
+		span_notice("Вы сканируете [interacting_with] на [scan_for_what]."),
 	)
 
 	if(!iscarbon(interacting_with))
 		playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 30, TRUE)
-		to_chat(user, span_notice("[src] makes a sad buzz and briefly displays an unhappy face, indicating it can't scan [interacting_with]."))
+		to_chat(user, span_notice("[src] грустно жужжит и ненадолго показывает недовольное лицо, сообщая, что не может просканировать [interacting_with]."))
 		show_emotion(AI_EMOTION_SAD)
 		return ITEM_INTERACT_BLOCKING
 
@@ -745,19 +745,19 @@
 	update_appearance(UPDATE_OVERLAYS)
 
 /obj/item/healthanalyzer/simple/miner
-	name = "mining wound analyzer"
+	name = "шахтёрский анализатор ран"
 	icon_state = "miner_aid"
-	desc = "A helpful, child-proofed, and most importantly, extremely cheap MeLo-Tech medical scanner used to diagnose injuries and recommend treatment for serious wounds. While it might not sound very informative for it to be able to tell you if you have a gaping hole in your body or not, it applies a temporary holoimage near the wound with information that is guaranteed to double the efficacy and speed of treatment. This one has a cool aesthetic antenna that doesn't actually do anything!"
+	desc = "Полезный, защищённый от детей и, главное, крайне дешёвый медицинский сканер MeLo-Tech для диагностики травм и рекомендаций по лечению серьёзных ран. Он создаёт рядом с раной временное голоизображение с информацией, повышающей эффективность и скорость лечения. У этой версии есть стильная антенна, которая на самом деле ничего не делает!"
 
 /obj/item/healthanalyzer/simple/disease
-	name = "disease state analyzer"
-	desc = "Another of MeLo-Tech's dubiously useful medsci scanners, the disease analyzer is a pretty rare find these days - NT found out that giving their hospitals the lowest-common-denominator pandemic equipment resulted in too much financial loss of life to be profitable. There are rumours that the inbuilt AI is jealous of the first aid analyzer's success."
+	name = "анализатор болезней"
+	desc = "Ещё один сомнительно полезный медицинский сканер MeLo-Tech. В наши дни анализатор болезней встречается редко: NT выяснила, что снабжать больницы самым дешёвым пандемическим оборудованием слишком убыточно. Ходят слухи, что встроенный ИИ завидует успеху анализатора первой помощи."
 	icon_state = "disease_aid"
 	mode = SCANNER_NO_MODE
 	encouragements = list("encourages you to take your medication", "briefly displays a spinning cartoon heart", "reasures you about your condition", \
 			"reminds you that everyone is doing their best", "displays a message wishing you well", "displays a message saying how proud it is that you're taking care of yourself", "formally absolves you of all your sins")
 	patience = 20 SECONDS
-	scan_for_what = "diseases"
+	scan_for_what = "болезни"
 
 /obj/item/healthanalyzer/simple/disease/violence_damage(mob/living/user)
 	user.adjust_brute_loss(1)
@@ -802,7 +802,7 @@
 
 	if(!length(render))
 		playsound(scanner, 'sound/machines/ping.ogg', 50, FALSE)
-		to_chat(user, span_notice("\The [scanner] makes a happy ping and briefly displays a smiley face with several exclamation points! It's really excited to report that [patient] has no diseases!"))
+		to_chat(user, span_notice("\The [scanner] радостно пикает и ненадолго показывает улыбающееся лицо с несколькими восклицательными знаками! Он очень рад сообщить, что у [patient] нет болезней!"))
 		scanner.emotion = AID_EMOTION_HAPPY
 	else
 		to_chat(user, span_notice(render.Join("")))
@@ -811,14 +811,14 @@
 
 /obj/item/paper/medical_report
 	color = "#99ccff"
-	desc = "An official medical bill of health generated by a computerized medical scanner."
+	desc = "Официальный медицинский отчёт о состоянии здоровья, созданный компьютеризированным медицинским сканером."
 	/// A reference to a mob's weakref that was last scanned by the medical scanner.
 	var/datum/weakref/last_healthy_scanned_mob
 
 /obj/item/paper/medical_report/examine(mob/user)
 	. = ..()
 	if(last_healthy_scanned_mob)
-		. += span_notice("This medical report is applicable for medical bounties.")
+		. += span_notice("Этот медицинский отчёт подходит для медицинских заказов.")
 
 
 #undef SCANMODE_HEALTH

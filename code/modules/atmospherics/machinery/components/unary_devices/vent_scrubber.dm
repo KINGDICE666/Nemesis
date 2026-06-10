@@ -1,8 +1,8 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber
 	icon_state = "scrub_map-3"
 
-	name = "air scrubber"
-	desc = "Has a valve and pump attached to it."
+	name = "воздушный скруббер"
+	desc = "К нему присоединены клапан и насос."
 	construction_type = /obj/item/pipe/directional/scrubber
 	use_power = IDLE_POWER_USE
 	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.1
@@ -288,13 +288,13 @@
 	..()
 	if(!welder.tool_start_check(user, amount=1))
 		return TRUE
-	to_chat(user, span_notice("Now welding the scrubber."))
+	to_chat(user, span_notice("Начинается сварка скруббера."))
 	if(welder.use_tool(src, user, 20, volume=50))
 		if(!welded)
-			user.visible_message(span_notice("[user] welds the scrubber shut."),span_notice("You weld the scrubber shut."), span_hear("You hear welding."))
+			user.visible_message(span_notice("[user] заваривает скруббер."),span_notice("Вы завариваете скруббер."), span_hear("Вы слышите сварку."))
 			welded = TRUE
 		else
-			user.visible_message(span_notice("[user] unwelds the scrubber."), span_notice("You unweld the scrubber."), span_hear("You hear welding."))
+			user.visible_message(span_notice("[user] срезает сварку со скруббера."), span_notice("Вы срезаете сварку со скруббера."), span_hear("Вы слышите сварку."))
 			welded = FALSE
 		update_appearance(UPDATE_ICON)
 		pipe_vision_img = image(src, loc, dir = dir)
@@ -306,18 +306,18 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational)
-		to_chat(user, span_warning("You cannot unwrench [src], turn it off first!"))
+		to_chat(user, span_warning("Нельзя открутить [src], сначала выключите его!"))
 		return FALSE
 
 /obj/machinery/atmospherics/components/unary/vent_scrubber/examine(mob/user)
 	. = ..()
 	if(welded)
-		. += "It seems welded shut."
+		. += "Похоже, он заварен."
 
 /obj/machinery/atmospherics/components/unary/vent_scrubber/attack_alien(mob/user, list/modifiers)
 	if(!welded || !(do_after(user, 2 SECONDS, target = src)))
 		return
-	user.visible_message(span_warning("[user] furiously claws at [src]!"), span_notice("You manage to clear away the stuff blocking the scrubber."), span_hear("You hear loud scraping noises."))
+	user.visible_message(span_warning("[user] яростно скребет [src]!"), span_notice("Вам удается убрать то, что блокировало скруббер."), span_hear("Вы слышите громкий скрежет."))
 	welded = FALSE
 	update_appearance(UPDATE_ICON)
 	pipe_vision_img = image(src, loc, dir = dir)

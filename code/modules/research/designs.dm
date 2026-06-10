@@ -60,7 +60,7 @@ other types of metals and chemistry for reagents).
 
 /datum/design/error_design
 	name = "ERROR"
-	desc = "This usually means something in the database has corrupted. If this doesn't go away automatically, inform Central Command so their techs can fix this ASAP(tm)"
+	desc = "Обычно это означает, что база данных повреждена. Если это не исчезнет автоматически, сообщите Центральному командованию, чтобы техники исправили это как можно скорее."
 
 /datum/design/Destroy()
 	SSresearch.techweb_designs -= id
@@ -108,8 +108,8 @@ other types of metals and chemistry for reagents).
 ////////////////////////////////////////
 
 /obj/item/disk/design_disk
-	name = "Component Design Disk"
-	desc = "A disk for storing device design data for construction in lathes."
+	name = "диск чертежей компонентов"
+	desc = "Диск для хранения данных о чертежах устройств, используемых при производстве на станках."
 	icon_state = "datadisk1"
 	custom_materials = list(/datum/material/iron =SMALL_MATERIAL_AMOUNT * 3, /datum/material/glass =SMALL_MATERIAL_AMOUNT)
 
@@ -131,8 +131,8 @@ other types of metals and chemistry for reagents).
 	return
 
 /obj/item/disk/design_disk/bepis
-	name = "Old experimental technology disk"
-	desc = "A disk containing some long-forgotten technology from a past age. You hope it still works after all these years. Upload the disk to an R&D Console to redeem the tech."
+	name = "старый диск экспериментальной технологии"
+	desc = "Диск с давно забытой технологией прошлого. Остается надеяться, что он все еще работает. Загрузите диск в консоль РНД, чтобы получить технологию."
 	icon_state = "rndmajordisk"
 
 	///The bepis node we have the design id's of
@@ -157,11 +157,10 @@ other types of metals and chemistry for reagents).
  * Removes the tech disk that's held on it from the experimental node list, making them not show up in future disks.
  */
 /obj/item/disk/design_disk/bepis/remove_tech
-	name = "Reformatted technology disk"
-	desc = "A disk containing a new, completed tech from the B.E.P.I.S. Upload the disk to an R&D Console to redeem the tech."
+	name = "переформатированный диск технологии"
+	desc = "Диск с новой завершенной технологией от B.E.P.I.S. Загрузите диск в консоль РНД, чтобы получить технологию."
 
 /obj/item/disk/design_disk/bepis/remove_tech/Initialize(mapload)
 	. = ..()
 	SSresearch.techweb_nodes_experimental -= bepis_node.id
 	log_research("[bepis_node.display_name] has been removed from experimental nodes through the BEPIS techweb's \"remove tech\" feature.")
-

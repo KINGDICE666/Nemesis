@@ -11,8 +11,8 @@
 #define KIOSK_SCANNING_REAGENTS (1<<3)
 
 /obj/machinery/medical_kiosk
-	name = "medical kiosk"
-	desc = "A freestanding medical kiosk, which can provide a wide range of medical analysis for diagnosis."
+	name = "медицинский киоск"
+	desc = "Отдельностоящий медицинский киоск, выполняющий широкий спектр диагностических анализов."
 	icon = 'icons/obj/machines/medical_kiosk.dmi'
 	icon_state = "kiosk"
 	base_icon_state = "kiosk"
@@ -47,7 +47,7 @@
 	var/screentip_change = FALSE
 
 	if(!held_item && scanner_wand)
-		context[SCREENTIP_CONTEXT_RMB] = "Pick up scanner wand"
+		context[SCREENTIP_CONTEXT_RMB] = "Взять сканирующий жезл"
 		return screentip_change = TRUE
 
 	if(istype(held_item) && held_item.tool_behaviour == TOOL_WRENCH)
@@ -60,7 +60,7 @@
 		context[SCREENTIP_CONTEXT_LMB] = panel_open ? "Close panel" : "Open panel"
 		return screentip_change = TRUE
 	if(istype(held_item, /obj/item/scanner_wand))
-		context[SCREENTIP_CONTEXT_LMB] = "Return the scanner wand"
+		context[SCREENTIP_CONTEXT_LMB] = "Вернуть сканирующий жезл"
 		return screentip_change = TRUE
 
 /obj/machinery/medical_kiosk/proc/inuse()  //Verifies that the user can use the interface, followed by showing medical information.
@@ -73,7 +73,7 @@
 	if(card?.registered_account?.account_job?.paycheck_department == payment_department)
 		use_energy(active_power_usage)
 		paying_customer = TRUE
-		say("Hello, esteemed medical staff!")
+		say("Здравствуйте, уважаемый медицинский персонал!")
 		return
 	var/bonus_fee = pandemonium ? rand(10,30) : 0
 	if(attempt_charge(src, paying, bonus_fee) & COMPONENT_OBJ_CANCEL_CHARGE )
@@ -81,7 +81,7 @@
 	use_energy(active_power_usage)
 	paying_customer = TRUE
 	icon_state = "[base_icon_state]_active"
-	say("Thank you for your patronage!")
+	say("Спасибо за обращение!")
 	return
 
 /obj/machinery/medical_kiosk/proc/clearScans() //Called it enough times to be it's own proc
@@ -124,20 +124,20 @@
 
 	var/obj/item/scanner_wand/wand = tool
 	if(scanner_wand)
-		balloon_alert(user, "already has a wand!")
+		balloon_alert(user, "жезл уже есть!")
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(tool, src))
-		balloon_alert(user, "stuck to your hand!")
+		balloon_alert(user, "прилипло к руке!")
 		return ITEM_INTERACT_BLOCKING
 	user.visible_message(span_notice("[user] snaps [tool] onto [src]!"))
-	balloon_alert(user, "wand returned")
+	balloon_alert(user, "жезл возвращён")
 	//This will be the scanner returning scanner_wand's selected_target variable and assigning it to the altPatient var
 	if(wand.selected_target)
 		var/datum/weakref/target_ref = WEAKREF(wand.return_patient())
 		if(patient_ref != target_ref)
 			clearScans()
 		patient_ref = target_ref
-		user.visible_message(span_notice("[wand.return_patient()] has been set as the current patient."))
+		user.visible_message(span_notice("[wand.return_patient()] назначен текущим пациентом."))
 		wand.selected_target = null
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 	scanner_wand = tool
@@ -150,14 +150,14 @@
 	if(!ishuman(user) || !user.can_perform_action(src))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(!scanner_wand)
-		balloon_alert(user, "no scanner wand!")
+		balloon_alert(user, "нет сканирующего жезла!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(!user.put_in_hands(scanner_wand))
-		balloon_alert(user, "scanner wand falls!")
+		balloon_alert(user, "жезл падает!")
 		scanner_wand = null
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	user.visible_message(span_notice("[user] unhooks the [scanner_wand] from [src]."))
-	balloon_alert(user, "scanner pulled")
+	balloon_alert(user, "сканер снят")
 	playsound(src, 'sound/machines/click.ogg', 60, TRUE)
 	scanner_wand = null
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -172,8 +172,8 @@
 		return
 	if(user)
 		if (emag_card)
-			user.visible_message(span_warning("[user] waves a suspicious card by the [src]'s biometric scanner!"))
-		balloon_alert(user, "sensors overloaded")
+			user.visible_message(span_warning("[user] проводит подозрительной картой у биометрического сканера [src]!"))
+		balloon_alert(user, "сенсоры перегружены")
 	obj_flags |= EMAGGED
 	var/obj/item/circuitboard/board = circuit
 	board.obj_flags |= EMAGGED //Mirrors emag status onto the board as well.
@@ -183,25 +183,25 @@
 /obj/machinery/medical_kiosk/examine(mob/user)
 	. = ..()
 	if(scanner_wand == null)
-		. += span_notice("\The [src] is missing its scanner.")
+		. += span_notice("\The [src] не хватает сканера.")
 	else
-		. += span_notice("\The [src] has its scanner clipped to the side. Right Click to remove.")
+		. += span_notice("Сканер [src] закреплён сбоку. Нажмите правой кнопкой, чтобы снять.")
 
 /obj/machinery/medical_kiosk/ui_interact(mob/user, datum/tgui/ui)
 	var/patient_distance = 0
 	if(!ishuman(user))
-		to_chat(user, span_warning("[src] is unable to interface with non-humanoids!"))
+		to_chat(user, span_warning("[src] не может работать с негуманоидами!"))
 		if (ui)
 			ui.close()
 		return
 	var/mob/living/carbon/human/patient = patient_ref?.resolve()
 	patient_distance = get_dist(src.loc, patient)
 	if(patient == null)
-		say("Scanner reset.")
+		say("Сканер сброшен.")
 		patient_ref = WEAKREF(user)
 	else if(patient_distance>5)
 		patient_ref = null
-		say("Patient out of range. Resetting biometrics.")
+		say("Пациент вне зоны действия. Биометрия сбрасывается.")
 		clearScans()
 		return
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -218,7 +218,7 @@
 	if(!patient)
 		return
 	var/patient_name = patient.name
-	var/patient_status = "Alive."
+	var/patient_status = "Жив."
 	var/max_health = patient.maxHealth
 	var/total_health = patient.health
 	var/brute_loss = patient.get_brute_loss()
@@ -227,11 +227,11 @@
 	var/oxy_loss = patient.get_oxy_loss()
 	var/chaos_modifier = 0
 
-	var/sickness = "Patient does not show signs of disease."
-	var/sickness_data = "Not Applicable."
+	var/sickness = "У пациента нет признаков болезни."
+	var/sickness_data = "Не применимо."
 
-	var/bleed_status = "Patient is not currently bleeding."
-	var/blood_status = " Patient either has no blood, or does not require it to function."
+	var/bleed_status = "У пациента сейчас нет кровотечения."
+	var/blood_status = "У пациента либо нет крови, либо она не требуется для функционирования."
 	var/blood_percent = round((patient.get_blood_volume(apply_modifiers = TRUE) / BLOOD_VOLUME_NORMAL) * 100)
 	var/datum/blood_type/blood_type = patient.get_bloodtype()
 	var/blood_name = "error"
@@ -241,37 +241,37 @@
 	for(var/thing in patient.diseases) //Disease Information
 		var/datum/disease/D = thing
 		if(!(D.visibility_flags & HIDDEN_SCANNER))
-			sickness = "Warning: Patient is harboring some form of viral disease. Seek further medical attention."
-			sickness_data = "\nName: [D.name].\nType: [D.spread_text].\nStage: [D.stage]/[D.max_stages].\nPossible Cure: [D.cure_text]"
+			sickness = "Внимание: у пациента обнаружены признаки вирусного заболевания. Требуется дальнейшее медицинское обследование."
+			sickness_data = "\nНазвание: [D.name].\nТип: [D.spread_text].\nСтадия: [D.stage]/[D.max_stages].\nВозможное лечение: [D.cure_text]"
 
 	if(patient.can_bleed()) //Blood levels Information
 		blood_name = LOWER_TEXT(blood_type.get_blood_name())
 		if(patient.is_bleeding())
-			bleed_status = " Patient is currently bleeding!"
+			bleed_status = " У пациента сейчас кровотечение!"
 
 		if(blood_percent <= 80)
-			blood_warning = " Patient has [blood_percent <= 60 ? "DANGEROUSLY low" : "low"] [blood_name] levels."
+			blood_warning = " У пациента [blood_percent <= 60 ? "ОПАСНО низкий" : "низкий"] уровень [blood_name]."
 			var/list/treatments = list()
 			if(blood_percent <= 60)
-				treatments += "[blood_name] transfusion"
+				treatments += "переливание [blood_name]"
 			else if(!HAS_TRAIT(patient, TRAIT_NOHUNGER))
-				treatments += "a large meal"
+				treatments += "плотный приём пищи"
 			if(blood_type.restoration_chem)
-				treatments += "[LOWER_TEXT(blood_type.restoration_chem::name)] supplements"
+				treatments += "добавки [LOWER_TEXT(blood_type.restoration_chem::name)]"
 				if(blood_percent <= 60 && blood_type.restoration_chem == /datum/reagent/iron)
-					treatments += "saline-glucose immediately"
+					treatments += "немедленно физраствор-глюкозу"
 
 			if (length(treatments))
-				blood_warning += " Seek [english_list(treatments, and_text = " or ")]"
+				blood_warning += " Требуется: [english_list(treatments, and_text = " или ")]."
 
 			if (blood_percent <= 60)
-				blood_warning += " Ignoring treatment may lead to death!"
+				blood_warning += " Игнорирование лечения может привести к смерти!"
 
-		blood_status = "Patient [blood_name] levels are currently reading [blood_percent]%.[blood_type.get_type() ? " Patient has [blood_type.get_type()] type [blood_name]." : ""][blood_warning]"
+		blood_status = "Текущий уровень [blood_name] у пациента: [blood_percent]%.[blood_type.get_type() ? " У пациента [blood_type.get_type()] тип [blood_name]." : ""][blood_warning]"
 
-	var/trauma_status = "Patient is free of unique brain trauma."
+	var/trauma_status = "У пациента нет особых травм мозга."
 	var/brain_loss = patient.get_organ_loss(ORGAN_SLOT_BRAIN)
-	var/brain_status = "Brain patterns normal."
+	var/brain_status = "Паттерны мозга в норме."
 	if(LAZYLEN(patient.get_traumas()))
 		var/list/trauma_text = list()
 		for(var/t in patient.get_traumas())
@@ -279,19 +279,19 @@
 			var/trauma_desc = ""
 			switch(trauma.resilience)
 				if(TRAUMA_RESILIENCE_SURGERY)
-					trauma_desc += "severe "
+					trauma_desc += "тяжёлая "
 				if(TRAUMA_RESILIENCE_LOBOTOMY)
-					trauma_desc += "deep-rooted "
+					trauma_desc += "глубоко укоренившаяся "
 				if(TRAUMA_RESILIENCE_MAGIC, TRAUMA_RESILIENCE_ABSOLUTE)
-					trauma_desc += "permanent "
+					trauma_desc += "постоянная "
 			trauma_desc += trauma.scan_desc
 			trauma_text += trauma_desc
-		trauma_status = "Cerebral traumas detected: patient appears to be suffering from [english_list(trauma_text)]."
+		trauma_status = "Обнаружены мозговые травмы: пациент, похоже, страдает от [english_list(trauma_text)]."
 
 	var/chemical_list = list()
 	var/overdose_list = list()
 	var/addict_list = list()
-	var/hallucination_status = "Patient is not hallucinating."
+	var/hallucination_status = "У пациента нет галлюцинаций."
 
 	if(patient.reagents.reagent_list.len) //Chemical Analysis details.
 		for(var/r in patient.reagents.reagent_list)
@@ -317,16 +317,16 @@
 		addict_list += list(list("name" = initial(addiction_type.name)))
 
 	if (patient.has_status_effect(/datum/status_effect/hallucination))
-		hallucination_status = "Subject appears to be hallucinating. Suggested treatments: Antipsychotic medication, [/datum/reagent/medicine/haloperidol::name] or [/datum/reagent/medicine/synaptizine::name]."
+		hallucination_status = "Похоже, у пациента галлюцинации. Рекомендуемое лечение: антипсихотики, [/datum/reagent/medicine/haloperidol::name] или [/datum/reagent/medicine/synaptizine::name]."
 
 	if(patient.stat == DEAD || HAS_TRAIT(patient, TRAIT_FAKEDEATH) || ((brute_loss+fire_loss+tox_loss+oxy_loss) >= 200))  //Patient status checks.
-		patient_status = "Dead."
+		patient_status = "Мёртв."
 	if((brute_loss+fire_loss+tox_loss+oxy_loss) >= 80)
-		patient_status = "Gravely Injured"
+		patient_status = "Тяжело ранен"
 	else if((brute_loss+fire_loss+tox_loss+oxy_loss) >= 40)
-		patient_status = "Injured"
+		patient_status = "Ранен"
 	else if((brute_loss+fire_loss+tox_loss+oxy_loss) >= 20)
-		patient_status = "Lightly Injured"
+		patient_status = "Легко ранен"
 	if(pandemonium || user.has_status_effect(/datum/status_effect/hallucination))
 		patient_status = pick(
 			"The only kiosk is kiosk, but is the only patient, patient?",

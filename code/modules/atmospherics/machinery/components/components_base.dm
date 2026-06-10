@@ -270,12 +270,12 @@
 	if(!filled_pipe)
 		return default_deconstruction_crowbar(user, tool)
 
-	to_chat(user, span_notice("You begin to unfasten \the [src]..."))
+	to_chat(user, span_notice("Вы начинаете откручивать [src]..."))
 
 	internal_pressure -= environment_air.return_pressure()
 
 	if(internal_pressure > 2 * ONE_ATMOSPHERE)
-		to_chat(user, span_warning("As you begin deconstructing \the [src] a gush of air blows in your face... maybe you should reconsider?"))
+		to_chat(user, span_warning("Когда вы начинаете разбирать [src], поток воздуха бьет вам в лицо... может, стоит передумать?"))
 		unsafe_wrenching = TRUE
 
 	if(!do_after(user, 2 SECONDS, src))

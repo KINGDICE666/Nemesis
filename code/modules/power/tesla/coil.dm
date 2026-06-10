@@ -1,6 +1,6 @@
 /obj/machinery/power/energy_accumulator/tesla_coil
-	name = "tesla coil"
-	desc = "For the union!"
+	name = "катушка Теслы"
+	desc = "За профсоюз!"
 	icon = 'icons/obj/machines/engine/tesla_coil.dmi'
 	icon_state = "coil0"
 	base_icon_state = "coil"
@@ -39,7 +39,7 @@
 	if(panel_open)
 		return NONE
 	if(anchored)
-		balloon_alert(user, "unanchor first!")
+		balloon_alert(user, "сначала открепите!")
 		return ITEM_INTERACT_BLOCKING
 	return ..()
 
@@ -55,11 +55,11 @@
 /obj/machinery/power/energy_accumulator/tesla_coil/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads:<br>" + \
-		  "Power generation at <b>[input_power_multiplier*100]%</b>.<br>" + \
-			"Shock interval at <b>[zap_cooldown*0.1]</b> seconds.<br>" + \
-			"Stored <b>[display_energy(get_stored_joules())]</b>.<br>" + \
-			"Processing <b>[display_power(processed_energy)]</b>.")
+		. += span_notice("На статусном дисплее написано:<br>" + \
+		  "Выработка энергии: <b>[input_power_multiplier*100]%</b>.<br>" + \
+			"Интервал разрядов: <b>[zap_cooldown*0.1]</b> сек.<br>" + \
+			"Накоплено: <b>[display_energy(get_stored_joules())]</b>.<br>" + \
+			"Обработка: <b>[display_power(processed_energy)]</b>.")
 
 /obj/machinery/power/energy_accumulator/tesla_coil/set_anchored(anchorvalue)
 	. = ..()
@@ -112,8 +112,8 @@
 	zap_buckle_check(power)
 
 /obj/machinery/power/energy_accumulator/grounding_rod
-	name = "grounding rod"
-	desc = "Keeps an area from being fried by Edison's Bane."
+	name = "заземляющий стержень"
+	desc = "Защищает участок от прожарки проклятием Эдисона."
 	icon = 'icons/obj/machines/engine/tesla_coil.dmi'
 	icon_state = "grounding_rod0"
 	base_icon_state = "grounding_rod"
@@ -133,9 +133,9 @@
 /obj/machinery/power/energy_accumulator/grounding_rod/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads:<br>" + \
-			"Recently grounded <b>[display_energy(get_stored_joules())]</b>.<br>" + \
-			"This energy would sustainably release <b>[display_power(calculate_sustainable_power(), convert = FALSE)]</b>.")
+		. += span_notice("На статусном дисплее написано:<br>" + \
+			"Недавно заземлено: <b>[display_energy(get_stored_joules())]</b>.<br>" + \
+			"Эта энергия могла бы стабильно выдавать <b>[display_power(calculate_sustainable_power(), convert = FALSE)]</b>.")
 
 /obj/machinery/power/energy_accumulator/grounding_rod/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()

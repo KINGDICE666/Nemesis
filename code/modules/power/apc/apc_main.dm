@@ -15,8 +15,8 @@
 #define APC_CHANNEL_ALARM_TRESHOLD 75
 
 /obj/machinery/power/apc
-	name = "area power controller"
-	desc = "A control terminal for the area's electrical systems."
+	name = "контроллер питания зоны"
+	desc = "Контрольный терминал электрических систем зоны."
 	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "apc0"
 	use_power = NO_POWER_USE
@@ -342,24 +342,24 @@
 	. = ..()
 	if(machine_stat & BROKEN)
 		if(opened != APC_COVER_REMOVED)
-			. += "The cover is broken and can probably be <i>pried</i> off with enough force."
+			. += "Крышка сломана, и ее, вероятно, можно <i>отжать</i>, приложив достаточно силы."
 			return
 		if(terminal && has_electronics)
-			. += "The cover is missing but can be replaced using a new frame."
+			. += "Крышка отсутствует, но ее можно заменить новой рамой."
 		return
 	if(opened)
 		if(has_electronics && terminal)
-			. += "The cover is [opened == APC_COVER_REMOVED?"removed":"open"] and the power cell is [ cell ? "installed" : "missing"]."
+			. += "Крышка [opened == APC_COVER_REMOVED ? "снята" : "открыта"], батарея [cell ? "установлена" : "отсутствует"]."
 		else
-			. += {"It's [ !terminal ? "not" : "" ] wired up.\n
-			The electronics are[!has_electronics?"n't":""] installed."}
+			. += {"Проводка [!terminal ? "не " : ""]подключена.\n
+			Электроника [!has_electronics ? "не " : ""]установлена."}
 	else
 		if(machine_stat & MAINT)
-			. += "The cover is closed. Something is wrong with it. It doesn't work."
+			. += "Крышка закрыта. С ней что-то не так, она не работает."
 		else if(malfhack)
-			. += "The cover is broken. It may be hard to force it open."
+			. += "Крышка сломана. Ее может быть трудно вскрыть силой."
 		else
-			. += "The cover is closed."
+			. += "Крышка закрыта."
 
 /obj/machinery/power/apc/atom_break(damage_flag)
 	. = ..()
@@ -372,7 +372,7 @@
 	if(opened != APC_COVER_REMOVED)
 		opened = APC_COVER_REMOVED
 		coverlocked = FALSE
-		visible_message(span_warning("The APC cover is knocked down!"))
+		visible_message(span_warning("Крышку APC сносит ударом!"))
 		update_appearance()
 
 /obj/machinery/power/apc/ui_interact(mob/user, datum/tgui/ui)
@@ -402,7 +402,7 @@
 
 		"powerChannels" = list(
 			list(
-				"title" = "Equipment",
+				"title" = "Оборудование",
 				"powerLoad" = display_power(lastused_equip),
 				"status" = equipment,
 				"topicParams" = list(
@@ -412,7 +412,7 @@
 				)
 			),
 			list(
-				"title" = "Lighting",
+				"title" = "Освещение",
 				"powerLoad" = display_power(lastused_light),
 				"status" = lighting,
 				"topicParams" = list(
@@ -422,7 +422,7 @@
 				)
 			),
 			list(
-				"title" = "Environment",
+				"title" = "Жизнеобеспечение",
 				"powerLoad" = display_power(lastused_environ),
 				"status" = environ,
 				"topicParams" = list(
@@ -441,8 +441,8 @@
 	remote_control_user = remote_user
 	ui_interact(remote_user)
 	remote_user.log_message("remotely accessed [src].", LOG_GAME)
-	say("Remote access detected.[locked ? " Interface unlocked." : ""]")
-	to_chat(remote_control_user, span_danger("[icon2html(src, remote_control_user)] Connected to [src]."))
+	say("Обнаружен удаленный доступ.[locked ? " Интерфейс разблокирован." : ""]")
+	to_chat(remote_control_user, span_danger("[icon2html(src, remote_control_user)] Подключение к [src] установлено."))
 	if(locked)
 		playsound(src, 'sound/machines/terminal/terminal_on.ogg', 25, FALSE)
 		locked = FALSE
@@ -459,9 +459,9 @@
 	if(isnull(remote_control_user))
 		return
 	locked = TRUE
-	to_chat(remote_control_user, span_danger("[icon2html(src, remote_control_user)] Disconnected from [src]."))
+	to_chat(remote_control_user, span_danger("[icon2html(src, remote_control_user)] Подключение к [src] разорвано."))
 	if(!mute)
-		say("Remote access canceled. Interface locked.")
+		say("Удаленный доступ отменен. Интерфейс заблокирован.")
 		playsound(src, 'sound/machines/terminal/terminal_off.ogg', 25, FALSE)
 		playsound(src, 'sound/machines/terminal/terminal_alert.ogg', 50, FALSE)
 	update_appearance()
@@ -482,7 +482,7 @@
 		if("lock")
 			if(HAS_SILICON_ACCESS(user))
 				if((obj_flags & EMAGGED) || (machine_stat & (BROKEN|MAINT)) || remote_control_user)
-					to_chat(user, span_warning("The APC does not respond to the command!"))
+					to_chat(user, span_warning("APC не отвечает на команду!"))
 				else
 					locked = !locked
 					update_appearance()
@@ -804,9 +804,9 @@
 
 /*Power module, used for APC construction*/
 /obj/item/electronics/apc
-	name = "power control module"
+	name = "модуль управления питанием"
 	icon_state = "power_mod"
-	desc = "Heavy-duty switching circuits for power control."
+	desc = "Мощные коммутационные цепи для управления питанием."
 
 /// Returns the amount of time it will take the APC at its current trickle charge rate to reach a charge level. If the APC is functionally not charging, returns null.
 /obj/machinery/power/apc/proc/time_to_charge(joules)

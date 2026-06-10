@@ -1,6 +1,6 @@
 /obj/machinery/power/emitter
-	name = "emitter"
-	desc = "A heavy-duty industrial laser, often used in containment fields and power generation."
+	name = "эмиттер"
+	desc = "Тяжелый промышленный лазер, часто используемый в полях сдерживания и энергетике."
 	icon = 'icons/obj/machines/engine/singularity.dmi'
 	icon_state = "emitter"
 	base_icon_state = "emitter"
@@ -88,7 +88,7 @@
 	if(panel_open)
 		return NONE
 	if(welded)
-		balloon_alert(user, "unweld first!")
+		balloon_alert(user, "сначала срежьте сварку!")
 		return ITEM_INTERACT_BLOCKING
 	return ..()
 
@@ -117,22 +117,22 @@
 /obj/machinery/power/emitter/examine(mob/user)
 	. = ..()
 	if(welded)
-		. += span_info("It's moored firmly to the floor. You can unsecure its moorings with a <b>welder</b>.")
+		. += span_info("Он надежно прикреплен к полу. Крепления можно срезать <b>сваркой</b>.")
 	else if(anchored)
-		. += span_info("It's currently anchored to the floor. You can secure its moorings with a <b>welder</b>, or remove it with a <b>wrench</b>.")
+		. += span_info("Сейчас он закреплен на полу. Крепления можно зафиксировать <b>сваркой</b> или снять <b>ключом</b>.")
 	else
-		. += span_info("It's not anchored to the floor. You can secure it in place with a <b>wrench</b>.")
+		. += span_info("Он не закреплен на полу. Его можно закрепить <b>ключом</b>.")
 
 	if(!in_range(user, src) && !isobserver(user))
 		return
 
 	if(!active)
-		. += span_notice("Its status display is currently turned off.")
+		. += span_notice("Его статусный дисплей сейчас выключен.")
 	else if(!powered)
-		. += span_notice("Its status display is glowing faintly.")
+		. += span_notice("Его статусный дисплей тускло светится.")
 	else
-		. += span_notice("Its status display reads: Emitting one beam between <b>[DisplayTimeText(minimum_fire_delay * fire_rate_mod)]</b> and <b>[DisplayTimeText(maximum_fire_delay * fire_rate_mod)]</b>.")
-		. += span_notice("Power consumption at <b>[display_power(active_power_usage, convert = FALSE)]</b>.")
+		. += span_notice("На статусном дисплее написано: один луч каждые <b>[DisplayTimeText(minimum_fire_delay * fire_rate_mod)]</b> - <b>[DisplayTimeText(maximum_fire_delay * fire_rate_mod)]</b>.")
+		. += span_notice("Потребление энергии: <b>[display_power(active_power_usage, convert = FALSE)]</b>.")
 
 /obj/machinery/power/emitter/should_have_node()
 	return welded
@@ -170,13 +170,13 @@
 /obj/machinery/power/emitter/interact(mob/user)
 	add_fingerprint(user)
 	if(!welded)
-		to_chat(user, span_warning("[src] needs to be firmly secured to the floor first!"))
+		to_chat(user, span_warning("[src] сначала нужно надежно закрепить на полу!"))
 		return FALSE
 	if(!powernet)
-		to_chat(user, span_warning("\The [src] isn't connected to a wire!"))
+		to_chat(user, span_warning("\The [src] не подключен к проводу!"))
 		return FALSE
 	if(locked || !allow_switch_interact)
-		to_chat(user, span_warning("The controls are locked!"))
+		to_chat(user, span_warning("Управление заблокировано!"))
 		return FALSE
 
 	if(active)
@@ -186,7 +186,7 @@
 		shot_number = 0
 		fire_delay = maximum_fire_delay
 
-	to_chat(user, span_notice("You turn [active ? "on" : "off"] [src]."))
+	to_chat(user, span_notice("Вы [active ? "включаете" : "выключаете"] [src]."))
 	message_admins("[src] turned [active ? "ON" : "OFF"] by [ADMIN_LOOKUPFLW(user)] in [ADMIN_VERBOSEJMP(src)]")
 	log_game("[src] turned [active ? "ON" : "OFF"] by [key_name(user)] in [AREACOORD(src)]")
 	investigate_log("turned [active ? "ON" : "OFF"] by [key_name(user)] at [AREACOORD(src)]", INVESTIGATE_ENGINE)
@@ -196,7 +196,7 @@
 /obj/machinery/power/emitter/attack_animal(mob/living/simple_animal/user, list/modifiers)
 	if(ismegafauna(user) && anchored)
 		set_anchored(FALSE)
-		user.visible_message(span_warning("[user] rips [src] free from its moorings!"))
+		user.visible_message(span_warning("[user] вырывает [src] из креплений!"))
 	else
 		. = ..()
 	if(. && !anchored)
@@ -301,12 +301,12 @@
 		if(!item.tool_start_check(user, amount=1))
 			return TRUE
 		user.visible_message(span_notice("[user.name] starts to cut \the [src] free from the floor."), \
-			span_notice("You start to cut [src] free from the floor..."), \
-			span_hear("You hear welding."))
+			span_notice("Вы начинаете отрезать [src] от пола..."), \
+			span_hear("Вы слышите сварку."))
 		if(!item.use_tool(src, user, 20, 1, 50))
 			return FALSE
 		welded = FALSE
-		to_chat(user, span_notice("You cut [src] free from the floor."))
+		to_chat(user, span_notice("Вы отрезаете [src] от пола."))
 		disconnect_from_network()
 		update_cable_icons_on_turf(get_turf(src))
 		return TRUE
@@ -317,12 +317,12 @@
 	if(!item.tool_start_check(user, amount=1))
 		return TRUE
 	user.visible_message(span_notice("[user.name] starts to weld \the [src] to the floor."), \
-		span_notice("You start to weld [src] to the floor..."), \
-		span_hear("You hear welding."))
+		span_notice("Вы начинаете приваривать [src] к полу..."), \
+		span_hear("Вы слышите сварку."))
 	if(!item.use_tool(src, user, 20, 1, 50))
 		return FALSE
 	welded = TRUE
-	to_chat(user, span_notice("You weld [src] to the floor."))
+	to_chat(user, span_notice("Вы привариваете [src] к полу."))
 	connect_to_network()
 	update_cable_icons_on_turf(get_turf(src))
 	return TRUE
@@ -340,16 +340,16 @@
 /// Attempt to toggle the controls lock of the emitter
 /obj/machinery/power/emitter/proc/togglelock(mob/user)
 	if(obj_flags & EMAGGED)
-		to_chat(user, span_warning("The lock seems to be broken!"))
+		to_chat(user, span_warning("Похоже, замок сломан!"))
 		return
 	if(!allowed(user))
-		to_chat(user, span_danger("Access denied."))
+		to_chat(user, span_danger("Доступ запрещен."))
 		return
 	if(!active)
-		to_chat(user, span_warning("The controls can only be locked when \the [src] is online!"))
+		to_chat(user, span_warning("Управление можно заблокировать только когда [src] включен!"))
 		return
 	locked = !locked
-	to_chat(user, span_notice("You [src.locked ? "lock" : "unlock"] the controls."))
+	to_chat(user, span_notice("Вы [src.locked ? "блокируете" : "разблокируете"] управление."))
 
 /obj/machinery/power/emitter/attackby(obj/item/item, mob/user, list/modifiers, list/attack_modifiers)
 	if(item.GetID())
@@ -361,27 +361,27 @@
 		return
 	if(panel_open && !gun && istype(item,/obj/item/gun/energy))
 		if(diskie)
-			to_chat(user, span_warning("Remove the Diode Disk before inserting a gun."))
+			to_chat(user, span_warning("Перед установкой оружия извлеките диодный диск."))
 			return
 		if(integrate(item,user))
 			return
 	if(panel_open && !gun && istype(item,/obj/item/emitter_disk))
 		var/obj/item/emitter_disk/config_disk = item
 		if(!user.transferItemToLoc(config_disk, src))
-			balloon_alert(user, "stuck in hand!")
+			balloon_alert(user, "застряло в руке!")
 			return
 		if(diskie)
 			user.put_in_hands(diskie)
-			balloon_alert(user, "disks swapped!")
+			balloon_alert(user, "диски заменены!")
 		else
-			balloon_alert(user, "disk inserted")
+			balloon_alert(user, "диск вставлен")
 		diskie = config_disk
 		projectile_type = diskie.stored_proj
 		projectile_sound = diskie.stored_sound
 		fire_rate_mod = diskie.fire_rate_mod
 		no_shot_counter = diskie.no_shot_counter
 		playsound(src, 'sound/machines/card_slide.ogg', 50)
-		to_chat(user, span_notice("You update the [src]'s diode configuration with the [config_disk]."))
+		to_chat(user, span_notice("Вы обновляете диодную конфигурацию [src] с помощью [config_disk]."))
 		update_appearance()
 		if(diskie.consumable)
 			qdel(diskie)
@@ -394,7 +394,7 @@
 	if(!user.transferItemToLoc(energy_gun, src))
 		return
 	if(energy_gun.gun_flags & TURRET_INCOMPATIBLE)
-		user.balloon_alert(user, "[energy_gun] won't fit!")
+		user.balloon_alert(user, "[energy_gun] не подходит!")
 		return
 	gun = energy_gun
 	gun_properties = gun.get_turret_properties()
@@ -444,12 +444,12 @@
 		return FALSE
 	locked = FALSE
 	obj_flags |= EMAGGED
-	balloon_alert(user, "id lock shorted out")
+	balloon_alert(user, "ID-замок закоротило")
 	return TRUE
 
 
 /obj/machinery/power/emitter/prototype
-	name = "Prototype Emitter"
+	name = "прототип эмиттера"
 	icon = 'icons/obj/weapons/turrets.dmi'
 	icon_state = "protoemitter"
 	base_icon_state = "protoemitter"
@@ -513,16 +513,16 @@
 	. = ..()
 
 /datum/action/innate/proto_emitter/firing
-	name = "Switch to Manual Firing"
-	desc = "The emitter will only fire on your command and at your designated target"
+	name = "Переключиться на ручной огонь"
+	desc = "Эмиттер будет стрелять только по вашей команде и по указанной цели"
 	button_icon_state = "mech_zoom_on"
 
 /datum/action/innate/proto_emitter/firing/Activate()
 	if(proto_emitter.manual)
 		playsound(proto_emitter,'sound/vehicles/mecha/mechmove01.ogg', 50, TRUE)
 		proto_emitter.manual = FALSE
-		name = "Switch to Manual Firing"
-		desc = "The emitter will only fire on your command and at your designated target"
+		name = "Переключиться на ручной огонь"
+		desc = "Эмиттер будет стрелять только по вашей команде и по указанной цели"
 		button_icon_state = "mech_zoom_on"
 		for(var/obj/item/item in buckled_mob.held_items)
 			if(istype(item, /obj/item/turret_control))
@@ -530,8 +530,8 @@
 		build_all_button_icons()
 		return
 	playsound(proto_emitter,'sound/vehicles/mecha/mechmove01.ogg', 50, TRUE)
-	name = "Switch to Automatic Firing"
-	desc = "Emitters will switch to periodic firing at your last target"
+	name = "Переключиться на автоматический огонь"
+	desc = "Эмиттер будет периодически стрелять по вашей последней цели"
 	button_icon_state = "mech_zoom_off"
 	proto_emitter.manual = TRUE
 	for(var/things in buckled_mob.held_items)
@@ -548,7 +548,7 @@
 
 
 /obj/item/turret_control
-	name = "turret controls"
+	name = "управление турелью"
 	icon = 'icons/obj/weapons/hand.dmi'
 	icon_state = "offhand"
 	w_class = WEIGHT_CLASS_HUGE
@@ -615,7 +615,7 @@
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/power/emitter/ctf
-	name = "Energy Cannon"
+	name = "энергетическая пушка"
 	active = TRUE
 	active_power_usage = 0
 	idle_power_usage = 0
@@ -625,8 +625,8 @@
 	use_power = NO_POWER_USE
 
 /obj/item/emitter_disk
-	name = "\improper Diode Disk: Debugger"
-	desc = "This disk can be used on an emitter with an open panel to reset its projectile. Unless this was handed to you by an admin, you should report this on github."
+	name = "\improper диодный диск: отладчик"
+	desc = "Этот диск можно использовать на эмиттере с открытой панелью, чтобы сбросить его снаряд. Если его выдал не администратор, сообщите об этом на GitHub."
 	icon = 'icons/obj/devices/floppy_disks.dmi'
 	icon_state = "datadisk6"
 	var/laser_color = COLOR_VIBRANT_LIME
@@ -638,24 +638,24 @@
 	var/no_shot_counter = FALSE
 
 /obj/item/emitter_disk/stamina
-	name = "\improper Diode Disk: Electrodisruptive"
-	desc = "This disk can be used on an emitter with an open panel to make it shoot lasers which will increase the integrity of supermatter crystals and exhaust living creatures. The disk will be consumed in the process."
+	name = "\improper диодный диск: электродизруптивный"
+	desc = "Этот диск можно использовать на эмиттере с открытой панелью, чтобы он стрелял лазерами, повышающими целостность кристаллов суперматерии и истощающими живых существ. Диск будет израсходован."
 	stored_proj = /obj/projectile/beam/emitter/hitscan/bluelens
 	consumed_on_removal = FALSE
 	consumable = FALSE
 	laser_color = COLOR_TRUE_BLUE
 
 /obj/item/emitter_disk/healing
-	name = "\improper Diode Disk: Bioregenerative"
-	desc = "This disk can be installed into an emitter with an open panel to make it shoot lasers which will heal the physical damages of living creatures."
+	name = "\improper диодный диск: биорегенеративный"
+	desc = "Этот диск можно установить в эмиттер с открытой панелью, чтобы он стрелял лазерами, исцеляющими физические повреждения живых существ."
 	stored_proj = /obj/projectile/beam/emitter/hitscan/bioregen
 	consumed_on_removal = FALSE
 	consumable = FALSE
 	laser_color = COLOR_YELLOW
 
 /obj/item/emitter_disk/incendiary
-	name = "\improper Diode Disk: Conflagratory"
-	desc = "This disk can be used on an emitter with an open panel to make it shoot lasers which will set living creatures ablaze."
+	name = "\improper диодный диск: зажигательный"
+	desc = "Этот диск можно использовать на эмиттере с открытой панелью, чтобы он стрелял лазерами, поджигающими живых существ."
 	stored_proj = /obj/projectile/beam/emitter/hitscan/incend
 	consumed_on_removal = FALSE
 	consumable = FALSE
@@ -663,8 +663,8 @@
 
 
 /obj/item/emitter_disk/sanity
-	name = "\improper Diode Disk: Psychosiphoning"
-	desc = "This disk can be used on an emitter with an open panel to make it shoot lasers which will depress living creatures and calm supermatter crystals."
+	name = "\improper диодный диск: психосифонный"
+	desc = "Этот диск можно использовать на эмиттере с открытой панелью, чтобы он стрелял лазерами, подавляющими живых существ и успокаивающими кристаллы суперматерии."
 	stored_proj = /obj/projectile/beam/emitter/hitscan/psy
 	consumed_on_removal = FALSE
 	consumable = FALSE
@@ -672,16 +672,16 @@
 
 
 /obj/item/emitter_disk/magnetic
-	name = "\improper Diode Disk: Magnetogenerative"
-	desc = "This disk can be used on an emitter with an open panel to make it shoot lasers which will attract nearby objects."
+	name = "\improper диодный диск: магнитогенеративный"
+	desc = "Этот диск можно использовать на эмиттере с открытой панелью, чтобы он стрелял лазерами, притягивающими ближайшие предметы."
 	stored_proj = /obj/projectile/beam/emitter/hitscan/magnetic
 	consumed_on_removal = FALSE
 	consumable = FALSE
 	laser_color = COLOR_SILVER
 
 /obj/item/emitter_disk/blast
-	name = "\improper Diode Disk: Hyperconcussive"
-	desc = "This disk, loaded with proprietary syndicate firmware, can be used on an emitter with an open panel to make it shoot beams of concussive force which will cause small explosions."
+	name = "\improper диодный диск: гиперударный"
+	desc = "Этот диск с фирменной прошивкой Синдиката можно использовать на эмиттере с открытой панелью, чтобы он стрелял лучами ударной силы, вызывающими небольшие взрывы."
 	stored_proj = /obj/projectile/beam/emitter/hitscan/blast
 	consumed_on_removal = FALSE
 	consumable = FALSE

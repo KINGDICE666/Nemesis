@@ -40,12 +40,12 @@ export const ModularShieldGen = (props) => {
   } = data;
 
   return (
-    <Window title="Modular Shield Generator" width={690} height={225}>
+    <Window title="Модульный генератор щита" width={690} height={225}>
       <Window.Content>
         <Stack fill>
           <Stack.Item grow={2}>
             <Section
-              title="Shield Strength"
+              title="Прочность щита"
               color={recovering ? 'red' : 'white'}
             >
               <ProgressBar
@@ -60,7 +60,7 @@ export const ModularShieldGen = (props) => {
                 {current_strength}/{max_strength}
               </ProgressBar>
             </Section>
-            <Section title="Regeneration and Radius">
+            <Section title="Регенерация и радиус">
               <ProgressBar
                 value={current_regeneration}
                 maxValue={max_regeneration}
@@ -70,7 +70,7 @@ export const ModularShieldGen = (props) => {
                   bad: [0, max_regeneration * 0.25],
                 }}
               >
-                Regeneration {current_regeneration}/{max_regeneration}
+                Регенерация {current_regeneration}/{max_regeneration}
               </ProgressBar>
               <Section>
                 <ProgressBar
@@ -82,15 +82,15 @@ export const ModularShieldGen = (props) => {
                     bad: [0, max_radius * 0.25],
                   }}
                 >
-                  Radius {current_radius}/{max_radius}
+                  Радиус {current_radius}/{max_radius}
                 </ProgressBar>
               </Section>
             </Section>
           </Stack.Item>
           <Stack.Item grow>
-            <Section title="Settings">
+            <Section title="Настройки">
               <LabeledList>
-                <LabeledList.Item label="Set Radius">
+                <LabeledList.Item label="Радиус">
                   <NumberInput
                     disabled={!!active}
                     fluid
@@ -105,24 +105,24 @@ export const ModularShieldGen = (props) => {
                     }
                   />
                 </LabeledList.Item>
-                <LabeledList.Item label="Limitations">
+                <LabeledList.Item label="Ограничения">
                   <Button
                     disabled={active}
                     onClick={() => act('toggle_exterior')}
                   >
-                    {exterior_only ? 'External only' : 'Internal & External'}
+                    {exterior_only ? 'Только снаружи' : 'Внутри и снаружи'}
                   </Button>
                 </LabeledList.Item>
               </LabeledList>
             </Section>
             <Section>
               <LabeledList>
-                <LabeledList.Item label="Toggle Power">
+                <LabeledList.Item label="Питание">
                   <Button
                     bold
                     disabled={recovering || initiating_field}
                     selected={active}
-                    content={active ? 'On' : 'Off'}
+                    content={active ? 'Вкл' : 'Выкл'}
                     icon="power-off"
                     onClick={() => act('toggle_shields')}
                   />

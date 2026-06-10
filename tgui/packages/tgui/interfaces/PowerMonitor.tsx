@@ -82,7 +82,7 @@ export function PowerMonitorContent(props) {
   const { history } = data;
 
   if (!history) {
-    return 'Loading...';
+    return 'Загрузка...';
   }
 
   const supply = history.supply[history.supply.length - 1] || 0;
@@ -104,7 +104,7 @@ export function PowerMonitorContent(props) {
           <Flex.Item mx={0.5} width="200px">
             <Section>
               <LabeledList>
-                <LabeledList.Item label="Supply">
+                <LabeledList.Item label="Выработка">
                   <ProgressBar
                     value={supply}
                     minValue={0}
@@ -114,7 +114,7 @@ export function PowerMonitorContent(props) {
                     {`${toFixed(supply / 1000)} kW`}
                   </ProgressBar>
                 </LabeledList.Item>
-                <LabeledList.Item label="Draw">
+                <LabeledList.Item label="Потребление">
                   <ProgressBar
                     value={demand}
                     minValue={0}
@@ -185,13 +185,13 @@ function StationAreas(props) {
       <Section height={3}>
         <Box>
           <Box inline mr={2} color="label">
-            Sort by:
+            Сортировать:
           </Box>
           <Button.Checkbox
             checked={sortByField === 'name'}
             onClick={() => setSortByField(sortByField !== 'name' ? 'name' : '')}
           >
-            Name
+            Имя
           </Button.Checkbox>
           <Button.Checkbox
             checked={sortByField === 'charge'}
@@ -199,13 +199,13 @@ function StationAreas(props) {
               setSortByField(sortByField !== 'charge' ? 'charge' : '')
             }
           >
-            Charge
+            Заряд
           </Button.Checkbox>
           <Button.Checkbox
             checked={sortByField === 'draw'}
             onClick={() => setSortByField(sortByField !== 'draw' ? 'draw' : '')}
           >
-            Draw
+            Нагрузка
           </Button.Checkbox>
         </Box>
       </Section>
@@ -214,19 +214,19 @@ function StationAreas(props) {
         <Section fill scrollable>
           <Table>
             <Table.Row header>
-              <Table.Cell>Area</Table.Cell>
-              <Table.Cell collapsing>Charge</Table.Cell>
+              <Table.Cell>Зона</Table.Cell>
+              <Table.Cell collapsing>Заряд</Table.Cell>
               <Table.Cell textAlign="right" width={7}>
-                Draw
+                Нагрузка
               </Table.Cell>
-              <Tooltip content="Equipment power">
-                <Table.Cell collapsing>Eqp</Table.Cell>
+              <Tooltip content="Питание оборудования">
+                <Table.Cell collapsing>Обор</Table.Cell>
               </Tooltip>
-              <Tooltip content="Lighting power">
-                <Table.Cell collapsing>Lgt</Table.Cell>
+              <Tooltip content="Питание освещения">
+                <Table.Cell collapsing>Свет</Table.Cell>
               </Tooltip>
-              <Tooltip content="Environment power">
-                <Table.Cell collapsing>Env</Table.Cell>
+              <Tooltip content="Питание среды">
+                <Table.Cell collapsing>Среда</Table.Cell>
               </Tooltip>
             </Table.Row>
             {areas.map((area) => (
@@ -305,7 +305,7 @@ function AreaStatusColorBox(props: AreaStatusColorBoxProps) {
 
   const power = Boolean(status & 2);
   const mode = Boolean(status & 1);
-  const tooltipText = `${power ? 'On' : 'Off'} [${mode ? 'auto' : 'manual'}]`;
+  const tooltipText = `${power ? 'Вкл' : 'Выкл'} [${mode ? 'авто' : 'ручной'}]`;
 
   return (
     <Tooltip content={tooltipText}>

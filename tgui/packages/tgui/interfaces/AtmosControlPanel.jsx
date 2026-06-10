@@ -16,7 +16,7 @@ export const AtmosControlPanel = (props) => {
     [(group) => group.id],
   );
   return (
-    <Window title="SSAir Control Panel" width={900} height={500}>
+    <Window title="Панель управления SSAir" width={900} height={500}>
       <Section m={1}>
         <Flex justify="space-between" align="baseline">
           <Flex.Item>
@@ -24,20 +24,20 @@ export const AtmosControlPanel = (props) => {
               onClick={() => act('toggle-freeze')}
               color={data.frozen === 1 ? 'good' : 'bad'}
             >
-              {data.frozen === 1 ? 'Freeze Subsystem' : 'Unfreeze Subsystem'}
+              {data.frozen === 1 ? 'Заморозить подсистему' : 'Разморозить подсистему'}
             </Button>
           </Flex.Item>
-          <Flex.Item>Fire Cnt: {data.fire_count}</Flex.Item>
-          <Flex.Item>Active Turfs: {data.active_size}</Flex.Item>
-          <Flex.Item>Excited Groups: {data.excited_size}</Flex.Item>
-          <Flex.Item>Hotspots: {data.hotspots_size}</Flex.Item>
-          <Flex.Item>Superconductors: {data.conducting_size}</Flex.Item>
+          <Flex.Item>Пожары: {data.fire_count}</Flex.Item>
+          <Flex.Item>Активные тайлы: {data.active_size}</Flex.Item>
+          <Flex.Item>Возбужденные группы: {data.excited_size}</Flex.Item>
+          <Flex.Item>Очаги: {data.hotspots_size}</Flex.Item>
+          <Flex.Item>Сверхпроводники: {data.conducting_size}</Flex.Item>
           <Flex.Item>
             <Button.Checkbox
               checked={data.showing_user}
               onClick={() => act('toggle_user_display')}
             >
-              Personal View
+              Личный вид
             </Button.Checkbox>
           </Flex.Item>
           <Flex.Item>
@@ -45,7 +45,7 @@ export const AtmosControlPanel = (props) => {
               checked={data.show_all}
               onClick={() => act('toggle_show_all')}
             >
-              Display all
+              Показать все
             </Button.Checkbox>
           </Flex.Item>
         </Flex>
@@ -55,14 +55,14 @@ export const AtmosControlPanel = (props) => {
           <Section>
             <Table>
               <Table.Row header>
-                <Table.Cell>Area Name</Table.Cell>
-                <Table.Cell collapsing>Breakdown</Table.Cell>
-                <Table.Cell collapsing>Dismantle</Table.Cell>
-                <Table.Cell collapsing>Turfs</Table.Cell>
+                <Table.Cell>Название зоны</Table.Cell>
+                <Table.Cell collapsing>Разбивка</Table.Cell>
+                <Table.Cell collapsing>Разборка</Table.Cell>
+                <Table.Cell collapsing>Тайлы</Table.Cell>
                 <Table.Cell collapsing>
-                  {data.display_max === 1 && 'Max Share'}
+                  {data.display_max === 1 && 'Макс. доля'}
                 </Table.Cell>
-                <Table.Cell collapsing>Display</Table.Cell>
+                <Table.Cell collapsing>Показ</Table.Cell>
               </Table.Row>
               {groups.map((group) => (
                 <tr key={group.id}>

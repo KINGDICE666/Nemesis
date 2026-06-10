@@ -335,7 +335,7 @@
 		/obj/item/stack/sheet/iron = 5)
 
 /obj/item/circuitboard/machine/protolathe/department/engineering
-	name = "Departmental Protolathe - Engineering"
+	name = "отделовой протолат - инженерия"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/rnd/production/protolathe/department/engineering
 
@@ -393,7 +393,7 @@
 	def_components = list(/obj/item/stock_parts/power_store/battery = /obj/item/stock_parts/power_store/battery/high/empty)
 
 /obj/item/circuitboard/machine/techfab/department/engineering
-	name = "\improper Departmental Techfab - Engineering"
+	name = "\improper отделовой техфаб - инженерия"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/rnd/production/techfab/department/engineering
 
@@ -498,7 +498,7 @@
 	)
 
 /obj/item/circuitboard/machine/circuit_imprinter
-	name = "Circuit Imprinter"
+	name = "принтер плат"
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
 	build_path = /obj/machinery/rnd/production/circuit_imprinter
 	req_components = list(
@@ -507,11 +507,11 @@
 		)
 
 /obj/item/circuitboard/machine/circuit_imprinter/offstation
-	name = "Ancient Circuit Imprinter"
+	name = "древний принтер плат"
 	build_path = /obj/machinery/rnd/production/circuit_imprinter/offstation
 
 /obj/item/circuitboard/machine/circuit_imprinter/department
-	name = "Departmental Circuit Imprinter"
+	name = "отделовой принтер плат"
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
 	build_path = /obj/machinery/rnd/production/circuit_imprinter/department
 
@@ -549,7 +549,7 @@
 	def_components = list(/obj/item/stack/ore/bluespace_crystal = /obj/item/stack/ore/bluespace_crystal/artificial)
 
 /obj/item/circuitboard/machine/protolathe
-	name = "Protolathe"
+	name = "протолат"
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
 	build_path = /obj/machinery/rnd/production/protolathe
 	req_components = list(
@@ -558,11 +558,11 @@
 		)
 
 /obj/item/circuitboard/machine/protolathe/offstation
-	name = "Ancient Protolathe"
+	name = "древний протолат"
 	build_path = /obj/machinery/rnd/production/protolathe/offstation
 
 /obj/item/circuitboard/machine/protolathe/department
-	name = "Departmental Protolathe"
+	name = "отделовой протолат"
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
 	build_path = /obj/machinery/rnd/production/protolathe/department
 
@@ -644,7 +644,7 @@
 
 
 /obj/item/circuitboard/machine/techfab
-	name = "\improper Techfab"
+	name = "\improper техфаб"
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
 	build_path = /obj/machinery/rnd/production/techfab
 	req_components = list(
@@ -653,7 +653,7 @@
 		)
 
 /obj/item/circuitboard/machine/techfab/department
-	name = "\improper Departmental Techfab"
+	name = "\improper отделовой техфаб"
 	build_path = /obj/machinery/rnd/production/techfab/department
 
 /obj/item/circuitboard/machine/vendor
@@ -905,7 +905,7 @@
 		/obj/item/stack/sheet/glass = 1)
 
 /obj/item/circuitboard/machine/protolathe/department/medical
-	name = "Departmental Protolathe - Medical"
+	name = "отделовой протолат - медицина"
 	greyscale_colors = CIRCUIT_COLOR_MEDICAL
 	build_path = /obj/machinery/rnd/production/protolathe/department/medical
 
@@ -962,14 +962,14 @@
 		/datum/stock_part/matter_bin = 1)
 
 /obj/item/circuitboard/machine/techfab/department/medical
-	name = "\improper Departmental Techfab - Medical"
+	name = "\improper отделовой техфаб - медицина"
 	greyscale_colors = CIRCUIT_COLOR_MEDICAL
 	build_path = /obj/machinery/rnd/production/techfab/department/medical
 
 //Science
 
 /obj/item/circuitboard/machine/circuit_imprinter/department/science
-	name = "Departmental Circuit Imprinter - Science"
+	name = "отделовой принтер плат - наука"
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/rnd/production/circuit_imprinter/department/science
 
@@ -1048,7 +1048,7 @@
 	)
 
 /obj/item/circuitboard/machine/protolathe/department/science
-	name = "Departmental Protolathe - Science"
+	name = "отделовой протолат - наука"
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/rnd/production/protolathe/department/science
 
@@ -1064,7 +1064,7 @@
 	def_components = list(/obj/item/stack/ore/bluespace_crystal = /obj/item/stack/ore/bluespace_crystal/artificial)
 
 /obj/item/circuitboard/machine/rdserver
-	name = "R&D Server"
+	name = "сервер РНД"
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/rnd/server
 	req_components = list(
@@ -1073,11 +1073,11 @@
 	)
 
 /obj/item/circuitboard/machine/rdserver/oldstation
-	name = "Ancient R&D Server"
+	name = "древний сервер РНД"
 	build_path = /obj/machinery/rnd/server/oldstation
 
 /obj/item/circuitboard/machine/techfab/department/science
-	name = "\improper Departmental Techfab - Science"
+	name = "\improper отделовой техфаб - наука"
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/rnd/production/techfab/department/science
 
@@ -1160,7 +1160,7 @@
 //Security
 
 /obj/item/circuitboard/machine/protolathe/department/security
-	name = "Departmental Protolathe - Security"
+	name = "отделовой протолат - служба безопасности"
 	greyscale_colors = CIRCUIT_COLOR_SECURITY
 	build_path = /obj/machinery/rnd/production/protolathe/department/security
 
@@ -1172,7 +1172,7 @@
 	needs_anchored = FALSE
 
 /obj/item/circuitboard/machine/techfab/department/security
-	name = "\improper Departmental Techfab - Security"
+	name = "\improper отделовой техфаб - служба безопасности"
 	greyscale_colors = CIRCUIT_COLOR_SECURITY
 	build_path = /obj/machinery/rnd/production/techfab/department/security
 
@@ -1369,7 +1369,7 @@
 	return TRUE
 
 /obj/item/circuitboard/machine/protolathe/department/service
-	name = "Departmental Protolathe - Service"
+	name = "отделовой протолат - сервис"
 	greyscale_colors = CIRCUIT_COLOR_SERVICE
 	build_path = /obj/machinery/rnd/production/protolathe/department/service
 
@@ -1391,7 +1391,7 @@
 	needs_anchored = FALSE
 
 /obj/item/circuitboard/machine/techfab/department/service
-	name = "\improper Departmental Techfab - Service"
+	name = "\improper отделовой техфаб - сервис"
 	greyscale_colors = CIRCUIT_COLOR_SERVICE
 	build_path = /obj/machinery/rnd/production/techfab/department/service
 
@@ -1431,7 +1431,7 @@
 	req_components = list()
 
 /obj/item/circuitboard/machine/protolathe/department/cargo
-	name = "Departmental Protolathe - Cargo"
+	name = "отделовой протолат - снабжение"
 	greyscale_colors = CIRCUIT_COLOR_SUPPLY
 	build_path = /obj/machinery/rnd/production/protolathe/department/cargo
 
@@ -1452,7 +1452,7 @@
 		/obj/item/stack/cable_coil = 5)
 
 /obj/item/circuitboard/machine/techfab/department/cargo
-	name = "\improper Departmental Techfab - Cargo"
+	name = "\improper отделовой техфаб - снабжение"
 	greyscale_colors = CIRCUIT_COLOR_SUPPLY
 	build_path = /obj/machinery/rnd/production/techfab/department/cargo
 

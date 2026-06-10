@@ -39,15 +39,15 @@ export const Telecomms = (props) => {
   return (
     <Window title={id} width={400} height={600}>
       <Window.Content scrollable>
-        {!multitool && <NoticeBox>Use a multitool to make changes.</NoticeBox>}
-        <Section title="Settings">
+        {!multitool && <NoticeBox>Для внесения изменений используйте мультитул.</NoticeBox>}
+        <Section title="Настройки">
           <LabeledList>
             <LabeledList.Item
-              label="Power"
+              label="Питание"
               buttons={
                 <Button
                   icon={toggled ? 'power-off' : 'times'}
-                  content={toggled ? 'On' : 'Off'}
+                  content={toggled ? 'Вкл' : 'Выкл'}
                   color={toggled ? 'good' : 'bad'}
                   disabled={!multitool}
                   onClick={() => act('toggle')}
@@ -55,7 +55,7 @@ export const Telecomms = (props) => {
               }
             />
             <LabeledList.Item
-              label="Identification String"
+              label="Идентификатор"
               buttons={
                 <Input
                   width={13}
@@ -65,7 +65,7 @@ export const Telecomms = (props) => {
               }
             />
             <LabeledList.Item
-              label="Network"
+              label="Сеть"
               buttons={
                 <Input
                   width={10}
@@ -76,13 +76,13 @@ export const Telecomms = (props) => {
               }
             />
             <LabeledList.Item
-              label="Prefabrication"
+              label="Заводская сборка"
               buttons={
                 <Button
                   icon={prefab ? 'check' : 'times'}
                   color={prefab ? 'good' : 'bad'}
-                  content={prefab ? 'True' : 'False'}
-                  disabled={'True'}
+                  content={prefab ? 'Да' : 'Нет'}
+                  disabled
                 />
               }
             />
@@ -94,7 +94,7 @@ export const Telecomms = (props) => {
               <Section title="Bus">
                 <Table>
                   <Table.Row>
-                    <Table.Cell>Change Frequency:</Table.Cell>
+                    <Table.Cell>Частота изменения:</Table.Cell>
                     <Table.Cell>
                       {channels.find(
                         (channel) => channel.freq === changefrequency,
@@ -141,20 +141,20 @@ export const Telecomms = (props) => {
             {type === 'relay' && (
               <Section title="Relay">
                 <Button
-                  content={'Receiving'}
+                  content={'Прием'}
                   icon={receiving ? 'volume-up' : 'volume-mute'}
                   color={receiving ? '' : 'bad'}
                   onClick={() => act('receive')}
                 />
                 <Button
-                  content={'Broadcasting'}
+                  content={'Передача'}
                   icon={broadcasting ? 'microphone' : 'microphone-slash'}
                   color={broadcasting ? '' : 'bad'}
                   onClick={() => act('broadcast')}
                 />
               </Section>
             )}
-            <Section title="Linked Network Entities">
+            <Section title="Связанные сетевые объекты">
               <Table>
                 {linked.map((entry) => (
                   <Table.Row key={entry.id} className="candystripe">
@@ -173,7 +173,7 @@ export const Telecomms = (props) => {
                 ))}
               </Table>
             </Section>
-            <Section title="Filtered Frequencies">
+            <Section title="Фильтрованные частоты">
               <Table>
                 {frequencies.map((entry) => (
                   <Table.Row key={frequencies.i} className="candystripe">
@@ -210,7 +210,7 @@ export const Telecomms = (props) => {
                 ))}
                 {!!multitool && (
                   <Table.Row className="candystripe" collapsing>
-                    <Table.Cell>Add Frequency</Table.Cell>
+                    <Table.Cell>Добавить частоту</Table.Cell>
                     <Table.Cell>
                       {channels.find(
                         (channel) => channel.freq === frequency,
@@ -257,7 +257,7 @@ export const Telecomms = (props) => {
             </Section>
             {type === 'server' && (
               <Section
-                title="Frequencies Settings"
+                title="Настройки частот"
                 buttons={
                   <Button
                     icon="plus"
@@ -309,29 +309,29 @@ export const Telecomms = (props) => {
               </Section>
             )}
             {!!multitool && (
-              <Section title="Multitool">
+              <Section title="Мультитул">
                 {!!multibuff && (
                   <Box bold m={1}>
-                    Current Buffer: {multibuff}
+                    Текущий буфер: {multibuff}
                   </Box>
                 )}
                 <LabeledControls m={1}>
                   <Button
                     icon={'plus'}
-                    content={'Add Machine'}
+                    content={'Добавить машину'}
                     disabled={!multitool}
                     onClick={() => act('buffer')}
                   />
                   <Button
                     icon={'link'}
-                    content={'Link'}
+                    content={'Связать'}
                     disabled={!multibuff}
                     onClick={() => act('link')}
                   />
                   <Button
                     icon="times"
                     color="bad"
-                    content={'Flush'}
+                    content={'Очистить'}
                     disabled={!multibuff}
                     onClick={() => act('flush')}
                   />

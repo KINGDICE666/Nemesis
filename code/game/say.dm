@@ -147,7 +147,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	//Start name span.
 	var/spanpart2 = "<span class='name'>"
 	//Radio freq/name display
-	var/freqpart = radio_freq ? "\[[get_radio_name(radio_freq, radio_freq_name)]\] " : ""
+	var/freqpart = radio_freq ? "\[[get_radio_display_name(radio_freq, radio_freq_name)]\] " : ""
 	//Speaker name
 	var/namepart = message_mods[MODE_SPEAKER_NAME_OVERRIDE] || speaker.get_message_voice(visible_name)
 
@@ -284,6 +284,47 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	if(name)
 		return name
 	return "[copytext_char("[freq]", 1, 4)].[copytext_char("[freq]", 4, 5)]"
+
+/proc/get_radio_display_name(freq, freq_name)
+	var/channel_name = get_radio_name(freq, freq_name)
+	switch(channel_name)
+		if(RADIO_CHANNEL_COMMON)
+			return "Общий"
+		if(RADIO_CHANNEL_SCIENCE)
+			return "Наука"
+		if(RADIO_CHANNEL_COMMAND)
+			return "Командование"
+		if(RADIO_CHANNEL_MEDICAL)
+			return "Медицина"
+		if(RADIO_CHANNEL_ENGINEERING)
+			return "Инженерия"
+		if(RADIO_CHANNEL_SECURITY)
+			return "Служба безопасности"
+		if(RADIO_CHANNEL_CENTCOM)
+			return "ЦК"
+		if(RADIO_CHANNEL_SYNDICATE)
+			return "Синдикат"
+		if(RADIO_CHANNEL_UPLINK)
+			return "Аплинк"
+		if(RADIO_CHANNEL_SUPPLY)
+			return "Снабжение"
+		if(RADIO_CHANNEL_SERVICE)
+			return "Сервис"
+		if(RADIO_CHANNEL_AI_PRIVATE)
+			return "Приватный ИИ"
+		if(RADIO_CHANNEL_ENTERTAINMENT)
+			return "Развлечения"
+		if(RADIO_CHANNEL_CTF_RED)
+			return "Красная команда"
+		if(RADIO_CHANNEL_CTF_BLUE)
+			return "Синяя команда"
+		if(RADIO_CHANNEL_CTF_GREEN)
+			return "Зелёная команда"
+		if(RADIO_CHANNEL_CTF_YELLOW)
+			return "Жёлтая команда"
+		if(STATUS_DISPLAY_RELAY)
+			return "Статус-дисплеи"
+	return channel_name
 
 /proc/get_radio_color(freq, freq_color)
 	if(freq)

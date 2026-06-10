@@ -64,7 +64,7 @@
 
 /proc/rcd_design_icon_name(list/design)
 	var/atom/design_path = design[RCD_DESIGN_PATH]
-	return design[RCD_DESIGN_ICON] || initial(design_path.name)
+	return design[RCD_DESIGN_ICON] || initial(design_path.icon_state) || initial(design_path.name)
 
 /proc/rcd_design_icon_class(list/design)
 	return sanitize_css_class_name(rcd_design_icon_name(design))

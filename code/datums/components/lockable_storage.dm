@@ -84,18 +84,18 @@
 	SIGNAL_HANDLER
 	if(isnull(held_item))
 		if(source in user.held_items)
-			context[SCREENTIP_CONTEXT_LMB] = "Open storage"
+			context[SCREENTIP_CONTEXT_LMB] = "Открыть хранилище"
 			return CONTEXTUAL_SCREENTIP_SET
-		context[SCREENTIP_CONTEXT_RMB] = "Open storage"
+		context[SCREENTIP_CONTEXT_RMB] = "Открыть хранилище"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	if(can_hack_open)
 		switch(held_item.tool_behaviour)
 			if(TOOL_SCREWDRIVER)
-				context[SCREENTIP_CONTEXT_LMB] = "[panel_open ? "Close" : "Open"] panel"
+				context[SCREENTIP_CONTEXT_LMB] = "[panel_open ? "Закрыть" : "Открыть"] панель"
 				return CONTEXTUAL_SCREENTIP_SET
 			if(TOOL_MULTITOOL)
-				context[SCREENTIP_CONTEXT_LMB] = "Hack panel open"
+				context[SCREENTIP_CONTEXT_LMB] = "Взломать панель"
 				return CONTEXTUAL_SCREENTIP_SET
 
 	return NONE
@@ -104,7 +104,7 @@
 /datum/component/lockable_storage/proc/on_examine(atom/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 	if(can_hack_open)
-		examine_list += "The service panel is currently <b>[panel_open ? "unscrewed" : "screwed shut"]</b>."
+		examine_list += "Сервисная панель сейчас <b>[panel_open ? "откручена" : "прикручена"]</b>."
 
 /**
  * Called when a screwdriver is used on the parent, if it's hackable.
@@ -116,7 +116,7 @@
 
 	panel_open = !panel_open
 	tool.play_tool_sound(source)
-	source.balloon_alert(user, "panel [panel_open ? "opened" : "closed"]")
+	source.balloon_alert(user, "панель [panel_open ? "открыта" : "закрыта"]")
 	return ITEM_INTERACT_SUCCESS
 
 /**
@@ -128,9 +128,9 @@
 	if(!can_hack_open || !source.atom_storage.locked)
 		return NONE
 	if(!panel_open)
-		source.balloon_alert(user, "panel closed!")
+		source.balloon_alert(user, "панель закрыта!")
 		return ITEM_INTERACT_BLOCKING
-	source.balloon_alert(user, "hacking...")
+	source.balloon_alert(user, "взлом...")
 	INVOKE_ASYNC(src, PROC_REF(hack_open), source, user, tool)
 	return ITEM_INTERACT_SUCCESS
 
@@ -138,7 +138,7 @@
 /datum/component/lockable_storage/proc/hack_open(atom/source, mob/user, obj/item/tool)
 	if(!tool.use_tool(parent, user, 40 SECONDS, volume = 50))
 		return
-	source.balloon_alert(user, "hacked")
+	source.balloon_alert(user, "взломано")
 	set_lock_code(null)
 
 /datum/component/lockable_storage/proc/break_lock()
@@ -160,8 +160,8 @@
 	if(source.obj_flags & EMAGGED)
 		return FALSE
 
-	source.visible_message(span_warning("Sparks fly from [source]!"), blind_message = span_hear("You hear a faint electrical spark."))
-	source.balloon_alert(user, "lock destroyed")
+	source.visible_message(span_warning("От [source] летят искры!"), blind_message = span_hear("Вы слышите тихий электрический треск."))
+	source.balloon_alert(user, "замок уничтожен")
 	playsound(source, SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	break_lock()
 	return ITEM_INTERACT_SUCCESS
@@ -185,7 +185,7 @@
 	source.update_appearance()
 
 	if(istype(user) && new_code)
-		to_chat(user, span_notice("You set the [source] pincode to [lock_code]."))
+		to_chat(user, span_notice("Вы задаёте пин-код [source]: [lock_code]."))
 
 	return TRUE
 

@@ -48,7 +48,7 @@ export const MessageWriteTab = (props) => {
               setRequestType(RequestType.ASSISTANCE);
             }}
           >
-            Request Assistance
+            Запросить помощь
           </Button>
         </Stack.Item>
         <Stack.Item grow>
@@ -61,7 +61,7 @@ export const MessageWriteTab = (props) => {
               setRequestType(RequestType.SUPPLIES);
             }}
           >
-            Request Supplies
+            Запросить снабжение
           </Button>
         </Stack.Item>
         <Stack.Item grow>
@@ -74,7 +74,7 @@ export const MessageWriteTab = (props) => {
               setRequestType(RequestType.INFORMATION);
             }}
           >
-            Relay Information
+            Передать информацию
           </Button>
         </Stack.Item>
       </Stack>
@@ -84,7 +84,7 @@ export const MessageWriteTab = (props) => {
             width="100%"
             options={sorted_assistance}
             selected={recipient}
-            placeholder="Pick a Recipient"
+            placeholder="Выберите получателя"
             onSelected={(value) => setRecipient(value)}
           />
         )}
@@ -93,7 +93,7 @@ export const MessageWriteTab = (props) => {
             width="100%"
             options={sorted_supply}
             selected={recipient}
-            placeholder="Pick a Recipient"
+            placeholder="Выберите получателя"
             onSelected={(value) => setRecipient(value)}
           />
         )}
@@ -102,7 +102,7 @@ export const MessageWriteTab = (props) => {
             width="100%"
             options={sorted_information}
             selected={recipient}
-            placeholder="Pick a Recipient"
+            placeholder="Выберите получателя"
             onSelected={(value) => setRecipient(value)}
           />
         )}
@@ -111,7 +111,7 @@ export const MessageWriteTab = (props) => {
         <Stack.Item grow>
           <Button
             icon="envelope"
-            content="Normal Priority"
+            content="Обычный приоритет"
             key={RequestPriority.NORMAL}
             fluid
             selected={priority === RequestPriority.NORMAL}
@@ -121,7 +121,7 @@ export const MessageWriteTab = (props) => {
         <Stack.Item grow>
           <Button
             icon="exclamation"
-            content="High Priority"
+            content="Высокий приоритет"
             key={RequestPriority.HIGH}
             fluid
             selected={priority === RequestPriority.HIGH}
@@ -132,7 +132,7 @@ export const MessageWriteTab = (props) => {
           <Stack.Item grow>
             <Button
               icon="burst"
-              content="EXTREME PRIORITY"
+              content="КРАЙНИЙ ПРИОРИТЕТ"
               key={RequestPriority.EXTREME}
               fluid
               selected={priority === RequestPriority.EXTREME}
@@ -147,7 +147,7 @@ export const MessageWriteTab = (props) => {
         maxLength={1025}
         value={messageText}
         onChange={setMessageText}
-        placeholder="Type your message..."
+        placeholder="Введите сообщение..."
       />
       <Section>
         <Stack fill justify="space-between">
@@ -169,15 +169,15 @@ export const MessageWriteTab = (props) => {
                 resetMessage();
               }}
             >
-              Send message
+              Отправить сообщение
             </Button>
           </Stack.Item>
           <Stack.Item>
             <Button icon="id-card" onClick={() => act('verify_id')}>
-              {authentication_data.message_verified_by || 'Not verified'}
+              {authentication_data.message_verified_by || 'Не подтверждено'}
             </Button>
             <Button icon="stamp" onClick={() => act('stamp')}>
-              {authentication_data.message_stamped_by || 'Not stamped'}
+              {authentication_data.message_stamped_by || 'Без печати'}
             </Button>
           </Stack.Item>
         </Stack>
@@ -188,7 +188,7 @@ export const MessageWriteTab = (props) => {
             resetMessage();
           }}
         >
-          Discard message
+          Удалить сообщение
         </Button>
       </Section>
     </Section>

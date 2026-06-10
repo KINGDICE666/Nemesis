@@ -22,7 +22,7 @@ const CATEGORY_NAMES: Record<string, string> = {
   GHOST: 'Призрак',
   GRAPHICS: 'Графика',
   INPUT: 'Ввод',
-  RUNECHAT: 'Runechat',
+  RUNECHAT: 'Рунчат',
   SOUND: 'Звук',
   TOOLTIPS: 'Подсказки',
   UI: 'Интерфейс',

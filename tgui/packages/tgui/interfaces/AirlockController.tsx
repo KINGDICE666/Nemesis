@@ -21,31 +21,38 @@ export const AirlockController = (props) => {
   const { data } = useBackend<AirlockControllerData>();
   const { airlockState, pumpStatus, interiorStatus, exteriorStatus } = data;
   const currentStatus: AirlockStatus = getAirlockStatus(airlockState);
-  const nameToUpperCase = (str: string) =>
-    str.replace(/^\w/, (c) => c.toUpperCase());
+  const localizeStatus = (str: string) =>
+    ({
+      open: 'Открыта',
+      closed: 'Закрыта',
+      on: 'Включен',
+      off: 'Отключен',
+      siphon: 'Откачка',
+      release: 'Выпуск',
+    })[str] || str.replace(/^\w/, (c) => c.toUpperCase());
 
   return (
     <Window width={500} height={190}>
       <Window.Content>
-        <Section title="Airlock Status" buttons={<AirLockButtons />}>
+        <Section title="Состояние шлюза" buttons={<AirLockButtons />}>
           <LabeledList>
-            <LabeledList.Item label="Current Status">
+            <LabeledList.Item label="Текущее состояние">
               {currentStatus.primary}
             </LabeledList.Item>
-            <LabeledList.Item label="Chamber Pressure">
+            <LabeledList.Item label="Давление в камере">
               <PressureIndicator currentStatus={currentStatus} />
             </LabeledList.Item>
-            <LabeledList.Item label="Control Pump">
-              {nameToUpperCase(pumpStatus)}
+            <LabeledList.Item label="Насос управления">
+              {localizeStatus(pumpStatus)}
             </LabeledList.Item>
-            <LabeledList.Item label="Interior Door">
+            <LabeledList.Item label="Внутренняя дверь">
               <Box color={interiorStatus === 'open' && 'good'}>
-                {nameToUpperCase(interiorStatus)}
+                {localizeStatus(interiorStatus)}
               </Box>
             </LabeledList.Item>
-            <LabeledList.Item label="Exterior Door">
+            <LabeledList.Item label="Внешняя дверь">
               <Box color={exteriorStatus === 'open' && 'good'}>
-                {nameToUpperCase(exteriorStatus)}
+                {localizeStatus(exteriorStatus)}
               </Box>
             </LabeledList.Item>
           </LabeledList>
@@ -64,17 +71,17 @@ const AirLockButtons = (props) => {
     case 'depressurize':
       return (
         <Button icon="stop-circle" onClick={() => act('abort')}>
-          Abort
+          Прервать
         </Button>
       );
     case 'closed':
       return (
         <>
           <Button icon="lock-open" onClick={() => act('cycleInterior')}>
-            Open Interior Airlock
+            Открыть внутренний шлюз
           </Button>
           <Button icon="lock-open" onClick={() => act('cycleExterior')}>
-            Open Exterior Airlock
+            Открыть внешний шлюз
           </Button>
         </>
       );
@@ -82,10 +89,10 @@ const AirLockButtons = (props) => {
       return (
         <>
           <Button icon="lock" onClick={() => act('cycleClosed')}>
-            Close Interior Airlock
+            Закрыть внутренний шлюз
           </Button>
           <Button icon="sync" onClick={() => act('cycleExterior')}>
-            Cycle to Exterior Airlock
+            Переключить на внешний шлюз
           </Button>
         </>
       );
@@ -93,10 +100,10 @@ const AirLockButtons = (props) => {
       return (
         <>
           <Button icon="lock" onClick={() => act('cycleClosed')}>
-            Close Exterior Airlock
+            Закрыть внешний шлюз
           </Button>
           <Button icon="sync" onClick={() => act('cycleInterior')}>
-            Cycle to Interior Airlock
+            Переключить на внутренний шлюз
           </Button>
         </>
       );
@@ -126,37 +133,37 @@ const getAirlockStatus = (airlockState): AirlockStatus => {
   switch (airlockState) {
     case 'inopen':
       return {
-        primary: 'Interior Airlock Open',
+        primary: 'Внутренний шлюз открыт',
         icon: '',
         color: 'good',
       };
     case 'pressurize':
       return {
-        primary: 'Cycling to Interior Airlock',
+        primary: 'Переключение на внутренний шлюз',
         icon: 'fan',
         color: 'average',
       };
     case 'closed':
       return {
-        primary: 'Inactive',
+        primary: 'Неактивен',
         icon: '',
         color: 'white',
       };
     case 'depressurize':
       return {
-        primary: 'Cycling to Exterior Airlock',
+        primary: 'Переключение на внешний шлюз',
         icon: 'fan',
         color: 'average',
       };
     case 'outopen':
       return {
-        primary: 'Exterior Airlock Open',
+        primary: 'Внешний шлюз открыт',
         icon: 'exclamation-triangle',
         color: 'bad',
       };
     default:
       return {
-        primary: 'Unknown',
+        primary: 'Неизвестно',
         icon: '',
         color: 'average',
       };

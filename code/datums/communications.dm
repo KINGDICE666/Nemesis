@@ -130,13 +130,13 @@ GLOBAL_DATUM_INIT(communications_controller, /datum/communciations_controller, n
 		. += "<hr><h4>Additional Notes: </h4>" + footnote_pile
 
 #ifndef MAP_TEST
-	print_command_report(., "[command_name()] Status Summary", announce = FALSE, contains_advanced_html = TRUE)
+	print_command_report(., "Сводка статуса [command_name()]", announce = FALSE, contains_advanced_html = TRUE)
 	if(greenshift)
 		priority_announce(
-			"Thanks to the tireless efforts of our security and intelligence divisions, \
-				there are currently no credible threats to [station_name()]. \
-				All station construction projects have been authorized. Have a secure shift!",
-			"Security Report",
+			"Благодаря неустанной работе наших отделов безопасности и разведки \
+				на данный момент нет достоверных угроз для [station_name()]. \
+				Все строительные проекты станции были одобрены. Безопасной смены!",
+			"Отчёт службы безопасности",
 			SSstation.announcer.get_rand_report_sound(),
 			color_override = "green",
 		)
@@ -145,15 +145,15 @@ GLOBAL_DATUM_INIT(communications_controller, /datum/communciations_controller, n
 			SSsecurity_level.set_level(SEC_LEVEL_BLUE, announce = FALSE)
 		priority_announce(
 			"[SSsecurity_level.current_security_level.elevating_to_announcement]\n\n\
-				A summary has been copied and printed to all communications consoles.",
-			"Security level elevated.",
+				Сводка скопирована и распечатана на всех консолях связи.",
+			"Уровень угрозы повышен.",
 			ANNOUNCER_INTERCEPT,
 			color_override = SSsecurity_level.current_security_level.announcement_color,
 		)
 	else
 		priority_announce(
-			"A summary of the station's situation has been copied and printed to all communications consoles.",
-			"Security Report",
+			"Сводка о ситуации на станции скопирована и распечатана на всех консолях связи.",
+			"Отчёт службы безопасности",
 			SSstation.announcer.get_rand_report_sound(),
 		)
 

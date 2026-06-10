@@ -88,7 +88,7 @@
 /obj/item/storage/wallet/examine()
 	. = ..()
 	if(front_id)
-		. += span_notice("Alt-click to remove the id.")
+		. += span_notice("Alt-click, чтобы извлечь ID.")
 
 /obj/item/storage/wallet/get_id_examine_strings(mob/user)
 	. = ..()

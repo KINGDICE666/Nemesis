@@ -10,7 +10,7 @@ export const RequestsConsole = (props) => {
   const { act, data } = useBackend<RequestsData>();
   const { department } = data;
   return (
-    <Window title={`${department} Requests Console`} width={500} height={600}>
+    <Window title={`Консоль запросов: ${department}`} width={500} height={600}>
       <Window.Content>
         <RequestsConsoleContent />
       </Window.Content>
@@ -37,7 +37,7 @@ const RequestsConsoleFooter = (props) => {
       <Button.Checkbox
         fluid
         checked={!silent}
-        content={'Speaker'}
+        content={'Динамик'}
         onClick={() => {
           act('toggle_silent');
         }}

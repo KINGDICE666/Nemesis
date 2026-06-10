@@ -16,6 +16,13 @@ import {
   RequestType,
 } from './types';
 
+const localizeRequestType = (requestType: string) =>
+  ({
+    Assistance: 'Помощь',
+    Supplies: 'Снабжение',
+    Information: 'Информация',
+  })[requestType] || requestType;
+
 export const MessageViewTab = (props) => {
   const { act, data } = useBackend<RequestsData>();
   const { messages = [] } = data;
@@ -40,18 +47,18 @@ const MessageDisplay = (props: { message: RequestMessage }) => {
     <Stack.Item>
       <Section
         title={
-          message.request_type +
-          ' from ' +
+          localizeRequestType(message.request_type) +
+          ' от ' +
           message.sender_department +
           ', ' +
           message.received_time
         }
       >
         {message.priority === RequestPriority.HIGH && (
-          <NoticeBox>High Priority</NoticeBox>
+          <NoticeBox>Высокий приоритет</NoticeBox>
         )}
         {message.priority === RequestPriority.EXTREME && (
-          <NoticeBox danger>!!!Extreme Priority!!!</NoticeBox>
+          <NoticeBox danger>!!!Крайний приоритет!!!</NoticeBox>
         )}
         <BlockQuote>
           {decodeHtmlEntities(message.content)}
@@ -66,18 +73,18 @@ const MessageDisplay = (props: { message: RequestMessage }) => {
           )}
         </BlockQuote>
         <LabeledList>
-          <LabeledList.Item label="Message Verified By">
-            {message.message_verified_by || 'Not Verified'}
+          <LabeledList.Item label="Сообщение подтверждено">
+            {message.message_verified_by || 'Не подтверждено'}
           </LabeledList.Item>
-          <LabeledList.Item label="Message Stamped By">
-            {message.message_stamped_by || 'Not Stamped'}
+          <LabeledList.Item label="Печать на сообщении">
+            {message.message_stamped_by || 'Без печати'}
           </LabeledList.Item>
         </LabeledList>
         {message.request_type !== RequestType.ORE_UPDATE && (
           <Section>
             <Button
               icon="reply"
-              content="Quick Reply"
+              content="Быстрый ответ"
               onClick={() => {
                 act('quick_reply', {
                   reply_recipient: message.sender_department,

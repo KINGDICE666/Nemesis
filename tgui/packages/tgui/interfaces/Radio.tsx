@@ -52,7 +52,7 @@ export const Radio = (props) => {
     name: key,
     status: !!value,
   }));
-  // Calculate window height
+
   let height = 133;
   if (channels.length > 0) {
     height += channels.length * 25 + 8;
@@ -99,6 +99,7 @@ export const Radio = (props) => {
                 width="37px"
                 icon={listening ? 'volume-up' : 'volume-mute'}
                 selected={listening}
+                tooltip={listening ? 'Прием включен' : 'Прием выключен'}
                 onClick={() => act('listen')}
               />
               <Button
@@ -106,6 +107,7 @@ export const Radio = (props) => {
                 width="37px"
                 icon={broadcasting ? 'microphone' : 'microphone-slash'}
                 selected={broadcasting}
+                tooltip={broadcasting ? 'Передача включена' : 'Передача выключена'}
                 onClick={() => act('broadcast')}
               />
               {!!command && (
@@ -120,7 +122,7 @@ export const Radio = (props) => {
               {!!subspaceSwitchable && (
                 <Button
                   ml={1}
-                  icon="bullhorn"
+                  icon="satellite-dish"
                   selected={subspace}
                   content={`Субпростр. Tx ${subspace ? 'ВКЛ' : 'ВЫКЛ'}`}
                   onClick={() => act('subspace')}

@@ -1,6 +1,6 @@
 /obj/item/assembly/control
-	name = "blast door controller"
-	desc = "A small electronic device able to control a blast door remotely."
+	name = "контроллер гермоворот"
+	desc = "Небольшое электронное устройство для дистанционного управления гермоворотами."
 	icon_state = "control"
 	/// The ID of the blast door electronics to match to the ID of the blast door being used.
 	var/id = -1
@@ -16,7 +16,7 @@
 /obj/item/assembly/control/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = NONE
 	if(istype(held_item, /obj/item/assembly/control))
-		context[SCREENTIP_CONTEXT_LMB] = "Copy ID"
+		context[SCREENTIP_CONTEXT_LMB] = "Скопировать ID"
 		return CONTEXTUAL_SCREENTIP_SET
 
 /obj/item/assembly/control/examine(mob/user)
@@ -25,8 +25,8 @@
 		if(id != -1)
 			. += span_notice("Its channel ID is '[id]'.")
 		else
-			. += span_notice("Interact with pod door to generate an new id")
-	. += span_notice("You can interact with another controller to copy its ID.")
+			. += span_notice("Взаимодействуйте с гермоворотами, чтобы создать новый ID.")
+	. += span_notice("Можно взаимодействовать с другим контроллером, чтобы скопировать его ID.")
 
 /obj/item/assembly/control/multitool_act(mob/living/user)
 	var/list/door_ids = list()
@@ -40,7 +40,7 @@
 		var/area/door_area = get_area(M)
 		display_ids += "[door_area.name]([M.id])"
 
-	var/change_id = tgui_input_list(user, "Set Controller ID", "Controller ID", display_ids)
+	var/change_id = tgui_input_list(user, "Установить ID контроллера", "ID контроллера", display_ids)
 	if(!change_id || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
 
@@ -53,17 +53,17 @@
 			id = "[change_id[start]]"
 		else
 			id = copytext(change_id, start, end)
-	balloon_alert(user, "id changed")
+	balloon_alert(user, "ID изменен")
 	if(id != -1)
-		to_chat(user, span_notice("You change the ID to [id]."))
+		to_chat(user, span_notice("Вы меняете ID на [id]."))
 	else
-		to_chat(user, span_notice("You now must interact with an pod door to generate an unique ID."))
+		to_chat(user, span_notice("Теперь нужно взаимодействовать с гермоворотами, чтобы создать уникальный ID."))
 
 /obj/item/assembly/control/interact_with_atom(obj/item/assembly/control/interacting_with, mob/living/user, list/modifiers)
 	. = NONE
 	if(istype(interacting_with))
 		id = interacting_with.id
-		balloon_alert(user, "id changed")
+		balloon_alert(user, "ID изменен")
 		return ITEM_INTERACT_SUCCESS
 
 /obj/item/assembly/control/activate()
@@ -79,13 +79,13 @@
 	addtimer(VARSET_CALLBACK(src, cooldown, FALSE), 1 SECONDS)
 
 /obj/item/assembly/control/curtain
-	name = "curtain controller"
-	desc = "A small electronic device able to control a mechanical curtain remotely."
+	name = "контроллер занавеса"
+	desc = "Небольшое электронное устройство для дистанционного управления механическим занавесом."
 
 /obj/item/assembly/control/curtain/examine(mob/user)
 	. = ..()
 	if(id)
-		. += span_notice("Its channel ID is '[id]'.")
+		. += span_notice("ID канала: '[id]'.")
 
 /obj/item/assembly/control/curtain/activate()
 	var/openclose
@@ -101,8 +101,8 @@
 
 
 /obj/item/assembly/control/airlock
-	name = "airlock controller"
-	desc = "A small electronic device able to control an airlock remotely."
+	name = "контроллер шлюза"
+	desc = "Небольшое электронное устройство для дистанционного управления шлюзом."
 	id = "badmin" // Set it to null for MEGAFUN.
 	var/specialfunctions = OPEN
 	/*
@@ -149,8 +149,8 @@
 
 
 /obj/item/assembly/control/massdriver
-	name = "mass driver controller"
-	desc = "A small electronic device able to control a mass driver."
+	name = "контроллер масс-драйвера"
+	desc = "Небольшое электронное устройство для управления масс-драйвером."
 
 /obj/item/assembly/control/massdriver/activate()
 	if(cooldown)
@@ -178,8 +178,8 @@
 
 
 /obj/item/assembly/control/igniter
-	name = "ignition controller"
-	desc = "A remote controller for a mounted igniter."
+	name = "контроллер зажигания"
+	desc = "Дистанционный контроллер установленного воспламенителя."
 
 /obj/item/assembly/control/igniter/activate()
 	if(cooldown)
@@ -196,8 +196,8 @@
 	addtimer(VARSET_CALLBACK(src, cooldown, FALSE), 3 SECONDS)
 
 /obj/item/assembly/control/flasher
-	name = "flasher controller"
-	desc = "A remote controller for a mounted flasher."
+	name = "контроллер вспышки"
+	desc = "Дистанционный контроллер установленной вспышки."
 
 /obj/item/assembly/control/flasher/activate()
 	if(cooldown)
@@ -211,8 +211,8 @@
 
 
 /obj/item/assembly/control/crematorium
-	name = "crematorium controller"
-	desc = "An evil-looking remote controller for a crematorium."
+	name = "контроллер крематория"
+	desc = "Зловещий дистанционный контроллер крематория."
 
 /obj/item/assembly/control/crematorium/activate()
 	if(cooldown)

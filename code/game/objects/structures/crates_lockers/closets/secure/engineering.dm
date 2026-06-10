@@ -1,5 +1,5 @@
 /obj/structure/closet/secure_closet/engineering_chief
-	name = "chief engineer's locker"
+	name = "шкаф старшего инженера"
 	req_access = list(ACCESS_CE)
 	icon_state = "ce"
 
@@ -28,7 +28,7 @@
 	new /obj/item/pipe_dispenser(src)
 
 /obj/structure/closet/secure_closet/engineering_electrical
-	name = "electrical supplies locker"
+	name = "шкаф электроснабжения"
 	req_access = list(ACCESS_ENGINE_EQUIP)
 	icon_state = "eng"
 	icon_door = "eng_elec"
@@ -49,7 +49,7 @@
 	new /obj/item/clothing/gloves/color/yellow(src)
 
 /obj/structure/closet/secure_closet/engineering_welding
-	name = "welding supplies locker"
+	name = "шкаф сварочного снаряжения"
 	req_access = list(ACCESS_ENGINE_EQUIP)
 	icon_state = "eng"
 	icon_door = "eng_weld"
@@ -62,7 +62,7 @@
 		new /obj/item/weldingtool(src)
 
 /obj/structure/closet/secure_closet/engineering_personal
-	name = "engineer's locker"
+	name = "шкаф инженера"
 	req_access = list(ACCESS_ENGINE_EQUIP)
 	icon_state = "eng_secure"
 
@@ -79,7 +79,7 @@
 
 
 /obj/structure/closet/secure_closet/atmospherics
-	name = "atmospheric technician's locker"
+	name = "шкаф атмосферного техника"
 	req_access = list(ACCESS_ATMOSPHERICS)
 	icon_state = "atmos"
 

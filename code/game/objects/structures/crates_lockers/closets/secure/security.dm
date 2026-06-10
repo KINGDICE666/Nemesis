@@ -1,5 +1,5 @@
 /obj/structure/closet/secure_closet/captains
-	name = "captain's locker"
+	name = "шкаф капитана"
 	icon_state = "cap"
 	req_access = list(ACCESS_CAPTAIN)
 
@@ -20,7 +20,7 @@
 	new /obj/item/storage/belt/sheath/sabre(src)
 
 /obj/structure/closet/secure_closet/hop
-	name = "head of personnel's locker"
+	name = "шкаф главы персонала"
 	icon_state = "hop"
 	req_access = list(ACCESS_HOP)
 

@@ -3,6 +3,13 @@ import { Button, NoticeBox, Stack } from 'tgui-core/components';
 import { useBackend } from '../../backend';
 import { RequestPriority, type RequestsData } from './types';
 
+const localizeEmergency = (emergency: string) =>
+  ({
+    Security: 'Служба безопасности',
+    Engineering: 'Инженерный отдел',
+    Medical: 'Медицинский отдел',
+  })[emergency] || emergency;
+
 export const RequestsConsoleHeader = (props) => {
   const { act, data } = useBackend<RequestsData>();
   const { has_mail_send_error, new_message_priority } = data;
@@ -22,7 +29,7 @@ const EmergencyBox = (props) => {
     <>
       {!!emergency && (
         <NoticeBox danger>
-          {emergency} called! RETA may open doors in area to them.
+          Вызван отдел: {localizeEmergency(emergency)}! RETA может открыть двери в зоне вызова.
         </NoticeBox>
       )}
       {!emergency && (
@@ -32,7 +39,7 @@ const EmergencyBox = (props) => {
               fluid
               color="red"
               icon="shield"
-              content="Call Security"
+              content="Вызвать СБ"
               onClick={() =>
                 act('set_emergency', {
                   emergency: 'Security',
@@ -45,7 +52,7 @@ const EmergencyBox = (props) => {
               fluid
               color="red"
               icon="screwdriver-wrench"
-              content="Call Engineering"
+              content="Вызвать инженеров"
               onClick={() =>
                 act('set_emergency', {
                   emergency: 'Engineering',
@@ -58,7 +65,7 @@ const EmergencyBox = (props) => {
               fluid
               color="red"
               icon="suitcase-medical"
-              content="Call Medical"
+              content="Вызвать медиков"
               onClick={() =>
                 act('set_emergency', {
                   emergency: 'Medical',
@@ -74,7 +81,7 @@ const EmergencyBox = (props) => {
 
 const ErrorNoticeBox = (props) => {
   return (
-    <NoticeBox danger>{'Error occured while sending a message!'}</NoticeBox>
+    <NoticeBox danger>{'При отправке сообщения произошла ошибка!'}</NoticeBox>
   );
 };
 
@@ -83,10 +90,10 @@ const MessageNoticeBox = (props) => {
   const { new_message_priority } = data;
   return (
     <NoticeBox>
-      {'You have new unread '}
-      {new_message_priority === RequestPriority.HIGH && 'PRIORITY '}
-      {new_message_priority === RequestPriority.EXTREME && 'EXTREME PRIORITY '}
-      {'messages'}
+      {'У вас есть новые непрочитанные '}
+      {new_message_priority === RequestPriority.HIGH && 'приоритетные '}
+      {new_message_priority === RequestPriority.EXTREME && 'сообщения крайнего приоритета '}
+      {'сообщения'}
     </NoticeBox>
   );
 };

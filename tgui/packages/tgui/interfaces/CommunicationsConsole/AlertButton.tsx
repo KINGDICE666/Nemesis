@@ -1,6 +1,4 @@
 import { Button } from 'tgui-core/components';
-import { capitalize } from 'tgui-core/string';
-
 import { useBackend } from '../../backend';
 import { SWIPE_NEEDED } from './constants';
 import type { CommsConsoleData } from './types';
@@ -9,6 +7,12 @@ type Props = {
   alertLevel: string;
   onClick: () => void;
 };
+
+const localizeAlertLevel = (alertLevel: string) =>
+  ({
+    green: 'Зеленый',
+    blue: 'Синий',
+  })[alertLevel] || alertLevel;
 
 export function AlertButton(props: Props) {
   const { alertLevel, onClick } = props;
@@ -36,7 +40,7 @@ export function AlertButton(props: Props) {
         }
       }}
     >
-      {capitalize(alertLevel)}
+      {localizeAlertLevel(alertLevel)}
     </Button>
   );
 }

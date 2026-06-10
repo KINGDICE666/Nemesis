@@ -18,9 +18,9 @@ export const AirlockButtonController = (props) => {
   return (
     <Window width={500} height={130}>
       <Window.Content>
-        <Section title="Airlock Controller" textAlign="center">
+        <Section title="Контроллер шлюза" textAlign="center">
           {!interior_door && !exterior_door ? (
-            <NoticeBox danger>No doors detected</NoticeBox>
+            <NoticeBox danger>Двери не обнаружены</NoticeBox>
           ) : (
             <Stack>
               {interior_door && (
@@ -80,15 +80,15 @@ const RetrieveButton = (props) => {
       }}
     >
       {!our_door_closed
-        ? `Close ${
-            airlockType === interior_door ? 'interior door' : 'exterior door'
+        ? `Закрыть ${
+            airlockType === interior_door ? 'внутреннюю дверь' : 'внешнюю дверь'
           }`
         : !opposite_door_closed && opposite_door
-          ? `Cycle to ${
-              airlockType === interior_door ? 'interior door' : 'exterior door'
+          ? `Переключить на ${
+              airlockType === interior_door ? 'внутреннюю дверь' : 'внешнюю дверь'
             }`
-          : `Open ${
-              airlockType === interior_door ? 'interior door' : 'exterior door'
+          : `Открыть ${
+              airlockType === interior_door ? 'внутреннюю дверь' : 'внешнюю дверь'
             }`}
     </Button>
   );

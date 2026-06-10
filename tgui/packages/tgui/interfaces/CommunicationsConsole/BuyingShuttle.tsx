@@ -24,7 +24,7 @@ export function PageBuyingShuttle(props) {
             icon="chevron-left"
             onClick={() => act('setState', { state: ShuttleState.MAIN })}
           >
-            Back
+            Назад
           </Button>
 
           <div>
@@ -81,7 +81,7 @@ function ShuttleCard(props: ShuttleCardProps) {
           }
           tooltip={
             budget < shuttle.creditCost
-              ? `You need ${shuttle.creditCost - budget} more ${displayed_currency_full_name}.`
+              ? `Нужно еще ${shuttle.creditCost - budget} ${displayed_currency_full_name}.`
               : shuttle.emagOnly
                 ? EMAG_SHUTTLE_NOTICE
                 : undefined
@@ -89,17 +89,17 @@ function ShuttleCard(props: ShuttleCardProps) {
           tooltipPosition="left"
         >
           {shuttle.emagOnly && !emagged
-            ? 'Buy'
+            ? 'Купить'
             : `${shuttle.creditCost} ${displayed_currency_name}`}
         </Button>
       }
     >
       <Box>{shuttle.description}</Box>
       <Box color="teal" fontSize="10px" italic>
-        Occupancy Limit: {shuttle.occupancy_limit}
+        Лимит вместимости: {shuttle.occupancy_limit}
       </Box>
       <Box color="violet" fontSize="10px" bold>
-        {shuttle.prerequisites && <b>Prerequisites: {shuttle.prerequisites}</b>}
+        {shuttle.prerequisites && <b>Требования: {shuttle.prerequisites}</b>}
       </Box>
     </Section>
   );

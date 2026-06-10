@@ -6,28 +6,28 @@ import {
 } from '../base';
 
 export const chat_on_map: FeatureToggle = {
-  name: 'Включить Runechat',
+  name: 'Включить рунчат',
   category: 'RUNECHAT',
   description: 'Сообщения чата будут отображаться над головами.',
   component: CheckboxInput,
 };
 
 export const see_chat_non_mob: FeatureToggle = {
-  name: 'Runechat на объектах',
+  name: 'Рунчат на объектах',
   category: 'RUNECHAT',
   description: 'Сообщения чата будут отображаться над говорящими объектами.',
   component: CheckboxInput,
 };
 
 export const chat_on_ghosts: FeatureToggle = {
-  name: 'Runechat у призраков',
+  name: 'Рунчат у призраков',
   category: 'RUNECHAT',
   description: 'Сообщения чата будут отображаться над говорящими призраками.',
   component: CheckboxInput,
 };
 
 export const see_rc_emotes: FeatureToggle = {
-  name: 'Эмоции в Runechat',
+  name: 'Эмоции в рунчате',
   category: 'RUNECHAT',
   description: 'Эмоции будут отображаться над головами.',
   component: CheckboxInput,
@@ -36,6 +36,6 @@ export const see_rc_emotes: FeatureToggle = {
 export const max_chat_length: FeatureNumeric = {
   name: 'Максимальная длина чата',
   category: 'RUNECHAT',
-  description: 'Максимальная длина сообщения, которое будет показано в Runechat.',
+  description: 'Максимальная длина сообщения, которое будет показано в рунчате.',
   component: FeatureNumberInput,
 };

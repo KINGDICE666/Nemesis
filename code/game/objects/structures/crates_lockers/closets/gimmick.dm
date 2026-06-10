@@ -1,6 +1,6 @@
 /obj/structure/closet/cabinet
-	name = "cabinet"
-	desc = "Old will forever be in fashion."
+	name = "шкафчик"
+	desc = "Старина всегда будет в моде."
 	icon_state = "cabinet"
 	resistance_flags = FLAMMABLE
 	open_sound = 'sound/machines/closet/wooden_closet_open.ogg'
@@ -13,20 +13,20 @@
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 2)
 
 /obj/structure/closet/acloset
-	name = "strange closet"
-	desc = "It looks alien!"
+	name = "странный шкаф"
+	desc = "Выглядит инопланетным!"
 	icon_state = "alien"
 	material_drop = /obj/item/stack/sheet/mineral/abductor
 	custom_materials = list(/datum/material/alloy/alien = SHEET_MATERIAL_AMOUNT * 2)
 
 /obj/structure/closet/gimmick
-	name = "administrative supply closet"
-	desc = "It's a storage unit for things that have no right being here."
+	name = "административный шкаф снабжения"
+	desc = "Шкаф для вещей, которым здесь явно не место."
 	icon_state = "syndicate"
 
 /obj/structure/closet/gimmick/russian
-	name = "\improper Russian surplus closet"
-	desc = "It's a storage unit for Russian standard-issue surplus."
+	name = "шкаф российских излишков"
+	desc = "Шкаф для излишков российского стандартного снабжения."
 
 /obj/structure/closet/gimmick/russian/PopulateContents()
 	..()
@@ -36,8 +36,8 @@
 		new /obj/item/clothing/under/costume/soviet(src)
 
 /obj/structure/closet/gimmick/tacticool
-	name = "tacticool gear closet"
-	desc = "It's a storage unit for Tacticool gear."
+	name = "тактикульный шкаф снаряжения"
+	desc = "Шкаф для тактикульного снаряжения."
 
 /obj/structure/closet/gimmick/tacticool/PopulateContents()
 	..()
@@ -59,12 +59,12 @@
 	new /obj/item/clothing/glasses/sunglasses(src)
 
 /obj/structure/closet/thunderdome
-	name = "\improper Thunderdome closet"
-	desc = "Everything you need!"
+	name = "\improper шкаф Тандердома"
+	desc = "Всё, что нужно!"
 	anchored = TRUE
 
 /obj/structure/closet/thunderdome/tdred
-	name = "red-team Thunderdome closet"
+	name = "шкаф красной команды Тандердома"
 	icon_door = "red"
 
 /obj/structure/closet/thunderdome/tdred/PopulateContents()
@@ -85,7 +85,7 @@
 		new /obj/item/gun/energy/laser(src)
 
 /obj/structure/closet/thunderdome/tdgreen
-	name = "green-team Thunderdome closet"
+	name = "шкаф зелёной команды Тандердома"
 	icon_door = "green"
 
 /obj/structure/closet/thunderdome/tdgreen/PopulateContents()
@@ -106,7 +106,7 @@
 		new /obj/item/gun/energy/laser(src)
 
 /obj/structure/closet/malf/suits
-	desc = "It's a storage unit for operational gear."
+	desc = "Шкаф для оперативного снаряжения."
 	icon_state = "syndicate"
 
 /obj/structure/closet/malf/suits/PopulateContents()
@@ -120,8 +120,8 @@
 	new /obj/item/multitool(src)
 
 /obj/structure/closet/mini_fridge
-	name = "grimy mini-fridge"
-	desc = "A small contraption designed to imbue a few drinks with a pleasant chill."
+	name = "грязный мини-холодильник"
+	desc = "Небольшое устройство, созданное, чтобы приятно охлаждать несколько напитков."
 	icon_state = "mini_fridge"
 	icon_welded = "welded_small"
 	max_mob_size = MOB_SIZE_SMALL
@@ -140,8 +140,8 @@
 		new /obj/item/reagent_containers/cup/glass/bottle/beer(src)
 
 /obj/structure/closet/mini_fridge/grimy
-	name = "grimy mini-fridge"
-	desc = "A small contraption designed to imbue a few drinks with a pleasant chill. This antiquated unit however seems to serve no purpose other than keeping the roaches company."
+	name = "грязный мини-холодильник"
+	desc = "Небольшое устройство, созданное, чтобы приятно охлаждать несколько напитков. Впрочем, этот древний агрегат, похоже, нужен только тараканам для компании."
 
 /obj/structure/closet/mini_fridge/grimy/PopulateContents()
 	. = ..()

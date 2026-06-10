@@ -1,6 +1,6 @@
 /obj/structure/closet/crate/secure/syndicrate
-	name = "surplus syndicrate"
-	desc = "A conspicuous crate with the Syndicate logo on it. You don't know how to open it."
+	name = "излишковый синдикейт"
+	desc = "Броский ящик с логотипом Синдиката. Вы не знаете, как его открыть."
 	icon_state = "syndicrate"
 	base_icon_state = "syndicrate"
 	max_integrity = 500
@@ -26,7 +26,7 @@
 		return FALSE
 
 	if(!broken && !force && !created_items)
-		balloon_alert(user, "locked!")
+		balloon_alert(user, "заперто!")
 		return FALSE
 
 	return TRUE
@@ -38,7 +38,7 @@
 		return ..()
 	if(prob(75))
 		return ..()
-	visible_message(span_danger("The syndicrate's anti-tamper system activates!"))
+	visible_message(span_danger("Противовзломная система синдикейта активируется!"))
 	explosion(src, heavy_impact_range = 1, light_impact_range = 2, flash_range = 2)
 	qdel(src)
 
@@ -51,7 +51,7 @@
 		new item_path(src)
 	unlock_contents = list()
 	qdel(item)
-	to_chat(user, span_notice("You twist the key into both locks at once, opening the crate."))
+	to_chat(user, span_notice("Вы поворачиваете ключ сразу в обоих замках, открывая ящик."))
 	playsound(src, 'sound/machines/airlock/boltsup.ogg', 50, vary = FALSE)
 	togglelock(user)
 
@@ -62,8 +62,8 @@
 		add_fingerprint(user)
 	locked = !locked
 	user.visible_message(
-		span_notice("[user] [locked ? "locks" : "unlocks"] [src]."),
-		span_notice("You [locked ? "locked" : "unlocked"] [src]."),
+		span_notice("[user] [locked ? "запирает" : "отпирает"] [src]."),
+		span_notice("Вы [locked ? "запираете" : "отпираете"] [src]."),
 	)
 	update_appearance()
 
@@ -71,8 +71,8 @@
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/syndicrate_key
-	name = "syndicrate key"
-	desc = "A device bearing a serpentine emblem, capable of splitting itself into two keys. Can be used to open one syndicrate."
+	name = "ключ от синдикейта"
+	desc = "Устройство со змеиным символом, способное разделиться на два ключа. Открывает один синдикейт."
 	icon = 'icons/obj/storage/crates.dmi'
 	icon_state = "syndicrate_key"
 	w_class = WEIGHT_CLASS_TINY

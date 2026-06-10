@@ -17,7 +17,7 @@ export function PageMessages(props) {
         icon="chevron-left"
         onClick={() => act('setState', { state: ShuttleState.MAIN })}
       >
-        Back
+        Назад
       </Button>
     </Section>,
   );
@@ -69,7 +69,7 @@ export function PageMessages(props) {
               })
             }
           >
-            Delete
+            Удалить
           </Button.Confirm>
         }
       >

@@ -92,7 +92,7 @@
 
 		product_datum.amount++
 		LAZYADD(product_datum.returned_products, inserted_item)
-		to_chat(user, span_notice("You insert [inserted_item] into [src]'s input compartment."))
+		to_chat(user, span_notice("Вы кладёте [inserted_item] в приёмный отсек [src]."))
 		break
 
 /obj/machinery/vending/item_interaction(mob/living/user, obj/item/attack_item, list/modifiers)
@@ -107,9 +107,9 @@
 	if(refill_canister && istype(attack_item, refill_canister))
 		. = ITEM_INTERACT_FAILURE
 		if (!panel_open)
-			to_chat(user, span_warning("You should probably unscrew the service panel first!"))
+			to_chat(user, span_warning("Сначала стоит открутить сервисную панель!"))
 		else if (!is_operational)
-			to_chat(user, span_warning("[src] does not respond."))
+			to_chat(user, span_warning("[src] не отвечает."))
 		else
 			var/obj/item/vending_refill/canister = attack_item
 			if(canister.get_part_rating() == 0)
@@ -132,9 +132,9 @@
 				else
 					denied_items++
 			if(denied_items)
-				to_chat(user, span_warning("[src] refuses some items!"))
+				to_chat(user, span_warning("[src] отказывается принимать часть предметов!"))
 			if(loaded)
-				to_chat(user, span_notice("You insert [loaded] dishes into [src]'s compartment."))
+				to_chat(user, span_notice("Вы кладёте [loaded] блюд в отсек [src]."))
 				return ITEM_INTERACT_SUCCESS
 		else
 			return loadingAttempt(attack_item, user) ? ITEM_INTERACT_SUCCESS : ITEM_INTERACT_FAILURE

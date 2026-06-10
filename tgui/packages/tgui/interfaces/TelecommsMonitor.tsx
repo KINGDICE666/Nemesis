@@ -9,7 +9,6 @@ import {
   Stack,
 } from 'tgui-core/components';
 import { classes } from 'tgui-core/react';
-import { toTitleCase } from 'tgui-core/string';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
@@ -40,7 +39,7 @@ export const TelecommsMonitor = (props: any) => {
   const { screen, statusMessage } = data;
 
   return (
-    <Window width={350} height={500} title="T-comms Monitoring Console">
+    <Window width={350} height={500} title="Консоль мониторинга ТК">
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item>
@@ -72,13 +71,13 @@ const MainScreen = (props: any) => {
                 fluid
                 value={networkId}
                 onChange={setNetworkId}
-                placeholder="Enter Network ID..."
+                placeholder="Введите ID сети..."
                 onEnter={() => act('probe', { id: networkId })}
               />
             </Stack.Item>
             <Stack.Item>
               <Button onClick={() => act('probe', { id: networkId })}>
-                Probe Network
+                Сканировать сеть
               </Button>
             </Stack.Item>
           </Stack>
@@ -86,12 +85,12 @@ const MainScreen = (props: any) => {
       </Stack.Item>
       <Stack.Item grow>
         <MachineList
-          title="Detected Network Entities"
+          title="Обнаруженные сетевые объекты"
           buttons={
             <Button
               icon="trash"
               color="red"
-              tooltip="Flush Buffer"
+              tooltip="Очистить буфер"
               disabled={machines.length === 0}
               onClick={() => act('flush')}
             />
@@ -112,25 +111,25 @@ const MachineScreen = (props: any) => {
     <Stack fill vertical>
       <Stack.Item>
         <Section
-          title="Entity Information"
+          title="Информация об объекте"
           buttons={
             <Button icon="home" onClick={() => act('home')}>
-              Main Menu
+              Главное меню
             </Button>
           }
         >
           <LabeledList>
-            <LabeledList.Item label="Network">{network}</LabeledList.Item>
-            <LabeledList.Item label="Network ID">{id}</LabeledList.Item>
-            <LabeledList.Item label="Network Entity">
-              {toTitleCase(name)}
+            <LabeledList.Item label="Сеть">{network}</LabeledList.Item>
+            <LabeledList.Item label="ID сети">{id}</LabeledList.Item>
+            <LabeledList.Item label="Сетевой объект">
+              {name}
             </LabeledList.Item>
           </LabeledList>
         </Section>
       </Stack.Item>
       <Stack.Item grow>
         <MachineList
-          title="Linked Entities"
+          title="Связанные объекты"
           machines={linkedMachines}
           onSelect={(machine) => act('view', { id: machine.id })}
         />
@@ -171,7 +170,7 @@ const MachineList = (props: MachineListProps) => {
             icon="magnifying-glass"
             selected={searching}
             disabled={machines.length === 0}
-            tooltip="Search by ID"
+            tooltip="Поиск по ID"
             onClick={() => setSearching(!searching)}
           />
           {buttons}
@@ -187,7 +186,7 @@ const MachineList = (props: MachineListProps) => {
                   <Button
                     fluid
                     verticalAlignContent="middle"
-                    tooltip={toTitleCase(machine.name)}
+                    tooltip={machine.name}
                     onClick={() => onSelect(machine)}
                   >
                     <Stack fill align="center">
@@ -211,14 +210,14 @@ const MachineList = (props: MachineListProps) => {
                 autoFocus
                 value={search}
                 verticalAlign="middle"
-                placeholder="Enter machine ID..."
+                placeholder="Введите ID машины..."
                 onChange={setSearch}
               />
             </Stack.Item>
           )}
         </Stack>
       ) : (
-        <NoticeBox>No machines connected!</NoticeBox>
+        <NoticeBox>Подключенные машины отсутствуют!</NoticeBox>
       )}
     </Section>
   );

@@ -1,11 +1,16 @@
 import { useState } from 'react';
 import { Box, Button, Flex, Modal, Section } from 'tgui-core/components';
-import { capitalize } from 'tgui-core/string';
 
 import { useBackend } from '../../backend';
 import { AlertButton } from './AlertButton';
 import { MessageModal } from './MessageModal';
 import { type CommsConsoleData, ShuttleState } from './types';
+
+const localizeAlertLevel = (alertLevel: string) =>
+  ({
+    green: 'зеленый',
+    blue: 'синий',
+  })[alertLevel] || alertLevel;
 
 export function PageMain(props) {
   const { act, data } = useBackend<CommsConsoleData>();
@@ -43,7 +48,7 @@ export function PageMain(props) {
   return (
     <Box>
       {!syndicate && (
-        <Section title="Emergency Shuttle">
+        <Section title="Аварийный шаттл">
           {shuttleCalled ? (
             <Button.Confirm
               icon="space-shuttle"
@@ -52,13 +57,13 @@ export function PageMain(props) {
               tooltip={
                 (canRecallShuttles &&
                   !shuttleRecallable &&
-                  "It's too late for the emergency shuttle to be recalled.") ||
-                'You do not have permission to recall the emergency shuttle.'
+                  'Уже слишком поздно отзывать аварийный шаттл.') ||
+                'У вас нет доступа для отзыва аварийного шаттла.'
               }
               tooltipPosition="top"
               onClick={() => act('recallShuttle')}
             >
-              Recall Emergency Shuttle
+              Отозвать аварийный шаттл
             </Button.Confirm>
           ) : (
             <Button
@@ -72,27 +77,27 @@ export function PageMain(props) {
               tooltipPosition="top"
               onClick={() => setCallingShuttle(true)}
             >
-              Call Emergency Shuttle
+              Вызвать аварийный шаттл
             </Button>
           )}
           {!!shuttleCalledPreviously &&
             (shuttleLastCalled ? (
               <Box>
-                Most recent shuttle call/recall traced to:{' '}
+                Последний вызов/отзыв шаттла отследили до:{' '}
                 <b>{shuttleLastCalled}</b>
               </Box>
             ) : (
-              <Box>Unable to trace most recent shuttle/recall signal.</Box>
+              <Box>Не удалось отследить последний сигнал вызова/отзыва шаттла.</Box>
             ))}
         </Section>
       )}
 
       {!!canSetAlertLevel && (
-        <Section title="Alert Level">
+        <Section title="Уровень тревоги">
           <Flex justify="space-between">
             <Flex.Item>
               <Box>
-                Currently on <b>{capitalize(alertLevel)}</b> Alert
+                Текущий уровень тревоги: <b>{localizeAlertLevel(alertLevel)}</b>
               </Box>
             </Flex.Item>
 
@@ -111,14 +116,14 @@ export function PageMain(props) {
         </Section>
       )}
 
-      <Section title="Functions">
+      <Section title="Функции">
         <Flex direction="column">
           {!!canMakeAnnouncement && (
             <Button
               icon="bullhorn"
               onClick={() => act('makePriorityAnnouncement')}
             >
-              Make Priority Announcement
+              Сделать приоритетное объявление
             </Button>
           )}
 
@@ -129,8 +134,7 @@ export function PageMain(props) {
               color={emergencyAccess ? 'bad' : undefined}
               onClick={() => act('toggleEmergencyAccess')}
             >
-              {emergencyAccess ? 'Disable' : 'Enable'} Emergency Maintenance
-              Access
+              {emergencyAccess ? 'Отключить' : 'Включить'} аварийный доступ в техтоннели
             </Button.Confirm>
           )}
 
@@ -141,7 +145,7 @@ export function PageMain(props) {
                 act('setState', { state: ShuttleState.CHANGING_STATUS })
               }
             >
-              Set Status Display
+              Настроить статусные дисплеи
             </Button>
           )}
 
@@ -149,7 +153,7 @@ export function PageMain(props) {
             icon="envelope-o"
             onClick={() => act('setState', { state: ShuttleState.MESSAGES })}
           >
-            Message List
+            Список сообщений
           </Button>
 
           {canBuyShuttles !== 0 && (
@@ -164,7 +168,7 @@ export function PageMain(props) {
                 act('setState', { state: ShuttleState.BUYING_SHUTTLE })
               }
             >
-              Purchase Shuttle
+              Купить шаттл
             </Button>
           )}
 
@@ -174,7 +178,7 @@ export function PageMain(props) {
               disabled={!importantActionReady}
               onClick={() => setMessagingAssociates(true)}
             >
-              Send message to {emagged ? '[UNKNOWN]' : 'CentCom'}
+              Отправить сообщение: {emagged ? '[НЕИЗВЕСТНО]' : 'ЦК'}
             </Button>
           )}
 
@@ -184,13 +188,13 @@ export function PageMain(props) {
               disabled={!importantActionReady}
               onClick={() => setRequestingNukeCodes(true)}
             >
-              Request Nuclear Authentication Codes
+              Запросить коды ядерной аутентификации
             </Button>
           )}
 
           {!!emagged && !syndicate && (
             <Button icon="undo" onClick={() => act('restoreBackupRoutingData')}>
-              Restore Backup Routing Data
+              Восстановить резервные данные маршрутизации
             </Button>
           )}
         </Flex>
@@ -198,12 +202,12 @@ export function PageMain(props) {
 
       {!!canMessageAssociates && messagingAssociates && (
         <MessageModal
-          label={`Message to transmit to ${
-            emagged ? '[ABNORMAL ROUTING COORDINATES]' : 'CentCom'
-          } via quantum entanglement`}
-          notice="Please be aware that this process is very expensive, and abuse will lead to...termination. Transmission does not guarantee a response."
+          label={`Сообщение для передачи ${
+            emagged ? '[АНОМАЛЬНЫЕ КООРДИНАТЫ МАРШРУТА]' : 'ЦК'
+          } через квантовую сцепленность`}
+          notice="Учтите: процесс очень дорогой, злоупотребление приведет к... увольнению. Передача не гарантирует ответа."
           icon="bullhorn"
-          buttonText="Send"
+          buttonText="Отправить"
           onBack={() => setMessagingAssociates(false)}
           onSubmit={(message) => {
             setMessagingAssociates(false);
@@ -216,10 +220,10 @@ export function PageMain(props) {
 
       {!!canRequestNuke && requestingNukeCodes && (
         <MessageModal
-          label="Reason for requesting nuclear self-destruct codes"
-          notice="Misuse of the nuclear request system will not be tolerated under any circumstances. Transmission does not guarantee a response."
+          label="Причина запроса кодов ядерного самоуничтожения"
+          notice="Злоупотребление системой ядерных запросов недопустимо ни при каких обстоятельствах. Передача не гарантирует ответа."
           icon="bomb"
-          buttonText="Request Codes"
+          buttonText="Запросить коды"
           onBack={() => setRequestingNukeCodes(false)}
           onSubmit={(reason) => {
             setRequestingNukeCodes(false);
@@ -232,9 +236,9 @@ export function PageMain(props) {
 
       {!!callingShuttle && (
         <MessageModal
-          label="Nature of emergency"
+          label="Характер чрезвычайной ситуации"
           icon="space-shuttle"
-          buttonText="Call Shuttle"
+          buttonText="Вызвать шаттл"
           minLength={callShuttleReasonMinLength}
           onBack={() => setCallingShuttle(false)}
           onSubmit={(reason) => {
@@ -250,7 +254,7 @@ export function PageMain(props) {
         <Modal>
           <Flex direction="column" textAlign="center" width="300px">
             <Flex.Item fontSize="16px" mb={2}>
-              Swipe ID to confirm change
+              Проведите ID для подтверждения
             </Flex.Item>
 
             <Flex.Item mr={2} mb={1}>
@@ -265,7 +269,7 @@ export function PageMain(props) {
                   setNewAlertLevel('');
                 }}
               >
-                Swipe ID
+                Провести ID
               </Button>
 
               <Button
@@ -274,7 +278,7 @@ export function PageMain(props) {
                 fontSize="16px"
                 onClick={() => setNewAlertLevel('')}
               >
-                Cancel
+                Отмена
               </Button>
             </Flex.Item>
           </Flex>
@@ -282,7 +286,7 @@ export function PageMain(props) {
       )}
 
       {!!canSendToSectors && sectors.length > 0 && (
-        <Section title="Allied Sectors">
+        <Section title="Союзные сектора">
           <Flex direction="column">
             {sectors.map((sectorName) => (
               <Flex.Item key={sectorName}>
@@ -290,7 +294,7 @@ export function PageMain(props) {
                   disabled={!importantActionReady}
                   onClick={() => setMessagingSector(sectorName)}
                 >
-                  Send a message to station in {sectorName} sector
+                  Отправить сообщение станции в секторе {sectorName}
                 </Button>
               </Flex.Item>
             ))}
@@ -301,7 +305,7 @@ export function PageMain(props) {
                   disabled={!importantActionReady}
                   onClick={() => setMessagingSector('all')}
                 >
-                  Send a message to all allied station
+                  Отправить сообщение всем союзным станциям
                 </Button>
               </Flex.Item>
             )}
@@ -311,10 +315,10 @@ export function PageMain(props) {
 
       {!!canSendToSectors && sectors.length > 0 && messagingSector && (
         <MessageModal
-          label="Message to send to allied station"
-          notice="Please be aware that this process is very expensive, and abuse will lead to...termination."
+          label="Сообщение для союзной станции"
+          notice="Учтите: процесс очень дорогой, злоупотребление приведет к... увольнению."
           icon="bullhorn"
-          buttonText="Send"
+          buttonText="Отправить"
           onBack={() => setMessagingSector('')}
           onSubmit={(message) => {
             act('sendToOtherSector', {

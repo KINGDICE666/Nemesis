@@ -27,11 +27,11 @@
 
 /obj/machinery/cell_charger/examine(mob/user)
 	. = ..()
-	. += "There's [charging ? "\a [charging]" : "no cell"] in the charger."
+	. += "В заряднике [charging ? "\a [charging]" : "нет батареи"]."
 	if(charging)
-		. += "Current charge: [round(charging.percent(), 1)]%."
+		. += "Текущий заряд: [round(charging.percent(), 1)]%."
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Charging power: <b>[display_power(charge_rate, convert = FALSE)]</b>.")
+		. += span_notice("На дисплее состояния: мощность зарядки: <b>[display_power(charge_rate, convert = FALSE)]</b>.")
 
 /obj/machinery/cell_charger/wrench_act(mob/living/user, obj/item/tool)
 	if(charging)
@@ -54,13 +54,13 @@
 		return NONE
 
 	if(machine_stat & BROKEN)
-		to_chat(user, span_warning("[src] is broken!"))
+		to_chat(user, span_warning("[src] сломан!"))
 		return ITEM_INTERACT_BLOCKING
 	if(!anchored)
-		to_chat(user, span_warning("[src] isn't attached to the ground!"))
+		to_chat(user, span_warning("[src] не закреплён на полу!"))
 		return ITEM_INTERACT_BLOCKING
 	if(charging)
-		to_chat(user, span_warning("There is already a cell in the charger!"))
+		to_chat(user, span_warning("В заряднике уже есть батарея!"))
 		return ITEM_INTERACT_BLOCKING
 
 	var/area/charge_area = get_area(src)
@@ -75,7 +75,7 @@
 	charging = tool
 	user.visible_message(
 		span_notice("[user] inserts a cell into [src]."),
-		span_notice("You insert a cell into [src]."),
+		span_notice("Вы вставляете батарею в [src]."),
 	)
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
@@ -105,14 +105,14 @@
 		return
 
 	charging.add_fingerprint(user)
-	user.visible_message(span_notice("[user] removes [charging] from [src]."), span_notice("You remove [charging] from [src]."))
+	user.visible_message(span_notice("[user] removes [charging] from [src]."), span_notice("Вы извлекаете [charging] из [src]."))
 	user.put_in_hands(removecell(drop_location()))
 
 /obj/machinery/cell_charger/attack_tk(mob/user)
 	if(!charging)
 		return
 
-	to_chat(user, span_notice("You telekinetically remove [charging] from [src]."))
+	to_chat(user, span_notice("Вы телекинетически извлекаете [charging] из [src]."))
 	removecell(drop_location())
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 

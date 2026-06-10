@@ -2,4 +2,4 @@
 export const SWIPE_NEEDED = 'SWIPE_NEEDED';
 
 export const EMAG_SHUTTLE_NOTICE =
-  'This shuttle is deemed significantly dangerous to the crew, and is only supplied by the Syndicate.';
+  'Этот шаттл признан крайне опасным для экипажа и поставляется только Синдикатом.';

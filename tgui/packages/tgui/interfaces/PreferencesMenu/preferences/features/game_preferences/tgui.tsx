@@ -36,7 +36,7 @@ export const ui_scale: FeatureToggle = {
 };
 
 export const tgui_say_light_mode: FeatureToggle = {
-  name: 'Say: светлая тема',
+  name: 'Окно речи: светлая тема',
   category: 'UI',
   description: 'Включает светлую тему для TGUI Say.',
   component: CheckboxInput,

@@ -8,7 +8,7 @@ import {
 import { FeatureDropdownInput } from '../dropdowns';
 
 export const screentip_color: Feature<string> = {
-  name: 'Screentips: цвет подсказок',
+  name: 'Экранные подсказки: цвет',
   category: 'UI',
   description: `
     Цвет экранных подсказок, которые появляются при наведении.
@@ -17,7 +17,7 @@ export const screentip_color: Feature<string> = {
 };
 
 export const screentip_images: FeatureToggle = {
-  name: 'Screentips: картинки кнопок',
+  name: 'Экранные подсказки: картинки кнопок',
   category: 'UI',
   description: `Если включено, подсказки используют картинки кнопок мыши
     вместо текста ЛКМ/ПКМ.`,
@@ -25,7 +25,7 @@ export const screentip_images: FeatureToggle = {
 };
 
 export const screentip_pref: FeatureChoiced = {
-  name: 'Screentips: включить подсказки',
+  name: 'Экранные подсказки: включение',
   category: 'UI',
   description: `
     Включает экранные подсказки, которые появляются при наведении.

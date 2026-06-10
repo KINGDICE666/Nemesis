@@ -42,6 +42,20 @@ type KeybindingsPageState = {
   rebindingHotkey?: [string, number];
 };
 
+const KEYBINDING_CATEGORY_NAMES: Record<string, string> = {
+  ADMIN: 'Админ',
+  AI: 'ИИ',
+  CARBON: 'Карбоновые',
+  CLIENT: 'Клиент',
+  COMMUNICATION: 'Связь',
+  EMOTE: 'Эмоции',
+  HUMAN: 'Персонаж',
+  MISC: 'Разное',
+  MOVEMENT: 'Движение',
+  ROBOT: 'Киборг',
+  XENO: 'Ксеноморф',
+};
+
 function isStandardKey(event: KeyboardEvent): boolean {
   return (
     event.key !== KEY.Alt &&
@@ -80,6 +94,10 @@ function sortKeybindingsByCategory(
   array: [string, Record<string, Keybinding>][],
 ) {
   return sortBy(array, [([category]) => category]);
+}
+
+function getKeybindingCategoryName(category: string): string {
+  return KEYBINDING_CATEGORY_NAMES[category] || category;
 }
 
 function formatKeyboardEvent(event: KeyboardEvent): string {
@@ -491,7 +509,7 @@ export class KeybindingsPage extends Component<any, KeybindingsPageState> {
               categoryEntries={keybindingEntries.map(
                 ([category, keybindings]) => {
                   return [
-                    category,
+                    getKeybindingCategoryName(category),
                     getKeybindingNodes(
                       keybindings,
                       this.state.searchText,

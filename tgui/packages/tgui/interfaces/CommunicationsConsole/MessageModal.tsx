@@ -48,7 +48,7 @@ export function MessageModal(props: Props) {
             icon={icon}
             color="good"
             disabled={!longEnough}
-            tooltip={!longEnough ? 'You need a longer reason.' : ''}
+            tooltip={!longEnough ? 'Нужна более подробная причина.' : ''}
             tooltipPosition="right"
             onClick={() => {
               if (longEnough) {
@@ -61,7 +61,7 @@ export function MessageModal(props: Props) {
           </Button>
 
           <Button icon="times" color="bad" onClick={onBack}>
-            Cancel
+            Отмена
           </Button>
         </Flex.Item>
 

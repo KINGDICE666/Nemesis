@@ -2,7 +2,7 @@
 	/// If non-null, overrides a/an/some in all cases
 	var/article
 	/// Text that appears preceding the name in [/atom/proc/examine_title]
-	var/examine_thats = "That's"
+	var/examine_thats = "Это"
 
 /**
  * Called when a mob examines this atom: [/mob/verb/examinate]
@@ -26,10 +26,10 @@
 		for (var/atom_tag in tags_list)
 			tag_string += (isnull(tags_list[atom_tag]) ? atom_tag : span_tooltip(tags_list[atom_tag], atom_tag))
 		// some regex to ensure that we don't add another "and" if the final element's main text (not tooltip) has one
-		tag_string = english_list(tag_string, and_text = (findtext(tag_string[length(tag_string)], regex(@">.*?and .*?<"))) ? " " : " and ")
-		. += "[p_They()] [p_are()] a [tag_string] [examine_descriptor(user)][post_desc_string]."
+		tag_string = english_list(tag_string, and_text = (findtext(tag_string[length(tag_string)], regex(@">.*?and .*?<"))) ? " " : " и ")
+		. += "Это [tag_string] [examine_descriptor(user)][post_desc_string]."
 	else if(post_desc_string)
-		. += "[p_They()] [p_are()] a [examine_descriptor(user)][post_desc_string]."
+		. += "Это [examine_descriptor(user)][post_desc_string]."
 
 	if(reagents)
 		var/user_sees_reagents = user.can_see_reagents()
@@ -37,20 +37,20 @@
 		if(!(reagent_sigreturn & STOP_GENERIC_REAGENT_EXAMINE))
 			if(reagents.flags & TRANSPARENT)
 				if(reagents.total_volume)
-					. += "It contains <b>[reagents.total_volume]</b> units of various reagents[user_sees_reagents ? ":" : "."]"
+					. += "Содержит <b>[reagents.total_volume]</b> ед. различных реагентов[user_sees_reagents ? ":" : "."]"
 					if(user_sees_reagents || (reagent_sigreturn & ALLOW_GENERIC_REAGENT_EXAMINE)) //Show each individual reagent for detailed examination
 						for(var/datum/reagent/current_reagent as anything in reagents.reagent_list)
-							. += "&bull; [round(current_reagent.volume, CHEMICAL_VOLUME_ROUNDING)] units of [current_reagent.name]"
+							. += "&bull; [round(current_reagent.volume, CHEMICAL_VOLUME_ROUNDING)] ед. [current_reagent.name]"
 						if(reagents.is_reacting)
-							. += span_warning("It is currently reacting!")
-						. += span_notice("The solution's pH is [round(reagents.ph, 0.01)] and has a temperature of [reagents.chem_temp]K.")
+							. += span_warning("Сейчас идёт реакция!")
+						. += span_notice("pH раствора: [round(reagents.ph, 0.01)], температура: [reagents.chem_temp]K.")
 				else
-					. += "It contains:<br>Nothing."
+					. += "Содержит:<br>Ничего."
 			else if(reagents.flags & AMOUNT_VISIBLE)
 				if(reagents.total_volume)
-					. += span_notice("It has [reagents.total_volume] unit\s left.")
+					. += span_notice("Осталось [reagents.total_volume] ед.")
 				else
-					. += span_danger("It's empty.")
+					. += span_danger("Пусто.")
 
 		if(HAS_TRAIT(user, TRAIT_KEEN_NOSE))
 			var/sniff_text = get_sniff_examine(user)
@@ -70,10 +70,10 @@
 	if(!sniffer.get_bodypart(BODY_ZONE_HEAD)) // Need a nose to smell
 		return
 	if(sniffer.is_mouth_covered())
-		return span_warning("You can't get a whiff of [src] with your face covered.")
+		return span_warning("Вы не можете понюхать [src], пока ваше лицо закрыто.")
 
 	var/smell_message = generate_reagents_taste_message(reagents.reagent_list, sniffer, 10)
-	return span_notice("You catch a whiff of [src]. It smells like [smell_message].")
+	return span_notice("Вы чувствуете запах [src]. Пахнет как [smell_message].")
 
 /**
  * A list of "tags" displayed after atom's description in examine.
@@ -98,34 +98,34 @@
 /atom/proc/examine_tags(mob/user)
 	. = list()
 	if(abstract_type == type)
-		.[span_hypnophrase("abstract")] = "This is an abstract concept, you should report this to a strange entity called GITHUB!"
+		.[span_hypnophrase("абстрактный")] = "Это абстрактная сущность. Сообщите об этом странной сущности по имени GITHUB!"
 
 	if(resistance_flags & INDESTRUCTIBLE)
-		.["indestructible"] = "It is extremely robust! It'll probably withstand anything that could happen to it!"
+		.["неразрушимый"] = "Крайне прочное. Вероятно, выдержит почти всё, что может с ним случиться!"
 	else
 		if(resistance_flags & LAVA_PROOF)
-			.["lava-proof"] = "It is made of an extremely heat-resistant material, it'd probably be able to withstand lava!"
+			.["лавостойкий"] = "Сделано из крайне жаростойкого материала и, вероятно, выдержит лаву!"
 		if(resistance_flags & (ACID_PROOF | UNACIDABLE))
-			.["acid-proof"] = "It looks pretty robust! It'd probably be able to withstand acid!"
+			.["кислотостойкий"] = "Выглядит довольно прочным и, вероятно, выдержит кислоту!"
 		if(resistance_flags & FREEZE_PROOF)
-			.["freeze-proof"] = "It is made of cold-resistant materials."
+			.["морозостойкий"] = "Сделано из морозостойких материалов."
 		if(resistance_flags & FIRE_PROOF)
-			.["fire-proof"] = "It is made of fire-retardant materials."
+			.["огнестойкий"] = "Сделано из огнестойких материалов."
 		if(resistance_flags & SHUTTLE_CRUSH_PROOF)
-			.["crush-proof"] = "It is extremely solid. It should be able to withstand being run over by a shuttle!"
+			.["устойчивый к раздавливанию"] = "Крайне прочное. Должно выдержать даже наезд шаттла!"
 		if(resistance_flags & BOMB_PROOF)
-			.["bomb-proof"] = "It looks like it could survive an explosion!"
+			.["взрывостойкий"] = "Похоже, может пережить взрыв!"
 		if(resistance_flags & FLAMMABLE)
-			.["flammable"] = "It looks like it could easily catch on fire."
+			.["горючий"] = "Выглядит так, будто легко загорится."
 
 	if(flags_1 & HOLOGRAM_1)
-		.["holographic"] = "It looks like a hologram."
+		.["голографический"] = "Выглядит как голограмма."
 
 	SEND_SIGNAL(src, COMSIG_ATOM_EXAMINE_TAGS, user, .)
 
 /// What this atom should be called in examine tags
 /atom/proc/examine_descriptor(mob/user)
-	return "object"
+	return "объект"
 
 /// Returns a list of strings to be displayed after the descriptor
 /atom/proc/examine_post_descriptor(mob/user)
@@ -135,8 +135,8 @@
 	var/mats_list = list()
 	for(var/custom_material in custom_materials)
 		var/datum/material/current_material = SSmaterials.get_material(custom_material)
-		mats_list += span_tooltip("It is made out of [current_material.name].", current_material.name)
-	. += "made of [english_list(mats_list)]"
+		mats_list += span_tooltip("Сделано из [current_material.name].", current_material.name)
+	. += "сделано из [english_list(mats_list)]"
 
 /**
  * Called when a mob examines (shift click or verb) this atom twice (or more) within EXAMINE_MORE_WINDOW (default 1 second)

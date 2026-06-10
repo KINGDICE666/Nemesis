@@ -22,7 +22,7 @@ export const announce_login: FeatureToggle = {
 };
 
 export const combohud_lighting: FeatureToggle = {
-  name: 'Fullbright Combo HUD',
+  name: 'Полная яркость Combo HUD',
   category: 'ADMIN',
   component: CheckboxInput,
 };

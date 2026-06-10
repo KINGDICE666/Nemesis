@@ -301,7 +301,7 @@
 	stored_id = inserting_id
 
 	if(!isnull(user))
-		to_chat(user, span_notice("You insert \the [inserting_id] into the card slot."))
+		to_chat(user, span_notice("Вы вставляете \the [inserting_id] в слот карты."))
 		balloon_alert(user, "inserted ID")
 
 	playsound(src, 'sound/machines/terminal/terminal_insert_disc.ogg', 50, FALSE)
@@ -332,7 +332,7 @@
 
 	alt_stored_id = secondary_id
 	if(!isnull(user))
-		to_chat(user, span_notice("You insert \the [secondary_id] into the secondary card slot."))
+		to_chat(user, span_notice("Вы вставляете \the [secondary_id] во второй слот карты."))
 		balloon_alert(user, "inserted secondary ID")
 	playsound(src, 'sound/machines/terminal/terminal_insert_disc.ogg', 50, FALSE)
 
@@ -358,7 +358,7 @@
 	alt_stored_id = null
 
 	if(!silent && !isnull(user))
-		to_chat(user, span_notice("You remove \the [lost_id] from the secondary card slot."))
+		to_chat(user, span_notice("Вы извлекаете \the [lost_id] из второго слота карты."))
 		balloon_alert(user, "removed secondary ID")
 	playsound(src, 'sound/machines/terminal/terminal_insert_disc.ogg', 50, FALSE)
 
@@ -385,7 +385,7 @@
 	stored_id = null
 
 	if(!silent && !isnull(user))
-		to_chat(user, span_notice("You remove \the [lost_id] from the card slot."))
+		to_chat(user, span_notice("Вы извлекаете \the [lost_id] из слота карты."))
 		balloon_alert(user, "removed ID")
 	playsound(src, 'sound/machines/terminal/terminal_insert_disc.ogg', 50, FALSE)
 

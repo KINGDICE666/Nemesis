@@ -16,7 +16,7 @@ export const AnnouncementTab = (props) => {
         maxLength={1025}
         value={messageText}
         onChange={setMessageText}
-        placeholder="Type your announcement..."
+        placeholder="Введите объявление..."
       />
       <Section>
         <AuthenticationNoticeBox />
@@ -28,7 +28,7 @@ export const AnnouncementTab = (props) => {
             ) || !messageText
           }
           icon="bullhorn"
-          content="Send announcement"
+          content="Отправить объявление"
           onClick={() => {
             if (
               !(
@@ -45,7 +45,7 @@ export const AnnouncementTab = (props) => {
         />
         <Button
           icon="trash-can"
-          content="Discard announcement"
+          content="Удалить объявление"
           onClick={() => {
             act('clear_authentication');
             setMessageText('');
@@ -61,7 +61,7 @@ const AuthenticationNoticeBox = (props) => {
   const { authentication_data, is_admin_ghost_ai } = data;
   return (
     (!authentication_data.announcement_authenticated && !is_admin_ghost_ai && (
-      <NoticeBox>Swipe your card to authenticate yourself</NoticeBox>
-    )) || <NoticeBox info>Successfully authenticated</NoticeBox>
+      <NoticeBox>Проведите картой, чтобы подтвердить личность</NoticeBox>
+    )) || <NoticeBox info>Успешно подтверждено</NoticeBox>
   );
 };

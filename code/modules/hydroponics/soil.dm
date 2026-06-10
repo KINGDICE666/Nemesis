@@ -1,8 +1,8 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 /obj/machinery/hydroponics/soil //Not actually hydroponics at all! Honk!
-	name = "soil"
-	desc = "A patch of dirt."
+	name = "почва"
+	desc = "Участок земли."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "soil"
 	circuit = null
@@ -33,9 +33,9 @@
 /obj/machinery/hydroponics/soil/attackby_secondary(obj/item/weapon, mob/user, list/modifiers, list/attack_modifiers)
 	if(weapon.tool_behaviour != TOOL_SHOVEL) //Spades can still uproot plants on left click
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-	balloon_alert(user, "digging up soil...")
+	balloon_alert(user, "выкапывание почвы...")
 	if(weapon.use_tool(src, user, 3 SECONDS, volume=50))
-		balloon_alert(user, "bagged")
+		balloon_alert(user, "упаковано")
 		new sack_type(loc, src) //The bag handles sucking up the soil, stopping processing and setting relevants stats.
 
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -61,8 +61,8 @@
 /////////////// Advanced Soils //////////////
 
 /obj/machinery/hydroponics/soil/vermaculite
-	name = "vermaculite growing medium"
-	desc = "A plant bed made of light, expanded mineral granules.\n\nThe plant health benefits from the high degree of soil aeration is especially useful for when propagating grafts."
+	name = "вермикулитовая среда для выращивания"
+	desc = "Грядка из лёгких вспученных минеральных гранул.\n\nХорошая аэрация почвы полезна для здоровья растений, особенно при выращивании привоев."
 	icon_state = "soil_verm"
 	maxnutri = 20
 	maxwater =  150
@@ -70,8 +70,8 @@
 	sack_type = /obj/item/soil_sack/vermaculite
 
 /obj/machinery/hydroponics/soil/gel
-	name = "hydrogel beads"
-	desc = "A plant bed made of superabsorbent polymer beads.\n\nThese types of water gel beads can hold onto an incredible amount of water and reduces evaporative losses to almost nothing."
+	name = "гидрогелевые гранулы"
+	desc = "Грядка из сверхвпитывающих полимерных гранул.\n\nТакие водные гелевые гранулы удерживают невероятное количество воды и почти полностью снижают испарение."
 	icon_state = "soil_gel"
 	gender = PLURAL
 	maxwater = 300
@@ -80,16 +80,16 @@
 	sack_type = /obj/item/soil_sack/gel
 
 /obj/machinery/hydroponics/soil/coir
-	name = "korta root coir"
-	desc = "A type of traditional growing medium from Tizira.\n\nUsed by the natives as a resourceful way to cultivate seraka mushrooms using waste korta roots.\nMushrooms of all kinds thrive due to the high organic content enabling them to mature faster."
+	name = "койр из корней корты"
+	desc = "Традиционная среда выращивания с Тизиры.\n\nМестные используют отходы корней корты для выращивания грибов серака.\nБлагодаря высокому содержанию органики любые грибы созревают быстрее."
 	icon_state = "soil_coir"
 	maxnutri = 20
 	tray_flags = SOIL | FAST_MUSHROOMS
 	sack_type = /obj/item/soil_sack/coir
 
 /obj/machinery/hydroponics/soil/worm
-	name = "worm castings"
-	desc = "A type of compost created when the humble worm dutifully works the soil.\n\nIt is packed with nutrients unlocked by said creatures digestive system. Give thanks to the worm!"
+	name = "червячный компост"
+	desc = "Компост, созданный усердной работой скромных червей в почве.\n\nОн полон питательных веществ, высвобождённых их пищеварительной системой."
 	icon_state = "soil_worm"
 	maxnutri = 35
 	maxwater = 200
@@ -102,8 +102,8 @@
 	flick("soil_worm_wiggle", src)
 
 /obj/machinery/hydroponics/soil/rich
-	name = "rich soil"
-	desc = "A rich patch of dirt, usually used in gardens."
+	name = "плодородная почва"
+	desc = "Плодородный участок земли, обычно используемый в садах."
 	icon_state = "rich_soil"
 	maxnutri = 20
 	sack_type = /obj/item/soil_sack/rich
@@ -111,8 +111,8 @@
 /////////////////// Soil Sacks ///////////////////////
 /// Holder items that store the soils until deployed.
 /obj/item/soil_sack
-	name = "soil sack"
-	desc = "A large plastic bag containing commercial garden soil. It is packed with sand, peat and manure. While you might not care much for such mixture, the plants have strange tastes."
+	name = "мешок почвы"
+	desc = "Большой пластиковый мешок с коммерческой садовой почвой. Внутри песок, торф и навоз. Возможно, вам такая смесь не по вкусу, но у растений странные предпочтения."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "soil_sack"
 	lefthand_file = 'icons/mob/inhands/equipment/hydroponics_lefthand.dmi'
@@ -155,7 +155,7 @@
 		return ..()
 
 	if(locate(/obj/machinery/hydroponics/soil) in interacting_with)
-		to_chat(user, span_alert("There is already a bed of soil there!"))
+		to_chat(user, span_alert("Там уже есть грядка с почвой!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!do_after(user, 1 SECONDS, interacting_with))
@@ -200,8 +200,8 @@
 
 
 /obj/item/soil_sack/vermaculite
-	name = "NT vermaculite sack"
-	desc = "A sack of expanded mineral granules that can be used as soilless growing medium.\n\nYou like to think of it a bag of rocky popcorn that lets the roots breathe."
+	name = "мешок вермикулита NT"
+	desc = "Мешок вспученных минеральных гранул, пригодных как беспочвенная среда выращивания.\n\nМожно считать это каменным попкорном, который даёт корням дышать."
 	icon_state = "soil_sack_verm"
 	base_icon_state = "soil_sack_verm"
 	custom_premium_price = PAYCHECK_CREW * 2
@@ -209,8 +209,8 @@
 	slowdown = 0
 
 /obj/item/soil_sack/gel
-	name = "hydrogel bead sack"
-	desc = "A sack of space age superabsorbent gel beads! You wonder how shipping them prehydrated would ever make business sense..."
+	name = "мешок гидрогелевых гранул"
+	desc = "Мешок сверхвпитывающих гелевых гранул космической эпохи! Вы задаётесь вопросом, как доставка их уже увлажнёнными вообще может быть выгодной..."
 	icon_state = "soil_sack_gel"
 	base_icon_state = "soil_sack_gel"
 	custom_premium_price = PAYCHECK_CREW * 2
@@ -226,15 +226,15 @@
 	stored_soil = /obj/machinery/hydroponics/soil/coir
 
 /obj/item/soil_sack/worm
-	name = "worm castings sack"
-	desc = "A sack of vermicompost, also known as worm castings.\n\nThis invertebrate manure not only contains plant nutrients and undigested organic matter, it also harbours a rich flora of beneficial microorganisms."
+	name = "мешок червячного компоста"
+	desc = "Мешок вермикомпоста, также известного как червячный компост.\n\nЭтот навоз беспозвоночных содержит питательные вещества, непереваренную органику и богатую флору полезных микроорганизмов."
 	icon_state = "soil_sack_worm"
 	base_icon_state = "soil_sack_worm"
 	custom_premium_price = PAYCHECK_CREW * 4
 	stored_soil = /obj/machinery/hydroponics/soil/worm
 
 /obj/item/soil_sack/rich
-	name = "rich soil sack"
-	desc = "A sack of rich black soil.\nAs your gaze falls upon it, you feel a bit more connected to the land."
+	name = "мешок плодородной почвы"
+	desc = "Мешок богатой чёрной почвы.\nГлядя на него, вы чувствуете себя чуть ближе к земле."
 	custom_premium_price = PAYCHECK_CREW * 1.5
 	stored_soil = /obj/machinery/hydroponics/soil/rich

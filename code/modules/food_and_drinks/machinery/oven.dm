@@ -9,8 +9,8 @@
 #define OVEN_TRAY_X_OFFSET -2
 
 /obj/machinery/oven
-	name = "oven"
-	desc = "Why do they call it oven when you of in the cold food of out hot eat the food?"
+	name = "духовка"
+	desc = "Кухонная духовка для запекания еды."
 	icon = 'icons/obj/machines/kitchen.dmi'
 	icon_state = "oven_off"
 	base_icon_state = "oven"
@@ -110,7 +110,7 @@
 		return ..()
 
 	if(user.transferItemToLoc(item, src, silent = FALSE))
-		to_chat(user, span_notice("You put [item] in [src]."))
+		to_chat(user, span_notice("Вы кладёте [item] в [src]."))
 		add_tray_to_oven(item, user)
 
 /obj/machinery/oven/item_interaction(mob/living/user, obj/item/item, list/modifiers)
@@ -159,13 +159,13 @@
 	if(open)
 		playsound(src, 'sound/machines/oven/oven_open.ogg', 75, TRUE)
 		set_smoke_state(OVEN_SMOKE_STATE_NONE)
-		to_chat(user, span_notice("You open [src]."))
+		to_chat(user, span_notice("Вы открываете [src]."))
 		end_processing()
 		if(used_tray)
 			used_tray.vis_flags &= ~VIS_HIDE
 	else
 		playsound(src, 'sound/machines/oven/oven_close.ogg', 75, TRUE)
-		to_chat(user, span_notice("You close [src]."))
+		to_chat(user, span_notice("Вы закрываете [src]."))
 		if(used_tray)
 			begin_processing()
 			used_tray.vis_flags |= VIS_HIDE
@@ -184,13 +184,13 @@
 	if(open)
 		playsound(src, 'sound/machines/oven/oven_open.ogg', 75, TRUE)
 		set_smoke_state(OVEN_SMOKE_STATE_NONE)
-		to_chat(user, span_notice("You open [src]."))
+		to_chat(user, span_notice("Вы открываете [src]."))
 		end_processing()
 		if(used_tray)
 			used_tray.vis_flags &= ~VIS_HIDE
 	else
 		playsound(src, 'sound/machines/oven/oven_close.ogg', 75, TRUE)
-		to_chat(user, span_notice("You close [src]."))
+		to_chat(user, span_notice("Вы закрываете [src]."))
 		if(used_tray)
 			begin_processing()
 			used_tray.vis_flags |= VIS_HIDE
@@ -243,8 +243,8 @@
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/oven/range
-	name = "range"
-	desc = "And Oven AND a Stove? I guess that's why it's got range!"
+	name = "кухонная плита"
+	desc = "Духовка и плита в одном корпусе."
 	icon_state = "range_off"
 	base_icon_state = "range"
 	pass_flags_self = PASSMACHINE|PASSTABLE|LETPASSTHROW // Like the griddle, short
@@ -260,8 +260,8 @@
 	AddComponent(/datum/component/stove, container_x = -6, container_y = 14, spawn_container = mapload_container)
 
 /obj/item/plate/oven_tray
-	name = "oven tray"
-	desc = "Time to bake cookies!"
+	name = "противень"
+	desc = "Самое время печь печенье!"
 	icon_state = "oven_tray"
 	max_items = 6
 	biggest_w_class = WEIGHT_CLASS_BULKY
@@ -285,12 +285,12 @@
 		return NONE
 
 	if(length(contents) >= max_items)
-		balloon_alert(user, "it's full!")
+		balloon_alert(user, "заполнено!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(!istype(item, /obj/item/storage/bag/tray))
 		// Non-tray dumping requires a do_after
-		to_chat(user, span_notice("You start dumping out the contents of [item] into [src]..."))
+		to_chat(user, span_notice("Вы начинаете высыпать содержимое [item] в [src]..."))
 		if(!do_after(user, 2 SECONDS, target = item))
 			return ITEM_INTERACT_BLOCKING
 
@@ -304,7 +304,7 @@
 			loaded++
 			AddToPlate(tray_item, user)
 	if(loaded)
-		to_chat(user, span_notice("You insert [loaded] item\s into [src]."))
+		to_chat(user, span_notice("Вы кладёте [loaded] предмет(ов) в [src]."))
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 	return ITEM_INTERACT_BLOCKING

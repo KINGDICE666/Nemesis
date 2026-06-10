@@ -1,10 +1,10 @@
 // Banana
 /obj/item/seeds/banana
-	name = "banana seed pack"
-	desc = "They're seeds that grow into banana trees. When grown, keep away from clown."
+	name = "пакет семян банана"
+	desc = "Эти семена вырастают в банановые деревья. Когда вырастут, держите подальше от клоуна."
 	icon_state = "seed-banana"
 	species = "banana"
-	plantname = "Banana Tree"
+	plantname = "Банановое дерево"
 	product = /obj/item/food/grown/banana
 	lifespan = 50
 	endurance = 30
@@ -18,8 +18,8 @@
 
 /obj/item/food/grown/banana
 	seed = /obj/item/seeds/banana
-	name = "banana"
-	desc = "It's an excellent prop for a clown."
+	name = "банан"
+	desc = "Отличный реквизит для клоуна."
 	icon_state = "banana"
 	inhand_icon_state = "banana_peel"
 	trash_type = /obj/item/grown/bananapeel
@@ -61,8 +61,8 @@
 //Banana Peel
 /obj/item/grown/bananapeel
 	seed = /obj/item/seeds/banana
-	name = "banana peel"
-	desc = "A peel from a banana."
+	name = "банановая кожура"
+	desc = "Кожура от банана."
 	lefthand_file = 'icons/mob/inhands/items/food_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/food_righthand.dmi'
 	icon_state = "banana_peel"
@@ -90,11 +90,11 @@
 
 // Mimana - invisible sprites are totally a feature!
 /obj/item/seeds/banana/mime
-	name = "mimana seed pack"
-	desc = "They're seeds that grow into mimana trees. When grown, keep away from mime."
+	name = "пакет семян мимана"
+	desc = "Эти семена вырастают в мимановые деревья. Когда вырастут, держите подальше от мима."
 	icon_state = "seed-mimana"
 	species = "mimana"
-	plantname = "Mimana Tree"
+	plantname = "Мимановое дерево"
 	product = /obj/item/food/grown/banana/mime
 	growthstages = 4
 	mutatelist = null
@@ -103,27 +103,27 @@
 
 /obj/item/food/grown/banana/mime
 	seed = /obj/item/seeds/banana/mime
-	name = "mimana"
-	desc = "It's an excellent prop for a mime."
+	name = "миман"
+	desc = "Отличный реквизит для мима."
 	icon_state = "mimana"
 	trash_type = /obj/item/grown/bananapeel/mimanapeel
 	distill_reagent = /datum/reagent/consumable/ethanol/silencer
 
 /obj/item/grown/bananapeel/mimanapeel
 	seed = /obj/item/seeds/banana/mime
-	name = "mimana peel"
-	desc = "A mimana peel."
+	name = "кожура мимана"
+	desc = "Кожура от мимана."
 	icon_state = "mimana_peel"
 	inhand_icon_state = "mimana_peel"
 
 // Bluespace Banana
 /obj/item/seeds/banana/bluespace
-	name = "bluespace banana seed pack"
-	desc = "They're seeds that grow into bluespace banana trees. When grown, keep away from bluespace clown."
+	name = "пакет семян блюспейс-банана"
+	desc = "Эти семена вырастают в блюспейс-банановые деревья. Когда вырастут, держите подальше от блюспейс-клоуна."
 	icon_state = "seed-banana-blue"
 	species = "bluespacebanana"
 	icon_grow = "banana-grow"
-	plantname = "Bluespace Banana Tree"
+	plantname = "Блюспейс-банановое дерево"
 	instability = 40
 	product = /obj/item/food/grown/banana/bluespace
 	mutatelist = null
@@ -134,33 +134,33 @@
 
 /obj/item/food/grown/banana/bluespace
 	seed = /obj/item/seeds/banana/bluespace
-	name = "bluespace banana"
+	name = "блюспейс-банан"
 	icon_state = "bluenana"
 	inhand_icon_state = "bluespace_peel"
 	trash_type = /obj/item/grown/bananapeel/bluespace
-	tastes = list("banana" = 1, "antimatter" = 1)
+	tastes = list("банан" = 1, "антиматерия" = 1)
 	wine_power = 60
 	wine_flavor = "slippery hypercubes"
 
 /obj/item/grown/bananapeel/bluespace
 	seed = /obj/item/seeds/banana/bluespace
-	name = "bluespace banana peel"
-	desc = "A peel from a bluespace banana."
+	name = "кожура блюспейс-банана"
+	desc = "Кожура от блюспейс-банана."
 	icon_state = "bluenana_peel"
 	inhand_icon_state = "bluespace_peel"
 
 // Other
 /obj/item/grown/bananapeel/specialpeel //used by /obj/item/clothing/shoes/clown_shoes/banana_shoes
-	name = "synthesized banana peel"
-	desc = "A synthetic banana peel."
+	name = "синтезированная банановая кожура"
+	desc = "Синтетическая банановая кожура."
 
 /obj/item/grown/bananapeel/specialpeel/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/slippery, 40)
 
 /obj/item/food/grown/banana/bunch
-	name = "banana bunch"
-	desc = "An exquisite bunch of bananas. The almost otherwordly plumpness steers the mind any discerning entertainer towards the divine."
+	name = "банановая гроздь"
+	desc = "Изысканная гроздь бананов. Почти потусторонняя пухлость наводит любого взыскательного артиста на мысли о божественном."
 	icon_state = "banana_bunch"
 	bite_consumption_mod = 4
 	var/is_ripening = FALSE

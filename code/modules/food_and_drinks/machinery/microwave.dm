@@ -18,8 +18,8 @@
 #define TIER_1_CELL_CHARGE_RATE (0.25 * STANDARD_CELL_CHARGE)
 
 /obj/machinery/microwave
-	name = "microwave oven"
-	desc = "Cooks and boils stuff."
+	name = "микроволновая печь"
+	desc = "Готовит и разогревает еду."
 	icon = 'icons/obj/machines/microwave.dmi'
 	base_icon_state = ""
 	icon_state = "mw_complete"
@@ -122,34 +122,34 @@
 	. = ..()
 	if(cell_powered)
 		if(!isnull(cell))
-			context[SCREENTIP_CONTEXT_CTRL_LMB] = "Remove cell"
+			context[SCREENTIP_CONTEXT_CTRL_LMB] = "Извлечь батарею"
 		else if(held_item && istype(held_item, /obj/item/stock_parts/power_store/cell))
-			context[SCREENTIP_CONTEXT_CTRL_LMB] = "Insert cell"
+			context[SCREENTIP_CONTEXT_CTRL_LMB] = "Вставить батарею"
 
 	if(held_item?.tool_behaviour == TOOL_WRENCH)
-		context[SCREENTIP_CONTEXT_LMB] = "[anchored ? "Unsecure" : "Install/Secure"]"
+		context[SCREENTIP_CONTEXT_LMB] = anchored ? "Открепить" : "Установить/закрепить"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	if(held_item?.atom_storage)
-		context[SCREENTIP_CONTEXT_RMB] = "Dump contents"
+		context[SCREENTIP_CONTEXT_RMB] = "Высыпать содержимое"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	if(broken > NOT_BROKEN)
 		if(broken == REALLY_BROKEN && held_item?.tool_behaviour == TOOL_WIRECUTTER)
-			context[SCREENTIP_CONTEXT_LMB] = "Repair"
+			context[SCREENTIP_CONTEXT_LMB] = "Починить"
 			return CONTEXTUAL_SCREENTIP_SET
 
 		else if(broken == KINDA_BROKEN && held_item?.tool_behaviour == TOOL_WELDER)
-			context[SCREENTIP_CONTEXT_LMB] = "Repair"
+			context[SCREENTIP_CONTEXT_LMB] = "Починить"
 			return CONTEXTUAL_SCREENTIP_SET
 
-	context[SCREENTIP_CONTEXT_LMB] = "Show menu"
+	context[SCREENTIP_CONTEXT_LMB] = "Открыть меню"
 
 	if(vampire_charging_capable)
-		context[SCREENTIP_CONTEXT_ALT_LMB] = "Change to [vampire_charging_enabled ? "cook" : "charge"]"
+		context[SCREENTIP_CONTEXT_ALT_LMB] = "Переключить на [vampire_charging_enabled ? "готовку" : "зарядку"]"
 
 	if(length(ingredients) != 0)
-		context[SCREENTIP_CONTEXT_RMB] = "Start [vampire_charging_enabled ? "charging" : "cooking"]"
+		context[SCREENTIP_CONTEXT_RMB] = "Начать [vampire_charging_enabled ? "зарядку" : "готовку"]"
 
 	return CONTEXTUAL_SCREENTIP_SET
 
@@ -899,7 +899,7 @@
 /// Type of microwave that automatically turns it self on erratically. Probably don't use this outside of the holodeck program "Microwave Paradise".
 /// You could also live your life with a microwave that will continously run in the background of everything while also not having any power draw. I think the former makes more sense.
 /obj/machinery/microwave/hell
-	desc = "Cooks and boils stuff. This one appears to be a bit... off."
+	desc = "Готовит и разогревает еду. Эта выглядит немного... странно."
 	use_power = NO_POWER_USE
 	idle_power_usage = 0
 	active_power_usage = 0
@@ -912,8 +912,8 @@
 		addtimer(CALLBACK(src, PROC_REF(wzhzhzh)), rand(0.5 SECONDS, 3 SECONDS))
 
 /obj/machinery/microwave/engineering
-	name = "wireless microwave oven"
-	desc = "For the hard-working tradesperson who's in the middle of nowhere and just wants to warm up their pastry-based savoury item from an overpriced vending machine."
+	name = "беспроводная микроволновая печь"
+	desc = "Для трудолюбивого специалиста, который находится чёрт знает где и просто хочет разогреть дорогую выпечку из автомата."
 	base_icon_state = "engi_"
 	icon_state = "engi_mw_complete"
 	circuit = /obj/item/circuitboard/machine/microwave/engineering

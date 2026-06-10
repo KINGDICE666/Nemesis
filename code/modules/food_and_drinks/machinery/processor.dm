@@ -1,8 +1,8 @@
 #define PROCESSOR_SELECT_RECIPE(movable_input) LAZYACCESS(processor_inputs[type], movable_input.type)
 
 /obj/machinery/processor
-	name = "food processor"
-	desc = "An industrial grinder used to process meat and other foods. Keep hands clear of intake area while operating."
+	name = "кухонный процессор"
+	desc = "Промышленная мясорубка для обработки мяса и другой еды. Держите руки подальше от загрузочной зоны во время работы."
 	icon = 'icons/obj/machines/kitchen.dmi'
 	base_icon_state = "processor"
 	icon_state = "processor"
@@ -54,7 +54,7 @@
 /obj/machinery/processor/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Outputting <b>[rating_amount]</b> item(s) at <b>[rating_speed*100]%</b> speed.")
+		. += span_notice("На дисплее состояния написано: выдаёт <b>[rating_amount]</b> предмет(ов) со скоростью <b>[rating_speed*100]%</b>.")
 
 /obj/machinery/processor/Exited(atom/movable/gone, direction)
 	..()
@@ -85,7 +85,7 @@
 
 /obj/machinery/processor/wrench_act(mob/living/user, obj/item/tool)
 	if(processing)
-		to_chat(user, span_warning("[src] is in the process of processing!"))
+		to_chat(user, span_warning("[src] сейчас обрабатывает продукты!"))
 		return ITEM_INTERACT_BLOCKING
 
 	default_unfasten_wrench(user, tool)
@@ -93,14 +93,14 @@
 
 /obj/machinery/processor/screwdriver_act(mob/living/user, obj/item/tool)
 	if(processing)
-		to_chat(user, span_warning("[src] is in the process of processing!"))
+		to_chat(user, span_warning("[src] сейчас обрабатывает продукты!"))
 		return ITEM_INTERACT_BLOCKING
 
 	return default_deconstruction_screwdriver(user, tool)
 
 /obj/machinery/processor/crowbar_act(mob/living/user, obj/item/tool)
 	if(processing)
-		to_chat(user, span_warning("[src] is in the process of processing!"))
+		to_chat(user, span_warning("[src] сейчас обрабатывает продукты!"))
 		return ITEM_INTERACT_BLOCKING
 
 	return default_pry_open(user, tool, close_after_pry = TRUE, deconstruct_on_fail = TRUE)
@@ -110,7 +110,7 @@
 		return ITEM_INTERACT_SKIP_TO_ATTACK
 
 	if(processing)
-		to_chat(user, span_warning("[src] is in the process of processing!"))
+		to_chat(user, span_warning("[src] сейчас обрабатывает продукты!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(istype(tool, /obj/item/storage/bag/tray))
@@ -124,20 +124,20 @@
 				LAZYADD(processor_contents, content_item)
 				loaded++
 		if(loaded)
-			to_chat(user, span_notice("You insert [loaded] items into [src]."))
+			to_chat(user, span_notice("Вы загружаете [loaded] предмет(ов) в [src]."))
 			return ITEM_INTERACT_SUCCESS
 		return ITEM_INTERACT_BLOCKING
 
 	var/datum/food_processor_process/recipe = PROCESSOR_SELECT_RECIPE(tool)
 	if(recipe && user.transferItemToLoc(tool, src))
 		user.visible_message(
-			span_notice("[user] put [tool] into [src]."),
-			span_notice("You put [tool] into [src]."),
+			span_notice("[user] кладёт [tool] в [src]."),
+			span_notice("Вы кладёте [tool] в [src]."),
 		)
 		LAZYADD(processor_contents, tool)
 		return ITEM_INTERACT_SUCCESS
 
-	to_chat(user, span_warning("That probably won't blend!"))
+	to_chat(user, span_warning("Это, скорее всего, не измельчится!"))
 	return ITEM_INTERACT_BLOCKING
 
 /obj/machinery/processor/update_icon_state()
@@ -146,24 +146,24 @@
 
 /obj/machinery/processor/interact(mob/user)
 	if(processing)
-		to_chat(user, span_warning("[src] is in the process of processing!"))
+		to_chat(user, span_warning("[src] сейчас обрабатывает продукты!"))
 		return TRUE
 	if(ismob(user.pulling) && PROCESSOR_SELECT_RECIPE(user.pulling))
 		if(user.grab_state < GRAB_AGGRESSIVE)
-			to_chat(user, span_warning("You need a better grip to do that!"))
+			to_chat(user, span_warning("Для этого нужен более крепкий захват!"))
 			return
 		var/mob/living/pushed_mob = user.pulling
-		visible_message(span_warning("[user] stuffs [pushed_mob] into [src]!"))
+		visible_message(span_warning("[user] запихивает [pushed_mob] в [src]!"))
 		pushed_mob.forceMove(src)
 		LAZYADD(processor_contents, pushed_mob)
 		user.stop_pulling()
 		return
 	if(!LAZYLEN(processor_contents))
-		to_chat(user, span_warning("[src] is empty!"))
+		to_chat(user, span_warning("[src] пуст!"))
 		return TRUE
-	user.visible_message(span_notice("[user] turns on [src]."), \
-		span_notice("You turn on [src]."), \
-		span_hear("You hear a food processor."))
+	user.visible_message(span_notice("[user] включает [src]."), \
+		span_notice("Вы включаете [src]."), \
+		span_hear("Вы слышите кухонный процессор."))
 	processing()
 
 
@@ -191,10 +191,10 @@
 			continue
 		process_food(recipe, content_item)
 	processing = FALSE
-	visible_message(span_notice("\The [src] finishes processing."))
+	visible_message(span_notice("\The [src] завершает обработку."))
 
 /obj/machinery/processor/verb/eject()
-	set name = "Eject Contents"
+	set name = "Извлечь содержимое"
 	set src in oview(1)
 	if(usr.stat != CONSCIOUS || HAS_TRAIT(usr, TRAIT_HANDS_BLOCKED))
 		return
@@ -209,17 +209,17 @@
 
 /obj/machinery/processor/container_resist_act(mob/living/user)
 	user.forceMove(drop_location())
-	user.visible_message(span_notice("[user] crawls free of the processor!"))
+	user.visible_message(span_notice("[user] выползает из процессора!"))
 
 /obj/machinery/processor/slime
-	name = "slime processor"
+	name = "переработчик слаймов"
 	base_icon_state = "processor_slime"
 	icon_state = "processor_slime"
-	desc = "An industrial grinder with a sticker saying appropriated for science department. Keep hands clear of intake area while operating."
+	desc = "Промышленная мясорубка с наклейкой «присвоено научным отделом». Держите руки подальше от загрузочной зоны во время работы."
 	circuit = /obj/item/circuitboard/machine/processor/slime
 
 /obj/machinery/processor/slime/fullupgrade //fully ugpraded stock parts
-	desc = "An industrial grinder with a sticker saying appropiated for bioterrorism department. keep hands clear of intake while operating."
+	desc = "Промышленная мясорубка с наклейкой «присвоено отделом биотерроризма». Держите руки подальше от загрузочной зоны во время работы."
 	circuit = /obj/item/circuitboard/machine/processor/slime/fullupgrade
 
 /obj/machinery/processor/slime/Initialize(mapload)

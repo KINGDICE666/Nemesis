@@ -1,7 +1,7 @@
 // Citrus - base type
 /obj/item/food/grown/citrus
-	name = "citrus"
-	desc = "It's so sour, your face will twist."
+	name = "цитрус"
+	desc = "Такой кислый, что лицо перекосит."
 	icon_state = "lime"
 	abstract_type = /obj/item/food/grown/citrus
 	foodtypes = FRUIT
@@ -10,11 +10,11 @@
 
 // Lime
 /obj/item/seeds/lime
-	name = "lime seed pack"
-	desc = "These are very sour seeds."
+	name = "пакет семян лайма"
+	desc = "Это очень кислые семена."
 	icon_state = "seed-lime"
 	species = "lime"
-	plantname = "Lime Tree"
+	plantname = "Лаймовое дерево"
 	product = /obj/item/food/grown/citrus/lime
 	lifespan = 55
 	endurance = 50
@@ -27,8 +27,8 @@
 
 /obj/item/food/grown/citrus/lime
 	seed = /obj/item/seeds/lime
-	name = "lime"
-	desc = "It's so sour, your face will twist."
+	name = "лайм"
+	desc = "Такой кислый, что лицо перекосит."
 	icon_state = "lime"
 
 /obj/item/food/grown/citrus/lime/juice_typepath()
@@ -36,11 +36,11 @@
 
 // Orange
 /obj/item/seeds/orange
-	name = "orange seed pack"
-	desc = "Sour seeds."
+	name = "пакет семян апельсина"
+	desc = "Кислые семена."
 	icon_state = "seed-orange"
 	species = "orange"
-	plantname = "Orange Tree"
+	plantname = "Апельсиновое дерево"
 	product = /obj/item/food/grown/citrus/orange
 	lifespan = 60
 	endurance = 50
@@ -55,8 +55,8 @@
 
 /obj/item/food/grown/citrus/orange
 	seed = /obj/item/seeds/orange
-	name = "orange"
-	desc = "It's a tangy fruit."
+	name = "апельсин"
+	desc = "Пикантный цитрусовый фрукт."
 	icon_state = "orange"
 	foodtypes = ORANGES | FRUIT
 	distill_reagent = /datum/reagent/consumable/ethanol/triple_sec
@@ -66,11 +66,11 @@
 
 // Lemon
 /obj/item/seeds/lemon
-	name = "lemon seed pack"
-	desc = "These are sour seeds."
+	name = "пакет семян лимона"
+	desc = "Это кислые семена."
 	icon_state = "seed-lemon"
 	species = "lemon"
-	plantname = "Lemon Tree"
+	plantname = "Лимонное дерево"
 	product = /obj/item/food/grown/citrus/lemon
 	lifespan = 55
 	endurance = 45
@@ -84,8 +84,8 @@
 
 /obj/item/food/grown/citrus/lemon
 	seed = /obj/item/seeds/lemon
-	name = "lemon"
-	desc = "When life gives you lemons, make lemonade."
+	name = "лимон"
+	desc = "Когда жизнь даёт лимоны, делайте лимонад."
 	icon_state = "lemon"
 
 /obj/item/food/grown/citrus/lemon/juice_typepath()
@@ -93,11 +93,11 @@
 
 // Combustible lemon
 /obj/item/seeds/firelemon //combustible lemon is too long so firelemon
-	name = "combustible lemon seed pack"
-	desc = "When life gives you lemons, don't make lemonade. Make life take the lemons back! Get mad! I don't want your damn lemons!"
+	name = "пакет семян горючего лимона"
+	desc = "Когда жизнь даёт лимоны, не делайте лимонад. Заставьте жизнь забрать лимоны обратно!"
 	icon_state = "seed-firelemon"
 	species = "firelemon"
-	plantname = "Combustible Lemon Tree"
+	plantname = "Дерево горючих лимонов"
 	product = /obj/item/food/grown/firelemon
 	growing_icon = 'icons/obj/service/hydroponics/growing_fruits.dmi'
 	icon_grow = "lime-grow"
@@ -110,8 +110,8 @@
 
 /obj/item/food/grown/firelemon
 	seed = /obj/item/seeds/firelemon
-	name = "Combustible Lemon"
-	desc = "Made for burning houses down."
+	name = "горючий лимон"
+	desc = "Создан для сжигания домов."
 	icon_state = "firelemon"
 	alt_icon = "firelemon_active"
 	foodtypes = FRUIT
@@ -119,11 +119,11 @@
 
 //3D Orange
 /obj/item/seeds/orange_3d
-	name = "extradimensional orange seed pack"
-	desc = "Polygonal seeds."
+	name = "пакет семян внеземерного апельсина"
+	desc = "Полигональные семена."
 	icon_state = "seed-orange"
 	species = "orange"
-	plantname = "Extradimensional Orange Tree"
+	plantname = "Внеземерное апельсиновое дерево"
 	product = /obj/item/food/grown/citrus/orange_3d
 	lifespan = 60
 	endurance = 50
@@ -138,14 +138,14 @@
 
 /obj/item/food/grown/citrus/orange_3d
 	seed = /obj/item/seeds/orange_3d
-	name = "extradimensional orange"
-	desc = "You can hardly wrap your head around this thing."
+	name = "внеземерный апельсин"
+	desc = "Вашему разуму трудно охватить эту штуку."
 	icon_state = "orang"
 	foodtypes = ORANGES
 	alt_icon = "orange"
 	bite_consumption_mod = 2
 	distill_reagent = /datum/reagent/toxin/mindbreaker
-	tastes = list("polygons" = 1, "bluespace" = 1, "the true nature of reality" = 1)
+	tastes = list("полигоны" = 1, "блюспейс" = 1, "истинная природа реальности" = 1)
 
 /obj/item/food/grown/citrus/orange_3d/juice_typepath()
 	return /datum/reagent/consumable/orangejuice

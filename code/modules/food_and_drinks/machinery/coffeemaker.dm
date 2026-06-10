@@ -1,8 +1,8 @@
 #define BEAN_CAPACITY 10 //amount of coffee beans that can fit inside the impressa coffeemaker
 
 /obj/machinery/coffeemaker
-	name = "coffeemaker"
-	desc = "A Modello 3 Coffeemaker that brews coffee and holds it at the perfect temperature of 176 fahrenheit. Made by Piccionaia Home Appliances."
+	name = "кофеварка"
+	desc = "Кофеварка Modello 3, которая варит кофе и поддерживает идеальную температуру 176 градусов по Фаренгейту. Произведена Piccionaia Home Appliances."
 	icon = 'icons/obj/machines/coffeemaker.dmi'
 	icon_state = "coffeemaker_nopot_nocart"
 	base_icon_state = "coffeemaker"
@@ -166,17 +166,17 @@
 	// If we're trying to eject/remove the current pot
 	if(!new_coffeepot)
 		if(!coffeepot)
-			balloon_alert(user, "no coffeepot to remove!")
+			balloon_alert(user, "нет кофейника!")
 			return FALSE
 		try_put_in_hand(coffeepot, user)
-		balloon_alert(user, "coffeepot returned")
+		balloon_alert(user, "кофейник возвращён")
 		coffeepot = null
 	else
 		// If we're replacing with a new pot
 		if(coffeepot)
 			try_put_in_hand(coffeepot, user)
 		coffeepot = new_coffeepot
-		balloon_alert(user, "coffeepot inserted")
+		balloon_alert(user, "кофейник вставлен")
 
 	update_appearance(UPDATE_OVERLAYS)
 	return TRUE
@@ -218,10 +218,10 @@
 	if (istype(tool, cup_type) && !(tool.item_flags & ABSTRACT) && tool.is_open_container())
 		var/obj/item/reagent_containers/cup/glass/coffee_cup/new_cup = tool
 		if(new_cup.reagents.total_volume > 0)
-			balloon_alert(user, "the cup must be empty!")
+			balloon_alert(user, "чашка должна быть пустой!")
 			return ITEM_INTERACT_BLOCKING
 		if(coffee_cups >= max_coffee_cups)
-			balloon_alert(user, "the cup holder is full!")
+			balloon_alert(user, "держатель чашек заполнен!")
 			return ITEM_INTERACT_BLOCKING
 		if(!user.transferItemToLoc(tool, src))
 			return ITEM_INTERACT_BLOCKING
@@ -276,7 +276,7 @@
 		if(!user.transferItemToLoc(new_cartridge, src))
 			return ITEM_INTERACT_BLOCKING
 		replace_cartridge(user, new_cartridge)
-		balloon_alert(user, "added cartridge")
+		balloon_alert(user, "картридж добавлен")
 		update_appearance(UPDATE_OVERLAYS)
 		return ITEM_INTERACT_SUCCESS //no afterattack
 
@@ -284,19 +284,19 @@
 
 /obj/machinery/coffeemaker/proc/try_brew()
 	if(!cartridge)
-		balloon_alert(usr, "no coffee cartidge inserted!")
+		balloon_alert(usr, "кофейный картридж не вставлен!")
 		return FALSE
 	if(cartridge.charges < 1)
-		balloon_alert(usr, "coffee cartidge empty!")
+		balloon_alert(usr, "кофейный картридж пуст!")
 		return FALSE
 	if(!coffeepot)
-		balloon_alert(usr, "no coffeepot inside!")
+		balloon_alert(usr, "внутри нет кофейника!")
 		return FALSE
 	if(machine_stat & (NOPOWER|BROKEN))
-		balloon_alert(usr, "machine unpowered!")
+		balloon_alert(usr, "машина без питания!")
 		return FALSE
 	if(coffeepot.reagents.total_volume >= coffeepot.reagents.maximum_volume)
-		balloon_alert(usr, "the coffeepot is already full!")
+		balloon_alert(usr, "кофейник уже полон!")
 		return FALSE
 	return TRUE
 
@@ -374,7 +374,7 @@
 
 /obj/machinery/coffeemaker/proc/take_cup(mob/user)
 	if(!coffee_cups) //shouldn't happen, but we all know how stuff manages to break
-		balloon_alert(user, "no cups left!")
+		balloon_alert(user, "чашки закончились!")
 		return
 	var/obj/item/reagent_containers/cup/glass/coffee_cup/new_cup = new(get_turf(src))
 	user.put_in_hands(new_cup)

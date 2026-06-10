@@ -1,10 +1,10 @@
 // Apple
 /obj/item/seeds/apple
-	name = "apple seed pack"
-	desc = "These seeds grow into apple trees."
+	name = "пакет семян яблони"
+	desc = "Эти семена вырастают в яблони."
 	icon_state = "seed-apple"
 	species = "apple"
-	plantname = "Apple Tree"
+	plantname = "Яблоня"
 	product = /obj/item/food/grown/apple
 	lifespan = 55
 	endurance = 35
@@ -18,11 +18,11 @@
 
 /obj/item/food/grown/apple
 	seed = /obj/item/seeds/apple
-	name = "apple"
-	desc = "It's a little piece of Eden."
+	name = "яблоко"
+	desc = "Маленький кусочек Эдема."
 	icon_state = "apple"
 	foodtypes = FRUIT
-	tastes = list("apple" = 1)
+	tastes = list("яблоко" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/hcider
 
 /obj/item/food/grown/apple/juice_typepath()
@@ -63,11 +63,11 @@
 
 // Gold Apple
 /obj/item/seeds/apple/gold
-	name = "golden apple seed pack"
-	desc = "These seeds grow into golden apple trees. Good thing there are no firebirds in space."
+	name = "пакет семян золотой яблони"
+	desc = "Эти семена вырастают в золотые яблони. Хорошо, что в космосе нет жар-птиц."
 	icon_state = "seed-goldapple"
 	species = "goldapple"
-	plantname = "Golden Apple Tree"
+	plantname = "Золотая яблоня"
 	product = /obj/item/food/grown/apple/gold
 	maturation = 10
 	production = 10
@@ -81,8 +81,8 @@
 
 /obj/item/food/grown/apple/gold
 	seed = /obj/item/seeds/apple/gold
-	name = "golden apple"
-	desc = "Emblazoned upon the apple is the word 'Kallisti'."
+	name = "золотое яблоко"
+	desc = "На яблоке выгравировано слово «Каллисти»."
 	icon_state = "goldapple"
 	distill_reagent = null
 	wine_power = 50

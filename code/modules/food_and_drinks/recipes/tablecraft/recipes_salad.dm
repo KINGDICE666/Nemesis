@@ -4,7 +4,7 @@
 ////////////////////////////////////////////////SALADS////////////////////////////////////////////////
 
 /datum/crafting_recipe/food/herbsalad
-	name = "Herb salad"
+	name = "Травяной салат"
 	reqs = list(
 		/obj/item/reagent_containers/cup/bowl = 1,
 		/obj/item/food/grown/ambrosia/vulgaris = 3,
@@ -14,7 +14,7 @@
 	dish_category = DISH_SALAD
 
 /datum/crafting_recipe/food/aesirsalad
-	name = "Aesir salad"
+	name = "Салат асов"
 	reqs = list(
 		/obj/item/reagent_containers/cup/bowl = 1,
 		/obj/item/food/grown/ambrosia/deus = 3,
@@ -24,7 +24,7 @@
 	dish_category = DISH_SALAD
 
 /datum/crafting_recipe/food/validsalad
-	name = "Valid salad"
+	name = "Валидный салат"
 	reqs = list(
 		/obj/item/reagent_containers/cup/bowl = 1,
 		/obj/item/food/grown/ambrosia/vulgaris = 3,
@@ -36,7 +36,7 @@
 	dish_category = DISH_SALAD
 
 /datum/crafting_recipe/food/melonfruitbowl
-	name ="Melon fruit bowl"
+	name ="Фруктовая чаша в арбузе"
 	reqs = list(
 		/obj/item/food/grown/watermelon = 1,
 		/obj/item/food/grown/apple = 1,
@@ -49,7 +49,7 @@
 	dish_category = DISH_SALAD
 
 /datum/crafting_recipe/food/fruitsalad
-	name = "Fruit salad"
+	name = "Фруктовый салат"
 	reqs = list(
 		/obj/item/reagent_containers/cup/bowl = 1,
 		/obj/item/food/grown/apple = 1,
@@ -62,7 +62,7 @@
 	dish_category = DISH_SALAD
 
 /datum/crafting_recipe/food/junglesalad
-	name = "Jungle salad"
+	name = "Джунглевый салат"
 	reqs = list(
 		/obj/item/reagent_containers/cup/bowl = 1,
 		/obj/item/food/grown/apple = 2,
@@ -74,7 +74,7 @@
 	dish_category = DISH_SALAD
 
 /datum/crafting_recipe/food/citrusdelight
-	name = "Citrus delight"
+	name = "Цитрусовое наслаждение"
 	reqs = list(
 		/obj/item/reagent_containers/cup/bowl = 1,
 		/obj/item/food/grown/citrus/lime = 1,
@@ -86,7 +86,7 @@
 	dish_category = DISH_SALAD
 
 /datum/crafting_recipe/food/edensalad
-	name = "Salad of Eden"
+	name = "Салат Эдема"
 	reqs = list(
 		/obj/item/reagent_containers/cup/bowl = 1,
 		/obj/item/food/grown/ambrosia/vulgaris = 1,
@@ -98,7 +98,7 @@
 	dish_category = DISH_SALAD
 
 /datum/crafting_recipe/food/kale_salad
-	name = "Kale salad"
+	name = "Салат с кейлом"
 	reqs = list(
 		/obj/item/reagent_containers/cup/bowl = 1,
 		/obj/item/food/grown/carrot = 1,
@@ -110,7 +110,7 @@
 	dish_category = DISH_SALAD
 
 /datum/crafting_recipe/food/greek_salad
-	name = "Greek salad"
+	name = "Греческий салат"
 	reqs = list(
 		/obj/item/reagent_containers/cup/bowl = 1,
 		/obj/item/food/grown/olive = 1,

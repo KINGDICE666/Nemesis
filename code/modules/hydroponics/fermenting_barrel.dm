@@ -1,6 +1,6 @@
 /obj/structure/fermenting_barrel
-	name = "wooden barrel"
-	desc = "A large wooden barrel. You can ferment fruits and such inside it, or just use it to hold reagents."
+	name = "деревянная бочка"
+	desc = "Большая деревянная бочка. В ней можно ферментировать фрукты и другие продукты или просто хранить реагенты."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "barrel"
 	base_icon_state = "barrel"
@@ -60,7 +60,7 @@
 /obj/structure/fermenting_barrel/attackby(obj/item/object, mob/user, list/modifiers, list/attack_modifiers)
 	if(open)
 		if(istype(object, /obj/item/food/grown) && insert_fruit(user, object))
-			balloon_alert(user, "added fruit")
+			balloon_alert(user, "фрукт добавлен")
 			return
 		if(istype(object, /obj/item/storage/bag/plants))
 			var/obj/item/storage/bag/plants/bag = object
@@ -70,7 +70,7 @@
 					break
 				inserted_fruits++
 			if(inserted_fruits)
-				balloon_alert(user, "added [inserted_fruits] fruit\s")
+				balloon_alert(user, "добавлено фруктов: [inserted_fruits]")
 	else if(object.is_refillable())
 		return //so we can refill them via their afterattack.
 	return ..()
@@ -101,11 +101,11 @@
 		return .
 
 	if(!length(contents))
-		balloon_alert(user, "empty!")
+		balloon_alert(user, "пусто!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	dump_contents()
-	balloon_alert(user, "emptied [src]")
+	balloon_alert(user, "[src] опустошена")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/structure/fermenting_barrel/wrench_act(mob/living/user, obj/item/tool)
@@ -127,18 +127,18 @@
 
 /obj/structure/fermenting_barrel/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	if(isnull(held_item))
-		context[SCREENTIP_CONTEXT_LMB] = open ? "Close" : "Open"
+		context[SCREENTIP_CONTEXT_LMB] = open ? "Закрыть" : "Открыть"
 
 		if(open && length(contents))
-			context[SCREENTIP_CONTEXT_RMB] = "Empty"
+			context[SCREENTIP_CONTEXT_RMB] = "Опустошить"
 
 		return CONTEXTUAL_SCREENTIP_SET
 
 	if(held_item.tool_behaviour == TOOL_WRENCH)
-		context[SCREENTIP_CONTEXT_LMB] = anchored ? "Unanchor" : "Anchor"
+		context[SCREENTIP_CONTEXT_LMB] = anchored ? "Открепить" : "Закрепить"
 
 	else if(open && (istype(held_item, /obj/item/food/grown) || istype(held_item, /obj/item/storage/bag/plants)))
-		context[SCREENTIP_CONTEXT_LMB] = "Add to barrel"
+		context[SCREENTIP_CONTEXT_LMB] = "Добавить в бочку"
 
 	return CONTEXTUAL_SCREENTIP_SET
 
@@ -150,16 +150,16 @@
 /// Adds the fruit to the barrel to queue the fermentation
 /obj/structure/fermenting_barrel/proc/insert_fruit(mob/user, obj/item/food/grown/fruit, obj/item/storage/bag/plants/bag = null)
 	if(reagents.total_volume + potential_volume > reagents.maximum_volume)
-		balloon_alert(user, "it's full!")
+		balloon_alert(user, "заполнено!")
 		return FALSE
 	if(!fruit.can_distill)
-		balloon_alert(user, "can't ferment this!")
+		balloon_alert(user, "это нельзя ферментировать!")
 		return FALSE
 	if(bag && !bag.atom_storage.attempt_remove(fruit, src))
-		balloon_alert(user, "can't take from bag!")
+		balloon_alert(user, "нельзя взять из сумки!")
 		return FALSE
 	else if (!user.transferItemToLoc(fruit, src))
-		balloon_alert(user, "can't take fruit!")
+		balloon_alert(user, "нельзя взять фрукт!")
 		return FALSE
 	potential_volume += fruit.reagents.total_volume
 	return TRUE
@@ -205,8 +205,8 @@
 
 /// Lil gunpowder barrel fer pirates since it's a nice reagent holder
 /obj/structure/fermenting_barrel/gunpowder
-	name = "gunpowder barrel"
-	desc = "A large wooden barrel for holding gunpowder. You'll need to take from this to load the cannons."
+	name = "бочка с порохом"
+	desc = "Большая деревянная бочка для хранения пороха. Из неё нужно брать порох для зарядки пушек."
 	can_open = FALSE
 
 /obj/structure/fermenting_barrel/gunpowder/Initialize(mapload)
@@ -215,8 +215,8 @@
 
 /// Medieval pirates can have a barrel as a treat
 /obj/structure/fermenting_barrel/thermite
-	name = "thermite barrel"
-	desc = "A large wooden barrel for holding thermite. Use this to make a big flipping hole on walls."
+	name = "бочка с термитом"
+	desc = "Большая деревянная бочка для хранения термита. Используйте её, чтобы сделать в стенах огромную дыру."
 	can_open = FALSE
 
 /obj/structure/fermenting_barrel/thermite/Initialize(mapload)

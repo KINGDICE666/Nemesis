@@ -1,7 +1,7 @@
 
 /obj/machinery/reagentgrinder
-	name = "all-in-one grinder"
-	desc = "From BlenderTech. Will It Blend? Let's test it out!"
+	name = "универсальная мясорубка-блендер"
+	desc = "От BlenderTech. Сможет ли это измельчить? Сейчас проверим!"
 	icon = 'icons/obj/machines/kitchen.dmi'
 	icon_state = "juicer"
 	base_icon_state = "juicer"
@@ -51,31 +51,31 @@
 	var/result = NONE
 	if(isnull(held_item))
 		if(!QDELETED(beaker) && !operating)
-			context[SCREENTIP_CONTEXT_RMB] = "Remove beaker"
+			context[SCREENTIP_CONTEXT_RMB] = "Извлечь стакан"
 			result = CONTEXTUAL_SCREENTIP_SET
 		return result
 
 	if(is_reagent_container(held_item) && held_item.is_open_container() && !operating)
 		if(QDELETED(beaker))
-			context[SCREENTIP_CONTEXT_LMB] = "Insert beaker"
+			context[SCREENTIP_CONTEXT_LMB] = "Вставить стакан"
 		else
-			context[SCREENTIP_CONTEXT_LMB] = "Replace beaker"
+			context[SCREENTIP_CONTEXT_LMB] = "Заменить стакан"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	if(held_item.tool_behaviour == TOOL_SCREWDRIVER)
-		context[SCREENTIP_CONTEXT_LMB] = "[panel_open ? "Close" : "Open"] panel"
+		context[SCREENTIP_CONTEXT_LMB] = "[panel_open ? "Закрыть" : "Открыть"] панель"
 		return CONTEXTUAL_SCREENTIP_SET
 	else if(held_item.tool_behaviour == TOOL_CROWBAR && panel_open)
-		context[SCREENTIP_CONTEXT_LMB] = "Deconstruct"
+		context[SCREENTIP_CONTEXT_LMB] = "Разобрать"
 		return CONTEXTUAL_SCREENTIP_SET
 	else if(held_item.tool_behaviour == TOOL_WRENCH)
-		context[SCREENTIP_CONTEXT_LMB] = "[anchored ? "Una" : "A"]nchor"
+		context[SCREENTIP_CONTEXT_LMB] = anchored ? "Открепить" : "Закрепить"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	if(istype(held_item, /obj/item/storage/bag))
-		context[SCREENTIP_CONTEXT_LMB] = "Transfer contents"
+		context[SCREENTIP_CONTEXT_LMB] = "Переложить содержимое"
 	else
-		context[SCREENTIP_CONTEXT_LMB] = "Insert item"
+		context[SCREENTIP_CONTEXT_LMB] = "Вставить предмет"
 	return CONTEXTUAL_SCREENTIP_SET
 
 /obj/machinery/reagentgrinder/examine(mob/user)
@@ -183,7 +183,7 @@
 
 		// Nothing would come from grinding or juicing
 		if(!length(ingredient.grind_results()) && !ingredient.reagents.total_volume)
-			to_chat(user, span_warning("You cannot grind/juice [ingredient] into reagents!"))
+			to_chat(user, span_warning("[ingredient] нельзя измельчить или выжать в реагенты!"))
 			continue
 
 		// Error messages should be in the objects' definitions
@@ -206,7 +206,7 @@
 	var/items_transfered = 0
 	for(var/obj/item/weapon as anything in filtered_list)
 		if(weapon.w_class + total_weight > maximum_weight)
-			to_chat(user, span_warning("[weapon] is too big to fit into [src]."))
+			to_chat(user, span_warning("[weapon] слишком велик, чтобы поместиться в [src]."))
 			continue
 
 		//try to remove the right way
@@ -215,7 +215,7 @@
 
 		total_weight += weapon.w_class
 		items_transfered += 1
-		to_chat(user, span_notice("[weapon] was loaded into [src]."))
+		to_chat(user, span_notice("[weapon] загружен в [src]."))
 
 	return items_transfered
 
@@ -226,7 +226,7 @@
 	//add the beaker
 	if (is_reagent_container(tool) && tool.is_open_container())
 		replace_beaker(user, tool)
-		to_chat(user, span_notice("You add [tool] to [src]."))
+		to_chat(user, span_notice("Вы добавляете [tool] в [src]."))
 		return ITEM_INTERACT_SUCCESS
 
 	//add items from bag
@@ -248,9 +248,9 @@
 		//add the items
 		var/items_added = load_items(user, to_add)
 		if(!items_added)
-			to_chat(user, span_warning("No items were added."))
+			to_chat(user, span_warning("Предметы не добавлены."))
 			return ITEM_INTERACT_BLOCKING
-		to_chat(user, span_notice("[items_added] items were added from [tool] to [src]."))
+		to_chat(user, span_notice("Из [tool] в [src] добавлено предметов: [items_added]."))
 		return ITEM_INTERACT_SUCCESS
 
 	//add item directly
@@ -274,7 +274,7 @@
 
 /obj/machinery/reagentgrinder/wrench_act(mob/living/user, obj/item/tool)
 	if(operating)
-		balloon_alert(user, "still operating!")
+		balloon_alert(user, "ещё работает!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(default_unfasten_wrench(user, tool) == SUCCESSFUL_UNFASTEN)

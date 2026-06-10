@@ -12,8 +12,8 @@ GLOBAL_LIST_INIT(oilfry_blacklisted_items, typecacheof(list(
 )))
 
 /obj/machinery/deepfryer
-	name = "deep fryer"
-	desc = "Deep fried <i>everything</i>."
+	name = "фритюрница"
+	desc = "Обжаривает во фритюре <i>вообще всё</i>."
 	icon = 'icons/obj/machines/kitchen.dmi'
 	icon_state = "fryer_off"
 	base_icon_state = "fryer"
@@ -119,11 +119,11 @@ GLOBAL_LIST_INIT(oilfry_blacklisted_items, typecacheof(list(
 		return ITEM_INTERACT_SKIP_TO_ATTACK // allow a thwack
 
 	if(!reagents.has_reagent(/datum/reagent/consumable/nutriment/fat, check_subtypes = TRUE))
-		to_chat(user, span_warning("[src] has no fat or oil to fry with!"))
+		to_chat(user, span_warning("В [src] нет жира или масла для жарки!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(tool.resistance_flags & INDESTRUCTIBLE)
-		to_chat(user, span_warning("You don't feel it would be wise to fry [tool]..."))
+		to_chat(user, span_warning("Вы не думаете, что жарить [tool] будет разумно..."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(tool.is_drainable())
@@ -186,7 +186,7 @@ GLOBAL_LIST_INIT(oilfry_blacklisted_items, typecacheof(list(
 	flick("fryer_stop", src)
 
 /obj/machinery/deepfryer/proc/start_fry(obj/item/frying_item, mob/user)
-	to_chat(user, span_notice("You put [frying_item] into [src]."))
+	to_chat(user, span_notice("Вы кладёте [frying_item] в [src]."))
 	if(istype(frying_item, /obj/item/freeze_cube))
 		log_bomber(user, "put a freeze cube in a", src)
 		visible_message(span_userdanger("[src] starts glowing... Oh no..."))
@@ -216,7 +216,7 @@ GLOBAL_LIST_INIT(oilfry_blacklisted_items, typecacheof(list(
 
 /obj/machinery/deepfryer/attack_hand(mob/living/user, list/modifiers)
 	if(frying)
-		to_chat(user, span_notice("You eject [frying] from [src]."))
+		to_chat(user, span_notice("Вы извлекаете [frying] из [src]."))
 		frying.forceMove(drop_location())
 		if(Adjacent(user) && !issilicon(user))
 			user.put_in_hands(frying)

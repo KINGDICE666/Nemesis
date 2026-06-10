@@ -7,7 +7,7 @@
 ////////////////////////////////////////////////SANDWICHES////////////////////////////////////////////////
 
 /datum/crafting_recipe/food/sandwich
-	name = "Sandwich"
+	name = "Сэндвич"
 	reqs = list(
 		/obj/item/food/breadslice/plain = 2,
 		/obj/item/food/grown/cabbage = 1,
@@ -18,7 +18,7 @@
 	dish_category = DISH_SANDWICH
 
 /datum/crafting_recipe/food/cheese_sandwich
-	name = "Cheese sandwich"
+	name = "Сэндвич с сыром"
 	reqs = list(
 		/obj/item/food/breadslice/plain = 2,
 		/obj/item/food/cheese/wedge = 2
@@ -27,7 +27,7 @@
 	dish_category = DISH_SANDWICH
 
 /datum/crafting_recipe/food/slimesandwich
-	name = "Jelly sandwich"
+	name = "Сэндвич с желе"
 	reqs = list(
 		/datum/reagent/toxin/slimejelly = 5,
 		/obj/item/food/breadslice/plain = 2,
@@ -37,7 +37,7 @@
 	dish_category = DISH_SANDWICH
 
 /datum/crafting_recipe/food/cherrysandwich
-	name = "Jelly sandwich"
+	name = "Сэндвич с желе"
 	reqs = list(
 		/datum/reagent/consumable/cherryjelly = 5,
 		/obj/item/food/breadslice/plain = 2,
@@ -47,7 +47,7 @@
 	dish_category = DISH_SANDWICH
 
 /datum/crafting_recipe/food/notasandwich
-	name = "Not a sandwich"
+	name = "Не сэндвич"
 	reqs = list(
 		/obj/item/food/breadslice/plain = 2,
 		/obj/item/clothing/mask/fakemoustache = 1
@@ -57,7 +57,7 @@
 	dish_category = DISH_SANDWICH
 
 /datum/crafting_recipe/food/hotdog
-	name = "Hot dog"
+	name = "Хот-дог"
 	reqs = list(
 		/datum/reagent/consumable/ketchup = 5,
 		/obj/item/food/bun = 1,
@@ -68,7 +68,7 @@
 	dish_category = DISH_SANDWICH
 
 /datum/crafting_recipe/food/danish_hotdog
-	name = "Danish hot dog"
+	name = "Датский хот-дог"
 	reqs = list(
 		/datum/reagent/consumable/ketchup = 5,
 		/obj/item/food/bun = 1,
@@ -92,7 +92,7 @@
 	dish_category = DISH_SANDWICH
 
 /datum/crafting_recipe/food/peanut_butter_jelly_sandwich
-	name = "Peanut butter and jelly sandwich"
+	name = "Сэндвич с арахисовой пастой и желе"
 	reqs = list(
 		/obj/item/food/breadslice/plain = 2,
 		/datum/reagent/consumable/peanut_butter = 5,
@@ -103,7 +103,7 @@
 	dish_category = DISH_SANDWICH
 
 /datum/crafting_recipe/food/peanut_butter_banana_sandwich
-	name = "Peanut butter and banana sandwich"
+	name = "Сэндвич с арахисовой пастой и бананом"
 	reqs = list(
 		/obj/item/food/breadslice/plain = 2,
 		/datum/reagent/consumable/peanut_butter = 5,
@@ -114,7 +114,7 @@
 	dish_category = DISH_SANDWICH
 
 /datum/crafting_recipe/food/philly_cheesesteak
-	name = "Philly Cheesesteak"
+	name = "Филадельфийский чизстейк"
 	reqs = list(
 		/obj/item/food/breadslice/plain = 2,
 		/obj/item/food/meat/cutlet = 2,
@@ -125,7 +125,7 @@
 	dish_category = DISH_SANDWICH
 
 /datum/crafting_recipe/food/death_sandwich
-	name = "Death Sandwich"
+	name = "Сэндвич смерти"
 	reqs = list(
 		/obj/item/food/breadslice/plain = 2,
 		/obj/item/food/salami = 4,
@@ -137,7 +137,7 @@
 	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED
 
 /datum/crafting_recipe/food/toast_sandwich
-	name = "Toast Sandwich"
+	name = "Сэндвич с тостом"
 	reqs = list(
 		/obj/item/food/breadslice/plain = 2,
 		/obj/item/food/butteredtoast = 1,

@@ -2,27 +2,27 @@
 
 /datum/glass_style/has_foodtype/drinking_glass/orangejuice
 	required_drink_type = /datum/reagent/consumable/orangejuice
-	name = "glass of orange juice"
+	name = "стакан апельсинового сока"
 	desc = "Vitamins! Yay!"
 	drink_type = FRUIT | BREAKFAST
 
 /datum/glass_style/has_foodtype/juicebox/orangejuice
 	required_drink_type = /datum/reagent/consumable/orangejuice
-	name = "orange juice box"
+	name = "пакет апельсинового сока"
 	desc = "A great source of vitamins. Stay healthy!"
 	icon_state = "orangebox"
 	drink_type = FRUIT | BREAKFAST
 
 /datum/glass_style/has_foodtype/juicebox/applejuice
 	required_drink_type = /datum/reagent/consumable/applejuice
-	name = "apple juice box"
+	name = "пакет яблочного сока"
 	desc = "Sweet apple juice. Don't be late for school!"
 	icon_state = "juicebox"
 	drink_type = FRUIT
 
 /datum/glass_style/has_foodtype/juicebox/grapejuice
 	required_drink_type = /datum/reagent/consumable/grapejuice
-	name = "grape juice box"
+	name = "пакет виноградного сока"
 	desc = "Tasty grape juice in a fun little container. Non-alcoholic!"
 	icon_state = "grapebox"
 	drink_type = FRUIT
@@ -59,44 +59,44 @@
 
 /datum/glass_style/drinking_glass/tomatojuice
 	required_drink_type = /datum/reagent/consumable/tomatojuice
-	name = "glass of tomato juice"
+	name = "стакан томатного сока"
 	desc = "Are you sure this is tomato juice?"
 
 /datum/glass_style/drinking_glass/limejuice
 	required_drink_type = /datum/reagent/consumable/limejuice
-	name = "glass of lime juice"
+	name = "стакан сока лайма"
 	desc = "A glass of sweet-sour lime juice."
 
 /datum/glass_style/drinking_glass/carrotjuice
 	required_drink_type = /datum/reagent/consumable/carrotjuice
-	name = "glass of  carrot juice"
+	name = "стакан морковного сока"
 	desc = "It's just like a carrot but without crunching."
 	icon_state = "carrotjuice"
 
 /datum/glass_style/drinking_glass/berryjuice
 	required_drink_type = /datum/reagent/consumable/berryjuice
-	name = "glass of berry juice"
+	name = "стакан ягодного сока"
 	desc = "Berry juice. Or maybe it's jam. Who cares?"
 
 /datum/glass_style/drinking_glass/poisonberryjuice
 	required_drink_type = /datum/reagent/consumable/poisonberryjuice
-	name = "glass of berry juice"
+	name = "стакан ягодного сока"
 	desc = "Berry juice. Or maybe it's poison. Who cares?"
 
 /datum/glass_style/drinking_glass/watermelonjuice
 	required_drink_type = /datum/reagent/consumable/watermelonjuice
-	name = "glass of watermelon juice"
+	name = "стакан арбузного сока"
 	desc = "A glass of watermelon juice."
 
 /datum/glass_style/drinking_glass/lemonjuice
 	required_drink_type = /datum/reagent/consumable/lemonjuice
-	name = "glass of lemon juice"
+	name = "стакан лимонного сока"
 	desc = "Sour..."
 	icon_state = "lemonglass"
 
 /datum/glass_style/drinking_glass/banana
 	required_drink_type = /datum/reagent/consumable/banana
-	name = "glass of banana juice"
+	name = "стакан бананового сока"
 	desc = "The raw essence of a banana. HONK."
 	icon_state = "banana"
 
@@ -108,7 +108,7 @@
 
 /datum/glass_style/drinking_glass/potato_juice
 	required_drink_type = /datum/reagent/consumable/potato_juice
-	name = "glass of potato juice"
+	name = "стакан картофельного сока"
 	desc = "Bleh..."
 
 /datum/glass_style/drinking_glass/bungojuice

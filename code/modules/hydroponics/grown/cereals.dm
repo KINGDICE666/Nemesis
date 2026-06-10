@@ -1,10 +1,10 @@
 // Wheat
 /obj/item/seeds/wheat
-	name = "wheat seed pack"
-	desc = "These may, or may not, grow into wheat."
+	name = "пакет семян пшеницы"
+	desc = "Из них может вырасти пшеница. А может и нет."
 	icon_state = "seed-wheat"
 	species = "wheat"
-	plantname = "Wheat Stalks"
+	plantname = "Стебли пшеницы"
 	product = /obj/item/food/grown/wheat
 	production = 1
 	yield = 4
@@ -16,13 +16,13 @@
 
 /obj/item/food/grown/wheat
 	seed = /obj/item/seeds/wheat
-	name = "wheat"
-	desc = "Sigh... wheat... a-grain?"
+	name = "пшеница"
+	desc = "Колосья пшеницы."
 	gender = PLURAL
 	icon_state = "wheat"
 	bite_consumption_mod = 0.5 // Chewing on wheat grains?
 	foodtypes = GRAIN
-	tastes = list("wheat" = 1)
+	tastes = list("пшеница" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/beer
 	slot_flags = ITEM_SLOT_MASK
 	worn_icon = 'icons/mob/clothing/head/hydroponics.dmi'
@@ -32,23 +32,23 @@
 
 // Oat
 /obj/item/seeds/wheat/oat
-	name = "oat seed pack"
-	desc = "These may, or may not, grow into oat."
+	name = "пакет семян овса"
+	desc = "Из них может вырасти овёс. А может и нет."
 	icon_state = "seed-oat"
 	species = "oat"
-	plantname = "Oat Stalks"
+	plantname = "Стебли овса"
 	product = /obj/item/food/grown/oat
 	mutatelist = null
 
 /obj/item/food/grown/oat
 	seed = /obj/item/seeds/wheat/oat
-	name = "oat"
-	desc = "Eat oats, do squats."
+	name = "овёс"
+	desc = "Ешь овёс, держи рост."
 	gender = PLURAL
 	icon_state = "oat"
 	bite_consumption_mod = 0.5
 	foodtypes = GRAIN
-	tastes = list("oat" = 1)
+	tastes = list("овёс" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/ale
 
 /obj/item/food/grown/oat/grind_results()
@@ -56,11 +56,11 @@
 
 // Rice
 /obj/item/seeds/wheat/rice
-	name = "rice seed pack"
-	desc = "These may, or may not, grow into rice."
+	name = "пакет семян риса"
+	desc = "Из них может вырасти рис. А может и нет."
 	icon_state = "seed-rice"
 	species = "rice"
-	plantname = "Rice Stalks"
+	plantname = "Стебли риса"
 	instability = 1
 	product = /obj/item/food/grown/rice
 	mutatelist = null
@@ -70,13 +70,13 @@
 
 /obj/item/food/grown/rice
 	seed = /obj/item/seeds/wheat/rice
-	name = "rice"
-	desc = "Rice to meet you."
+	name = "рис"
+	desc = "Зёрна риса."
 	gender = PLURAL
 	icon_state = "rice"
 	bite_consumption_mod = 0.5
 	foodtypes = GRAIN
-	tastes = list("rice" = 1)
+	tastes = list("рис" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/sake
 
 /obj/item/food/grown/rice/grind_results()
@@ -84,23 +84,23 @@
 
 //Meatwheat - grows into synthetic meat
 /obj/item/seeds/wheat/meat
-	name = "meatwheat seed pack"
-	desc = "If you ever wanted to drive a vegetarian to insanity, here's how."
+	name = "пакет семян мясопшеницы"
+	desc = "Если вы когда-нибудь хотели свести вегетарианца с ума, вот способ."
 	icon_state = "seed-meatwheat"
 	species = "meatwheat"
-	plantname = "Meatwheat"
+	plantname = "Мясопшеница"
 	product = /obj/item/food/grown/meatwheat
 	mutatelist = null
 
 /obj/item/food/grown/meatwheat
-	name = "meatwheat"
-	desc = "Some blood-drenched wheat stalks. You can crush them into what passes for meat if you squint hard enough."
+	name = "мясопшеница"
+	desc = "Пропитанные кровью стебли пшеницы. Если сильно прищуриться, их можно размять во что-то похожее на мясо."
 	icon_state = "meatwheat"
 	gender = PLURAL
 	bite_consumption_mod = 0.5
 	seed = /obj/item/seeds/wheat/meat
 	foodtypes = MEAT
-	tastes = list("meatwheat" = 1)
+	tastes = list("мясопшеница" = 1)
 	can_distill = FALSE
 	slot_flags = ITEM_SLOT_MASK
 	worn_icon = 'icons/mob/clothing/head/hydroponics.dmi'
@@ -109,7 +109,7 @@
 	return list(/datum/reagent/consumable/flour = 0, /datum/reagent/blood = 0)
 
 /obj/item/food/grown/meatwheat/attack_self(mob/living/user)
-	user.visible_message(span_notice("[user] crushes [src] into meat."), span_notice("You crush [src] into something that resembles meat."))
+	user.visible_message(span_notice("[user] разминает [src] в мясо."), span_notice("Вы разминаете [src] во что-то похожее на мясо."))
 	playsound(user, 'sound/effects/blob/blobattack.ogg', 50, TRUE)
 	var/obj/item/food/meat/slab/meatwheat/meaties = new(null)
 	meaties.reagents.set_all_reagents_purity(seed.get_reagent_purity())

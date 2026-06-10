@@ -1,8 +1,8 @@
 /datum/reagent/consumable/orangejuice
-	name = "Orange Juice"
-	description = "Both delicious AND rich in Vitamin C, what more do you need?"
+	name = "Апельсиновый сок"
+	description = "Вкусный и богатый витамином C. Что ещё нужно?"
 	color = "#E78108" // rgb: 231, 129, 8
-	taste_description = "oranges"
+	taste_description = "апельсины"
 	ph = 3.3
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -15,10 +15,10 @@
 			return UPDATE_MOB_HEALTH
 
 /datum/reagent/consumable/tomatojuice
-	name = "Tomato Juice"
-	description = "Tomatoes made into juice. What a waste of big, juicy tomatoes, huh?"
+	name = "Томатный сок"
+	description = "Томаты, превращённые в сок. Какая трата больших сочных томатов, а?"
 	color = "#731008" // rgb: 115, 16, 8
-	taste_description = "tomatoes"
+	taste_description = "томаты"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	default_container = /obj/item/reagent_containers/cup/glass/bottle/juice/tomatojuice
@@ -30,10 +30,10 @@
 			return UPDATE_MOB_HEALTH
 
 /datum/reagent/consumable/limejuice
-	name = "Lime Juice"
-	description = "The sweet-sour juice of limes."
+	name = "Сок лайма"
+	description = "Кисло-сладкий сок лаймов."
 	color = "#a6f19a" // rgb: 166, 241, 154
-	taste_description = "unbearable sourness"
+	taste_description = "невыносимая кислота"
 	ph = 2.2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -46,10 +46,10 @@
 			return UPDATE_MOB_HEALTH
 
 /datum/reagent/consumable/carrotjuice
-	name = "Carrot Juice"
-	description = "It is just like a carrot but without crunching."
+	name = "Морковный сок"
+	description = "Как морковь, только без хруста."
 	color = "#973800" // rgb: 151, 56, 0
-	taste_description = "carrots"
+	taste_description = "морковь"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -68,25 +68,25 @@
 		return UPDATE_MOB_HEALTH
 
 /datum/reagent/consumable/berryjuice
-	name = "Berry Juice"
-	description = "A delicious blend of several different kinds of berries."
+	name = "Ягодный сок"
+	description = "Вкусная смесь нескольких видов ягод."
 	color = "#863333" // rgb: 134, 51, 51
-	taste_description = "berries"
+	taste_description = "ягоды"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/consumable/applejuice
-	name = "Apple Juice"
-	description = "The sweet juice of an apple, fit for all ages."
+	name = "Яблочный сок"
+	description = "Сладкий яблочный сок, подходящий для всех возрастов."
 	color = "#fff06b" // rgb: 255, 240, 107
-	taste_description = "apples"
+	taste_description = "яблоки"
 	ph = 3.2 // ~ 2.7 -> 3.7
 
 /datum/reagent/consumable/poisonberryjuice
-	name = "Poison Berry Juice"
-	description = "A tasty juice blended from various kinds of very deadly and toxic berries."
+	name = "Сок ядовитых ягод"
+	description = "Вкусный сок из разных очень смертельных и токсичных ягод."
 	color = "#792b49" // rgb: 121, 43, 73
-	taste_description = "berries"
+	taste_description = "ягоды"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -96,28 +96,28 @@
 		return UPDATE_MOB_HEALTH
 
 /datum/reagent/consumable/watermelonjuice
-	name = "Watermelon Juice"
-	description = "Delicious juice made from watermelon."
+	name = "Арбузный сок"
+	description = "Вкусный сок из арбуза."
 	color = "#af5e5e" // rgb: 175, 94, 94
-	taste_description = "juicy watermelon"
+	taste_description = "сочный арбуз"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/consumable/lemonjuice
-	name = "Lemon Juice"
-	description = "This juice is VERY sour."
+	name = "Лимонный сок"
+	description = "Этот сок ОЧЕНЬ кислый."
 	color = "#ebeb9e" // rgb: 235, 235, 158
-	taste_description = "sourness"
+	taste_description = "кислота"
 	ph = 2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	default_container = /obj/item/reagent_containers/cup/glass/bottle/juice/lemonjuice
 
 /datum/reagent/consumable/banana
-	name = "Banana Juice"
-	description = "The raw essence of a banana. HONK"
+	name = "Банановый сок"
+	description = "Сырая сущность банана. ХОНК"
 	color = "#FFFCB9" // rgb: 255, 252, 185
-	taste_description = "banana"
+	taste_description = "банан"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -177,11 +177,11 @@
 		affected_mob.add_mood_event("chemical_laughter", /datum/mood_event/chemical_superlaughter)
 
 /datum/reagent/consumable/potato_juice
-	name = "Potato Juice"
-	description = "Juice of the potato. Bleh."
+	name = "Картофельный сок"
+	description = "Сок картофеля. Фу."
 	nutriment_factor = 2
 	color = "#E8A856" // rgb: 234, 157, 58
-	taste_description = "irish sadness"
+	taste_description = "картофельная тоска"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -202,10 +202,10 @@
 			return UPDATE_MOB_HEALTH
 
 /datum/reagent/consumable/grapejuice
-	name = "Grape Juice"
-	description = "The juice of a bunch of grapes. Guaranteed non-alcoholic."
+	name = "Виноградный сок"
+	description = "Сок из грозди винограда. Гарантированно безалкогольный."
 	color = "#290029" // dark purple
-	taste_description = "grape soda"
+	taste_description = "виноградная газировка"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -218,10 +218,10 @@
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/consumable/milk
-	name = "Milk"
-	description = "An opaque white liquid produced by the mammary glands of mammals."
+	name = "Молоко"
+	description = "Непрозрачная белая жидкость, вырабатываемая молочными железами млекопитающих."
 	color = "#DFDFDF" // rgb: 223, 223, 223
-	taste_description = "milk"
+	taste_description = "молоко"
 	ph = 6.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -251,10 +251,10 @@
 		return TRUE
 
 /datum/reagent/consumable/soymilk
-	name = "Soy Milk"
-	description = "An opaque white liquid made from soybeans."
+	name = "Соевое молоко"
+	description = "Непрозрачная белая жидкость, изготовленная из соевых бобов."
 	color = "#DFDFC7" // rgb: 223, 223, 199
-	taste_description = "soy milk"
+	taste_description = "соевое молоко"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	default_container = /obj/item/reagent_containers/condiment/soymilk
@@ -266,10 +266,10 @@
 			return UPDATE_MOB_HEALTH
 
 /datum/reagent/consumable/cream
-	name = "Cream"
-	description = "The fatty, still liquid part of milk. Why don't you mix this with sum scotch, eh?"
+	name = "Сливки"
+	description = "Жирная жидкая часть молока. Почему бы не смешать это с виски?"
 	color = "#DFD7AF" // rgb: 223, 215, 175
-	taste_description = "creamy milk"
+	taste_description = "сливочное молоко"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	default_container = /obj/item/reagent_containers/cup/glass/bottle/juice/cream
@@ -280,12 +280,12 @@
 		return UPDATE_MOB_HEALTH
 
 /datum/reagent/consumable/coffee
-	name = "Coffee"
-	description = "Coffee is a brewed drink prepared from roasted seeds, commonly called coffee beans, of the coffee plant."
+	name = "Кофе"
+	description = "Заваренный напиток из обжаренных семян кофейного растения, обычно называемых кофейными зёрнами."
 	color = "#482000" // rgb: 72, 32, 0
 	nutriment_factor = 0
 	overdose_threshold = 80
-	taste_description = "bitterness"
+	taste_description = "горечь"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_STOCK
@@ -306,11 +306,11 @@
 		holder.remove_reagent(/datum/reagent/consumable/frostoil, 2.5 * metabolization_ratio * seconds_per_tick)
 
 /datum/reagent/consumable/tea
-	name = "Tea"
-	description = "Tasty black tea, it has antioxidants, it's good for you!"
+	name = "Чай"
+	description = "Вкусный чёрный чай с антиоксидантами. Полезно!"
 	color = "#101000" // rgb: 16, 16, 0
 	nutriment_factor = 0
-	taste_description = "tart black tea"
+	taste_description = "терпкий чёрный чай"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_STOCK
@@ -359,11 +359,11 @@
 	return TRUE
 
 /datum/reagent/consumable/lemonade
-	name = "Lemonade"
-	description = "Sweet, tangy lemonade. Good for the soul."
+	name = "Лимонад"
+	description = "Сладкий, пикантный лимонад. Хорош для души."
 	color = "#FFE978"
 	quality = DRINK_NICE
-	taste_description = "sunshine and summertime"
+	taste_description = "солнце и лето"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_EASY
@@ -384,12 +384,12 @@
 		to_chat(affected_mob, span_notice("[pick("You remember to square your shoulders.","You remember to keep your head down.","You can't decide between squaring your shoulders and keeping your head down.","You remember to relax.","You think about how someday you'll get two strokes off your golf game.")]"))
 
 /datum/reagent/consumable/icecoffee
-	name = "Iced Coffee"
-	description = "Coffee and ice, refreshing and cool."
+	name = "Холодный кофе"
+	description = "Кофе и лёд, освежающе и прохладно."
 	color = "#462b15" // rgb: 70, 43, 21
 	nutriment_factor = 0
 	overdose_threshold = 80
-	taste_description = "bitter coldness"
+	taste_description = "горькая прохлада"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	metabolized_traits = list(TRAIT_STIMULATED)
@@ -430,11 +430,11 @@
 		return UPDATE_MOB_HEALTH
 
 /datum/reagent/consumable/icetea
-	name = "Iced Tea"
+	name = "Холодный чай"
 	description = "No relation to a certain rap artist/actor."
 	color = "#104038" // rgb: 16, 64, 56
 	nutriment_factor = 0
-	taste_description = "sweet tea"
+	taste_description = "сладкий чай"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	metabolized_traits = list(TRAIT_STIMULATED)
@@ -450,10 +450,10 @@
 	affected_mob.adjust_bodytemperature(-2.5 * TEMPERATURE_DAMAGE_COEFFICIENT * metabolization_ratio * seconds_per_tick, affected_mob.get_body_temp_normal())
 
 /datum/reagent/consumable/space_cola
-	name = "Cola"
-	description = "A refreshing beverage."
+	name = "Кола"
+	description = "Освежающий напиток."
 	color = "#100800" // rgb: 16, 8, 0
-	taste_description = "cola"
+	taste_description = "кола"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 

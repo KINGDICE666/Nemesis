@@ -1,10 +1,10 @@
 // Tomato
 /obj/item/seeds/tomato
-	name = "tomato seed pack"
-	desc = "These seeds grow into tomato plants."
+	name = "пакет семян томата"
+	desc = "Эти семена вырастают в томатные кусты."
 	icon_state = "seed-tomato"
 	species = "tomato"
-	plantname = "Tomato Plants"
+	plantname = "Томатные кусты"
 	product = /obj/item/food/grown/tomato
 	maturation = 8
 	instability = 25
@@ -18,8 +18,8 @@
 
 /obj/item/food/grown/tomato
 	seed = /obj/item/seeds/tomato
-	name = "tomato"
-	desc = "I say to-mah-to, you say tom-mae-to."
+	name = "томат"
+	desc = "Сочный красный томат."
 	icon_state = "tomato"
 	splat_type = /obj/effect/decal/cleanable/food/tomato_smudge
 	foodtypes = VEGETABLES
@@ -33,11 +33,11 @@
 
 // Blood Tomato
 /obj/item/seeds/tomato/blood
-	name = "blood-tomato seed pack"
-	desc = "These seeds grow into blood-tomato plants."
+	name = "пакет семян кровавого томата"
+	desc = "Эти семена вырастают в кровавые томатные кусты."
 	icon_state = "seed-bloodtomato"
 	species = "bloodtomato"
-	plantname = "Blood-Tomato Plants"
+	plantname = "Кровавые томатные кусты"
 	product = /obj/item/food/grown/tomato/blood
 	mutatelist = null
 	reagents_add = list(/datum/reagent/blood = 0.2, /datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.1)
@@ -45,8 +45,8 @@
 
 /obj/item/food/grown/tomato/blood
 	seed = /obj/item/seeds/tomato/blood
-	name = "blood-tomato"
-	desc = "So bloody...so...very...bloody....AHHHH!!!!"
+	name = "кровавый томат"
+	desc = "Такой кровавый... такой... очень... кровавый... АААА!!!!"
 	icon_state = "bloodtomato"
 	bite_consumption_mod = 3
 	splat_type = /obj/effect/gibspawner/generic
@@ -58,11 +58,11 @@
 
 // Blue Tomato
 /obj/item/seeds/tomato/blue
-	name = "blue-tomato seed pack"
-	desc = "These seeds grow into blue-tomato plants."
+	name = "пакет семян синего томата"
+	desc = "Эти семена вырастают в синие томатные кусты."
 	icon_state = "seed-bluetomato"
 	species = "bluetomato"
-	plantname = "Blue-Tomato Plants"
+	plantname = "Синие томатные кусты"
 	product = /obj/item/food/grown/tomato/blue
 	yield = 2
 	icon_grow = "bluetomato-grow"
@@ -74,8 +74,8 @@
 
 /obj/item/food/grown/tomato/blue
 	seed = /obj/item/seeds/tomato/blue
-	name = "blue-tomato"
-	desc = "I say blue-mah-to, you say blue-mae-to."
+	name = "синий томат"
+	desc = "Синий, скользкий и подозрительно блестящий."
 	icon_state = "bluetomato"
 	bite_consumption_mod = 2
 	splat_type = /obj/effect/decal/cleanable/blood/oil
@@ -83,11 +83,11 @@
 
 // Bluespace Tomato
 /obj/item/seeds/tomato/blue/bluespace
-	name = "bluespace tomato seed pack"
-	desc = "These seeds grow into bluespace tomato plants."
+	name = "пакет семян блюспейс-томата"
+	desc = "Эти семена вырастают в блюспейс-томатные кусты."
 	icon_state = "seed-bluespacetomato"
 	species = "bluespacetomato"
-	plantname = "Bluespace Tomato Plants"
+	plantname = "Блюспейс-томатные кусты"
 	product = /obj/item/food/grown/tomato/blue/bluespace
 	yield = 2
 	mutatelist = null
@@ -98,8 +98,8 @@
 
 /obj/item/food/grown/tomato/blue/bluespace
 	seed = /obj/item/seeds/tomato/blue/bluespace
-	name = "\improper bluespace tomato"
-	desc = "So lubricated, you might slip through space-time."
+	name = "\improper блюспейс-томат"
+	desc = "Настолько скользкий, что можно проскользнуть сквозь пространство-время."
 	icon_state = "bluespacetomato"
 	bite_consumption_mod = 3
 	distill_reagent = null
@@ -107,11 +107,11 @@
 
 // Killer Tomato
 /obj/item/seeds/tomato/killer
-	name = "killer-tomato seed pack"
-	desc = "These seeds grow into killer-tomato plants."
+	name = "пакет семян томата-убийцы"
+	desc = "Эти семена вырастают в томатные кусты-убийцы."
 	icon_state = "seed-killertomato"
 	species = "killertomato"
-	plantname = "Killer-Tomato Plants"
+	plantname = "Томатные кусты-убийцы"
 	product = /obj/item/food/grown/tomato/killer
 	yield = 2
 	genes = list(/datum/plant_gene/trait/mob_transformation/tomato)
@@ -124,7 +124,7 @@
 
 /obj/item/food/grown/tomato/killer
 	seed = /obj/item/seeds/tomato/killer
-	name = "\improper killer-tomato"
-	desc = "I say to-mah-to, you say tom-mae-to... OH GOD IT'S EATING MY LEGS!!"
+	name = "\improper томат-убийца"
+	desc = "Обычный томат... О БОЖЕ, ОН ЕСТ МОИ НОГИ!!"
 	icon_state = "killertomato"
 	distill_reagent = /datum/reagent/consumable/ethanol/demonsblood

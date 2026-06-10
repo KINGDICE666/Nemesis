@@ -1,10 +1,10 @@
 // Berries
 /obj/item/seeds/berry
-	name = "berry seed pack"
-	desc = "These seeds grow into berry bushes."
+	name = "пакет семян ягод"
+	desc = "Эти семена вырастают в ягодные кусты."
 	icon_state = "seed-berry"
 	species = "berry"
-	plantname = "Berry Bush"
+	plantname = "Ягодный куст"
 	product = /obj/item/food/grown/berries
 	lifespan = 20
 	maturation = 5
@@ -20,12 +20,12 @@
 
 /obj/item/food/grown/berries
 	seed = /obj/item/seeds/berry
-	name = "bunch of berries"
-	desc = "Nutritious!"
+	name = "горсть ягод"
+	desc = "Питательно!"
 	icon_state = "berrypile"
 	gender = PLURAL
 	foodtypes = FRUIT
-	tastes = list("berry" = 1)
+	tastes = list("ягоды" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/gin
 
 /obj/item/food/grown/berries/juice_typepath()
@@ -33,11 +33,11 @@
 
 // Poison Berries
 /obj/item/seeds/berry/poison
-	name = "poison-berry seed pack"
-	desc = "These seeds grow into poison-berry bushes."
+	name = "пакет семян ядовитых ягод"
+	desc = "Эти семена вырастают в кусты ядовитых ягод."
 	icon_state = "seed-poisonberry"
 	species = "poisonberry"
-	plantname = "Poison-Berry Bush"
+	plantname = "Куст ядовитых ягод"
 	product = /obj/item/food/grown/berries/poison
 	mutatelist = list(/obj/item/seeds/berry/death)
 	reagents_add = list(/datum/reagent/toxin/cyanide = 0.15, /datum/reagent/toxin/staminatoxin = 0.2, /datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.1)
@@ -45,12 +45,12 @@
 
 /obj/item/food/grown/berries/poison
 	seed = /obj/item/seeds/berry/poison
-	name = "bunch of poison-berries"
-	desc = "Taste so good, you might die!"
+	name = "горсть ядовитых ягод"
+	desc = "Такие вкусные, что можно умереть!"
 	icon_state = "poisonberrypile"
 	bite_consumption_mod = 3
 	foodtypes = FRUIT | TOXIC
-	tastes = list("poison-berry" = 1)
+	tastes = list("ядовитые ягоды" = 1)
 	distill_reagent = null
 	wine_power = 35
 
@@ -59,11 +59,11 @@
 
 // Death Berries
 /obj/item/seeds/berry/death
-	name = "death-berry seed pack"
-	desc = "These seeds grow into death berries."
+	name = "пакет семян смертельных ягод"
+	desc = "Эти семена вырастают в смертельные ягоды."
 	icon_state = "seed-deathberry"
 	species = "deathberry"
-	plantname = "Death Berry Bush"
+	plantname = "Куст смертельных ягод"
 	product = /obj/item/food/grown/berries/death
 	lifespan = 30
 	potency = 50
@@ -75,12 +75,12 @@
 
 /obj/item/food/grown/berries/death
 	seed = /obj/item/seeds/berry/death
-	name = "bunch of death-berries"
-	desc = "Taste so good, you will die!"
+	name = "горсть смертельных ягод"
+	desc = "Такие вкусные, что вы точно умрёте!"
 	icon_state = "deathberrypile"
 	bite_consumption_mod = 3
 	foodtypes = FRUIT | TOXIC
-	tastes = list("death-berry" = 1)
+	tastes = list("смертельные ягоды" = 1)
 	distill_reagent = null
 	wine_power = 50
 
@@ -89,11 +89,11 @@
 
 // Glow Berries
 /obj/item/seeds/berry/glow
-	name = "glow-berry seed pack"
-	desc = "These seeds grow into glow-berry bushes."
+	name = "пакет семян светящихся ягод"
+	desc = "Эти семена вырастают в кусты светящихся ягод."
 	icon_state = "seed-glowberry"
 	species = "glowberry"
-	plantname = "Glow-Berry Bush"
+	plantname = "Куст светящихся ягод"
 	product = /obj/item/food/grown/berries/glow
 	lifespan = 30
 	endurance = 25
@@ -105,22 +105,22 @@
 
 /obj/item/food/grown/berries/glow
 	seed = /obj/item/seeds/berry/glow
-	name = "bunch of glow-berries"
-	desc = "Nutritious!"
+	name = "горсть светящихся ягод"
+	desc = "Питательно!"
 	bite_consumption_mod = 3
 	icon_state = "glowberrypile"
 	foodtypes = FRUIT
-	tastes = list("glow-berry" = 1)
+	tastes = list("светящиеся ягоды" = 1)
 	distill_reagent = null
 	wine_power = 60
 
 // Grapes
 /obj/item/seeds/grape
-	name = "grape seed pack"
-	desc = "These seeds grow into grape vines."
+	name = "пакет семян винограда"
+	desc = "Эти семена вырастают в виноградные лозы."
 	icon_state = "seed-grapes"
 	species = "grape"
-	plantname = "Grape Vine"
+	plantname = "Виноградная лоза"
 	product = /obj/item/food/grown/grapes
 	lifespan = 50
 	endurance = 25
@@ -137,12 +137,12 @@
 
 /obj/item/food/grown/grapes
 	seed = /obj/item/seeds/grape
-	name = "bunch of grapes"
-	desc = "Nutritious!"
+	name = "гроздь винограда"
+	desc = "Питательно!"
 	icon_state = "grapes"
 	bite_consumption_mod = 2
 	foodtypes = FRUIT
-	tastes = list("grape" = 1)
+	tastes = list("виноград" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/wine
 
 /obj/item/food/grown/grapes/juice_typepath()
@@ -153,21 +153,21 @@
 
 // Green Grapes
 /obj/item/seeds/grape/green
-	name = "green grape seed pack"
-	desc = "These seeds grow into green-grape vines."
+	name = "пакет семян зелёного винограда"
+	desc = "Эти семена вырастают в лозы зелёного винограда."
 	icon_state = "seed-greengrapes"
 	species = "greengrape"
-	plantname = "Green-Grape Vine"
+	plantname = "Лоза зелёного винограда"
 	product = /obj/item/food/grown/grapes/green
 	reagents_add = list( /datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.1, /datum/reagent/consumable/sugar = 0.1, /datum/reagent/medicine/c2/aiuri = 0.2)
 	mutatelist = null
 
 /obj/item/food/grown/grapes/green
 	seed = /obj/item/seeds/grape/green
-	name = "bunch of green grapes"
+	name = "гроздь зелёного винограда"
 	icon_state = "greengrapes"
 	bite_consumption_mod = 3
-	tastes = list("green grape" = 1)
+	tastes = list("зелёный виноград" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/cognac
 
 // Toechtauese Berries

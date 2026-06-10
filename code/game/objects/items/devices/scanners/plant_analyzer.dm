@@ -2,8 +2,8 @@
 #define PLANT_ANALYZER_CHEM_TAB 2
 
 /obj/item/plant_analyzer
-	name = "plant analyzer"
-	desc = "A scanner used to evaluate a plant's various areas of growth, genetic traits and chemicals."
+	name = "анализатор растений"
+	desc = "Сканер для оценки роста растения, генетических черт и химического состава."
 	icon = 'icons/obj/devices/scanner.dmi'
 	icon_state = "hydro"
 	inhand_icon_state = "analyzer"
@@ -45,8 +45,8 @@
 		if(!(living_target.mob_biotypes & MOB_PLANT))
 			return NONE
 
-		context[SCREENTIP_CONTEXT_LMB] = "Scan health"
-		context[SCREENTIP_CONTEXT_RMB] = "Scan chemicals"
+		context[SCREENTIP_CONTEXT_LMB] = "Сканировать здоровье"
+		context[SCREENTIP_CONTEXT_RMB] = "Сканировать реагенты"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	if(isitem(target))
@@ -55,7 +55,7 @@
 		if(!item_target.get_plant_seed())
 			return NONE
 
-		context[SCREENTIP_CONTEXT_LMB] = "Scan plant stats"
+		context[SCREENTIP_CONTEXT_LMB] = "Сканировать свойства растения"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	return NONE

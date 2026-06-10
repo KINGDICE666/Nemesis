@@ -1,7 +1,7 @@
 
 /obj/machinery/hydroponics
-	name = "hydroponics tray"
-	desc = "A basin used to grow plants in."
+	name = "лоток гидропоники"
+	desc = "Ёмкость для выращивания растений."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "hydrotray"
 	density = TRUE
@@ -78,13 +78,13 @@
 
 	var/static/list/hovering_item_typechecks = list(
 		/obj/item/plant_analyzer = list(
-			SCREENTIP_CONTEXT_LMB = "Scan tray stats",
+			SCREENTIP_CONTEXT_LMB = "Сканировать состояние лотка",
 		),
 		/obj/item/cultivator = list(
-			SCREENTIP_CONTEXT_LMB = "Remove weeds",
+			SCREENTIP_CONTEXT_LMB = "Удалить сорняки",
 		),
 		/obj/item/shovel = list(
-			SCREENTIP_CONTEXT_LMB = "Clear tray",
+			SCREENTIP_CONTEXT_LMB = "Очистить лоток",
 		),
 	)
 
@@ -103,7 +103,7 @@
 	// The only option is to plant a new seed.
 	if(!myseed)
 		if(istype(held_item, /obj/item/seeds))
-			context[SCREENTIP_CONTEXT_LMB] = "Plant seed"
+			context[SCREENTIP_CONTEXT_LMB] = "Посадить семена"
 			return CONTEXTUAL_SCREENTIP_SET
 		return NONE
 
@@ -116,60 +116,60 @@
 		if(HAS_SILICON_ACCESS(user))
 			return NONE
 
-		context[SCREENTIP_CONTEXT_RMB] = "Empty nutrients"
+		context[SCREENTIP_CONTEXT_RMB] = "Слить питательные вещества"
 
 		switch(plant_status)
 			if(HYDROTRAY_PLANT_DEAD)
-				context[SCREENTIP_CONTEXT_LMB] = "Remove dead plant"
+				context[SCREENTIP_CONTEXT_LMB] = "Удалить мёртвое растение"
 
 			if(HYDROTRAY_PLANT_HARVESTABLE)
-				context[SCREENTIP_CONTEXT_LMB] = "Harvest plant"
+				context[SCREENTIP_CONTEXT_LMB] = "Собрать урожай"
 
 		return CONTEXTUAL_SCREENTIP_SET
 
 	// If the plant is harvestable, we can graft it with secateurs or harvest it with a plant bag.
 	if(plant_status == HYDROTRAY_PLANT_HARVESTABLE)
 		if(istype(held_item, /obj/item/secateurs))
-			context[SCREENTIP_CONTEXT_LMB] = "Graft plant"
+			context[SCREENTIP_CONTEXT_LMB] = "Привить растение"
 			return CONTEXTUAL_SCREENTIP_SET
 
 		if(istype(held_item, /obj/item/storage/bag/plants))
-			context[SCREENTIP_CONTEXT_LMB] = "Harvest plant"
+			context[SCREENTIP_CONTEXT_LMB] = "Собрать урожай"
 			return CONTEXTUAL_SCREENTIP_SET
 
 	// If the plant's in good health, we can shear it.
 	if(istype(held_item, /obj/item/geneshears) && plant_health > GENE_SHEAR_MIN_HEALTH)
-		context[SCREENTIP_CONTEXT_LMB] = "Remove plant gene"
+		context[SCREENTIP_CONTEXT_LMB] = "Удалить ген растения"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	// If we've got a charged somatoray, we can mutation lock it.
 	if(istype(held_item, /obj/item/gun/energy/floragun) && myseed.endurance > FLORA_GUN_MIN_ENDURANCE && LAZYLEN(myseed.mutatelist))
 		var/obj/item/gun/energy/floragun/flower_gun = held_item
 		if(flower_gun.cell.charge >= flower_gun.cell.maxcharge)
-			context[SCREENTIP_CONTEXT_LMB] = "Lock mutation"
+			context[SCREENTIP_CONTEXT_LMB] = "Зафиксировать мутацию"
 			return CONTEXTUAL_SCREENTIP_SET
 
 	// Edibles can be composted (most of the times).
 	if(IS_EDIBLE(held_item) && HAS_TRAIT(held_item, TRAIT_UNCOMPOSTABLE))
-		context[SCREENTIP_CONTEXT_LMB] = "Compost"
+		context[SCREENTIP_CONTEXT_LMB] = "Компостировать"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	// And if a reagent container has water or plant fertilizer in it, we can use it on the plant.
 	if(is_reagent_container(held_item) && length(held_item.reagents.reagent_list))
 		var/datum/reagent/most_common_reagent = held_item.reagents.get_master_reagent()
-		context[SCREENTIP_CONTEXT_LMB] = "[istype(most_common_reagent, /datum/reagent/water) ? "Water" : "Feed"] plant"
+		context[SCREENTIP_CONTEXT_LMB] = "[istype(most_common_reagent, /datum/reagent/water) ? "Полить" : "Подкормить"] растение"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	return NONE
 
 /obj/machinery/hydroponics/constructable
-	name = "hydroponics tray"
+	name = "лоток гидропоники"
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "hydrotray3"
 
 /obj/machinery/hydroponics/constructable/fullupgrade
-	name = "deluxe hydroponics tray"
-	desc = "A basin used to grown plants in, packed full of cutting-edge technology."
+	name = "улучшенный лоток гидропоники"
+	desc = "Ёмкость для выращивания растений, напичканная передовыми технологиями."
 	circuit = /obj/item/circuitboard/machine/hydroponics/fullupgrade
 
 /obj/machinery/hydroponics/constructable/Initialize(mapload)
@@ -208,9 +208,9 @@
 
 /obj/machinery/hydroponics/constructable/examine(mob/user)
 	. = ..()
-	. += span_notice("Use <b>Ctrl-Click</b> to activate autogrow. <b>RMB</b> to empty the tray's nutrients.")
+	. += span_notice("Используйте <b>Ctrl-клик</b>, чтобы включить автовыращивание. <b>ПКМ</b> опустошает питательные вещества лотка.")
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Tray efficiency at <b>[rating*100]%</b>.")
+		. += span_notice("На дисплее состояния написано: эффективность лотка <b>[rating*100]%</b>.")
 
 /obj/machinery/hydroponics/constructable/add_context(
 	atom/source,
@@ -221,7 +221,7 @@
 
 	// Constructible trays will always show that you can activate auto-grow with ctrl+click
 	. = ..()
-	context[SCREENTIP_CONTEXT_CTRL_LMB] = "Activate auto-grow"
+	context[SCREENTIP_CONTEXT_CTRL_LMB] = "Включить автовыращивание"
 	return CONTEXTUAL_SCREENTIP_SET
 
 /obj/machinery/hydroponics/Destroy()
@@ -930,25 +930,25 @@
 		return
 	else if(istype(O, /obj/item/cultivator))
 		if(weedlevel > 0)
-			user.visible_message(span_notice("[user] uproots the weeds."), span_notice("You remove the weeds from [src]."))
+			user.visible_message(span_notice("[user] вырывает сорняки."), span_notice("Вы удаляете сорняки из [src]."))
 			set_weedlevel(0)
 			return
 		else
-			to_chat(user, span_warning("This plot is completely devoid of weeds! It doesn't need uprooting."))
+			to_chat(user, span_warning("В этой грядке совсем нет сорняков! Её не нужно пропалывать."))
 			return
 
 	else if(istype(O, /obj/item/secateurs))
 		if(!myseed)
-			to_chat(user, span_notice("This plot is empty."))
+			to_chat(user, span_notice("Эта грядка пуста."))
 			return
 		else if(plant_status != HYDROTRAY_PLANT_HARVESTABLE)
-			to_chat(user, span_notice("This plant must be harvestable in order to be grafted."))
+			to_chat(user, span_notice("Растение должно быть готово к сбору, чтобы взять привой."))
 			return
 		else if(myseed.grafts_taken >= ((tray_flags & MULTIGRAFT) ? MULTI_GRAFT_MAX_COUNT : 1))
-			to_chat(user, span_notice("You can't take any more cuttings from this plant!"))
+			to_chat(user, span_notice("С этого растения больше нельзя брать черенки!"))
 			return
 		else
-			user.visible_message(span_notice("[user] grafts off a limb from [src]."), span_notice("You carefully graft off a portion of [src]."))
+			user.visible_message(span_notice("[user] срезает привой с [src]."), span_notice("Вы аккуратно срезаете часть [src] для прививки."))
 			var/obj/item/graft/snip = myseed.create_graft()
 			if(!snip)
 				return // The plant did not return a graft.
@@ -960,10 +960,10 @@
 
 	else if(istype(O, /obj/item/geneshears))
 		if(!myseed)
-			to_chat(user, span_notice("The tray is empty."))
+			to_chat(user, span_notice("Лоток пуст."))
 			return
 		if(plant_health <= GENE_SHEAR_MIN_HEALTH)
-			to_chat(user, span_notice("This plant looks too unhealty to be sheared right now."))
+			to_chat(user, span_notice("Это растение сейчас выглядит слишком нездоровым для срезания генов."))
 			return
 
 		var/list/current_traits = list()
@@ -973,7 +973,7 @@
 			if(!(gene.mutability_flags & PLANT_GENE_REMOVABLE))
 				continue // Don't show genes that can't be removed.
 			current_traits[gene.name] = gene
-		var/removed_trait = tgui_input_list(user, "Trait to remove from the [myseed.plantname]", "Plant Trait Removal", sort_list(current_traits))
+		var/removed_trait = tgui_input_list(user, "Ген для удаления из [myseed.plantname]", "Удаление гена растения", sort_list(current_traits))
 		if(isnull(removed_trait))
 			return
 		if(!user.can_perform_action(src))
@@ -990,7 +990,7 @@
 					break
 		myseed.reagents_from_genes()
 		adjust_plant_health(-15)
-		to_chat(user, span_notice("You carefully shear the genes off of the [myseed.plantname], leaving the plant looking weaker."))
+		to_chat(user, span_notice("Вы аккуратно срезаете гены с [myseed.plantname], из-за чего растение выглядит слабее."))
 		update_appearance()
 		return
 
@@ -1001,13 +1001,13 @@
 				propagate_plant(snip.plant_dna, user)
 				qdel(snip)
 				return
-			to_chat(user, span_notice("The tray is empty."))
+			to_chat(user, span_notice("Лоток пуст."))
 			return
 		var/datum/plant_gene/grafted_trait = myseed.apply_graft(snip)
 		if(grafted_trait)
-			to_chat(user, span_notice("You carefully integrate the grafted plant limb onto [myseed.plantname], granting it [grafted_trait.get_name()]."))
+			to_chat(user, span_notice("Вы аккуратно прививаете черенок к [myseed.plantname], добавляя ему [grafted_trait.get_name()]."))
 		else
-			to_chat(user, span_notice("You try to integrate the grafted plant limb onto [myseed.plantname], but it rejects the trait from the [snip]."))
+			to_chat(user, span_notice("Вы пытаетесь привить черенок к [myseed.plantname], но растение отвергает черту от [snip]."))
 		qdel(snip)
 		return
 
@@ -1017,40 +1017,40 @@
 			for(var/obj/item/food/grown/G in harvest)
 				O.atom_storage?.attempt_insert(G, user, TRUE)
 		else if(plant_status == HYDROTRAY_PLANT_DEAD)
-			to_chat(user, span_notice("You remove the dead plant from [src]."))
+			to_chat(user, span_notice("Вы удаляете мёртвое растение из [src]."))
 			set_seed(null)
 		return
 
 	else if(O.tool_behaviour == TOOL_SHOVEL)
 		if(!myseed && !weedlevel)
-			to_chat(user, span_warning("[src] doesn't have any plants or weeds!"))
+			to_chat(user, span_warning("В [src] нет ни растений, ни сорняков!"))
 			return
-		user.visible_message(span_notice("[user] starts digging out [src]'s plants..."),
-			span_notice("You start digging out [src]'s plants..."))
+		user.visible_message(span_notice("[user] начинает выкапывать растения из [src]..."),
+			span_notice("Вы начинаете выкапывать растения из [src]..."))
 		if(O.use_tool(src, user, 50, volume=50) || (!myseed && !weedlevel))
-			user.visible_message(span_notice("[user] digs out the plants in [src]!"), span_notice("You dig out all of [src]'s plants!"))
+			user.visible_message(span_notice("[user] выкапывает растения из [src]!"), span_notice("Вы выкапываете все растения из [src]!"))
 			remove_plant()
 			return
 	else if(istype(O, /obj/item/gun/energy/floragun))
 		var/obj/item/gun/energy/floragun/flowergun = O
 		if(flowergun.cell.charge < flowergun.cell.maxcharge)
-			to_chat(user, span_notice("[flowergun] must be fully charged to lock in a mutation!"))
+			to_chat(user, span_notice("[flowergun] должен быть полностью заряжен, чтобы зафиксировать мутацию!"))
 			return
 		if(!myseed)
-			to_chat(user, span_warning("[src] is empty!"))
+			to_chat(user, span_warning("[src] пуст!"))
 			return
 		if(myseed.endurance <= FLORA_GUN_MIN_ENDURANCE)
-			to_chat(user, span_warning("[myseed.plantname] isn't hardy enough to sequence its mutation!"))
+			to_chat(user, span_warning("[myseed.plantname] недостаточно вынослив для секвенирования мутации!"))
 			return
 		if(!LAZYLEN(myseed.mutatelist))
-			to_chat(user, span_warning("[myseed.plantname] has nothing else to mutate into!"))
+			to_chat(user, span_warning("[myseed.plantname] больше не во что мутировать!"))
 			return
 		else
 			var/list/fresh_mut_list = list()
 			for(var/muties in myseed.mutatelist)
 				var/obj/item/seeds/another_mut = new muties
 				fresh_mut_list[another_mut.plantname] = muties
-			var/locked_mutation = tgui_input_list(user, "Mutation to lock", "Plant Mutation Locks", sort_list(fresh_mut_list))
+			var/locked_mutation = tgui_input_list(user, "Мутация для фиксации", "Фиксация мутации растения", sort_list(fresh_mut_list))
 			if(isnull(locked_mutation))
 				return
 			if(isnull(fresh_mut_list[locked_mutation]))
@@ -1061,14 +1061,14 @@
 			myseed.set_endurance(myseed.endurance/2)
 			flowergun.cell.use(flowergun.cell.charge)
 			flowergun.update_appearance()
-			to_chat(user, span_notice("[myseed.plantname]'s mutation was set to [locked_mutation], depleting [flowergun]'s cell!"))
+			to_chat(user, span_notice("Мутация [myseed.plantname] установлена на [locked_mutation], батарея [flowergun] разряжена!"))
 			return
 	else
 		return ..()
 
 /obj/machinery/hydroponics/attackby_secondary(obj/item/weapon, mob/user, list/modifiers, list/attack_modifiers)
 	if (istype(weapon, /obj/item/reagent_containers/syringe))
-		to_chat(user, span_warning("You can't get any extract out of this plant."))
+		to_chat(user, span_warning("Из этого растения нельзя получить экстракт."))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	return SECONDARY_ATTACK_CALL_NORMAL
 
@@ -1088,7 +1088,7 @@
 		return myseed.harvest(user)
 
 	else if(plant_status == HYDROTRAY_PLANT_DEAD)
-		to_chat(user, span_notice("You remove the dead plant from [src]."))
+		to_chat(user, span_notice("Вы удаляете мёртвое растение из [src]."))
 		set_seed(null)
 	else
 		if(user)
@@ -1101,12 +1101,12 @@
 	update_use_power(ACTIVE_POWER_USE)
 
 	if(!powered())
-		to_chat(user, span_warning("[name] has no power."))
+		to_chat(user, span_warning("[name] не получает питание."))
 		update_use_power(NO_POWER_USE)
 		return CLICK_ACTION_BLOCKING
 
 	set_self_sustaining(!self_sustaining)
-	to_chat(user, span_notice("You [self_sustaining ? "activate" : "deactivated"] [src]'s autogrow function[self_sustaining ? ", maintaining the tray's health while using high amounts of power" : ""]."))
+	to_chat(user, span_notice("Вы [self_sustaining ? "включаете" : "выключаете"] функцию автовыращивания [src][self_sustaining ? ", поддерживая здоровье лотка ценой высокого энергопотребления" : ""]."))
 	return CLICK_ACTION_SUCCESS
 
 /obj/machinery/hydroponics/attack_hand_secondary(mob/user, list/modifiers)
@@ -1115,8 +1115,8 @@
 		return
 	if(!anchored)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-	var/warning = tgui_alert(user, "Are you sure you wish to empty the tray's nutrient beaker?","Empty Tray Nutrients?", list("Yes", "No"))
-	if(warning == "Yes" && user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
+	var/warning = tgui_alert(user, "Вы уверены, что хотите опустошить ёмкость питательных веществ лотка?","Опустошить питание лотка?", list("Да", "Нет"))
+	if(warning == "Да" && user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		empty_tray(user)
 	update_appearance()
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -1126,7 +1126,7 @@
 	reagents.clear_reagents()
 	for(var/obj/item/mob_holder/snail/possible_snail in contents)
 		possible_snail.forceMove(drop_location())
-	to_chat(user, span_warning("You empty [src]'s nutrient tank."))
+	to_chat(user, span_warning("Вы опустошаете бак питательных веществ [src]."))
 
 /**
  * Update Tray Proc
@@ -1138,11 +1138,11 @@
 /obj/machinery/hydroponics/proc/update_tray(mob/user, product_count)
 	lastproduce = age
 	if(istype(myseed, /obj/item/seeds/replicapod))
-		to_chat(user, span_notice("You harvest from the [myseed.plantname]."))
+		to_chat(user, span_notice("Вы собираете урожай с [myseed.plantname]."))
 	else if(product_count <= 0)
-		to_chat(user, span_warning("You fail to harvest anything useful!"))
+		to_chat(user, span_warning("Вам не удаётся собрать ничего полезного!"))
 	else
-		to_chat(user, span_notice("You harvest [product_count] items from the [myseed.plantname]."))
+		to_chat(user, span_notice("Вы собираете [product_count] шт. с [myseed.plantname]."))
 	if(!myseed.get_gene(/datum/plant_gene/trait/repeated_harvest))
 		set_seed(null)
 		if(self_sustaining) //No reason to pay for an empty tray.
@@ -1167,17 +1167,17 @@
 	if(!istype(young_plant))
 		return
 	if(myseed)
-		to_chat(user, span_warning("[src] already has a plant growing in it!"))
+		to_chat(user, span_warning("В [src] уже растёт растение!"))
 		return
 	if(young_plant.seed_flags & NO_PLANTING)
-		to_chat(user, span_warning("[young_plant] cannot be planted in [src]!"))
+		to_chat(user, span_warning("[young_plant] нельзя посадить в [src]!"))
 		return
 	if(istype(young_plant, /obj/item/seeds/kudzu))
 		investigate_log("had Kudzu planted in it by [key_name(user)] at [AREACOORD(src)].", INVESTIGATE_BOTANY)
 	if(!user.transferItemToLoc(young_plant, src))
 		return
 	SEND_SIGNAL(young_plant, COMSIG_SEED_ON_PLANTED, src)
-	to_chat(user, span_notice("You plant [young_plant]."))
+	to_chat(user, span_notice("Вы сажаете [young_plant]."))
 	set_seed(young_plant)
 	set_plant_health(myseed.endurance)
 	lastcycle = world.time
@@ -1196,8 +1196,8 @@
 ///The usb port circuit
 
 /obj/item/circuit_component/hydroponics
-	display_name = "Hydropnics Tray"
-	desc = "Automate the means of botanical production. Trigger to toggle auto-grow."
+	display_name = "Лоток гидропоники"
+	desc = "Автоматизирует ботаническое производство. Сигнал переключает автовыращивание."
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL
 
 	var/obj/machinery/hydroponics/attached_tray

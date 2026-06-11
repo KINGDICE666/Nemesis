@@ -1,7 +1,7 @@
 // Base chasm, defaults to oblivion but can be overridden
 /turf/open/chasm
-	name = "chasm"
-	desc = "Watch your step."
+	name = "пропасть"
+	desc = "Смотрите под ноги."
 	baseturfs = /turf/open/chasm
 	icon = 'icons/turf/floors/chasms.dmi'
 	icon_state = "chasms-255"
@@ -69,9 +69,9 @@
 	if(L)
 		return
 	if(!R.use(1))
-		to_chat(user, span_warning("You need one rod to build a lattice."))
+		to_chat(user, span_warning("Для постройки решётки нужен один прут."))
 		return
-	to_chat(user, span_notice("You construct a lattice."))
+	to_chat(user, span_notice("Вы строите решётку."))
 	playsound(src, 'sound/items/weapons/genhit.ogg', 50, TRUE)
 	// Create a lattice, without reverting to our baseturf
 	new /obj/structure/lattice(src)
@@ -125,7 +125,7 @@
 
 // Chasm that doesn't do any z-level nonsense and just kills/stores whoever steps into it.
 /turf/open/chasm/true
-	desc = "There's nothing at the bottom. Absolutely nothing."
+	desc = "На дне ничего нет. Совсем ничего."
 	baseturfs = /turf/open/chasm/true
 
 /turf/open/chasm/true/apply_components(mapload)

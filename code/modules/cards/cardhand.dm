@@ -1,6 +1,6 @@
 /obj/item/toy/cards/cardhand
-	name = "hand of cards"
-	desc = "A number of cards not in a deck, customarily held in ones hand."
+	name = "рука карт"
+	desc = "Несколько карт вне колоды, обычно удерживаемых в руке."
 	icon = 'icons/obj/toys/playing_cards.dmi'
 	icon_state = "nothing"
 	w_class = WEIGHT_CLASS_TINY
@@ -13,41 +13,41 @@
 	update_appearance()
 
 /obj/item/toy/cards/cardhand/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] is slitting [user.p_their()] wrists with \the [src]! It looks like [user.p_they()] [user.p_have()] a crummy hand!"))
+	user.visible_message(span_suicide("[user] режет себе запястья \the [src]! Похоже, рука совсем неудачная!"))
 	playsound(src, 'sound/items/cards/cardshuffle.ogg', 50, TRUE)
 	return BRUTELOSS
 
 /obj/item/toy/cards/cardhand/examine(mob/user)
 	. = ..()
-	. += span_notice("There are [count_cards()] cards.")
+	. += span_notice("Здесь карт: [count_cards()].")
 	var/broadcast_check = FALSE
 	for(var/obj/item/toy/singlecard/card in fetch_card_atoms())
 		if(user.is_holding(src) || card.flipped)
-			. += span_notice("The hand contains a: [card.cardname]")
+			. += span_notice("В руке есть: [card.cardname]")
 			if(!card.flipped)
 				broadcast_check = TRUE
 		else if(HAS_TRAIT(user, TRAIT_XRAY_VISION))
-			. += span_notice("You scan the cardhand with your x-ray vision and there is a: [card.cardname]")
+			. += span_notice("Вы сканируете руку карт рентгеновским зрением, там есть: [card.cardname]")
 		var/marked_color = card.getMarkedColor(user)
 		if(marked_color)
-			. += span_notice("There is a [marked_color] mark on the corner of a card in the cardhand!")
+			. += span_notice("На углу одной карты в руке есть [marked_color] метка!")
 	if(broadcast_check)
-		user.visible_message(span_notice("[user] checks [user.p_their()] cards."))
+		user.visible_message(span_notice("[user] проверяет свои карты."))
 
 
 /obj/item/toy/cards/cardhand/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	if(istype(held_item, /obj/item/toy/cards/deck))
 		var/obj/item/toy/cards/deck/dealer_deck = held_item
 		if(HAS_TRAIT(dealer_deck, TRAIT_WIELDED))
-			context[SCREENTIP_CONTEXT_LMB] = "Deal card"
-			context[SCREENTIP_CONTEXT_RMB] = "Deal card faceup"
+			context[SCREENTIP_CONTEXT_LMB] = "Раздать карту"
+			context[SCREENTIP_CONTEXT_RMB] = "Раздать карту лицом вверх"
 			return CONTEXTUAL_SCREENTIP_SET
-		context[SCREENTIP_CONTEXT_LMB] = "Recycle cards"
+		context[SCREENTIP_CONTEXT_LMB] = "Вернуть карты"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	if(istype(held_item, /obj/item/toy/singlecard))
-		context[SCREENTIP_CONTEXT_LMB] = "Combine cards"
-		context[SCREENTIP_CONTEXT_RMB] = "Combine cards faceup"
+		context[SCREENTIP_CONTEXT_LMB] = "Объединить карты"
+		context[SCREENTIP_CONTEXT_RMB] = "Объединить карты лицом вверх"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	return NONE
@@ -88,10 +88,10 @@
 		var/obj/item/toy/cards/deck/dealer_deck = tool
 		if(!HAS_TRAIT(dealer_deck, TRAIT_WIELDED)) // recycle cardhand into deck (if unwielded)
 			if(dealer_deck.insert(src))
-				user.balloon_alert_to_viewers("puts card in deck")
+				user.balloon_alert_to_viewers("кладёт карту в колоду")
 				return ITEM_INTERACT_SUCCESS
 
-			to_chat(user, span_warning("\The [dealer_deck] is stacked too high!"))
+			to_chat(user, span_warning("\The [dealer_deck] сложена слишком высоко!"))
 			return ITEM_INTERACT_BLOCKING
 
 		card = dealer_deck.get_top_card(user)
@@ -108,7 +108,7 @@
 			dealer_deck.draw(user)
 		return ITEM_INTERACT_SUCCESS
 
-	to_chat(user, span_warning("You can't hold any more cards in your hand!"))
+	to_chat(user, span_warning("Вы больше не можете держать карты в этой руке!"))
 	return ITEM_INTERACT_BLOCKING
 
 #define CARDS_MAX_DISPLAY_LIMIT 5 // the amount of cards that are displayed in a hand

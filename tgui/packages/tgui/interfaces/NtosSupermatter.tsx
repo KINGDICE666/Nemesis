@@ -22,17 +22,17 @@ export const NtosSupermatter = (props) => {
             gas_metadata={gas_metadata}
             sectionButton={
               <Button icon="arrow-left" onClick={() => setActiveUID(0)}>
-                Back
+                Назад
               </Button>
             }
           />
         ) : (
           <Section
-            title="Detected Supermatters"
+            title="Обнаруженная суперматерия"
             buttons={
               <Button
                 icon="sync"
-                content="Refresh"
+                content="Обновить"
                 onClick={() => act('PRG_refresh')}
               />
             }
@@ -42,7 +42,7 @@ export const NtosSupermatter = (props) => {
                 <Table.Row key={sm.uid}>
                   <Table.Cell>{`${sm.uid}. ${sm.area_name}`}</Table.Cell>
                   <Table.Cell collapsing color="label">
-                    Integrity:
+                    Целостность:
                   </Table.Cell>
                   <Table.Cell collapsing width="120px">
                     <ProgressBar
@@ -63,7 +63,7 @@ export const NtosSupermatter = (props) => {
                   </Table.Cell>
                   <Table.Cell collapsing>
                     <Button
-                      content="Details"
+                      content="Подробности"
                       onClick={() => setActiveUID(sm.uid)}
                     />
                   </Table.Cell>

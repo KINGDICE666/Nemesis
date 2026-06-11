@@ -1,7 +1,7 @@
 /turf/open/water
-	name = "water"
+	name = "вода"
 	gender = PLURAL
-	desc = "Shallow water."
+	desc = "Мелкая вода."
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "riverwater_motion"
 	baseturfs = /turf/open/water
@@ -89,16 +89,16 @@
 	planetary_atmos = FALSE
 
 /turf/open/water/no_planet_atmos/deep
-	name = "deep water"
-	desc = "Less shallow water."
+	name = "глубокая вода"
+	desc = "Менее мелкая вода."
 	icon_state = "deep_riverwater_motion"
 	immerse_overlay = "immerse_deep"
 	baseturfs = /turf/open/water/no_planet_atmos/deep
 	is_swimming_tile = TRUE
 
 /turf/open/water/no_planet_atmos/deep/lethal
-	name = "treacherous water"
-	desc = "Less shallow, very dangerous water. You feel like it would be a very bad idea to enter this water."
+	name = "опасная вода"
+	desc = "Менее мелкая и очень опасная вода. Вы чувствуете, что заходить туда будет очень плохой идеей."
 	stamina_entry_cost = 25
 	ticking_stamina_cost = 15
 	ticking_oxy_damage = 2
@@ -107,7 +107,7 @@
 /turf/open/water/beach
 	planetary_atmos = FALSE
 	gender = PLURAL
-	desc = "Come on in, it's great!"
+	desc = "Заходите, вода отличная!"
 	icon = 'icons/turf/beach.dmi'
 	icon_state = "water"
 	base_icon_state = "water"
@@ -121,8 +121,8 @@
 
 /// Deep water drains stamina and starts drowning you
 /turf/open/water/deep_beach
-	name = "deep water"
-	desc = "Don't forget your life jacket."
+	name = "глубокая вода"
+	desc = "Не забудьте спасательный жилет."
 	immerse_overlay = "immerse_deep"
 	icon = 'icons/turf/beach.dmi'
 	icon_state = "deepwater"
@@ -132,8 +132,8 @@
 	is_swimming_tile = TRUE
 
 /turf/open/water/deep_beach/lethal
-	name = "treacherous water"
-	desc = "You think entering this water would probably go extremely badly."
+	name = "опасная вода"
+	desc = "Вы думаете, что заходить в эту воду, скорее всего, закончится крайне плохо."
 
 /turf/open/water/lavaland_atmos
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
@@ -153,7 +153,7 @@
 	return TRUE
 
 /turf/open/water/beach/tizira
-	desc = "Shallow water. It somehow reminds you of lizardfolk."
+	desc = "Мелкая вода. Почему-то она напоминает вам ящеролюдов."
 	icon_state = "tizira_water"
 	base_icon_state = "tizira_water"
 	baseturfs = /turf/open/water/beach/tizira
@@ -164,11 +164,11 @@
  * the living mob inside the turf is actually immersed in it (eg. not flying, not floating).
  */
 /turf/open/water/hot_spring
-	name = "hot spring"
+	name = "горячий источник"
 	icon_state = "pool_1"
-	desc = "Water kept warm through some unknown heat source, possibly a geothermal heat source far underground. \
-		Whatever it is, it feels pretty damn nice to swim, and you can even catch a glimpse of \
-		the odd fish darting through the water."
+	desc = "Вода, согретая неизвестным источником тепла, возможно геотермальным источником глубоко под землёй. \
+		Что бы это ни было, плавать здесь чертовски приятно, и даже можно заметить \
+		странную рыбу, мелькающую в воде."
 	baseturfs = /turf/open/water/hot_spring
 	planetary_atmos = FALSE
 	immerse_overlay_alpha = 190

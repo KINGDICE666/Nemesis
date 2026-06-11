@@ -3,9 +3,9 @@
 // *************************************
 
 /obj/item/reagent_containers/spray/weedspray // -- Skie
-	desc = "It's a toxic mixture, in spray form, to kill small weeds."
+	desc = "Токсичная смесь в форме спрея для уничтожения мелких сорняков."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
-	name = "weed spray"
+	name = "спрей от сорняков"
 	icon_state = "weedspray"
 	inhand_icon_state = "spraycan"
 	worn_icon_state = "spraycan"
@@ -19,9 +19,9 @@
 	return TOXLOSS
 
 /obj/item/reagent_containers/spray/pestspray // -- Skie
-	desc = "It's some pest eliminator spray! <I>Do not inhale!</I>"
+	desc = "Спрей для уничтожения вредителей! <I>Не вдыхать!</I>"
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
-	name = "pest spray"
+	name = "спрей от вредителей"
 	icon_state = "pestspray"
 	inhand_icon_state = "plantbgone"
 	worn_icon_state = "spraycan"
@@ -35,8 +35,8 @@
 	return TOXLOSS
 
 /obj/item/cultivator
-	name = "cultivator"
-	desc = "It's used for removing weeds or scratching your back."
+	name = "культиватор"
+	desc = "Используется для удаления сорняков или чесания спины."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "cultivator"
 	inhand_icon_state = "cultivator"
@@ -57,7 +57,7 @@
 	return BRUTELOSS
 
 /obj/item/cultivator/rake
-	name = "rake"
+	name = "грабли"
 	icon_state = "rake"
 	icon_angle = -45
 	w_class = WEIGHT_CLASS_NORMAL
@@ -88,14 +88,14 @@
 						  span_userdanger("You step on [src] causing the handle to hit you right in the face!"))
 
 /obj/item/cultivator/cyborg
-	name = "cyborg cultivator"
+	name = "киборг-культиватор"
 	icon = 'icons/obj/items_cyborg.dmi'
 	icon_state = "sili_cultivator"
 	icon_angle = 0
 
 /obj/item/hatchet
-	name = "hatchet"
-	desc = "A very sharp axe blade upon a short fibremetal handle. It has a long history of chopping things, but now it is used for chopping wood."
+	name = "топорик"
+	desc = "Очень острое лезвие топора на короткой фиброметаллической рукояти. У него долгая история рубки всякого, но теперь им рубят дерево."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "hatchet"
 	inhand_icon_state = "hatchet"
@@ -133,21 +133,21 @@
 	return BRUTELOSS
 
 /obj/item/hatchet/wooden
-	desc = "A crude axe blade upon a short wooden handle."
+	desc = "Грубое лезвие топора на короткой деревянной рукояти."
 	icon_state = "woodhatchet"
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 1)
 	resistance_flags = FLAMMABLE
 	flags_1 = NONE
 
 /obj/item/hatchet/cyborg
-	name = "cyborg hatchet"
+	name = "киборг-топорик"
 	icon = 'icons/obj/items_cyborg.dmi'
 	icon_state = "sili_hatchet"
 	icon_angle = 0
 
 /obj/item/scythe
-	name = "scythe"
-	desc = "A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow."
+	name = "коса"
+	desc = "Острое изогнутое лезвие на длинной фиброметаллической рукояти. С этим инструментом легко пожинать то, что посеял."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "scythe0"
 	inhand_icon_state = "scythe0"
@@ -206,9 +206,9 @@
 	return TRUE
 
 /obj/item/secateurs
-	name = "secateurs"
-	desc = "It's a tool for cutting grafts off plants or changing podperson looks."
-	desc_controls = "Right-click to stylize podperson hair or other plant features!"
+	name = "секатор"
+	desc = "Инструмент для срезания привоев с растений или изменения внешности растительного человека."
+	desc_controls = "ПКМ, чтобы стилизовать волосы растительного человека или другие растительные черты!"
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "secateurs"
 	inhand_icon_state = null
@@ -239,14 +239,14 @@
 	SEND_SIGNAL(target, COMSIG_ATOM_RESTYLE, user, target, user.zone_selected, EXTERNAL_RESTYLE_PLANT, 6 SECONDS)
 
 /obj/item/secateurs/cyborg
-	name = "cyborg secateurs"
+	name = "киборг-секатор"
 	icon = 'icons/obj/items_cyborg.dmi'
 	icon_state = "sili_secateur"
 	icon_angle = 0
 
 /obj/item/geneshears
-	name = "botanogenetic plant shears"
-	desc = "A high tech, high fidelity pair of plant shears, capable of cutting genetic traits out of a plant."
+	name = "ботаногенетические ножницы для растений"
+	desc = "Высокотехнологичные точные ножницы для растений, способные вырезать генетические признаки из растения."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "genesheers"
 	inhand_icon_state = null
@@ -269,7 +269,7 @@
 
 
 /obj/item/reagent_containers/cup/bottle/nutrient
-	name = "bottle of nutrient"
+	name = "бутылка питательного раствора"
 	volume = 50
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(1,2,5,10,15,25,50)
@@ -281,22 +281,22 @@
 
 
 /obj/item/reagent_containers/cup/bottle/nutrient/ez
-	name = "bottle of E-Z-Nutrient"
-	desc = "Contains a fertilizer that causes mild mutations and gradual plant growth with each harvest."
+	name = "бутылка E-Z-Nutrient"
+	desc = "Содержит удобрение, вызывающее лёгкие мутации и постепенный рост растения при каждом сборе урожая."
 	list_reagents = list(/datum/reagent/plantnutriment/eznutriment = 50)
 
 /obj/item/reagent_containers/cup/bottle/nutrient/l4z
-	name = "bottle of Left 4 Zed"
-	desc = "Contains a fertilizer that lightly heals the plant but causes significant mutations in plants over generations."
+	name = "бутылка Left 4 Zed"
+	desc = "Содержит удобрение, которое слегка лечит растение, но вызывает значительные мутации в следующих поколениях."
 	list_reagents = list(/datum/reagent/plantnutriment/left4zednutriment = 50)
 
 /obj/item/reagent_containers/cup/bottle/nutrient/rh
-	name = "bottle of Robust Harvest"
-	desc = "Contains a fertilizer that increases the yield of a plant while gradually preventing mutations."
+	name = "бутылка Robust Harvest"
+	desc = "Содержит удобрение, увеличивающее урожайность растения и постепенно предотвращающее мутации."
 	list_reagents = list(/datum/reagent/plantnutriment/robustharvestnutriment = 50)
 
 /obj/item/reagent_containers/cup/bottle/nutrient/empty
-	name = "bottle"
+	name = "бутылка"
 
 /obj/item/reagent_containers/cup/bottle/killer
 	volume = 30
@@ -304,11 +304,11 @@
 	possible_transfer_amounts = list(1,2,5)
 
 /obj/item/reagent_containers/cup/bottle/killer/weedkiller
-	name = "bottle of weed killer"
-	desc = "Contains a herbicide."
+	name = "бутылка гербицида"
+	desc = "Содержит гербицид."
 	list_reagents = list(/datum/reagent/toxin/plantbgone/weedkiller = 30)
 
 /obj/item/reagent_containers/cup/bottle/killer/pestkiller
-	name = "bottle of pest spray"
-	desc = "Contains a pesticide."
+	name = "бутылка пестицида"
+	desc = "Содержит пестицид."
 	list_reagents = list(/datum/reagent/toxin/pestkiller = 30)

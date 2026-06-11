@@ -131,19 +131,19 @@
 				. += exit_overlay
 
 /turf/open/examine_descriptor(mob/user)
-	return "floor"
+	return "пол"
 
 /turf/open/examine(mob/user)
 	. = ..()
 	if(leave_footprints && (footprint_entrance_dirs || footprint_exit_dirs) && (LAZYLEN(footprint_shoe_types) || LAZYLEN(footprint_species_types)))
-		. += "You recognise the footprints as belonging to:"
+		. += "Вы узнаёте следы как принадлежащие:"
 		for(var/obj/item/clothing/shoes/sole as anything in footprint_shoe_types)
 			var/article = initial(sole.article) || (initial(sole.gender) == PLURAL ? "Some" : "A")
 			. += "[icon2html(initial(sole.icon), user, initial(sole.icon_state))] [article] <b>[initial(sole.name)]</b>."
 
 		for(var/species in footprint_species_types)
 			var/datum/species/species_type = GLOB.species_list[species]
-			. += "&bull; Some <b>[species_type ? format_text(species_type::plural_form) : "unknown"] feet</b>."
+			. += "&bull; Следы <b>[species_type ? format_text(species_type::plural_form) : "неизвестных"] ног</b>."
 
 //direction is direction of travel of A
 /turf/open/zPassIn(direction)
@@ -282,8 +282,8 @@
 	ChangeTurf(new_floor_path, flags = flags)
 
 /turf/open/indestructible
-	name = "floor"
-	desc = "The floor you walk on. It looks near-impervious to damage."
+	name = "пол"
+	desc = "Пол, по которому вы ходите. Выглядит почти неуязвимым к повреждениям."
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "floor"
 	footstep = FOOTSTEP_FLOOR
@@ -338,7 +338,7 @@
 	AddComponent(/datum/component/wet_floor, TURF_WET_LUBE, INFINITY, 0, INFINITY, TRUE)
 
 /turf/open/indestructible/honk
-	name = "bananium floor"
+	name = "бананиумный пол"
 	icon_state = "bananium"
 	footstep = null
 	barefootstep = null
@@ -356,8 +356,8 @@
 		playsound(src, sound, 50, TRUE)
 
 /turf/open/indestructible/necropolis
-	name = "necropolis floor"
-	desc = "It's regarding you suspiciously."
+	name = "пол некрополя"
+	desc = "Он подозрительно на вас смотрит."
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "necro1"
 	baseturfs = /turf/open/indestructible/necropolis
@@ -377,7 +377,7 @@
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 
 /turf/open/indestructible/boss //you put stone tiles on this and use it as a base
-	name = "necropolis floor"
+	name = "пол некрополя"
 	icon = 'icons/turf/boss_floors.dmi'
 	icon_state = "boss"
 	baseturfs = /turf/open/indestructible/boss
@@ -388,8 +388,8 @@
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 
 /turf/open/indestructible/hierophant
-	name = "palestone floor"
-	desc = "A tiled floor made out of an odd pale stone."
+	name = "пол из бледного камня"
+	desc = "Плиточный пол из странного бледного камня."
 	icon = 'icons/turf/floors/hierophant_floor.dmi'
 	icon_state = "hierophant_floor-255"
 	base_icon_state = "hierophant_floor"
@@ -411,8 +411,8 @@
 	. += emissive_appearance(emissive_icon, icon_state, src)
 
 /turf/open/indestructible/hierophant/two
-	name = "runic palestone floor"
-	desc = "A tiled floor made out of an odd pale stone, inscribed with odd runes."
+	name = "рунический пол из бледного камня"
+	desc = "Плиточный пол из странного бледного камня, покрытый необычными рунами."
 	icon = 'icons/turf/floors/hierophant_floor_alt.dmi'
 	icon_state = "hierophant_floor_alt-255"
 	base_icon_state = "hierophant_floor_alt"
@@ -422,8 +422,8 @@
 	return FALSE
 
 /turf/open/indestructible/paper
-	name = "notebook floor"
-	desc = "A floor made of invulnerable notebook paper."
+	name = "тетрадный пол"
+	desc = "Пол из неуязвимой тетрадной бумаги."
 	icon_state = "paperfloor"
 	footstep = null
 	barefootstep = null
@@ -432,7 +432,7 @@
 	tiled_turf = FALSE
 
 /turf/open/indestructible/binary
-	name = "tear in the fabric of reality"
+	name = "разрыв ткани реальности"
 	can_atmos_pass = ATMOS_PASS_NO
 	baseturfs = /turf/open/indestructible/binary
 	icon_state = "binary"
@@ -463,9 +463,9 @@
 	icon_state = "rockvault"
 
 /turf/open/indestructible/plating
-	name = "plating"
+	name = "покрытие"
 	icon_state = "plating"
-	desc = "The attachment points are all bent to uselessness, looks nigh-impervious to damage."
+	desc = "Все крепления погнуты и бесполезны. Выглядит почти неуязвимым к повреждениям."
 	overfloor_placed = FALSE
 	underfloor_accessibility = UNDERFLOOR_INTERACTABLE
 	footstep = FOOTSTEP_PLATING
@@ -555,7 +555,7 @@
 
 	if(!(lube & SLIDE_ICE))
 		// Ice slides are intended to be combo'd so don't give the feedback
-		to_chat(slipper, span_notice("You slipped[ slippable ? " on \the [slippable]" : ""]!"))
+		to_chat(slipper, span_notice("Вы поскользнулись[ slippable ? " на \the [slippable]" : ""]!"))
 		playsound(slipper.loc, 'sound/misc/slip.ogg', 50, TRUE, -3)
 
 	SEND_SIGNAL(slipper, COMSIG_ON_CARBON_SLIP)
@@ -610,36 +610,36 @@
 	var/obj/structure/lattice/catwalk_bait = locate(/obj/structure/lattice, src)
 	var/obj/structure/lattice/catwalk/existing_catwalk = locate(/obj/structure/lattice/catwalk, src)
 	if(existing_catwalk)
-		to_chat(user, span_warning("There is already a catwalk here!"))
+		to_chat(user, span_warning("Здесь уже есть мостик!"))
 		return
 
 	if(catwalk_bait)
 		if(used_rods.use(1))
-			to_chat(user, span_notice("You construct a catwalk."))
+			to_chat(user, span_notice("Вы строите мостик."))
 			playsound(src, 'sound/items/weapons/genhit.ogg', 50, TRUE)
 			catwalk_bait.replace_with_catwalk()
 		else
-			to_chat(user, span_warning("You need two rods to build a catwalk!"))
+			to_chat(user, span_warning("Для постройки мостика нужны два прута!"))
 		return
 
 	if(used_rods.use(1))
-		to_chat(user, span_notice("You construct a lattice."))
+		to_chat(user, span_notice("Вы строите решётку."))
 		playsound(src, 'sound/items/weapons/genhit.ogg', 50, TRUE)
 		var/obj/structure/lattice/new_lattice = new (src)
 		if(istype(used_rods, /obj/item/stack/rods/shuttle) && !istype(loc, /area/shuttle))
 			new_lattice.AddElement(/datum/element/shuttle_construction_lattice)
 	else
-		to_chat(user, span_warning("You need one rod to build a lattice."))
+		to_chat(user, span_warning("Для постройки решётки нужен один прут."))
 
 /// Very similar to build_with_rods, this exists to allow consistent behavior between different types in terms of how
 /// Building floors works
 /turf/open/proc/build_with_floor_tiles(obj/item/stack/tile/iron/used_tiles, user)
 	var/obj/structure/lattice/lattice = locate(/obj/structure/lattice, src)
 	if(!has_valid_support() && !lattice)
-		balloon_alert(user, "needs support, place rods!")
+		balloon_alert(user, "нужна опора, поставьте прутья!")
 		return
 	if(!used_tiles.use(1))
-		balloon_alert(user, "need a floor tile to build!")
+		balloon_alert(user, "нужна плитка пола!")
 		return
 
 	playsound(src, 'sound/items/weapons/genhit.ogg', 50, TRUE)
@@ -662,10 +662,10 @@
 /turf/open/proc/build_with_transport_tiles(obj/item/stack/thermoplastic/used_tiles, user)
 	var/obj/structure/transport/linear/platform = locate(/obj/structure/transport/linear, src)
 	if(!platform)
-		balloon_alert(user, "no tram base!")
+		balloon_alert(user, "нет основы трамвая!")
 		return
 	if(!used_tiles.use(1))
-		balloon_alert(user, "no tile!")
+		balloon_alert(user, "нет плитки!")
 		return
 
 	playsound(src, 'sound/items/weapons/genhit.ogg', 50, TRUE)
@@ -684,10 +684,10 @@
 /turf/open/proc/build_with_titanium(obj/item/stack/sheet/mineral/titanium/used_stack, user)
 	var/obj/structure/transport/linear/platform = locate(/obj/structure/transport/linear, src)
 	if(!platform)
-		to_chat(user, span_warning("There is no transport frame to attach the anchor!"))
+		to_chat(user, span_warning("Здесь нет транспортной рамы, к которой можно прикрепить якорь!"))
 		return
 	if(!used_stack.use(2))
-		balloon_alert(user, "not enough titanium!")
+		balloon_alert(user, "недостаточно титана!")
 		return
 
 	playsound(src, 'sound/items/weapons/genhit.ogg', 50, TRUE)

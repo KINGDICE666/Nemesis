@@ -82,10 +82,10 @@
 	initial_gas_mix = TCOMMS_ATMOS
 
 /turf/open/floor/circuit/telecomms/mainframe
-	name = "mainframe base"
+	name = "основание мейнфрейма"
 
 /turf/open/floor/circuit/telecomms/server
-	name = "server base"
+	name = "основание сервера"
 
 /turf/open/floor/circuit/green
 	icon_state = "gcircuit"
@@ -108,7 +108,7 @@
 	initial_gas_mix = TCOMMS_ATMOS
 
 /turf/open/floor/circuit/green/telecomms/mainframe
-	name = "mainframe base"
+	name = "основание мейнфрейма"
 
 /turf/open/floor/circuit/red
 	icon_state = "rcircuit"
@@ -131,7 +131,7 @@
 	initial_gas_mix = TCOMMS_ATMOS
 
 /turf/open/floor/pod
-	name = "pod floor"
+	name = "пол капсулы"
 	icon_state = "podfloor"
 	floor_tile = /obj/item/stack/tile/pod
 
@@ -145,7 +145,7 @@
 
 
 /turf/open/floor/noslip
-	name = "high-traction floor"
+	name = "пол с высоким сцеплением"
 	icon_state = "noslip"
 	floor_tile = /obj/item/stack/tile/noslip
 	slowdown = -0.3
@@ -175,20 +175,20 @@
 /turf/open/floor/bluespace
 	slowdown = -1
 	icon_state = "bluespace"
-	desc = "Through a series of micro-teleports these tiles let people move at incredible speeds."
+	desc = "Серия микротелепортаций позволяет людям двигаться по этим плиткам с невероятной скоростью."
 	floor_tile = /obj/item/stack/tile/bluespace
 
 
 /turf/open/floor/sepia
 	slowdown = 2
 	icon_state = "sepia"
-	desc = "Time seems to flow very slowly around these tiles."
+	desc = "Кажется, вокруг этих плиток время течёт очень медленно."
 	floor_tile = /obj/item/stack/tile/sepia
 
 
 /turf/open/floor/bronze
-	name = "bronze floor"
-	desc = "Some heavy bronze tiles."
+	name = "бронзовый пол"
+	desc = "Тяжёлые бронзовые плитки."
 	icon_state = "clockwork_floor"
 	floor_tile = /obj/item/stack/tile/bronze
 
@@ -209,21 +209,21 @@
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
 
 /turf/open/floor/white
-	name = "white floor"
-	desc = "A tile in a pure white color."
+	name = "белый пол"
+	desc = "Плитка чистого белого цвета."
 	icon_state = "pure_white"
 
 /turf/open/floor/black
-	name = "black floor"
+	name = "чёрный пол"
 	icon_state = "black"
 
 /turf/open/floor/greenscreen
-	name = "greenscreen"
+	name = "зелёный экран"
 	icon_state = "green"
 
 /turf/open/floor/plastic
-	name = "plastic floor"
-	desc = "Cheap, lightweight flooring. Melts easily."
+	name = "пластиковый пол"
+	desc = "Дешёвое лёгкое покрытие. Легко плавится."
 	icon_state = "plastic"
 	thermal_conductivity = 0.1
 	heat_capacity = 900
@@ -234,8 +234,8 @@
 	return list("plastic-damaged1","plastic-damaged2")
 
 /turf/open/floor/eighties
-	name = "retro floor"
-	desc = "This one takes you back."
+	name = "ретро-пол"
+	desc = "От него веет прошлым."
 	icon_state = "eighties"
 	floor_tile = /obj/item/stack/tile/eighties
 	rust_resistance = RUST_RESISTANCE_BASIC
@@ -244,8 +244,8 @@
 	return list("eighties_damaged")
 
 /turf/open/floor/eighties/red
-	name = "red retro floor"
-	desc = "Totally RED-ICAL!"
+	name = "красный ретро-пол"
+	desc = "Абсолютно КРАС-иво!"
 	icon_state = "eightiesred"
 	floor_tile = /obj/item/stack/tile/eighties/red
 
@@ -283,7 +283,7 @@
 	AddElement(/datum/element/rust)
 
 /turf/open/floor/stone
-	name = "stone brick floor"
+	name = "пол из каменного кирпича"
 	desc = "Odd, really, how it looks exactly like the iron walls yet is stone instead of iron. Now, if that's really more of a complaint about\
 		the ironness of walls or the stoneness of the floors, that's really up to you. But have you really ever seen iron that dull? I mean, it\
 		makes sense for the station to have dull metal walls but we're talking how a rudimentary iron wall would be. Medieval ages didn't even\
@@ -294,7 +294,7 @@
 
 /turf/open/floor/stone/icemoon
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
-	name = "stone brick floor"
+	name = "пол из каменного кирпича"
 	desc = "Odd, really, how it looks exactly like the iron walls yet is stone instead of iron. Now, if that's really more of a complaint about\
 		the ironness of walls or the stoneness of the floors, that's really up to you. But have you really ever seen iron that dull? I mean, it\
 		makes sense for the station to have dull metal walls but we're talking how a rudimentary iron wall would be. Medieval ages didn't even\
@@ -304,26 +304,26 @@
 	icon_state = "stone_floor"
 
 /turf/open/floor/vault
-	name = "strange floor"
-	desc = "You feel a strange nostalgia from looking at this..."
+	name = "странный пол"
+	desc = "От одного взгляда на него накатывает странная ностальгия..."
 	icon_state = "rockvault"
 	base_icon_state = "rockvault"
 
 /turf/open/floor/vault/rock
-	name = "rocky floor"
+	name = "каменистый пол"
 
 /turf/open/floor/vault/alien
-	name = "alien floor"
+	name = "инопланетный пол"
 	icon_state = "alienvault"
 	base_icon_state = "alienvault"
 
 /turf/open/floor/vault/sandstone
-	name = "sandstone floor"
+	name = "песчаниковый пол"
 	icon_state = "sandstonevault"
 	base_icon_state = "sandstonevault"
 
 /turf/open/floor/cult
-	name = "engraved floor"
+	name = "гравированный пол"
 	icon_state = "cult"
 	base_icon_state = "cult"
 	floor_tile = /obj/item/stack/tile/cult
@@ -338,7 +338,7 @@
 	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/floor/material/meat
-	name = "living floor"
+	name = "живой пол"
 	icon_state = "grey"
 	baseturfs = /turf/open/misc/asteroid
 	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
@@ -353,15 +353,15 @@
 
 /turf/open/floor/iron/tgmcemblem
 	name = "TGMC Emblem"
-	desc = "The symbol of the Terran Government."
+	desc = "Символ Терранского правительства."
 	icon_state = "tgmc_emblem"
 
 /turf/open/floor/iron/tgmcemblem/center
 	icon_state = "tgmc_center"
 
 /turf/open/floor/asphalt
-	name = "asphalt"
-	desc = "Melted down oil can, in some cases, be used to pave road surfaces."
+	name = "асфальт"
+	desc = "Расплавленную нефть иногда можно использовать для покрытия дорог."
 	icon_state = "asphalt"
 
 /turf/open/floor/asphalt/outdoors

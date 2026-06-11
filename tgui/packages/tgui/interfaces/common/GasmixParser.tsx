@@ -39,7 +39,7 @@ export const GasmixParser = (props: GasmixParserProps) => {
 
   return !total_moles ? (
     <Box nowrap italic mb="10px">
-      No Gas Detected!
+      Газ не обнаружен!
     </Box>
   ) : (
     <LabeledList {...rest}>
@@ -64,11 +64,11 @@ export const GasmixParser = (props: GasmixParserProps) => {
         label={
           temperatureOnClick ? (
             <Button
-              content={'Temperature'}
+              content={'Температура'}
               onClick={() => temperatureOnClick()}
             />
           ) : (
-            'Temperature'
+            'Температура'
           )
         }
       >
@@ -77,9 +77,9 @@ export const GasmixParser = (props: GasmixParserProps) => {
       <LabeledList.Item
         label={
           volumeOnClick ? (
-            <Button content={'Volume'} onClick={() => volumeOnClick()} />
+            <Button content={'Объём'} onClick={() => volumeOnClick()} />
           ) : (
-            'Volume'
+            'Объём'
           )
         }
       >
@@ -88,9 +88,9 @@ export const GasmixParser = (props: GasmixParserProps) => {
       <LabeledList.Item
         label={
           pressureOnClick ? (
-            <Button content={'Pressure'} onClick={() => pressureOnClick()} />
+            <Button content={'Давление'} onClick={() => pressureOnClick()} />
           ) : (
-            'Pressure'
+            'Давление'
           )
         }
       >
@@ -115,7 +115,7 @@ export const GasmixParser = (props: GasmixParserProps) => {
           </LabeledList.Item>
         ))
       ) : (
-        <LabeledList.Item label="Gas Reactions">
+        <LabeledList.Item label="Газовые реакции">
           {reactions.length
             ? reactions.map((reaction, index) =>
                 reactionOnClick ? (
@@ -129,7 +129,7 @@ export const GasmixParser = (props: GasmixParserProps) => {
                   <div key={reaction[1]}>{reaction[1]}</div>
                 ),
               )
-            : 'No reactions detected'}
+            : 'Реакции не обнаружены'}
         </LabeledList.Item>
       )}
     </LabeledList>

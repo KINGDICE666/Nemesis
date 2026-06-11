@@ -1,10 +1,10 @@
 // Corn
 /obj/item/seeds/corn
-	name = "corn seed pack"
-	desc = "I don't mean to sound corny..."
+	name = "пакет семян кукурузы"
+	desc = "Не хочу звучать слишком кукурузно..."
 	icon_state = "seed-corn"
 	species = "corn"
-	plantname = "Corn Stalks"
+	plantname = "Стебли кукурузы"
 	product = /obj/item/food/grown/corn
 	maturation = 8
 	potency = 20
@@ -18,13 +18,13 @@
 
 /obj/item/food/grown/corn
 	seed = /obj/item/seeds/corn
-	name = "ear of corn"
-	desc = "Needs some butter!"
+	name = "початок кукурузы"
+	desc = "Ему нужно немного масла!"
 	icon_state = "corn"
 	trash_type = /obj/item/grown/corncob
 	bite_consumption_mod = 2
 	foodtypes = VEGETABLES
-	tastes = list("corn" = 1)
+	tastes = list("кукуруза" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/whiskey
 
 /obj/item/food/grown/corn/grind_results()
@@ -41,8 +41,8 @@
 
 /obj/item/grown/corncob
 	seed = /obj/item/seeds/corn
-	name = "corn cob"
-	desc = "A reminder of meals gone by."
+	name = "кукурузный початок"
+	desc = "Напоминание о прошедших трапезах."
 	icon_state = "corncob"
 	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_TINY
@@ -55,7 +55,7 @@
 
 /obj/item/grown/corncob/attackby(obj/item/grown/W, mob/user, list/modifiers, list/attack_modifiers)
 	if(W.get_sharpness())
-		to_chat(user, span_notice("You use [W] to fashion a pipe out of the corn cob!"))
+		to_chat(user, span_notice("Вы используете [W], чтобы сделать трубку из кукурузного початка!"))
 		new /obj/item/cigarette/pipe/cobpipe (user.loc)
 		qdel(src)
 	else
@@ -63,19 +63,19 @@
 
 // Snapcorn
 /obj/item/seeds/corn/snapcorn
-	name = "snapcorn seed pack"
-	desc = "Oh snap!"
+	name = "пакет семян хлоп-кукурузы"
+	desc = "Вот это хлопок!"
 	icon_state = "seed-snapcorn"
 	species = "snapcorn"
-	plantname = "Snapcorn Stalks"
+	plantname = "Стебли хлоп-кукурузы"
 	product = /obj/item/grown/snapcorn
 	mutatelist = null
 	rarity = 10
 
 /obj/item/grown/snapcorn
 	seed = /obj/item/seeds/corn/snapcorn
-	name = "snap corn"
-	desc = "A cob with snap pops."
+	name = "хлоп-кукуруза"
+	desc = "Початок с хлопушками."
 	icon_state = "snapcorn"
 	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_TINY
@@ -90,7 +90,7 @@
 
 /obj/item/grown/snapcorn/attack_self(mob/user)
 	..()
-	to_chat(user, span_notice("You pick a snap pop from the cob."))
+	to_chat(user, span_notice("Вы снимаете хлопушку с початка."))
 	var/obj/item/toy/snappop/S = new /obj/item/toy/snappop(user.loc)
 	if(ishuman(user))
 		user.put_in_hands(S)
@@ -101,33 +101,33 @@
 
 /obj/item/grown/corncob/snap
 	seed = /obj/item/seeds/corn/snapcorn
-	name = "snap corn cob"
-	desc = "A reminder of pranks gone by."
+	name = "початок хлоп-кукурузы"
+	desc = "Напоминание о прошедших розыгрышах."
 
 //Pepper-corn - Heh funny.
 /obj/item/seeds/corn/pepper
-	name = "pepper-corn seed pack"
-	desc = "If Peter picked a pack of pepper-corn..."
+	name = "пакет семян перце-кукурузы"
+	desc = "Если бы Пётр выбрал пакет перце-кукурузы..."
 	icon_state = "seed-peppercorn"
 	species = "peppercorn"
-	plantname = "Pepper-Corn Stalks"
+	plantname = "Стебли перце-кукурузы"
 	product = /obj/item/food/grown/peppercorn
 	mutatelist = null
 	reagents_add = list(/datum/reagent/consumable/blackpepper = 0.2, /datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.1)
 
 /obj/item/food/grown/peppercorn
 	seed = /obj/item/seeds/corn/pepper
-	name = "ear of pepper-peppercorn"
-	desc = "This dusty monster needs god..."
+	name = "початок перце-кукурузы"
+	desc = "Этому пыльному чудовищу нужен бог..."
 	icon_state = "peppercorn"
 	trash_type = /obj/item/grown/corncob/pepper
 	foodtypes = VEGETABLES
-	tastes = list("pepper" = 1, "sneezing" = 1)
+	tastes = list("перец" = 1, "чихание" = 1)
 
 /obj/item/food/grown/peppercorn/grind_results()
 	return list(/datum/reagent/consumable/blackpepper = 0)
 
 /obj/item/grown/corncob/pepper
 	seed = /obj/item/seeds/corn/pepper
-	name = "pepper corn cob"
-	desc = "A reminder of genetic abominations gone by."
+	name = "початок перце-кукурузы"
+	desc = "Напоминание о прошедших генетических мерзостях."

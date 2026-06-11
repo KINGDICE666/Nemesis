@@ -1,6 +1,6 @@
 /obj/item/toy/plush
-	name = "plush"
-	desc = "This is the special coder plush, do not steal."
+	name = "плюшевая игрушка"
+	desc = "Это особая плюшевая игрушка кодера, не воровать."
 	icon = 'icons/obj/toys/plushes.dmi'
 	icon_state = "debug"
 	worn_icon_state = "plushie"
@@ -61,11 +61,11 @@
 	if(!offspring_type)
 		offspring_type = type
 
-	love_message = list("\n[src] is so happy, \he could rip a seam!")
-	partner_message = list("\n[src] has a ring on \his finger! It says bound to my dear [partner].")
-	heartbroken_message = list("\n[src] looks so sad.")
-	vowbroken_message = list("\n[src] lost \his ring...")
-	parent_message = list("\n[src] can't remember what sleep is.")
+	love_message = list("\n[src] так счастлива, что может треснуть по шву!")
+	partner_message = list("\nУ [src] кольцо на пальце! На нём написано: связана с дорогой [partner].")
+	heartbroken_message = list("\n[src] выглядит такой грустной.")
+	vowbroken_message = list("\n[src] потеряла кольцо...")
+	parent_message = list("\n[src] уже не помнит, что такое сон.")
 
 	normal_desc = desc
 
@@ -124,21 +124,21 @@
 /obj/item/toy/plush/attack_self(mob/user)
 	. = ..()
 	if(stuffed || grenade)
-		to_chat(user, span_notice("You pet [src]. D'awww."))
+		to_chat(user, span_notice("Вы гладите [src]. Мило."))
 		if(grenade && !grenade.active)
 			user.log_message("activated a hidden grenade in [src].", LOG_VICTIM)
 			grenade.arm_grenade(user, msg = FALSE, volume = 10)
 	else
-		to_chat(user, span_notice("You try to pet [src], but it has no stuffing. Aww..."))
+		to_chat(user, span_notice("Вы пытаетесь погладить [src], но внутри нет набивки. Эх..."))
 
 /obj/item/toy/plush/attackby(obj/item/I, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(I.get_sharpness())
 		if(!grenade)
 			if(!stuffed)
-				to_chat(user, span_warning("You already murdered it!"))
+				to_chat(user, span_warning("Вы уже её убили!"))
 				return
 			if(!divine)
-				user.visible_message(span_notice("[user] tears out the stuffing from [src]!"), span_notice("You rip a bunch of the stuffing from [src]. Murderer."))
+				user.visible_message(span_notice("[user] вырывает набивку из [src]!"), span_notice("Вы вырываете часть набивки из [src]. Убийца."))
 				I.play_tool_sound(src)
 				stuffed = FALSE
 			else
@@ -154,20 +154,20 @@
 				user.visible_message(span_notice("[user] lays down their weapons and begs for [src]'s mercy!"), span_notice("You lay down your weapons and beg for [src]'s mercy."))
 				user.drop_all_held_items()
 		else
-			to_chat(user, span_notice("You remove the grenade from [src]."))
+			to_chat(user, span_notice("Вы достаёте гранату из [src]."))
 			user.put_in_hands(grenade)
 		return
 	if(isgrenade(I))
 		if(stuffed)
-			to_chat(user, span_warning("You need to remove some stuffing first!"))
+			to_chat(user, span_warning("Сначала нужно убрать часть набивки!"))
 			return
 		if(grenade)
-			to_chat(user, span_warning("[src] already has a grenade!"))
+			to_chat(user, span_warning("В [src] уже есть граната!"))
 			return
 		if(!user.transferItemToLoc(I, src))
 			return
-		user.visible_message(span_warning("[user] slides [grenade] into [src]."), \
-		span_danger("You slide [I] into [src]."))
+		user.visible_message(span_warning("[user] засовывает [grenade] в [src]."), \
+		span_danger("Вы засовываете [I] в [src]."))
 		grenade = I
 		user.log_message("added a grenade ([I.name]) to [src]", LOG_GAME)
 		return

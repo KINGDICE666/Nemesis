@@ -2,7 +2,7 @@
  * Photo
  */
 /obj/item/photo
-	name = "photo"
+	name = "фотография"
 	icon = 'icons/obj/art/camera.dmi'
 	icon_state = "photo"
 	inhand_icon_state = "paper"
@@ -43,7 +43,7 @@
 		if(name_override)
 			name = P.picture_name
 		else
-			name = "photo - [P.picture_name]"
+			name = "фотография - [P.picture_name]"
 	if(setdesc && P.picture_desc)
 		desc = P.picture_desc
 
@@ -69,7 +69,7 @@
 	return ..()
 
 /obj/item/photo/suicide_act(mob/living/carbon/human/user)
-	user.visible_message(span_suicide("[user] is taking one last look at \the [src]! It looks like [user.p_theyre()] giving in to death!"))//when you wanna look at photo of waifu one last time before you die...
+	user.visible_message(span_suicide("[user] в последний раз смотрит на \the [src]! Похоже, [user.p_theyre()] сдаётся смерти!"))//when you wanna look at photo of waifu one last time before you die...
 	if (!ishuman(user) || user.physique == MALE)
 		playsound(user, 'sound/mobs/humanoids/human/laugh/manlaugh1.ogg', 50, TRUE)//EVERY TIME I DO IT MAKES ME LAUGH
 	else
@@ -83,7 +83,7 @@
 	if(IS_WRITING_UTENSIL(P))
 		if(!user.can_write(P))
 			return
-		var/txt = tgui_input_text(user, "What would you like to write on the back?", "Photo Writing", max_length = 128)
+		var/txt = tgui_input_text(user, "Что вы хотите написать на обороте?", "Надпись на фото", max_length = 128)
 		if(txt && user.can_perform_action(src))
 			playsound(src, SFX_WRITING_PEN, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, SOUND_FALLOFF_EXPONENT + 3, ignore_walls = FALSE)
 			scribble = txt
@@ -96,11 +96,11 @@
 	if(in_range(src, user) || isobserver(user))
 		show(user)
 	else
-		. += span_warning("You need to get closer to get a good look at this photo!")
+		. += span_warning("Нужно подойти ближе, чтобы как следует рассмотреть фотографию!")
 
 /obj/item/photo/proc/show(mob/user)
 	if(!istype(picture) || !picture.picture_image)
-		to_chat(user, span_warning("[src] seems to be blank..."))
+		to_chat(user, span_warning("[src], кажется, пустая..."))
 		return
 	var/width_height = "width"
 	if(picture.psize_y > picture.psize_x)
@@ -110,18 +110,18 @@
 	user << browse("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>[name]</title></head>" \
 		+ "<body style='overflow:hidden;margin:0;text-align:center'>" \
 		+ "<img src='tmp_photo.png' [width_height]='480' style='image-rendering:pixelated' />" \
-		+ "[scribble ? "<br>Written on the back:<br><i>[scribble]</i>" : ""]"\
+		+ "[scribble ? "<br>На обороте написано:<br><i>[scribble]</i>" : ""]"\
 		+ "</body></html>", "window=photo_showing;size=[scribble ? "480x580" : "480x480"]")
 	onclose(user, "[name]")
 
 /obj/item/photo/verb/rename()
-	set name = "Rename photo"
+	set name = "Переименовать фотографию"
 	set src in usr
 
-	var/n_name = tgui_input_text(usr, "What would you like to label the photo?", "Photo Labelling", max_length = MAX_NAME_LEN)
+	var/n_name = tgui_input_text(usr, "Как подписать фотографию?", "Подпись фотографии", max_length = MAX_NAME_LEN)
 	//loc.loc check is for making possible renaming photos in clipboards
 	if(n_name && (loc == usr || loc.loc && loc.loc == usr) && usr.stat == CONSCIOUS && !usr.incapacitated)
-		name = "photo[(n_name ? "- '[n_name]'" : null)]"
+		name = "фотография[(n_name ? " - '[n_name]'" : null)]"
 	add_fingerprint(usr)
 
 /obj/item/photo/old

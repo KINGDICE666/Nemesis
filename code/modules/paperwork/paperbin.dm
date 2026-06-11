@@ -1,8 +1,8 @@
 #define PAPERS_PER_OVERLAY 8
 #define PAPER_OVERLAY_PIXEL_SHIFT 2
 /obj/item/paper_bin
-	name = "paper bin"
-	desc = "Contains all the paper you'll never need."
+	name = "лоток для бумаги"
+	desc = "Содержит всю бумагу, которая вам никогда не понадобится."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "paper_bin0"
 	inhand_icon_state = "sheet-metal"
@@ -53,7 +53,7 @@
 	if(!droppoint)
 		droppoint = drop_location()
 	if(collapse)
-		visible_message(span_warning("The stack of paper collapses!"))
+		visible_message(span_warning("Стопка бумаги рассыпается!"))
 	for(var/obj/item/paper/stacked_paper in paper_stack) //first, dump all of the paper that already exists
 		stacked_paper.forceMove(droppoint)
 		if(!stacked_paper.pixel_y)
@@ -102,7 +102,7 @@
 		pen.add_fingerprint(user)
 		pen.forceMove(user.loc)
 		user.put_in_hands(pen)
-		to_chat(user, span_notice("You take [pen] out of [src]."))
+		to_chat(user, span_notice("Вы достаёте [pen] из [src]."))
 		bin_pen = null
 		update_appearance()
 	else if(total_paper > 0)
@@ -111,10 +111,10 @@
 		top_paper.add_fingerprint(user)
 		top_paper.forceMove(user.loc)
 		user.put_in_hands(top_paper)
-		to_chat(user, span_notice("You take [top_paper] out of [src]."))
+		to_chat(user, span_notice("Вы достаёте [top_paper] из [src]."))
 		update_appearance()
 	else
-		to_chat(user, span_warning("[src] is empty!"))
+		to_chat(user, span_warning("[src] пуст!"))
 	add_fingerprint(user)
 	return ..()
 
@@ -126,7 +126,7 @@
 		var/obj/item/paper/paper = I
 		if(!user.transferItemToLoc(paper, src, silent = FALSE))
 			return
-		to_chat(user, span_notice("You put [paper] in [src]."))
+		to_chat(user, span_notice("Вы кладёте [paper] в [src]."))
 		paper_stack += paper
 		total_paper += 1
 		update_appearance()
@@ -134,7 +134,7 @@
 		var/obj/item/pen/pen = I
 		if(!user.transferItemToLoc(pen, src, silent = FALSE))
 			return
-		to_chat(user, span_notice("You put [pen] in [src]."))
+		to_chat(user, span_notice("Вы кладёте [pen] в [src]."))
 		bin_pen = pen
 		update_appearance()
 	else
@@ -152,9 +152,9 @@
 /obj/item/paper_bin/examine(mob/user)
 	. = ..()
 	if(total_paper)
-		. += "It contains [total_paper > 1 ? "[total_paper] papers" : "one paper"]."
+		. += "Внутри [total_paper > 1 ? "[total_paper] листов бумаги" : "один лист бумаги"]."
 	else
-		. += "It doesn't contain anything."
+		. += "Внутри ничего нет."
 
 /obj/item/paper_bin/update_icon_state()
 	if(total_paper < 1)
@@ -209,13 +209,13 @@
 		. += pen_overlay
 
 /obj/item/paper_bin/construction
-	name = "construction paper bin"
-	desc = "Contains all the paper you'll never need, IN COLOR!"
+	name = "лоток цветной бумаги"
+	desc = "Содержит всю бумагу, которая вам никогда не понадобится, В ЦВЕТЕ!"
 	papertype = /obj/item/paper/construction
 
 /obj/item/paper_bin/bundlenatural
-	name = "natural paper bundle"
-	desc = "A bundle of paper created using traditional methods."
+	name = "связка натуральной бумаги"
+	desc = "Связка бумаги, изготовленной традиционными методами."
 	icon_state = "paper_stack"
 	papertype = /obj/item/paper/natural
 	resistance_flags = FLAMMABLE
@@ -255,18 +255,18 @@
 
 /obj/item/paper_bin/bundlenatural/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/paper/carbon))
-		to_chat(user, span_warning("[W] won't fit into [src]."))
+		to_chat(user, span_warning("[W] не поместится в [src]."))
 		return
 	if(W.get_sharpness())
 		if(W.use_tool(src, user, 1 SECONDS))
-			to_chat(user, span_notice("You slice the cable from [src]."))
+			to_chat(user, span_notice("Вы разрезаете кабель на [src]."))
 			deconstruct(TRUE)
 	else
 		..()
 
 /obj/item/paper_bin/carbon
-	name = "carbon paper bin"
-	desc = "Contains all the paper you'll ever need, in duplicate!"
+	name = "лоток копировальной бумаги"
+	desc = "Содержит всю бумагу, которая вам понадобится, сразу в двух экземплярах!"
 	icon_state = "paper_bin_carbon0"
 	papertype = /obj/item/paper/carbon
 	bin_overlay_string = "paper_bin_carbon_overlay"

@@ -1,6 +1,6 @@
 /obj/crystal_mass
-	name = "crystal mass"
-	desc = "You see this massive crystal mass looming towards you, cracking and screeching at every seemingly random movement."
+	name = "кристаллическая масса"
+	desc = "Вы видите, как эта массивная кристаллическая масса надвигается на вас, треща и визжа при каждом будто бы случайном движении."
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "crystal_cascade_1"
 	layer = AREA_LAYER
@@ -60,10 +60,10 @@
 	for(var/atom/movable/checked_atom as anything in next_turf)
 		if(isliving(checked_atom))
 			sm_comp.dust_mob(src, checked_atom, span_danger("\The [src] lunges out on [checked_atom], touching [checked_atom.p_them()]... \
-					[checked_atom.p_their()] body begins to shine with a brilliant light before crystallizing from the inside out and joining \the [src]!"),
-				span_userdanger("The crystal mass lunges on you and hits you in the chest. As your vision is filled with a blinding light, you think to yourself \"Damn it.\""))
+					[checked_atom.p_their()] тело начинает сиять ярким светом, затем кристаллизуется изнутри и присоединяется к \the [src]!"),
+				span_userdanger("Кристаллическая масса бросается на вас и ударяет в грудь. Когда зрение заполняет ослепительный свет, вы думаете: \"Чёрт.\""))
 		else if(istype(checked_atom, /obj/cascade_portal))
-			checked_atom.visible_message(span_userdanger("\The [checked_atom] screeches and closes away as it is hit by \a [src]! Too late!"))
+			checked_atom.visible_message(span_userdanger("\The [checked_atom] визжит и схлопывается, когда в него ударяет \a [src]! Слишком поздно!"))
 			playsound(get_turf(checked_atom), 'sound/effects/magic/charge.ogg', 50, TRUE)
 			playsound(get_turf(checked_atom), 'sound/effects/supermatter.ogg', 50, TRUE)
 			qdel(checked_atom)
@@ -77,9 +77,9 @@
 	SIGNAL_HANDLER
 
 	visible_message(
-		span_warning("[hitting_projectile] flies into [src] with a loud crack, before rapidly flashing into ash."),
+		span_warning("[hitting_projectile] влетает в [src] с громким треском и быстро вспыхивает пеплом."),
 		null,
-		span_hear("You hear a loud crack as you are washed with a wave of heat."),
+		span_hear("Вы слышите громкий треск, и вас окатывает волной жара."),
 	)
 
 	playsound(src, 'sound/effects/supermatter.ogg', 50, TRUE)
@@ -93,7 +93,7 @@
 	if(!iscarbon(user))
 		return
 	var/mob/living/carbon/jedi = user
-	to_chat(jedi, span_userdanger("That was a really dense idea."))
+	to_chat(jedi, span_userdanger("Это была действительно плотная мысль."))
 	jedi.ghostize()
 	var/obj/item/organ/brain/rip_u = locate(/obj/item/organ/brain) in jedi.organs
 	if(rip_u)
@@ -107,8 +107,8 @@
 	return ..()
 
 /obj/cascade_portal
-	name = "Bluespace Rift"
-	desc = "Your mind begins to spin as it tries to comprehend what it sees."
+	name = "блюспейс-разлом"
+	desc = "Ваш разум начинает кружиться, пытаясь осознать увиденное."
 	icon = 'icons/effects/224x224.dmi'
 	icon_state = "reality"
 	anchored = TRUE
@@ -152,10 +152,10 @@
 /obj/cascade_portal/proc/consume(atom/movable/consumed_object)
 	if(isliving(consumed_object))
 		consumed_object.visible_message(span_danger("\The [consumed_object] walks into \the [src]... \
-			A blinding light covers [consumed_object.p_their()] body before disappearing completely!"),
-			span_userdanger("You walk into \the [src] as your body is washed with a powerful blue light. \
-				You contemplate about this decision before landing face first onto the cold, hard floor."),
-			span_hear("You hear a loud crack as a distortion passes through you."))
+			ослепительный свет покрывает [consumed_object.p_their()] тело, прежде чем оно полностью исчезает!"),
+			span_userdanger("Вы входите в \the [src], и ваше тело омывает мощный синий свет. \
+				Вы успеваете обдумать это решение, прежде чем падаете лицом на холодный твёрдый пол."),
+			span_hear("Вы слышите громкий треск, когда сквозь вас проходит искажение."))
 
 		var/list/arrival_turfs = get_area_turfs(/area/centcom/central_command_areas/evacuation)
 		var/turf/arrival_turf
@@ -175,6 +175,6 @@
 		playsound(consumed_object, SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	else if(isitem(consumed_object))
 		consumed_object.visible_message(span_danger("\The [consumed_object] smacks into \the [src] and disappears out of sight."), null,
-			span_hear("You hear a loud crack as a small distortion passes through you."))
+			span_hear("Вы слышите громкий треск, когда сквозь вас проходит небольшое искажение."))
 
 		qdel(consumed_object)

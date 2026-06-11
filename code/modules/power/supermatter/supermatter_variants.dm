@@ -11,8 +11,8 @@
 
 /// Shard SM.
 /obj/machinery/power/supermatter_crystal/shard
-	name = "supermatter shard"
-	desc = "A strangely translucent and iridescent crystal that looks like it used to be part of a larger structure."
+	name = "осколок суперматерии"
+	desc = "Странно полупрозрачный переливающийся кристалл, который, похоже, когда-то был частью более крупной структуры."
 	base_icon_state = "sm_shard"
 	icon_state = "sm_shard"
 	anchored = FALSE
@@ -32,13 +32,13 @@
 	. = ..()
 
 	if(held_item?.tool_behaviour == TOOL_WRENCH)
-		context[SCREENTIP_CONTEXT_LMB] = anchored ? "Unanchor" : "Anchor"
+		context[SCREENTIP_CONTEXT_LMB] = anchored ? "Открепить" : "Закрепить"
 		return CONTEXTUAL_SCREENTIP_SET
 
 
 /// Shard SM with it's processing disabled.
 /obj/machinery/power/supermatter_crystal/shard/hugbox
-	name = "anchored supermatter shard"
+	name = "закреплённый осколок суперматерии"
 	disable_damage = TRUE
 	disable_gas =  TRUE
 	disable_power_change = TRUE
@@ -48,15 +48,15 @@
 
 /// Shard SM designated as the main engine.
 /obj/machinery/power/supermatter_crystal/shard/engine
-	name = "anchored supermatter shard"
+	name = "закреплённый осколок суперматерии"
 	is_main_engine = TRUE
 	anchored = TRUE
 	moveable = FALSE
 
 /// Normal sm but small (sm sword recipe element) (wiz only) and adamantine pedestal for it
 /obj/machinery/power/supermatter_crystal/small
-	name = "strangely small supermatter crystal"
-	desc = "A strangely translucent and iridescent crystal on an adamantine pedestal. It looks like it should be a bit bigger..."
+	name = "странно маленький кристалл суперматерии"
+	desc = "Странно полупрозрачный переливающийся кристалл на адамантиновом пьедестале. Кажется, он должен быть немного больше..."
 	base_icon_state = "sm_small"
 	icon_state = "sm_small"
 	moveable = TRUE
@@ -66,11 +66,11 @@
 /obj/machinery/power/supermatter_crystal/small/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/gps, "Adamantium Signal")
-	priority_announce("Anomalous crystal detected onboard. Location is marked on every GPS device.", "Nanotrasen Anomaly Department Announcement")
+	priority_announce("На борту обнаружен аномальный кристалл. Местоположение отмечено на каждом GPS-устройстве.", "Объявление отдела аномалий Nanotrasen")
 
 /obj/item/adamantine_pedestal
-	name = "adamantine pedestal"
-	desc = "An adamantine pedestal. It looks like it should have something small but massive on top."
+	name = "адамантиновый пьедестал"
+	desc = "Адамантиновый пьедестал. Кажется, сверху должно быть что-то маленькое, но массивное."
 	icon = 'icons/obj/machines/engine/supermatter.dmi'
 	icon_state = "pedestal"
 	w_class = WEIGHT_CLASS_HUGE

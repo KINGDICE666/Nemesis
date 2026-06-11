@@ -9,7 +9,7 @@
  */
 
 /turf/open/floor/wood
-	desc = "Stylish dark wood."
+	desc = "Стильное тёмное дерево."
 	icon_state = "wood"
 	floor_tile = /obj/item/stack/tile/wood
 	footstep = FOOTSTEP_WOOD
@@ -24,7 +24,7 @@
 
 /turf/open/floor/wood/examine(mob/user)
 	. = ..()
-	. += span_notice("There's a few <b>screws</b> and a <b>small crack</b> visible.")
+	. += span_notice("Видно несколько <b>шурупов</b> и <b>небольшую щель</b>.")
 
 /turf/open/floor/wood/screwdriver_act(mob/living/user, obj/item/I)
 	if(..())
@@ -53,15 +53,15 @@
 		broken = FALSE
 		burnt = FALSE
 		if(user && !silent)
-			to_chat(user, span_notice("You remove the broken planks."))
+			to_chat(user, span_notice("Вы убираете сломанные доски."))
 	else
 		if(make_tile)
 			if(user && !silent)
-				to_chat(user, span_notice("You unscrew the planks."))
+				to_chat(user, span_notice("Вы откручиваете доски."))
 			spawn_tile()
 		else
 			if(user && !silent)
-				to_chat(user, span_notice("You forcefully pry off the planks, destroying them in the process."))
+				to_chat(user, span_notice("Вы силой отрываете доски, разрушая их в процессе."))
 	return make_plating(force_plating)
 
 /turf/open/floor/wood/cold
@@ -99,7 +99,7 @@
 	return list("wood_large-broken", "wood_large-broken2", "wood_large-broken3")
 
 /turf/open/floor/bamboo
-	desc = "A bamboo mat with a decorative trim."
+	desc = "Бамбуковый коврик с декоративной окантовкой."
 	icon = 'icons/turf/floors/bamboo_mat.dmi'
 	icon_state = "mat-0"
 	base_icon_state = "mat"
@@ -117,7 +117,7 @@
 	return list("bamboodamaged")
 
 /turf/open/floor/bamboo/tatami
-	desc = "A traditional Japanese floor mat."
+	desc = "Традиционный японский напольный мат."
 	icon = 'icons/turf/floors/floor_variations.dmi'
 	icon_state = "bamboo-green"
 	floor_tile = /obj/item/stack/tile/bamboo/tatami
@@ -138,8 +138,8 @@
 	floor_tile = /obj/item/stack/tile/bamboo/tatami/black
 
 /turf/open/floor/grass
-	name = "grass patch"
-	desc = "You can't tell if this is real grass or just cheap plastic imitation."
+	name = "участок травы"
+	desc = "Не понять, настоящая это трава или дешёвая пластиковая имитация."
 	icon_state = "grass"
 	floor_tile = /obj/item/stack/tile/grass
 	flags_1 = NONE
@@ -167,8 +167,8 @@
 	icon_state = "grass[rand(0,3)]"
 
 /turf/open/floor/grass/lavaland
-	name = "dead grass patch"
-	desc = "It turns out grass doesn't grow very well in hell."
+	name = "участок мёртвой травы"
+	desc = "Оказывается, трава не очень хорошо растёт в аду."
 	icon_state = "sand"
 	broken = TRUE
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
@@ -178,8 +178,8 @@
 	return
 
 /turf/open/floor/grass/fairy //like grass but fae-er
-	name = "fairygrass patch"
-	desc = "Something about this grass makes you want to frolic. Or get high."
+	name = "участок волшебной травы"
+	desc = "Что-то в этой траве вызывает желание резвиться. Или кайфовать."
 	icon_state = "fairygrass"
 	floor_tile = /obj/item/stack/tile/fairygrass
 	light_range = 2
@@ -190,8 +190,8 @@
 	icon_state = "fairygrass[rand(0,3)]"
 
 /turf/open/floor/hay
-	name = "hay"
-	desc = "HOW hungry?"
+	name = "сено"
+	desc = "НАСКОЛЬКО вы голодны?"
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "hay"
 	base_icon_state = "hay"
@@ -207,10 +207,10 @@
 
 /turf/open/floor/fake_snow
 	gender = PLURAL
-	name = "snow"
+	name = "снег"
 	icon = 'icons/turf/snow.dmi'
 	damaged_dmi = 'icons/turf/snow.dmi'
-	desc = "Looks cold."
+	desc = "Выглядит холодным."
 	icon_state = "snow"
 	flags_1 = NONE
 	floor_tile = null
@@ -240,8 +240,8 @@
 	return
 
 /turf/open/floor/fakebasalt
-	name = "aesthetic volcanic flooring"
-	desc = "Safely recreated turf for your hellplanet-scaping."
+	name = "эстетический вулканический пол"
+	desc = "Безопасно воссозданная поверхность для оформления вашей адской планеты."
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "basalt"
 	floor_tile = /obj/item/stack/tile/basalt
@@ -265,8 +265,8 @@
 				set_light(BASALT_LIGHT_RANGE_DIM, BASALT_LIGHT_POWER, LIGHT_COLOR_LAVA)
 
 /turf/open/floor/carpet
-	name = "carpet"
-	desc = "Soft velvet carpeting. Feels good between your toes."
+	name = "ковёр"
+	desc = "Мягкое бархатное ковровое покрытие. Приятно ощущается между пальцами ног."
 	icon = 'icons/turf/floors/carpet.dmi'
 	icon_state = "carpet-255"
 	base_icon_state = "carpet"
@@ -285,7 +285,7 @@
 
 /turf/open/floor/carpet/examine(mob/user)
 	. = ..()
-	. += span_notice("There's a <b>small crack</b> on the edge of it.")
+	. += span_notice("На краю видна <b>небольшая щель</b>.")
 
 /turf/open/floor/carpet/Initialize(mapload)
 	. = ..()
@@ -390,7 +390,7 @@
 	canSmoothWith = SMOOTH_GROUP_CARPET_ROYAL_BLUE
 
 /turf/open/floor/carpet/executive
-	name = "executive carpet"
+	name = "директорский ковёр"
 	icon = 'icons/turf/floors/carpet_executive.dmi'
 	icon_state = "executive_carpet-255"
 	base_icon_state = "executive_carpet"
@@ -399,7 +399,7 @@
 	canSmoothWith = SMOOTH_GROUP_CARPET_EXECUTIVE
 
 /turf/open/floor/carpet/stellar
-	name = "stellar carpet"
+	name = "звёздный ковёр"
 	icon = 'icons/turf/floors/carpet_stellar.dmi'
 	icon_state = "stellar_carpet-255"
 	base_icon_state = "stellar_carpet"
@@ -408,7 +408,7 @@
 	canSmoothWith = SMOOTH_GROUP_CARPET_STELLAR
 
 /turf/open/floor/carpet/donk
-	name = "Donk Co. carpet"
+	name = "ковёр Donk Co."
 	icon = 'icons/turf/floors/carpet_donk.dmi'
 	icon_state = "donk_carpet-255"
 	base_icon_state = "donk_carpet"
@@ -469,8 +469,8 @@
 
 /// An emissive turf used to test emissive turfs.
 /turf/open/floor/emissive_test
-	name = "emissive test floor"
-	desc = "A glow-in-the-dark floor used to test emissive turfs."
+	name = "тестовый светящийся пол"
+	desc = "Светящийся в темноте пол для тестирования эмиссивных турфов."
 	floor_tile = /obj/item/stack/tile/emissive_test
 
 /turf/open/floor/emissive_test/smooth_icon()
@@ -487,8 +487,8 @@
 	floor_tile = /obj/item/stack/tile/emissive_test/white
 
 /turf/open/floor/carpet/neon
-	name = "neon carpet"
-	desc = "A rubbery pad inset with a phosphorescent pattern."
+	name = "неоновый ковёр"
+	desc = "Резиновое покрытие с фосфоресцирующим узором."
 	icon = 'icons/turf/floors/carpet_black.dmi'
 	icon_state = "carpet_black-255"
 	base_icon_state = "carpet_black"
@@ -511,7 +511,7 @@
 	AddElement(/datum/element/decal, neon_icon || icon, neon_icon_state || base_icon_state, dir, EMISSIVE_PLANE, null, emissive_alpha, null, smoothing_junction)
 
 /turf/open/floor/carpet/neon/simple
-	name = "simple neon carpet"
+	name = "простой неоновый ковёр"
 	icon = 'icons/turf/floors/carpet_neon_base.dmi'
 	icon_state = "base-255"
 	base_icon_state = "base"
@@ -532,8 +532,8 @@
 	canSmoothWith = SMOOTH_GROUP_CARPET_SIMPLE_NEON_NODOTS
 
 /turf/open/floor/carpet/neon/simple/white
-	name = "simple white neon carpet"
-	desc = "A rubbery mat with a inset pattern of white phosphorescent dye."
+	name = "простой белый неоновый ковёр"
+	desc = "Резиновый коврик со вставленным узором из белого фосфоресцирующего красителя."
 	neon_color = COLOR_WHITE
 	floor_tile = /obj/item/stack/tile/carpet/neon/simple/white
 	smoothing_groups = SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_CARPET_SIMPLE_NEON_WHITE
@@ -550,8 +550,8 @@
 	canSmoothWith = SMOOTH_GROUP_CARPET_SIMPLE_NEON_WHITE_NODOTS
 
 /turf/open/floor/carpet/neon/simple/black
-	name = "simple black neon carpet"
-	desc = "A rubbery mat with a inset pattern of black phosphorescent dye."
+	name = "простой чёрный неоновый ковёр"
+	desc = "Резиновый коврик со вставленным узором из чёрного фосфоресцирующего красителя."
 	neon_icon = 'icons/turf/floors/carpet_neon_glow.dmi'
 	neon_icon_state = "glow" // This one also lights up the edges of the lines.
 	neon_color = COLOR_BLACK
@@ -571,8 +571,8 @@
 	canSmoothWith = SMOOTH_GROUP_CARPET_SIMPLE_NEON_BLACK_NODOTS
 
 /turf/open/floor/carpet/neon/simple/red
-	name = "simple red neon carpet"
-	desc = "A rubbery mat with a inset pattern of red phosphorescent dye."
+	name = "простой красный неоновый ковёр"
+	desc = "Резиновый коврик со вставленным узором из красного фосфоресцирующего красителя."
 	neon_color = COLOR_RED
 	floor_tile = /obj/item/stack/tile/carpet/neon/simple/red
 	smoothing_groups = SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_CARPET_SIMPLE_NEON_RED
@@ -589,8 +589,8 @@
 	canSmoothWith = SMOOTH_GROUP_CARPET_SIMPLE_NEON_RED_NODOTS
 
 /turf/open/floor/carpet/neon/simple/orange
-	name = "simple orange neon carpet"
-	desc = "A rubbery mat with a inset pattern of orange phosphorescent dye."
+	name = "простой оранжевый неоновый ковёр"
+	desc = "Резиновый коврик со вставленным узором из оранжевого фосфоресцирующего красителя."
 	neon_color = COLOR_ORANGE
 	floor_tile = /obj/item/stack/tile/carpet/neon/simple/orange
 	smoothing_groups = SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_CARPET_SIMPLE_NEON_ORANGE
@@ -607,8 +607,8 @@
 	canSmoothWith = SMOOTH_GROUP_CARPET_SIMPLE_NEON_ORANGE_NODOTS
 
 /turf/open/floor/carpet/neon/simple/yellow
-	name = "simple yellow neon carpet"
-	desc = "A rubbery mat with a inset pattern of yellow phosphorescent dye."
+	name = "простой жёлтый неоновый ковёр"
+	desc = "Резиновый коврик со вставленным узором из жёлтого фосфоресцирующего красителя."
 	neon_color = COLOR_YELLOW
 	floor_tile = /obj/item/stack/tile/carpet/neon/simple/yellow
 	smoothing_groups = SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_CARPET_SIMPLE_NEON_YELLOW
@@ -625,8 +625,8 @@
 	canSmoothWith = SMOOTH_GROUP_CARPET_SIMPLE_NEON_YELLOW_NODOTS
 
 /turf/open/floor/carpet/neon/simple/lime
-	name = "simple lime neon carpet"
-	desc = "A rubbery mat with a inset pattern of lime phosphorescent dye."
+	name = "простой лаймовый неоновый ковёр"
+	desc = "Резиновый коврик со вставленным узором из лаймового фосфоресцирующего красителя."
 	neon_color = COLOR_LIME
 	floor_tile = /obj/item/stack/tile/carpet/neon/simple/lime
 	smoothing_groups = SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_CARPET_SIMPLE_NEON_LIME
@@ -643,8 +643,8 @@
 	canSmoothWith = SMOOTH_GROUP_CARPET_SIMPLE_NEON_LIME_NODOTS
 
 /turf/open/floor/carpet/neon/simple/green
-	name = "simple green neon carpet"
-	desc = "A rubbery mat with a inset pattern of green phosphorescent dye."
+	name = "простой зелёный неоновый ковёр"
+	desc = "Резиновый коврик со вставленным узором из зелёного фосфоресцирующего красителя."
 	neon_color = COLOR_GREEN
 	floor_tile = /obj/item/stack/tile/carpet/neon/simple/green
 	smoothing_groups = SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_CARPET_SIMPLE_NEON_GREEN
@@ -661,8 +661,8 @@
 	canSmoothWith = SMOOTH_GROUP_CARPET_SIMPLE_NEON_GREEN_NODOTS
 
 /turf/open/floor/carpet/neon/simple/teal
-	name = "simple teal neon carpet"
-	desc = "A rubbery mat with a inset pattern of teal phosphorescent dye."
+	name = "простой сине-зелёный неоновый ковёр"
+	desc = "Резиновый коврик со вставленным узором из сине-зелёного фосфоресцирующего красителя."
 	neon_color = COLOR_TEAL
 	floor_tile = /obj/item/stack/tile/carpet/neon/simple/teal
 	smoothing_groups = SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_CARPET_SIMPLE_NEON_TEAL
@@ -679,8 +679,8 @@
 	canSmoothWith = SMOOTH_GROUP_CARPET_SIMPLE_NEON_TEAL_NODOTS
 
 /turf/open/floor/carpet/neon/simple/cyan
-	name = "simple cyan neon carpet"
-	desc = "A rubbery mat with a inset pattern of cyan phosphorescent dye."
+	name = "простой циановый неоновый ковёр"
+	desc = "Резиновый коврик со вставленным узором из цианового фосфоресцирующего красителя."
 	neon_color = COLOR_CYAN
 	floor_tile = /obj/item/stack/tile/carpet/neon/simple/cyan
 	smoothing_groups = SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_CARPET_SIMPLE_NEON_CYAN
@@ -697,8 +697,8 @@
 	canSmoothWith = SMOOTH_GROUP_CARPET_SIMPLE_NEON_CYAN_NODOTS
 
 /turf/open/floor/carpet/neon/simple/blue
-	name = "simple blue neon carpet"
-	desc = "A rubbery mat with a inset pattern of blue phosphorescent dye."
+	name = "простой синий неоновый ковёр"
+	desc = "Резиновый коврик со вставленным узором из синего фосфоресцирующего красителя."
 	neon_color = COLOR_BLUE
 	floor_tile = /obj/item/stack/tile/carpet/neon/simple/blue
 	smoothing_groups = SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_CARPET_SIMPLE_NEON_BLUE
@@ -715,8 +715,8 @@
 	canSmoothWith = SMOOTH_GROUP_CARPET_SIMPLE_NEON_BLUE_NODOTS
 
 /turf/open/floor/carpet/neon/simple/purple
-	name = "simple purple neon carpet"
-	desc = "A rubbery mat with a inset pattern of purple phosphorescent dye."
+	name = "простой фиолетовый неоновый ковёр"
+	desc = "Резиновый коврик со вставленным узором из фиолетового фосфоресцирующего красителя."
 	neon_color = COLOR_PURPLE
 	floor_tile = /obj/item/stack/tile/carpet/neon/simple/purple
 	smoothing_groups = SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_CARPET_SIMPLE_NEON_PURPLE
@@ -733,8 +733,8 @@
 	canSmoothWith = SMOOTH_GROUP_CARPET_SIMPLE_NEON_PURPLE_NODOTS
 
 /turf/open/floor/carpet/neon/simple/violet
-	name = "simple violet neon carpet"
-	desc = "A rubbery mat with a inset pattern of violet phosphorescent dye."
+	name = "простой виолетовый неоновый ковёр"
+	desc = "Резиновый коврик со вставленным узором из виолетового фосфоресцирующего красителя."
 	neon_color = COLOR_VIOLET
 	floor_tile = /obj/item/stack/tile/carpet/neon/simple/violet
 	smoothing_groups = SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_CARPET_SIMPLE_NEON_VIOLET
@@ -751,8 +751,8 @@
 	canSmoothWith = SMOOTH_GROUP_CARPET_SIMPLE_NEON_VIOLET_NODOTS
 
 /turf/open/floor/carpet/neon/simple/pink
-	name = "simple pink neon carpet"
-	desc = "A rubbery mat with a inset pattern of pink phosphorescent dye."
+	name = "простой розовый неоновый ковёр"
+	desc = "Резиновый коврик со вставленным узором из розового фосфоресцирующего красителя."
 	neon_color = COLOR_LIGHT_PINK
 	floor_tile = /obj/item/stack/tile/carpet/neon/simple/pink
 	smoothing_groups = SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_CARPET_SIMPLE_NEON_PINK
@@ -859,7 +859,7 @@
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 
 /turf/open/floor/fakepit
-	desc = "A clever illusion designed to look like a bottomless pit."
+	desc = "Ловкая иллюзия, созданная похожей на бездонную яму."
 	icon = 'icons/turf/floors/chasms.dmi'
 	icon_state = "chasms-0"
 	floor_tile = /obj/item/stack/tile/fakepit
@@ -875,13 +875,13 @@
 	return TRUE
 
 /turf/open/floor/fakeice
-	desc = "Is it marble, polished to a mirror finish? Or just really, really grippy ice?"
+	desc = "Это мрамор, отполированный до зеркального блеска? Или просто очень, очень цепкий лёд?"
 	icon = 'icons/turf/floors/ice_turf.dmi'
 	icon_state = "ice_turf-0"
 	base_icon_state = "ice_turf-0"
 
 /turf/open/floor/fakeice/slippery
-	desc = "Somehow, it is not melting under these conditions. Must be some very thick ice. Just as slippery too."
+	desc = "Почему-то он не тает в этих условиях. Должно быть, это очень толстый лёд. И такой же скользкий."
 
 /turf/open/floor/fakeice/slippery/Initialize(mapload)
 	. = ..()

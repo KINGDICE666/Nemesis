@@ -15,7 +15,7 @@
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
 
 /turf/open/floor/plating/abductor
-	name = "alien floor"
+	name = "инопланетный пол"
 	icon_state = "alienpod1"
 	base_icon_state = "alienpod1"
 	tiled_turf = FALSE
@@ -29,7 +29,7 @@
 	return FALSE
 
 /turf/open/floor/plating/abductor2
-	name = "alien plating"
+	name = "инопланетное покрытие"
 	icon_state = "alienplating"
 	base_icon_state = "alienplating"
 	tiled_turf = FALSE
@@ -46,8 +46,8 @@
 	return
 
 /turf/open/floor/plating/snowed
-	name = "snowed-over plating"
-	desc = "A section of heated plating, helps keep the snow from stacking up too high."
+	name = "заснеженное покрытие"
+	desc = "Участок подогреваемого покрытия, не дающий снегу накопиться слишком высоко."
 	icon = 'icons/turf/snow.dmi'
 	icon_state = "snowplating"
 	base_icon_state = "snowplating"
@@ -102,6 +102,6 @@
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 
 /turf/open/floor/plating/elevatorshaft
-	name = "elevator shaft"
+	name = "шахта лифта"
 	icon_state = "elevatorshaft"
 	base_icon_state = "elevatorshaft"

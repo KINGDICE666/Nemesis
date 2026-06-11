@@ -1,18 +1,18 @@
 ///A special hotdog vending machine found in the cafeteria at the museum away mission, or during the hotdog holiday.
 /obj/machinery/vending/hotdog
 	name = "\improper Hotdoggo-Vend"
-	desc = "An outdated hotdog vending machine, its prices stuck to those of 20 or so years ago."
+	desc = "Устаревший автомат с хот-догами, цены которого застряли примерно на уровне двадцатилетней давности."
 	icon_state = "hotdog-vendor"
 	icon_deny = "hotdog-vendor-deny"
 	panel_type = "panel17"
-	product_slogans = "Meatier than ever!;Now with 20% more MSG!;HOTDOGS!;Now Tirizan-friendly!"
-	product_ads = "Your best and only automatic hotdog dispenser!;Serving you the finest buns since 2469!;Comes in 12 different flavors!"
-	vend_reply = "Have a scrumptious meal!"
+	product_slogans = "Мяснее, чем когда-либо!;Теперь на 20% больше глутамата!;ХОТ-ДОГИ!;Теперь дружелюбно к тиризанам!"
+	product_ads = "Ваш лучший и единственный автоматический раздатчик хот-догов!;Подаём лучшие булочки с 2469 года!;Доступно 12 разных вкусов!"
+	vend_reply = "Приятнейшего аппетита!"
 	light_mask = "hotdog-vendor-light-mask"
 	default_price = PAYCHECK_LOWER
 	product_categories = list(
 		list(
-			"name" = "Hotdogs",
+			"name" = "Хот-доги",
 			"icon" = "hotdog",
 			"products" = list(
 				/obj/item/food/hotdog = 8,
@@ -24,7 +24,7 @@
 			),
 		),
 		list(
-			name = "Sausages",
+			name = "Сосиски",
 			"icon" = FA_ICON_BACON,
 			"products" = list(
 				/obj/item/food/sausage = 8,
@@ -33,7 +33,7 @@
 			),
 		),
 		list(
-			"name" = "Sauces",
+			"name" = "Соусы",
 			"icon" = FA_ICON_BOWL_FOOD,
 			"products" = list(
 				/obj/item/reagent_containers/condiment/pack/ketchup = 4,

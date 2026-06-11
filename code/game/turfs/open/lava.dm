@@ -5,9 +5,9 @@
  */
 
 /turf/open/lava
-	name = "lava"
+	name = "лава"
 	icon_state = "lava"
-	desc = "Looks painful to step in. Don't mine down."
+	desc = "Наступить сюда будет больно. Не копайте вниз."
 	gender = PLURAL //"That's some lava."
 	baseturfs = /turf/open/lava //lava all the way down
 	slowdown = 2
@@ -216,20 +216,20 @@
 		var/obj/item/stack/rods/lava/R = C
 		var/obj/structure/lattice/catwalk/lava/H = locate(/obj/structure/lattice/catwalk/lava, src)
 		if(H)
-			to_chat(user, span_warning("There is already a lattice here!"))
+			to_chat(user, span_warning("Здесь уже есть решётка!"))
 			return
 		if(R.use(1))
-			to_chat(user, span_notice("You construct a lattice."))
+			to_chat(user, span_notice("Вы строите решётку."))
 			playsound(src, 'sound/items/weapons/genhit.ogg', 50, TRUE)
 			new /obj/structure/lattice/catwalk/lava(locate(x, y, z))
 		else
-			to_chat(user, span_warning("You need one rod to build a heatproof lattice."))
+			to_chat(user, span_warning("Для постройки жаростойкой решётки нужен один прут."))
 		return
 	// Light a cigarette in the lava
 	if(istype(C, /obj/item/cigarette))
 		var/obj/item/cigarette/ciggie = C
 		if(ciggie.lit)
-			to_chat(user, span_warning("\The [ciggie] is already lit!"))
+			to_chat(user, span_warning("\The [ciggie] уже зажжена!"))
 			return TRUE
 		var/clumsy_modifier = HAS_TRAIT(user, TRAIT_CLUMSY) ? 2 : 1
 		if(prob(25 * clumsy_modifier) && isliving(user))
@@ -366,7 +366,7 @@
 	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/lava/smooth
-	name = "lava"
+	name = "лава"
 	baseturfs = /turf/open/lava/smooth
 	icon = 'icons/turf/floors/lava.dmi'
 	mask_icon = 'icons/turf/floors/lava_mask.dmi'
@@ -393,8 +393,8 @@
 	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/lava/plasma
-	name = "liquid plasma"
-	desc = "A flowing stream of chilled liquid plasma. You probably shouldn't get in."
+	name = "жидкая плазма"
+	desc = "Текущий поток охлаждённой жидкой плазмы. Вам, вероятно, не стоит туда заходить."
 	icon_state = "liquidplasma"
 	initial_gas_mix = BURNING_COLD
 	baseturfs = /turf/open/lava/plasma

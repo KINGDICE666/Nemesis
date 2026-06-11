@@ -15,8 +15,8 @@
 GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 
 /obj/machinery/power/supermatter_crystal
-	name = "supermatter crystal"
-	desc = "A strangely translucent and iridescent crystal."
+	name = "кристалл суперматерии"
+	desc = "Странно полупрозрачный переливающийся кристалл."
 	icon = 'icons/obj/machines/engine/supermatter.dmi'
 	density = TRUE
 	anchored = TRUE
@@ -257,15 +257,15 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	var/immune = HAS_MIND_TRAIT(user, TRAIT_MADNESS_IMMUNE)
 	if(isliving(user))
 		if (!immune && (get_dist(user, src) < SM_HALLUCINATION_RANGE(internal_energy)))
-			. += span_danger("You get headaches just from looking at it.")
+			. += span_danger("У вас начинает болеть голова от одного взгляда на него.")
 		var/mob/living/living_user = user
 		if (HAS_TRAIT(user, TRAIT_REMOTE_TASTING))
-			to_chat(user, span_warning("The taste is overwhelming and indescribable!"))
+			to_chat(user, span_warning("Вкус подавляющий и неописуемый!"))
 			living_user.electrocute_act(shock_damage = 15, source = src, flags = SHOCK_KNOCKDOWN | SHOCK_NOGLOVES)
-			. += span_notice("It could use a little more Sodium Chloride...")
+			. += span_notice("Ему бы не помешало немного хлорида натрия...")
 
 	if(holiday_lights)
-		. += span_notice("Radiating both festive cheer and actual radiation, it has a dazzling spectacle lights wrapped lovingly around the base transforming it from a potential doomsday device into a cosmic yuletide centerpiece.")
+		. += span_notice("Излучая одновременно праздничное настроение и настоящую радиацию, он украшен ослепительной гирляндой у основания и превращён из потенциального устройства конца света в космический новогодний центр композиции.")
 
 	. += delamination_strategy.examine(src)
 	return .
@@ -281,7 +281,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	if(isclosedturf(local_turf))
 		var/turf/did_it_melt = local_turf.Melt()
 		if(!isclosedturf(did_it_melt)) //In case some joker finds way to place these on indestructible walls
-			visible_message(span_warning("[src] melts through [local_turf]!"))
+			visible_message(span_warning("[src] проплавляет [local_turf]!"))
 		return
 
 	// PART 2: GAS PROCESSING
@@ -567,9 +567,9 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	final_countdown = TRUE
 
 	notify_ghosts(
-		"[src] has begun the delamination process!",
+		"[src] начал процесс деламинации!",
 		source = src,
-		header = "Meltdown Incoming",
+		header = "Надвигается расплавление",
 	)
 
 	var/list/count_down_messages = delamination_strategy.count_down_messages()
@@ -587,8 +587,8 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 		delamination_countdown_time = SUPERMATTER_SLIVER_REMOVED_COUNTDOWN_TIME
 		radio.talk_into(
 			src,
-			"WARNING: Projected time until full crystal delamination significantly lower than expected. \
-			Please inspect crystal for structural abnormalities or sabotage!",
+			"ВНИМАНИЕ: расчётное время до полной деламинации кристалла значительно ниже ожидаемого. \
+			Проверьте кристалл на структурные аномалии или саботаж!",
 			emergency_channel,
 			list(SPAN_COMMAND)
 			)
@@ -1098,7 +1098,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 /// Adds the hat flavor text when examined
 /obj/machinery/power/supermatter_crystal/proc/holiday_hat_examine(atom/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
-	examine_list += span_info("There's a santa hat placed atop it. How it got there without being dusted is a mystery.")
+	examine_list += span_info("Сверху на нём лежит шапка Санты. Как её туда положили и не обратили в пыль - загадка.")
 
 // Warp Effect //
 

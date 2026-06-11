@@ -1,6 +1,6 @@
 /obj/item/paperplane
-	name = "paper plane"
-	desc = "Paper, folded in the shape of a plane."
+	name = "бумажный самолётик"
+	desc = "Бумага, сложенная в форме самолётика."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "paperplane"
 	base_icon_state = "paperplane"
@@ -17,7 +17,7 @@
 	var/obj/item/paper/internal_paper
 
 /obj/item/paperplane/syndicate
-	desc = "Paper, masterfully folded in the shape of a plane."
+	desc = "Бумага, мастерски сложенная в форме самолётика."
 	throwforce = 20
 	hit_probability = 100
 
@@ -69,7 +69,7 @@
 		. += "[base_icon_state]_[stamp]"
 
 /obj/item/paperplane/attack_self(mob/user)
-	balloon_alert(user, "unfolded")
+	balloon_alert(user, "развёрнуто")
 
 	var/atom/location = drop_location()
 	// Need to keep a reference to the internal paper
@@ -82,7 +82,7 @@
 
 /obj/item/paperplane/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
 	if(IS_WRITING_UTENSIL(attacking_item))
-		to_chat(user, span_warning("You should unfold [src] before changing it!"))
+		to_chat(user, span_warning("Перед изменением [src] нужно развернуть!"))
 		return
 	else if(istype(attacking_item, /obj/item/stamp)) //we don't randomize stamps on a paperplane
 		internal_paper.attackby(attacking_item, user) //spoofed attack to update internal paper.
@@ -106,7 +106,7 @@
 		return
 	if(hit_human.is_eyes_covered())
 		return
-	visible_message(span_danger("\The [src] hits [hit_human] in the eye[eyes ? "" : " socket"]!"))
+	visible_message(span_danger("\The [src] попадает [hit_human] в глаз[eyes ? "" : "ницу"]!"))
 	hit_human.adjust_eye_blur(12 SECONDS)
 	eyes?.apply_organ_damage(rand(6, 8))
 	hit_human.Paralyze(4 SECONDS)

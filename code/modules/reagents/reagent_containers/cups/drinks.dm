@@ -2,8 +2,8 @@
 /// Drinks.
 ////////////////////////////////////////////////////////////////////////////////
 /obj/item/reagent_containers/cup/glass
-	name = "drink"
-	desc = "yummy"
+	name = "напиток"
+	desc = "Вкусно."
 	icon = 'icons/obj/drinks/drinks.dmi'
 	icon_state = "glass_empty"
 	abstract_type = /obj/item/reagent_containers/cup/glass
@@ -44,8 +44,8 @@
 
 
 /obj/item/reagent_containers/cup/glass/trophy
-	name = "pewter cup"
-	desc = "Everyone gets a trophy."
+	name = "оловянный кубок"
+	desc = "Каждому достаётся трофей."
 	icon = 'icons/obj/drinks/bottles.dmi'
 	icon_state = "pewter_cup"
 	w_class = WEIGHT_CLASS_TINY
@@ -60,8 +60,8 @@
 	isGlass = FALSE
 
 /obj/item/reagent_containers/cup/glass/trophy/gold_cup
-	name = "gold cup"
-	desc = "You're winner!"
+	name = "золотой кубок"
+	desc = "Вы победитель!"
 	icon = 'icons/obj/drinks/bottles.dmi'
 	icon_state = "golden_cup"
 	inhand_icon_state = "golden_cup"
@@ -77,8 +77,8 @@
 	AddElement(/datum/element/cuffable_item) //closed handles
 
 /obj/item/reagent_containers/cup/glass/trophy/silver_cup
-	name = "silver cup"
-	desc = "Best loser!"
+	name = "серебряный кубок"
+	desc = "Лучший проигравший!"
 	icon = 'icons/obj/drinks/bottles.dmi'
 	icon_state = "silver_cup"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -93,8 +93,8 @@
 	AddElement(/datum/element/cuffable_item) //closed handle
 
 /obj/item/reagent_containers/cup/glass/trophy/bronze_cup
-	name = "bronze cup"
-	desc = "At least you ranked!"
+	name = "бронзовый кубок"
+	desc = "По крайней мере, вы попали в рейтинг!"
 	icon = 'icons/obj/drinks/bottles.dmi'
 	icon_state = "bronze_cup"
 	w_class = WEIGHT_CLASS_SMALL
@@ -110,8 +110,8 @@
 // Formatting is the same as food.
 
 /obj/item/reagent_containers/cup/glass/coffee
-	name = "robust coffee"
-	desc = "Careful, the beverage you're about to enjoy is extremely hot."
+	name = "robust-кофе"
+	desc = "Осторожно, напиток, которым вы собираетесь насладиться, чрезвычайно горячий."
 	icon = 'icons/obj/drinks/coffee.dmi'
 	icon_state = "coffee"
 	base_icon_state = "coffee"
@@ -139,7 +139,7 @@
 
 /obj/item/reagent_containers/cup/glass/coffee/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	. = ..()
-	context[SCREENTIP_CONTEXT_ALT_LMB] = "[lid_open ? "Add" : "Remove"] Lid"
+	context[SCREENTIP_CONTEXT_ALT_LMB] = "[lid_open ? "Надеть" : "Снять"] крышку"
 	return CONTEXTUAL_SCREENTIP_SET
 
 /obj/item/reagent_containers/cup/glass/coffee/click_alt(mob/user)
@@ -155,21 +155,21 @@
 	return ..()
 
 /obj/item/reagent_containers/cup/glass/ice
-	name = "ice cup"
-	desc = "Careful, cold ice, do not chew."
+	name = "стакан льда"
+	desc = "Осторожно, холодный лёд, не жевать."
 	custom_price = PAYCHECK_LOWER * 0.6
 	icon_state = "icecup"
 	list_reagents = list(/datum/reagent/consumable/ice = 30)
 	isGlass = FALSE
 
 /obj/item/reagent_containers/cup/glass/ice/prison
-	name = "dirty ice cup"
-	desc = "Either Nanotrasen's water supply is contaminated, or this machine actually vends lemon, chocolate, and cherry snow cones."
+	name = "грязный стакан льда"
+	desc = "Либо водоснабжение Nanotrasen загрязнено, либо этот автомат действительно выдаёт лимонные, шоколадные и вишнёвые ледяные десерты."
 	list_reagents = list(/datum/reagent/consumable/ice = 25, /datum/reagent/consumable/liquidgibs = 5)
 
 /obj/item/reagent_containers/cup/glass/mug // parent type is literally just so empty mug sprites are a thing
-	name = "mug"
-	desc = "A drink served in a classy mug."
+	name = "кружка"
+	desc = "Напиток, поданный в стильной кружке."
 	icon = 'icons/obj/drinks/coffee.dmi'
 	icon_state = "tea_empty"
 	base_icon_state = "tea"
@@ -185,13 +185,13 @@
 
 /obj/item/reagent_containers/cup/glass/mug/tea
 	name = "Duke Purple tea"
-	desc = "An insult to Duke Purple is an insult to the Space Queen! Any proper gentleman will fight you, if you sully this tea."
+	desc = "Оскорбление Duke Purple - это оскорбление Космической Королевы! Любой приличный джентльмен вызовет вас на бой, если вы испортите этот чай."
 	icon_state = "tea"
 	list_reagents = list(/datum/reagent/consumable/tea = 30)
 
 /obj/item/reagent_containers/cup/glass/mug/coco
-	name = "Dutch hot coco"
-	desc = "Made in Space South America."
+	name = "голландское горячее какао"
+	desc = "Сделано в космической Южной Америке."
 	icon_state = "tea"
 	list_reagents = list(/datum/reagent/consumable/hot_coco = 15, /datum/reagent/consumable/sugar = 5)
 	drink_type = SUGAR
@@ -199,14 +199,14 @@
 	custom_price = PAYCHECK_CREW * 1.2
 
 /obj/item/reagent_containers/cup/glass/mug/nanotrasen
-	name = "\improper Nanotrasen mug"
-	desc = "A mug to display your corporate pride."
+	name = "\improper кружка Nanotrasen"
+	desc = "Кружка для демонстрации вашей корпоративной гордости."
 	icon_state = "mug_nt_empty"
 	base_icon_state = "mug_nt"
 
 /obj/item/reagent_containers/cup/glass/coffee_cup
-	name = "coffee cup"
-	desc = "A heat-formed plastic coffee cup. Can theoretically be used for other hot drinks, if you're feeling adventurous."
+	name = "стаканчик для кофе"
+	desc = "Термоформованный пластиковый стаканчик для кофе. Теоретически подходит и для других горячих напитков, если вы любите приключения."
 	icon = 'icons/obj/drinks/coffee.dmi'
 	icon_state = "coffee_cup_e"
 	base_icon_state = "coffee_cup"
@@ -219,8 +219,8 @@
 	return ..()
 
 /obj/item/reagent_containers/cup/glass/dry_ramen
-	name = "cup ramen"
-	desc = "Just add 5ml of water, self heats! A taste that reminds you of your school years. Now new with salty flavour!"
+	name = "стакан рамена"
+	desc = "Просто добавьте 5 мл воды, он сам нагреется! Вкус, напоминающий школьные годы. Теперь с новым солёным вкусом!"
 	icon_state = "ramen"
 	list_reagents = list(/datum/reagent/consumable/dry_ramen = 15, /datum/reagent/consumable/salt = 3)
 	drink_type = GRAIN
@@ -228,8 +228,8 @@
 	custom_price = PAYCHECK_CREW * 0.9
 
 /obj/item/reagent_containers/cup/glass/waterbottle
-	name = "bottle of water"
-	desc = "A bottle of water filled at an old Earth bottling facility."
+	name = "бутылка воды"
+	desc = "Бутылка воды, наполненная на старом земном заводе розлива."
 	icon = 'icons/obj/drinks/bottles.dmi'
 	icon_state = "smallbottle"
 	inhand_icon_state = null
@@ -281,14 +281,14 @@
 		reset_container_flags()
 		animate(src, transform = null, time = 2, loop = 0)
 		if(fumbled)
-			to_chat(user, span_warning("You fumble with [src]'s cap! The cap falls onto the ground and simply vanishes. Where the hell did it go?"))
+			to_chat(user, span_warning("Вы возитесь с крышкой [src]! Крышка падает на пол и просто исчезает. Куда, чёрт возьми, она делась?"))
 			cap_lost = TRUE
 		else
-			to_chat(user, span_notice("You remove the cap from [src]."))
+			to_chat(user, span_notice("Вы снимаете крышку с [src]."))
 			playsound(loc, 'sound/items/handling/reagent_containers/plastic_bottle/bottle_cap_open.ogg', 50, TRUE)
 	else
 		update_container_flags(SEALED_CONTAINER | TRANSPARENT)
-		to_chat(user, span_notice("You put the cap on [src]."))
+		to_chat(user, span_notice("Вы надеваете крышку на [src]."))
 		playsound(loc, 'sound/items/handling/reagent_containers/plastic_bottle/bottle_cap_close.ogg', 50, TRUE)
 	update_appearance()
 	return CLICK_ACTION_SUCCESS
@@ -301,7 +301,7 @@
 	if(is_open_container() || !reagents.total_volume)
 		return
 	if(prob(flip_chance)) // landed upright
-		src.visible_message(span_notice("[src] lands upright!"))
+		src.visible_message(span_notice("[src] приземляется вертикально!"))
 		var/mob/living/thrower = throwingdatum?.get_thrower()
 		if(istype(thrower))
 			thrower.add_mood_event("bottle_flip", /datum/mood_event/bottle_flip)

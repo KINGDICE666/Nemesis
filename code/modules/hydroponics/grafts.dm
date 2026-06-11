@@ -2,8 +2,8 @@
  *A new subsystem for hydroponics, as a way to share specific traits into plants, as a way to phase out the DNA manipulator.
  */
 /obj/item/graft
-	name = "plant graft"
-	desc = "A carefully cut graft off of a freshly grown plant. Can be grafted onto a plant in order to share unique plant traits onto a plant."
+	name = "растительный привой"
+	desc = "Аккуратно срезанный привой со свежевыращенного растения. Его можно привить к растению, чтобы передать ему уникальные признаки."
 	w_class = WEIGHT_CLASS_TINY
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "graft_plant"
@@ -36,7 +36,7 @@
 
 	var/static/list/hovering_item_typechecks = list(
 		/obj/item/plant_analyzer = list(
-			SCREENTIP_CONTEXT_LMB = "Scan graft",
+			SCREENTIP_CONTEXT_LMB = "Сканировать привой",
 		),
 	)
 

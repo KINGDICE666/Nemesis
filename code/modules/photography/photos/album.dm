@@ -2,8 +2,8 @@
  * Photo album
  */
 /obj/item/storage/photo_album
-	name = "photo album"
-	desc = "A big book used to store photos and mementos."
+	name = "фотоальбом"
+	desc = "Большая книга для хранения фотографий и памятных вещей."
 	icon = 'icons/obj/art/camera.dmi'
 	icon_state = "album"
 	inhand_icon_state = "album"
@@ -81,72 +81,72 @@
 	save_everything()
 
 /obj/item/storage/photo_album/hos
-	name = "photo album (Head of Security)"
+	name = "фотоальбом (глава службы безопасности)"
 	icon_state = "album_blue"
 	persistence_id = "HoS"
 
 /obj/item/storage/photo_album/rd
-	name = "photo album (Research Director)"
+	name = "фотоальбом (научный руководитель)"
 	icon_state = "album_blue"
 	persistence_id = "RD"
 
 /obj/item/storage/photo_album/hop
-	name = "photo album (Head of Personnel)"
+	name = "фотоальбом (глава персонала)"
 	icon_state = "album_blue"
 	persistence_id = "HoP"
 
 /obj/item/storage/photo_album/captain
-	name = "photo album (Captain)"
+	name = "фотоальбом (капитан)"
 	icon_state = "album_blue"
 	persistence_id = "Captain"
 
 /obj/item/storage/photo_album/cmo
-	name = "photo album (Chief Medical Officer)"
+	name = "фотоальбом (главный врач)"
 	icon_state = "album_blue"
 	persistence_id = "CMO"
 
 /obj/item/storage/photo_album/qm
-	name = "photo album (Quartermaster)"
+	name = "фотоальбом (квартирмейстер)"
 	icon_state = "album_blue"
 	persistence_id = "QM"
 
 /obj/item/storage/photo_album/ce
-	name = "photo album (Chief Engineer)"
+	name = "фотоальбом (старший инженер)"
 	icon_state = "album_blue"
 	persistence_id = "CE"
 
 /obj/item/storage/photo_album/bar
-	name = "photo album (Bar)"
+	name = "фотоальбом (бар)"
 	icon_state = "album_blue"
 	persistence_id = "bar"
 
 /obj/item/storage/photo_album/syndicate
-	name = "photo album (Syndicate)"
+	name = "фотоальбом (Синдикат)"
 	icon_state = "album_red"
 	persistence_id = "syndicate"
 
 /obj/item/storage/photo_album/library
-	name = "photo album (Library)"
+	name = "фотоальбом (библиотека)"
 	icon_state = "album_blue"
 	persistence_id = "library"
 
 /obj/item/storage/photo_album/chapel
-	name = "photo album (Chapel)"
+	name = "фотоальбом (церковь)"
 	icon_state = "album_blue"
 	persistence_id = "chapel"
 
 /obj/item/storage/photo_album/listeningstation
-	name = "photo album (Listening Station)"
+	name = "фотоальбом (пункт прослушки)"
 	icon_state = "album_red"
 	persistence_id = "listeningstation"
 
 /obj/item/storage/photo_album/icemoonlisteningstation
-	name = "photo album (Icemoon Outpost)"
+	name = "фотоальбом (аванпост ледяной луны)"
 	icon_state = "album_red"
 	persistence_id = "icemooncomms"
 
 /obj/item/storage/photo_album/prison
-	name = "photo album (Prison)"
+	name = "фотоальбом (тюрьма)"
 	icon_state = "album_blue"
 	persistence_id = "prison"
 
@@ -154,6 +154,6 @@
 	icon_state = "album_green"
 
 /obj/item/storage/photo_album/hall_of_fame
-	name = "photo album (Hall of Fame)"
+	name = "фотоальбом (зал славы)"
 	icon_state = "album_red"
 	persistence_id = "hall_of_fame"

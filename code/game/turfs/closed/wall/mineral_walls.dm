@@ -1,6 +1,6 @@
 /turf/closed/wall/mineral
-	name = "mineral wall"
-	desc = "This shouldn't exist"
+	name = "минеральная стена"
+	desc = "Этого не должно существовать."
 	icon_state = ""
 	abstract_type = /turf/closed/wall/mineral
 	smoothing_flags = SMOOTH_BITMASK
@@ -10,8 +10,8 @@
 	rust_resistance = RUST_RESISTANCE_BASIC
 
 /turf/closed/wall/mineral/gold
-	name = "gold wall"
-	desc = "A wall with gold plating. Swag!"
+	name = "золотая стена"
+	desc = "Стена с золотым покрытием. Шик!"
 	icon = 'icons/turf/walls/gold_wall.dmi'
 	icon_state = "gold_wall-0"
 	base_icon_state = "gold_wall"
@@ -24,8 +24,8 @@
 	rust_resistance = RUST_RESISTANCE_BASIC
 
 /turf/closed/wall/mineral/silver
-	name = "silver wall"
-	desc = "A wall with silver plating. Shiny!"
+	name = "серебряная стена"
+	desc = "Стена с серебряным покрытием. Блестит!"
 	icon = 'icons/turf/walls/silver_wall.dmi'
 	icon_state = "silver_wall-0"
 	base_icon_state = "silver_wall"
@@ -37,8 +37,8 @@
 	custom_materials = list(/datum/material/silver = SHEET_MATERIAL_AMOUNT*2)
 
 /turf/closed/wall/mineral/diamond
-	name = "diamond wall"
-	desc = "A wall with diamond plating. You monster."
+	name = "алмазная стена"
+	desc = "Стена с алмазным покрытием. Монстр."
 	icon = 'icons/turf/walls/diamond_wall.dmi'
 	icon_state = "diamond_wall-0"
 	base_icon_state = "diamond_wall"
@@ -56,8 +56,8 @@
 	return ..()
 
 /turf/closed/wall/mineral/bananium
-	name = "bananium wall"
-	desc = "A wall with bananium plating. Honk!"
+	name = "бананиевая стена"
+	desc = "Стена с бананиевым покрытием. Хонк!"
 	icon = 'icons/turf/walls/bananium_wall.dmi'
 	icon_state = "bananium_wall-0"
 	base_icon_state = "bananium_wall"
@@ -70,8 +70,8 @@
 	rust_resistance = RUST_RESISTANCE_BASIC
 
 /turf/closed/wall/mineral/sandstone
-	name = "sandstone wall"
-	desc = "A wall with sandstone plating. Rough."
+	name = "песчаниковая стена"
+	desc = "Стена с песчаниковым покрытием. Грубая."
 	icon = 'icons/turf/walls/sandstone_wall.dmi'
 	icon_state = "sandstone_wall-0"
 	base_icon_state = "sandstone_wall"
@@ -86,8 +86,8 @@
 
 /turf/closed/wall/mineral/uranium
 	article = "a"
-	name = "uranium wall"
-	desc = "A wall with uranium plating. This is probably a bad idea."
+	name = "урановая стена"
+	desc = "Стена с урановым покрытием. Наверное, плохая идея."
 	icon = 'icons/turf/walls/uranium_wall.dmi'
 	icon_state = "uranium_wall-0"
 	base_icon_state = "uranium_wall"
@@ -143,8 +143,8 @@
 	return ..()
 
 /turf/closed/wall/mineral/plasma
-	name = "plasma wall"
-	desc = "A wall with plasma plating. This is definitely a bad idea."
+	name = "плазменная стена"
+	desc = "Стена с плазменным покрытием. Это точно плохая идея."
 	icon = 'icons/turf/walls/plasma_wall.dmi'
 	icon_state = "plasma_wall-0"
 	base_icon_state = "plasma_wall"
@@ -158,8 +158,8 @@
 	rust_resistance = RUST_RESISTANCE_BASIC
 
 /turf/closed/wall/mineral/wood
-	name = "wooden wall"
-	desc = "A wall with wooden plating. Stiff."
+	name = "деревянная стена"
+	desc = "Стена с деревянным покрытием. Жёсткая."
 	icon = 'icons/turf/walls/wood_wall.dmi'
 	icon_state = "wood_wall-0"
 	base_icon_state = "wood_wall"
@@ -187,15 +187,15 @@
 	return ..() //No recoil damage, wood is weak
 
 /turf/closed/wall/mineral/wood/nonmetal
-	desc = "A solidly wooden wall. It's a bit weaker than a wall made with metal."
+	desc = "Цельная деревянная стена. Она немного слабее металлической."
 	girder_type = /obj/structure/barricade/wooden
 	hardness = 67 //a bit weaker than iron (60)
 	sheet_amount = 5
 	make_delay = 5 SECONDS
 
 /turf/closed/wall/mineral/bamboo
-	name = "bamboo wall"
-	desc = "A wall with a bamboo finish."
+	name = "бамбуковая стена"
+	desc = "Стена с бамбуковой отделкой."
 	icon = 'icons/turf/walls/bamboo_wall.dmi'
 	icon_state = "bamboo_wall-0"
 	base_icon_state = "bamboo_wall"
@@ -207,8 +207,8 @@
 	rust_resistance = RUST_RESISTANCE_BASIC
 
 /turf/closed/wall/mineral/iron
-	name = "rough iron wall"
-	desc = "A wall with rough iron plating."
+	name = "грубая железная стена"
+	desc = "Стена с грубым железным покрытием."
 	icon = 'icons/turf/walls/iron_wall.dmi'
 	icon_state = "iron_wall-0"
 	base_icon_state = "iron_wall"
@@ -222,8 +222,8 @@
 	rust_resistance = RUST_RESISTANCE_BASIC
 
 /turf/closed/wall/mineral/snow
-	name = "packed snow wall"
-	desc = "A wall made of densely packed snow blocks."
+	name = "стена из плотного снега"
+	desc = "Стена из плотно спрессованных снежных блоков."
 	icon = 'icons/turf/walls/snow_wall.dmi'
 	icon_state = "snow_wall-0"
 	base_icon_state = "snow_wall"
@@ -243,8 +243,8 @@
 	return ..() //No recoil damage, snow is weak
 
 /turf/closed/wall/mineral/abductor
-	name = "alien wall"
-	desc = "A wall with alien alloy plating."
+	name = "инопланетная стена"
+	desc = "Стена с покрытием из инопланетного сплава."
 	icon = 'icons/turf/walls/abductor_wall.dmi'
 	icon_state = "abductor_wall-0"
 	base_icon_state = "abductor_wall"
@@ -261,8 +261,8 @@
 /////////////////////Titanium walls/////////////////////
 
 /turf/closed/wall/mineral/titanium //has to use this path due to how building walls works
-	name = "wall"
-	desc = "A light-weight titanium wall used in shuttles."
+	name = "титановая стена"
+	desc = "Лёгкая титановая стена, используемая в шаттлах."
 	icon = 'icons/turf/walls/shuttle_wall.dmi'
 	icon_state = "shuttle_wall-0"
 	base_icon_state = "shuttle_wall"
@@ -302,8 +302,8 @@
 	copy_to_turf.transform = transform
 
 /turf/closed/wall/mineral/titanium/survival
-	name = "pod wall"
-	desc = "An easily-compressible wall used for temporary shelter."
+	name = "стена капсулы"
+	desc = "Легко сжимаемая стена, используемая для временного укрытия."
 	icon = 'icons/turf/walls/survival_pod_walls.dmi'
 	icon_state = "survival_pod_walls-0"
 	base_icon_state = "survival_pod_walls"
@@ -332,8 +332,8 @@
 /////////////////////Plastitanium walls/////////////////////
 
 /turf/closed/wall/mineral/plastitanium
-	name = "wall"
-	desc = "A durable wall made of an alloy of plasma and titanium."
+	name = "пласттитановая стена"
+	desc = "Прочная стена из сплава плазмы и титана."
 	icon = 'icons/turf/walls/plastitanium_wall.dmi'
 	icon_state = "plastitanium_wall-0"
 	base_icon_state = "plastitanium_wall"

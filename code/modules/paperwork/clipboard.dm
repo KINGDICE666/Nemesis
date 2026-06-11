@@ -4,22 +4,22 @@
 	change_inhand_icon_state = TRUE
 
 /datum/atom_skin/clipboard/brown
-	preview_name = "Brown"
+	preview_name = "Коричневый"
 	new_icon_state = "clipboard"
 
 /datum/atom_skin/clipboard/black
-	preview_name = "Black"
+	preview_name = "Чёрный"
 	new_icon_state = "clipboard_black"
 
 /datum/atom_skin/clipboard/white
-	preview_name = "White"
+	preview_name = "Белый"
 	new_icon_state = "clipboard_white"
 
 /**
  * Clipboard
  */
 /obj/item/clipboard
-	name = "clipboard"
+	name = "планшет с зажимом"
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "clipboard"
 	inhand_icon_state = "clipboard"
@@ -62,9 +62,9 @@
 /obj/item/clipboard/examine()
 	. = ..()
 	if(!integrated_pen && pen)
-		. += span_notice("Right-click to remove [pen].")
+		. += span_notice("ПКМ, чтобы достать [pen].")
 	else if(top_paper)
-		. += span_notice("Right-click to remove [top_paper].")
+		. += span_notice("ПКМ, чтобы достать [top_paper].")
 
 /// Take out the topmost paper
 /obj/item/clipboard/proc/remove_paper(obj/item/paper/paper, mob/user)
@@ -72,13 +72,13 @@
 		return
 	paper.forceMove(user.loc)
 	user.put_in_hands(paper)
-	to_chat(user, span_notice("You remove [paper] from [src]."))
+	to_chat(user, span_notice("Вы достаёте [paper] из [src]."))
 
 /obj/item/clipboard/proc/remove_pen(mob/user)
 	var/obj/item/pen/pen = src.pen
 	pen.forceMove(user.loc)
 	user.put_in_hands(pen)
-	to_chat(user, span_notice("You remove [pen] from [src]."))
+	to_chat(user, span_notice("Вы достаёте [pen] из [src]."))
 
 /obj/item/clipboard/Exited(atom/movable/gone, direction)
 	. = ..()
@@ -130,13 +130,13 @@
 			UnregisterSignal(top_paper, COMSIG_ATOM_UPDATED_ICON)
 		RegisterSignal(weapon, COMSIG_ATOM_UPDATED_ICON, PROC_REF(on_top_paper_change))
 		top_paper = weapon
-		to_chat(user, span_notice("You clip [weapon] onto [src]."))
+		to_chat(user, span_notice("Вы закрепляете [weapon] на [src]."))
 	else if(istype(weapon, /obj/item/pen) && !pen)
 		//Add a pen into the clipboard, attack (write) if there is already one
 		if(!usr.transferItemToLoc(weapon, src))
 			return
 		pen = weapon
-		to_chat(usr, span_notice("You slot [weapon] into [src]."))
+		to_chat(usr, span_notice("Вы вставляете [weapon] в [src]."))
 	else if(top_paper)
 		top_paper.attackby(user.get_active_held_item(), user)
 	update_appearance()
@@ -186,7 +186,7 @@
 				if(!integrated_pen)
 					remove_pen(usr)
 				else
-					to_chat(usr, span_warning("You can't seem to find a way to remove [src]'s [pen]."))
+					to_chat(usr, span_warning("Не похоже, что [pen] можно достать из [src]."))
 				. = TRUE
 		// Take paper out
 		if("remove_paper")
@@ -206,7 +206,7 @@
 			var/obj/item/paper/paper = locate(params["ref"]) in src
 			if(istype(paper))
 				top_paper = paper
-				to_chat(usr, span_notice("You move [paper] to the top."))
+				to_chat(usr, span_notice("Вы перемещаете [paper] наверх."))
 				update_icon()
 				. = TRUE
 		// Rename the paper (it's a verb)

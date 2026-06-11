@@ -4,8 +4,8 @@
 
 ///holding bag for dice
 /obj/item/storage/dice
-	name = "bag of dice"
-	desc = "Contains all the luck you'll ever need."
+	name = "мешочек с костями"
+	desc = "Содержит всю удачу, которая вам когда-либо понадобится."
 	icon = 'icons/obj/toys/dice.dmi'
 	icon_state = "dicebag"
 	w_class = WEIGHT_CLASS_SMALL
@@ -31,7 +31,7 @@
 	new picked(src)
 
 /obj/item/storage/dice/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is gambling with death! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user] играет со смертью! Похоже, [user.p_theyre()] пытается совершить самоубийство!"))
 	return OXYLOSS
 
 /obj/item/storage/dice/hazard/PopulateContents()
@@ -46,8 +46,8 @@
 
 ///this is a prototype for dice, for a real d6 use "/obj/item/dice/d6"
 /obj/item/dice
-	name = "die"
-	desc = "A die with six sides. Basic and serviceable."
+	name = "кость"
+	desc = "Шестигранная игральная кость. Просто и надёжно."
 	icon = 'icons/obj/toys/dice.dmi'
 	icon_state = "d6"
 	w_class = WEIGHT_CLASS_TINY
@@ -88,7 +88,7 @@
 	var/fake_result = roll(sides)//Daredevil isn't as good as he used to be
 	var/comment = ""
 	if(sides > MIN_SIDES_ALERT && result == 1)  // less comment spam
-		comment = "Ouch, bad luck."
+		comment = "Ой, не повезло."
 	if(sides == 20 && result == 20)
 		comment = "NAT 20!"
 	update_appearance()
@@ -101,12 +101,12 @@
 
 	if(in_hand) //Dice was rolled in someone's hand
 		user.visible_message(
-			span_notice("[user] rolls [src]. It lands on [result]. [comment]"),
-			span_notice("You roll [src]. It lands on [result]. [comment]"),
-			span_hear("You hear [src] rolling, it sounds like a [fake_result]."),
+			span_notice("[user] бросает [src]. Выпадает [result]. [comment]"),
+			span_notice("Вы бросаете [src]. Выпадает [result]. [comment]"),
+			span_hear("Вы слышите, как катится [src]; звучит как [fake_result]."),
 		)
 	else
-		visible_message(span_notice("[src] rolls to a stop, landing on [result]. [comment]"))
+		visible_message(span_notice("[src] останавливается, выпадает [result]. [comment]"))
 
 	return .
 
@@ -127,24 +127,24 @@
 	return original
 
 /obj/item/dice/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is gambling with death! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user] играет со смертью! Похоже, [user.p_theyre()] пытается совершить самоубийство!"))
 	return OXYLOSS
 
 /obj/item/dice/d1
 	name = "d1"
-	desc = "A die with only one side. Deterministic!"
+	desc = "Кость всего с одной стороной. Детерминизм!"
 	icon_state = "d1"
 	sides = 1
 
 /obj/item/dice/d2
 	name = "d2"
-	desc = "A die with two sides. Coins are undignified!"
+	desc = "Кость с двумя сторонами. Монеты недостойны!"
 	icon_state = "d2"
 	sides = 2
 
 /obj/item/dice/d4
 	name = "d4"
-	desc = "A die with four sides. The nerd's caltrop."
+	desc = "Кость с четырьмя сторонами. Калтроп для зануд."
 	icon_state = "d4"
 	sides = 4
 
@@ -157,13 +157,13 @@
 	name = "d6"
 
 /obj/item/dice/d6/ebony
-	name = "ebony die"
-	desc = "A die with six sides made of dense black wood. It feels cold and heavy in your hand."
+	name = "эбеновая кость"
+	desc = "Шестигранная кость из плотного чёрного дерева. В руке она кажется холодной и тяжёлой."
 	icon_state = "de6"
 	microwave_riggable = FALSE // You can't melt wood in the microwave
 
 /obj/item/dice/d6/space
-	name = "space cube"
+	name = "космический кубик"
 	desc = "A die with six sides. 6 TIMES 255 TIMES 255 TILE TOTAL EXISTENCE, SQUARE YOUR MIND OF EDUCATED STUPID: 2 DOES NOT EXIST."
 	icon_state = "spaced6"
 
@@ -173,7 +173,7 @@
 		name = "spess cube"
 
 /obj/item/paper/guides/knucklebone
-	name = "knucklebones rules"
+	name = "правила костяшек"
 	default_raw_text = "How to play knucklebones<br>\
 	<ul>\
 	<li>Make two 3x3 grids right next to each other using anything you can find to mark the ground. I like using the bartenders hologram projector.</li>\
@@ -191,27 +191,27 @@
 	<li>Have fun!</li>\
 	</ul>"
 /obj/item/dice/fudge
-	name = "fudge die"
-	desc = "A die with six sides but only three results. Is this a plus or a minus? Your mind is drawing a blank..."
+	name = "fudge-кость"
+	desc = "Кость с шестью сторонами, но всего тремя результатами. Это плюс или минус? В голове пусто..."
 	sides = 3 //shhh
 	icon_state = "fudge"
 	special_faces = list("minus","blank" = "You aren't sure how to feel.","plus")
 
 /obj/item/dice/d8
 	name = "d8"
-	desc = "A die with eight sides. It feels... lucky."
+	desc = "Кость с восемью сторонами. Кажется... удачливой."
 	icon_state = "d8"
 	sides = 8
 
 /obj/item/dice/d10
 	name = "d10"
-	desc = "A die with ten sides. Useful for percentages."
+	desc = "Кость с десятью сторонами. Удобна для процентов."
 	icon_state = "d10"
 	sides = 10
 
 /obj/item/dice/d00
 	name = "d00"
-	desc = "A die with ten sides. Works better for d100 rolls than a golf ball."
+	desc = "Кость с десятью сторонами. Для бросков d100 подходит лучше, чем мячик для гольфа."
 	icon_state = "d00"
 	sides = 10
 
@@ -220,19 +220,19 @@
 
 /obj/item/dice/d12
 	name = "d12"
-	desc = "A die with twelve sides. There's an air of neglect about it."
+	desc = "Кость с двенадцатью сторонами. От неё веет заброшенностью."
 	icon_state = "d12"
 	sides = 12
 
 /obj/item/dice/d20
 	name = "d20"
-	desc = "A die with twenty sides. The preferred die to throw at the GM."
+	desc = "Кость с двадцатью сторонами. Любимая кость для броска в ведущего."
 	icon_state = "d20"
 	sides = 20
 
 /obj/item/dice/d100
 	name = "d100"
-	desc = "A die with one hundred sides! Probably not fairly weighted..."
+	desc = "Кость со ста сторонами! Наверное, не слишком честно сбалансирована..."
 	icon_state = "d100"
 	w_class = WEIGHT_CLASS_SMALL
 	sides = 100
@@ -242,8 +242,8 @@
 	return ..()
 
 /obj/item/dice/eightbd20
-	name = "strange d20"
-	desc = "A weird die with raised text printed on the faces. Everything's white on white so reading it is a struggle. What poor design!"
+	name = "странная d20"
+	desc = "Странная кость с рельефным текстом на гранях. Всё белым по белому, читать мучительно. Ужасный дизайн!"
 	icon_state = "8bd20"
 	sides = 20
 	special_faces = list("It is certain","It is decidedly so","Without a doubt","Yes, definitely","You may rely on it","As I see it, yes","Most likely","Outlook good","Yes","Signs point to yes","Reply hazy try again","Ask again later","Better not tell you now","Cannot predict now","Concentrate and ask again","Don't count on it","My reply is no","My sources say no","Outlook not so good","Very doubtful")
@@ -254,7 +254,7 @@
 
 /obj/item/dice/fourdd6
 	name = "4d d6"
-	desc = "A die that exists in four dimensional space. Properly interpreting them can only be done with the help of a mathematician, a physicist, and a priest."
+	desc = "Кость, существующая в четырёхмерном пространстве. Правильно истолковать её можно только с помощью математика, физика и священника."
 	icon_state = "4dd6"
 	sides = 48
 	special_faces = list("Cube-Side: 1-1","Cube-Side: 1-2","Cube-Side: 1-3","Cube-Side: 1-4","Cube-Side: 1-5","Cube-Side: 1-6","Cube-Side: 2-1","Cube-Side: 2-2","Cube-Side: 2-3","Cube-Side: 2-4","Cube-Side: 2-5","Cube-Side: 2-6","Cube-Side: 3-1","Cube-Side: 3-2","Cube-Side: 3-3","Cube-Side: 3-4","Cube-Side: 3-5","Cube-Side: 3-6","Cube-Side: 4-1","Cube-Side: 4-2","Cube-Side: 4-3","Cube-Side: 4-4","Cube-Side: 4-5","Cube-Side: 4-6","Cube-Side: 5-1","Cube-Side: 5-2","Cube-Side: 5-3","Cube-Side: 5-4","Cube-Side: 5-5","Cube-Side: 5-6","Cube-Side: 6-1","Cube-Side: 6-2","Cube-Side: 6-3","Cube-Side: 6-4","Cube-Side: 6-5","Cube-Side: 6-6","Cube-Side: 7-1","Cube-Side: 7-2","Cube-Side: 7-3","Cube-Side: 7-4","Cube-Side: 7-5","Cube-Side: 7-6","Cube-Side: 8-1","Cube-Side: 8-2","Cube-Side: 8-3","Cube-Side: 8-4","Cube-Side: 8-5","Cube-Side: 8-6")
@@ -266,7 +266,7 @@
 // Die of fate stuff
 /obj/item/dice/d20/fate
 	name = "\improper Die of Fate"
-	desc = "A die with twenty sides. You can feel unearthly energies radiating from it. Using this might be VERY risky."
+	desc = "Кость с двадцатью сторонами. От неё исходят неземные энергии. Использовать её ОЧЕНЬ рискованно."
 	icon_state = "d20"
 	sides = 20
 	microwave_riggable = FALSE
@@ -279,8 +279,8 @@
 	reusable = FALSE
 
 /obj/item/dice/d20/fate/cursed
-	name = "cursed Die of Fate"
-	desc = "A die with twenty sides. You feel that rolling this is a REALLY bad idea."
+	name = "проклятая Кость Судьбы"
+	desc = "Кость с двадцатью сторонами. Вы чувствуете, что бросать её ОЧЕНЬ плохая идея."
 	color = "#00BB00"
 
 	rigged = DICE_TOTALLY_RIGGED
@@ -291,7 +291,7 @@
 
 /obj/item/dice/d20/fate/stealth
 	name = "d20"
-	desc = "A die with twenty sides. The preferred die to throw at the GM."
+	desc = "Кость с двадцатью сторонами. Любимая кость для броска в ведущего."
 
 /obj/item/dice/d20/fate/stealth/one_use
 	reusable = FALSE
@@ -305,7 +305,7 @@
 
 /obj/item/dice/d20/fate/diceroll(mob/user, in_hand=FALSE)
 	if(!COOLDOWN_FINISHED(src, roll_cd))
-		to_chat(user, span_warning("Hold on, [src] isn't caught up with your last roll!"))
+		to_chat(user, span_warning("Подождите, [src] ещё не оправилась от прошлого броска!"))
 		return
 
 	. = ..()
@@ -313,14 +313,14 @@
 		return
 
 	if(!ishuman(user) || !user.mind || IS_WIZARD(user))
-		to_chat(user, span_warning("You feel the magic of the dice is restricted to ordinary humans!"))
+		to_chat(user, span_warning("Вы чувствуете, что магия кости доступна только обычным людям!"))
 		return
 
 	if(!reusable)
 		used = TRUE
 
 	var/turf/selected_turf = get_turf(src)
-	selected_turf.visible_message(span_userdanger("[src] flares briefly."))
+	selected_turf.visible_message(span_userdanger("[src] на миг вспыхивает."))
 
 	addtimer(CALLBACK(src, PROC_REF(effect), user, .), 1 SECONDS)
 	COOLDOWN_START(src, roll_cd, 2.5 SECONDS)
@@ -328,7 +328,7 @@
 /obj/item/dice/d20/fate/equipped(mob/user, slot)
 	. = ..()
 	if(!ishuman(user) || !user.mind || IS_WIZARD(user))
-		to_chat(user, span_warning("You feel the magic of the dice is restricted to ordinary humans! You should leave it alone."))
+		to_chat(user, span_warning("Вы чувствуете, что магия кости доступна только обычным людям! Лучше оставить её в покое."))
 		user.dropItemToGround(src)
 
 

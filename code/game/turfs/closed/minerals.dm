@@ -4,7 +4,7 @@
 /**********************Mineral deposits**************************/
 
 /turf/closed/mineral //wall piece
-	name = "rock"
+	name = "порода"
 	icon = MAP_SWITCH('icons/turf/smoothrocks.dmi', 'icons/turf/mining.dmi')
 	icon_state = "rock"
 	smoothing_groups = SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS
@@ -530,7 +530,7 @@
 	)
 
 /turf/closed/mineral/random/high_chance/volcanic
-	name = "basalt"
+	name = "базальт"
 	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
 	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
@@ -582,7 +582,7 @@
 	)
 
 /turf/closed/mineral/random/volcanic
-	name = "basalt"
+	name = "базальт"
 	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
 	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
@@ -604,7 +604,7 @@
 	)
 
 /turf/closed/mineral/random/volcanic/red_rock
-	name = "siderite"
+	name = "сидерит"
 	icon = MAP_SWITCH('icons/turf/walls/red_rock.dmi', 'icons/turf/mining.dmi')
 	icon_state = "red_rock"
 	base_icon_state = "red_rock"
@@ -633,7 +633,7 @@
 	)
 
 /turf/closed/mineral/random/volcanic/shale
-	name = "shale"
+	name = "сланец"
 	icon = MAP_SWITCH('icons/turf/walls/shale.dmi', 'icons/turf/mining.dmi')
 	icon_state = "shale"
 	base_icon_state = "shale"
@@ -661,7 +661,7 @@
 	)
 
 /turf/closed/mineral/random/snow
-	name = "snowy mountainside"
+	name = "снежный горный склон"
 	icon = MAP_SWITCH('icons/turf/walls/mountain_wall.dmi', 'icons/turf/mining.dmi')
 	icon_state = "mountainrock"
 	base_icon_state = "mountain_wall"
@@ -744,7 +744,7 @@
 	)
 
 /turf/closed/mineral/random/labormineral/volcanic
-	name = "basalt"
+	name = "базальт"
 	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
 	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
@@ -758,7 +758,7 @@
 
 // Subtypes for mappers placing ores manually.
 /turf/closed/mineral/random/labormineral/ice
-	name = "snowy mountainside"
+	name = "снежный горный склон"
 	icon = MAP_SWITCH('icons/turf/walls/mountain_wall.dmi', 'icons/turf/mining.dmi')
 	icon_state = "mountainrock"
 	base_icon_state = "mountain_wall"
@@ -789,7 +789,7 @@
 	scan_state = "rock_iron"
 
 /turf/closed/mineral/iron/volcanic
-	name = "basalt"
+	name = "базальт"
 	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
 	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
@@ -810,7 +810,7 @@
 	scan_state = "rock_uranium"
 
 /turf/closed/mineral/uranium/volcanic
-	name = "basalt"
+	name = "базальт"
 	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
 	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
@@ -821,7 +821,7 @@
 	scan_state = "rock_diamond"
 
 /turf/closed/mineral/diamond/volcanic
-	name = "basalt"
+	name = "базальт"
 	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
 	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
@@ -842,7 +842,7 @@
 	scan_state = "rock_gold"
 
 /turf/closed/mineral/gold/volcanic
-	name = "basalt"
+	name = "базальт"
 	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
 	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
@@ -853,7 +853,7 @@
 	scan_state = "rock_silver"
 
 /turf/closed/mineral/silver/volcanic
-	name = "basalt"
+	name = "базальт"
 	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
 	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
@@ -869,7 +869,7 @@
 	scan_state = "rock_titanium"
 
 /turf/closed/mineral/titanium/volcanic
-	name = "basalt"
+	name = "базальт"
 	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
 	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
@@ -880,7 +880,7 @@
 	scan_state = "rock_plasma"
 
 /turf/closed/mineral/plasma/volcanic
-	name = "basalt"
+	name = "базальт"
 	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
 	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
@@ -902,7 +902,7 @@
 	scan_state = "rock_bananium"
 
 /turf/closed/mineral/bananium/volcanic
-	name = "basalt"
+	name = "базальт"
 	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
 	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
@@ -914,7 +914,7 @@
 	scan_state = "rock_bscrystal"
 
 /turf/closed/mineral/bscrystal/volcanic
-	name = "basalt"
+	name = "базальт"
 	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
 	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
@@ -931,7 +931,7 @@
 	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/closed/mineral/volcanic/lava_land_surface
-	name = "basalt"
+	name = "базальт"
 	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
 	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	defer_change = TRUE
@@ -971,7 +971,7 @@
 
 /// Wall piece
 /turf/closed/mineral/ash_rock
-	name = "rock"
+	name = "порода"
 	icon = 'icons/turf/mining.dmi'
 	icon = MAP_SWITCH('icons/turf/walls/rock_wall.dmi', 'icons/turf/mining.dmi')
 	icon_state = "rock2"
@@ -985,7 +985,7 @@
 	rust_resistance = RUST_RESISTANCE_ORGANIC
 
 /turf/closed/mineral/snowmountain
-	name = "snowy mountainside"
+	name = "снежный горный склон"
 	icon = MAP_SWITCH('icons/turf/walls/mountain_wall.dmi', 'icons/turf/mining.dmi')
 	icon_state = "mountainrock"
 	base_icon_state = "mountain_wall"
@@ -1008,7 +1008,7 @@
 	baseturfs = /turf/open/misc/asteroid/snow/icemoon/do_not_scrape
 
 /turf/closed/mineral/snowmountain/cavern
-	name = "ice cavern rock"
+	name = "ледяная пещерная порода"
 	icon = MAP_SWITCH('icons/turf/walls/icerock_wall.dmi', 'icons/turf/mining.dmi')
 	icon_state = "icerock"
 	base_icon_state = "icerock_wall"
@@ -1030,7 +1030,7 @@
 //yoo RED ROCK RED ROCK
 
 /turf/closed/mineral/asteroid
-	name = "iron rock"
+	name = "железная порода"
 	icon = MAP_SWITCH('icons/turf/walls/red_rock.dmi', 'icons/turf/mining.dmi')
 	icon_state = "red_rock"
 	base_icon_state = "red_rock"
@@ -1041,7 +1041,7 @@
 	wall_icon_state = "red_rock"
 
 /turf/closed/mineral/random/stationside/asteroid
-	name = "iron rock"
+	name = "железная порода"
 	icon = MAP_SWITCH('icons/turf/walls/red_rock.dmi', 'icons/turf/mining.dmi')
 	icon_state = "red_rock"
 	base_icon_state = "red_rock"
@@ -1051,13 +1051,13 @@
 	wall_icon_state = "red_rock"
 
 /turf/closed/mineral/random/stationside/asteroid/porus
-	name = "porous iron rock"
-	desc = "This rock is filled with pockets of breathable air."
+	name = "пористая железная порода"
+	desc = "Эта порода наполнена карманами пригодного для дыхания воздуха."
 	baseturfs = /turf/open/misc/asteroid
 
 /turf/closed/mineral/asteroid/porous
-	name = "porous rock"
-	desc = "This rock is filled with pockets of breathable air."
+	name = "пористая порода"
+	desc = "Эта порода наполнена карманами пригодного для дыхания воздуха."
 	baseturfs = /turf/open/misc/asteroid
 
 //GIBTONITE
@@ -1079,16 +1079,16 @@
 /turf/closed/mineral/gibtonite/attackby(obj/item/attacking_item, mob/living/user, list/modifiers, list/attack_modifiers, exp_multiplier = 1)
 	var/previous_stage = stage
 	if(istype(attacking_item, /obj/item/goliath_infuser_hammer) && stage == GIBTONITE_ACTIVE)
-		user.visible_message(span_notice("[user] digs [attacking_item] to [src]..."), span_notice("Your tendril hammer instictively digs and wraps around [src] to stop it..."))
+		user.visible_message(span_notice("[user] вонзает [attacking_item] в [src]..."), span_notice("Ваш молот из сухожилий инстинктивно вонзается в [src] и обвивает его, чтобы остановить реакцию..."))
 		defuse(user)
 	else if(istype(attacking_item, /obj/item/mining_scanner) || istype(attacking_item, /obj/item/t_scanner/adv_mining_scanner) && stage == GIBTONITE_ACTIVE)
-		user.visible_message(span_notice("[user] holds [attacking_item] to [src]..."), span_notice("You use [attacking_item] to locate where to cut off the chain reaction and attempt to stop it..."))
+		user.visible_message(span_notice("[user] прикладывает [attacking_item] к [src]..."), span_notice("Вы используете [attacking_item], чтобы найти место разрыва цепной реакции и попытаться остановить её..."))
 		defuse(user)
 	. = ..()
 	if(istype(attacking_item, /obj/item/clothing/gloves/gauntlets) && previous_stage == GIBTONITE_UNSTRUCK && stage == GIBTONITE_ACTIVE && istype(user))
 		user.Immobilize(0.5 SECONDS)
 		user.throw_at(get_ranged_target_turf(src, get_dir(src, user), 5), range = 5, speed = 3, spin = FALSE)
-		user.visible_message(span_danger("[user] hit gibtonite with [attacking_item.name], launching [user.p_them()] back!"), span_danger("You've struck gibtonite! Your [attacking_item.name] launched you back!"))
+		user.visible_message(span_danger("[user] ударяет гибтонит [attacking_item.name], и [user.p_them()] отбрасывает назад!"), span_danger("Вы ударили гибтонит! [attacking_item.name] отбрасывает вас назад!"))
 
 /turf/closed/mineral/gibtonite/proc/explosive_reaction(mob/user = null)
 	if(stage != GIBTONITE_UNSTRUCK)
@@ -1098,10 +1098,10 @@
 	activated_overlay.pixel_x = 2
 	activated_overlay.pixel_y = 2
 	add_overlay(activated_overlay)
-	name = "gibtonite deposit"
-	desc = "An active gibtonite reserve. Run!"
+	name = "месторождение гибтонита"
+	desc = "Активное месторождение гибтонита. Бегите!"
 	stage = GIBTONITE_ACTIVE
-	visible_message(span_danger("There's gibtonite inside! It's going to explode!"))
+	visible_message(span_danger("Внутри гибтонит! Он сейчас взорвётся!"))
 
 	var/notify_admins = !is_mining_level(z)
 
@@ -1134,11 +1134,11 @@
 	cut_overlay(activated_overlay)
 	activated_overlay.icon_state = "rock_Gibtonite_inactive"
 	add_overlay(activated_overlay)
-	desc = "An inactive gibtonite reserve. The ore can be extracted."
+	desc = "Неактивное месторождение гибтонита. Руду можно извлечь."
 	stage = GIBTONITE_STABLE
 	if(det_time < 0)
 		det_time = 0
-	visible_message(span_notice("The chain reaction stopped! The gibtonite had [det_time] reactions left till the explosion!"))
+	visible_message(span_notice("Цепная реакция остановлена! До взрыва гибтонита оставалось [det_time] реакций!"))
 	if(defuser)
 		SEND_SIGNAL(defuser, COMSIG_LIVING_DEFUSED_GIBTONITE, det_time)
 
@@ -1173,14 +1173,14 @@
 	mined.update_visuals()
 
 /turf/closed/mineral/gibtonite/volcanic
-	name = "basalt"
+	name = "базальт"
 	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
 	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 	defer_change = TRUE
 
 /turf/closed/mineral/gibtonite/volcanic/red_rock
-	name = "siderite"
+	name = "сидерит"
 	icon = MAP_SWITCH('icons/turf/walls/red_rock.dmi', 'icons/turf/mining.dmi')
 	icon_state = "red_rock"
 	base_icon_state = "red_rock"
@@ -1192,7 +1192,7 @@
 	wall_icon_state = "red_rock"
 
 /turf/closed/mineral/gibtonite/volcanic/shale
-	name = "shale"
+	name = "сланец"
 	icon = MAP_SWITCH('icons/turf/walls/shale.dmi', 'icons/turf/mining.dmi')
 	icon_state = "shale"
 	base_icon_state = "shale"
@@ -1224,8 +1224,8 @@
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
 
 /turf/closed/mineral/strong
-	name = "very strong rock"
-	desc = "Seems to be stronger than the other rocks in the area. Only a master of mining techniques could destroy this."
+	name = "очень прочная порода"
+	desc = "Кажется прочнее других пород в округе. Разрушить её сможет только мастер горного дела."
 	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
 	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
@@ -1236,12 +1236,12 @@
 
 /turf/closed/mineral/strong/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers, exp_multiplier = 1)
 	if(!ishuman(user))
-		to_chat(usr, span_warning("Only a more advanced species could break a rock such as this one!"))
+		to_chat(usr, span_warning("Только более развитый вид сможет разбить такую породу!"))
 		return FALSE
 	if(user.mind?.get_skill_level(/datum/skill/mining) >= SKILL_LEVEL_MASTER)
 		. = ..()
 	else
-		to_chat(usr, span_warning("The rock seems to be too strong to destroy. Maybe I can break it once I become a master miner."))
+		to_chat(usr, span_warning("Порода кажется слишком прочной. Возможно, я смогу разбить её, когда стану мастером горного дела."))
 
 
 /turf/closed/mineral/strong/gets_drilled(mob/user, exp_multiplier = 0)

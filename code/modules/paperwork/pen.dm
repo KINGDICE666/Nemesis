@@ -11,8 +11,8 @@
  * Pens
  */
 /obj/item/pen
-	name = "pen"
-	desc = "It's a normal black ink pen."
+	name = "ручка"
+	desc = "Обычная ручка с чёрными чернилами."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "pen"
 	inhand_icon_state = "pen"
@@ -78,7 +78,7 @@
 	SIGNAL_HANDLER
 
 	if(user)
-		balloon_alert(user, "clicked")
+		balloon_alert(user, "щёлк")
 	playsound(src, 'sound/items/pen_click.ogg', 30, TRUE, -3)
 	icon_state = initial(icon_state) + (active ? "_retracted" : "")
 	update_appearance(UPDATE_ICON)
@@ -107,53 +107,53 @@
 	return BRUTELOSS
 
 /obj/item/pen/blue
-	desc = "It's a normal blue ink pen."
+	desc = "Обычная ручка с синими чернилами."
 	icon_state = "pen_blue"
 	colour = COLOR_BLUE
 
 /obj/item/pen/red
-	desc = "It's a normal red ink pen."
+	desc = "Обычная ручка с красными чернилами."
 	icon_state = "pen_red"
 	colour = COLOR_RED
 	throw_speed = 4 // red ones go faster (in this case, fast enough to embed!)
 
 /obj/item/pen/invisible
-	desc = "It's an invisible pen marker."
+	desc = "Невидимый маркер-ручка."
 	icon_state = "pen"
 	colour = COLOR_WHITE
 
 /obj/item/pen/fourcolor
-	desc = "It's a fancy four-color ink pen, set to black."
-	name = "four-color pen"
+	desc = "Модная четырёхцветная ручка, сейчас пишет чёрным."
+	name = "четырёхцветная ручка"
 	icon_state = "pen_4color"
 	colour = COLOR_BLACK
 	can_click = FALSE
 
 /obj/item/pen/fourcolor/attack_self(mob/living/carbon/user)
 	. = ..()
-	var/chosen_color = "black"
+	var/chosen_color = "чёрным"
 	switch(colour)
 		if(COLOR_BLACK)
 			colour = COLOR_RED
-			chosen_color = "red"
+			chosen_color = "красным"
 			throw_speed++
 		if(COLOR_RED)
 			colour = COLOR_VIBRANT_LIME
-			chosen_color = "green"
+			chosen_color = "зелёным"
 			throw_speed--
 		if(COLOR_VIBRANT_LIME)
 			colour = COLOR_BLUE
-			chosen_color = "blue"
+			chosen_color = "синим"
 		else
 			colour = COLOR_BLACK
-	to_chat(user, span_notice("\The [src] will now write in [chosen_color]."))
-	desc = "It's a fancy four-color ink pen, set to [chosen_color]."
-	balloon_alert(user, "clicked")
+	to_chat(user, span_notice("\The [src] теперь пишет [chosen_color]."))
+	desc = "Модная четырёхцветная ручка, сейчас пишет [chosen_color]."
+	balloon_alert(user, "щёлк")
 	playsound(src, 'sound/machines/click.ogg', 30, TRUE, -3)
 
 /obj/item/pen/fountain
-	name = "fountain pen"
-	desc = "It's a common fountain pen, with a faux wood body. Rumored to work in zero gravity situations."
+	name = "перьевая ручка"
+	desc = "Обычная перьевая ручка с корпусом под дерево. Говорят, работает даже в невесомости."
 	icon_state = "pen-fountain"
 	font = FOUNTAIN_PEN_FONT
 	requires_gravity = FALSE // fancy spess pens
@@ -162,8 +162,8 @@
 	can_click = FALSE
 
 /obj/item/pen/charcoal
-	name = "charcoal stylus"
-	desc = "It's just a wooden stick with some compressed ash on the end. At least it can write."
+	name = "угольный стилус"
+	desc = "Просто деревянная палочка со спрессованным пеплом на конце. По крайней мере, ей можно писать."
 	icon_state = "pen-charcoal"
 	colour = "#696969"
 	font = CHARCOAL_FONT
@@ -175,7 +175,7 @@
 	return list(/datum/reagent/ash = 5, /datum/reagent/cellulose = 10)
 
 /datum/crafting_recipe/charcoal_stylus
-	name = "Charcoal Stylus"
+	name = "Угольный стилус"
 	result = /obj/item/pen/charcoal
 	reqs = list(/obj/item/stack/sheet/mineral/wood = 1, /datum/reagent/ash = 30)
 	time = 3 SECONDS
@@ -187,7 +187,7 @@
 
 /datum/atom_skin/cap_pen/apply(atom/apply_to, mob/user)
 	. = ..()
-	apply_to.desc = "It's an expensive [preview_name] fountain pen. The nib is quite sharp."
+	apply_to.desc = "Дорогая перьевая ручка ([preview_name]). Перо довольно острое."
 	apply_to.update_desc()
 
 /datum/atom_skin/cap_pen/clear_skin(atom/clear_from, mob/user)
@@ -215,8 +215,8 @@
 	new_icon_state = "pen-fountain-cb"
 
 /obj/item/pen/fountain/captain
-	name = "captain's fountain pen"
-	desc = "It's an expensive Oak fountain pen. The nib is quite sharp."
+	name = "капитанская перьевая ручка"
+	desc = "Дорогая дубовая перьевая ручка. Перо довольно острое."
 	icon_state = "pen-fountain-o"
 	force = 5
 	throwforce = 5
@@ -260,13 +260,13 @@
 
 /obj/item/pen/item_ctrl_click(mob/living/carbon/user)
 	if(loc != user)
-		to_chat(user, span_warning("You must be holding the pen to continue!"))
+		to_chat(user, span_warning("Чтобы продолжить, нужно держать ручку в руке!"))
 		return CLICK_ACTION_BLOCKING
 	var/deg = tgui_input_number(user, "What angle would you like to rotate the pen head to? (0-360)", "Rotate Pen Head", max_value = 360)
 	if(isnull(deg) || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH) || loc != user)
 		return CLICK_ACTION_BLOCKING
 	degrees = deg
-	to_chat(user, span_notice("You rotate the top of the pen to [deg] degrees."))
+	to_chat(user, span_notice("Вы поворачиваете верхнюю часть ручки на [deg] градусов."))
 	SEND_SIGNAL(src, COMSIG_PEN_ROTATED, deg, user)
 	return CLICK_ACTION_SUCCESS
 
@@ -275,8 +275,8 @@
 		return ..()
 	if(!M.try_inject(user, injection_flags = INJECT_TRY_SHOW_ERROR_MESSAGE))
 		return FALSE
-	to_chat(user, span_warning("You stab [M] with the pen."))
-	to_chat(M, span_danger("You feel a tiny prick!"))
+	to_chat(user, span_warning("Вы колете [M] ручкой."))
+	to_chat(M, span_danger("Вы чувствуете лёгкий укол!"))
 	log_combat(user, M, "stabbed", src)
 	return TRUE
 
@@ -346,9 +346,9 @@
 	light_on = FALSE
 	dart_insert_projectile_icon_state = "overlay_edagger"
 	/// The real name of our item when extended.
-	var/hidden_name = "energy dagger"
+	var/hidden_name = "энергетический кинжал"
 	/// The real desc of our item when extended.
-	var/hidden_desc = "It's a normal black ink pe- Wait. That's a thing used to stab people!"
+	var/hidden_desc = "Обычная ручка с чёрными черни- Стоп. Этой штукой колют людей!"
 	/// The real icons used when extended.
 	var/hidden_icon = "edagger"
 	var/list/alt_continuous = list("stabs", "pierces", "shanks")
@@ -465,7 +465,7 @@
 		set_embed(embed_type)
 
 	if(user)
-		balloon_alert(user, "[hidden_name] [active ? "active" : "concealed"]")
+		balloon_alert(user, "[hidden_name] [active ? "активен" : "скрыт"]")
 	playsound(src, active ? 'sound/items/weapons/saberon.ogg' : 'sound/items/weapons/saberoff.ogg', 5, TRUE)
 	set_light_on(active)
 	return COMPONENT_NO_DEFAULT_MESSAGE
@@ -479,8 +479,8 @@
 	entry.add_data_entry(DETSCAN_CATEGORY_ILLEGAL, "Hard-light generator detected.")
 
 /obj/item/pen/survival
-	name = "survival pen"
-	desc = "The latest in portable survival technology, this pen was designed as a miniature diamond pickaxe. Watchers find them very desirable for their diamond exterior."
+	name = "ручка выживания"
+	desc = "Новейшая портативная технология выживания: эта ручка сделана как миниатюрная алмазная кирка. Наблюдатели очень ценят её алмазный корпус."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "digging_pen"
 	inhand_icon_state = "pen"
@@ -518,8 +518,8 @@
 		mineral_turf.gets_drilled(firer, 1)
 
 /obj/item/pen/destroyer
-	name = "Fine Tipped Pen"
-	desc = "A pen with an infinitely-sharpened tip. Capable of striking the weakest point of a strucutre or robot and annihilating it instantly. Good at putting holes in people too."
+	name = "ручка с тонким остриём"
+	desc = "Ручка с бесконечно заточенным кончиком. Может ударить в слабую точку конструкции или робота и мгновенно уничтожить её. В людях дырки тоже делает отлично."
 	force = 5
 	wound_bonus = 100
 	demolition_mod = 9000
@@ -527,7 +527,7 @@
 // screwdriver pen!
 
 /obj/item/pen/screwdriver
-	desc = "A pen with an extendable screwdriver tip. This one has a yellow cap."
+	desc = "Ручка с выдвижным наконечником-отвёрткой. У этой жёлтый колпачок."
 	icon_state = "pendriver"
 	toolspeed = 1.2  // gotta have some downside
 	dart_insert_projectile_icon_state = "overlay_pendriver"
@@ -550,7 +550,7 @@
 
 /obj/item/pen/screwdriver/on_transform(obj/item/source, mob/user, active)
 	if(user)
-		balloon_alert(user, active ? "extended" : "retracted")
+		balloon_alert(user, active ? "выдвинуто" : "убрано")
 	playsound(src, 'sound/items/weapons/batonextend.ogg', 50, TRUE)
 
 	if(!active)
@@ -570,19 +570,19 @@
 
 //The Security holopen
 /obj/item/pen/red/security
-	name = "security pen"
-	desc = "This is a red ink pen exclusively provided to members of the Security Department. Its opposite end features a built-in holographic projector designed for issuing arrest prompts to individuals."
+	name = "ручка службы безопасности"
+	desc = "Ручка с красными чернилами, выдаваемая только сотрудникам службы безопасности. На обратном конце встроен голографический проектор для предъявления требований о сдаче."
 	icon_state = "pen_sec"
 	COOLDOWN_DECLARE(holosign_cooldown)
 
 /obj/item/pen/red/security/examine(mob/user)
 	. = ..()
-	. += span_notice("To initiate the surrender prompt, simply click on an individual within your proximity.")
+	. += span_notice("Чтобы предъявить требование о сдаче, нажмите по человеку рядом с вами.")
 
 //Code from the medical penlight
 /obj/item/pen/red/security/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!COOLDOWN_FINISHED(src, holosign_cooldown))
-		balloon_alert(user, "not ready!")
+		balloon_alert(user, "не готово!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/turf/target_turf = get_turf(interacting_with)
@@ -592,14 +592,14 @@
 		return ITEM_INTERACT_BLOCKING
 
 	living_target.apply_status_effect(/datum/status_effect/surrender_timed)
-	to_chat(living_target, span_userdanger("[user] requests your immediate surrender! You are given 30 seconds to comply!"))
+	to_chat(living_target, span_userdanger("[user] требует вашей немедленной сдачи! У вас 30 секунд на выполнение!"))
 	new /obj/effect/temp_visual/security_holosign(target_turf, user) //produce a holographic glow
 	COOLDOWN_START(src, holosign_cooldown, 30 SECONDS)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/effect/temp_visual/security_holosign
-	name = "security holosign"
-	desc = "A small holographic glow that indicates you're under arrest."
+	name = "голограмма службы безопасности"
+	desc = "Небольшое голографическое свечение, означающее, что вы арестованы."
 	icon_state = "sec_holo"
 	duration = 60
 
@@ -607,4 +607,4 @@
 	. = ..()
 	playsound(loc, 'sound/machines/chime.ogg', 50, FALSE) //make some noise!
 	if(creator)
-		visible_message(span_danger("[creator] created a security hologram!"))
+		visible_message(span_danger("[creator] создаёт голограмму службы безопасности!"))

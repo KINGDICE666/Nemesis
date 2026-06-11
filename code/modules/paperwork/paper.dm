@@ -11,7 +11,7 @@
  * paper and getting rid of that crashing bug
  */
 /obj/item/paper
-	name = "paper"
+	name = "бумага"
 	gender = NEUTER
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "paper"
@@ -342,7 +342,7 @@
 	if(isnull(n_name) || n_name == "")
 		return
 	if(((loc == usr || istype(loc, /obj/item/clipboard)) && usr.stat == CONSCIOUS))
-		name = "paper[(n_name ? "- '[n_name]'" : null)]"
+		name = "бумага[(n_name ? " - '[n_name]'" : null)]"
 	add_fingerprint(usr)
 	update_static_data()
 
@@ -923,7 +923,7 @@
 	color = COLOR_OFF_WHITE
 
 /obj/item/paper/crumpled
-	name = "paper scrap"
+	name = "обрывок бумаги"
 	icon_state = "scrap"
 	slot_flags = null
 	show_written_words = FALSE

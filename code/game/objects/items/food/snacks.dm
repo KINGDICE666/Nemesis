@@ -3,8 +3,8 @@
 //don't even bother looking for recipes for these
 
 /obj/item/food/candy
-	name = "candy"
-	desc = "It's nougat, love it or hate it."
+	name = "конфета"
+	desc = "Это нуга. Любите её или ненавидьте."
 	icon_state = "candy"
 	trash_type = /obj/item/trash/candy
 	food_reagents = list(
@@ -12,7 +12,7 @@
 		/datum/reagent/consumable/sugar = 3,
 	)
 	junkiness = 25
-	tastes = list("candy" = 1)
+	tastes = list("конфета" = 1)
 	foodtypes = JUNKFOOD | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_TINY
@@ -20,7 +20,7 @@
 
 /obj/item/food/candy/bronx
 	name = "\improper South Bronx Paradise bar"
-	desc = "Lose weight, guaranteed! Caramel Mocha Flavor. Something about product consumption..."
+	desc = "Похудение гарантировано! Вкус карамельного мокко. Что-то там о потреблении продукта..."
 	icon_state = "bronx"
 	inhand_icon_state = "candy"
 	trash_type = /obj/item/trash/candy
@@ -31,7 +31,7 @@
 	)
 	junkiness = 10
 	bite_consumption = 10
-	tastes = list("candy" = 5, "weight loss" = 4, "insect larva" = 1)
+	tastes = list("конфета" = 5, "похудение" = 4, "личинка насекомого" = 1)
 	foodtypes = JUNKFOOD | RAW | BUGS
 	custom_price = 80
 	w_class = WEIGHT_CLASS_TINY
@@ -50,16 +50,16 @@
 /obj/item/food/candy/bronx/examine(mob/user)
 	. = ..()
 	if(!revelation && !isobserver(user))
-		. += span_notice("Geeze, you need to get to get your eyes checked. You should look again...")
+		. += span_notice("Господи, вам бы зрение проверить. Стоит посмотреть ещё раз...")
 
 		name = "\improper South Bronx Parasite bar"
-		desc = "Lose weight, guaranteed! Caramel Mocha Flavor! WARNING: PRODUCT NOT FIT FOR HUMAN CONSUMPTION. CONTAINS LIVE DIAMPHIDIA SPECIMENS."
+		desc = "Похудение гарантировано! Вкус карамельного мокко! ВНИМАНИЕ: ПРОДУКТ НЕПРИГОДЕН ДЛЯ УПОТРЕБЛЕНИЯ ЧЕЛОВЕКОМ. СОДЕРЖИТ ЖИВЫЕ ОБРАЗЦЫ DIAMPHIDIA."
 		revelation = TRUE
 
 /obj/item/food/sosjerky
 	name = "\improper Scaredy's Private Reserve Beef Jerky"
 	icon_state = "sosjerky"
-	desc = "Beef jerky made from the finest space cows."
+	desc = "Вяленая говядина из лучших космических коров."
 	trash_type = /obj/item/trash/sosjerky
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/protein = 3,
@@ -67,15 +67,15 @@
 		/datum/reagent/consumable/salt = 2,
 	)
 	junkiness = 25
-	tastes = list("dried meat" = 1)
+	tastes = list("вяленое мясо" = 1)
 	w_class = WEIGHT_CLASS_SMALL
 	foodtypes = JUNKFOOD | MEAT | SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_1
 	custom_materials = list(/datum/material/meat = MEATSLAB_MATERIAL_AMOUNT)
 
 /obj/item/food/sosjerky/healthy
-	name = "homemade beef jerky"
-	desc = "Homemade beef jerky made from the finest space cows."
+	name = "домашняя вяленая говядина"
+	desc = "Домашняя вяленая говядина из лучших космических коров."
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
@@ -83,8 +83,8 @@
 	junkiness = 0
 
 /obj/item/food/chips
-	name = "chips"
-	desc = "Commander Riker's What-The-Crisps."
+	name = "чипсы"
+	desc = "What-The-Crisps коммандера Райкера."
 	icon_state = "chips"
 	trash_type = /obj/item/trash/chips
 	bite_consumption = 1
@@ -94,7 +94,7 @@
 		/datum/reagent/consumable/salt = 1,
 	)
 	junkiness = 20
-	tastes = list("salt" = 1, "crisps" = 1)
+	tastes = list("соль" = 1, "чипсы" = 1)
 	foodtypes = VEGETABLES|JUNKFOOD|FRIED
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -103,8 +103,8 @@
 		AddElement(/datum/element/food_trash, trash_type, FOOD_TRASH_POPABLE)
 
 /obj/item/food/chips/shrimp
-	name = "shrimp chips"
-	desc = "Deep-fried, shrimp flavored chips. A favorite junkfood among seafood connoisseurs!"
+	name = "креветочные чипсы"
+	desc = "Жареные во фритюре чипсы со вкусом креветок. Любимый фастфуд ценителей морепродуктов!"
 	icon_state = "shrimp_chips"
 	trash_type = /obj/item/trash/shrimp_chips
 	food_reagents = list(
@@ -113,21 +113,21 @@
 		/datum/reagent/consumable/nutriment/fat/oil = 3,
 		/datum/reagent/consumable/salt = 1,
 	)
-	tastes = list("salt" = 1, "shrimp" = 1)
+	tastes = list("соль" = 1, "креветка" = 1)
 	foodtypes = JUNKFOOD | FRIED | SEAFOOD
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/no_raisin
 	name = "\improper 4no raisins"
 	icon_state = "4no_raisins"
-	desc = "Best raisins in the universe. Not sure why."
+	desc = "Лучший изюм во вселенной. Неясно почему."
 	trash_type = /obj/item/trash/raisins
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/sugar = 4,
 	)
 	junkiness = 25
-	tastes = list("dried raisins" = 1)
+	tastes = list("сушёный изюм" = 1)
 	foodtypes = JUNKFOOD | FRUIT | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	custom_price = PAYCHECK_CREW * 0.7
@@ -135,8 +135,8 @@
 	crafting_complexity = FOOD_COMPLEXITY_1
 
 /obj/item/food/no_raisin/healthy
-	name = "homemade raisins"
-	desc = "Homemade raisins, the best in all of spess."
+	name = "домашний изюм"
+	desc = "Домашний изюм, лучший во всём космосе."
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
@@ -148,7 +148,7 @@
 /obj/item/food/spacetwinkie
 	name = "\improper Space Twinkie"
 	icon_state = "space_twinkie"
-	desc = "Guaranteed to survive longer than you will."
+	desc = "Гарантированно переживёт вас."
 	food_reagents = list(/datum/reagent/consumable/sugar = 4)
 	junkiness = 25
 	foodtypes = JUNKFOOD | GRAIN | SUGAR
@@ -157,10 +157,10 @@
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/candy_trash
-	name = "candy cigarette butt"
+	name = "окурок конфетной сигареты"
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "candybum"
-	desc = "The leftover from a smoked-out candy cigarette. Can be eaten!"
+	desc = "Остаток выкуренной конфетной сигареты. Можно съесть!"
 	food_reagents = list(
 		/datum/reagent/consumable/sugar = 4,
 		/datum/reagent/ash = 3,
@@ -171,7 +171,7 @@
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/food/candy_trash/nicotine
-	desc = "The leftover from a smoked-out candy cigarette. Smells like nicotine...?"
+	desc = "Остаток выкуренной конфетной сигареты. Пахнет никотином...?"
 	food_reagents = list(
 		/datum/reagent/consumable/sugar = 4,
 		/datum/reagent/ash = 3,
@@ -180,7 +180,7 @@
 
 /obj/item/food/cheesiehonkers
 	name = "\improper Cheesie Honkers"
-	desc = "Bite sized cheesie snacks that will honk all over your mouth."
+	desc = "Сырные закуски на один укус, которые захонкают весь ваш рот."
 	icon_state = "cheesie_honkers"
 	trash_type = /obj/item/trash/cheesie
 	food_reagents = list(
@@ -188,44 +188,44 @@
 		/datum/reagent/consumable/sugar = 3,
 	)
 	junkiness = 25
-	tastes = list("cheese" = 5, "crisps" = 2)
+	tastes = list("сыр" = 5, "чипсы" = 2)
 	foodtypes = JUNKFOOD | DAIRY | SUGAR
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/syndicake
 	name = "\improper Syndi-Cakes"
 	icon_state = "syndi_cakes"
-	desc = "An extremely moist snack cake that tastes just as good after being nuked."
+	desc = "Чрезвычайно влажный кекс, который остаётся таким же вкусным даже после ядерного удара."
 	trash_type = /obj/item/trash/syndi_cakes
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/doctor_delight = 5,
 	)
-	tastes = list("sweetness" = 3, "cake" = 1)
+	tastes = list("сладость" = 3, "кекс" = 1)
 	foodtypes = GRAIN | FRUIT | VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/energybar
 	name = "\improper High-power energy bars"
 	icon_state = "energybar"
-	desc = "An energy bar with a lot of punch, you probably shouldn't eat this if you're not an Ethereal."
+	desc = "Энергетический батончик с мощным зарядом. Наверное, не стоит есть его, если вы не эфириал."
 	trash_type = /obj/item/trash/energybar
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/liquidelectricity/enriched = 3,
 	)
-	tastes = list("pure electricity" = 3, "fitness" = 2)
+	tastes = list("чистое электричество" = 3, "фитнес" = 2)
 	foodtypes = TOXIC
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/peanuts
 	name = "\improper Gallery's peanuts"
-	desc = "A favourite amongst the terminally angry."
+	desc = "Любимая закуска хронически злых."
 	icon_state = "peanuts"
 	trash_type = /obj/item/trash/peanuts
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2)
-	tastes = list("peanuts" = 4, "anger" = 1)
+	tastes = list("арахис" = 4, "злость" = 1)
 	foodtypes = JUNKFOOD | NUTS
 	custom_price = PAYCHECK_CREW * 0.8 //nuts are expensive in real life, and this is the best food in the vendor.
 	junkiness = 10 //less junky than other options, since peanuts are a decently healthy snack option
@@ -237,53 +237,53 @@
 
 /obj/item/food/peanuts/salted
 	name = "\improper Gallery's salt reserves peanuts"
-	desc = "Tastes salty."
+	desc = "На вкус солёный."
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/salt = 1,
 	)
-	tastes = list("peanuts" = 3, "salt" = 1, "high blood pressure" = 1)
+	tastes = list("арахис" = 3, "соль" = 1, "высокое давление" = 1)
 
 /obj/item/food/peanuts/wasabi
 	name = "\improper Gallery's raging wasabi peanuts"
-	desc = "The angriest of all peanut flavours."
+	desc = "Самый злой из всех арахисовых вкусов."
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/capsaicin = 1,
 	)
-	tastes = list("peanuts" = 3, "wasabi" = 1, "rage" = 1)
+	tastes = list("арахис" = 3, "васаби" = 1, "ярость" = 1)
 
 /obj/item/food/peanuts/honey_roasted
 	name = "\improper Gallery's delete sweet peanuts"
-	desc = "Oddly bitter for a sweet treat."
+	desc = "Странно горький для сладкого лакомства."
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/sugar = 1,
 	)
-	tastes = list("peanuts" = 3, "honey" = 1, "bitterness" = 1)
+	tastes = list("арахис" = 3, "мёд" = 1, "горечь" = 1)
 
 /obj/item/food/peanuts/barbecue
 	name = "\improper Gallery's IDEDBBQ peanuts"
-	desc = "Where there's smoke, there's not necessarily fire- sometimes it's just BBQ sauce."
+	desc = "Где дым, там не обязательно огонь - иногда это просто соус BBQ."
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/bbqsauce = 1,
 	)
-	tastes = list("peanuts" = 3, "bbq sauce" = 1, "arguments" = 1)
+	tastes = list("арахис" = 3, "соус BBQ" = 1, "споры" = 1)
 
 /obj/item/food/peanuts/ban_appeal
 	name = "\improper Gallery's peanuts Ban Appel mix"
-	desc = "An ill-fated attempt at trail mix, banned in 6 sectors. Yearly lobbying to overturn is denied not because the apples are toxic, but because they keep evading the ban."
+	desc = "Злополучная попытка сделать орехово-фруктовую смесь, запрещённую в 6 секторах. Ежегодные лоббистские попытки отмены отклоняются не потому, что яблоки токсичны, а потому что они постоянно обходят запрет."
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/toxin/cyanide = 1,
 	) //uses dried poison apples
-	tastes = list("peanuts" = 3, "apples" = 1, "regret" = 1)
+	tastes = list("арахис" = 3, "яблоки" = 1, "сожаление" = 1)
 	safe_for_consumption = FALSE
 
 /obj/item/food/peanuts/random
 	name = "\improper Gallery's every-flavour peanuts"
-	desc = "What flavour will you get?"
+	desc = "Какой вкус вам попадётся?"
 	icon_state = "peanuts"
 	safe_for_consumption = FALSE
 
@@ -312,14 +312,14 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 
 /obj/item/food/cnds
 	name = "\improper C&Ds"
-	desc = "Legally, we cannot say that these won't melt in your hands."
+	desc = "Юридически мы не можем сказать, что они не растают у вас в руках."
 	icon_state = "cnds"
 	trash_type = /obj/item/trash/cnds
 	food_reagents = list(
 		/datum/reagent/consumable/sugar = 3,
 		/datum/reagent/consumable/coco = 1,
 	)
-	tastes = list("chocolate candy" = 3)
+	tastes = list("шоколадная конфета" = 3)
 	junkiness = 25
 	foodtypes = JUNKFOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -329,14 +329,14 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 	return TOXLOSS
 
 /obj/item/food/cnds/caramel
-	name = "caramel C&Ds"
-	desc = "Stuffed with sugary sweet caramel, making them a diabetic's worst nightmare."
+	name = "карамельные C&Ds"
+	desc = "Набиты приторно-сладкой карамелью, худший кошмар диабетика."
 	food_reagents = list(
 		/datum/reagent/consumable/sugar = 2,
 		/datum/reagent/consumable/coco = 1,
 		/datum/reagent/consumable/caramel = 1,
 	)
-	tastes = list("chocolate candy" = 2, "caramel" = 1)
+	tastes = list("шоколадная конфета" = 2, "карамель" = 1)
 
 /obj/item/food/cnds/pretzel
 	name = "pretzel C&Ds"
@@ -350,28 +350,28 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 	foodtypes = JUNKFOOD | GRAIN
 
 /obj/item/food/cnds/peanut_butter
-	name = "peanut butter C&Ds"
-	desc = "Beloved by small children and aliens alike."
+	name = "C&Ds с арахисовой пастой"
+	desc = "Любимы и маленькими детьми, и пришельцами."
 	food_reagents = list(
 		/datum/reagent/consumable/sugar = 2,
 		/datum/reagent/consumable/coco = 1,
 		/datum/reagent/consumable/peanut_butter = 1,
 	)
-	tastes = list("chocolate candy" = 2, "peanut butter" = 1)
+	tastes = list("шоколадная конфета" = 2, "арахисовая паста" = 1)
 
 /obj/item/food/cnds/banana_honk
-	name = "banana honk C&Ds"
-	desc = "The official candy of clowns everywhere. Honk honk!"
+	name = "бананово-хонковые C&Ds"
+	desc = "Официальная конфета клоунов повсюду. Хонк-хонк!"
 	food_reagents = list(
 		/datum/reagent/consumable/sugar = 2,
 		/datum/reagent/consumable/coco = 1,
 		/datum/reagent/consumable/banana = 1,
 	)
-	tastes = list("chocolate candy" = 2, "banana" = 1)
+	tastes = list("шоколадная конфета" = 2, "банан" = 1)
 
 /obj/item/food/cnds/random
-	name = "mystery filled C&Ds"
-	desc = "Filled with one of four delicious flavours!"
+	name = "C&Ds с загадочной начинкой"
+	desc = "Наполнены одним из четырёх восхитительных вкусов!"
 
 /obj/item/food/cnds/random/Initialize(mapload)
 	var/random_flavour = pick(subtypesof(/obj/item/food/cnds) - /obj/item/food/cnds/random)
@@ -387,14 +387,14 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 
 /obj/item/food/pistachios
 	name = "\improper Sweetie's Pistachios"
-	desc = "A pack of Sweetie's brand premium pistacios."
+	desc = "Пачка премиальных фисташек бренда Sweetie's."
 	icon_state = "pistachio"
 	trash_type = /obj/item/trash/pistachios
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	) //a healthy but expensive snack
-	tastes = list("pistachios" = 4, "subtle sweetness" = 1)
+	tastes = list("фисташки" = 4, "тонкая сладость" = 1)
 	foodtypes = JUNKFOOD | NUTS
 	custom_price = PAYCHECK_CREW//pistachios are even more expensive.
 	junkiness = 10 //on par with peanuts
@@ -405,14 +405,14 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 
 /obj/item/food/semki
 	name = "\improper Semki Sunflower Seeds"
-	desc = "A pack of roasted sunflower seeds. Beloved by space Russians and babushka alike."
+	desc = "Пачка жареных семечек подсолнуха. Любимы космическими русскими и бабушками."
 	icon_state = "semki"
 	trash_type = /obj/item/trash/semki
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/fat/oil = 1,
 		/datum/reagent/consumable/salt = 6,
 	) //1 cornoil is equal to 1.33 nutriment
-	tastes = list("sunflowers" = 5)
+	tastes = list("подсолнухи" = 5)
 	foodtypes = JUNKFOOD | NUTS
 	custom_price = PAYCHECK_LOWER * 0.4 //sunflowers are cheap in real life.
 	bite_consumption = 1
@@ -420,8 +420,8 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/semki/healthy
-	name = "roasted sunflower seeds"
-	desc = "Homemade roasted sunflower seeds in a paper cup. A healthy and filling snack to nibble as you watch people pass."
+	name = "жареные семечки подсолнуха"
+	desc = "Домашние жареные семечки подсолнуха в бумажном стаканчике. Полезная и сытная закуска, которую можно грызть, наблюдая за прохожими."
 	icon_state = "sunseeds"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4,
@@ -435,7 +435,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 
 /obj/item/food/cornchips
 	name = "\improper Boritos corn chips"
-	desc = "Triangular corn chips. They do seem a bit bland but would probably go well with some kind of dipping sauce."
+	desc = "Треугольные кукурузные чипсы. Кажутся немного пресными, но, вероятно, хорошо зайдут с каким-нибудь соусом."
 	icon_state = "boritos"
 	trash_type = /obj/item/trash/boritos
 	bite_consumption = 2
@@ -446,7 +446,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 	)
 	junkiness = 20
 	custom_price = PAYCHECK_LOWER * 0.8  //we are filled to the brim with flavor
-	tastes = list("fried corn" = 1)
+	tastes = list("жареная кукуруза" = 1)
 	foodtypes = JUNKFOOD | FRIED
 	w_class = WEIGHT_CLASS_SMALL
 

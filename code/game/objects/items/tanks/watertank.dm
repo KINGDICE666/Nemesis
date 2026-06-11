@@ -1,7 +1,7 @@
 //Hydroponics tank and base code
 /obj/item/watertank
-	name = "backpack water tank"
-	desc = "A S.U.N.S.H.I.N.E. brand water tank backpack with a nozzle to water plants."
+	name = "ранцевый водяной бак"
+	desc = "Ранцевый водяной бак бренда S.U.N.S.H.I.N.E. с насадкой для полива растений."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "waterbackpack"
 	inhand_icon_state = "waterbackpack"
@@ -42,7 +42,7 @@
 	if(!istype(user))
 		return
 	if(user.get_item_by_slot(user.getBackSlot()) != src)
-		to_chat(user, span_warning("The watertank must be worn properly to use!"))
+		to_chat(user, span_warning("Чтобы использовать водяной бак, его нужно правильно надеть!"))
 		return
 	if(user.incapacitated)
 		return
@@ -53,14 +53,14 @@
 	if(noz in src)
 		//Detach the nozzle into the user's hands
 		if(!user.put_in_hands(noz))
-			to_chat(user, span_warning("You need a free hand to hold the mister!"))
+			to_chat(user, span_warning("Чтобы держать распылитель, нужна свободная рука!"))
 			return
 	else
 		//Remove from their hands and put back "into" the tank
 		remove_noz()
 
 /obj/item/watertank/verb/toggle_mister_verb()
-	set name = "Toggle Mister"
+	set name = "Переключить распылитель"
 	toggle_mister(usr)
 
 /obj/item/watertank/proc/make_noz()
@@ -69,7 +69,7 @@
 /obj/item/watertank/proc/noz_move(atom/movable/mover, atom/oldloc, direction)
 	if(mover.loc == src || mover.loc == loc)
 		return
-	balloon_alert(loc, "nozzle snaps back")
+	balloon_alert(loc, "насадка отдёргивается")
 	mover.forceMove(src)
 
 /obj/item/watertank/equipped(mob/user, slot)
@@ -106,8 +106,8 @@
 // the watertank backpack. Allowing it to be placed elsewhere or created without a parent
 // watertank object will likely lead to weird behaviour or runtimes.
 /obj/item/reagent_containers/spray/mister
-	name = "water mister"
-	desc = "A mister nozzle attached to a water tank."
+	name = "водяной распылитель"
+	desc = "Распылительная насадка, прикреплённая к водяному баку."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "mister"
 	inhand_icon_state = "mister"
@@ -134,8 +134,8 @@
 
 //Janitor tank
 /obj/item/watertank/janitor
-	name = "backpack cleaner tank"
-	desc = "A janitorial cleaner backpack with nozzle to clean blood and graffiti."
+	name = "ранцевый бак уборщика"
+	desc = "Ранцевый бак уборщика с насадкой для очистки крови и граффити."
 	icon_state = "waterbackpackjani"
 	inhand_icon_state = "waterbackpackjani"
 	custom_price = PAYCHECK_CREW * 5
@@ -145,8 +145,8 @@
 	reagents.add_reagent(/datum/reagent/space_cleaner, 500)
 
 /obj/item/reagent_containers/spray/mister/janitor
-	name = "janitor spray nozzle"
-	desc = "A janitorial spray nozzle attached to a watertank, designed to clean up large messes."
+	name = "распылительная насадка уборщика"
+	desc = "Распылительная насадка уборщика, прикреплённая к водяному баку и предназначенная для уборки большого беспорядка."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "misterjani"
 	inhand_icon_state = "misterjani"
@@ -160,12 +160,12 @@
 	return new /obj/item/reagent_containers/spray/mister/janitor(src)
 
 /obj/item/reagent_containers/spray/mister/janitor/mode_change_message(mob/user)
-	to_chat(user, span_notice("You [amount_per_transfer_from_this == 10 ? "remove" : "affix"] the nozzle. You'll now use [amount_per_transfer_from_this] units per spray."))
+	to_chat(user, span_notice("Вы [amount_per_transfer_from_this == 10 ? "снимаете" : "закрепляете"] насадку. Теперь будет расходоваться [amount_per_transfer_from_this] ед. за распыление."))
 
 //Security tank
 /obj/item/watertank/pepperspray
-	name = "ANTI-TIDER-2500 suppression backpack"
-	desc = "The ultimate crowd-control device; this tool allows the user to quickly and efficiently pacify groups of hostile targets."
+	name = "ранцевый подавитель ANTI-TIDER-2500"
+	desc = "Идеальное устройство для контроля толпы: оно позволяет быстро и эффективно усмирять группы враждебных целей."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "pepperbackpacksec"
 	inhand_icon_state = "pepperbackpacksec"
@@ -177,8 +177,8 @@
 	reagents.add_reagent(/datum/reagent/consumable/condensedcapsaicin, 1000)
 
 /obj/item/reagent_containers/spray/mister/pepperspray
-	name = "security spray nozzle"
-	desc = "A pacifying spray nozzle attached to a pepperspray tank, designed to silence perps."
+	name = "распылительная насадка СБ"
+	desc = "Усмиряющая распылительная насадка, прикреплённая к баку с перцовым спреем и предназначенная для подавления нарушителей."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "mistersec"
 	inhand_icon_state = "mistersec"
@@ -192,12 +192,12 @@
 	return new /obj/item/reagent_containers/spray/mister/pepperspray(src)
 
 /obj/item/reagent_containers/spray/mister/pepperspray/mode_change_message(mob/user)
-	to_chat(user, span_notice("You [amount_per_transfer_from_this == 10 ? "remove" : "affix"] the nozzle. You'll now use [amount_per_transfer_from_this] units per spray."))
+	to_chat(user, span_notice("Вы [amount_per_transfer_from_this == 10 ? "снимаете" : "закрепляете"] насадку. Теперь будет расходоваться [amount_per_transfer_from_this] ед. за распыление."))
 
 //ATMOS FIRE FIGHTING BACKPACK
 /obj/item/watertank/atmos
-	name = "backpack firefighter tank"
-	desc = "A refrigerated and pressurized backpack tank with extinguisher nozzle, intended to fight fires. Swaps between extinguisher, resin launcher and a smaller scale resin foamer."
+	name = "ранцевый пожарный бак"
+	desc = "Охлаждаемый ранцевый бак под давлением с насадкой-огнетушителем для борьбы с пожарами. Переключается между огнетушителем, пускателем смолы и малым смоляным пеногенератором."
 	inhand_icon_state = "waterbackpackatmos"
 	icon_state = "waterbackpackatmos"
 	worn_icon_state = "waterbackpackatmos"
@@ -219,8 +219,8 @@
 		N.nozzle_mode = 0
 
 /obj/item/extinguisher/mini/nozzle
-	name = "extinguisher nozzle"
-	desc = "A heavy duty nozzle attached to a firefighter's backpack tank."
+	name = "насадка-огнетушитель"
+	desc = "Мощная насадка, прикреплённая к ранцевому пожарному баку."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "atmos_nozzle"
 	inhand_icon_state = "nozzleatmos"
@@ -348,8 +348,8 @@
 	metal_synthesis_cooldown--
 
 /obj/effect/resin_container
-	name = "resin container"
-	desc = "A compacted ball of expansive resin, used to repair the atmosphere in a room, or seal off breaches."
+	name = "смоляной контейнер"
+	desc = "Сжатый шар расширяющейся смолы, используемый для восстановления атмосферы в комнате или герметизации пробоин."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "frozen_smoke_capsule"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -370,8 +370,8 @@
 #undef RESIN_FOAM
 
 /obj/item/reagent_containers/chemtank
-	name = "backpack chemical injector"
-	desc = "A chemical autoinjector that can be carried on your back."
+	name = "ранцевый химический инъектор"
+	desc = "Химический автоинъектор, который можно носить на спине."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "waterbackpackchem"
 	inhand_icon_state = "waterbackpackchem"

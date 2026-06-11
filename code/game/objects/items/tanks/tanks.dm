@@ -153,31 +153,31 @@
 		icon = loc
 	if(!in_range(src, user) && !isobserver(user))
 		if(icon == src)
-			. += span_notice("If you want any more information you'll need to get closer.")
+			. += span_notice("Если хотите узнать больше, придётся подойти ближе.")
 		return
 
-	. += span_notice("The pressure gauge reads [round(air_contents.return_pressure(),0.01)] kPa.")
+	. += span_notice("Манометр показывает [round(air_contents.return_pressure(),0.01)] кПа.")
 
 	var/celsius_temperature = air_contents.temperature-T0C
 	var/descriptive
 
 	if (celsius_temperature < 20)
-		descriptive = "cold"
+		descriptive = "холодным"
 	else if (celsius_temperature < 40)
-		descriptive = "room temperature"
+		descriptive = "комнатной температуры"
 	else if (celsius_temperature < 80)
-		descriptive = "lukewarm"
+		descriptive = "слегка тёплым"
 	else if (celsius_temperature < 100)
-		descriptive = "warm"
+		descriptive = "тёплым"
 	else if (celsius_temperature < 300)
-		descriptive = "hot"
+		descriptive = "горячим"
 	else
-		descriptive = "furiously hot"
+		descriptive = "обжигающе горячим"
 
-	. += span_notice("It feels [descriptive].")
+	. += span_notice("На ощупь он кажется [descriptive].")
 
 	if(tank_assembly)
-		. += span_warning("There is some kind of device [EXAMINE_HINT("rigged")] to the tank!")
+		. += span_warning("К баллону [EXAMINE_HINT("rigged")] какое-то устройство!")
 
 /obj/item/tank/atom_deconstruct(disassembled = TRUE)
 	var/atom/location = loc

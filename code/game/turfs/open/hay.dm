@@ -1,6 +1,6 @@
 /turf/open/misc/hay
-	name = "hay"
-	desc = "For horses and cows like you."
+	name = "сено"
+	desc = "Для лошадей и коров вроде вас."
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "hay"
 	base_icon_state = "hay"

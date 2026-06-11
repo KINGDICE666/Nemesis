@@ -44,10 +44,10 @@ export const ChemReactionChamber = (props) => {
         <Stack vertical fill>
           <Stack.Item>
             <Section
-              title="Conditions"
+              title="Условия"
               buttons={
                 <Stack>
-                  <Stack.Item mt={0.3}>{'Target:'}</Stack.Item>
+                  <Stack.Item mt={0.3}>{'Цель:'}</Stack.Item>
                   <Stack.Item>
                     <NumberInput
                       tickWhileDragging
@@ -72,7 +72,7 @@ export const ChemReactionChamber = (props) => {
                 <Stack.Item>
                   <Stack fill>
                     <Stack.Item textColor="label">
-                      Current Temperature:
+                      Текущая температура:
                     </Stack.Item>
                     <Stack.Item grow>
                       <AnimatedNumber
@@ -115,13 +115,11 @@ export const ChemReactionChamber = (props) => {
                         color="transparent"
                         icon="question"
                         tooltip={`
-                        In chemistry, pH is a scale used to specify
-                        the acidity or basicity of an aqueous solution.
-                        Acidic solutions are measured to have lower
-                        pH values than basic or alkaline solutions.
-                        The pH scale is logarithmic and inversely
-                        indicates the concentration of hydrogen ions
-                        in the solution.`}
+                        В химии pH — это шкала кислотности или щёлочности
+                        водного раствора. Кислые растворы имеют более низкий
+                        pH, чем основные или щёлочные. Шкала pH логарифмическая
+                        и обратно показывает концентрацию ионов водорода
+                        в растворе.`}
                         tooltipPosition="bottom-start"
                       />
                     </Stack.Item>
@@ -132,13 +130,13 @@ export const ChemReactionChamber = (props) => {
           </Stack.Item>
           <Stack.Item grow>
             <Section
-              title="Settings"
+              title="Настройки"
               fill
               scrollable
               buttons={
                 (isReacting && (
                   <Box inline bold color={'purple'}>
-                    {'Reacting'}
+                    {'Реакция'}
                   </Box>
                 )) || (
                   <Box
@@ -147,7 +145,7 @@ export const ChemReactionChamber = (props) => {
                     bold
                     color={emptying ? 'bad' : 'good'}
                   >
-                    {emptying ? 'Emptying' : 'Filling'}
+                    {emptying ? 'Опустошение' : 'Наполнение'}
                   </Box>
                 )
               }
@@ -155,7 +153,7 @@ export const ChemReactionChamber = (props) => {
               <Stack vertical fill>
                 <Stack.Item>
                   <LabeledList>
-                    <LabeledList.Item label="Acidic pH limit">
+                    <LabeledList.Item label="Кислотный предел pH">
                       <NumberInput
                         tickWhileDragging
                         value={reagentAcidic}
@@ -171,7 +169,7 @@ export const ChemReactionChamber = (props) => {
                         }
                       />
                     </LabeledList.Item>
-                    <LabeledList.Item label="Alkaline pH limit">
+                    <LabeledList.Item label="Щелочной предел pH">
                       <NumberInput
                         tickWhileDragging
                         value={reagentAlkaline}
@@ -202,7 +200,7 @@ export const ChemReactionChamber = (props) => {
                           })
                         }
                       >
-                        Add Reagent
+                        Добавить реагент
                       </Button>
                     </Stack.Item>
                     <Stack.Item>
@@ -236,9 +234,9 @@ export const ChemReactionChamber = (props) => {
                             <Button
                               color="transparent"
                               tooltip={`
-                                This button converts this reagent entry into a catalyst.
-                                Catalyst reagents are not removed from the reaction chamber
-                                on completion. Useful for certain reactions.`}
+                                Эта кнопка превращает запись реагента в катализатор.
+                                Реагенты-катализаторы не удаляются из реакционной камеры
+                                после завершения. Полезно для некоторых реакций.`}
                               tooltipPosition="bottom-start"
                               onClick={() =>
                                 act('catalyst', {
@@ -269,7 +267,7 @@ export const ChemReactionChamber = (props) => {
             </Section>
           </Stack.Item>
           <Stack.Item grow={0.7}>
-            <Section title="Catalysts" fill scrollable>
+            <Section title="Катализаторы" fill scrollable>
               <Stack.Item>
                 <Stack vertical fill>
                   {catalysts.map((reagent) => (

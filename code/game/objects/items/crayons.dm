@@ -1,12 +1,12 @@
-#define RANDOM_GRAFFITI "Random Graffiti"
-#define RANDOM_LETTER "Random Letter"
-#define RANDOM_PUNCTUATION "Random Punctuation"
-#define RANDOM_NUMBER "Random Number"
-#define RANDOM_SYMBOL "Random Symbol"
-#define RANDOM_DRAWING "Random Drawing"
-#define RANDOM_ORIENTED "Random Oriented"
-#define RANDOM_RUNE "Random Rune"
-#define RANDOM_ANY "Random Anything"
+#define RANDOM_GRAFFITI "Случайное граффити"
+#define RANDOM_LETTER "Случайная буква"
+#define RANDOM_PUNCTUATION "Случайная пунктуация"
+#define RANDOM_NUMBER "Случайное число"
+#define RANDOM_SYMBOL "Случайный символ"
+#define RANDOM_DRAWING "Случайный рисунок"
+#define RANDOM_ORIENTED "Случайный направленный рисунок"
+#define RANDOM_RUNE "Случайная руна"
+#define RANDOM_ANY "Что угодно случайное"
 
 #define PAINT_NORMAL 1
 #define PAINT_LARGE_HORIZONTAL 2
@@ -22,8 +22,8 @@
  */
 
 /obj/item/toy/crayon
-	name = "crayon"
-	desc = "A colourful crayon. Looks tasty. Mmmm..."
+	name = "мелок"
+	desc = "Цветной мелок. Выглядит вкусно. Ммм..."
 	icon = 'icons/obj/art/crayons.dmi'
 	icon_state = "crayonred"
 	worn_icon_state = "crayon"
@@ -306,10 +306,10 @@
 		if(self_contained)
 			qdel(src)
 		else
-			balloon_alert(user, "empty!")
+			balloon_alert(user, "пусто!")
 		return TRUE
 	if(charges_left < amount && requires_full)
-		balloon_alert(user, "not enough left!")
+		balloon_alert(user, "недостаточно осталось!")
 		return TRUE
 
 	return FALSE
@@ -351,17 +351,17 @@
 		D_items += list(list("item" = D))
 
 	var/list/O_items = list()
-	. += list(list(name = "Oriented", "items" = O_items))
+	. += list(list(name = "Направленные", "items" = O_items))
 	for(var/O in oriented)
 		O_items += list(list("item" = O))
 
 	var/list/R_items = list()
-	. += list(list(name = "Runes", "items" = R_items))
+	. += list(list(name = "Руны", "items" = R_items))
 	for(var/R in runes)
 		R_items += list(list("item" = R))
 
 	var/list/rand_items = list()
-	. += list(list(name = "Random", "items" = rand_items))
+	. += list(list(name = "Случайное", "items" = rand_items))
 	for(var/i in randoms)
 		if(!is_literate_user) // no spelling allowed
 			if(i == RANDOM_LETTER || i == RANDOM_NUMBER || i == RANDOM_PUNCTUATION)
@@ -448,7 +448,7 @@
 		target = target.loc
 
 	if(!isValidSurface(target))
-		target.balloon_alert(user, "can't use there!")
+		target.balloon_alert(user, "здесь нельзя!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/drawing = drawtype
@@ -522,7 +522,7 @@
 		clicky = clamp(text2num(LAZYACCESS(modifiers, ICON_Y)) - 16, -(ICON_SIZE_Y/2), ICON_SIZE_Y/2)
 
 	if(!instant)
-		to_chat(user, span_notice("You start drawing a [temp] on \the [target]..."))
+		to_chat(user, span_notice("Вы начинаете рисовать [temp] на \the [target]..."))
 
 	if(pre_noise)
 		audible_message(span_notice("You hear spraying."))
@@ -561,7 +561,7 @@
 					affected_turfs += left
 					affected_turfs += right
 				else
-					balloon_alert(user, "no room!")
+					balloon_alert(user, "нет места!")
 					return ITEM_INTERACT_BLOCKING
 		created_art.add_hiddenprint(user)
 		if(istagger)
@@ -570,9 +570,9 @@
 			created_art.AddElement(/datum/element/art, BAD_ART)
 
 	if(!instant)
-		to_chat(user, span_notice("You finish drawing \the [temp]."))
+		to_chat(user, span_notice("Вы заканчиваете рисовать \the [temp]."))
 	else
-		to_chat(user, span_notice("You spray a [temp] on \the [target.name]"))
+		to_chat(user, span_notice("Вы распыляете [temp] на \the [target.name]"))
 
 	if(length(text_buffer) > 1)
 		text_buffer = copytext(text_buffer, length(text_buffer[1]) + 1)
@@ -594,7 +594,7 @@
 ///Checks if the user is still adjacent to the target (used for do_after extra_checks)
 /obj/item/toy/crayon/proc/adjacency_check(mob/user, atom/target)
 	if(!user.Adjacent(target))
-		user.balloon_alert(user, "moved too far away!")
+		user.balloon_alert(user, "слишком далеко!")
 		return FALSE
 	return TRUE
 
@@ -612,13 +612,13 @@
 	if(!(pwned_human.stat == DEAD || HAS_TRAIT(pwned_human, TRAIT_FAKEDEATH)))
 		return NONE
 
-	interacting_with.balloon_alert(user, "drawing outline...")
+	interacting_with.balloon_alert(user, "рисуем контур...")
 	if(!do_after(user, DRAW_TIME, target = pwned_human))
 		return ITEM_INTERACT_FAILURE
 	if(!use_charges(user, 1))
 		return ITEM_INTERACT_FAILURE
 
-	to_chat(user, span_notice("You draw a chalk outline around [pwned_human]."))
+	to_chat(user, span_notice("Вы рисуете меловой контур вокруг [pwned_human]."))
 	var/obj/effect/decal/cleanable/crayon/chalk_line = new(get_turf(pwned_human), paint_color, "body", "chalk outline", null, null, "A vaguely [pwned_human] shaped body outline.", outline_strength)
 	chalk_line.pixel_y = (pwned_human.pixel_y + pwned_human.pixel_z)
 	chalk_line.pixel_x = (pwned_human.pixel_x + pwned_human.pixel_w)
@@ -634,7 +634,7 @@
 	)
 
 /obj/item/toy/crayon/red
-	name = "red crayon"
+	name = "красный мелок"
 	icon_state = "crayonred"
 	paint_color = COLOR_CRAYON_RED
 	crayon_color = "red"
@@ -642,7 +642,7 @@
 	dye_color = DYE_RED
 
 /obj/item/toy/crayon/orange
-	name = "orange crayon"
+	name = "оранжевый мелок"
 	icon_state = "crayonorange"
 	paint_color = COLOR_CRAYON_ORANGE
 	crayon_color = "orange"
@@ -650,7 +650,7 @@
 	dye_color = DYE_ORANGE
 
 /obj/item/toy/crayon/yellow
-	name = "yellow crayon"
+	name = "жёлтый мелок"
 	icon_state = "crayonyellow"
 	paint_color = COLOR_CRAYON_YELLOW
 	crayon_color = "yellow"
@@ -658,7 +658,7 @@
 	dye_color = DYE_YELLOW
 
 /obj/item/toy/crayon/green
-	name = "green crayon"
+	name = "зелёный мелок"
 	icon_state = "crayongreen"
 	paint_color = COLOR_CRAYON_GREEN
 	crayon_color = "green"
@@ -666,7 +666,7 @@
 	dye_color = DYE_GREEN
 
 /obj/item/toy/crayon/blue
-	name = "blue crayon"
+	name = "синий мелок"
 	icon_state = "crayonblue"
 	paint_color = COLOR_CRAYON_BLUE
 	crayon_color = "blue"
@@ -674,7 +674,7 @@
 	dye_color = DYE_BLUE
 
 /obj/item/toy/crayon/purple
-	name = "purple crayon"
+	name = "фиолетовый мелок"
 	icon_state = "crayonpurple"
 	paint_color = COLOR_CRAYON_PURPLE
 	crayon_color = "purple"
@@ -682,7 +682,7 @@
 	dye_color = DYE_PURPLE
 
 /obj/item/toy/crayon/black
-	name = "black crayon"
+	name = "чёрный мелок"
 	icon_state = "crayonblack"
 	paint_color = COLOR_CRAYON_BLACK
 	crayon_color = "black"
@@ -690,8 +690,8 @@
 	dye_color = DYE_BLACK
 
 /obj/item/toy/crayon/white
-	name = "stick of chalk"
-	desc = "A stark-white stick of chalk."
+	name = "кусок мела"
+	desc = "Ослепительно белый кусок мела."
 	icon_state = "crayonwhite"
 	paint_color = COLOR_WHITE
 	crayon_color = "white"
@@ -700,9 +700,9 @@
 	outline_strength = 1
 
 /obj/item/toy/crayon/mime
-	name = "mime crayon"
+	name = "мимский мелок"
 	icon_state = "crayonmime"
-	desc = "A very sad-looking crayon."
+	desc = "Очень грустный на вид мелок."
 	paint_color = COLOR_WHITE
 	crayon_color = "mime"
 	reagent_contents = list(/datum/reagent/consumable/nutriment = 0.5, /datum/reagent/colorful_reagent/powder/invisible = 1.5)
@@ -710,7 +710,7 @@
 	dye_color = DYE_MIME
 
 /obj/item/toy/crayon/rainbow
-	name = "rainbow crayon"
+	name = "радужный мелок"
 	icon_state = "crayonrainbow"
 	paint_color = COLOR_CRAYON_RAINBOW
 	crayon_color = "rainbow"
@@ -728,8 +728,8 @@
  */
 
 /obj/item/storage/crayons
-	name = "box of crayons"
-	desc = "A box of crayons for all your rune drawing needs."
+	name = "коробка мелков"
+	desc = "Коробка мелков для всех ваших нужд в рисовании рун."
 	icon = 'icons/obj/art/crayons.dmi'
 	icon_state = "crayonbox"
 	w_class = WEIGHT_CLASS_SMALL

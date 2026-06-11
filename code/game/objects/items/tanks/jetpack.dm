@@ -1,6 +1,6 @@
 /obj/item/tank/jetpack
-	name = "jetpack (oxygen)"
-	desc = "A tank of compressed gas for use as propulsion in zero-gravity areas. Use with caution."
+	name = "джетпак (кислород)"
+	desc = "Баллон со сжатым газом для перемещения в невесомости. Используйте осторожно."
 	icon_state = "jetpack"
 	inhand_icon_state = "jetpack"
 	lefthand_file = 'icons/mob/inhands/equipment/jetpacks_lefthand.dmi'
@@ -81,7 +81,7 @@
 	else if(istype(action, /datum/action/item_action/jetpack_stabilization))
 		if(on)
 			configure_jetpack(!stabilize, user)
-			to_chat(user, span_notice("You turn the jetpack stabilization [stabilize ? "on" : "off"]."))
+			to_chat(user, span_notice("Вы [stabilize ? "включаете" : "выключаете"] стабилизацию джетпака."))
 	else
 		toggle_internals(user)
 
@@ -91,13 +91,13 @@
 
 	if(!on)
 		if(turn_on(user))
-			to_chat(user, span_notice("You turn the jetpack on."))
+			to_chat(user, span_notice("Вы включаете джетпак."))
 		else
-			to_chat(user, span_notice("You fail to turn the jetpack on."))
+			to_chat(user, span_notice("Не удаётся включить джетпак."))
 			return
 	else
 		turn_off(user)
-		to_chat(user, span_notice("You turn the jetpack off."))
+		to_chat(user, span_notice("Вы выключаете джетпак."))
 
 	update_item_action_buttons()
 
@@ -153,7 +153,7 @@
 		return
 	var/mob/living/carbon/human/suffocater = user
 	suffocater.say("WHAT THE FUCK IS CARBON DIOXIDE?")
-	suffocater.visible_message(span_suicide("[user] is suffocating [user.p_them()]self with [src]! It looks like [user.p_they()] didn't read what that jetpack says!"))
+	suffocater.visible_message(span_suicide("[user] душит себя с помощью [src]! Похоже, надпись на джетпаке осталась непрочитанной!"))
 	return OXYLOSS
 
 /obj/item/tank/jetpack/emp_act(severity)
@@ -174,8 +174,8 @@
 	disabled = FALSE
 
 /obj/item/tank/jetpack/improvised
-	name = "improvised jetpack"
-	desc = "A jetpack made from two air tanks, a fire extinguisher and some atmospherics equipment. It doesn't look like it can hold much."
+	name = "самодельный джетпак"
+	desc = "Джетпак, сделанный из двух воздушных баллонов, огнетушителя и атмосферного оборудования. Похоже, много он не вместит."
 	icon_state = "jetpack-improvised"
 	inhand_icon_state = "jetpack-improvised"
 	worn_icon = null
@@ -192,20 +192,20 @@
 
 	var/mob/user = loc
 	if(rand(0,250) == 0)
-		to_chat(user, span_notice("You feel your jetpack's engines cut out."))
+		to_chat(user, span_notice("Вы чувствуете, как двигатели джетпака глохнут."))
 		turn_off(user)
 		return
 	return ..()
 
 /obj/item/tank/jetpack/void
-	name = "void jetpack (oxygen)"
-	desc = "It works well in a void."
+	name = "вакуумный джетпак (кислород)"
+	desc = "Хорошо работает в пустоте."
 	icon_state = "jetpack-void"
 	inhand_icon_state = "jetpack-void"
 
 /obj/item/tank/jetpack/harness
-	name = "jet harness (oxygen)"
-	desc = "A lightweight tactical harness, used by those who don't want to be weighed down by traditional jetpacks."
+	name = "реактивная сбруя (кислород)"
+	desc = "Лёгкая тактическая сбруя для тех, кто не хочет таскать тяжёлые обычные джетпаки."
 	icon_state = "jetpack-mini"
 	inhand_icon_state = "jetpack-black"
 	volume = 40
@@ -213,8 +213,8 @@
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/tank/jetpack/captain
-	name = "captain's jetpack"
-	desc = "A compact, lightweight jetpack containing a high amount of compressed oxygen."
+	name = "капитанский джетпак"
+	desc = "Компактный лёгкий джетпак с большим запасом сжатого кислорода."
 	icon_state = "jetpack-captain"
 	inhand_icon_state = "jetpack-captain"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -224,14 +224,14 @@
 	drift_force = 2 NEWTONS
 
 /obj/item/tank/jetpack/security
-	name = "security jetpack (oxygen)"
-	desc = "A tank of compressed oxygen for use as propulsion in zero-gravity areas by security forces."
+	name = "джетпак службы безопасности (кислород)"
+	desc = "Баллон со сжатым кислородом для перемещения сотрудников службы безопасности в невесомости."
 	icon_state = "jetpack-sec"
 	inhand_icon_state = "jetpack-sec"
 
 /obj/item/tank/jetpack/carbondioxide
-	name = "jetpack (carbon dioxide)"
-	desc = "A tank of compressed carbon dioxide for use as propulsion in zero-gravity areas. Painted black to indicate that it should not be used as a source for internals."
+	name = "джетпак (углекислый газ)"
+	desc = "Баллон со сжатым углекислым газом для перемещения в невесомости. Покрашен в чёрный, чтобы показать: его нельзя использовать для дыхания."
 	icon_state = "jetpack-black"
 	inhand_icon_state = "jetpack-black"
 	distribute_pressure = 0

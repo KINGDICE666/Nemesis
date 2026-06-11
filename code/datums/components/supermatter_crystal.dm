@@ -59,12 +59,12 @@
 	playsound(get_turf(atom_source), 'sound/effects/supermatter.ogg', 50, TRUE)
 	consume_returns(damage_increase = blob.get_integrity() * 0.05)
 	if(blob.get_integrity() > 100)
-		blob.visible_message(span_danger("\The [blob] strikes at \the [atom_source] and flinches away!"),
-			span_hear("You hear a loud crack as you are washed with a wave of heat."))
+		blob.visible_message(span_danger("\The [blob] ударяет \the [atom_source] и отшатывается!"),
+			span_hear("Вы слышите громкий треск, и вас окатывает волной жара."))
 		blob.take_damage(100, BURN)
 	else
-		blob.visible_message(span_danger("\The [blob] strikes at \the [atom_source] and rapidly flashes to ash."),
-			span_hear("You hear a loud crack as you are washed with a wave of heat."))
+		blob.visible_message(span_danger("\The [blob] ударяет \the [atom_source] и быстро вспыхивает пеплом."),
+			span_hear("Вы слышите громкий треск, и вас окатывает волной жара."))
 		consume(atom_source, blob)
 
 /datum/component/supermatter_crystal/proc/paw_hit(datum/source, mob/user, list/modifiers)
@@ -89,8 +89,8 @@
 	else
 		murder = user.attack_verb_continuous
 	dust_mob(source, user, \
-	span_danger("[user] unwisely [murder] [atom_source], and [user.p_their()] body burns brilliantly before flashing into ash!"), \
-	span_userdanger("You unwisely touch [atom_source], and your vision glows brightly as your body crumbles to dust. Oops."), \
+	span_danger("[user] неосмотрительно [murder] [atom_source], и [user.p_their()] тело ярко загорается, прежде чем вспыхнуть пеплом!"), \
+	span_userdanger("Вы неосмотрительно касаетесь [atom_source], ваше зрение заливает яркий свет, а тело рассыпается в пыль. Упс."), \
 	"simple animal attack")
 
 /datum/component/supermatter_crystal/proc/hulk_hit(datum/source, mob/user)
@@ -124,8 +124,8 @@
 	if(!user.is_mouth_covered())
 		if(user.combat_mode)
 			dust_mob(source, user,
-				span_danger("As [user] tries to take a bite out of [atom_source] everything goes silent before [user.p_their()] body starts to glow and burst into flames before flashing to ash."),
-				span_userdanger("You try to take a bite out of [atom_source], but find [p_them()] far too hard to get anywhere before everything starts burning and your ears fill with ringing!"),
+				span_danger("Когда [user] пытается откусить кусок от [atom_source], всё затихает, а затем [user.p_their()] тело начинает светиться, вспыхивает пламенем и обращается в пепел."),
+				span_userdanger("Вы пытаетесь откусить кусок от [atom_source], но он слишком твёрдый, чтобы что-то получилось, прежде чем всё начинает гореть, а уши наполняет звон!"),
 				"attempted bite"
 			)
 			return
@@ -133,8 +133,8 @@
 		var/obj/item/organ/tongue/licking_tongue = user.get_organ_slot(ORGAN_SLOT_TONGUE)
 		if(licking_tongue)
 			dust_mob(source, user,
-				span_danger("As [user] hesitantly leans in and licks [atom_source] everything goes silent before [user.p_their()] body starts to glow and burst into flames before flashing to ash!"),
-				span_userdanger("You tentatively lick [atom_source], but you can't figure out what it tastes like before everything starts burning and your ears fill with ringing!"),
+				span_danger("Когда [user] нерешительно наклоняется и лижет [atom_source], всё затихает, а затем [user.p_their()] тело начинает светиться, вспыхивает пламенем и обращается в пепел!"),
+				span_userdanger("Вы осторожно лижете [atom_source], но не успеваете понять вкус, прежде чем всё начинает гореть, а уши наполняет звон!"),
 				"attempted lick"
 			)
 			return
@@ -142,15 +142,15 @@
 	var/obj/item/bodypart/head/forehead = user.get_bodypart(BODY_ZONE_HEAD)
 	if(forehead)
 		dust_mob(source, user,
-			span_danger("As [user]'s forehead bumps into [atom_source], inducing a resonance... Everything goes silent before [user.p_their()] [forehead] flashes to ash!"),
-			span_userdanger("You feel your forehead bump into [atom_source] and everything suddenly goes silent. As your head fills with ringing you come to realize that that was not a wise decision."),
+			span_danger("Когда лоб [user] касается [atom_source], вызывая резонанс... Всё затихает, прежде чем [user.p_their()] [forehead] вспыхивает пеплом!"),
+			span_userdanger("Вы чувствуете, как ваш лоб касается [atom_source], и всё внезапно затихает. Пока голову наполняет звон, вы понимаете, что это было не мудрое решение."),
 			"failed lick"
 		)
 		return
 
 	dust_mob(source, user,
-		span_danger("[user] leans in and tries to lick [atom_source], inducing a resonance... [user.p_their()] body starts to glow and burst into flames before flashing into dust!"),
-		span_userdanger("You lean in and try to lick [atom_source]. Everything starts burning and all you can hear is ringing. Your last thought is \"That was not a wise decision.\""),
+		span_danger("[user] наклоняется и пытается лизнуть [atom_source], вызывая резонанс... [user.p_their()] тело начинает светиться, вспыхивает пламенем и обращается в пыль!"),
+		span_userdanger("Вы наклоняетесь и пытаетесь лизнуть [atom_source]. Всё начинает гореть, и всё, что вы слышите, - звон. Ваша последняя мысль: \"Это было не мудрое решение.\""),
 		"failed lick"
 	)
 
@@ -167,30 +167,30 @@
 		if(clumsy)
 			var/obj/item/bodypart/dust_arm = user.get_active_hand()
 			dust_arm.dismember()
-			user.visible_message(span_danger("The [item] flashes out of existence on contact with \the [atom_source], resonating with a horrible sound..."),\
-				span_danger("Oops! The [item] flashes out of existence on contact with \the [atom_source], taking your arm with it! That was clumsy of you!"))
+			user.visible_message(span_danger("[item] вспыхивает и исчезает при контакте с \the [atom_source], резонируя ужасным звуком..."),\
+				span_danger("Упс! [item] вспыхивает и исчезает при контакте с \the [atom_source], забирая вашу руку с собой! Какая неловкость!"))
 			playsound(atom_source, 'sound/effects/supermatter.ogg', 150, TRUE)
 			consume(atom_source, dust_arm)
 			qdel(item)
 			return
 		if(cig.lit || user.combat_mode)
-			user.visible_message(span_danger("A hideous sound echoes as [item] is ashed out on contact with \the [atom_source]. That didn't seem like a good idea..."))
+			user.visible_message(span_danger("Мерзкий звук эхом разносится вокруг, пока [item] обращается в пепел при контакте с \the [atom_source]. Это не казалось хорошей идеей..."))
 			playsound(atom_source, 'sound/effects/supermatter.ogg', 150, TRUE)
 			consume(atom_source, item)
 			radiation_pulse(atom_source, max_range = 3, threshold = 0.1, chance = 50)
 			return
 		else
 			cig.light()
-			user.visible_message(span_danger("As [user] lights \their [item] on \the [atom_source], silence fills the room..."),\
-				span_danger("Time seems to slow to a crawl as you touch \the [atom_source] with \the [item].</span>\n<span class='notice'>\The [item] flashes alight with an eerie energy as you nonchalantly lift your hand away from \the [atom_source]. Damn."))
+			user.visible_message(span_danger("Когда [user] прикуривает \their [item] от \the [atom_source], комнату заполняет тишина..."),\
+				span_danger("Время будто замедляется до ползучего хода, пока вы касаетесь \the [atom_source] с помощью \the [item].</span>\n<span class='notice'>\The [item] вспыхивает жуткой энергией, а вы невозмутимо отводите руку от \the [atom_source]. Чёрт."))
 			playsound(atom_source, 'sound/effects/supermatter.ogg', 50, TRUE)
 			radiation_pulse(atom_source, max_range = 1, threshold = 0, chance = 100)
 			return
 
 	if(user.dropItemToGround(item))
-		user.visible_message(span_danger("As [user] touches \the [atom_source] with \a [item], silence fills the room..."),\
-			span_userdanger("You touch \the [atom_source] with \the [item], and everything suddenly goes silent.</span>\n<span class='notice'>\The [item] flashes into dust as you flinch away from \the [atom_source]."),\
-			span_hear("Everything suddenly goes silent."))
+		user.visible_message(span_danger("Когда [user] касается \the [atom_source] с помощью \a [item], комнату заполняет тишина..."),\
+			span_userdanger("Вы касаетесь \the [atom_source] с помощью \the [item], и всё внезапно затихает.</span>\n<span class='notice'>\The [item] вспыхивает пылью, пока вы отдёргиваетесь от \the [atom_source]."),\
+			span_hear("Всё внезапно затихает."))
 		user.investigate_log("has been attacked ([item]) by [key_name(user)]", INVESTIGATE_ENGINE)
 		consume(atom_source, item)
 		playsound(get_turf(atom_source), 'sound/effects/supermatter.ogg', 50, TRUE)
@@ -201,8 +201,8 @@
 	if(atom_source.Adjacent(user)) //if the item is stuck to the person, kill the person too instead of eating just the item.
 		if(user.incorporeal_move || HAS_TRAIT(user, TRAIT_GODMODE))
 			return
-		var/vis_msg = span_danger("[user] reaches out and touches [atom_source] with [item], inducing a resonance... [item] starts to glow briefly before the light continues up to [user]'s body. [user.p_They()] burst[user.p_s()] into flames before flashing into dust!")
-		var/mob_msg = span_userdanger("You reach out and touch [atom_source] with [item]. Everything starts burning and all you can hear is ringing. Your last thought is \"That was not a wise decision.\"")
+		var/vis_msg = span_danger("[user] тянется и касается [atom_source] с помощью [item], вызывая резонанс... [item] ненадолго начинает светиться, затем свет переходит на тело [user]. [user.p_They()] вспыхива[user.p_s()] пламенем и обраща[user.p_s()] в пыль!")
+		var/mob_msg = span_userdanger("Вы тянетесь и касаетесь [atom_source] с помощью [item]. Всё начинает гореть, и всё, что вы слышите, - звон. Ваша последняя мысль: \"Это было не мудрое решение.\"")
 		dust_mob(source, user, vis_msg, mob_msg)
 
 /datum/component/supermatter_crystal/proc/tool_hit(datum/source, mob/user, obj/item/tool)
@@ -224,11 +224,11 @@
 		our_supermatter.log_activation(who = hit_object)
 	if(isliving(hit_object))
 		hit_object.visible_message(span_danger("\The [hit_object] slams into \the [atom_source] inducing a resonance... [hit_object.p_their()] body starts to glow and burst into flames before flashing into dust!"),
-			span_userdanger("You slam into \the [atom_source] as your ears are filled with unearthly ringing. Your last thought is \"Oh, fuck.\""),
-			span_hear("You hear an unearthly noise as a wave of heat washes over you."))
+			span_userdanger("Вы врезаетесь в \the [atom_source], и ваши уши наполняет неземной звон. Ваша последняя мысль: \"Ох, чёрт.\""),
+			span_hear("Вы слышите неземной шум, и вас окатывает волной жара."))
 	else if(isobj(hit_object) && !iseffect(hit_object))
 		hit_object.visible_message(span_danger("\The [hit_object] smacks into \the [atom_source] and rapidly flashes to ash."), null,
-			span_hear("You hear a loud crack as you are washed with a wave of heat."))
+			span_hear("Вы слышите громкий треск, и вас окатывает волной жара."))
 	else
 		return
 
@@ -253,8 +253,8 @@
 		consume(atom_source, poor_target)
 		playsound(get_turf(atom_source), 'sound/effects/supermatter.ogg', 50, TRUE)
 		poor_target.visible_message(span_danger("\The [atom_source] slams into \the [poor_target] out of nowhere inducing a resonance... [poor_target.p_their()] body starts to glow and burst into flames before flashing into dust!"),
-			span_userdanger("\The [atom_source] slams into you out of nowhere as your ears are filled with unearthly ringing. Your last thought is \"The fuck.\""),
-			span_hear("You hear an unearthly noise as a wave of heat washes over you."))
+			span_userdanger("\The [atom_source] внезапно врезается в вас, и ваши уши наполняет неземной звон. Ваша последняя мысль: \"Что за...\""),
+			span_hear("Вы слышите неземной шум, и вас окатывает волной жара."))
 
 	for(var/atom/movable/hit_object as anything in impacted_turf)
 		if(parent == hit_object)
@@ -266,19 +266,19 @@
 		consume(atom_source, hit_object)
 		playsound(get_turf(atom_source), 'sound/effects/supermatter.ogg', 50, TRUE)
 		atom_source.visible_message(span_danger("\The [atom_source], smacks into the plating out of nowhere, reducing everything below to ash."), null,
-			span_hear("You hear a loud crack as you are washed with a wave of heat."))
+			span_hear("Вы слышите громкий треск, и вас окатывает волной жара."))
 
 /datum/component/supermatter_crystal/proc/dust_mob(datum/source, mob/living/nom, vis_msg, mob_msg, cause)
 	if(nom.incorporeal_move || HAS_TRAIT(nom, TRAIT_GODMODE)) //try to keep supermatter sliver's + hemostat's dust conditions in sync with this too
 		return
 	var/atom/atom_source = source
 	if(!vis_msg)
-		vis_msg = span_danger("[nom] reaches out and touches [atom_source], inducing a resonance... [nom.p_their()] body starts to glow and burst into flames before flashing into dust!")
+		vis_msg = span_danger("[nom] тянется и касается [atom_source], вызывая резонанс... [nom.p_their()] тело начинает светиться, вспыхивает пламенем и обращается в пыль!")
 	if(!mob_msg)
-		mob_msg = span_userdanger("You reach out and touch [atom_source]. Everything starts burning and all you can hear is ringing. Your last thought is \"That was not a wise decision.\"")
+		mob_msg = span_userdanger("Вы тянетесь и касаетесь [atom_source]. Всё начинает гореть, и всё, что вы слышите, - звон. Ваша последняя мысль: \"Это было не мудрое решение.\"")
 	if(!cause)
 		cause = "contact"
-	nom.visible_message(vis_msg, mob_msg, span_hear("You hear an unearthly noise as a wave of heat washes over you."))
+	nom.visible_message(vis_msg, mob_msg, span_hear("Вы слышите неземной шум, и вас окатывает волной жара."))
 	atom_source.investigate_log("has been attacked ([cause]) by [key_name(nom)]", INVESTIGATE_ENGINE)
 	add_memory_in_range(atom_source, 7, /datum/memory/witness_supermatter_dusting, protagonist = nom, antagonist = atom_source)
 	playsound(get_turf(atom_source), 'sound/effects/supermatter.ogg', 50, TRUE)
@@ -358,10 +358,10 @@
 		if(ishuman(near_mob) && SSradiation.wearing_rad_protected_clothing(near_mob))
 			continue
 		if(near_mob in view())
-			near_mob.show_message(span_danger("As \the [atom_source] slowly stops resonating, you find your skin covered in new radiation burns."), MSG_VISUAL,
-				span_danger("The unearthly ringing subsides and you find your skin covered in new radiation burns."), MSG_AUDIBLE)
+			near_mob.show_message(span_danger("Когда \the [atom_source] медленно перестаёт резонировать, вы замечаете, что ваша кожа покрыта новыми радиационными ожогами."), MSG_VISUAL,
+				span_danger("Неземной звон стихает, и вы замечаете, что ваша кожа покрыта новыми радиационными ожогами."), MSG_AUDIBLE)
 		else
-			near_mob.show_message(span_hear("An unearthly ringing fills your ears, and you find your skin covered in new radiation burns."), MSG_AUDIBLE)
+			near_mob.show_message(span_hear("Неземной звон наполняет ваши уши, и вы замечаете, что ваша кожа покрыта новыми радиационными ожогами."), MSG_AUDIBLE)
 	consume_returns(matter_increase, damage_increase)
 	var/obj/machinery/power/supermatter_crystal/our_crystal = parent
 	if(istype(our_crystal))

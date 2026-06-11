@@ -172,11 +172,11 @@
 
 // Toechtauese Berries
 /obj/item/seeds/toechtauese
-	name = "töchtaüse berry seed pack"
-	desc = "These seeds grow into töchtaüse bushes."
+	name = "пакет семян ягод töchtaüse"
+	desc = "Эти семена вырастают в кусты töchtaüse."
 	icon_state = "seed-toechtauese"
 	species = "toechtauese"
-	plantname = "Töchtaüse Bush"
+	plantname = "Куст töchtaüse"
 	product = /obj/item/food/grown/toechtauese
 	lifespan = 20
 	maturation = 5
@@ -191,22 +191,22 @@
 
 /obj/item/food/grown/toechtauese
 	seed = /obj/item/seeds/toechtauese
-	name = "töchtaüse berries"
-	desc = "A branch with töchtaüse berries on it. They're a favourite on the Mothic Fleet, but not in this form."
+	name = "ягоды töchtaüse"
+	desc = "Ветка с ягодами töchtaüse. Их любят на Мотыльковом флоте, но не в таком виде."
 	icon_state = "toechtauese_branch"
 	foodtypes = FRUIT
-	tastes = list("fiery itchy pain" = 1)
+	tastes = list("жгучая зудящая боль" = 1)
 	distill_reagent = /datum/reagent/toxin/itching_powder
 
 /obj/item/food/grown/toechtauese/juice_typepath()
 	return /datum/reagent/consumable/toechtauese_juice
 
 /obj/item/seeds/lanternfruit
-	name = "lanternfruit seed pack"
-	desc = "These seeds grow into lanternfruit pods."
+	name = "пакет семян фонарь-фрукта"
+	desc = "Эти семена вырастают в стручки фонарь-фрукта."
 	icon_state = "seed-lanternfruit"
 	species = "lanternfruit"
-	plantname = "Lanternfruit Pod"
+	plantname = "Стручок фонарь-фрукта"
 	product = /obj/item/food/grown/lanternfruit
 	lifespan = 35
 	endurance = 35
@@ -225,9 +225,9 @@
 
 /obj/item/food/grown/lanternfruit
 	seed = /obj/item/seeds/lanternfruit
-	name = "lanternfruits"
-	desc = "A softly glowing fruit with a handle-shaped stem, an Ethereal favorite!"
+	name = "фонарь-фрукты"
+	desc = "Мягко светящийся фрукт со стеблем в форме ручки, любимец эфириалов!"
 	icon_state = "lanternfruit"
 	foodtypes = FRUIT
-	tastes = list("tv static" = 1, "sour pear" = 1, "grapefruit" = 1)
+	tastes = list("телевизионные помехи" = 1, "кислая груша" = 1, "грейпфрут" = 1)
 	distill_reagent = /datum/reagent/consumable/ethanol/wine_voltaic

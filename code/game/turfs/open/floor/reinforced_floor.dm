@@ -1,7 +1,7 @@
 
 /turf/open/floor/engine
-	name = "reinforced floor"
-	desc = "Extremely sturdy."
+	name = "укреплённый пол"
+	desc = "Крайне прочный."
 	icon_state = "engine"
 	holodeck_compatible = TRUE
 	thermal_conductivity = 0.01
@@ -19,7 +19,7 @@
 
 /turf/open/floor/engine/examine(mob/user)
 	. += ..()
-	. += span_notice("The reinforcement rods are <b>wrenched</b> firmly in place.")
+	. += span_notice("Арматурные прутья прочно <b>закручены ключом</b> на месте.")
 
 /turf/open/floor/engine/airless
 	initial_gas_mix = AIRLESS_ATMOS
@@ -43,7 +43,7 @@
 
 /turf/open/floor/engine/wrench_act(mob/living/user, obj/item/I)
 	..()
-	to_chat(user, span_notice("You begin removing rods..."))
+	to_chat(user, span_notice("Вы начинаете снимать прутья..."))
 	if(I.use_tool(src, user, 30, volume=80))
 		if(!istype(src, /turf/open/floor/engine))
 			return TRUE
@@ -105,7 +105,7 @@
 	initial_gas_mix = ATMOS_TANK_CO2
 
 /turf/open/floor/engine/plasma
-	name = "plasma floor"
+	name = "плазменный пол"
 	initial_gas_mix = ATMOS_TANK_PLASMA
 
 /turf/open/floor/engine/o2
@@ -180,16 +180,16 @@
 	initial_gas_mix = ATMOS_TANK_ANTINOBLIUM
 
 /turf/open/floor/engine/air
-	name = "air floor"
+	name = "воздушный пол"
 	initial_gas_mix = ATMOS_TANK_AIRMIX
 
 /turf/open/floor/engine/xenobio
-	name = "xenobio bz floor"
+	name = "ксенобиологический BZ-пол"
 	initial_gas_mix = XENOBIO_BZ
 
 /turf/open/floor/engine/cult
-	name = "engraved floor"
-	desc = "The air smells strange over this sinister flooring."
+	name = "гравированный пол"
+	desc = "Над этим зловещим полом воздух пахнет странно."
 	icon_state = "cult"
 	floor_tile = null
 	var/obj/effect/cult_turf/realappearance
@@ -221,15 +221,15 @@
 	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/floor/engine/vacuum
-	name = "vacuum floor"
+	name = "вакуумный пол"
 	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/floor/engine/telecomms
 	initial_gas_mix = TCOMMS_ATMOS
 
 /turf/open/floor/engine/insulation
-	name = "hyper-insulated floor"
-	desc = "Sturdy and completely heat-proof."
+	name = "гиперизолированный пол"
+	desc = "Прочный и полностью жаростойкий."
 	icon_state = "insulation"
 	thermal_conductivity = 0
 	floor_tile = /obj/item/stack/sheet/mineral/plastitanium

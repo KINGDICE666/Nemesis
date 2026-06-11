@@ -451,7 +451,7 @@
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 
 /turf/open/floor/iron/kitchen_coldroom
-	name = "cold room floor"
+	name = "пол холодильной комнаты"
 	initial_gas_mix = KITCHEN_COLDROOM_ATMOS
 
 /turf/open/floor/iron/kitchen_coldroom/dark
@@ -481,8 +481,8 @@
 	floor_tile = /obj/item/stack/tile/iron/vaporwave
 
 /turf/open/floor/iron/goonplaque
-	name = "commemorative plaque"
-	desc = "\"This is a plaque in honour of our comrades on the G4407 Stations. Hopefully TG4407 model can live up to your fame and fortune.\" Scratched in beneath that is a crude image of a meteor and a spaceman. The spaceman is laughing. The meteor is exploding."
+	name = "памятная табличка"
+	desc = "\"Эта табличка установлена в честь наших товарищей на станциях G4407. Надеемся, модель TG4407 сможет сравниться с вашей славой и удачей.\" Ниже нацарапано грубое изображение метеора и космонавта. Космонавт смеётся. Метеор взрывается."
 	icon_state = "plaque"
 	base_icon_state = "plaque"
 	tiled_turf = FALSE
@@ -527,11 +527,11 @@
 /turf/open/floor/iron/bluespace
 	icon_state = "bluespace"
 	base_icon_state = "bluespace"
-	desc = "Sadly, these don't seem to make you faster..."
+	desc = "Увы, они не делают вас быстрее..."
 	floor_tile = /obj/item/stack/tile/iron/bluespace
 
 /turf/open/floor/iron/sepia
 	icon_state = "sepia"
 	base_icon_state = "sepia"
-	desc = "Well, the flow of time is normal on these tiles, weird."
+	desc = "Странно, но время на этих плитках течёт нормально."
 	floor_tile = /obj/item/stack/tile/iron/sepia

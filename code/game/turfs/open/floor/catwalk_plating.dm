@@ -8,8 +8,8 @@
 /turf/open/floor/catwalk_floor	//the base type, meant to look like a maintenance panel
 	icon = 'icons/turf/floors/catwalk_plating.dmi'
 	icon_state = "maint_above"
-	name = "catwalk floor"
-	desc = "Flooring that shows its contents underneath. Engineers love it!"
+	name = "пол-мостик"
+	desc = "Пол, под которым видно содержимое. Инженеры такое обожают!"
 	baseturfs = /turf/open/floor/plating
 	floor_tile = /obj/item/stack/tile/catwalk_tile
 	layer = CATWALK_LAYER
@@ -29,10 +29,10 @@
 	. = ..()
 
 	if(covered)
-		. += span_notice("You can <b>unscrew</b> it to reveal the contents beneath.")
+		. += span_notice("Можно <b>открутить</b> его, чтобы открыть содержимое под ним.")
 	else
-		. += span_notice("You can <b>screw</b> it to hide the contents beneath.")
-		. += span_notice("There's a <b>small crack</b> on the edge of it.")
+		. += span_notice("Можно <b>закрутить</b> его, чтобы скрыть содержимое под ним.")
+		. += span_notice("На краю видна <b>небольшая щель</b>.")
 
 /turf/open/floor/catwalk_floor/screwdriver_act(mob/living/user, obj/item/tool)
 	. = ..()
@@ -49,7 +49,7 @@
 		REMOVE_TRAIT(src, TRAIT_UNCOVERED_TURF, INNATE_TRAIT)
 
 	levelupdate()
-	user.balloon_alert(user, "[!covered ? "cover removed" : "cover added"]")
+	user.balloon_alert(user, "[!covered ? "крышка снята" : "крышка установлена"]")
 	tool.play_tool_sound(src)
 	update_appearance()
 
@@ -60,38 +60,38 @@
 
 /turf/open/floor/catwalk_floor/crowbar_act(mob/user, obj/item/crowbar)
 	if(covered)
-		user.balloon_alert(user, "remove cover first!")
+		user.balloon_alert(user, "сначала снимите крышку!")
 		return FALSE
 	. = ..()
 
 //Reskins! More fitting with most of our tiles, and appear as a radial on the base type
 /turf/open/floor/catwalk_floor/iron
-	name = "iron plated catwalk floor"
+	name = "пол-мостик с железным покрытием"
 	icon_state = "iron_above"
 	floor_tile = /obj/item/stack/tile/catwalk_tile/iron
 	catwalk_type = "iron"
 
 /turf/open/floor/catwalk_floor/iron_white
-	name = "white plated catwalk floor"
+	name = "пол-мостик с белым покрытием"
 	icon_state = "whiteiron_above"
 	floor_tile = /obj/item/stack/tile/catwalk_tile/iron_white
 	catwalk_type = "whiteiron"
 
 /turf/open/floor/catwalk_floor/iron_dark
-	name = "dark plated catwalk floor"
+	name = "пол-мостик с тёмным покрытием"
 	icon_state = "darkiron_above"
 	floor_tile = /obj/item/stack/tile/catwalk_tile/iron_dark
 	catwalk_type = "darkiron"
 
 /turf/open/floor/catwalk_floor/titanium
-	name = "titanium plated catwalk floor"
+	name = "пол-мостик с титановым покрытием"
 	icon_state = "titanium_above"
 	floor_tile = /obj/item/stack/tile/catwalk_tile/titanium
 	catwalk_type = "titanium"
 	rust_resistance = RUST_RESISTANCE_TITANIUM
 
 /turf/open/floor/catwalk_floor/iron_smooth //the original green type
-	name = "smooth plated catwalk floor"
+	name = "пол-мостик с гладким покрытием"
 	icon_state = "smoothiron_above"
 	floor_tile = /obj/item/stack/tile/catwalk_tile/iron_smooth
 	catwalk_type = "smoothiron"

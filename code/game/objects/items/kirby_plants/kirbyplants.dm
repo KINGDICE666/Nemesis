@@ -1,9 +1,9 @@
 /obj/item/kirbyplants
-	name = "potted plant"
+	name = "растение в горшке"
 	icon = 'icons/obj/fluff/flora/plants.dmi'
 	icon_state = "plant-01"
 	base_icon_state = "plant-01"
-	desc = "A little bit of nature contained in a pot."
+	desc = "Немного природы, заключённой в горшок."
 	layer = ABOVE_MOB_LAYER
 	w_class = WEIGHT_CLASS_HUGE
 	force = 10
@@ -35,11 +35,11 @@
 	. = ..()
 	if(custom_plant_name)
 		return
-	name = "[dead ? "dead ":null][initial(name)]"
+	name = "[dead ? "мёртвое ":null][initial(name)]"
 
 /obj/item/kirbyplants/update_desc(updates)
 	. = ..()
-	desc = dead ? "The unidentifiable plant remnants make you feel like planting something new in the pot." : initial(desc)
+	desc = dead ? "Неопознаваемые остатки растения навевают мысль посадить в горшок что-нибудь новое." : initial(desc)
 
 /obj/item/kirbyplants/vv_edit_var(vname, vval)
 	. = ..()
@@ -53,12 +53,12 @@
 /obj/item/kirbyplants/attackby(obj/item/I, mob/living/user, list/modifiers, list/attack_modifiers)
 	. = ..()
 	if(!dead && trimmable && HAS_TRAIT(user,TRAIT_BONSAI) && isturf(loc) && I.get_sharpness())
-		to_chat(user,span_notice("You start trimming [src]."))
+		to_chat(user,span_notice("Вы начинаете подрезать [src]."))
 		if(do_after(user,3 SECONDS,target=src))
-			to_chat(user,span_notice("You finish trimming [src]."))
+			to_chat(user,span_notice("Вы заканчиваете подрезать [src]."))
 			change_visual()
 	if(dead && istype(I, /obj/item/seeds))
-		to_chat(user,span_notice("You start planting a new seed into the pot."))
+		to_chat(user,span_notice("Вы начинаете сажать новое семя в горшок."))
 		if(do_after(user,3 SECONDS,target=src))
 			qdel(I)
 			dead = FALSE
@@ -108,16 +108,16 @@
 	dead = TRUE
 
 /obj/item/kirbyplants/random/dead/research_director
-	name = "RD's potted plant"
+	name = "растение научного руководителя в горшке"
 	custom_plant_name = TRUE
 
 /obj/item/kirbyplants/random/dead/update_desc(updates)
 	. = ..()
-	desc = "A gift from the botanical staff, presented after the RD's reassignment. There's a tag on it that says \"Y'all come back now, y'hear?\"[dead ? "\nIt doesn't look very healthy...":null]"
+	desc = "Подарок от сотрудников ботаники, вручённый после перевода научного руководителя. На бирке написано: \"Возвращайтесь, слышите?\"[dead ? "\nВыглядит не очень здоровым...":null]"
 
 /obj/item/kirbyplants/random/fullysynthetic
-	name = "plastic potted plant"
-	desc = "A fake, cheap looking, plastic tree. Perfect for people who kill every plant they touch."
+	name = "пластиковое растение в горшке"
+	desc = "Искусственное дешёвое пластиковое дерево. Идеально для тех, у кого гибнет каждое растение."
 	icon_state = "plant-26"
 	custom_materials = (list(/datum/material/plastic = SHEET_MATERIAL_AMOUNT * 4))
 	trimmable = FALSE
@@ -128,15 +128,15 @@
 	update_appearance(UPDATE_ICON)
 
 /obj/item/kirbyplants/photosynthetic
-	name = "photosynthetic potted plant"
-	desc = "A bioluminescent plant."
+	name = "фотосинтезирующее растение в горшке"
+	desc = "Биолюминесцентное растение."
 	icon_state = "plant-09"
 	light_color = COLOR_BRIGHT_BLUE
 	light_range = 3
 
 /obj/item/kirbyplants/potty
 	name = "Potty the Potted Plant"
-	desc = "A secret agent staffed in the station's bar to protect the mystical cakehat."
+	desc = "Секретный агент, размещённый в баре станции для защиты мистической торт-шляпы."
 	icon_state = "potty"
 	base_icon_state = "potty"
 	custom_plant_name = TRUE
@@ -170,8 +170,8 @@
 		. += "[base_icon_state]_light"
 
 /obj/item/kirbyplants/fern
-	name = "neglected fern"
-	desc = "An old botanical research sample collected on a long forgotten jungle planet."
+	name = "заброшенный папоротник"
+	desc = "Старый ботанический исследовательский образец, собранный на давно забытой планете-джунглях."
 	icon_state = "fern"
 	trimmable = FALSE
 

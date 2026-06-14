@@ -5,30 +5,30 @@
 	bite_consumption = 5
 	max_volume = 80
 	foodtypes = NONE
-	eatverbs = list("slurp", "sip", "inhale", "drink")
+	eatverbs = list("хлебает", "отпивает", "вдыхает", "пьёт")
 	venue_value = FOOD_PRICE_CHEAP
 
 /obj/item/food/bowled/make_germ_sensitive(mapload)
 	return // It's in a bowl
 
 /obj/item/food/bowled/wish
-	name = "wish soup"
-	desc = "I wish this was soup."
+	name = "суп желаний"
+	desc = "Хотелось бы, чтобы это был суп."
 	icon_state = "wishsoup"
 	food_reagents = list(/datum/reagent/water = 10)
-	tastes = list("wishes" = 1)
+	tastes = list("желания" = 1)
 	trash_type = /obj/item/reagent_containers/cup/bowl
 
 /obj/item/food/bowled/wish/Initialize(mapload)
 	. = ..()
 	if(prob(25))
-		desc = "A wish come true!"
+		desc = "Желание сбылось!"
 		reagents.add_reagent(/datum/reagent/consumable/nutriment, 9)
 		reagents.add_reagent(/datum/reagent/consumable/nutriment/vitamin, 1)
 
 /obj/item/food/bowled/mammi
-	name = "mammi"
-	desc = "A bowl of mushy bread and milk. It reminds you, not too fondly, of a bowel movement."
+	name = "мямми"
+	desc = "Миска размякшего хлеба с молоком. Не слишком приятно напоминает о работе кишечника."
 	icon_state = "mammi"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 11,
@@ -38,8 +38,8 @@
 	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/bowled/spacylibertyduff
-	name = "spacy liberty duff"
-	desc = "Jello gelatin, from Alfred Hubbard's cookbook."
+	name = "космический либерти-дафф"
+	desc = "Желейный десерт из кулинарной книги Альфреда Хаббарда."
 	icon_state = "spacylibertyduff"
 	bite_consumption = 3
 	food_reagents = list(
@@ -49,13 +49,13 @@
 	)
 	trash_type = /obj/item/reagent_containers/cup/bowl
 
-	tastes = list("jelly" = 1, "mushroom" = 1)
+	tastes = list("желе" = 1, "гриб" = 1)
 	foodtypes = VEGETABLES
 	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/bowled/amanitajelly
-	name = "amanita jelly"
-	desc = "Looks curiously toxic."
+	name = "желе из мухомора"
+	desc = "Выглядит подозрительно токсично."
 	icon_state = "amanitajelly"
 	bite_consumption = 3
 	food_reagents = list(
@@ -67,6 +67,6 @@
 	trash_type = /obj/item/reagent_containers/cup/bowl
 
 
-	tastes = list("jelly" = 1, "mushroom" = 1)
+	tastes = list("желе" = 1, "гриб" = 1)
 	foodtypes = VEGETABLES | TOXIC
 	crafting_complexity = FOOD_COMPLEXITY_2

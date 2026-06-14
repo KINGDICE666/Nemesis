@@ -10,20 +10,20 @@
 
 	switch(grill_time) //no 0-20 to prevent spam
 		if(20 SECONDS to 30 SECONDS)
-			this_food.name = "lightly-grilled [this_food.name]"
-			this_food.desc += " It's been lightly grilled."
+			this_food.name = "слегка поджаренный на гриле [this_food.name]"
+			this_food.desc += " Его слегка поджарили на гриле."
 
 		if(30 SECONDS to 80 SECONDS)
-			this_food.name = "grilled [this_food.name]"
-			this_food.desc += " It's been grilled."
+			this_food.name = "поджаренный на гриле [this_food.name]"
+			this_food.desc += " Его поджарили на гриле."
 
 		if(80 SECONDS to 100 SECONDS)
-			this_food.name = "heavily grilled [this_food.name]"
-			this_food.desc += " It's been heavily grilled."
+			this_food.name = "сильно поджаренный на гриле [this_food.name]"
+			this_food.desc += " Его сильно поджарили на гриле."
 
 		if(100 SECONDS to INFINITY) //grill marks reach max alpha
-			this_food.name = "Powerfully Grilled [this_food.name]"
-			this_food.desc = "A [this_food.name]. Reminds you of your wife, wait, no, it's prettier!"
+			this_food.name = "мощно поджаренный на гриле [this_food.name]"
+			this_food.desc = "Это [this_food.name]. Напоминает вам о жене, хотя нет, оно красивее!"
 
 	if(grill_time > 30 SECONDS && isnull(this_food.GetComponent(/datum/component/edible)))
 		this_food.AddComponentFrom(SOURCE_EDIBLE_GRILLED, /datum/component/edible, foodtypes = FRIED)

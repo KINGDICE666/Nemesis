@@ -75,10 +75,13 @@
 	if(add_to_contents && !ismovable(target))
 		return FALSE
 	var/eat_verb
+	var/user_eat_verb
 	if(drinking)
-		eat_verb = pick("slurp","sip","guzzle","drink","quaff","suck")
+		eat_verb = pick("пьёт", "отхлёбывает", "глотает")
+		user_eat_verb = "пьёте"
 	else
-		eat_verb = pick("bite","chew","nibble","gnaw","gobble","chomp")
+		eat_verb = pick("ест", "жуёт", "грызёт", "уплетает")
+		user_eat_verb = "едите"
 
 	var/best_match = null
 	var/best_value = 0
@@ -107,12 +110,12 @@
 
 	if (to_heal > 0)
 		var/healed = eater.heal_overall_damage(to_heal)
-		eater.visible_message(span_notice("[eater] [eat_verb]s [target]."), span_notice("You [eat_verb] [target][healed ? ", restoring some health" : ""]."))
+		eater.visible_message(span_notice("[eater] [eat_verb] [target]."), span_notice("Вы [user_eat_verb] [target][healed ? ", восстанавливая немного здоровья" : ""]."))
 	else if (to_damage > 0 && damage_type)
 		var/damaged = eater.apply_damage(to_damage, damage_type)
-		eater.visible_message(span_notice("[eater] [eat_verb]s [target][damaged ? ", and seems to hurt [eater.p_themselves()]!" : "."]"), span_notice("You [eat_verb] [target][damaged ? ", hurting yourself in the process" : ""]."))
+		eater.visible_message(span_notice("[eater] [eat_verb] [target][damaged ? ", и, похоже, причиняет себе боль!" : "."]"), span_notice("Вы [user_eat_verb] [target][damaged ? ", причиняя себе боль" : ""]."))
 	else
-		eater.visible_message(span_notice("[eater] [eat_verb]s [target]."), span_notice("You [eat_verb] [target]."))
+		eater.visible_message(span_notice("[eater] [eat_verb] [target]."), span_notice("Вы [user_eat_verb] [target]."))
 
 	finish_eating(eater, target, feeder, to_heal)
 	return TRUE
@@ -138,4 +141,3 @@
 		movable_target.forceMove(eater)
 	else
 		qdel(final_target)
-

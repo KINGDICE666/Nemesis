@@ -45,7 +45,7 @@
 /datum/element/loomable/proc/on_examine(obj/item/source, mob/examiner, list/examine_list)
 	SIGNAL_HANDLER
 
-	examine_list += span_notice("You could probably process [source] at \a <b>[initial(loom_type.name)]</b>.")
+	examine_list += span_notice("[source] можно, вероятно, обработать на <b>[initial(loom_type.name)]</b>.")
 
 /// Checks if the thing we clicked on can be used as a loom, and if we can actually loom the source at present (an example being does the stack have enough in it (if its a stack))
 /datum/element/loomable/proc/try_and_loom_me(obj/item/source, atom/target, mob/living/user)
@@ -57,13 +57,13 @@
 	if(ismovable(target))
 		var/atom/movable/movable_target = target
 		if(target_needs_anchoring && !movable_target.anchored)
-			user.balloon_alert(user, "[movable_target] must be secured!")
+			user.balloon_alert(user, "[movable_target] нужно закрепить!")
 			return
 
 	if((required_amount > 1) && istype(source, /obj/item/stack))
 		var/obj/item/stack/source_stack = source
 		if(source_stack.amount < required_amount)
-			user.balloon_alert(user, "need [required_amount] of [source]!")
+			user.balloon_alert(user, "нужно [required_amount] [source]!")
 			return
 
 	INVOKE_ASYNC(src, PROC_REF(loom_me), source, user, target)
@@ -81,14 +81,14 @@
 
 			if(!stack_we_use.use(required_amount))
 				if (!spawning_amount)
-					user.balloon_alert(user, "need [required_amount] of [source]!")
+					user.balloon_alert(user, "нужно [required_amount] [source]!")
 				break
 
 			spawning_amount++
 
 	else
 		if(!do_after(user, loom_time, target))
-			user.balloon_alert(user, "interrupted!")
+			user.balloon_alert(user, "прервано!")
 			return
 
 		qdel(source)
@@ -106,4 +106,4 @@
 	else
 		for(var/repeated in 1 to spawning_amount)
 			new_thing = new resulting_atom(target.drop_location())
-	user.balloon_alert_to_viewers("[process_completion_verb] [new_thing]")
+	user.balloon_alert_to_viewers("обработано: [new_thing]")

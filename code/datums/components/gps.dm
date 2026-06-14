@@ -110,7 +110,7 @@ GLOBAL_LIST_EMPTY(GPS_list)
 /datum/component/gps/item/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
-	examine_list += span_notice("Alt-click to switch it [tracking ? "off":"on"].")
+	examine_list += span_notice("Alt-click, чтобы [tracking ? "выключить" : "включить"] его.")
 
 ///Called on COMSIG_ATOM_EMP_ACT
 /datum/component/gps/item/proc/on_emp_act(datum/source, severity, protection)
@@ -143,16 +143,16 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	if(!user.can_perform_action(parent, ALLOW_RESTING | ALLOW_PAI))
 		return //user not valid to use gps
 	if(emped)
-		to_chat(user, span_warning("It's busted!"))
+		to_chat(user, span_warning("Он сломан!"))
 		return
 	var/atom/A = parent
 	if(tracking)
 		A.cut_overlay("working")
-		to_chat(user, span_notice("[parent] is no longer tracking, or visible to other GPS devices."))
+		to_chat(user, span_notice("[parent] больше не отслеживается и не виден другим GPS-устройствам."))
 		tracking = FALSE
 	else
 		A.add_overlay("working")
-		to_chat(user, span_notice("[parent] is now tracking, and visible to other GPS devices."))
+		to_chat(user, span_notice("[parent] теперь отслеживается и виден другим GPS-устройствам."))
 		tracking = TRUE
 
 	if(debug_mode)
@@ -164,7 +164,7 @@ GLOBAL_LIST_EMPTY(GPS_list)
 
 /datum/component/gps/item/ui_interact(mob/user, datum/tgui/ui)
 	if(emped)
-		to_chat(user, span_hear("[parent] fizzles weakly."))
+		to_chat(user, span_hear("[parent] слабо потрескивает."))
 		return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -220,7 +220,7 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	switch(action)
 		if("rename")
 			var/atom/parentasatom = parent
-			var/a = tgui_input_text(usr, "Enter the desired tag", "GPS Tag", gpstag, max_length = 20)
+			var/a = tgui_input_text(usr, "Введите желаемую метку", "Метка GPS", gpstag, max_length = 20)
 			if (QDELETED(ui) || ui.status != UI_INTERACTIVE)
 				return
 			if (!a)

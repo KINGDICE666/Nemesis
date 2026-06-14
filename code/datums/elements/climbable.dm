@@ -34,7 +34,7 @@
 /datum/element/climbable/proc/get_examine_tags(atom/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
-	examine_list["climbable"] = "It looks like it can be climbed on."
+	examine_list["climbable"] = "Похоже, на это можно забраться."
 
 /datum/element/climbable/proc/can_climb(atom/source, mob/user)
 	if (!source.IsReachableBy(user))
@@ -55,15 +55,15 @@
 		user.changeNext_move(CLICK_CD_MELEE)
 		user.do_attack_animation(climbed_thing)
 		structure_climber.Paralyze(40)
-		structure_climber.visible_message(span_warning("[structure_climber] is knocked off [climbed_thing]."), span_warning("You're knocked off [climbed_thing]!"), span_hear("You hear a cry from [structure_climber], followed by a slam."))
+		structure_climber.visible_message(span_warning("[structure_climber] сбит с [climbed_thing]."), span_warning("Вас сбивают с [climbed_thing]!"), span_hear("Вы слышите крик [structure_climber], а затем глухой удар."))
 
 
 /datum/element/climbable/proc/climb_structure(atom/climbed_thing, mob/living/user, params)
 	if(!can_climb(climbed_thing, user))
 		return
 	climbed_thing.add_fingerprint(user)
-	user.visible_message(span_warning("[user] starts climbing onto [climbed_thing]."), \
-								span_notice("You start climbing onto [climbed_thing]..."))
+	user.visible_message(span_warning("[user] начинает забираться на [climbed_thing]."), \
+								span_notice("Вы начинаете забираться на [climbed_thing]..."))
 	// Time in deciseoncds it takes to complete the climb do_after()
 	var/adjusted_climb_time = climb_time
 	// Time in deciseonds that the mob is stunned after climbing successfully.
@@ -92,8 +92,8 @@
 		if(QDELETED(climbed_thing)) //Checking if structure has been destroyed
 			return
 		if(do_climb(climbed_thing, user, params))
-			user.visible_message(span_warning("[user] climbs onto [climbed_thing]."), \
-								span_notice("You climb onto [climbed_thing]."))
+			user.visible_message(span_warning("[user] забирается на [climbed_thing]."), \
+								span_notice("Вы забираетесь на [climbed_thing]."))
 			log_combat(user, climbed_thing, "climbed onto")
 			if(adjusted_climb_stun)
 				user.Stun(adjusted_climb_stun)
@@ -103,7 +103,7 @@
 					buckle_target.buckle_mob(user)
 			user.mind?.adjust_experience(/datum/skill/athletics, round(ATHLETICS_SKILL_MISC_EXP/(fitness_level || 1), 1)) //Get a bit fitter with every climb. But it has diminishing returns at a certain point.
 		else
-			to_chat(user, span_warning("You fail to climb onto [climbed_thing]."))
+			to_chat(user, span_warning("Вам не удаётся забраться на [climbed_thing]."))
 	LAZYREMOVEASSOC(current_climbers, climbed_thing, user)
 
 

@@ -36,7 +36,7 @@
 /datum/element/rust/proc/handle_examine(datum/source, mob/user, list/examine_text)
 	SIGNAL_HANDLER
 
-	examine_text += span_notice("[source] is very rusty, you could probably <i>burn</i> or <i>scrape</i> it off, hell maybe even pour some <i>space cola</i> on it to remove the rust.")
+	examine_text += span_notice("[source] сильно заржавел. Ржавчину можно попробовать <i>выжечь</i>, <i>соскрести</i> или даже смыть <i>космической колой</i>.")
 
 /datum/element/rust/proc/apply_rust_overlay(atom/parent_atom, list/overlays)
 	SIGNAL_HANDLER
@@ -58,11 +58,11 @@
 			if(!item.tool_start_check(user, amount=1))
 				return
 
-			user.balloon_alert(user, "burning off rust...")
+			user.balloon_alert(user, "выжигаем ржавчину...")
 
 			if(!item.use_tool(source, user, 5 SECONDS))
 				return
-			user.balloon_alert(user, "burned off rust")
+			user.balloon_alert(user, "ржавчина выжжена")
 			Detach(source)
 			return
 
@@ -70,10 +70,10 @@
 		if(TOOL_RUSTSCRAPER)
 			if(!item.tool_start_check(user))
 				return
-			user.balloon_alert(user, "scraping off rust...")
+			user.balloon_alert(user, "счищаем ржавчину...")
 			if(!item.use_tool(source, user, 2 SECONDS))
 				return
-			user.balloon_alert(user, "scraped off rust")
+			user.balloon_alert(user, "ржавчина счищена")
 			Detach(source)
 			return
 
@@ -90,7 +90,7 @@
 /datum/element/rust/proc/on_interaction(datum/source, mob/user, obj/item/tool, modifiers)
 	SIGNAL_HANDLER
 	if(istype(tool, /obj/item/stack/tile) || istype(tool, /obj/item/stack/rods))
-		user.balloon_alert(user, "floor too rusted!")
+		user.balloon_alert(user, "пол слишком ржавый!")
 		return ITEM_INTERACT_BLOCKING
 
 /// For rust applied by heretics

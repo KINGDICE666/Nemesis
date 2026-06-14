@@ -100,6 +100,6 @@
 	SIGNAL_HANDLER
 
 	if(initial(result_typepath.gender) == PLURAL)
-		examine_list += span_notice("[source] can be [span_bold("microwaved")] into some [initial(result_typepath.name)].")
+		examine_list += span_notice("[source] можно [span_bold("разогреть в микроволновке")] и получить [initial(result_typepath.name)].")
 	else
-		examine_list += span_notice("[source] can be [span_bold("microwaved")] into \a [initial(result_typepath.name)].")
+		examine_list += span_notice("[source] можно [span_bold("разогреть в микроволновке")] и получить [initial(result_typepath.name)].")
